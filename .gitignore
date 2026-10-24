@@ -1,0 +1,18 @@
+# Independent external repositories are reproduced through the manifest.
+/externals/*
+!/externals/README.md
+!/externals/manifest.json
+/data/*
+!/data/README.md
+/outputs/*
+!/outputs/README.md
+__pycache__/
+*.py[cod]
+.venv/
+.env
+.env.*
+!.env.example
+.DS_Store
+/.codex/
+/.agents/
+/.aws/

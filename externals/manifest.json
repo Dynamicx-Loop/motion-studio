@@ -1,0 +1,34 @@
+{
+  "schema_version": 1,
+  "projects": [
+    {
+      "name": "UMR",
+      "path": "externals/UMR",
+      "url": "https://github.com/hanyang9/UMR.git",
+      "upstream": "https://github.com/hanyang9/UMR.git",
+      "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91"
+    },
+    {
+      "name": "hhtools",
+      "path": "externals/human-humanoid-tools",
+      "url": "https://github.com/notAnyrobot/human-humanoid-tools.git",
+      "upstream": "https://github.com/Roboparty/human-humanoid-tools.git",
+      "revision": "c998001143434a42ab67c2e4b16e169ba5da5e63"
+    },
+    {
+      "name": "ProtoMotions",
+      "path": "externals/ProtoMotions",
+      "url": "https://github.com/NVlabs/ProtoMotions.git",
+      "upstream": "https://github.com/NVlabs/ProtoMotions.git",
+      "revision": "f69fdcaabff31846b4d2247207417b57dc788828",
+      "skip_lfs": true
+    },
+    {
+      "name": "pyroki",
+      "path": "externals/pyroki",
+      "url": "https://github.com/chungmin99/pyroki.git",
+      "upstream": "https://github.com/chungmin99/pyroki.git",
+      "revision": "388e43e1fc0d0ee382968d3dd72970fd62a0450c"
+    }
+  ]
+}
