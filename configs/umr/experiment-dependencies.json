@@ -1,0 +1,44 @@
+{
+  "schema_version": 1,
+  "project_repository": {
+    "path": "/data/workspace/motion_studio",
+    "branch": "experiments/umr-astro"
+  },
+  "official_umr": {
+    "path": "externals/UMR",
+    "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "tracked_patch": "none"
+  },
+  "baseline_execution_checkout": {
+    "path": "externals/UMR-baseline-v1",
+    "repository": "externals/UMR",
+    "branch": "motion-studio/astro-baseline-v1",
+    "head": "ecf0e11b7ea1880f43a458cce35ba9b086f31a28",
+    "official_base": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "integration_only_prefix": "motion_studio/",
+    "role": "Preserved dependency execution worktree; not the Motion Studio project branch"
+  },
+  "root_scripts": "scripts/umr_baseline",
+  "root_script_checkout_override": "MOTION_STUDIO_UMR_ROOT",
+  "python": "externals/UMR/.venv/bin/python",
+  "environment": "Existing UMR venv shared read-only; versions in frozen record, not independently rebuilt",
+  "astro": {
+    "repository": "/data/workspace/notAnyrobot/menagerie_x",
+    "revision": "d2070956558ffbf9226dcf74017d40740724d8d8",
+    "xml_sha256": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66",
+    "fist_pose_sha256": "65aa714e64a642058237351515951e3840982d0692cc04c079356e1eb0e0ed7b",
+    "remote_freshness": "not_checked"
+  },
+  "source_model_dir": "/data/motions/smpl/smpl_model/models_smplx_v1_1/models/smplx",
+  "small_run_record": "experiments/umr-astro-baseline-v1/records/static-20261024-01",
+  "raw_run": "outputs/umr-astro-baseline-v1/static-20261024-01",
+  "excluded_from_git": [
+    "models and licensed assets",
+    "source motions",
+    "raw datasets/checkpoints/bindings",
+    "environment binaries",
+    "secrets",
+    "unrelated untracked work"
+  ],
+  "status": "Further experiments paused; root branch correction only"
+}

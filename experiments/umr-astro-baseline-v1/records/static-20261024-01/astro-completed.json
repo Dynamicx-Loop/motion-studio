@@ -1,0 +1,28 @@
+{
+  "command": [
+    "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+    "/data/workspace/motion_studio/externals/UMR-baseline-v1/scripts/humanoid_retarget_pipeline.py",
+    "--config",
+    "/data/workspace/motion_studio/outputs/umr-astro-baseline-v1/static-20261024-01/configs/astro.json",
+    "--defaults",
+    "/data/workspace/motion_studio/externals/UMR-baseline-v1/humanoid_retarget_defaults.json",
+    "--stage",
+    "train",
+    "--skip-view"
+  ],
+  "cwd": "/data/workspace/motion_studio/externals/UMR-baseline-v1",
+  "device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+  "environment_overrides": {
+    "CUDA_VISIBLE_DEVICES": "0",
+    "OMP_NUM_THREADS": "4",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "TMPDIR": "/data/workspace/motion_studio/outputs/umr-astro-baseline-v1/static-20261024-01/tmp",
+    "XDG_CACHE_HOME": "/data/workspace/motion_studio/outputs/umr-astro-baseline-v1/static-20261024-01/cache"
+  },
+  "finished_at": "2026-10-24T09:08:58.366888+00:00",
+  "returncode": 0,
+  "started_at": "2026-10-24T09:08:20.706618+00:00",
+  "timeout_seconds": 600,
+  "total_memory_bytes": 8053915648,
+  "wall_seconds": 37.64654055799474
+}
