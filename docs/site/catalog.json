@@ -1,0 +1,352 @@
+{
+  "schema_version": 1,
+  "snapshot_date": "2026-10-24",
+  "documents": [
+    {
+      "id": "readme",
+      "path": "README.md",
+      "title": "Motion Studio",
+      "state": "workspace",
+      "description": "Workspace context and reproducibility guidance."
+    },
+    {
+      "id": "docs--migration",
+      "path": "docs/migration.md",
+      "title": "Workspace migration — 2026-10-21",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--protomotions-pyroki",
+      "path": "docs/protomotions-pyroki.md",
+      "title": "ProtoMotions / PyRoki integration and solver comparison",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--umr-astro-baseline-proposal",
+      "path": "docs/umr-astro-baseline-proposal.md",
+      "title": "UMR for Astro: research and experiment guideline",
+      "state": "guideline",
+      "description": "Approved direction; the frozen draft and provisional appendix retain their original wording."
+    },
+    {
+      "id": "docs--umr-astro-setup",
+      "path": "docs/umr-astro-setup.md",
+      "title": "UMR on this machine",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--umr-bvh-conversion",
+      "path": "docs/umr-bvh-conversion.md",
+      "title": "BVH to SMPL-X for UMR",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--umr-experiment-branch",
+      "path": "docs/umr-experiment-branch.md",
+      "title": "Motion Studio UMR experiment branch",
+      "state": "workspace",
+      "description": "Workspace context and reproducibility guidance."
+    },
+    {
+      "id": "docs--umr-head-objective-investigation",
+      "path": "docs/umr-head-objective-investigation.md",
+      "title": "UMR backward torso lean: head-objective ablation on Astro and G1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--umr-primitive-surfaces-feasibility",
+      "path": "docs/umr-primitive-surfaces-feasibility.md",
+      "title": "Astro primitive surfaces for UMR: feasibility and experiment",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--umr-solver-investigation",
+      "path": "docs/umr-solver-investigation.md",
+      "title": "Official UMR: retargeting methods and solver stack",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--umr-soma-setup",
+      "path": "docs/umr-soma-setup.md",
+      "title": "SOMA-X for UMR",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "docs--wendy-astro-preview",
+      "path": "docs/wendy-astro-preview.md",
+      "title": "Wendy → Astro: 6–9 second excerpt",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--wendy-astro-torso-tuning",
+      "path": "docs/wendy-astro-torso-tuning.md",
+      "title": "Reducing Astro torso lean",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--wendy-full-smplx-review",
+      "path": "docs/wendy-full-smplx-review.md",
+      "title": "Full Wendy SMPL-X review",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--wendy-smplx-preview",
+      "path": "docs/wendy-smplx-preview.md",
+      "title": "Wendy SMPL-X conversion preview",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--workflow",
+      "path": "docs/workflow.md",
+      "title": "Scope and evolution",
+      "state": "workspace",
+      "description": "Workspace context and reproducibility guidance."
+    },
+    {
+      "id": "references--readme",
+      "path": "references/README.md",
+      "title": "Retargeting reference library",
+      "state": "workspace",
+      "description": "Workspace context and reproducibility guidance."
+    },
+    {
+      "id": "references--umr-fixed-head-and-dex3-hands",
+      "path": "references/umr-fixed-head-and-dex3-hands.md",
+      "title": "UMR fixed-head constraints and Astro Dex3-1 hands",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "references--umr-paper-study-v1",
+      "path": "references/umr-paper-study-v1.md",
+      "title": "UMR paper study v1: method, implementation, and Astro evidence",
+      "state": "study",
+      "description": "Versioned paper/code study. Its local experiment discussion describes legacy evidence."
+    },
+    {
+      "id": "references--umr-smplx-soma-weights",
+      "path": "references/umr-smplx-soma-weights.md",
+      "title": "UMR human weights and SMPL-X/SOMA correspondence",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "references--umr-wrist-hand-static-correction",
+      "path": "references/umr-wrist-hand-static-correction.md",
+      "title": "UMR wrist housing and hand slots: static correction evidence",
+      "state": "reference",
+      "description": "Setup or research reference; inspect its date and evidence limits."
+    },
+    {
+      "id": "experiments--all-robot-segment-audit--readme",
+      "path": "experiments/all-robot-segment-audit/README.md",
+      "title": "Experiment: all shipped UMR robot configurations and segment bindings",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-canonical-static-v1--readme",
+      "path": "experiments/astro-canonical-static-v1/README.md",
+      "title": "Experiment: one canonical Astro visual-surface baseline",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-canonical-wrist-v1--readme",
+      "path": "experiments/astro-canonical-wrist-v1/README.md",
+      "title": "Experiment: wrist-calibration candidates on the canonical Astro snapshot",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-correspondence-comparison--readme",
+      "path": "experiments/astro-correspondence-comparison/README.md",
+      "title": "Experiment: Astro visual and primitive learned correspondences",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-fist-static-v1--readme",
+      "path": "experiments/astro-fist-static-v1/README.md",
+      "title": "astro-fist-static-v1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-fist-wrist-v1--readme",
+      "path": "experiments/astro-fist-wrist-v1/README.md",
+      "title": "astro-fist-wrist-v1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-hand-wrist-correction--readme",
+      "path": "experiments/astro-hand-wrist-correction/README.md",
+      "title": "Experiment: static wrist-to-palm calibration with G1 control",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-hands-correspondence--readme",
+      "path": "experiments/astro-hands-correspondence/README.md",
+      "title": "Experiment: Astro with Dex3-1 hands, static correspondence",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--astro-surface-geometry--readme",
+      "path": "experiments/astro-surface-geometry/README.md",
+      "title": "Experiment: Astro visual meshes versus collision primitive surfaces",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--hiphi-conversion-control--readme",
+      "path": "experiments/hiphi-conversion-control/README.md",
+      "title": "HiPHI BVH-to-SMPL-X controlled comparison",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--hiphi-robot-control--readme",
+      "path": "experiments/hiphi-robot-control/README.md",
+      "title": "Getting_up-get_up_0004: two inputs × two robots",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--segment-binding-audit--readme",
+      "path": "experiments/segment-binding-audit/README.md",
+      "title": "Experiment: every-segment human ↔ Astro audit with matched G1 control",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--soma-correspondence-audit--readme",
+      "path": "experiments/soma-correspondence-audit/README.md",
+      "title": "Experiment: SMPL-X and SOMA static correspondence on Astro and G1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--umr-astro-baseline-v1--readme",
+      "path": "experiments/umr-astro-baseline-v1/README.md",
+      "title": "First official-default SMPL-X Astro/G1 static baseline",
+      "state": "baseline",
+      "description": "Completed static pair, candidate for review. No motion or controlled ablation."
+    },
+    {
+      "id": "experiments--umr-binding-report--readme",
+      "path": "experiments/umr-binding-report/README.md",
+      "title": "UMR canonical Astro evidence report",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--umr-motion-canonical-v1--readme",
+      "path": "experiments/umr-motion-canonical-v1/README.md",
+      "title": "Experiment: canonical Astro raw/candidate offline HiPHI motion",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--umr-motion-fist-v1--readme",
+      "path": "experiments/umr-motion-fist-v1/README.md",
+      "title": "umr-motion-fist-v1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--umr-motion-preliminary-v1--readme",
+      "path": "experiments/umr-motion-preliminary-v1/README.md",
+      "title": "Preliminary UMR motion smoke test",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--umr-motion-preliminary-v2--readme",
+      "path": "experiments/umr-motion-preliminary-v2/README.md",
+      "title": "UMR preliminary motion: G1 versus Astro Dex3-1",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "experiments--template",
+      "path": "experiments/TEMPLATE.md",
+      "title": "Experiment: <question>",
+      "state": "workspace",
+      "description": "Workspace context and reproducibility guidance."
+    },
+    {
+      "id": "outputs--umr-legacy-index-20261024--readme",
+      "path": "outputs/umr-legacy-index-20261024/README.md",
+      "title": "Reconstructed Motion Studio evidence",
+      "state": "legacy",
+      "description": "Retrospective record. Original observations and wording retained; excluded from the prospective baseline."
+    },
+    {
+      "id": "docs--offline-documentation",
+      "path": "docs/offline-documentation.md",
+      "title": "Offline documentation",
+      "state": "workspace",
+      "description": "Read, rebuild and extend the portable documentation bundle."
+    },
+    {
+      "id": "docs--protomotions-documentation-reference",
+      "path": "docs/protomotions-documentation-reference.md",
+      "title": "ProtoMotions documentation build reference",
+      "state": "reference",
+      "description": "Pinned Sphinx build inspection; hosted behavior is not proof of file-open compatibility."
+    }
+  ],
+  "timeline": [
+    {
+      "date": "2026-10-22",
+      "title": "Geometry, anatomical zones and source centering",
+      "description": "Legacy audits record visual/primitive and additional-robot controls. Different conditions remain separate.",
+      "source": "experiments/segment-binding-audit/README.md"
+    },
+    {
+      "date": "2026-10-23",
+      "title": "Hands, wrist calibration and motion records",
+      "description": "Open-hand and fixed-fist cohorts preserve distinct geometry and finger policies. Static and motion evidence are not interchangeable.",
+      "source": "experiments/umr-binding-report/README.md"
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Versioned UMR paper and code study",
+      "description": "Study v1 separates published results, pinned implementation details and local legacy observations.",
+      "source": "references/umr-paper-study-v1.md"
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Research direction approved",
+      "description": "Binding first, then kinematic motion; compare both sources within each robot and both robots within each source. The detailed appendix remains provisional.",
+      "source": "docs/umr-experiment-branch.md"
+    },
+    {
+      "date": "2026-10-24",
+      "title": "First fresh static pair completed",
+      "description": "Two 500-epoch trainings, one actor/seed. Native19 diagnostics recorded; further experiments paused for review.",
+      "source": "experiments/umr-astro-baseline-v1/README.md"
+    },
+    {
+      "date": "2026-10-24",
+      "title": "Root repository boundary corrected",
+      "description": "Project branch experiments/umr-astro owns documentation and small records. The execution worktree remains an independent dependency.",
+      "source": "docs/umr-experiment-branch.md"
+    }
+  ]
+}

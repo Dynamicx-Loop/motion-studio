@@ -1,0 +1,25 @@
+<section id="umr-experiments"><p class="eyebrow">Research / Approved direction</p><h1>UMR Experiments</h1>
+<p class="lede">Establish correspondence first, then evaluate kinematic retargeting.</p>
+<section id="method"><p class="eyebrow">Approved study guideline</p><h2>Two stages, different evidence.</h2>
+<p>UMR learns surface correspondence from static source and robot point clouds, then binds slots to meshes. Its kinematic stage follows those bindings through per-frame optimization and trajectory filtering. Good surface fit alone does not establish anatomical correspondence or physically feasible motion.</p>
+<div class="flow" role="group" aria-label="UMR research guideline diagram">
+<div class="card"><span class="badge">Stage 1</span><h3>Correspondence → bindings</h3><p>Freeze actor, geometry, normalization and seeds. Train fresh slots; inspect anatomical-zone assignments, coverage and projection.</p><strong>Current pair: completed</strong></div>
+<span class="arrow" aria-label="then review before proceeding">→</span>
+<div class="card"><span class="badge blocked">Stage 2</span><h3>Kinematic retargeting</h3><p>After binding review, evaluate matched motions, raw and filtered trajectories, contact proxies and joint limits.</p><strong>New baseline: not run</strong></div>
+</div>
+<div class="axes"><strong>At both stages:</strong> within each robot, compare SMPL-X ↔ SOMA-X. Within each source, compare G1 ↔ Astro. Keep morphology, actor/shape, segment definitions and conversion differences explicit.</div>
+<p class="small">Diagram summarizes the approved research direction; it is not a run procedure. Controller/dynamics evaluation is a separate future gate.</p>
+<p><a class="button" href="{{DOC:references/umr-paper-study-v1.md}}">Read UMR study v1</a> <a class="button" href="{{DOC:docs/umr-astro-baseline-proposal.md}}">Read the guideline</a></p>
+<div class="notice"><strong>Approval context.</strong> The proposal’s preserved opening says “For review.” Approval and the corrected root-branch scope are recorded in <a href="{{DOC:docs/umr-experiment-branch.md}}">the branch record</a>. Its supporting appendix remains provisional. The study’s “current” fixed-fist results describe the legacy cohort, not this new pair.</div>
+</section>
+<section id="baseline"><p class="eyebrow">Current evidence · static-20261024-01</p><h2>A first binding diagnostic, not a motion score.</h2>
+<p>Same neutral SMPL-X actor, seed zero, fresh official-default <strong>500-epoch, batch-two, all-samples</strong> training on each robot. This is one actor/seed and a candidate for review.</p>
+{{BASELINE}}
+<p class="small">Compatible target-zone assignments / 4,096 source slots, native19 diagnostic. Each training learns its own source slots, so per-segment denominators differ. Zone definitions are diagnostic conventions, not anatomical ground truth. Coverage at 20 mm is scale-sensitive.</p>
+<div class="table-scroll"><table><caption>Planned comparison matrix — status at this documentation snapshot</caption><thead><tr><th>Source</th><th>G1</th><th>Astro</th></tr></thead><tbody><tr><th>SMPL-X</th><td>Static complete · motion not run</td><td>Static complete · motion not run</td></tr><tr><th>SOMA-X</th><td>Blocked: matched actor/motion/rig</td><td>Blocked: matched actor/motion/rig</td></tr></tbody></table></div>
+<p>The gap motivates investigation; it does not prove a cause, statistical significance or acceptable quality. No new-baseline motion-quality, collision, force or dynamic-feasibility result is available. Existing SOMA-X model assets do not replace missing matched inputs.</p>
+<details><summary>Inspect all 19 segment denominators side by side</summary>{{SEGMENTS}}</details>
+<p><a class="button" href="{{DOC:experiments/umr-astro-baseline-v1/README.md}}">Read the complete baseline record</a></p>
+<p class="small">{{BASELINE_LINKS}}</p>
+</section>
+<nav class="page-turn" aria-label="Section sequence"><a href="#quick-start">← Previous: Quick Start</a><a href="#supporting-records">Supporting records ↓</a></nav></section>

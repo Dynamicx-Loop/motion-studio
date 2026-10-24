@@ -1,0 +1,403 @@
+{
+  "snapshot_date": "2026-10-24",
+  "preview_url": "http://127.0.0.1:8770/docs.html",
+  "entry_file": "docs.html",
+  "branch": "experiments/umr-astro",
+  "head": "2c0afd759ac49f1ebf428dfb38e3669831f49ae9",
+  "commit_created": false,
+  "staged_changes": false,
+  "new_experiments": 0,
+  "automated_checks": {
+    "documents": 44,
+    "source_mode": "canonical workspace sources",
+    "reused_source_snapshots_verified": 0,
+    "root_entry": "docs.html",
+    "compatibility_entry": "docs/site/home.html",
+    "plain_entry": "docs-basic.html",
+    "static_library_links_without_javascript": 44,
+    "supporting_record_search_destinations": 44,
+    "separate_primary_pages": 3,
+    "root_landing_has_no_script": true,
+    "embedded_figures_match_saved_sources": 2,
+    "runtime_resource_reads_required": 0,
+    "browser_file_open_verified": false,
+    "source_hashes_verified": 161,
+    "output_hashes_verified": 210,
+    "local_links_verified": 1096,
+    "missing_fragments": [],
+    "remote_core_runtime_dependencies": [],
+    "preserved_html_originals": 8,
+    "baseline_compatible_slots": {
+      "g1": 3562,
+      "astro": 2327
+    },
+    "legacy_arms": 76,
+    "legacy_segment_rows": 1924,
+    "new_experiments_run": 0
+  },
+  "additional_checks": {
+    "markdown_unit_tests": 4,
+    "ruff_check": "passed",
+    "git_diff_check": "passed",
+    "identical_second_build": true,
+    "existing_report_validator_segment_rows": 1924,
+    "node_search_cases": 6,
+    "normal_build_missing_source_failure_leaves_outputs_unchanged": true
+  },
+  "preservation": {
+    "snapshot_files": 1171,
+    "unchanged": 1134,
+    "changed": [
+      "README.md",
+      "outputs/umr-binding-report/index.html"
+    ],
+    "missing": [
+      "docs/umr-experiment-branch.md",
+      "docs/umr-astro-baseline-proposal.md",
+      "references/umr-paper-study-v1.md",
+      "experiments/umr-root-branch-setup/verification.json",
+      "experiments/umr-root-branch-setup/script-adaptation.json",
+      "experiments/umr-root-branch-setup/selected-files.json",
+      "experiments/umr-root-branch-setup/before.json",
+      "experiments/umr-binding-report/correction_report.py",
+      "experiments/umr-binding-report/localization.py",
+      "experiments/umr-binding-report/build_report.py",
+      "experiments/umr-binding-report/hands_report.py",
+      "experiments/umr-binding-report/canonical_report.py",
+      "experiments/umr-astro-baseline-v1/preservation-after.json",
+      "experiments/umr-astro-baseline-v1/execution-status.json",
+      "experiments/umr-astro-baseline-v1/preservation-before.json",
+      "experiments/umr-astro-baseline-v1/README.md",
+      "experiments/umr-astro-baseline-proposal/review-verification.json",
+      "experiments/umr-astro-baseline-proposal/asset-inspection.json",
+      "experiments/umr-astro-baseline-proposal/literature-reference-verification.json",
+      "experiments/segment-binding-audit/regions.py",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/provenance.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/astro-resolved.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/astro.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/astro-completed.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/evaluation-verification.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/results.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/g1.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/artifact-manifest.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/g1-resolved.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/g1-completed.json",
+      "experiments/umr-astro-baseline-v1/records/static-20261024-01/environment-details.json",
+      "scripts/umr_baseline/test_static_pair.py",
+      "scripts/umr_baseline/static_pair.py",
+      "scripts/umr_baseline/evaluate_static.py",
+      "configs/umr/experiment-dependencies.json"
+    ],
+    "root_head": "72647c2b93f6aad350021d4125739fd28fd674d3",
+    "root_branch": "master",
+    "staged": [],
+    "UMR_head": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "UMR-baseline-v1_head": "ecf0e11b7ea1880f43a458cce35ba9b086f31a28"
+  },
+  "limits": [
+    "Direct file rendering by browser automation remains denied. User reports styled root docs positively; all file links have not been manually confirmed.",
+    "Root branch mismatch resolved through the explicit authorized switch; canonical build passes.",
+    "Optional 3D tools use local HTTP; primary reading pages have no scripts.",
+    "Generated HTML, media and output bundle remain local, uncommitted artifacts; fresh clone requires documented local evidence before building.",
+    "No new experiments, remote pushes, ignore edits, cleanup or nested-repository changes."
+  ],
+  "previous_http_qa": {
+    "surface": "User local Chrome via browser automation",
+    "desktop_viewport": [
+      1440,
+      1000
+    ],
+    "mobile_viewport": [
+      390,
+      844
+    ],
+    "desktop_document_scroll_width": 1425,
+    "mobile_document_scroll_width": 375,
+    "visual_checks": [
+      "Overview",
+      "Baseline percentages and both blocked SOMA-X cells",
+      "19-row disclosure",
+      "Mobile overview and baseline reader",
+      "Existing Chinese report and persistent legacy navigation",
+      "Local legacy images",
+      "Static mesh/slot inspector",
+      "Matched spine1 motion playback",
+      "Raw/candidate switch; candidate status at source frame 1776"
+    ],
+    "search_checks": [
+      "SOMA + baseline filter -> one baseline record",
+      "Unmatched query -> clear zero-result message",
+      "Clear filters -> all 43 documents"
+    ],
+    "core_network_policy": "connect-src 'none'; no external scripts, fonts or styles",
+    "inspector_network_policy": "same-origin runtime and fetch only; saved Three.js r165 modules reused locally",
+    "system_network_settings_changed": false,
+    "offline_emulation": false,
+    "file_url_test": {
+      "status": "denied",
+      "target": "file:///data/workspace/motion_studio/outputs/umr-binding-report/docs.html",
+      "reason": "Browser automation URL policy permits http/https only; file protocol rejected. No workaround attempted. Local HTTP alternative tested."
+    },
+    "application_console_errors_observed": [],
+    "unrelated_console_errors": "Existing Zotero browser-extension connection errors observed; no site error."
+  },
+  "preferred_open_method": "Double-click project-root docs.html; no server for reading",
+  "root_file_revision": {
+    "direct_file_browser_test": "First user acceptance failed; revised file-open behavior remains unverified. See blank_page_revision.",
+    "independent_checks": [
+      "All 44 root search URLs resolve as relative filesystem paths",
+      "All displayed images are embedded data URLs; two home figures match saved source hashes",
+      "No external/runtime script, stylesheet, image reads, fetch, XHR, modules, service workers or localhost redirect in reading pages",
+      "Generated search script executes in a Node DOM stub: all results, case-insensitive search, baseline filter, no results, reset",
+      "Root entry and bundle manifest are byte-identical on repeat build"
+    ],
+    "node_search_cases": 5,
+    "file_link_checks": 1097,
+    "protomotions_revision": "f69fdcaabff31846b4d2247207417b57dc788828",
+    "protomotions_build_run": false,
+    "sphinx_installed": false,
+    "new_baseline_runs": 0,
+    "source_before_snapshot_unchanged": 1169
+  },
+  "root_entry_sha256": "1513b059388c72e5f14dee7489223e4bf2b9edbc2ae23aec4fe82d0d81c87688",
+  "previous_branch_claim": {
+    "branch": "experiments/umr-astro",
+    "head": "2c0afd759ac49f1ebf428dfb38e3669831f49ae9"
+  },
+  "blank_page_revision": {
+    "user_first_manual_acceptance": "failed: built-in browser showed blank root docs.html",
+    "cause": "unresolved; failed built-in view not exposed to this task. Saved prior HTML parsed without errors and had 16,565 static main-content characters and 44 library links.",
+    "denied_action": {
+      "action": "browser navigation",
+      "target": "file:///data/workspace/motion_studio/outputs/umr-binding-report/docs.html",
+      "reason": "URL policy permits HTTP/HTTPS only",
+      "status": "denied earlier; not retried or bypassed"
+    },
+    "repairs": [
+      "All content remains static HTML; search controls are enabled only after successful initialization.",
+      "Search initialization error preserves authored library (Node failure test).",
+      "Added 35 KB plain fallback without CSS, JS, CSP or runtime resources.",
+      "Three primary sections; archives behind native disclosure; separate authored page files."
+    ],
+    "html5_parsing": [
+      {
+        "path": "docs.html",
+        "bytes": 1674246,
+        "html5_parse_errors": 0,
+        "static_library_rows": 44,
+        "static_main_text_characters": 19205,
+        "scripts": 2,
+        "styles": 1
+      },
+      {
+        "path": "docs-basic.html",
+        "bytes": 35068,
+        "html5_parse_errors": 0,
+        "static_library_rows": 44,
+        "static_main_text_characters": 19056,
+        "scripts": 0,
+        "styles": 0
+      }
+    ],
+    "direct_file_browser_test": "blocked / not verified after revision",
+    "http_visual_qa": {
+      "desktop": [
+        1440,
+        1000
+      ],
+      "mobile": [
+        390,
+        844
+      ],
+      "page_overflow": false,
+      "search_SOMA_baseline": "one expected baseline result",
+      "plain_view": "rendered with zero scripts and zero styles over HTTP",
+      "guideline_reader": "loaded with source provenance and static content",
+      "console": "only unrelated Zotero extension errors observed"
+    },
+    "source_checkout": {
+      "observed_branch": "master",
+      "observed_head": "72647c2b93f6aad350021d4125739fd28fd674d3",
+      "expected_branch": "experiments/umr-astro",
+      "expected_head": "2c0afd759ac49f1ebf428dfb38e3669831f49ae9",
+      "reflog_latest": "checkout: moving from experiments/umr-astro to master",
+      "git_mutations_by_docs_task": false,
+      "snapshot_reused_sources": 10,
+      "normal_build": "blocked by missing canonical source; no output mutation",
+      "saved_source_build": "passed; explicitly labeled and hash checked"
+    }
+  },
+  "separate_pages_revision": {
+    "status": "implemented; static and HTTP checks passed",
+    "files": [
+      {
+        "path": "docs.html",
+        "bytes": 11097,
+        "html5_parse_errors": 0,
+        "h1": [
+          "Motion Studio"
+        ],
+        "scripts": 0
+      },
+      {
+        "path": "docs-basic.html",
+        "bytes": 4179,
+        "html5_parse_errors": 0,
+        "h1": [
+          "Motion Studio"
+        ],
+        "scripts": 0
+      },
+      {
+        "path": "outputs/umr-binding-report/installation.html",
+        "bytes": 10750,
+        "html5_parse_errors": 0,
+        "h1": [
+          "Installation"
+        ],
+        "scripts": 0
+      },
+      {
+        "path": "outputs/umr-binding-report/quick-start.html",
+        "bytes": 9966,
+        "html5_parse_errors": 0,
+        "h1": [
+          "Quick Start"
+        ],
+        "scripts": 0
+      },
+      {
+        "path": "outputs/umr-binding-report/umr-experiments.html",
+        "bytes": 14969,
+        "html5_parse_errors": 0,
+        "h1": [
+          "UMR Experiments"
+        ],
+        "scripts": 0
+      },
+      {
+        "path": "outputs/umr-binding-report/supporting-records.html",
+        "bytes": 1662417,
+        "html5_parse_errors": 0,
+        "h1": [
+          "Supporting records"
+        ],
+        "scripts": 2
+      }
+    ],
+    "root_is_overview_only": true,
+    "primary_pages_have_no_javascript": true,
+    "search_location": "outputs/umr-binding-report/supporting-records.html#library",
+    "shared_navigation": "three primary links; aria-current=page; supporting records secondary link",
+    "previous_next_sequence_verified_over_http": [
+      "docs.html",
+      "installation.html",
+      "quick-start.html",
+      "umr-experiments.html",
+      "supporting-records.html"
+    ],
+    "desktop": [
+      1440,
+      1000
+    ],
+    "mobile": [
+      390,
+      844
+    ],
+    "mobile_horizontal_overflow": false,
+    "search": "SOMA + baseline = one expected baseline record",
+    "repeatable_build": true,
+    "file_browser_acceptance": "not established; earlier blank-page cause unresolved; denied file navigation not retried",
+    "source_mode": "explicit saved-source snapshots, 10 missing canonical files",
+    "branch": "master",
+    "head": "72647c2b93f6aad350021d4125739fd28fd674d3",
+    "staged_paths": []
+  },
+  "observed_home_entry_repair": {
+    "observed_browser_tab_id": "956131527",
+    "observed_url": "file:///data/workspace/motion_studio/docs/site/home.html",
+    "observation_source": "permitted Chrome tab inventory",
+    "cause_established": "Unbuilt authoring fragment was opened. No shell/CSS, unexpanded source tokens, and subpage links targeted nonexistent siblings.",
+    "before_bytes": 2369,
+    "before_style_elements": 0,
+    "after_bytes": 11235,
+    "after_style_elements": 1,
+    "after_script_elements": 0,
+    "after_html5_parse_errors": 0,
+    "original_template_preserved": "docs/site/templates/overview.html",
+    "original_template_sha256": "271332ce5a18826095d6e9689fc324966158914d3622565f558d5672375660ff",
+    "repaired_targets": [
+      {
+        "href": "../../outputs/umr-binding-report/installation.html",
+        "target": "/data/workspace/motion_studio/outputs/umr-binding-report/installation.html",
+        "exists": true
+      },
+      {
+        "href": "../../outputs/umr-binding-report/quick-start.html",
+        "target": "/data/workspace/motion_studio/outputs/umr-binding-report/quick-start.html",
+        "exists": true
+      },
+      {
+        "href": "../../outputs/umr-binding-report/umr-experiments.html",
+        "target": "/data/workspace/motion_studio/outputs/umr-binding-report/umr-experiments.html",
+        "exists": true
+      }
+    ],
+    "browser_observation_denial": {
+      "action": "acquire authority to observe already-open Chrome tab",
+      "target": "file:///data/workspace/motion_studio/docs/site/home.html",
+      "status": "denied",
+      "reason": "Browser URL policy permits HTTP/HTTPS only",
+      "retried_or_bypassed": false
+    },
+    "actual_validation_route": "filesystem resolution, HTML5 parsing, static source/output hashes, unit tests; not post-repair browser file rendering",
+    "manual_remaining": "Reload the already-open home file, then click Installation and Quick Start.",
+    "earlier_root_blank_report": "Separate report; cause still not established.",
+    "repeatable_build": true,
+    "root_branch": "master",
+    "root_head": "72647c2b93f6aad350021d4125739fd28fd674d3",
+    "git_mutations": false
+  },
+  "head_semantics": "Source HEAD before the documentation commit",
+  "commit_status_at_record_creation": "Validated immediately before selective source commit; final commit hash is reported separately to avoid a self-reference.",
+  "branch_update": {
+    "authorization": "User explicitly requested switching root back and updating the experiment branch with latest documentation.",
+    "switch": "master -> experiments/umr-astro",
+    "pre_switch_untracked_files": 1056,
+    "preexisting_file_bytes_unchanged_by_switch": true,
+    "dependency_heads_and_statuses_unchanged": true,
+    "canonical_source_build": "passed",
+    "saved_source_fallbacks": 0,
+    "new_experiments_run": 0,
+    "intended_committed_files": [
+      "README.md",
+      "docs/offline-documentation.md",
+      "docs/protomotions-documentation-reference.md",
+      "scripts/build_docs.py",
+      "scripts/verify_docs.py",
+      "docs/site/THIRD_PARTY_NOTICES.md",
+      "docs/site/catalog.json",
+      "docs/site/pages/installation.html",
+      "docs/site/pages/quick-start.html",
+      "docs/site/pages/supporting-records.html",
+      "docs/site/pages/umr-experiments.html",
+      "docs/site/search.js",
+      "docs/site/style.css",
+      "docs/site/templates/overview.html",
+      "docs/site/verification.json",
+      "scripts/docs_site/build.py",
+      "scripts/docs_site/markdown.py",
+      "scripts/docs_site/pages.py",
+      "scripts/docs_site/portable.py",
+      "scripts/docs_site/test_markdown.py",
+      "scripts/docs_site/test_search.cjs"
+    ],
+    "generated_files_deliberately_uncommitted": [
+      "docs.html",
+      "docs-basic.html",
+      "docs/site/home.html",
+      "outputs/umr-binding-report/"
+    ],
+    "clone_limit": "Preserved local report/evidence artifacts and legacy records are required; no generated launcher or licensed artifact is included in this source commit."
+  }
+}

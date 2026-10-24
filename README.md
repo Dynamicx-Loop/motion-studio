@@ -44,6 +44,19 @@ See the [ProtoMotions/PyRoki setup and solver comparison](docs/protomotions-pyro
 and [official UMR implementation investigation](docs/umr-solver-investigation.md).
 ProtoMotions is included as source; large Git LFS assets are fetched on demand.
 
+## Local documentation
+
+Double-click [docs.html](docs.html) in this project root to read the offline
+HTML documentation. Navigation, search and saved figures are prebundled; no
+server or localhost URL is required for reading. See the
+[documentation guide](docs/offline-documentation.md) for rebuilding, portability,
+the direct-file verification limit and separately optional 3D tools.
+Legacy evidence and the prospective static baseline remain labeled separately.
+Generated HTML and evidence bundles stay local; after editing documentation sources,
+run `python3 scripts/build_docs.py` and `python3 scripts/verify_docs.py`.
+A fresh clone also needs the preserved local report/evidence artifacts described
+in the guide.
+
 ## Layout
 
 ```text
