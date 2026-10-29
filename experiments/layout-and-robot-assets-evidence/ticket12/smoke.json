@@ -4,8 +4,8 @@
     {
       "robot": "g1_29dof",
       "pose": "tpose",
-      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029/g1_29dof/preparation.json",
-      "receipt_sha256": "4d2912cda503e332a615d0f0ea532e98de28bd1961a6909fa1b2175d468511bf",
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029-validated/g1_29dof/preparation.json",
+      "receipt_sha256": "7d10a0bbeaf5f74b348728c3fcafc9d6f7961d818652a9cf7761179ecf0384d9",
       "state": "prepared-only",
       "execution_readiness": false,
       "source_status_unchanged": true,
@@ -51,8 +51,8 @@
     {
       "robot": "astro_p2_29dof",
       "pose": "tpose",
-      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029/astro_p2_29dof/preparation.json",
-      "receipt_sha256": "a31c5995d267572ed0d9008aca40abc81bbc3909fbcf3fbf1b95e24751457df2",
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029-validated/astro_p2_29dof/preparation.json",
+      "receipt_sha256": "f1171efcc348067ccc20c0477132d18593037189f1c79a6b162fc074b5c56bb3",
       "state": "prepared-only",
       "execution_readiness": false,
       "source_status_unchanged": true,
@@ -98,8 +98,8 @@
     {
       "robot": "astro_p2_43dof_dex3_1",
       "pose": "tpose_fist",
-      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029/astro_p2_43dof_dex3_1/preparation.json",
-      "receipt_sha256": "9ec8670d161b9332bee095ef2e4cd07983d61b6078c4bcc609895b9304c3f14a",
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029-validated/astro_p2_43dof_dex3_1/preparation.json",
+      "receipt_sha256": "f4b1334a56d605d9dc05b4b9168c76de3aab4ddc5632b90f8c3f98a36102d4e2",
       "state": "prepared-only",
       "execution_readiness": false,
       "source_status_unchanged": true,

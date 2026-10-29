@@ -1,7 +1,7 @@
 # Canonical preparation and CPU compile smoke
 
-Measured on 2026-10-29 from ticket branch `codex/layout-assets-12`, initially based
-on integration `a9ef925`. This is a fresh preparation observation, separate from
+Measured on 2026-10-29 from ticket branch `codex/layout-assets-12`, based on integration
+`a9ef925` and merged with all tickets 01–11 at `3c1b4fa` before final validation. This is a fresh preparation observation, separate from
 historical G1/static-pair cohorts. No train, dataset, learned slots, checkpoint,
 retarget, simulation stepping, controller or quality evaluation was executed.
 
@@ -29,7 +29,7 @@ Model/input bytes and shape evidence remain local; this record redistributes non
 
 Fresh run directories and detailed source/config/environment hashes are retained
 under the durable canonical directory:
-`/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029/`.
+`/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket12-20261029-validated/`.
 Each robot child has original source/provenance closure copies, a separately
 derived pose XML, source clip/shape/model copies, pinned backend source/config
 copies, `config.json`, `inputs.json` and `preparation.json`. No outputs are aliased
@@ -37,7 +37,7 @@ through a temporary directory. The directory also retains `source/shape.json`,
 `smoke-command.py`, `smoke.json` and `preservation.json`.
 
 The exact executed smoke script is retained there with SHA-256
-`ff17369b5d98ecaa2f6092c09584a86b7b288c385730c4a9f678e4308dee91ed`.
+`b3319c06a964f81ff0988c83578abc0a9f73744210e6da65259f3bb2b6e0a263`.
 It ran as:
 
 ```sh
@@ -53,7 +53,7 @@ and independent compile used, rather than claiming an execution pipeline.
 observations. [preservation.json](preservation.json) records the follow-up
 independent streaming SHA-256 verification: all original selected robot source
 files, copied selected files, original clip/shape/model files, original pinned
-backend code/config and all prepared files matched their receipts after compile.
+backend code/config, current adapter code and all prepared files matched their receipts after compile.
 The selected source/provenance counts were 40, 40 and 67; complete prepared file
 counts were 112, 112 and 139. Both source Git statuses were unchanged. Preservation
 covers these selected dependencies, not an unchanged whole-workspace inventory.
@@ -64,3 +64,10 @@ claims, malformed evidence, source-link/destination protection and failed receip
 Matching cache fingerprints prove metadata compatibility only. Existing official
 G1 baseline/help/definition-isolation tests also pass; no historical baseline was
 advanced or canonical source asset edited.
+
+An earlier pre-review smoke set remains untouched at sibling
+`ticket12-20261029/`. The final set above was freshly prepared after tightening
+isolated-worktree external-path protection; its receipt adapter hashes match the
+final implementation. The pure suite includes a separate committed-repository +
+linked-worktree fixture with an unrelated external symlink target, which proves
+that absent local checkout links cannot weaken the destination guard.

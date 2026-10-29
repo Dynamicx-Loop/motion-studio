@@ -13,6 +13,7 @@ import json
 import math
 from pathlib import Path
 import shutil
+import subprocess
 from typing import Mapping
 
 from motion_studio.robots import ConsistencyReport, RobotSelectionError, resolve_robot
@@ -157,11 +158,24 @@ def prepare_canonical_comparison(
     protected += [p.parent for _, p in sources]
     if runtime:
         protected.append(Path(runtime.checkout).resolve())
-    # Inspect physical checkout roots too, including links used by managed worktrees.
-    externals = Path(__file__).resolve().parents[2] / 'externals'
-    protected.append(externals.resolve())
-    if externals.is_dir():
-        protected += [p.resolve() for p in externals.iterdir() if p.is_dir()]
+    # A linked worktree may not have canonical external links. Resolve its common
+    # Git workspace too, so an absent local link cannot weaken source protection.
+    workspace = Path(__file__).resolve().parents[2]
+    external_dirs = {workspace/'externals'}
+    try:
+        common = subprocess.check_output(['git', '-C', str(workspace), 'rev-parse',
+            '--path-format=absolute', '--git-common-dir'], text=True, stderr=subprocess.PIPE).strip()
+        common = Path(common)
+        if common.name == '.git':
+            external_dirs.add(common.parent/'externals')
+    except (OSError, subprocess.CalledProcessError):
+        pass  # Installed non-Git package: selected roots/runtime still protected.
+    if runtime and Path(runtime.checkout).resolve().parent.name == 'externals':
+        external_dirs.add(Path(runtime.checkout).resolve().parent)
+    for externals in external_dirs:
+        protected.append(externals.resolve())
+        if externals.is_dir():
+            protected += [p.resolve() for p in externals.iterdir() if p.is_dir()]
     if any(output.is_relative_to(p) for p in protected):
         raise CanonicalPreparationError('Destination resolves into external/source assets')
     if output.exists() or Path(destination).is_symlink():

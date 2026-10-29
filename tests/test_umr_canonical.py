@@ -7,6 +7,8 @@ from unittest.mock import patch
 
 from motion_studio.robots import RobotSelectionError, compare_representations
 import shutil
+import subprocess
+import sys
 import unittest
 
 from robot_pair_fixture import PairFixture
@@ -184,6 +186,10 @@ class CanonicalPreparationTests(unittest.TestCase):
         result = json.loads((self.f.root/'failed/preparation.json').read_text())
         self.assertEqual(result['state'], 'failed')
         self.assertFalse(result['execution_readiness'])
+        artifact=self.f.root/'artifact';artifact.write_bytes(b'old')
+        metadata=self.f.root/'metadata.json';metadata.write_text('{"schema_version":1}')
+        with self.assertRaises(CanonicalPreparationError):
+            require_cache_compatible(self.f.root/'failed/preparation.json',artifact,metadata,stage='checkpoint')
         with self.assertRaises(FileExistsError):
             self.prepare('failed')
 
@@ -229,6 +235,33 @@ class CanonicalPreparationTests(unittest.TestCase):
         self.assertTrue(mesh.is_relative_to(result.receipt.parent))
         self.assertEqual(mesh.read_bytes(), (self.f.source/'surface.obj').read_bytes())
         self.assertTrue((result.receipt.parent/'assets/bundle.xml').is_file())
+
+    def test_isolated_worktree_protects_other_actual_external_symlink_targets(self):
+        project = self.f.root/'project'; project.mkdir()
+        shutil.copytree(Path(__file__).resolve().parents[1]/'motion_studio', project/'motion_studio')
+        def git(*args):
+            subprocess.run(['git','-C',str(project),*args],check=True,capture_output=True)
+        git('init','-q');git('add','motion_studio')
+        git('-c','user.name=Fixture','-c','user.email=f@example.invalid','commit','-qm','owned source')
+        fork = self.f.root/'fork'
+        git('worktree','add','--detach',str(fork),'HEAD')
+        other = self.f.root/'other-external';other.mkdir()
+        (project/'externals').mkdir()
+        (project/'externals/unrelated').symlink_to(other,target_is_directory=True)
+        command = """from pathlib import Path
+from motion_studio.integrations.umr_canonical import CanonicalInputs,CanonicalPreparationError,prepare_canonical_comparison
+import sys
+r=Path(sys.argv[1])
+try:
+ prepare_canonical_comparison('fixture','mjcf','zero',CanonicalInputs(r/'input/clip.npz',r/'input/shape.json',(r/'input/neutral.pkl',),30),r/'other-external/fresh',{'fixture':r/'source'},definitions_root=r/'definitions')
+except CanonicalPreparationError:
+ sys.exit(0)
+sys.exit(3)
+"""
+        result = subprocess.run([sys.executable,'-c',command,str(self.f.root)],cwd=fork,
+                                capture_output=True,text=True)
+        self.assertEqual(result.returncode,0,result.stderr)
+        self.assertFalse((other/'fresh').exists())
 
 
 if __name__ == '__main__':

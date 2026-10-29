@@ -5,21 +5,21 @@
       "robot": "g1_29dof",
       "selected_source_and_copy_files_verified": 40,
       "prepared_files_verified": 112,
-      "all_source_input_backend_and_prepared_hashes_match": true
+      "all_source_input_backend_adapter_and_prepared_hashes_match": true
     },
     {
       "robot": "astro_p2_29dof",
       "selected_source_and_copy_files_verified": 40,
       "prepared_files_verified": 112,
-      "all_source_input_backend_and_prepared_hashes_match": true
+      "all_source_input_backend_adapter_and_prepared_hashes_match": true
     },
     {
       "robot": "astro_p2_43dof_dex3_1",
       "selected_source_and_copy_files_verified": 67,
       "prepared_files_verified": 139,
-      "all_source_input_backend_and_prepared_hashes_match": true
+      "all_source_input_backend_adapter_and_prepared_hashes_match": true
     }
   ],
-  "command_sha256": "ff17369b5d98ecaa2f6092c09584a86b7b288c385730c4a9f678e4308dee91ed",
-  "smoke_sha256": "f15db83cc89e37d7ed68d07a1caf82823474795fe3f6d9c5a40c4e020fdfade4"
+  "command_sha256": "b3319c06a964f81ff0988c83578abc0a9f73744210e6da65259f3bb2b6e0a263",
+  "smoke_sha256": "fa743761328157a53bbab94bc16fcea5ee2517307321bdec0fb17f1d56b564cd"
 }
