@@ -15,6 +15,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 from static_pair import UMR, WORKSPACE, check_official_source, sha, write
+sys.path.insert(0, str(WORKSPACE))
 from motion_studio.motion_data_paths import canonical_motion_config
 from motion_studio.evidence import validate_static_result
 import build_correspondence_ae_dataset as build
