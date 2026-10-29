@@ -40,5 +40,6 @@
     "secrets",
     "unrelated untracked work"
   ],
-  "status": "Further experiments paused; root branch correction only"
+  "status": "Further experiments paused; root branch correction only",
+  "dependency_roles_record": "configs/dependency-roles.json"
 }
