@@ -88,3 +88,12 @@ Mink 1.1.0. The new constraints prevent recurrence.
 
 The user subsequently approved the preview and requested Astro retargeting.
 See `docs/wendy-astro-preview.md` for the completed run and updated combined viewer.
+
+## Owned conversion entry point
+
+The active converter now uses the [owned Wendy conversion operation](wendy-conversion-adapter.md).
+System Python handles import/help and launches the existing independent runtime
+for fitting. Existing configs and report fields remain supported; new runs need
+fresh output paths and receive interval/ownership/provenance records. Historical
+commands and results above remain evidence rather than instructions to overwrite
+their output paths.
