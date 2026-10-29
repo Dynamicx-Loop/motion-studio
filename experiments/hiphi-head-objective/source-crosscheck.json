@@ -1,0 +1,14 @@
+{
+  "original_bvh_frame92": {
+    "Spine_axis_pitch_deg": 11.722040023302252,
+    "Spine2_axis_pitch_deg": -2.585475137526155,
+    "Spine4_axis_pitch_deg": -15.206373719686745,
+    "Neck_axis_pitch_deg": 1.2726509177637415,
+    "Head_axis_pitch_deg": -3.4252749563699045
+  },
+  "bvh_path": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor.bvh",
+  "smplx_anatomical_frame92": {
+    "hips_to_shoulders_pitch_deg": -3.974860590072292,
+    "spine3_to_neck_pitch_deg": -19.148583270473505
+  }
+}

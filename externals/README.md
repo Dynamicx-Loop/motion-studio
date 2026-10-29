@@ -4,6 +4,11 @@ Each project is an independent Git checkout, not vendored source or a submodule.
 The root repository ignores checkout contents and tracks `manifest.json` instead.
 This preserves upstream histories and allows different environments and release cycles.
 
+Treat these checkouts as pinned, static dependencies. Motion Studio interfaces,
+adapters, and feature development live in the root project. Follow the
+[development policy](../docs/workflow.md#development-policy) before adding an
+integration or modifying external source.
+
 The manifest records clone URLs, upstream URLs, and the exact baseline commits.
 Run `python3 scripts/workspace.py check` from the root to report missing checkouts,
 revision drift, or local edits. `bootstrap` only clones missing projects; it never

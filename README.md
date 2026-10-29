@@ -15,6 +15,11 @@ The upstream tools run independently. There is no shared runtime or unified edit
 Keep each project's dependencies and setup separate; add shared abstractions only
 when real workflows demonstrate a need.
 
+Motion Studio owns feature development and the interfaces used to call external
+tools. External repositories stay pinned and minimally modified; concrete adapters
+in this project handle their functions, formats, and runtimes. See the
+[development policy](docs/workflow.md#development-policy).
+
 | Project | Local checkout | Role |
 | --- | --- | --- |
 | UMR | [externals/UMR](externals/UMR/README.md) | Learned surface correspondence and motion retargeting |
@@ -44,6 +49,19 @@ See the [ProtoMotions/PyRoki setup and solver comparison](docs/protomotions-pyro
 and [official UMR implementation investigation](docs/umr-solver-investigation.md).
 ProtoMotions is included as source; large Git LFS assets are fetched on demand.
 
+## UMR G1 reproduction
+
+Run fresh official-default training and the complete bundled HiPHI motion through
+Motion Studio's own interface:
+
+```sh
+python3 scripts/reproduce_umr_g1.py --output outputs/umr-g1-baseline/<fresh-run-id>
+```
+
+Requires the existing UMR environment, local SMPL-X model, and host GPU access.
+See the [integration review](docs/umr-integration-review.md) and
+[experiment record](experiments/umr-g1-baseline-20261029/README.md).
+
 ## Local documentation
 
 Double-click [docs.html](docs.html) in this project root to read the offline
@@ -70,6 +88,9 @@ data/            Local input data (contents ignored)
 outputs/         Generated results (contents ignored)
 ```
 
+Shared local datasets and human-model assets are organized under `/data/motions`;
+see [local data conventions](data/README.md).
+
 Start with the [workflow and roadmap](docs/workflow.md), the
 [reference library](references/README.md), or the
 [experiment template](experiments/TEMPLATE.md).
@@ -77,8 +98,9 @@ Start with the [workflow and roadmap](docs/workflow.md), the
 ## Contributing and attribution
 
 Record source revisions, commands, data provenance, coordinate conventions, and
-results for experiments. Keep upstream-specific changes in the corresponding
-external repository; put cross-project orchestration and documentation here.
+results for experiments. Develop features and integrations here; preserve any
+unavoidable minimal upstream patch in its external repository with a reproducible
+record, following the development policy.
 
 External repositories retain their own licenses and notices. Dataset, model-weight,
 and robot-asset terms apply separately. No umbrella license is chosen for new

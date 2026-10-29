@@ -1,0 +1,83 @@
+{
+  "robot": {
+    "visual_geom_policy": "auto",
+    "to_smpl_frame": true,
+    "sample_pose": "tpose",
+    "frame_transform": {
+      "smpl_to_robot_root_matrix": [
+        [
+          0.0,
+          0.0,
+          1.0
+        ],
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ]
+      ]
+    },
+    "name": "astro_p2_43dof_dex3_1",
+    "xml": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml",
+    "point_cloud_center": "body:pelvis",
+    "tpose_qpos": {
+      "left_hip_pitch_joint": 0,
+      "left_hip_roll_joint": 0,
+      "left_hip_yaw_joint": 0,
+      "left_knee_joint": 0,
+      "left_ankle_pitch_joint": 0,
+      "left_ankle_roll_joint": 0,
+      "right_hip_pitch_joint": 0,
+      "right_hip_roll_joint": 0,
+      "right_hip_yaw_joint": 0,
+      "right_knee_joint": 0,
+      "right_ankle_pitch_joint": 0,
+      "right_ankle_roll_joint": 0,
+      "waist_yaw_joint": 0,
+      "waist_pitch_joint": 0,
+      "waist_roll_joint": 0,
+      "left_shoulder_pitch_joint": 0,
+      "left_shoulder_roll_joint": 1.5707963267948966,
+      "left_shoulder_yaw_joint": 0,
+      "left_elbow_joint": 1.5707963267948966,
+      "left_wrist_roll_joint": 0,
+      "left_wrist_pitch_joint": 0,
+      "left_wrist_yaw_joint": 0,
+      "right_shoulder_pitch_joint": 0,
+      "right_shoulder_roll_joint": -1.5707963267948966,
+      "right_shoulder_yaw_joint": 0,
+      "right_elbow_joint": 1.5707963267948966,
+      "right_wrist_roll_joint": 0,
+      "right_wrist_pitch_joint": 0,
+      "right_wrist_yaw_joint": 0,
+      "left_hand_thumb_0_joint": 0.0,
+      "left_hand_thumb_1_joint": 0.0,
+      "left_hand_thumb_2_joint": 0.0,
+      "left_hand_middle_0_joint": 0.0,
+      "left_hand_middle_1_joint": 0.0,
+      "left_hand_index_0_joint": 0.0,
+      "left_hand_index_1_joint": 0.0,
+      "right_hand_thumb_0_joint": 0.0,
+      "right_hand_thumb_1_joint": 0.0,
+      "right_hand_thumb_2_joint": 0.0,
+      "right_hand_middle_0_joint": 0.0,
+      "right_hand_middle_1_joint": 0.0,
+      "right_hand_index_0_joint": 0.0,
+      "right_hand_index_1_joint": 0.0
+    }
+  },
+  "experiment": {
+    "stage": "static_correspondence_only",
+    "retarget_authorized": false,
+    "source": "soma",
+    "centering": "bbox50",
+    "historical_source_config": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/soma_astro_bbox50.json",
+    "variant": "Astro with Dex3-1 sample hands",
+    "finger_pose": "all 14 hinge coordinates zero, open vendor pose"
+  }
+}

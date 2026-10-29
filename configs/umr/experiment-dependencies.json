@@ -29,7 +29,7 @@
     "fist_pose_sha256": "65aa714e64a642058237351515951e3840982d0692cc04c079356e1eb0e0ed7b",
     "remote_freshness": "not_checked"
   },
-  "source_model_dir": "/data/motions/smpl/smpl_model/models_smplx_v1_1/models/smplx",
+  "source_model_dir": "/data/motions/human_models/smplx/1.1/models_smplx_v1_1/models/smplx",
   "small_run_record": "experiments/umr-astro-baseline-v1/records/static-20261024-01",
   "raw_run": "outputs/umr-astro-baseline-v1/static-20261024-01",
   "excluded_from_git": [

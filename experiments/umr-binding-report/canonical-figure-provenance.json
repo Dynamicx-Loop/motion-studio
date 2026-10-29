@@ -1,0 +1,634 @@
+{
+  "figure_language": "en",
+  "inputs": {
+    "outputs/astro-fist-static-v1/viewer/audit.json": {
+      "sha256": "324433e93c99cea79ffd710fd5e2769aef7982f8a6ceb23ac0a80224cad16f20",
+      "bytes": 19327951
+    },
+    "experiments/astro-fist-static-v1/results.json": {
+      "sha256": "a63649acbf6340567ea94431fd235c88d18c88f919561d41f29ac21d23ec526e",
+      "bytes": 524162
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_spine1-human-vertices.bin": {
+      "sha256": "45e0e52e13ea3b4d7aa7203d084e989695d6c487957cc3405f496aef87bc7043",
+      "bytes": 125700
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_spine1-human-faces.bin": {
+      "sha256": "ba3efe72d485634742a3f7f36c6ec5cebe7475182d056da7c3e8f8afb17c4e23",
+      "bytes": 250896
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_spine1-human-vertices.bin": {
+      "sha256": "c3fc5facd14e91e8065b7535c1c41093b3aa68466ba303f59ae85a41193ff25d",
+      "bytes": 216672
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_spine1-human-faces.bin": {
+      "sha256": "e99397c57b8e2dfd69af95b81f99d8db307a682816220982848d35316689b339",
+      "bytes": 433296
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_spine1-vertices.bin": {
+      "sha256": "c16617494bc7fd2a3f407a4116135d43e02a14b0a746950f5bb8aed4737dadf8",
+      "bytes": 4250892
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_spine1-faces.bin": {
+      "sha256": "b1c0af8aa6ded9b17c0f02e8cd8d1f6d1d7619395755afd8631e4391253e9edf",
+      "bytes": 8633592
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_spine1-vertices.bin": {
+      "sha256": "c16617494bc7fd2a3f407a4116135d43e02a14b0a746950f5bb8aed4737dadf8",
+      "bytes": 4250892
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_spine1-faces.bin": {
+      "sha256": "b1c0af8aa6ded9b17c0f02e8cd8d1f6d1d7619395755afd8631e4391253e9edf",
+      "bytes": 8633592
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_g1_spine1-vertices.bin": {
+      "sha256": "4d91047caa5488bf7f0763e9eaac687569888f81aba4d59aeac4113a14233766",
+      "bytes": 2315256
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_g1_spine1-faces.bin": {
+      "sha256": "e956806eb99951d020fa34fb5dfde2f31b78fb6a79439b0777dc8cf7a76c423b",
+      "bytes": 4627512
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_g1_spine1-vertices.bin": {
+      "sha256": "4d91047caa5488bf7f0763e9eaac687569888f81aba4d59aeac4113a14233766",
+      "bytes": 2315256
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_g1_spine1-faces.bin": {
+      "sha256": "e956806eb99951d020fa34fb5dfde2f31b78fb6a79439b0777dc8cf7a76c423b",
+      "bytes": 4627512
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_bbox50-human-vertices.bin": {
+      "sha256": "c4f4f113c5c98aa0474f1a1b5977d530b6ea93824d0a4ba6d5afc380b0f0c91c",
+      "bytes": 125700
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_bbox50-human-faces.bin": {
+      "sha256": "ba3efe72d485634742a3f7f36c6ec5cebe7475182d056da7c3e8f8afb17c4e23",
+      "bytes": 250896
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_bbox50-human-vertices.bin": {
+      "sha256": "731c4a254c3716e8389dcd54d820ba7a5bc16c349d43eb7ee2a3f4825d9b919a",
+      "bytes": 216672
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_bbox50-human-faces.bin": {
+      "sha256": "e99397c57b8e2dfd69af95b81f99d8db307a682816220982848d35316689b339",
+      "bytes": 433296
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_bbox50-vertices.bin": {
+      "sha256": "c16617494bc7fd2a3f407a4116135d43e02a14b0a746950f5bb8aed4737dadf8",
+      "bytes": 4250892
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_astro_bbox50-faces.bin": {
+      "sha256": "b1c0af8aa6ded9b17c0f02e8cd8d1f6d1d7619395755afd8631e4391253e9edf",
+      "bytes": 8633592
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_bbox50-vertices.bin": {
+      "sha256": "c16617494bc7fd2a3f407a4116135d43e02a14b0a746950f5bb8aed4737dadf8",
+      "bytes": 4250892
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_astro_bbox50-faces.bin": {
+      "sha256": "b1c0af8aa6ded9b17c0f02e8cd8d1f6d1d7619395755afd8631e4391253e9edf",
+      "bytes": 8633592
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_g1_bbox50-vertices.bin": {
+      "sha256": "4d91047caa5488bf7f0763e9eaac687569888f81aba4d59aeac4113a14233766",
+      "bytes": 2315256
+    },
+    "outputs/astro-fist-static-v1/viewer/smplx_g1_bbox50-faces.bin": {
+      "sha256": "e956806eb99951d020fa34fb5dfde2f31b78fb6a79439b0777dc8cf7a76c423b",
+      "bytes": 4627512
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_g1_bbox50-vertices.bin": {
+      "sha256": "4d91047caa5488bf7f0763e9eaac687569888f81aba4d59aeac4113a14233766",
+      "bytes": 2315256
+    },
+    "outputs/astro-fist-static-v1/viewer/soma_g1_bbox50-faces.bin": {
+      "sha256": "e956806eb99951d020fa34fb5dfde2f31b78fb6a79439b0777dc8cf7a76c423b",
+      "bytes": 4627512
+    },
+    "experiments/umr-binding-report/plot_canonical.py": {
+      "sha256": "caf34c2c7f5fb3edb59522288d46cf2b1d872e49627968369c7fd10855ac7ea5",
+      "bytes": 1408
+    }
+  },
+  "source_mask_checks": [
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "human",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 70,
+      "saved_slots": 70
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 73,
+      "saved_slots": 73
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "soma_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 439,
+      "saved_slots": 439
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "human",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_spine1",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_spine1",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_astro_bbox50",
+      "column": "astro",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "leftShoulder",
+      "plotted_slots": 69,
+      "saved_slots": 69
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "rightShoulder",
+      "plotted_slots": 77,
+      "saved_slots": 77
+    },
+    {
+      "experiment": "astro-fist-static-v1",
+      "arm": "smplx_g1_bbox50",
+      "column": "g1",
+      "scheme": "common18",
+      "label": "hips",
+      "plotted_slots": 480,
+      "saved_slots": 480
+    }
+  ],
+  "outputs": {
+    "outputs/umr-binding-report/figures/canonical-selected.png": "6335575956d8516a2be7e32cec75302cdd5f6501bd7496f3ac693e9d2b2c5321",
+    "outputs/umr-binding-report/figures/canonical-bbox50.png": "b986a35b29ab638e9fe346b1ee4a20ab62aa52bbbc17ec7256bd9a9a6c05b27b",
+    "outputs/umr-binding-report/figures/canonical-spine1.png": "80c26e56f14ff60f67773944ad8752f9901214771268ecb333d0c544cced1f73",
+    "outputs/umr-binding-report/figures/canonical-matched.png": "edee16d2633f43311b22f4174e32388021dd9f12492a7d4396369b44c2463362"
+  }
+}

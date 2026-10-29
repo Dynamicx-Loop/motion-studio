@@ -1,5 +1,67 @@
 # Scope and evolution
 
+## Development policy
+
+Motion Studio owns its product development. External repositories provide pinned,
+static modules whose source stays unchanged during ordinary feature work. Static
+means stable between deliberate dependency updates, not permanently frozen.
+
+### Ownership and dependency flow
+
+Keep application behavior, user interfaces, orchestration, experiments, adapters,
+configuration, and tests in the Motion Studio repository, outside `externals/`.
+External checkouts retain their own history, environments, licenses, and assets.
+Existing experimental clones and worktrees are historical dependencies, not the
+default home for new Motion Studio features. Preserve their local work until an
+explicit migration replaces their callers and records.
+
+Use this dependency direction:
+
+```text
+Motion Studio UI / CLI / workflows
+    → Motion Studio interface
+    → concrete external adapter
+    → pinned external functions or command-line entry points
+```
+
+The interface belongs to Motion Studio. Define small operations around real
+outcomes, such as retargeting a clip, rather than mirroring every upstream
+function. Begin with concrete functions and types; introduce a shared protocol
+only when actual alternatives require one. A seam does not require a common
+runtime or a universal motion format.
+
+Each adapter owns upstream imports, checkout discovery, configuration translation,
+format conversion, and invocation. Call functions directly when runtimes are
+compatible; otherwise invoke the upstream entry point in its own environment and
+exchange explicit files or structured results. Keep upstream-specific objects and
+process setup inside the adapter. External modules remain independent of Motion
+Studio code.
+
+Specify typed inputs and results, units, FPS/timestamps, axes, quaternion and joint
+ordering, calibration, mutation, output ownership, and expected failures where
+relevant. Validate external results at the seam, record conversions and information
+loss, and preserve upstream error causes. Keep environment and file side effects
+explicit. Test observable behavior through the Motion Studio interface, with
+focused integration checks against the pinned external when available.
+
+### Exceptions and dependency updates
+
+Try upstream configuration, extension hooks, and a Motion Studio adapter first.
+If a required capability still needs an external source change, isolate the
+smallest patch in that external repository and follow its own instructions. Keep
+product-specific behavior in Motion Studio. Record the base revision, reason an
+adapter is insufficient, patch or commit, and validation in the owning experiment
+or change record; preserve enough information to reconstruct the patched state.
+The root manifest alone does not preserve local external changes. Prefer an
+upstreamable fix and retire the patch when an adopted upstream revision supplies it.
+
+Update external pins deliberately: inspect upstream changes, preserve existing
+patches and assets, run applicable adapter compatibility checks, then update the
+manifest and document validation limits. Keep historical baseline revisions and
+results intact; a dependency update does not rerun or advance a research baseline.
+Apply this policy to new and changed integrations incrementally rather than
+rewriting unrelated legacy experiments.
+
 ## Stage 1: collection and daily use (current)
 
 Maintain independent checkouts of useful open-source projects. Study their methods,

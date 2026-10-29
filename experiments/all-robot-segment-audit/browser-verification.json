@@ -1,0 +1,173 @@
+{
+  "viewport": [
+    1440,
+    900
+  ],
+  "targets": [
+    {
+      "target": "piplus",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        1596739
+      ],
+      "error": ""
+    },
+    {
+      "target": "k1",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        176095
+      ],
+      "error": ""
+    },
+    {
+      "target": "t800",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        355387
+      ],
+      "error": ""
+    },
+    {
+      "target": "h2",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        248194
+      ],
+      "error": ""
+    },
+    {
+      "target": "mimickit",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        10872
+      ],
+      "error": ""
+    },
+    {
+      "target": "g1_racket",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        356136
+      ],
+      "error": ""
+    },
+    {
+      "target": "g1_spherehand",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        274686
+      ],
+      "error": ""
+    },
+    {
+      "target": "visual",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        393798
+      ],
+      "error": ""
+    },
+    {
+      "target": "primitive",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        32616
+      ],
+      "error": ""
+    },
+    {
+      "target": "g1",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        385626
+      ],
+      "error": ""
+    },
+    {
+      "target": "piplus_native_center",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        1596739
+      ],
+      "error": ""
+    },
+    {
+      "target": "k1_native_center",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        176095
+      ],
+      "error": ""
+    },
+    {
+      "target": "t800_native_center",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        355387
+      ],
+      "error": ""
+    },
+    {
+      "target": "h2_native_center",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        248194
+      ],
+      "error": ""
+    },
+    {
+      "target": "mimickit_native_center",
+      "selected": 3668,
+      "label": "head",
+      "shown": 414,
+      "triangles": [
+        20908,
+        10872
+      ],
+      "error": ""
+    }
+  ]
+}

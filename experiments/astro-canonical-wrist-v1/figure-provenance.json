@@ -1,0 +1,33 @@
+{
+  "figure_language": "en",
+  "inputs": {
+    "outputs/astro-canonical-static-v1/smplx_astro_spine1/dataset.npz": "65d79cfbfeb5d7e7ba23797004ca1298572fda095133e2ba5e5cb9f2b3fdd5fa",
+    "outputs/astro-canonical-static-v1/smplx_astro_spine1-audit.npz": "161b73948df05f362c622a82ce310385e041fdebe973e83fd18f15e120b19314",
+    "outputs/astro-canonical-wrist-v1/smplx_astro_spine1-audit.npz": "77c83d692b849b687b55848eac160e8553fb6319bf0512c809f5204b15563ce3",
+    "outputs/astro-canonical-static-v1/smplx_g1_spine1/dataset.npz": "d4383fb4ad5e82975e7a5a97f9ac513b10f266e628cf931cd45c76b91776f81c",
+    "outputs/astro-canonical-static-v1/smplx_g1_spine1-audit.npz": "6bb5734cdb77f6418635564ea496bf2d1439cd04cb0c41c3762c54bf869daf0b",
+    "outputs/astro-canonical-wrist-v1/smplx_g1_spine1-audit.npz": "0d2c9bb49a09fca13e88fd473bed9e637b42ed5ccc3d7c48892ada770ff6c2e5",
+    "outputs/astro-canonical-static-v1/smplx_astro_bbox50/dataset.npz": "c33fb2f9214d0a446de892fd58da8c8efaf7311892873dd74766e92afbea9d19",
+    "outputs/astro-canonical-static-v1/smplx_astro_bbox50-audit.npz": "e74368dd28103909fb621c1fcb89bc0cd9f1a11f5674f0ede5f95425b9afa1db",
+    "outputs/astro-canonical-wrist-v1/smplx_astro_bbox50-audit.npz": "4ceb8024f16bc0a79eb3f41b3936291ea33025f412f4867a23f1f79fc771c8cd",
+    "outputs/astro-canonical-static-v1/smplx_g1_bbox50/dataset.npz": "9b1f4968d768255a6c878b9f1203c787515bc29bfc832cb3abe3361eafd24594",
+    "outputs/astro-canonical-static-v1/smplx_g1_bbox50-audit.npz": "5a91cc52bfb531ab79379590c1c291548dcda634e29143730b24dafd69644270",
+    "outputs/astro-canonical-wrist-v1/smplx_g1_bbox50-audit.npz": "12682bda7bb3af82777da35110d71e6c02c3ed615b5557c1823cd48a3c3c8e7a",
+    "outputs/astro-canonical-static-v1/soma_astro_spine1/dataset.npz": "11859cd1b1dcc42fb8bf8a22bb389d99b48247306a1059fec3c3a27cd0dda597",
+    "outputs/astro-canonical-static-v1/soma_astro_spine1-audit.npz": "d52798dccd55176c37e5ac604122beac205e31338af62cdc06d42796f76d9f1c",
+    "outputs/astro-canonical-wrist-v1/soma_astro_spine1-audit.npz": "534e96242a7c0d17232ffe5539c28f60cafba619ea3ea0380ba5968cdf1bd27f",
+    "outputs/astro-canonical-static-v1/soma_g1_spine1/dataset.npz": "ddf37c545e2ef58e7f92553dd119f23599651d454197ec0b1a368c8706b95f61",
+    "outputs/astro-canonical-static-v1/soma_g1_spine1-audit.npz": "6f092f322e17c4ae4e2cf2cc6896e8429979e10e0e001a2e53b9a81f230d1ca1",
+    "outputs/astro-canonical-wrist-v1/soma_g1_spine1-audit.npz": "db2d4b7795205949f288908308ec4e68572ad919425d1a32bacced75f0e62f76",
+    "outputs/astro-canonical-static-v1/soma_astro_bbox50/dataset.npz": "2797096f2ba8ac29bd6f4760eb4e5021b86752140163eca069cb51ff4a879c0c",
+    "outputs/astro-canonical-static-v1/soma_astro_bbox50-audit.npz": "748e06518977cad47d99f57e5296b9b85cefa2bd2758f0576844db63dd167382",
+    "outputs/astro-canonical-wrist-v1/soma_astro_bbox50-audit.npz": "33853586a0597cb437d755fd991bdfbd360379640332b968f1f107f164b31c40",
+    "outputs/astro-canonical-static-v1/soma_g1_bbox50/dataset.npz": "6ce16f6dc752d47e2d1a6fdaeda34d1c19d074c5142a3b260eed00f5982514e5",
+    "outputs/astro-canonical-static-v1/soma_g1_bbox50-audit.npz": "c13e222d18d27ff2272e0b6626e59a9ee607e92986e7dd34f85cc5cdd29fe69f",
+    "outputs/astro-canonical-wrist-v1/soma_g1_bbox50-audit.npz": "3a5e063f599dedafc18fcb9b4a694384aedf039a1d0307673d078857179e3029"
+  },
+  "outputs": {
+    "outputs/astro-canonical-wrist-v1/wrist-calibration-closeups.png": "b7c6694484df83ca939f1db3624a30be7f607296af206d7e3895693fb9cc8542"
+  },
+  "view": "left hands; both hands measured in tables; fixed physical metre scales within matched pairs"
+}

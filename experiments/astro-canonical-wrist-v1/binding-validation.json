@@ -1,0 +1,258 @@
+{
+  "smplx_astro_spine1": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 106,
+        "production": 106
+      },
+      "leftForeArm": {
+        "exact": 25,
+        "production": 25
+      },
+      "rightUpLeg": {
+        "exact": 95,
+        "production": 95
+      },
+      "rightForeArm": {
+        "exact": 25,
+        "production": 25
+      }
+    },
+    "distance_improvement_over_1micron": 277,
+    "max_distance_improvement_m": 0.025058185681700706,
+    "changed_body_equal_distance_within_1micron": 0,
+    "max_projection_position_difference_m": 0.039102211594581604,
+    "over_1mm": 229,
+    "changed_body_count": 8,
+    "changed_mesh_count": 8,
+    "changed_geometry_zone_count": 6,
+    "exact_head_face_to_torso": 250,
+    "production_head_face_to_torso": 249,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "smplx_astro_bbox50": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 26,
+        "production": 26
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 27,
+        "production": 27
+      }
+    },
+    "distance_improvement_over_1micron": 274,
+    "max_distance_improvement_m": 0.014918601140379906,
+    "changed_body_equal_distance_within_1micron": 1,
+    "max_projection_position_difference_m": 0.07217720150947571,
+    "over_1mm": 222,
+    "changed_body_count": 19,
+    "changed_mesh_count": 19,
+    "changed_geometry_zone_count": 13,
+    "exact_head_face_to_torso": 154,
+    "production_head_face_to_torso": 154,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "soma_astro_spine1": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 77,
+        "production": 77
+      },
+      "leftForeArm": {
+        "exact": 14,
+        "production": 14
+      },
+      "rightUpLeg": {
+        "exact": 63,
+        "production": 63
+      },
+      "rightForeArm": {
+        "exact": 17,
+        "production": 17
+      }
+    },
+    "distance_improvement_over_1micron": 282,
+    "max_distance_improvement_m": 0.015537915751338005,
+    "changed_body_equal_distance_within_1micron": 0,
+    "max_projection_position_difference_m": 0.04754786565899849,
+    "over_1mm": 237,
+    "changed_body_count": 6,
+    "changed_mesh_count": 6,
+    "changed_geometry_zone_count": 7,
+    "exact_head_face_to_torso": 237,
+    "production_head_face_to_torso": 235,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "soma_astro_bbox50": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 16,
+        "production": 16
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 18,
+        "production": 18
+      }
+    },
+    "distance_improvement_over_1micron": 228,
+    "max_distance_improvement_m": 0.016162369400262833,
+    "changed_body_equal_distance_within_1micron": 0,
+    "max_projection_position_difference_m": 0.058975085616111755,
+    "over_1mm": 190,
+    "changed_body_count": 11,
+    "changed_mesh_count": 11,
+    "changed_geometry_zone_count": 8,
+    "exact_head_face_to_torso": 124,
+    "production_head_face_to_torso": 124,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "smplx_g1_spine1": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 1,
+        "production": 1
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 0,
+        "production": 0
+      }
+    },
+    "distance_improvement_over_1micron": 262,
+    "max_distance_improvement_m": 0.024173768237233162,
+    "changed_body_equal_distance_within_1micron": 73,
+    "max_projection_position_difference_m": 0.03199097514152527,
+    "over_1mm": 234,
+    "changed_body_count": 142,
+    "changed_mesh_count": 73,
+    "changed_geometry_zone_count": 13,
+    "exact_head_face_to_torso": 0,
+    "production_head_face_to_torso": 0,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "smplx_g1_bbox50": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 0,
+        "production": 0
+      }
+    },
+    "distance_improvement_over_1micron": 262,
+    "max_distance_improvement_m": 0.026396116241812706,
+    "changed_body_equal_distance_within_1micron": 84,
+    "max_projection_position_difference_m": 0.028960969299077988,
+    "over_1mm": 219,
+    "changed_body_count": 158,
+    "changed_mesh_count": 80,
+    "changed_geometry_zone_count": 8,
+    "exact_head_face_to_torso": 0,
+    "production_head_face_to_torso": 0,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "soma_g1_spine1": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 0,
+        "production": 0
+      }
+    },
+    "distance_improvement_over_1micron": 246,
+    "max_distance_improvement_m": 0.024809841066598892,
+    "changed_body_equal_distance_within_1micron": 69,
+    "max_projection_position_difference_m": 0.029044685885310173,
+    "over_1mm": 214,
+    "changed_body_count": 139,
+    "changed_mesh_count": 78,
+    "changed_geometry_zone_count": 14,
+    "exact_head_face_to_torso": 0,
+    "production_head_face_to_torso": 0,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  },
+  "soma_g1_bbox50": {
+    "cross_joint_checks": {
+      "leftUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "leftForeArm": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightUpLeg": {
+        "exact": 0,
+        "production": 0
+      },
+      "rightForeArm": {
+        "exact": 0,
+        "production": 0
+      }
+    },
+    "distance_improvement_over_1micron": 224,
+    "max_distance_improvement_m": 0.03220266103744507,
+    "changed_body_equal_distance_within_1micron": 104,
+    "max_projection_position_difference_m": 0.032204389572143555,
+    "over_1mm": 185,
+    "changed_body_count": 164,
+    "changed_mesh_count": 71,
+    "changed_geometry_zone_count": 9,
+    "exact_head_face_to_torso": 0,
+    "production_head_face_to_torso": 0,
+    "source_mesh_matches_audited_asset": true,
+    "target_mesh_matches_dataset": true
+  }
+}

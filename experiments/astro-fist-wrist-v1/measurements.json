@@ -1,0 +1,1232 @@
+{
+  "smplx_astro_spine1": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 5.71075826883316,
+      "symmetric_sample_mean_distance_mm": 8.643007980195378,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 30,
+        "finger": 13,
+        "wrist_housing": 69,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9292929292929293,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 30,
+        "source_hand_projection_distance_mm": 4.444765392690897,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 28,
+        "finger": 10,
+        "wrist_housing": 70,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9603960396039604,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 28,
+        "source_hand_projection_distance_mm": 4.070315510034561,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 458,
+      "max_displacement_mm": 128.3603310585022,
+      "mean_displacement_mm": 7.46919447556138,
+      "mean_projection_distance_mm": 5.992591381072998,
+      "symmetric_sample_mean_distance_mm": 9.288764998110418,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 95,
+        "finger": 30,
+        "wrist_housing": 4,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 73.3855590224266,
+        "high_confidence_actual_hand": 91,
+        "source_hand_projection_distance_mm": 6.879450753331184,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 95,
+        "finger": 30,
+        "wrist_housing": 3,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9504950495049505,
+        "hand_mean_displacement_mm": 73.46241176128387,
+        "high_confidence_actual_hand": 90,
+        "source_hand_projection_distance_mm": 6.872842554003,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 461,
+      "max_displacement_mm": 124.04286861419678,
+      "mean_displacement_mm": 7.314208894968033,
+      "mean_projection_distance_mm": 5.990190897136927,
+      "symmetric_sample_mean_distance_mm": 9.285077777165553,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 92,
+        "finger": 30,
+        "wrist_housing": 7,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 72.17339426279068,
+        "high_confidence_actual_hand": 91,
+        "source_hand_projection_distance_mm": 6.974989082664251,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 1
+        }
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 92,
+        "finger": 31,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9504950495049505,
+        "hand_mean_displacement_mm": 72.85208255052567,
+        "high_confidence_actual_hand": 90,
+        "source_hand_projection_distance_mm": 6.9692544639110565,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 462,
+      "max_displacement_mm": 115.55993556976318,
+      "mean_displacement_mm": 6.78974948823452,
+      "mean_projection_distance_mm": 5.994328297674656,
+      "symmetric_sample_mean_distance_mm": 9.287139639030402,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 90,
+        "finger": 29,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 69.59711015224457,
+        "high_confidence_actual_hand": 90,
+        "source_hand_projection_distance_mm": 7.149609737098217,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 88,
+        "finger": 30,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9504950495049505,
+        "hand_mean_displacement_mm": 70.08157670497894,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 7.060147821903229,
+        "nonhand_sources_on_hand": {}
+      }
+    }
+  },
+  "smplx_astro_bbox50": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 5.46629074960947,
+      "symmetric_sample_mean_distance_mm": 8.674920396877189,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 15,
+        "finger": 6,
+        "wrist_housing": 84,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.696969696969697,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 15,
+        "source_hand_projection_distance_mm": 4.493836313486099,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 16,
+        "finger": 7,
+        "wrist_housing": 80,
+        "other": 2,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.7128712871287128,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 16,
+        "source_hand_projection_distance_mm": 4.703084472566843,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 459,
+      "max_displacement_mm": 162.36650943756104,
+      "mean_displacement_mm": 9.63342934846878,
+      "mean_projection_distance_mm": 5.7807499542832375,
+      "symmetric_sample_mean_distance_mm": 9.26494265447024,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 94,
+        "finger": 25,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9292929292929293,
+        "hand_mean_displacement_mm": 100.02776980400085,
+        "high_confidence_actual_hand": 89,
+        "source_hand_projection_distance_mm": 7.86261260509491,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 90,
+        "finger": 27,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9108910891089109,
+        "hand_mean_displacement_mm": 102.61693596839905,
+        "high_confidence_actual_hand": 89,
+        "source_hand_projection_distance_mm": 7.741807494312525,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 463,
+      "max_displacement_mm": 160.1315140724182,
+      "mean_displacement_mm": 9.606380946934223,
+      "mean_projection_distance_mm": 5.781448446214199,
+      "symmetric_sample_mean_distance_mm": 9.257017685427956,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 93,
+        "finger": 26,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9292929292929293,
+        "hand_mean_displacement_mm": 99.61957484483719,
+        "high_confidence_actual_hand": 89,
+        "source_hand_projection_distance_mm": 7.899049669504166,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 90,
+        "finger": 27,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9108910891089109,
+        "hand_mean_displacement_mm": 102.24082320928574,
+        "high_confidence_actual_hand": 89,
+        "source_hand_projection_distance_mm": 7.700626272708178,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "64": {
+      "moved_slots": 461,
+      "max_displacement_mm": 151.0968804359436,
+      "mean_displacement_mm": 9.02493018656969,
+      "mean_projection_distance_mm": 5.766250193119049,
+      "symmetric_sample_mean_distance_mm": 9.251057890283729,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 90,
+        "finger": 22,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9292929292929293,
+        "hand_mean_displacement_mm": 97.29503095149994,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 8.055330254137516,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 89,
+        "finger": 28,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9108910891089109,
+        "hand_mean_displacement_mm": 99.518783390522,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 7.697520777583122,
+        "nonhand_sources_on_hand": {}
+      }
+    }
+  },
+  "soma_astro_spine1": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 5.793002899736166,
+      "symmetric_sample_mean_distance_mm": 8.825978177643675,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 24,
+        "finger": 9,
+        "wrist_housing": 58,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.8888888888888888,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 24,
+        "source_hand_projection_distance_mm": 4.100556019693613,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 30,
+        "finger": 10,
+        "wrist_housing": 47,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9603960396039604,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 30,
+        "source_hand_projection_distance_mm": 3.962303977459669,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 428,
+      "max_displacement_mm": 110.92603206634521,
+      "mean_displacement_mm": 5.776867736130953,
+      "mean_projection_distance_mm": 6.037271581590176,
+      "symmetric_sample_mean_distance_mm": 9.393509454605164,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 78,
+        "finger": 30,
+        "wrist_housing": 4,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 66.60380959510803,
+        "high_confidence_actual_hand": 77,
+        "source_hand_projection_distance_mm": 6.227143574506044,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 73,
+        "finger": 27,
+        "wrist_housing": 4,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9603960396039604,
+        "hand_mean_displacement_mm": 58.62924084067345,
+        "high_confidence_actual_hand": 73,
+        "source_hand_projection_distance_mm": 6.04233518242836,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 424,
+      "max_displacement_mm": 109.8145842552185,
+      "mean_displacement_mm": 5.712144076824188,
+      "mean_projection_distance_mm": 6.032474339008331,
+      "symmetric_sample_mean_distance_mm": 9.386995064428337,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 78,
+        "finger": 29,
+        "wrist_housing": 4,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 66.26147776842117,
+        "high_confidence_actual_hand": 77,
+        "source_hand_projection_distance_mm": 6.199011579155922,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 73,
+        "finger": 27,
+        "wrist_housing": 4,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9603960396039604,
+        "hand_mean_displacement_mm": 58.594122529029846,
+        "high_confidence_actual_hand": 73,
+        "source_hand_projection_distance_mm": 6.044213660061359,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 427,
+      "max_displacement_mm": 99.9489426612854,
+      "mean_displacement_mm": 5.20407035946846,
+      "mean_projection_distance_mm": 6.031842902302742,
+      "symmetric_sample_mean_distance_mm": 9.390387311774266,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 73,
+        "finger": 24,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9595959595959596,
+        "hand_mean_displacement_mm": 63.25193494558334,
+        "high_confidence_actual_hand": 73,
+        "source_hand_projection_distance_mm": 6.746174301952124,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 72,
+        "finger": 27,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9603960396039604,
+        "hand_mean_displacement_mm": 55.2598237991333,
+        "high_confidence_actual_hand": 72,
+        "source_hand_projection_distance_mm": 6.405707914382219,
+        "nonhand_sources_on_hand": {}
+      }
+    }
+  },
+  "soma_astro_bbox50": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 5.437623243778944,
+      "symmetric_sample_mean_distance_mm": 8.673674554466746,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 17,
+        "finger": 6,
+        "wrist_housing": 65,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.7575757575757576,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 17,
+        "source_hand_projection_distance_mm": 3.5498212091624737,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 20,
+        "finger": 8,
+        "wrist_housing": 57,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.8118811881188119,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 20,
+        "source_hand_projection_distance_mm": 3.7078268360346556,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 429,
+      "max_displacement_mm": 140.2108073234558,
+      "mean_displacement_mm": 7.396938279271126,
+      "mean_projection_distance_mm": 5.692987237125635,
+      "symmetric_sample_mean_distance_mm": 9.202059685390301,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 79,
+        "finger": 25,
+        "wrist_housing": 3,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9393939393939394,
+        "hand_mean_displacement_mm": 86.63193881511688,
+        "high_confidence_actual_hand": 77,
+        "source_hand_projection_distance_mm": 5.886070430278778,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 74,
+        "finger": 25,
+        "wrist_housing": 3,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9405940594059405,
+        "hand_mean_displacement_mm": 79.29117977619171,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 6.547838915139437,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 2
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 423,
+      "max_displacement_mm": 136.760413646698,
+      "mean_displacement_mm": 7.2238631546497345,
+      "mean_projection_distance_mm": 5.688120611011982,
+      "symmetric_sample_mean_distance_mm": 9.195301473168966,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 79,
+        "finger": 24,
+        "wrist_housing": 3,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9393939393939394,
+        "hand_mean_displacement_mm": 85.70616692304611,
+        "high_confidence_actual_hand": 77,
+        "source_hand_projection_distance_mm": 6.026805378496647,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 74,
+        "finger": 25,
+        "wrist_housing": 3,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9405940594059405,
+        "hand_mean_displacement_mm": 79.07715439796448,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 6.5733580850064754,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 2
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 430,
+      "max_displacement_mm": 127.11083889007568,
+      "mean_displacement_mm": 6.638022139668465,
+      "mean_projection_distance_mm": 5.689913406968117,
+      "symmetric_sample_mean_distance_mm": 9.182427170947273,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 77,
+        "finger": 24,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 99,
+        "actual_hand_coverage20mm": 0.9292929292929293,
+        "hand_mean_displacement_mm": 82.76048302650452,
+        "high_confidence_actual_hand": 77,
+        "source_hand_projection_distance_mm": 6.4307693392038345,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 72,
+        "finger": 23,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 101,
+        "actual_hand_coverage20mm": 0.9504950495049505,
+        "hand_mean_displacement_mm": 75.82994550466537,
+        "high_confidence_actual_hand": 72,
+        "source_hand_projection_distance_mm": 6.767976563423872,
+        "nonhand_sources_on_hand": {}
+      }
+    }
+  },
+  "smplx_g1_spine1": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 6.8219974637031555,
+      "symmetric_sample_mean_distance_mm": 8.724558939138863,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 63,
+        "finger": 0,
+        "wrist_housing": 36,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 63,
+        "source_hand_projection_distance_mm": 7.3034511879086494,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 68,
+        "finger": 0,
+        "wrist_housing": 30,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 68,
+        "source_hand_projection_distance_mm": 7.722004316747189,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 461,
+      "max_displacement_mm": 44.71588134765625,
+      "mean_displacement_mm": 2.47147586196661,
+      "mean_projection_distance_mm": 6.987131200730801,
+      "symmetric_sample_mean_distance_mm": 9.06529620509867,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 91,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 24.291573092341423,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 8.785213343799114,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 92,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 24.432867765426636,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 9.242426604032516,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "32": {
+      "moved_slots": 464,
+      "max_displacement_mm": 43.137311935424805,
+      "mean_displacement_mm": 2.4292084854096174,
+      "mean_projection_distance_mm": 6.9878119975328445,
+      "symmetric_sample_mean_distance_mm": 9.062134680179224,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 91,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 24.30647797882557,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 8.786704391241074,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 90,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 23.640194907784462,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 9.193030185997486,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "64": {
+      "moved_slots": 460,
+      "max_displacement_mm": 37.48726844787598,
+      "mean_displacement_mm": 2.0855567418038845,
+      "mean_projection_distance_mm": 6.9731599651277065,
+      "symmetric_sample_mean_distance_mm": 9.048637007984153,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 90,
+        "finger": 0,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 22.027432918548584,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 8.553012274205685,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 89,
+        "finger": 0,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 20.67660726606846,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 9.006696753203869,
+        "nonhand_sources_on_hand": {}
+      }
+    }
+  },
+  "smplx_g1_bbox50": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 7.089558523148298,
+      "symmetric_sample_mean_distance_mm": 8.893239708473496,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 70,
+        "finger": 0,
+        "wrist_housing": 29,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 0.9891304347826086,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 70,
+        "source_hand_projection_distance_mm": 7.223882246762514,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 64,
+        "finger": 0,
+        "wrist_housing": 34,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 64,
+        "source_hand_projection_distance_mm": 7.359483279287815,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 457,
+      "max_displacement_mm": 45.762598514556885,
+      "mean_displacement_mm": 2.5009054224938154,
+      "mean_projection_distance_mm": 7.232156116515398,
+      "symmetric_sample_mean_distance_mm": 9.231352038441683,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 93,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 0.9891304347826086,
+        "hand_mean_displacement_mm": 23.148801177740097,
+        "high_confidence_actual_hand": 90,
+        "source_hand_projection_distance_mm": 8.484401740133762,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 88,
+        "finger": 0,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 25.941403582692146,
+        "high_confidence_actual_hand": 87,
+        "source_hand_projection_distance_mm": 8.867235854268074,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 458,
+      "max_displacement_mm": 45.41987180709839,
+      "mean_displacement_mm": 2.501549432054162,
+      "mean_projection_distance_mm": 7.2340285405516624,
+      "symmetric_sample_mean_distance_mm": 9.234557323615412,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 93,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 0.9891304347826086,
+        "hand_mean_displacement_mm": 23.099586367607117,
+        "high_confidence_actual_hand": 90,
+        "source_hand_projection_distance_mm": 8.482315577566624,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 88,
+        "finger": 0,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 25.747114792466164,
+        "high_confidence_actual_hand": 87,
+        "source_hand_projection_distance_mm": 8.843502961099148,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 460,
+      "max_displacement_mm": 38.56092691421509,
+      "mean_displacement_mm": 2.1136212162673473,
+      "mean_projection_distance_mm": 7.223401218652725,
+      "symmetric_sample_mean_distance_mm": 9.219159993552818,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 99,
+        "actual_hand": 90,
+        "finger": 0,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 0.9891304347826086,
+        "hand_mean_displacement_mm": 20.215237513184547,
+        "high_confidence_actual_hand": 88,
+        "source_hand_projection_distance_mm": 8.318976499140263,
+        "nonhand_sources_on_hand": {}
+      },
+      "right": {
+        "slots": 98,
+        "actual_hand": 86,
+        "finger": 0,
+        "wrist_housing": 12,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 22.705286741256714,
+        "high_confidence_actual_hand": 86,
+        "source_hand_projection_distance_mm": 8.459770120680332,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    }
+  },
+  "soma_g1_spine1": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 6.848509423434734,
+      "symmetric_sample_mean_distance_mm": 8.735334172881045,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 74,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 72,
+        "source_hand_projection_distance_mm": 7.0354691706597805,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 1
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 67,
+        "finger": 0,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 67,
+        "source_hand_projection_distance_mm": 7.311442401260138,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    },
+    "16": {
+      "moved_slots": 430,
+      "max_displacement_mm": 13.71842622756958,
+      "mean_displacement_mm": 0.5939310067333281,
+      "mean_projection_distance_mm": 6.888527423143387,
+      "symmetric_sample_mean_distance_mm": 8.89474128093614,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 76,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 4.896586295217276,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 7.557257544249296,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 72,
+        "finger": 0,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 7.2364769876003265,
+        "high_confidence_actual_hand": 71,
+        "source_hand_projection_distance_mm": 8.242317475378513,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 2
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 426,
+      "max_displacement_mm": 13.522922992706299,
+      "mean_displacement_mm": 0.5864948034286499,
+      "mean_projection_distance_mm": 6.888218689709902,
+      "symmetric_sample_mean_distance_mm": 8.89300256584511,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 76,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 4.879975691437721,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 7.5552137568593025,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 72,
+        "finger": 0,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 7.149372715502977,
+        "high_confidence_actual_hand": 71,
+        "source_hand_projection_distance_mm": 8.23275838047266,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 2
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 430,
+      "max_displacement_mm": 6.205737590789795,
+      "mean_displacement_mm": 0.24541065795347095,
+      "mean_projection_distance_mm": 6.859714165329933,
+      "symmetric_sample_mean_distance_mm": 8.780401460436309,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 74,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 1.8440579297021031,
+        "high_confidence_actual_hand": 72,
+        "source_hand_projection_distance_mm": 7.166082505136728,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 1
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 68,
+        "finger": 0,
+        "wrist_housing": 9,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 3.403658978641033,
+        "high_confidence_actual_hand": 68,
+        "source_hand_projection_distance_mm": 7.607662118971348,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 2
+        }
+      }
+    }
+  },
+  "soma_g1_bbox50": {
+    "0": {
+      "moved_slots": 0,
+      "max_displacement_mm": 0.0,
+      "mean_displacement_mm": 0.0,
+      "mean_projection_distance_mm": 7.414110470563173,
+      "symmetric_sample_mean_distance_mm": 9.163611136333536,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 74,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 7.637238129973412,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 1
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 67,
+        "finger": 0,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 0,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 0.0,
+        "high_confidence_actual_hand": 66,
+        "source_hand_projection_distance_mm": 6.869744975119829,
+        "nonhand_sources_on_hand": {}
+      }
+    },
+    "16": {
+      "moved_slots": 421,
+      "max_displacement_mm": 13.833463191986084,
+      "mean_displacement_mm": 0.6390560301952064,
+      "mean_projection_distance_mm": 7.480026688426733,
+      "symmetric_sample_mean_distance_mm": 9.349839657668369,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 75,
+        "finger": 0,
+        "wrist_housing": 7,
+        "other": 0,
+        "nonhand_on_hand": 3,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 5.624563898891211,
+        "high_confidence_actual_hand": 75,
+        "source_hand_projection_distance_mm": 8.276162669062614,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 3
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 71,
+        "finger": 0,
+        "wrist_housing": 6,
+        "other": 0,
+        "nonhand_on_hand": 3,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 7.402685005217791,
+        "high_confidence_actual_hand": 69,
+        "source_hand_projection_distance_mm": 7.949442602694035,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 3
+        }
+      }
+    },
+    "32": {
+      "moved_slots": 420,
+      "max_displacement_mm": 15.508592128753662,
+      "mean_displacement_mm": 0.6779812392778695,
+      "mean_projection_distance_mm": 7.484113331884146,
+      "symmetric_sample_mean_distance_mm": 9.357309154084765,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 75,
+        "finger": 0,
+        "wrist_housing": 7,
+        "other": 0,
+        "nonhand_on_hand": 3,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 5.5403136648237705,
+        "high_confidence_actual_hand": 75,
+        "source_hand_projection_distance_mm": 8.26038047671318,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 3
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 72,
+        "finger": 0,
+        "wrist_housing": 5,
+        "other": 0,
+        "nonhand_on_hand": 3,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 8.245326578617096,
+        "high_confidence_actual_hand": 70,
+        "source_hand_projection_distance_mm": 8.029752410948277,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 3
+        }
+      }
+    },
+    "64": {
+      "moved_slots": 421,
+      "max_displacement_mm": 7.006645202636719,
+      "mean_displacement_mm": 0.2849285083357245,
+      "mean_projection_distance_mm": 7.436577696353197,
+      "symmetric_sample_mean_distance_mm": 9.232827268144765,
+      "central_head_legs_unchanged": true,
+      "left": {
+        "slots": 82,
+        "actual_hand": 74,
+        "finger": 0,
+        "wrist_housing": 8,
+        "other": 0,
+        "nonhand_on_hand": 2,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 2.1388414315879345,
+        "high_confidence_actual_hand": 74,
+        "source_hand_projection_distance_mm": 7.7015613205730915,
+        "nonhand_sources_on_hand": {
+          "leftForeArm": 2
+        }
+      },
+      "right": {
+        "slots": 77,
+        "actual_hand": 67,
+        "finger": 0,
+        "wrist_housing": 10,
+        "other": 0,
+        "nonhand_on_hand": 1,
+        "hand_reference_samples": 92,
+        "actual_hand_coverage20mm": 1.0,
+        "hand_mean_displacement_mm": 3.9365445263683796,
+        "high_confidence_actual_hand": 66,
+        "source_hand_projection_distance_mm": 7.407711818814278,
+        "nonhand_sources_on_hand": {
+          "rightForeArm": 1
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,86 @@
+{
+  "smplx_g1_spine1": {
+    "dataset": {
+      "source": "/data/workspace/motion_studio/outputs/segment-binding-audit/g1/dataset.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_g1_spine1/dataset.npz",
+      "sha256": "8ca161fb796a7482bc863da06033f5a78ccab2b88f88312b660c07df405bfad4"
+    },
+    "slots": {
+      "source": "/data/workspace/motion_studio/outputs/segment-binding-audit/g1/train/correspondence_slots_final.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_g1_spine1/slots.npz",
+      "sha256": "cd196a3e7b1128adddc759505a56bbf768e4682534144d1a4465324ef50540e3"
+    },
+    "config": {
+      "sha256": "6683b94327dbca9dee689960a86fad969a5f401e0b9759cd8c5634c8e408b724"
+    },
+    "motion": {
+      "path": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808"
+    }
+  },
+  "smplx_g1_bbox50": {
+    "dataset": {
+      "source": "/data/workspace/motion_studio/outputs/soma-correspondence-audit/smplx_g1_bbox50/dataset.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_g1_bbox50/dataset.npz",
+      "sha256": "3cb2c6de104206381c50b4cf2c5c3e93c82dce6e35dc737555ea6aafe6ba08d0"
+    },
+    "slots": {
+      "source": "/data/workspace/motion_studio/outputs/soma-correspondence-audit/smplx_g1_bbox50/train/correspondence_slots_final.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_g1_bbox50/slots.npz",
+      "sha256": "fbb1b7eb1f5e3bb36c4d09eabd982e669474961bab2071b720523cba2ff47c9a"
+    },
+    "config": {
+      "sha256": "cb6681b08cfc98226e060b9fb9d86d42c158770a08baf2946d0bf8fb420c373d"
+    },
+    "motion": {
+      "path": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808"
+    }
+  },
+  "smplx_astro_spine1": {
+    "dataset": {
+      "source": "/data/workspace/motion_studio/outputs/astro-hands-correspondence/smplx_astro_spine1/dataset.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_astro_spine1/dataset.npz",
+      "sha256": "dc625e316cfadc0824c919bed33a7a00488740e81a71e5611686da45e9a9006a"
+    },
+    "slots": {
+      "source": "/data/workspace/motion_studio/outputs/astro-hands-correspondence/smplx_astro_spine1/train/correspondence_slots_final.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_astro_spine1/slots.npz",
+      "sha256": "777ddf026b9fe7d8a9254e267dcd5ce8e5e8258f057e85378961f142c08111d5"
+    },
+    "config": {
+      "sha256": "18cf1e4cd9c36c1a40510e598c4196da5b2792d85aeb936b4013ac7d9124ade7"
+    },
+    "motion": {
+      "path": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808"
+    }
+  },
+  "smplx_astro_bbox50": {
+    "dataset": {
+      "source": "/data/workspace/motion_studio/outputs/astro-hands-correspondence/smplx_astro_bbox50/dataset.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_astro_bbox50/dataset.npz",
+      "sha256": "84eb7fcecea84190528e20cb07a63052c18b40f54f8e92ba25ab535219761c9d"
+    },
+    "slots": {
+      "source": "/data/workspace/motion_studio/outputs/astro-hands-correspondence/smplx_astro_bbox50/train/correspondence_slots_final.npz",
+      "copy": "/data/workspace/motion_studio/outputs/umr-motion-preliminary-v1/smplx_astro_bbox50/slots.npz",
+      "sha256": "5e03fae097186a75f0d39f2fe5af8f0577bd5297f2ffb2cae6cd5ccd28dec18f"
+    },
+    "config": {
+      "sha256": "136cf23cd6811b2941b4285bcbd7c33618e1bccdac793ea8242670630613ad16"
+    },
+    "motion": {
+      "path": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808"
+    }
+  },
+  "UMR": {
+    "head": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "patch_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  "UMR-astro-surface-experiment": {
+    "head": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+    "patch_sha256": "5d9feed17c5c70f4bc42df85093540d6147148212880b48cae5d125ce8b02b8c"
+  }
+}

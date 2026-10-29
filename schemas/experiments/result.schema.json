@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion Studio per-arm result v1 (one object per JSONL line)",
+  "type": "object", "additionalProperties": false,
+  "required": ["schema_version", "run_id", "experiment_id", "arm_id", "cohort_id", "cohort_status", "superseded_by", "task", "source_model", "robot", "center", "variant", "matched_control", "evidence_origin", "reproducibility", "evidence", "conditions", "execution", "metrics", "segments", "unknowns", "limitations"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "run_id": {"type": "string", "minLength": 1}, "experiment_id": {"type": "string"},
+    "arm_id": {"type": "string"}, "cohort_id": {"type": "string"},
+    "cohort_status": {"enum": ["legacy", "baseline_candidate", "baseline", "ablation"]}, "superseded_by": {"type": ["string", "null"]},
+    "task": {"enum": ["static_correspondence", "motion"]}, "source_model": {"enum": ["smplx", "soma"]},
+    "robot": {"enum": ["astro", "g1"]}, "center": {"enum": ["bbox50", "spine1"]},
+    "variant": {"enum": ["raw", "wrist_k32"]}, "matched_control": {"type": ["string", "null"]},
+    "evidence_origin": {"enum": ["retrospective", "prospective"]},
+    "reproducibility": {"enum": ["not_rerun", "tested_rerun"]},
+    "evidence": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/evidence"}},
+    "conditions": {"type": "object"},
+    "execution": {
+      "type": "object", "additionalProperties": false,
+      "required": ["command", "cwd", "returncode", "wall_seconds", "started_at", "finished_at"],
+      "properties": {
+        "command": {"type": ["array", "null"], "items": {"type": "string"}},
+        "cwd": {"type": ["string", "null"]}, "returncode": {"type": ["integer", "null"]},
+        "wall_seconds": {"type": ["number", "null"], "minimum": 0},
+        "started_at": {"type": ["string", "null"]}, "finished_at": {"type": ["string", "null"]}
+      }
+    },
+    "metrics": {"type": "array", "items": {"$ref": "#/$defs/metric"}},
+    "segments": {"type": "array", "items": {"$ref": "#/$defs/segment"}},
+    "unknowns": {"type": "array", "items": {"type": "string"}},
+    "limitations": {"type": "array", "items": {"type": "string"}}
+  },
+  "$defs": {
+    "evidence": {
+      "type": "object", "additionalProperties": false,
+      "required": ["path", "sha256", "bytes", "pointer"],
+      "properties": {
+        "path": {"type": "string"}, "sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+        "bytes": {"type": "integer", "minimum": 0}, "pointer": {"type": "string"}
+      }
+    },
+    "metric": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "value", "unit", "aggregation", "population", "trajectory_stage", "status", "reason", "source_pointer"],
+      "properties": {
+        "id": {"type": "string"}, "value": {"type": ["number", "null"]},
+        "unit": {"type": "string"}, "aggregation": {"type": "string"}, "population": {"type": "string"},
+        "trajectory_stage": {"enum": ["static", "pre_filter", "post_filter", "not_measured"]},
+        "status": {"enum": ["recorded", "derived", "not_measured"]},
+        "reason": {"type": ["string", "null"]}, "source_pointer": {"type": ["string", "null"]}
+      }
+    },
+    "segment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["label_schema", "segment", "slots", "compatible", "precision", "coverage", "high_slots", "high_compatible", "source_pointer"],
+      "properties": {
+        "label_schema": {"enum": ["native19", "common18"]}, "segment": {"type": "string"},
+        "slots": {"type": "integer", "minimum": 0}, "compatible": {"type": "integer", "minimum": 0},
+        "precision": {"type": "number", "minimum": 0, "maximum": 1},
+        "coverage": {"type": ["number", "null"], "minimum": 0, "maximum": 1},
+        "high_slots": {"type": ["integer", "null"], "minimum": 0},
+        "high_compatible": {"type": ["integer", "null"], "minimum": 0}, "source_pointer": {"type": "string"}
+      }
+    }
+  }
+}

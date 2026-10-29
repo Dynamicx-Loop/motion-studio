@@ -15,6 +15,7 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 from static_pair import UMR, WORKSPACE, check_official_source, sha, write
+from motion_data_paths import canonical_motion_config
 import build_correspondence_ae_dataset as build
 import humanoid_retarget_pipeline as pipeline
 import retarget_smpl_to_humanoid_surface_vector as rb
@@ -52,7 +53,8 @@ def evaluate(run, workspace):
         receipt = json.loads((run / 'logs' / (arm + '-completed.json')).read_text())
         if receipt['returncode'] != 0 or receipt.get('timed_out'):
             raise ValueError('Training did not complete: ' + arm)
-        config = pipeline.load_pipeline_config(run / 'configs' / (arm + '.json'), UMR / 'humanoid_retarget_defaults.json')
+        config = canonical_motion_config(pipeline.load_pipeline_config(
+            run / 'configs' / (arm + '.json'), UMR / 'humanoid_retarget_defaults.json'))
         dataset_path = Path(config['correspondence']['dataset']['out'])
         slot_path = Path(config['correspondence']['train']['out_dir']) / 'correspondence_slots_final.npz'
         assert pipeline.correspondence_dataset_compatible(dataset_path, config)

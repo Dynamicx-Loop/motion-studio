@@ -1,0 +1,114 @@
+[
+  {
+    "arm": "smplx_astro_bbox50_candidate",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_astro_bbox50_candidate.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 43.953272719008964
+  },
+  {
+    "arm": "smplx_astro_bbox50_raw",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_astro_bbox50_raw.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 40.0637011200015
+  },
+  {
+    "arm": "smplx_astro_spine1_candidate",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_astro_spine1_candidate.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 41.007346865008
+  },
+  {
+    "arm": "smplx_astro_spine1_raw",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_astro_spine1_raw.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 40.0507267209905
+  },
+  {
+    "arm": "smplx_g1_bbox50_candidate",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_g1_bbox50_candidate.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 40.429234597992036
+  },
+  {
+    "arm": "smplx_g1_bbox50_raw",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_g1_bbox50_raw.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 42.121700233998126
+  },
+  {
+    "arm": "smplx_g1_spine1_candidate",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_g1_spine1_candidate.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 41.88614442301332
+  },
+  {
+    "arm": "smplx_g1_spine1_raw",
+    "command": [
+      "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+      "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/humanoid_retarget_pipeline.py",
+      "--config",
+      "/data/workspace/motion_studio/experiments/umr-motion-canonical-v1/smplx_g1_spine1_raw.json",
+      "--stage",
+      "retarget",
+      "--skip-view"
+    ],
+    "returncode": 0,
+    "wall_seconds": 42.072252686994034
+  }
+]

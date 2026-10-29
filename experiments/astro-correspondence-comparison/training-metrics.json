@@ -1,0 +1,210 @@
+{
+  "visual": {
+    "logged_epochs": [
+      {
+        "epoch": 1.0,
+        "loss": 0.009145,
+        "chamfer": 0.007443,
+        "repulsion": 0.001702,
+        "residual": 0.0,
+        "edge": 0.0,
+        "lr": 0.00099999
+      },
+      {
+        "epoch": 50.0,
+        "loss": 0.001724,
+        "chamfer": 0.00014,
+        "repulsion": 0.001419,
+        "residual": 0.0,
+        "edge": 0.000166,
+        "lr": 0.00097577
+      },
+      {
+        "epoch": 100.0,
+        "loss": 0.001705,
+        "chamfer": 0.000129,
+        "repulsion": 0.001406,
+        "residual": 0.0,
+        "edge": 0.000169,
+        "lr": 0.00090546
+      },
+      {
+        "epoch": 150.0,
+        "loss": 0.001701,
+        "chamfer": 0.000129,
+        "repulsion": 0.001391,
+        "residual": 0.0,
+        "edge": 0.000181,
+        "lr": 0.00079595
+      },
+      {
+        "epoch": 200.0,
+        "loss": 0.001696,
+        "chamfer": 0.000128,
+        "repulsion": 0.0014,
+        "residual": 0.0,
+        "edge": 0.000168,
+        "lr": 0.00065796
+      },
+      {
+        "epoch": 250.0,
+        "loss": 0.001692,
+        "chamfer": 0.000126,
+        "repulsion": 0.001394,
+        "residual": 0.0,
+        "edge": 0.000172,
+        "lr": 0.000505
+      },
+      {
+        "epoch": 300.0,
+        "loss": 0.00169,
+        "chamfer": 0.000126,
+        "repulsion": 0.001388,
+        "residual": 0.0,
+        "edge": 0.000176,
+        "lr": 0.00035204
+      },
+      {
+        "epoch": 350.0,
+        "loss": 0.001688,
+        "chamfer": 0.000126,
+        "repulsion": 0.001388,
+        "residual": 0.0,
+        "edge": 0.000174,
+        "lr": 0.00021405
+      },
+      {
+        "epoch": 400.0,
+        "loss": 0.001688,
+        "chamfer": 0.000126,
+        "repulsion": 0.001387,
+        "residual": 0.0,
+        "edge": 0.000174,
+        "lr": 0.00010454
+      },
+      {
+        "epoch": 450.0,
+        "loss": 0.001687,
+        "chamfer": 0.000126,
+        "repulsion": 0.001385,
+        "residual": 0.0,
+        "edge": 0.000176,
+        "lr": 3.423e-05
+      },
+      {
+        "epoch": 500.0,
+        "loss": 0.001687,
+        "chamfer": 0.000126,
+        "repulsion": 0.001385,
+        "residual": 0.0,
+        "edge": 0.000176,
+        "lr": 1e-05
+      }
+    ],
+    "exact_training_command": "[HumanoidPipeline] /data/workspace/motion_studio/externals/UMR/.venv/bin/python /data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/train_correspondence_template_residual_ae.py --data /data/workspace/motion_studio/outputs/astro-correspondence-comparison/visual/dataset.npz --out-dir /data/workspace/motion_studio/outputs/astro-correspondence-comparison/visual/train --template-name smplx_neutral_betas_52fa48a138 --template-sort y_z_x --num-points 4096 --normalize per_sample_height --epochs 500 --batch-size 1 --fixed-template --lr 0.001 --lr-scheduler cosine --min-lr 1e-05 --chamfer-weight 1.0 --repulsion-weight 0.002 --repulsion-k 8 --repulsion-radius 0.035 --residual-weight 0.0 --edge-weight 0.4 --edge-graph geodesic --edge-k 32 --noise-std 0.002 --dropout-ratio 0.0 --resample-every 0 --log-every 50 --save-every 500 --seed 0 --device cuda"
+  },
+  "primitive": {
+    "logged_epochs": [
+      {
+        "epoch": 1.0,
+        "loss": 0.009003,
+        "chamfer": 0.0073,
+        "repulsion": 0.001702,
+        "residual": 0.0,
+        "edge": 0.0,
+        "lr": 0.00099999
+      },
+      {
+        "epoch": 50.0,
+        "loss": 0.001746,
+        "chamfer": 0.000138,
+        "repulsion": 0.001439,
+        "residual": 0.0,
+        "edge": 0.00017,
+        "lr": 0.00097577
+      },
+      {
+        "epoch": 100.0,
+        "loss": 0.001729,
+        "chamfer": 0.000131,
+        "repulsion": 0.001425,
+        "residual": 0.0,
+        "edge": 0.000173,
+        "lr": 0.00090546
+      },
+      {
+        "epoch": 150.0,
+        "loss": 0.001721,
+        "chamfer": 0.00013,
+        "repulsion": 0.00142,
+        "residual": 0.0,
+        "edge": 0.000171,
+        "lr": 0.00079595
+      },
+      {
+        "epoch": 200.0,
+        "loss": 0.001709,
+        "chamfer": 0.000127,
+        "repulsion": 0.001412,
+        "residual": 0.0,
+        "edge": 0.00017,
+        "lr": 0.00065796
+      },
+      {
+        "epoch": 250.0,
+        "loss": 0.001708,
+        "chamfer": 0.000128,
+        "repulsion": 0.001409,
+        "residual": 0.0,
+        "edge": 0.000171,
+        "lr": 0.000505
+      },
+      {
+        "epoch": 300.0,
+        "loss": 0.001706,
+        "chamfer": 0.000128,
+        "repulsion": 0.001408,
+        "residual": 0.0,
+        "edge": 0.00017,
+        "lr": 0.00035204
+      },
+      {
+        "epoch": 350.0,
+        "loss": 0.001704,
+        "chamfer": 0.000128,
+        "repulsion": 0.001407,
+        "residual": 0.0,
+        "edge": 0.00017,
+        "lr": 0.00021405
+      },
+      {
+        "epoch": 400.0,
+        "loss": 0.001704,
+        "chamfer": 0.000129,
+        "repulsion": 0.001406,
+        "residual": 0.0,
+        "edge": 0.000169,
+        "lr": 0.00010454
+      },
+      {
+        "epoch": 450.0,
+        "loss": 0.001703,
+        "chamfer": 0.000129,
+        "repulsion": 0.001405,
+        "residual": 0.0,
+        "edge": 0.000169,
+        "lr": 3.423e-05
+      },
+      {
+        "epoch": 500.0,
+        "loss": 0.001703,
+        "chamfer": 0.000129,
+        "repulsion": 0.001404,
+        "residual": 0.0,
+        "edge": 0.000171,
+        "lr": 1e-05
+      }
+    ],
+    "exact_training_command": "[HumanoidPipeline] /data/workspace/motion_studio/externals/UMR/.venv/bin/python /data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/train_correspondence_template_residual_ae.py --data /data/workspace/motion_studio/outputs/astro-correspondence-comparison/primitive/dataset.npz --out-dir /data/workspace/motion_studio/outputs/astro-correspondence-comparison/primitive/train --template-name smplx_neutral_betas_52fa48a138 --template-sort y_z_x --num-points 4096 --normalize per_sample_height --epochs 500 --batch-size 1 --fixed-template --lr 0.001 --lr-scheduler cosine --min-lr 1e-05 --chamfer-weight 1.0 --repulsion-weight 0.002 --repulsion-k 8 --repulsion-radius 0.035 --residual-weight 0.0 --edge-weight 0.4 --edge-graph geodesic --edge-k 32 --noise-std 0.002 --dropout-ratio 0.0 --resample-every 0 --log-every 50 --save-every 500 --seed 0 --device cuda"
+  }
+}

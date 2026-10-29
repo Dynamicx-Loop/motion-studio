@@ -1,0 +1,76 @@
+{
+  "date": "2026-10-23",
+  "report_version": "v4 canonical Astro",
+  "canonical_commit": "d2070956558ffbf9226dcf74017d40740724d8d8",
+  "canonical_xml_sha256": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66",
+  "current_static_arms": 16,
+  "historical_static_arms": 20,
+  "fresh_astro_trainings": 4,
+  "fresh_motion_solves": 8,
+  "segment_rows_verified": 1332,
+  "unique_shared_english_figures": 20,
+  "browser": {
+    "core_page": "http://127.0.0.1:8770/?lang=en#canonical",
+    "english_and_chinese_numeric_cells_equal": true,
+    "image_payloads_identical_across_languages": true,
+    "state_preserved": [
+      "source/robot/variant arm",
+      "native/common scheme",
+      "leftShoulder segment",
+      "current bbox50 figure",
+      "open disclosure",
+      "hash",
+      "loaded iframe identity"
+    ],
+    "current_selected_explorer_arm": "canonical_soma_astro_bbox50_candidate",
+    "default_explorer_arm": "canonical_smplx_astro_bbox50_raw",
+    "current_raw_and_candidate_inspectors": {
+      "arms_each": 8,
+      "canvas_loaded": true,
+      "renderer_error": ""
+    },
+    "figure_zoom": {
+      "source_size": [
+        2925,
+        2775
+      ],
+      "dialog_open_close": true,
+      "all_20_images_loaded": true
+    },
+    "historical_anchor_opens_history_disclosure": true,
+    "no_horizontal_page_overflow": true,
+    "motion": {
+      "raw_and_candidate_times_selected_matched_spine1_matched_bbox50": true,
+      "all_six_combinations_renderer_error": "",
+      "scrub_review_source_frame": 4515,
+      "scrub_review_seconds": 50.17,
+      "playback_advanced_from_frame_0_to_frame_502": true,
+      "foreground_required_for_normal_animation_timing": "Background browser tabs can throttle requestAnimationFrame; foreground playback verified",
+      "visual_review": "Standing/start and floor-supported poses show recognizable lowering/rising configurations with differing arm/leg placement. Native sizes and floor heights retained. This is qualitative, not contact or dynamics validation."
+    },
+    "screenshots": [
+      "outputs/umr-binding-report/canonical-zh-browser.png",
+      "outputs/umr-binding-report/canonical-figure-browser.png",
+      "outputs/umr-motion-canonical-v1/browser-start-pose.png",
+      "outputs/umr-motion-canonical-v1/browser-floor-pose.png"
+    ]
+  },
+  "checks": [
+    "canonical frozen asset/input/control/hash verifier",
+    "all eight trajectory timing/joint-order/geometry/binary checks",
+    "two independent calibration worked-example tests",
+    "Python compilation",
+    "JavaScript syntax",
+    "Markdown references and whitespace",
+    "report local-reference/image/metric guards"
+  ],
+  "limitations": [
+    "BONES-SEED motion/actor-fit/dataset rig remain absent; SOMA model/weights linked and verified",
+    "one motion, one seed, one static reference pose",
+    "no validated finger identities or grasp transfer",
+    "no new primitive comparisons, dynamics or physical execution"
+  ],
+  "authorization": "Offline static and motion experiments authorized; old retargeting holds explicitly historical",
+  "asset_fetch": "origin/main behind local HEAD; no merge/reset; tracked patch empty; local untracked changes preserved",
+  "upstream_drift_at_end": "none; recorded in canonical validation"
+}

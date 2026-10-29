@@ -1,0 +1,104 @@
+{
+  "reference": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+  "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808",
+  "model": "/data/motions/smpl/smpl_model/models_smplx_v1_1/models/smplx/SMPLX_NEUTRAL.npz",
+  "frames": 5468,
+  "fps": 90.00090026855469,
+  "duration_s": 60.754948,
+  "all_numeric_fields_finite": true,
+  "pose_alias_exact": true,
+  "translation_alias_exact": true,
+  "matched_shape_joint_reconstruction_m": {
+    "mean": 1.661844172657412e-07,
+    "p95": 2.995147609186139e-07,
+    "max": 4.809360066831311e-07
+  },
+  "zero_shape_change_world_m": {
+    "mean": 0.035758106452838466,
+    "p95": 0.06633896606843233,
+    "max": 0.0988936412184231
+  },
+  "zero_shape_change_root_relative_m": {
+    "mean": 0.03362753110293601,
+    "p95": 0.0830502155576979,
+    "max": 0.09286564711389006
+  },
+  "stored_source_fit_residual_m": {
+    "mean": 0.036585718393325806,
+    "p95": 0.042351847700774665,
+    "max": 0.04373891279101372
+  },
+  "nonzero_hand_frames": 5468,
+  "original_bvh_available": true,
+  "validation_status": "matched source comparison completed; inspect metrics, not ground-truth accuracy",
+  "rerun_settings": {
+    "iterations": 10,
+    "dt": 0.01,
+    "damping": 0.01,
+    "posture_cost": 0.1,
+    "root_posture_cost": 0.1,
+    "position_cost": 1.0,
+    "ankle_wrist_toe_weight": 5.0,
+    "orientation_cost": 0.1,
+    "qp_solver": "daqp",
+    "progress": true
+  },
+  "bvh_sha256": "0b326a142f659a23c6c8daf1c21d2a814b83d22b2bfdc16d23ed80dbfb108e48",
+  "body_joint_error_m": {
+    "mean": 1.731991871018629e-07,
+    "p95": 3.1059804763206917e-07,
+    "max": 6.221099853840382e-07
+  },
+  "translation_error_m": {
+    "mean": 6.967133714397278e-08,
+    "p95": 2.4575624024691933e-07,
+    "max": 3.5762786865234375e-07
+  },
+  "non_wrist_body_rotation_error_deg": {
+    "mean": 1.1696271176782331e-05,
+    "p95": 3.842201095331133e-05,
+    "max": 0.00010443980557818255
+  },
+  "rerun_source_fit_residual_m": {
+    "mean": 0.0365857258439064,
+    "p95": 0.04235185272991657,
+    "max": 0.04373892769217491
+  },
+  "mesh_error_all_vertices_m": {
+    "mean": 0.00315083097666502,
+    "p95": 0.024133959785103798,
+    "max": 0.0629865899682045
+  },
+  "mesh_error_with_matching_wrists_hands_face_m": {
+    "mean": 1.4503281420275016e-07,
+    "p95": 3.3848931479951716e-07,
+    "max": 1.0864571322599659e-06
+  },
+  "mesh_bounds_m": [
+    [
+      [
+        -3.944579601287842,
+        -0.05750715732574463,
+        1.4142110347747803
+      ],
+      [
+        -3.9445066452026367,
+        -0.06196016073226929,
+        1.4189684391021729
+      ]
+    ],
+    [
+      [
+        -1.8347828388214111,
+        1.6615140438079834,
+        3.1624224185943604
+      ],
+      [
+        -1.8347591161727905,
+        1.6615570783615112,
+        3.161787509918213
+      ]
+    ]
+  ],
+  "rerun_all_parameters_finite": true
+}

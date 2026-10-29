@@ -1,0 +1,17 @@
+{
+  "extends": "/data/workspace/motion_studio/configs/umr/astro-wendy-6s-9s.json",
+  "solver": {
+    "body_segment": {
+      "cost_config": {
+        "torso": {
+          "normal_cost": 100,
+          "sample_slots": 50,
+          "point_cost": 20
+        }
+      }
+    }
+  },
+  "retarget": {
+    "out": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/torso_normal_100.npz"
+  }
+}

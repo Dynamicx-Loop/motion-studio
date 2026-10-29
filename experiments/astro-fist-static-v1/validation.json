@@ -1,0 +1,66 @@
+{
+  "asset_files_verified": 215,
+  "source_controls": [
+    "smplx_astro_spine1: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "smplx_g1_spine1: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "smplx_astro_bbox50: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "smplx_g1_bbox50: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "soma_astro_spine1: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "soma_g1_spine1: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "soma_astro_bbox50: exact historical human sample/order/graph; model-specific binding rebuilt",
+    "soma_g1_bbox50: exact historical human sample/order/graph; model-specific binding rebuilt"
+  ],
+  "fresh_astro_slot_max_absolute_delta_vs_historical": {
+    "smplx_astro_spine1": 0.10989981889724731,
+    "smplx_astro_bbox50": 0.1378219723701477,
+    "soma_astro_spine1": 0.08990612626075745,
+    "soma_astro_bbox50": 0.09877914190292358
+  },
+  "g1_static_slots_exact_reuse_verified": true,
+  "all_current_astro_xml_paths_identical": true,
+  "independent_exact_candidate_hand_counts": {
+    "smplx_astro_spine1": {
+      "left": 92,
+      "right": 92
+    },
+    "smplx_astro_bbox50": {
+      "left": 93,
+      "right": 90
+    },
+    "soma_astro_spine1": {
+      "left": 78,
+      "right": 73
+    },
+    "soma_astro_bbox50": {
+      "left": 79,
+      "right": 74
+    },
+    "smplx_g1_spine1": {
+      "left": 91,
+      "right": 90
+    },
+    "smplx_g1_bbox50": {
+      "left": 93,
+      "right": 88
+    },
+    "soma_g1_spine1": {
+      "left": 76,
+      "right": 72
+    },
+    "soma_g1_bbox50": {
+      "left": 75,
+      "right": 72
+    }
+  },
+  "central_head_leg_invariance_all_24_derivatives": true,
+  "previous_report_archive_verified": true,
+  "historical_raw_files_verified": 361,
+  "live_upstream_drift": {
+    "head_at_end": "d2070956558ffbf9226dcf74017d40740724d8d8",
+    "live_xml_sha256_at_end": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66",
+    "same_commit_as_snapshot": true,
+    "same_xml_as_snapshot": true,
+    "action": "Recorded only; all computations use immutable snapshot"
+  },
+  "umr_tracked_patch_unchanged": true
+}

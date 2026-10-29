@@ -1,0 +1,65 @@
+{
+  "completed": true,
+  "date": "2026-10-23",
+  "reviewer": "Parent agent using existing Chrome DevTools context",
+  "heading": "One Astro fist snapshot across static binding and motion.",
+  "language_numeric_cells_equal": true,
+  "language_image_payloads_equal": true,
+  "explorer_arms": 52,
+  "default_arm": "canonical_smplx_astro_bbox50_raw",
+  "all20_zoomable_images_loaded": true,
+  "horizontal_overflow": false,
+  "state_preserved": [
+    "arm",
+    "native scheme",
+    "leftShoulder segment",
+    "bbox figure",
+    "matched disclosure",
+    "hash",
+    "iframe identity"
+  ],
+  "historical_deep_link_opens_history": true,
+  "static_raw_and_candidate_inspectors": {
+    "arms_each": 8,
+    "canvas_each": 1,
+    "errors": []
+  },
+  "figure_zoom_dimensions": [
+    2925,
+    2775
+  ],
+  "motion": {
+    "defaults": [
+      "selected",
+      "raw",
+      "paused"
+    ],
+    "all6_mode_binding_combinations_checked": true,
+    "scrub_frame": 1505,
+    "source_frame": 4515,
+    "time_seconds": 50.17,
+    "foreground_play_frame_advance": [
+      0,
+      537
+    ],
+    "errors": [],
+    "standing_and_floor_pose_visible": true,
+    "native_heights_retained": true,
+    "fixed_fists_visible": true,
+    "assessment": "qualitative only; no physical feasibility claim"
+  },
+  "independent_parent_array_check": {
+    "astro_arms": 4,
+    "all14_named_equal_bounds": true,
+    "pre_and_post_LQR_frames": 1823,
+    "max_error_rad": 4.768371586472142e-08,
+    "tolerance_rad": 1e-07
+  },
+  "archive_navigation_symlink": "outputs/umr-binding-report/history/pre-fist-v4/report/history/pre-canonical-v3",
+  "archive_original_bytes_hashes_verified": true,
+  "screenshots": {
+    "outputs/umr-binding-report/fist-zh-browser.png": "d5e7741cf38b85a86af15332dfa589fd06a47565a28b3dc12dcf4029c18058f4",
+    "outputs/umr-motion-fist-v1/browser-start-pose.png": "ed03cc4dca6d1a18a573cf75637303750635c25c091d2314740e193719f40f7a",
+    "outputs/umr-motion-fist-v1/browser-floor-pose.png": "98bdc5d58d12fc4fc697a976a0ffadeeef4a2a7380f13e3239e468bb7db34806"
+  }
+}

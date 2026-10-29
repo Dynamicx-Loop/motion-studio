@@ -1,0 +1,978 @@
+{
+  "smplx_astro_bbox50_candidate": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      50
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_pitch_joint",
+      "waist_roll_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_hand_thumb_0_joint",
+      "left_hand_thumb_1_joint",
+      "left_hand_thumb_2_joint",
+      "left_hand_middle_0_joint",
+      "left_hand_middle_1_joint",
+      "left_hand_index_0_joint",
+      "left_hand_index_1_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_hand_thumb_0_joint",
+      "right_hand_thumb_1_joint",
+      "right_hand_thumb_2_joint",
+      "right_hand_middle_0_joint",
+      "right_hand_middle_1_joint",
+      "right_hand_index_0_joint",
+      "right_hand_index_1_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.38991254568099976,
+      "p95": 1.7746408879756927,
+      "max": 8.120404243469238
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 4.275427341461182,
+      "p95": 19.287389564514157,
+      "max": 165.43894958496094
+    },
+    "visual_min_height_m": -0.025887572077000966,
+    "visual_penetration_frames_below_minus_1mm": 1106,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.45090510148107515,
+        "horizontal_speed_m_s": {
+          "mean": 0.08736019151458205,
+          "p95": 0.3421397172882321,
+          "max": 1.494534223034014
+        },
+        "horizontal_path_m": 2.3732615134119737
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.4574876577070762,
+        "horizontal_speed_m_s": {
+          "mean": 0.0822102553453175,
+          "p95": 0.33106901769817343,
+          "max": 1.5277322416293435
+        },
+        "horizontal_path_m": 2.2634997700590382
+      }
+    },
+    "root_net_displacement_m": 0.06055067107081413,
+    "root_path_m": 15.239923477172852,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.084738,
+      "max": 0.179404
+    },
+    "smpl_scale": 0.7456589341163635,
+    "trajectory_sha256": "67c982338d84380ee31c1661958d9421a917fae80b65b1cfab19035b2bb0ed98",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/astro/astro_p2_43dof_dex3_1.xml": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.09987679816543071,
+          "p95_m": 0.15974997501713084,
+          "max_m": 0.2066381220115149
+        },
+        "right_wrist": {
+          "mean_m": 0.10001245468418592,
+          "p95_m": 0.1470101874230531,
+          "max_m": 0.19745291041170648
+        },
+        "left_ankle": {
+          "mean_m": 0.0783742614238676,
+          "p95_m": 0.14405679337912675,
+          "max_m": 0.17245911657870192
+        },
+        "right_ankle": {
+          "mean_m": 0.07601480131838224,
+          "p95_m": 0.15481514505219227,
+          "max_m": 0.19086054866802352
+        }
+      }
+    }
+  },
+  "smplx_astro_bbox50_raw": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      50
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_pitch_joint",
+      "waist_roll_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_hand_thumb_0_joint",
+      "left_hand_thumb_1_joint",
+      "left_hand_thumb_2_joint",
+      "left_hand_middle_0_joint",
+      "left_hand_middle_1_joint",
+      "left_hand_index_0_joint",
+      "left_hand_index_1_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_hand_thumb_0_joint",
+      "right_hand_thumb_1_joint",
+      "right_hand_thumb_2_joint",
+      "right_hand_middle_0_joint",
+      "right_hand_middle_1_joint",
+      "right_hand_index_0_joint",
+      "right_hand_index_1_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.3952132761478424,
+      "p95": 1.8119142055511475,
+      "max": 9.078039169311523
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 4.436515808105469,
+      "p95": 20.022949028015123,
+      "max": 166.0150909423828
+    },
+    "visual_min_height_m": -0.026554646009917846,
+    "visual_penetration_frames_below_minus_1mm": 1107,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.44980800877674165,
+        "horizontal_speed_m_s": {
+          "mean": 0.08479323385178754,
+          "p95": 0.33791925120819993,
+          "max": 1.5244795480164524
+        },
+        "horizontal_path_m": 2.29787370048801
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.4591332967635765,
+        "horizontal_speed_m_s": {
+          "mean": 0.08175872819606687,
+          "p95": 0.35659900406165096,
+          "max": 1.5422457321102916
+        },
+        "horizontal_path_m": 2.2565183741162453
+      }
+    },
+    "root_net_displacement_m": 0.059487875550985336,
+    "root_path_m": 15.28357219696045,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.086347,
+      "max": 0.182897
+    },
+    "smpl_scale": 0.7456589341163635,
+    "trajectory_sha256": "87918dc885977c3a906bfc082775157940edfc6812e8dc3968a9eebfa08a941a",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/astro/astro_p2_43dof_dex3_1.xml": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.142509085448529,
+          "p95_m": 0.20553906667185673,
+          "max_m": 0.22912139717574675
+        },
+        "right_wrist": {
+          "mean_m": 0.13737916893967245,
+          "p95_m": 0.191132890928222,
+          "max_m": 0.21617851193007517
+        },
+        "left_ankle": {
+          "mean_m": 0.07831429049746799,
+          "p95_m": 0.13869302531552308,
+          "max_m": 0.17143070288108092
+        },
+        "right_ankle": {
+          "mean_m": 0.0762638784210191,
+          "p95_m": 0.15605654296268462,
+          "max_m": 0.19206305472642113
+        }
+      }
+    }
+  },
+  "smplx_astro_spine1_candidate": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      50
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_pitch_joint",
+      "waist_roll_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_hand_thumb_0_joint",
+      "left_hand_thumb_1_joint",
+      "left_hand_thumb_2_joint",
+      "left_hand_middle_0_joint",
+      "left_hand_middle_1_joint",
+      "left_hand_index_0_joint",
+      "left_hand_index_1_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_hand_thumb_0_joint",
+      "right_hand_thumb_1_joint",
+      "right_hand_thumb_2_joint",
+      "right_hand_middle_0_joint",
+      "right_hand_middle_1_joint",
+      "right_hand_index_0_joint",
+      "right_hand_index_1_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.3855157792568207,
+      "p95": 1.7585571110248566,
+      "max": 8.765735626220703
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 4.251135349273682,
+      "p95": 19.229446601867625,
+      "max": 149.64878845214844
+    },
+    "visual_min_height_m": -0.017382817153270672,
+    "visual_penetration_frames_below_minus_1mm": 1078,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.4103126714207351,
+        "horizontal_speed_m_s": {
+          "mean": 0.05594016174487581,
+          "p95": 0.21541965616199601,
+          "max": 0.5104914111678681
+        },
+        "horizontal_path_m": 1.3742495893933542
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.39166209544706526,
+        "horizontal_speed_m_s": {
+          "mean": 0.07744690572881587,
+          "p95": 0.32190382164835674,
+          "max": 0.5893141073414295
+        },
+        "horizontal_path_m": 1.8096579669020674
+      }
+    },
+    "root_net_displacement_m": 0.06210313364863396,
+    "root_path_m": 16.276226043701172,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.136495,
+      "max": 0.27607
+    },
+    "smpl_scale": 0.7456589341163635,
+    "trajectory_sha256": "1cee736a2ab7544a2a6971f03af2b7b678f524c85a7647a6dfa115e9f7fe5b79",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/astro/astro_p2_43dof_dex3_1.xml": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.08472371011933501,
+          "p95_m": 0.1528242676950609,
+          "max_m": 0.2066921337422684
+        },
+        "right_wrist": {
+          "mean_m": 0.09552744955294323,
+          "p95_m": 0.14448705378155363,
+          "max_m": 0.1900619809971566
+        },
+        "left_ankle": {
+          "mean_m": 0.09959270864192651,
+          "p95_m": 0.16530700706778947,
+          "max_m": 0.241192145236819
+        },
+        "right_ankle": {
+          "mean_m": 0.09306622609597276,
+          "p95_m": 0.15804052750331665,
+          "max_m": 0.25296325271285536
+        }
+      }
+    }
+  },
+  "smplx_astro_spine1_raw": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      50
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_pitch_joint",
+      "waist_roll_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "left_hand_thumb_0_joint",
+      "left_hand_thumb_1_joint",
+      "left_hand_thumb_2_joint",
+      "left_hand_middle_0_joint",
+      "left_hand_middle_1_joint",
+      "left_hand_index_0_joint",
+      "left_hand_index_1_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint",
+      "right_hand_thumb_0_joint",
+      "right_hand_thumb_1_joint",
+      "right_hand_thumb_2_joint",
+      "right_hand_middle_0_joint",
+      "right_hand_middle_1_joint",
+      "right_hand_index_0_joint",
+      "right_hand_index_1_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.37884658575057983,
+      "p95": 1.7368915677070618,
+      "max": 9.246162414550781
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 4.216292858123779,
+      "p95": 18.87588844299315,
+      "max": 181.8954315185547
+    },
+    "visual_min_height_m": -0.022694647630222713,
+    "visual_penetration_frames_below_minus_1mm": 1083,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.4119583104772353,
+        "horizontal_speed_m_s": {
+          "mean": 0.06043827972858675,
+          "p95": 0.2126681769650836,
+          "max": 0.5421817042181089
+        },
+        "horizontal_path_m": 1.4847522515120215
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.3927591881513988,
+        "horizontal_speed_m_s": {
+          "mean": 0.08248922455399005,
+          "p95": 0.3401645138589443,
+          "max": 0.6317176936293536
+        },
+        "horizontal_path_m": 1.9357278141694807
+      }
+    },
+    "root_net_displacement_m": 0.06310177594423294,
+    "root_path_m": 16.240571975708008,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.13668,
+      "max": 0.275616
+    },
+    "smpl_scale": 0.7456589341163635,
+    "trajectory_sha256": "064981c67ee42167a7447f25ee433293f9797f9828b4a314374fd0cd8c65f98f",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/astro/astro_p2_43dof_dex3_1.xml": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.12311393348314005,
+          "p95_m": 0.1672655933318693,
+          "max_m": 0.21927037599244495
+        },
+        "right_wrist": {
+          "mean_m": 0.12819605271650633,
+          "p95_m": 0.15785954175378003,
+          "max_m": 0.20496163764422212
+        },
+        "left_ankle": {
+          "mean_m": 0.09908223065777914,
+          "p95_m": 0.16543190372417996,
+          "max_m": 0.24099357353572043
+        },
+        "right_ankle": {
+          "mean_m": 0.09256904828096363,
+          "p95_m": 0.15885449590509912,
+          "max_m": 0.2518016133218428
+        }
+      }
+    }
+  },
+  "smplx_g1_bbox50_candidate": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      36
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.5778824687004089,
+      "p95": 2.2204744219779924,
+      "max": 9.726037979125977
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 6.444852352142334,
+      "p95": 23.803288269042923,
+      "max": 212.48121643066406
+    },
+    "visual_min_height_m": -0.01795659536342882,
+    "visual_penetration_frames_below_minus_1mm": 1815,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.43664289632473946,
+        "horizontal_speed_m_s": {
+          "mean": 0.12055855198175834,
+          "p95": 0.4266168889824302,
+          "max": 1.3574523166056485
+        },
+        "horizontal_path_m": 3.174676846558295
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.46242457487657707,
+        "horizontal_speed_m_s": {
+          "mean": 0.11893319762187092,
+          "p95": 0.3554813833516212,
+          "max": 1.5499712454632235
+        },
+        "horizontal_path_m": 3.3182030920398464
+      }
+    },
+    "root_net_displacement_m": 0.06481394916772842,
+    "root_path_m": 16.903623580932617,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.1026,
+      "max": 0.228097
+    },
+    "smpl_scale": 0.7957031726837158,
+    "trajectory_sha256": "1fb3b62a0f83b0767c81b19dcee376158302b7afc3eda8a18de2960b7edff647",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.06343785048948802,
+          "p95_m": 0.09651918715420071,
+          "max_m": 0.12220764954210957
+        },
+        "right_wrist": {
+          "mean_m": 0.054997281773569655,
+          "p95_m": 0.0844357765489224,
+          "max_m": 0.13830195667363265
+        },
+        "left_ankle": {
+          "mean_m": 0.13996613354497026,
+          "p95_m": 0.24991445032936715,
+          "max_m": 0.31273318092348323
+        },
+        "right_ankle": {
+          "mean_m": 0.1423717969930064,
+          "p95_m": 0.22406763777274671,
+          "max_m": 0.2600191382010538
+        }
+      }
+    }
+  },
+  "smplx_g1_bbox50_raw": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      36
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.5800460577011108,
+      "p95": 2.241253018379209,
+      "max": 10.03937816619873
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 6.575345993041992,
+      "p95": 24.236478805541992,
+      "max": 208.50851440429688
+    },
+    "visual_min_height_m": -0.01801863736988854,
+    "visual_penetration_frames_below_minus_1mm": 1811,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.4344487109160724,
+        "horizontal_speed_m_s": {
+          "mean": 0.12025760396749684,
+          "p95": 0.4217616875918146,
+          "max": 1.3872636207078257
+        },
+        "horizontal_path_m": 3.1507177741415333
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.46297312122874384,
+        "horizontal_speed_m_s": {
+          "mean": 0.1190263592880548,
+          "p95": 0.363341914351935,
+          "max": 1.540132320794921
+        },
+        "horizontal_path_m": 3.324769782288648
+      }
+    },
+    "root_net_displacement_m": 0.0634874776005745,
+    "root_path_m": 16.876850128173828,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.102672,
+      "max": 0.228201
+    },
+    "smpl_scale": 0.7957031726837158,
+    "trajectory_sha256": "dedf0353456e766ff04157b7fb272d879f88b1e7452fd12ff266b19e8a2827d7",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.061171461771919504,
+          "p95_m": 0.09317330023479951,
+          "max_m": 0.16480391046691753
+        },
+        "right_wrist": {
+          "mean_m": 0.05489495153896711,
+          "p95_m": 0.08809798231436834,
+          "max_m": 0.13925631156998958
+        },
+        "left_ankle": {
+          "mean_m": 0.13920713934343937,
+          "p95_m": 0.2512056826855492,
+          "max_m": 0.3141380823735349
+        },
+        "right_ankle": {
+          "mean_m": 0.1419246179554893,
+          "p95_m": 0.22612164562947548,
+          "max_m": 0.2629788246127361
+        }
+      }
+    }
+  },
+  "smplx_g1_spine1_candidate": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      36
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.5636044144630432,
+      "p95": 2.066395986080169,
+      "max": 9.119327545166016
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 6.1087422370910645,
+      "p95": 22.66542282104492,
+      "max": 140.27572631835938
+    },
+    "visual_min_height_m": -0.013009248627548597,
+    "visual_penetration_frames_below_minus_1mm": 1058,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.43006034009873834,
+        "horizontal_speed_m_s": {
+          "mean": 0.0834852564843645,
+          "p95": 0.3175380694486321,
+          "max": 1.4750770150581014
+        },
+        "horizontal_path_m": 2.162246559851404
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.38837081733406476,
+        "horizontal_speed_m_s": {
+          "mean": 0.07339000041394274,
+          "p95": 0.2623876176217908,
+          "max": 1.5192977329841388
+        },
+        "horizontal_path_m": 1.7099699410819924
+      }
+    },
+    "root_net_displacement_m": 0.06354764848947525,
+    "root_path_m": 16.520057678222656,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.059607,
+      "max": 0.137475
+    },
+    "smpl_scale": 0.7957031726837158,
+    "trajectory_sha256": "00b1c9a3afbce83899d8dbb475148c49afe80dd50099710cc58bc902a18832fc",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.056670986194963656,
+          "p95_m": 0.07872360488850373,
+          "max_m": 0.11134262975889761
+        },
+        "right_wrist": {
+          "mean_m": 0.043155881641873235,
+          "p95_m": 0.07238098253655105,
+          "max_m": 0.10764045231605136
+        },
+        "left_ankle": {
+          "mean_m": 0.13276781656939626,
+          "p95_m": 0.17783741652142593,
+          "max_m": 0.19427053687648935
+        },
+        "right_ankle": {
+          "mean_m": 0.12216026732726393,
+          "p95_m": 0.1460338664600476,
+          "max_m": 0.16064034539686534
+        }
+      }
+    }
+  },
+  "smplx_g1_spine1_raw": {
+    "frames": 1823,
+    "fps": 30.00029945373535,
+    "qpos_shape": [
+      1823,
+      36
+    ],
+    "all_finite": true,
+    "joint_names": [
+      "left_hip_pitch_joint",
+      "left_hip_roll_joint",
+      "left_hip_yaw_joint",
+      "left_knee_joint",
+      "left_ankle_pitch_joint",
+      "left_ankle_roll_joint",
+      "right_hip_pitch_joint",
+      "right_hip_roll_joint",
+      "right_hip_yaw_joint",
+      "right_knee_joint",
+      "right_ankle_pitch_joint",
+      "right_ankle_roll_joint",
+      "waist_yaw_joint",
+      "waist_roll_joint",
+      "waist_pitch_joint",
+      "left_shoulder_pitch_joint",
+      "left_shoulder_roll_joint",
+      "left_shoulder_yaw_joint",
+      "left_elbow_joint",
+      "left_wrist_roll_joint",
+      "left_wrist_pitch_joint",
+      "left_wrist_yaw_joint",
+      "right_shoulder_pitch_joint",
+      "right_shoulder_roll_joint",
+      "right_shoulder_yaw_joint",
+      "right_elbow_joint",
+      "right_wrist_roll_joint",
+      "right_wrist_pitch_joint",
+      "right_wrist_yaw_joint"
+    ],
+    "joint_limit_min_margin_rad": 0.0,
+    "joint_limit_violation_count_1e6": 0,
+    "joint_velocity_abs_rad_s": {
+      "mean": 0.5669490694999695,
+      "p95": 2.074113881587981,
+      "max": 9.158037185668945
+    },
+    "joint_acceleration_abs_rad_s2": {
+      "mean": 6.258153915405273,
+      "p95": 23.3847110748291,
+      "max": 155.9922332763672
+    },
+    "visual_min_height_m": -0.014018881400554031,
+    "visual_penetration_frames_below_minus_1mm": 1043,
+    "inferred_stance": {
+      "left": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.43006034009873834,
+        "horizontal_speed_m_s": {
+          "mean": 0.0846556262922141,
+          "p95": 0.3198559952224776,
+          "max": 1.5992440371817382
+        },
+        "horizontal_path_m": 2.1925588353039047
+      },
+      "right": {
+        "definition": "ankle body height <= clip minimum + 0.03m; consecutive stance frames; not measured contacts",
+        "stance_fraction": 0.3872737246297312,
+        "horizontal_speed_m_s": {
+          "mean": 0.07312433509841695,
+          "p95": 0.2617372643387531,
+          "max": 1.5091467713158186
+        },
+        "horizontal_path_m": 1.6989050940040071
+      }
+    },
+    "root_net_displacement_m": 0.06655234098434448,
+    "root_path_m": 16.48207664489746,
+    "root_quaternion_norm_max_error": 5.960464477539063e-08,
+    "solver_reported_cost": {
+      "mean": 0.057813,
+      "max": 0.135904
+    },
+    "smpl_scale": 0.7957031726837158,
+    "trajectory_sha256": "5eb5f824820dd2508d6971d932ddf0b6164abe302cf27a88a082142ac8218b0a",
+    "xml_hashes": {
+      "/data/workspace/motion_studio/outputs/astro-fist-static-v1/asset-snapshot/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    },
+    "self_collision": "not evaluated: visual meshes only; collision primitives deferred",
+    "tracking_residuals": "aggregate solver-reported cost only; not per-segment physical distances",
+    "root_relative_anatomical_proxy": {
+      "definition": "Euclidean error between robot wrist-yaw/ankle-roll body origin relative to free root and scaled SMPL-X wrist/ankle joint relative to pelvis; no fitted rotation. Morphology and differing joint centers contribute. Not learned surface residual or a quality ranking.",
+      "landmarks": {
+        "left_wrist": {
+          "mean_m": 0.057463710982111074,
+          "p95_m": 0.07774565874607893,
+          "max_m": 0.1179544377651379
+        },
+        "right_wrist": {
+          "mean_m": 0.047254895084896914,
+          "p95_m": 0.07236045804142342,
+          "max_m": 0.11093360424575335
+        },
+        "left_ankle": {
+          "mean_m": 0.13128927099410512,
+          "p95_m": 0.1775228514006736,
+          "max_m": 0.19394630468916857
+        },
+        "right_ankle": {
+          "mean_m": 0.12090992992874411,
+          "p95_m": 0.14572593978099152,
+          "max_m": 0.1614146695030449
+        }
+      }
+    }
+  }
+}

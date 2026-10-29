@@ -1,0 +1,8 @@
+{
+  "input_output_hashes_verified": 232,
+  "all_four_transform_binary_sizes_verified": true,
+  "all_mesh_files_exist": true,
+  "config_timing_assertions_passed": true,
+  "browser": "source and four robot arms rendered, seek and three comparison modes checked",
+  "limitations": "No physical rollout, no SOMA/BONES-SEED motion, no GPU peak instrumentation, no post-filter per-segment residuals"
+}

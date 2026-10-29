@@ -1,0 +1,6 @@
+{
+  "smplx_astro_spine1": "/data/workspace/motion_studio/experiments/astro-hands-correspondence/smplx_astro_spine1.json",
+  "smplx_astro_bbox50": "/data/workspace/motion_studio/experiments/astro-hands-correspondence/smplx_astro_bbox50.json",
+  "soma_astro_spine1": "/data/workspace/motion_studio/experiments/astro-hands-correspondence/soma_astro_spine1.json",
+  "soma_astro_bbox50": "/data/workspace/motion_studio/experiments/astro-hands-correspondence/soma_astro_bbox50.json"
+}

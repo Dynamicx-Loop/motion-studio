@@ -1,0 +1,15 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Segment binding audit · Astro and G1</title><style>
+body{margin:0;background:#101722;color:#e2e8f0;font:13px system-ui}canvas{display:block}aside{position:absolute;left:0;top:0;width:290px;height:100vh;overflow:auto;box-sizing:border-box;padding:18px;background:#f1f5f9;color:#172033}h1{font-size:20px;margin:0 0 8px}label{display:block;margin:10px 0}select,input[type=number]{width:100%;padding:5px;box-sizing:border-box}button{padding:6px}#info{white-space:pre-wrap;font:12px monospace;line-height:1.5}#legend{font-size:11px;line-height:1.7}#legend span{display:inline-block;margin-right:8px}#title{position:absolute;top:15px;left:310px;right:20px;text-align:center;font-size:17px;pointer-events:none}#error{color:#f44}p{line-height:1.5}small{color:#526175}</style>
+<script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js","three/addons/":"https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/"}}</script></head><body><aside>
+<h1>Segment binding audit</h1><small>Same human · 4096 slots · 500 epochs · no retargeting</small>
+<label>Target<select id="arm"><option value="visual">Astro visual</option><option value="primitive">Astro primitives · rejected</option><option value="g1">G1 matched control</option></select></label>
+<label>Source segment<select id="segment"><option value="all">All 19 segments</option></select></label>
+<label>Point color<select id="color"><option value="source">Source segment transferred by slot</option><option value="region">Actual target geometric zone</option></select></label>
+<label>Surface<select id="surface"><option value="neutral">Solid geometry · neutral</option><option value="region">Solid geometry · spatial zones</option><option value="body">Solid geometry · body owners</option><option value="none">Hide geometry</option></select></label>
+<label><input type="checkbox" id="xray" checked> Points visible through geometry</label>
+<label><input type="checkbox" id="shell"> Primitive: overlay actual visual shell</label>
+<label><input type="checkbox" id="lines"> Sparse paired lines</label>
+<label><input type="checkbox" id="planes" checked> Joint landmarks and limb boundaries</label>
+<label>Slot ID<input id="slot" type="number" value="0" min="0" max="4095"></label><button id="prev">Previous</button> <button id="next">Next</button>
+<p><button id="front">Front</button> <button id="rear">Rear</button> <button id="side">Side</button></p><div id="info"></div><p id="status"></p><div id="legend"></div>
+<p><small>Drag to orbit; scroll to zoom; click a point. Filtering always selects a slot within that source segment. Source and robot have independent floor offsets. Yellow landmarks are joint anchors; zones are explicit audit conventions, not trained semantic labels.</small></p><div id="error"></div></aside><div id="title"></div><script type="module" src="app.js"></script></body></html>

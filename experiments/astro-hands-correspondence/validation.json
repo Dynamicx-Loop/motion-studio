@@ -1,0 +1,11 @@
+{
+  "assertions": [
+    "smplx_astro_spine1: identical historical source, graph and human slots; identical new target across arms",
+    "smplx_astro_bbox50: identical historical source, graph and human slots; identical new target across arms",
+    "soma_astro_spine1: identical historical source, graph and human slots; identical new target across arms",
+    "soma_astro_bbox50: identical historical source, graph and human slots; identical new target across arms"
+  ],
+  "no_retarget": true,
+  "same_historical_audit_code": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/audit.py",
+  "semantic_groups_unchanged": true
+}

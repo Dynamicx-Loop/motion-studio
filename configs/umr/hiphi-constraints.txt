@@ -1,0 +1,7 @@
+# Keep the existing UMR runtime while adding hiphi2smplx.
+-c constraints.txt
+mujoco==3.3.7
+mink==1.1.0
+qpsolvers==4.13.0
+daqp==0.10.3
+h5py==3.16.0

@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Motion Studio experiment plan v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "experiment_id", "cohort_id", "question", "source", "conditions", "inputs", "code", "environment", "seeds", "arms", "stages", "runtime_checks", "acceptance"],
+  "properties": {
+    "schema_version": {"const": 1},
+    "experiment_id": {"$ref": "#/$defs/id"},
+    "cohort_id": {"$ref": "#/$defs/id"},
+    "question": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object", "additionalProperties": false,
+      "required": ["kind", "clip_id", "actor_id", "interval", "conventions"],
+      "properties": {
+        "kind": {"enum": ["smplx_hiphi", "soma_bones_seed"]},
+        "clip_id": {"type": "string", "minLength": 1},
+        "actor_id": {"type": ["string", "null"]},
+        "interval": {
+          "type": "object", "additionalProperties": false,
+          "required": ["start", "end_exclusive", "stride", "source_fps", "output_fps"],
+          "properties": {
+            "start": {"type": "integer", "minimum": 0},
+            "end_exclusive": {"type": "integer", "minimum": 1},
+            "stride": {"type": "integer", "minimum": 1},
+            "source_fps": {"type": ["number", "null"], "exclusiveMinimum": 0},
+            "output_fps": {"type": ["number", "null"], "exclusiveMinimum": 0}
+          }
+        },
+        "conventions": {
+          "type": "object", "additionalProperties": false,
+          "required": ["length_unit", "angle_unit", "source_up", "solver_up", "source_to_solver", "root_quaternion", "joint_order", "preprocessing"],
+          "properties": {
+            "length_unit": {"const": "m"}, "angle_unit": {"const": "rad"},
+            "source_up": {"type": "string"}, "solver_up": {"type": "string"},
+            "source_to_solver": {"type": "string"}, "root_quaternion": {"type": "string"},
+            "joint_order": {"type": "string"}, "preprocessing": {"type": "string"}
+          }
+        }
+      }
+    },
+    "conditions": {
+      "type": "object", "additionalProperties": false,
+      "required": ["body_pose", "finger_policy", "head_policy", "hand_geometry", "surface_policy"],
+      "properties": {
+        "body_pose": {"type": "string"}, "finger_policy": {"type": "string"},
+        "head_policy": {"type": "string"}, "hand_geometry": {"type": "string"},
+        "surface_policy": {"type": "string"}
+      }
+    },
+    "inputs": {"type": "array", "minItems": 1, "items": {"$ref": "#/$defs/input"}},
+    "code": {
+      "type": "object", "additionalProperties": false,
+      "required": ["repository", "revision", "patch_input", "closure_note"],
+      "properties": {
+        "repository": {"type": "string"}, "revision": {"type": ["string", "null"]},
+        "patch_input": {"type": ["string", "null"]}, "closure_note": {"type": "string"}
+      }
+    },
+    "environment": {
+      "type": "object", "additionalProperties": false,
+      "required": ["python", "dependency_input", "device", "variables"],
+      "properties": {
+        "python": {"type": "string"}, "dependency_input": {"type": "string"},
+        "device": {"type": "string"}, "variables": {"type": "object", "additionalProperties": {"type": "string"}}
+      }
+    },
+    "seeds": {
+      "type": "object", "additionalProperties": false,
+      "required": ["source_sampling", "target_sampling", "training", "solver"],
+      "properties": {
+        "source_sampling": {"type": ["integer", "null"]}, "target_sampling": {"type": ["integer", "null"]},
+        "training": {"type": ["integer", "null"]}, "solver": {"type": ["integer", "null"]}
+      }
+    },
+    "arms": {
+      "type": "array", "minItems": 2,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "robot", "center", "variant", "config_input", "matched_control"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"}, "robot": {"enum": ["astro", "g1"]},
+          "center": {"enum": ["spine1", "bbox50"]}, "variant": {"enum": ["raw", "wrist_k32"]},
+          "config_input": {"type": "string"}, "matched_control": {"type": ["string", "null"]}
+        }
+      }
+    },
+    "stages": {
+      "type": "array", "minItems": 1,
+      "items": {
+        "type": "object", "additionalProperties": false,
+        "required": ["id", "kind", "input_ids", "argv", "cwd", "outputs"],
+        "properties": {
+          "id": {"$ref": "#/$defs/id"},
+          "kind": {"enum": ["correspondence_training", "mesh_binding", "motion_optimization", "trajectory_filtering", "controller_execution", "evaluation"]},
+          "input_ids": {"type": "array", "items": {"type": "string"}},
+          "argv": {"type": "array", "items": {"type": "string"}},
+          "cwd": {"type": "string"}, "outputs": {"type": "array", "items": {"type": "string", "minLength": 1}}
+        }
+      }
+    },
+    "runtime_checks": {"type": "object", "minProperties": 1, "additionalProperties": {"type": "string"}},
+    "acceptance": {"type": "array", "minItems": 1, "items": {"type": "string"}}
+  },
+  "$defs": {
+    "id": {"type": "string", "pattern": "^[a-z0-9][a-z0-9_-]{0,95}$"},
+    "input": {
+      "type": "object", "additionalProperties": false,
+      "required": ["id", "role", "path", "sha256", "required"],
+      "properties": {
+        "id": {"$ref": "#/$defs/id"},
+        "role": {"enum": ["motion_actor", "motion", "actor_shape", "rig_bvh", "rig_usd", "robot", "mesh", "model", "checkpoint", "config", "code", "dependencies", "evidence"]},
+        "path": {"type": "string", "minLength": 1},
+        "sha256": {"type": ["string", "null"], "pattern": "^[0-9a-f]{64}$"},
+        "required": {"type": "boolean"}, "manifest_key": {"type": "string", "minLength": 1}
+      }
+    }
+  }
+}

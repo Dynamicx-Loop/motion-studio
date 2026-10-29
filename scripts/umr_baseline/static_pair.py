@@ -20,6 +20,9 @@ import sys
 import time
 
 WORKSPACE = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(WORKSPACE / 'scripts'))
+from motion_data_paths import canonical_motion_path
+
 UMR = Path(os.environ.get('MOTION_STUDIO_UMR_ROOT', WORKSPACE / 'externals/UMR-baseline-v1')).resolve()
 sys.path.insert(0, str(UMR / 'scripts'))
 import humanoid_retarget_pipeline as pipeline
@@ -31,7 +34,7 @@ ASTRO_DIR = 'robots/astro_p2_43dof_dex3_1'
 
 def sha(path):
     h = hashlib.sha256()
-    with Path(path).open('rb') as stream:
+    with canonical_motion_path(path).open('rb') as stream:
         for chunk in iter(lambda: stream.read(1024 * 1024), b''):
             h.update(chunk)
     return h.hexdigest()

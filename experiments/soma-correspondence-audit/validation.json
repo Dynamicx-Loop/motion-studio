@@ -1,0 +1,12 @@
+{
+  "assertions": [
+    "smplx/spine1: source mesh/samples/order/graph/slots equal across robots",
+    "smplx/bbox50: source mesh/samples/order/graph/slots equal across robots",
+    "soma/spine1: source mesh/samples/order/graph/slots equal across robots",
+    "soma/bbox50: source mesh/samples/order/graph/slots equal across robots",
+    "astro: target arrays equal; each source centering arm is translation only within 100nm",
+    "g1: target arrays equal; each source centering arm is translation only within 100nm"
+  ],
+  "prior_smplx_metrics_exactly_reproduced": true,
+  "no_retarget": true
+}

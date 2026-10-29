@@ -1,0 +1,25 @@
+{
+  "checks": [
+    {
+      "arm": "smplx_astro_spine1",
+      "info": "Slot 2577 · leftHand\nRaw55 source ID (SOMA majority): 39\nCommon anatomy: leftHand\nLBS group: leftHand\nDeclared-group influence: 100.0%\nHigh-confidence consensus: true\nTarget zone: left hand\nMesh: left_wrist_yaw_link\nBody: left_wrist_yaw_link\nMoving owner: left_wrist_yaw_link\nGeom ID: 67\nProjection: accepted\nShown: 99 slots\nSegment zone compatibility: 100.0%\nDisplay target scale: 1.341×\n(Metrics use original metres)",
+      "error": ""
+    },
+    {
+      "arm": "smplx_astro_bbox50",
+      "info": "Slot 2577 · leftHand\nRaw55 source ID (SOMA majority): 39\nCommon anatomy: leftHand\nLBS group: leftHand\nDeclared-group influence: 100.0%\nHigh-confidence consensus: true\nTarget zone: left hand\nMesh: left_wrist_yaw_link\nBody: left_wrist_yaw_link\nMoving owner: left_wrist_yaw_link\nGeom ID: 67\nProjection: accepted\nShown: 99 slots\nSegment zone compatibility: 99.0%\nDisplay target scale: 1.341×\n(Metrics use original metres)",
+      "error": ""
+    },
+    {
+      "arm": "soma_astro_spine1",
+      "info": "Slot 2752 · leftHand\nRaw55 source ID (SOMA majority): 38\nCommon anatomy: leftHand\nLBS group: leftHand\nDeclared-group influence: 100.0%\nHigh-confidence consensus: true\nTarget zone: left hand\nMesh: left_hand_thumb_1_link\nBody: left_hand_thumb_1_link\nMoving owner: left_hand_thumb_1_link\nGeom ID: 73\nProjection: accepted\nShown: 82 slots\nSegment zone compatibility: 100.0%\nDisplay target scale: 1.430×\n(Metrics use original metres)",
+      "error": ""
+    },
+    {
+      "arm": "soma_astro_bbox50",
+      "info": "Slot 2752 · leftHand\nRaw55 source ID (SOMA majority): 38\nCommon anatomy: leftHand\nLBS group: leftHand\nDeclared-group influence: 100.0%\nHigh-confidence consensus: true\nTarget zone: left hand\nMesh: left_wrist_yaw_link\nBody: left_wrist_yaw_link\nMoving owner: left_wrist_yaw_link\nGeom ID: 67\nProjection: accepted\nShown: 82 slots\nSegment zone compatibility: 100.0%\nDisplay target scale: 1.430×\n(Metrics use original metres)",
+      "error": ""
+    }
+  ],
+  "scope": "Four new arms rendered with leftHand filtering; visible slot metadata and no renderer errors"
+}

@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "/data/workspace/motion_studio/externals/UMR/humanoid_retarget_defaults.json",
+    "/data/workspace/motion_studio/configs/umr/astro_p2_29dof.json"
+  ],
+  "motion": {
+    "data": "/data/workspace/motion_studio/outputs/smplx/wendy_happy_dance_6s_9s.npz",
+    "seq_key": "wendy_happy_dance_6s_9s",
+    "stride": 1,
+    "max_frames": 360
+  },
+  "correspondence": {
+    "dataset": {
+      "out": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/correspondence.npz"
+    },
+    "train": {
+      "out_dir": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/training"
+    }
+  },
+  "retarget": {
+    "out": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/retarget.npz"
+  }
+}

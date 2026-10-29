@@ -1,0 +1,79 @@
+{
+  "scope": "Static arrays only; historical cohort has no motion output",
+  "comparisons": {
+    "dataset.npz": {
+      "fresh_sha256": "80fd24df4030216c8c8d991f689a8f2feea4c91b54f8f3b23c4e557cebad7c05",
+      "historical_sha256": "b8bb55efa6dff274a805445624a20c1493ebb46ab117f451eb3c86828f7f6a63",
+      "fields": {
+        "points": {
+          "exact_array_equal": true,
+          "shape": [
+            2,
+            4096,
+            3
+          ]
+        },
+        "mesh_vertices_0": {
+          "exact_array_equal": true,
+          "shape": [
+            10475,
+            3
+          ]
+        },
+        "mesh_faces_0": {
+          "exact_array_equal": true,
+          "shape": [
+            20908,
+            3
+          ]
+        },
+        "mesh_vertices_1": {
+          "exact_array_equal": true,
+          "shape": [
+            192938,
+            3
+          ]
+        },
+        "mesh_faces_1": {
+          "exact_array_equal": true,
+          "shape": [
+            385626,
+            3
+          ]
+        },
+        "sample_face_ids_0": {
+          "exact_array_equal": true,
+          "shape": [
+            4096
+          ]
+        },
+        "sample_face_ids_1": {
+          "exact_array_equal": true,
+          "shape": [
+            4096
+          ]
+        },
+        "betas_0": {
+          "exact_array_equal": true,
+          "shape": [
+            10
+          ]
+        }
+      }
+    },
+    "train/correspondence_slots_final.npz": {
+      "fresh_sha256": "345f32673cdee529b92cf5c22640ed04abb8919b451087f3ee2e3d834f67d5a4",
+      "historical_sha256": "345f32673cdee529b92cf5c22640ed04abb8919b451087f3ee2e3d834f67d5a4",
+      "fields": {
+        "reconstructed_slots": {
+          "exact_array_equal": true,
+          "shape": [
+            2,
+            4096,
+            3
+          ]
+        }
+      }
+    }
+  }
+}

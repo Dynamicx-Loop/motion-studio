@@ -1,0 +1,9 @@
+{
+  "extends": "/data/workspace/motion_studio/configs/umr/astro-wendy-6s-9s.json",
+  "solver": {
+    "self_contact_map_cost": 0
+  },
+  "retarget": {
+    "out": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/self_contact_0.npz"
+  }
+}

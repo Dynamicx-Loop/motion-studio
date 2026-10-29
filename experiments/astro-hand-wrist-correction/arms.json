@@ -1,0 +1,10 @@
+{
+  "smplx_astro_spine1": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/smplx_astro_spine1.json",
+  "smplx_astro_bbox50": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/smplx_astro_bbox50.json",
+  "soma_astro_spine1": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/soma_astro_spine1.json",
+  "soma_astro_bbox50": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/soma_astro_bbox50.json",
+  "smplx_g1_spine1": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/smplx_g1_spine1.json",
+  "smplx_g1_bbox50": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/smplx_g1_bbox50.json",
+  "soma_g1_spine1": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/soma_g1_spine1.json",
+  "soma_g1_bbox50": "/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/soma_g1_bbox50.json"
+}

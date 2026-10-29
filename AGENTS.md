@@ -6,14 +6,29 @@ Motion Studio is an early-stage collection of independent motion retargeting and
 editing tools. Build shared workflow pieces from demonstrated needs in real
 experiments; keep each upstream project's runtime and dependencies independent.
 
+## Development ownership
+
+- Treat external repositories as pinned, static dependencies. Implement Motion
+  Studio features, experiments, interfaces, adapters, and tests in this root project.
+- Route product code through Motion Studio-owned interfaces. Keep external imports,
+  configuration translation, and runtime invocation inside concrete adapters;
+  callers request outcomes using Motion Studio inputs and results.
+- Prefer configuration and adapters over external source edits. Make an external
+  patch only when a required capability cannot reasonably be provided that way;
+  keep it minimal and preserve its revision, patch, rationale, and validation.
+- Before adding an integration, patching an external, or updating a dependency,
+  read [the development policy](docs/workflow.md#development-policy).
+
+## Workspace context
+
 - Before changing workspace structure or integration scope, read
   [README.md](README.md) and [docs/workflow.md](docs/workflow.md).
 - Before managing external checkouts or advancing a baseline, read
   [externals/README.md](externals/README.md),
   [externals/manifest.json](externals/manifest.json), and
   [scripts/workspace.py](scripts/workspace.py). The root tracks the manifest and
-  ignores checkout contents; upstream changes belong in the corresponding Git
-  repository and must be preserved separately.
+  ignores checkout contents; unavoidable upstream patches must be preserved
+  separately from the manifest pin.
 - Before moving hhtools, changing its environment paths, or working with the old
   compatibility location, read [docs/migration.md](docs/migration.md). Use the
   checkout under `externals/` as canonical; preserve local edits, ignored assets,

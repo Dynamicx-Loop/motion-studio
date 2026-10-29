@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "snapshot_date": "2026-10-24",
+  "snapshot_date": "2026-10-29",
   "documents": [
     {
       "id": "readme",
@@ -309,6 +309,20 @@
       "title": "ProtoMotions documentation build reference",
       "state": "reference",
       "description": "Pinned Sphinx build inspection; hosted behavior is not proof of file-open compatibility."
+    },
+    {
+      "id": "docs--umr-integration-review",
+      "path": "docs/umr-integration-review.md",
+      "title": "UMR integration review — 2026-10-29",
+      "state": "reference",
+      "description": "Ownership findings and the Motion Studio G1 interface."
+    },
+    {
+      "id": "experiments--umr-g1-baseline-20261029",
+      "path": "experiments/umr-g1-baseline-20261029/README.md",
+      "title": "Official UMR G1 reproduction through Motion Studio",
+      "state": "baseline",
+      "description": "Fresh full-clip reproduction; separate from the October 24 static pair."
     }
   ],
   "timeline": [
@@ -347,6 +361,12 @@
       "title": "Root repository boundary corrected",
       "description": "Project branch experiments/umr-astro owns documentation and small records. The execution worktree remains an independent dependency.",
       "source": "docs/umr-experiment-branch.md"
+    },
+    {
+      "date": "2026-10-29",
+      "title": "G1 full pipeline reproduced through Motion Studio",
+      "description": "Fresh training matches historical static arrays exactly; all 5,468 motion frames pass numerical validation, with upstream source unchanged.",
+      "source": "experiments/umr-g1-baseline-20261029/README.md"
     }
   ]
 }

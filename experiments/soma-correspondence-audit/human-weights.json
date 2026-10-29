@@ -1,0 +1,2754 @@
+{
+  "purpose": "Static source model, LBS, hierarchy and segmentation audit; no motion poses evaluated.",
+  "context7": "SOMA-X resolve returned only unrelated TileDB-SOMA; official installed source and pinned model assets used.",
+  "versions": {
+    "py-soma-x": "0.3.4",
+    "smplx": "0.1.28",
+    "torch": "2.7.1+cu128",
+    "numpy": "1.26.4",
+    "scipy": "1.17.1"
+  },
+  "files": {
+    "/data/motions/smpl/smpl_model/models_smplx_v1_1/models/smplx/SMPLX_NEUTRAL.pkl": {
+      "sha256": "381c808965deb4f5e845f8c3eddb0cd69930cc72e5774ce4f34c4ce3cf058361",
+      "bytes": 544173380,
+      "resolved": "/data/motions/smpl/smpl_model/models_smplx_v1_1/models/smplx/SMPLX_NEUTRAL.pkl"
+    },
+    "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz": {
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808",
+      "bytes": 7122345,
+      "resolved": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz"
+    },
+    "/data/motions/soma/umr_assets/SOMA_neutral.npz": {
+      "sha256": "0c0cb328094e95259320cb17add5465d6b8d6b51195daa0ca2db1e9788edb2e9",
+      "bytes": 26925489,
+      "resolved": "/data/motions/soma/umr_assets/SOMA_neutral.npz"
+    },
+    "/data/motions/soma/assets/SOMA_neutral.npz": {
+      "sha256": "5829af4a5333abdba5ad449360b868faacee99d395971e62f35c0e7169432b63",
+      "bytes": 26608121,
+      "resolved": "/data/motions/soma/assets/SOMA_neutral.npz"
+    },
+    "/data/motions/soma/assets/SOMA_template_rig.usda": {
+      "sha256": "a952cb7bdf4ccd801e355d53122d395b985b69d0d9181439edad5081bb171856",
+      "bytes": 28306038,
+      "resolved": "/data/motions/soma/assets/SOMA_template_rig.usda"
+    },
+    "/data/motions/soma/assets/SOMA_procedural_transforms.json": {
+      "sha256": "9853e19ab51625ffaa7d9e7ccf0e443272c2740837604e6bacd66604e8edf509",
+      "bytes": 20045,
+      "resolved": "/data/motions/soma/assets/SOMA_procedural_transforms.json"
+    },
+    "/data/motions/soma/assets/MHR/mhr_model_lod1.pt": {
+      "sha256": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc",
+      "bytes": 696110248,
+      "resolved": "/data/motions/soma/assets/MHR/mhr_model_lod1.pt"
+    },
+    "/data/motions/soma/assets/MHR/base_body_lod1.obj": {
+      "sha256": "e8bbb3f3681d76737635c10a9e6f6a058ad3d9be5a75547f84a578cea572e916",
+      "bytes": 2277452,
+      "resolved": "/data/motions/soma/assets/MHR/base_body_lod1.obj"
+    },
+    "/data/motions/soma/assets/MHR/SOMA_wrap_lod1.obj": {
+      "sha256": "9ab7a2328d5b026c17ef1d09ed692ffeb68f96d3fc74970cba72e667dbe0f728",
+      "bytes": 1816801,
+      "resolved": "/data/motions/soma/assets/MHR/SOMA_wrap_lod1.obj"
+    },
+    "/data/motions/soma/assets/SMPLX/base_body.obj": {
+      "sha256": "f03f95e5e303c8dc070afa09387e9dde861eeb1567ccf61a70bf53a5f7fd2b70",
+      "bytes": 700964,
+      "resolved": "/data/motions/soma/assets/SMPLX/base_body.obj"
+    },
+    "/data/motions/soma/assets/SMPLX/SOMA_wrap.obj": {
+      "sha256": "7498e3a7873d7b4d8f1d3455a8af945589b1c494fbff99b14bc905a691208b6f",
+      "bytes": 2630564,
+      "resolved": "/data/motions/soma/assets/SMPLX/SOMA_wrap.obj"
+    },
+    "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/assets/smplx_parts_segm.pkl": {
+      "sha256": "bb69c10801205c9cfb5353fdeb1b9cc5ade53d14c265c3339421cdde8b9c91e7",
+      "bytes": 1323168,
+      "resolved": "/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/assets/smplx_parts_segm.pkl"
+    }
+  },
+  "official_manifest_verification": {
+    "revision": "f81a01796f652260ff930d5318d6c6b845a505ed",
+    "checks": {
+      "SOMA_neutral.npz": true,
+      "SOMA_template_rig.usda": true,
+      "SOMA_procedural_transforms.json": true,
+      "MHR/SOMA_wrap_lod1.obj": true,
+      "MHR/base_body_lod1.obj": true,
+      "MHR/mhr_model_lod1.pt": true,
+      "SMPLX/base_body.obj": true,
+      "SMPLX/SOMA_wrap.obj": true
+    }
+  },
+  "definitions": {
+    "model_parameters": "SMPL-X shape/pose bases, joint regressor, hand PCA; SOMA shape bases and identity backend. Not correspondence network weights.",
+    "lbs": "Vertex-by-joint nonnegative blend weights that deform each body mesh; inspected independently of labels.",
+    "segmentation": "UMR discrete SMPL-X face labels and SOMA wrapper label transfer; categorical, not LBS.",
+    "common_labels": "18 categories: UMR 17 with neck separate from head/face; arm extra 19-way split deliberately excluded from LBS comparison.",
+    "common_lbs": "Sum all joint LBS influences within each explicitly listed anatomical group, then compare group argmax with discrete source label.",
+    "disagreement": "Not automatically an error: labels are hard anatomical partitions; LBS blends across boundaries and may assign mechanical influence outside them.",
+    "smpl_vertex_label": "Majority incident raw55 face labels; lowest index wins a tie.",
+    "soma_vertex_label": "Raw55 of nearest SMPL-X base-body face to corresponding SOMA_wrap vertex; upstream uses its 17-class collapse.",
+    "joint_label_semantics": "SMPL-X Shoulder joint deforms upper arm; Collar deforms shoulder. SOMA Shoulder is clavicle; Arm upper arm. SOMA Leg thigh; Shin lower leg."
+  },
+  "common_labels": [
+    "head/face",
+    "hips",
+    "leftArm",
+    "leftFoot",
+    "leftForeArm",
+    "leftHand",
+    "leftLeg",
+    "leftShoulder",
+    "leftUpLeg",
+    "neck",
+    "rightArm",
+    "rightFoot",
+    "rightForeArm",
+    "rightHand",
+    "rightLeg",
+    "rightShoulder",
+    "rightUpLeg",
+    "torso"
+  ],
+  "overlay": {
+    "original_slim_keys_preserved": {
+      "mean": true,
+      "shapedirs": true,
+      "eigenvalues": true,
+      "triangles": true,
+      "face_vert_indices": true,
+      "face_vert_counts": true,
+      "mirror_vert_indices": true,
+      "metadata": true,
+      "uv_coord_st": true,
+      "uv_indices_st": true,
+      "uv_interp_st": true,
+      "uv_coord_st1": true,
+      "uv_indices_st1": true,
+      "uv_interp_st1": true,
+      "uv_coord_st2": true,
+      "uv_indices_st2": true,
+      "uv_interp_st2": true,
+      "lod_mid_to_low": true,
+      "triangles_low": true,
+      "face_vert_indices_low": true,
+      "face_vert_counts_low": true,
+      "segment_head": true,
+      "segment_feet": true,
+      "segment_torso": true,
+      "segment_mouth_bag": true,
+      "segment_eye_bags": true,
+      "segment_between_toes": true,
+      "segment_hair": true,
+      "segment_haircap": true,
+      "segment_armpits": true,
+      "t_pose_world__v0.1.0": true,
+      "t_pose_world__v0.1.0__joint_names": true,
+      "t_pose_world__v0.1.0__parent_ids": true,
+      "t_pose_world__v0.2.0": true,
+      "t_pose_world__v0.2.0__joint_names": true,
+      "t_pose_world__v0.2.0__parent_ids": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e__joint_names": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e__parent_ids": true,
+      "reference_pose_history_metadata": true
+    },
+    "official_loader_reconstruction_equal": {
+      "mean": true,
+      "shapedirs": true,
+      "eigenvalues": true,
+      "triangles": true,
+      "face_vert_indices": true,
+      "face_vert_counts": true,
+      "mirror_vert_indices": true,
+      "metadata": true,
+      "uv_coord_st": true,
+      "uv_indices_st": true,
+      "uv_interp_st": true,
+      "uv_coord_st1": true,
+      "uv_indices_st1": true,
+      "uv_interp_st1": true,
+      "uv_coord_st2": true,
+      "uv_indices_st2": true,
+      "uv_interp_st2": true,
+      "lod_mid_to_low": true,
+      "triangles_low": true,
+      "face_vert_indices_low": true,
+      "face_vert_counts_low": true,
+      "segment_head": true,
+      "segment_feet": true,
+      "segment_torso": true,
+      "segment_mouth_bag": true,
+      "segment_eye_bags": true,
+      "segment_between_toes": true,
+      "segment_hair": true,
+      "segment_haircap": true,
+      "segment_armpits": true,
+      "t_pose_world__v0.1.0": true,
+      "t_pose_world__v0.1.0__joint_names": true,
+      "t_pose_world__v0.1.0__parent_ids": true,
+      "t_pose_world__v0.2.0": true,
+      "t_pose_world__v0.2.0__joint_names": true,
+      "t_pose_world__v0.2.0__parent_ids": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e__joint_names": true,
+      "t_pose_world__sha256_f95daf63a6638b0a890ddb5d646d96da17497f1d8bf3d651bd55c0513671419e__parent_ids": true,
+      "reference_pose_history_metadata": true,
+      "joint_names": true,
+      "joint_parent_ids": true,
+      "bind_pose_world": true,
+      "bind_pose_local": true,
+      "t_pose_world": true,
+      "t_pose_local": true,
+      "bind_shape": true,
+      "skinning_weights_data": true,
+      "skinning_weights_indices": true,
+      "skinning_weights_indptr": true,
+      "skinning_weights_shape": true
+    },
+    "all_equal": true,
+    "lod": "mid",
+    "joints": 78,
+    "vertices": 18056,
+    "identity_backend_in_constructor": "mhr",
+    "identity_coefficients": 45,
+    "scale_parameters": 68,
+    "native_static_template": "Neutral bind_shape posed by public T-pose transforms; not the MHR zero-identity forward mesh"
+  },
+  "smplx": {
+    "lbs": {
+      "shape": [
+        10475,
+        55
+      ],
+      "finite": true,
+      "minimum": 0.0,
+      "negative_count": 0,
+      "row_sum": {
+        "min": 0.999999956227839,
+        "mean": 0.999999999967197,
+        "p50": 1.0,
+        "p95": 1.0000000273603329,
+        "max": 1.0000000447034836
+      },
+      "maximum_row_sum_error": 4.470348358154297e-08,
+      "positive_influences_per_vertex": {
+        "1": 4,
+        "2": 129,
+        "3": 1576,
+        "4": 2217,
+        "5": 3987,
+        "6": 1957,
+        "7": 492,
+        "8": 99,
+        "9": 13,
+        "10": 1
+      },
+      "influences_above_1e_4_per_vertex": {
+        "1": 1228,
+        "2": 442,
+        "3": 1511,
+        "4": 3845,
+        "5": 2745,
+        "6": 618,
+        "7": 77,
+        "8": 9
+      },
+      "top_weight": {
+        "min": 0.3416810929775238,
+        "mean": 0.8548665323974409,
+        "p50": 0.9321345686912537,
+        "p95": 0.9999997019767761,
+        "max": 1.0
+      },
+      "top1_minus_top2": {
+        "min": 0.0002956986427307129,
+        "mean": 0.7363536919968072,
+        "p50": 0.8811375498771667,
+        "p95": 0.9999995014965734,
+        "max": 1.0
+      },
+      "top_gap_below_005": 211,
+      "top_gap_below_01": 466,
+      "max_weight_below_05": 345,
+      "hierarchy_parent_precedes_child_except_root_sentinel": true,
+      "root_parent_sentinel": -1,
+      "joints": [
+        {
+          "index": 0,
+          "name": "Pelvis",
+          "parent": -1,
+          "parent_name": null,
+          "positive_vertex_count": 2080,
+          "argmax_vertex_count": 434,
+          "weight_sum": 411.62468374210493
+        },
+        {
+          "index": 1,
+          "name": "L_Hip",
+          "parent": 0,
+          "parent_name": "Pelvis",
+          "positive_vertex_count": 2010,
+          "argmax_vertex_count": 245,
+          "weight_sum": 238.93641907542275
+        },
+        {
+          "index": 2,
+          "name": "R_Hip",
+          "parent": 0,
+          "parent_name": "Pelvis",
+          "positive_vertex_count": 3879,
+          "argmax_vertex_count": 226,
+          "weight_sum": 239.46153593551458
+        },
+        {
+          "index": 3,
+          "name": "Spine1",
+          "parent": 0,
+          "parent_name": "Pelvis",
+          "positive_vertex_count": 1497,
+          "argmax_vertex_count": 153,
+          "weight_sum": 166.66496134680523
+        },
+        {
+          "index": 4,
+          "name": "L_Knee",
+          "parent": 1,
+          "parent_name": "L_Hip",
+          "positive_vertex_count": 3157,
+          "argmax_vertex_count": 195,
+          "weight_sum": 204.69848991063307
+        },
+        {
+          "index": 5,
+          "name": "R_Knee",
+          "parent": 2,
+          "parent_name": "R_Hip",
+          "positive_vertex_count": 868,
+          "argmax_vertex_count": 204,
+          "weight_sum": 203.50501563608015
+        },
+        {
+          "index": 6,
+          "name": "Spine2",
+          "parent": 3,
+          "parent_name": "Spine1",
+          "positive_vertex_count": 1533,
+          "argmax_vertex_count": 186,
+          "weight_sum": 197.04230581399426
+        },
+        {
+          "index": 7,
+          "name": "L_Ankle",
+          "parent": 4,
+          "parent_name": "L_Knee",
+          "positive_vertex_count": 801,
+          "argmax_vertex_count": 125,
+          "weight_sum": 127.04953870186756
+        },
+        {
+          "index": 8,
+          "name": "R_Ankle",
+          "parent": 5,
+          "parent_name": "R_Knee",
+          "positive_vertex_count": 665,
+          "argmax_vertex_count": 125,
+          "weight_sum": 130.91604626003024
+        },
+        {
+          "index": 9,
+          "name": "Spine3",
+          "parent": 6,
+          "parent_name": "Spine2",
+          "positive_vertex_count": 3547,
+          "argmax_vertex_count": 614,
+          "weight_sum": 564.6432667477393
+        },
+        {
+          "index": 10,
+          "name": "L_Foot",
+          "parent": 7,
+          "parent_name": "L_Ankle",
+          "positive_vertex_count": 545,
+          "argmax_vertex_count": 129,
+          "weight_sum": 124.56255522222763
+        },
+        {
+          "index": 11,
+          "name": "R_Foot",
+          "parent": 8,
+          "parent_name": "R_Ankle",
+          "positive_vertex_count": 805,
+          "argmax_vertex_count": 129,
+          "weight_sum": 122.78304654587971
+        },
+        {
+          "index": 12,
+          "name": "Neck",
+          "parent": 9,
+          "parent_name": "Spine3",
+          "positive_vertex_count": 2877,
+          "argmax_vertex_count": 149,
+          "weight_sum": 165.63968218458066
+        },
+        {
+          "index": 13,
+          "name": "L_Collar",
+          "parent": 9,
+          "parent_name": "Spine3",
+          "positive_vertex_count": 2403,
+          "argmax_vertex_count": 111,
+          "weight_sum": 148.0359637793538
+        },
+        {
+          "index": 14,
+          "name": "R_Collar",
+          "parent": 9,
+          "parent_name": "Spine3",
+          "positive_vertex_count": 2196,
+          "argmax_vertex_count": 123,
+          "weight_sum": 159.11715829125464
+        },
+        {
+          "index": 15,
+          "name": "Head",
+          "parent": 12,
+          "parent_name": "Neck",
+          "positive_vertex_count": 5514,
+          "argmax_vertex_count": 3345,
+          "weight_sum": 3279.03362254995
+        },
+        {
+          "index": 16,
+          "name": "L_Shoulder",
+          "parent": 13,
+          "parent_name": "L_Collar",
+          "positive_vertex_count": 1544,
+          "argmax_vertex_count": 276,
+          "weight_sum": 260.5610622975967
+        },
+        {
+          "index": 17,
+          "name": "R_Shoulder",
+          "parent": 14,
+          "parent_name": "R_Collar",
+          "positive_vertex_count": 1662,
+          "argmax_vertex_count": 278,
+          "weight_sum": 262.389421378293
+        },
+        {
+          "index": 18,
+          "name": "L_Elbow",
+          "parent": 16,
+          "parent_name": "L_Shoulder",
+          "positive_vertex_count": 1006,
+          "argmax_vertex_count": 228,
+          "weight_sum": 229.1015883285029
+        },
+        {
+          "index": 19,
+          "name": "R_Elbow",
+          "parent": 17,
+          "parent_name": "R_Shoulder",
+          "positive_vertex_count": 1078,
+          "argmax_vertex_count": 230,
+          "weight_sum": 229.65423970805244
+        },
+        {
+          "index": 20,
+          "name": "L_Wrist",
+          "parent": 18,
+          "parent_name": "L_Elbow",
+          "positive_vertex_count": 660,
+          "argmax_vertex_count": 200,
+          "weight_sum": 195.24790859959688
+        },
+        {
+          "index": 21,
+          "name": "R_Wrist",
+          "parent": 19,
+          "parent_name": "R_Elbow",
+          "positive_vertex_count": 644,
+          "argmax_vertex_count": 198,
+          "weight_sum": 194.56786594904514
+        },
+        {
+          "index": 22,
+          "name": "Jaw",
+          "parent": 15,
+          "parent_name": "Head",
+          "positive_vertex_count": 4637,
+          "argmax_vertex_count": 320,
+          "weight_sum": 358.779628729392
+        },
+        {
+          "index": 23,
+          "name": "L_Eye",
+          "parent": 15,
+          "parent_name": "Head",
+          "positive_vertex_count": 546,
+          "argmax_vertex_count": 546,
+          "weight_sum": 545.9996690750122
+        },
+        {
+          "index": 24,
+          "name": "R_Eye",
+          "parent": 15,
+          "parent_name": "Head",
+          "positive_vertex_count": 546,
+          "argmax_vertex_count": 546,
+          "weight_sum": 545.9997864365578
+        },
+        {
+          "index": 25,
+          "name": "L_Index1",
+          "parent": 20,
+          "parent_name": "L_Wrist",
+          "positive_vertex_count": 117,
+          "argmax_vertex_count": 33,
+          "weight_sum": 34.522125412757305
+        },
+        {
+          "index": 26,
+          "name": "L_Index2",
+          "parent": 25,
+          "parent_name": "L_Index1",
+          "positive_vertex_count": 97,
+          "argmax_vertex_count": 34,
+          "weight_sum": 32.755293853755575
+        },
+        {
+          "index": 27,
+          "name": "L_Index3",
+          "parent": 26,
+          "parent_name": "L_Index2",
+          "positive_vertex_count": 77,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.62271905490525
+        },
+        {
+          "index": 28,
+          "name": "L_Middle1",
+          "parent": 20,
+          "parent_name": "L_Wrist",
+          "positive_vertex_count": 137,
+          "argmax_vertex_count": 35,
+          "weight_sum": 34.03788718160558
+        },
+        {
+          "index": 29,
+          "name": "L_Middle2",
+          "parent": 28,
+          "parent_name": "L_Middle1",
+          "positive_vertex_count": 84,
+          "argmax_vertex_count": 30,
+          "weight_sum": 28.504896974089206
+        },
+        {
+          "index": 30,
+          "name": "L_Middle3",
+          "parent": 29,
+          "parent_name": "L_Middle2",
+          "positive_vertex_count": 93,
+          "argmax_vertex_count": 52,
+          "weight_sum": 54.09014536594623
+        },
+        {
+          "index": 31,
+          "name": "L_Pinky1",
+          "parent": 20,
+          "parent_name": "L_Wrist",
+          "positive_vertex_count": 114,
+          "argmax_vertex_count": 23,
+          "weight_sum": 23.585796904466406
+        },
+        {
+          "index": 32,
+          "name": "L_Pinky2",
+          "parent": 31,
+          "parent_name": "L_Pinky1",
+          "positive_vertex_count": 91,
+          "argmax_vertex_count": 39,
+          "weight_sum": 35.46447551391611
+        },
+        {
+          "index": 33,
+          "name": "L_Pinky3",
+          "parent": 32,
+          "parent_name": "L_Pinky2",
+          "positive_vertex_count": 75,
+          "argmax_vertex_count": 52,
+          "weight_sum": 54.122588105281466
+        },
+        {
+          "index": 34,
+          "name": "L_Ring1",
+          "parent": 20,
+          "parent_name": "L_Wrist",
+          "positive_vertex_count": 166,
+          "argmax_vertex_count": 30,
+          "weight_sum": 31.905599757059463
+        },
+        {
+          "index": 35,
+          "name": "L_Ring2",
+          "parent": 34,
+          "parent_name": "L_Ring1",
+          "positive_vertex_count": 94,
+          "argmax_vertex_count": 38,
+          "weight_sum": 34.66808778025188
+        },
+        {
+          "index": 36,
+          "name": "L_Ring3",
+          "parent": 35,
+          "parent_name": "L_Ring2",
+          "positive_vertex_count": 86,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.768400470595225
+        },
+        {
+          "index": 37,
+          "name": "L_Thumb1",
+          "parent": 20,
+          "parent_name": "L_Wrist",
+          "positive_vertex_count": 167,
+          "argmax_vertex_count": 21,
+          "weight_sum": 25.689484028719562
+        },
+        {
+          "index": 38,
+          "name": "L_Thumb2",
+          "parent": 37,
+          "parent_name": "L_Thumb1",
+          "positive_vertex_count": 115,
+          "argmax_vertex_count": 31,
+          "weight_sum": 30.823147801853338
+        },
+        {
+          "index": 39,
+          "name": "L_Thumb3",
+          "parent": 38,
+          "parent_name": "L_Thumb2",
+          "positive_vertex_count": 86,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.76517797244742
+        },
+        {
+          "index": 40,
+          "name": "R_Index1",
+          "parent": 21,
+          "parent_name": "R_Wrist",
+          "positive_vertex_count": 117,
+          "argmax_vertex_count": 33,
+          "weight_sum": 34.52106575835569
+        },
+        {
+          "index": 41,
+          "name": "R_Index2",
+          "parent": 40,
+          "parent_name": "R_Index1",
+          "positive_vertex_count": 97,
+          "argmax_vertex_count": 34,
+          "weight_sum": 32.74590653926134
+        },
+        {
+          "index": 42,
+          "name": "R_Index3",
+          "parent": 41,
+          "parent_name": "R_Index2",
+          "positive_vertex_count": 77,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.56535705751321
+        },
+        {
+          "index": 43,
+          "name": "R_Middle1",
+          "parent": 21,
+          "parent_name": "R_Wrist",
+          "positive_vertex_count": 137,
+          "argmax_vertex_count": 35,
+          "weight_sum": 34.028820525730225
+        },
+        {
+          "index": 44,
+          "name": "R_Middle2",
+          "parent": 43,
+          "parent_name": "R_Middle1",
+          "positive_vertex_count": 84,
+          "argmax_vertex_count": 30,
+          "weight_sum": 28.5300968841766
+        },
+        {
+          "index": 45,
+          "name": "R_Middle3",
+          "parent": 44,
+          "parent_name": "R_Middle2",
+          "positive_vertex_count": 93,
+          "argmax_vertex_count": 52,
+          "weight_sum": 54.246909389679786
+        },
+        {
+          "index": 46,
+          "name": "R_Pinky1",
+          "parent": 21,
+          "parent_name": "R_Wrist",
+          "positive_vertex_count": 114,
+          "argmax_vertex_count": 23,
+          "weight_sum": 23.585809365809837
+        },
+        {
+          "index": 47,
+          "name": "R_Pinky2",
+          "parent": 46,
+          "parent_name": "R_Pinky1",
+          "positive_vertex_count": 91,
+          "argmax_vertex_count": 39,
+          "weight_sum": 35.46622333553387
+        },
+        {
+          "index": 48,
+          "name": "R_Pinky3",
+          "parent": 47,
+          "parent_name": "R_Pinky2",
+          "positive_vertex_count": 75,
+          "argmax_vertex_count": 52,
+          "weight_sum": 54.133201877746615
+        },
+        {
+          "index": 49,
+          "name": "R_Ring1",
+          "parent": 21,
+          "parent_name": "R_Wrist",
+          "positive_vertex_count": 166,
+          "argmax_vertex_count": 30,
+          "weight_sum": 31.90698428835367
+        },
+        {
+          "index": 50,
+          "name": "R_Ring2",
+          "parent": 49,
+          "parent_name": "R_Ring1",
+          "positive_vertex_count": 94,
+          "argmax_vertex_count": 38,
+          "weight_sum": 34.70753178880295
+        },
+        {
+          "index": 51,
+          "name": "R_Ring3",
+          "parent": 50,
+          "parent_name": "R_Ring2",
+          "positive_vertex_count": 86,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.786701375371194
+        },
+        {
+          "index": 52,
+          "name": "R_Thumb1",
+          "parent": 21,
+          "parent_name": "R_Wrist",
+          "positive_vertex_count": 167,
+          "argmax_vertex_count": 21,
+          "weight_sum": 25.689614935216923
+        },
+        {
+          "index": 53,
+          "name": "R_Thumb2",
+          "parent": 52,
+          "parent_name": "R_Thumb1",
+          "positive_vertex_count": 115,
+          "argmax_vertex_count": 31,
+          "weight_sum": 30.842097545853903
+        },
+        {
+          "index": 54,
+          "name": "R_Thumb3",
+          "parent": 53,
+          "parent_name": "R_Thumb2",
+          "positive_vertex_count": 86,
+          "argmax_vertex_count": 54,
+          "weight_sum": 54.90239056584687
+        }
+      ]
+    },
+    "joint_common_regions": [
+      "hips",
+      "leftUpLeg",
+      "rightUpLeg",
+      "torso",
+      "leftLeg",
+      "rightLeg",
+      "torso",
+      "leftFoot",
+      "rightFoot",
+      "torso",
+      "leftFoot",
+      "rightFoot",
+      "neck",
+      "leftShoulder",
+      "rightShoulder",
+      "head/face",
+      "leftArm",
+      "rightArm",
+      "leftForeArm",
+      "rightForeArm",
+      "leftHand",
+      "rightHand",
+      "head/face",
+      "head/face",
+      "head/face",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand"
+    ],
+    "model_arrays": {
+      "v_template": {
+        "shape": [
+          10475,
+          3
+        ],
+        "finite": true
+      },
+      "shapedirs": {
+        "shape": [
+          10475,
+          3,
+          400
+        ],
+        "finite": true
+      },
+      "posedirs": {
+        "shape": [
+          10475,
+          3,
+          486
+        ],
+        "finite": true
+      },
+      "J_regressor": {
+        "shape": [
+          55,
+          10475
+        ],
+        "finite": true
+      },
+      "hands_componentsl": {
+        "shape": [
+          45,
+          45
+        ],
+        "finite": true
+      },
+      "hands_componentsr": {
+        "shape": [
+          45,
+          45
+        ],
+        "finite": true
+      },
+      "hands_meanl": {
+        "shape": [
+          45
+        ],
+        "finite": true
+      },
+      "hands_meanr": {
+        "shape": [
+          45
+        ],
+        "finite": true
+      }
+    },
+    "actor_betas": [
+      -0.6104539632797241,
+      -1.2982993125915527,
+      0.7919769287109375,
+      -3.165581226348877,
+      -1.0120022296905518,
+      -2.458864212036133,
+      0.010829251259565353,
+      0.7021206617355347,
+      1.6965906620025635,
+      -0.13923722505569458
+    ],
+    "actor_betas_sha256": "52c7a6eba816e20163a00595cbf66f1e18aec9404311f19396b74f1848745853",
+    "labels": {
+      "counts": {
+        "head/face": 4757,
+        "hips": 435,
+        "leftArm": 276,
+        "leftFoot": 254,
+        "leftForeArm": 228,
+        "leftHand": 780,
+        "leftLeg": 195,
+        "leftShoulder": 110,
+        "leftUpLeg": 244,
+        "neck": 149,
+        "rightArm": 278,
+        "rightFoot": 254,
+        "rightForeArm": 230,
+        "rightHand": 778,
+        "rightLeg": 204,
+        "rightShoulder": 122,
+        "rightUpLeg": 226,
+        "torso": 955
+      },
+      "label_to_grouped_lbs_argmax": {
+        "head/face": {
+          "head/face": 4757
+        },
+        "hips": {
+          "hips": 429,
+          "leftUpLeg": 1,
+          "torso": 5
+        },
+        "leftArm": {
+          "leftArm": 276
+        },
+        "leftFoot": {
+          "leftFoot": 254
+        },
+        "leftForeArm": {
+          "leftForeArm": 228
+        },
+        "leftHand": {
+          "leftHand": 780
+        },
+        "leftLeg": {
+          "leftLeg": 195
+        },
+        "leftShoulder": {
+          "leftShoulder": 109,
+          "torso": 1
+        },
+        "leftUpLeg": {
+          "leftUpLeg": 244
+        },
+        "neck": {
+          "neck": 149
+        },
+        "rightArm": {
+          "rightArm": 278
+        },
+        "rightFoot": {
+          "rightFoot": 254
+        },
+        "rightForeArm": {
+          "rightForeArm": 230
+        },
+        "rightHand": {
+          "rightHand": 778
+        },
+        "rightLeg": {
+          "rightLeg": 204
+        },
+        "rightShoulder": {
+          "rightShoulder": 121,
+          "torso": 1
+        },
+        "rightUpLeg": {
+          "rightUpLeg": 226
+        },
+        "torso": {
+          "leftShoulder": 1,
+          "rightShoulder": 1,
+          "torso": 953
+        }
+      },
+      "disagreement_count": 10,
+      "confident_argmax_disagreements": 0,
+      "label_lbs_mass": {
+        "min": 0.31106317043304443,
+        "mean": 0.9133941531181335,
+        "p50": 0.9935437440872192,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "label_lbs_mass_below_half": 143,
+      "per_label": {
+        "head/face": {
+          "vertices": 4757,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5560523271560669,
+            "mean": 0.9876164197921753,
+            "p50": 0.9971085786819458,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "hips": {
+          "vertices": 435,
+          "argmax_disagreements": 6,
+          "label_mass": {
+            "min": 0.3773948848247528,
+            "mean": 0.7586491703987122,
+            "p50": 0.7860504388809204,
+            "p95": 0.9553683936595916,
+            "max": 0.974647045135498
+          }
+        },
+        "leftArm": {
+          "vertices": 276,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.37223243713378906,
+            "mean": 0.8025544881820679,
+            "p50": 0.8606768846511841,
+            "p95": 0.9572772830724716,
+            "max": 0.9641026854515076
+          }
+        },
+        "leftFoot": {
+          "vertices": 254,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.532410204410553,
+            "mean": 0.9355260133743286,
+            "p50": 0.9845554232597351,
+            "p95": 0.9997276932001113,
+            "max": 0.9999626874923706
+          }
+        },
+        "leftForeArm": {
+          "vertices": 228,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.4989784359931946,
+            "mean": 0.847446620464325,
+            "p50": 0.9153500199317932,
+            "p95": 0.9699523121118545,
+            "max": 0.9749988913536072
+          }
+        },
+        "leftHand": {
+          "vertices": 780,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5041391253471375,
+            "mean": 0.9780811071395874,
+            "p50": 0.9975094795227051,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "leftLeg": {
+          "vertices": 195,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5050234794616699,
+            "mean": 0.836487889289856,
+            "p50": 0.8879851698875427,
+            "p95": 0.95678750872612,
+            "max": 0.9638799428939819
+          }
+        },
+        "leftShoulder": {
+          "vertices": 110,
+          "argmax_disagreements": 1,
+          "label_mass": {
+            "min": 0.38081249594688416,
+            "mean": 0.6304884552955627,
+            "p50": 0.6266992092132568,
+            "p95": 0.8087372809648514,
+            "max": 0.8287268280982971
+          }
+        },
+        "leftUpLeg": {
+          "vertices": 244,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.3416810929775238,
+            "mean": 0.7709450721740723,
+            "p50": 0.8283406496047974,
+            "p95": 0.9378697395324707,
+            "max": 0.964411735534668
+          }
+        },
+        "neck": {
+          "vertices": 149,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.4344996213912964,
+            "mean": 0.6445126533508301,
+            "p50": 0.6453042030334473,
+            "p95": 0.8113774657249451,
+            "max": 0.8298075795173645
+          }
+        },
+        "rightArm": {
+          "vertices": 278,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.360510915517807,
+            "mean": 0.7966018915176392,
+            "p50": 0.8578015565872192,
+            "p95": 0.9559650421142578,
+            "max": 0.9654558300971985
+          }
+        },
+        "rightFoot": {
+          "vertices": 254,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5343894362449646,
+            "mean": 0.9311078786849976,
+            "p50": 0.9768457412719727,
+            "p95": 0.9993790477514267,
+            "max": 0.999731183052063
+          }
+        },
+        "rightForeArm": {
+          "vertices": 230,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5022710561752319,
+            "mean": 0.8474501967430115,
+            "p50": 0.9178034067153931,
+            "p95": 0.9709996730089188,
+            "max": 0.9755674004554749
+          }
+        },
+        "rightHand": {
+          "vertices": 778,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5526989698410034,
+            "mean": 0.9792452454566956,
+            "p50": 0.9978693723678589,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "rightLeg": {
+          "vertices": 204,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.5044782757759094,
+            "mean": 0.8141706585884094,
+            "p50": 0.8726465702056885,
+            "p95": 0.9441946446895599,
+            "max": 0.9504501223564148
+          }
+        },
+        "rightShoulder": {
+          "vertices": 122,
+          "argmax_disagreements": 1,
+          "label_mass": {
+            "min": 0.37669476866722107,
+            "mean": 0.6618198156356812,
+            "p50": 0.655771791934967,
+            "p95": 0.8614366769790648,
+            "max": 0.8846776485443115
+          }
+        },
+        "rightUpLeg": {
+          "vertices": 226,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.438263475894928,
+            "mean": 0.7968119978904724,
+            "p50": 0.8394840359687805,
+            "p95": 0.9474590569734573,
+            "max": 0.95964515209198
+          }
+        },
+        "torso": {
+          "vertices": 955,
+          "argmax_disagreements": 2,
+          "label_mass": {
+            "min": 0.31106317043304443,
+            "mean": 0.8023069500923157,
+            "p50": 0.8538877367973328,
+            "p95": 0.9789008021354675,
+            "max": 1.0
+          }
+        }
+      }
+    },
+    "raw55_face_vs_mean_vertex_lbs_argmax_disagreements": 322,
+    "raw55_face_vs_mean_vertex_lbs_argmax": {
+      "0": {
+        "0": 854,
+        "1": 4,
+        "2": 6,
+        "3": 6
+      },
+      "1": {
+        "0": 2,
+        "1": 472,
+        "2": 8,
+        "4": 8
+      },
+      "2": {
+        "0": 1,
+        "2": 449,
+        "5": 2
+      },
+      "3": {
+        "0": 9,
+        "3": 288,
+        "6": 9
+      },
+      "4": {
+        "1": 1,
+        "4": 388,
+        "7": 1
+      },
+      "5": {
+        "2": 7,
+        "5": 398,
+        "8": 3
+      },
+      "6": {
+        "3": 6,
+        "6": 357,
+        "9": 9
+      },
+      "7": {
+        "4": 3,
+        "7": 247
+      },
+      "8": {
+        "8": 250
+      },
+      "9": {
+        "6": 3,
+        "9": 1212,
+        "12": 4,
+        "13": 8,
+        "14": 2,
+        "16": 4,
+        "17": 3
+      },
+      "10": {
+        "7": 3,
+        "10": 253
+      },
+      "11": {
+        "8": 4,
+        "11": 252
+      },
+      "12": {
+        "9": 3,
+        "12": 296,
+        "15": 1
+      },
+      "13": {
+        "9": 4,
+        "13": 211,
+        "16": 5
+      },
+      "14": {
+        "9": 5,
+        "14": 237,
+        "17": 2
+      },
+      "15": {
+        "15": 6671,
+        "22": 5
+      },
+      "16": {
+        "9": 2,
+        "13": 3,
+        "16": 542,
+        "18": 5
+      },
+      "17": {
+        "9": 2,
+        "14": 9,
+        "17": 540,
+        "19": 5
+      },
+      "18": {
+        "16": 1,
+        "18": 451,
+        "20": 4
+      },
+      "19": {
+        "19": 457,
+        "21": 3
+      },
+      "20": {
+        "18": 1,
+        "20": 397,
+        "25": 3,
+        "28": 3,
+        "31": 1,
+        "34": 1,
+        "38": 4
+      },
+      "21": {
+        "21": 394,
+        "40": 3,
+        "43": 3,
+        "46": 1,
+        "49": 1,
+        "53": 4
+      },
+      "22": {
+        "12": 10,
+        "15": 14,
+        "22": 596
+      },
+      "23": {
+        "23": 1088
+      },
+      "24": {
+        "24": 1088
+      },
+      "25": {
+        "25": 64,
+        "26": 2
+      },
+      "26": {
+        "25": 4,
+        "26": 61,
+        "27": 3
+      },
+      "27": {
+        "27": 106
+      },
+      "28": {
+        "20": 1,
+        "28": 67,
+        "29": 2
+      },
+      "29": {
+        "28": 1,
+        "29": 53,
+        "30": 6
+      },
+      "30": {
+        "30": 102
+      },
+      "31": {
+        "20": 2,
+        "31": 44
+      },
+      "32": {
+        "31": 3,
+        "32": 69,
+        "33": 6
+      },
+      "33": {
+        "33": 102
+      },
+      "34": {
+        "20": 2,
+        "34": 58
+      },
+      "35": {
+        "34": 5,
+        "35": 68,
+        "36": 3
+      },
+      "36": {
+        "36": 106
+      },
+      "37": {
+        "37": 37,
+        "38": 3
+      },
+      "38": {
+        "37": 2,
+        "38": 56,
+        "39": 4
+      },
+      "39": {
+        "39": 106
+      },
+      "40": {
+        "40": 64,
+        "41": 2
+      },
+      "41": {
+        "40": 4,
+        "41": 61,
+        "42": 3
+      },
+      "42": {
+        "42": 106
+      },
+      "43": {
+        "21": 1,
+        "43": 67,
+        "44": 2
+      },
+      "44": {
+        "43": 1,
+        "44": 53,
+        "45": 6
+      },
+      "45": {
+        "45": 102
+      },
+      "46": {
+        "21": 2,
+        "46": 44
+      },
+      "47": {
+        "46": 3,
+        "47": 69,
+        "48": 6
+      },
+      "48": {
+        "48": 102
+      },
+      "49": {
+        "21": 2,
+        "49": 58
+      },
+      "50": {
+        "49": 5,
+        "50": 68,
+        "51": 3
+      },
+      "51": {
+        "51": 106
+      },
+      "52": {
+        "52": 37,
+        "53": 3
+      },
+      "53": {
+        "52": 2,
+        "53": 56,
+        "54": 4
+      },
+      "54": {
+        "54": 106
+      }
+    },
+    "template_bounds_m": [
+      [
+        -0.8163551688194275,
+        -1.244117259979248,
+        -0.13531947135925293
+      ],
+      [
+        0.8163570165634155,
+        0.417684406042099,
+        0.137060284614563
+      ]
+    ]
+  },
+  "soma": {
+    "lbs": {
+      "shape": [
+        18056,
+        78
+      ],
+      "finite": true,
+      "minimum": 0.0,
+      "negative_count": 0,
+      "row_sum": {
+        "min": 0.9999999385327101,
+        "mean": 1.0000000000563234,
+        "p50": 1.0,
+        "p95": 1.0000000298023224,
+        "max": 1.000000067404791
+      },
+      "maximum_row_sum_error": 6.740479108202635e-08,
+      "positive_influences_per_vertex": {
+        "1": 7877,
+        "2": 4483,
+        "3": 3104,
+        "4": 1435,
+        "5": 452,
+        "6": 271,
+        "7": 134,
+        "8": 196,
+        "9": 44,
+        "10": 60
+      },
+      "influences_above_1e_4_per_vertex": {
+        "1": 7974,
+        "2": 4971,
+        "3": 3094,
+        "4": 1217,
+        "5": 483,
+        "6": 163,
+        "7": 82,
+        "8": 72
+      },
+      "top_weight": {
+        "min": 0.2728259861469269,
+        "mean": 0.8459508807774292,
+        "p50": 0.9630997180938721,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "top1_minus_top2": {
+        "min": 0.0006548166275024414,
+        "mean": 0.7194163990784568,
+        "p50": 0.9287136644124985,
+        "p95": 1.0,
+        "max": 1.0
+      },
+      "top_gap_below_005": 634,
+      "top_gap_below_01": 1344,
+      "max_weight_below_05": 1093,
+      "hierarchy_parent_precedes_child_except_root_sentinel": true,
+      "root_parent_sentinel": 0,
+      "joints": [
+        {
+          "index": 0,
+          "name": "Root",
+          "parent": 0,
+          "parent_name": "Root",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        },
+        {
+          "index": 1,
+          "name": "Hips",
+          "parent": 0,
+          "parent_name": "Root",
+          "positive_vertex_count": 673,
+          "argmax_vertex_count": 299,
+          "weight_sum": 285.5951034813627
+        },
+        {
+          "index": 2,
+          "name": "Spine1",
+          "parent": 1,
+          "parent_name": "Hips",
+          "positive_vertex_count": 724,
+          "argmax_vertex_count": 127,
+          "weight_sum": 144.15440299443577
+        },
+        {
+          "index": 3,
+          "name": "Spine2",
+          "parent": 2,
+          "parent_name": "Spine1",
+          "positive_vertex_count": 720,
+          "argmax_vertex_count": 158,
+          "weight_sum": 160.27298813647323
+        },
+        {
+          "index": 4,
+          "name": "Chest",
+          "parent": 3,
+          "parent_name": "Spine2",
+          "positive_vertex_count": 2249,
+          "argmax_vertex_count": 586,
+          "weight_sum": 622.5052138568389
+        },
+        {
+          "index": 5,
+          "name": "Neck1",
+          "parent": 4,
+          "parent_name": "Chest",
+          "positive_vertex_count": 1274,
+          "argmax_vertex_count": 359,
+          "weight_sum": 300.38563898449826
+        },
+        {
+          "index": 6,
+          "name": "Neck2",
+          "parent": 5,
+          "parent_name": "Neck1",
+          "positive_vertex_count": 1067,
+          "argmax_vertex_count": 111,
+          "weight_sum": 187.70369520778496
+        },
+        {
+          "index": 7,
+          "name": "Head",
+          "parent": 6,
+          "parent_name": "Neck2",
+          "positive_vertex_count": 4863,
+          "argmax_vertex_count": 3954,
+          "weight_sum": 3870.6964199407867
+        },
+        {
+          "index": 8,
+          "name": "HeadEnd",
+          "parent": 7,
+          "parent_name": "Head",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        },
+        {
+          "index": 9,
+          "name": "Jaw",
+          "parent": 7,
+          "parent_name": "Head",
+          "positive_vertex_count": 1958,
+          "argmax_vertex_count": 846,
+          "weight_sum": 882.2228325560111
+        },
+        {
+          "index": 10,
+          "name": "LeftEye",
+          "parent": 7,
+          "parent_name": "Head",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        },
+        {
+          "index": 11,
+          "name": "RightEye",
+          "parent": 7,
+          "parent_name": "Head",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        },
+        {
+          "index": 12,
+          "name": "LeftShoulder",
+          "parent": 4,
+          "parent_name": "Chest",
+          "positive_vertex_count": 810,
+          "argmax_vertex_count": 240,
+          "weight_sum": 242.16319640111936
+        },
+        {
+          "index": 13,
+          "name": "LeftArm",
+          "parent": 12,
+          "parent_name": "LeftShoulder",
+          "positive_vertex_count": 511,
+          "argmax_vertex_count": 329,
+          "weight_sum": 325.9416252914816
+        },
+        {
+          "index": 14,
+          "name": "LeftForeArm",
+          "parent": 13,
+          "parent_name": "LeftArm",
+          "positive_vertex_count": 456,
+          "argmax_vertex_count": 354,
+          "weight_sum": 350.5656199315563
+        },
+        {
+          "index": 15,
+          "name": "LeftHand",
+          "parent": 14,
+          "parent_name": "LeftForeArm",
+          "positive_vertex_count": 356,
+          "argmax_vertex_count": 137,
+          "weight_sum": 123.9802325081296
+        },
+        {
+          "index": 16,
+          "name": "LeftHandThumb1",
+          "parent": 15,
+          "parent_name": "LeftHand",
+          "positive_vertex_count": 387,
+          "argmax_vertex_count": 104,
+          "weight_sum": 118.1037639150412
+        },
+        {
+          "index": 17,
+          "name": "LeftHandThumb2",
+          "parent": 16,
+          "parent_name": "LeftHandThumb1",
+          "positive_vertex_count": 493,
+          "argmax_vertex_count": 134,
+          "weight_sum": 134.48195892029435
+        },
+        {
+          "index": 18,
+          "name": "LeftHandThumb3",
+          "parent": 17,
+          "parent_name": "LeftHandThumb2",
+          "positive_vertex_count": 201,
+          "argmax_vertex_count": 44,
+          "weight_sum": 51.17196603330038
+        },
+        {
+          "index": 19,
+          "name": "LeftHandThumbEnd",
+          "parent": 18,
+          "parent_name": "LeftHandThumb3",
+          "positive_vertex_count": 172,
+          "argmax_vertex_count": 125,
+          "weight_sum": 115.23560679663206
+        },
+        {
+          "index": 20,
+          "name": "LeftHandIndex1",
+          "parent": 15,
+          "parent_name": "LeftHand",
+          "positive_vertex_count": 544,
+          "argmax_vertex_count": 171,
+          "weight_sum": 158.99250998173284
+        },
+        {
+          "index": 21,
+          "name": "LeftHandIndex2",
+          "parent": 20,
+          "parent_name": "LeftHandIndex1",
+          "positive_vertex_count": 425,
+          "argmax_vertex_count": 133,
+          "weight_sum": 132.58092609410255
+        },
+        {
+          "index": 22,
+          "name": "LeftHandIndex3",
+          "parent": 21,
+          "parent_name": "LeftHandIndex2",
+          "positive_vertex_count": 323,
+          "argmax_vertex_count": 142,
+          "weight_sum": 135.73056500664845
+        },
+        {
+          "index": 23,
+          "name": "LeftHandIndex4",
+          "parent": 22,
+          "parent_name": "LeftHandIndex3",
+          "positive_vertex_count": 256,
+          "argmax_vertex_count": 57,
+          "weight_sum": 63.138148786204646
+        },
+        {
+          "index": 24,
+          "name": "LeftHandIndexEnd",
+          "parent": 23,
+          "parent_name": "LeftHandIndex4",
+          "positive_vertex_count": 242,
+          "argmax_vertex_count": 116,
+          "weight_sum": 116.8442381920039
+        },
+        {
+          "index": 25,
+          "name": "LeftHandMiddle1",
+          "parent": 15,
+          "parent_name": "LeftHand",
+          "positive_vertex_count": 488,
+          "argmax_vertex_count": 46,
+          "weight_sum": 58.49573680021362
+        },
+        {
+          "index": 26,
+          "name": "LeftHandMiddle2",
+          "parent": 25,
+          "parent_name": "LeftHandMiddle1",
+          "positive_vertex_count": 656,
+          "argmax_vertex_count": 164,
+          "weight_sum": 164.39384767013667
+        },
+        {
+          "index": 27,
+          "name": "LeftHandMiddle3",
+          "parent": 26,
+          "parent_name": "LeftHandMiddle2",
+          "positive_vertex_count": 286,
+          "argmax_vertex_count": 127,
+          "weight_sum": 127.64635875594439
+        },
+        {
+          "index": 28,
+          "name": "LeftHandMiddle4",
+          "parent": 27,
+          "parent_name": "LeftHandMiddle3",
+          "positive_vertex_count": 205,
+          "argmax_vertex_count": 74,
+          "weight_sum": 75.32180933669042
+        },
+        {
+          "index": 29,
+          "name": "LeftHandMiddleEnd",
+          "parent": 28,
+          "parent_name": "LeftHandMiddle4",
+          "positive_vertex_count": 174,
+          "argmax_vertex_count": 125,
+          "weight_sum": 120.35830587449986
+        },
+        {
+          "index": 30,
+          "name": "LeftHandRing1",
+          "parent": 15,
+          "parent_name": "LeftHand",
+          "positive_vertex_count": 532,
+          "argmax_vertex_count": 72,
+          "weight_sum": 71.47677161150403
+        },
+        {
+          "index": 31,
+          "name": "LeftHandRing2",
+          "parent": 30,
+          "parent_name": "LeftHandRing1",
+          "positive_vertex_count": 496,
+          "argmax_vertex_count": 180,
+          "weight_sum": 173.9176572525551
+        },
+        {
+          "index": 32,
+          "name": "LeftHandRing3",
+          "parent": 31,
+          "parent_name": "LeftHandRing2",
+          "positive_vertex_count": 273,
+          "argmax_vertex_count": 114,
+          "weight_sum": 121.04838707839372
+        },
+        {
+          "index": 33,
+          "name": "LeftHandRing4",
+          "parent": 32,
+          "parent_name": "LeftHandRing3",
+          "positive_vertex_count": 160,
+          "argmax_vertex_count": 50,
+          "weight_sum": 52.272619530558586
+        },
+        {
+          "index": 34,
+          "name": "LeftHandRingEnd",
+          "parent": 33,
+          "parent_name": "LeftHandRing4",
+          "positive_vertex_count": 209,
+          "argmax_vertex_count": 133,
+          "weight_sum": 129.75818205757682
+        },
+        {
+          "index": 35,
+          "name": "LeftHandPinky1",
+          "parent": 15,
+          "parent_name": "LeftHand",
+          "positive_vertex_count": 470,
+          "argmax_vertex_count": 117,
+          "weight_sum": 118.66626318499219
+        },
+        {
+          "index": 36,
+          "name": "LeftHandPinky2",
+          "parent": 35,
+          "parent_name": "LeftHandPinky1",
+          "positive_vertex_count": 507,
+          "argmax_vertex_count": 181,
+          "weight_sum": 178.6034649534391
+        },
+        {
+          "index": 37,
+          "name": "LeftHandPinky3",
+          "parent": 36,
+          "parent_name": "LeftHandPinky2",
+          "positive_vertex_count": 278,
+          "argmax_vertex_count": 111,
+          "weight_sum": 114.30693534016609
+        },
+        {
+          "index": 38,
+          "name": "LeftHandPinky4",
+          "parent": 37,
+          "parent_name": "LeftHandPinky3",
+          "positive_vertex_count": 187,
+          "argmax_vertex_count": 62,
+          "weight_sum": 58.19955314812738
+        },
+        {
+          "index": 39,
+          "name": "LeftHandPinkyEnd",
+          "parent": 38,
+          "parent_name": "LeftHandPinky4",
+          "positive_vertex_count": 173,
+          "argmax_vertex_count": 125,
+          "weight_sum": 127.52147849742323
+        },
+        {
+          "index": 40,
+          "name": "RightShoulder",
+          "parent": 4,
+          "parent_name": "Chest",
+          "positive_vertex_count": 812,
+          "argmax_vertex_count": 240,
+          "weight_sum": 242.15233149324368
+        },
+        {
+          "index": 41,
+          "name": "RightArm",
+          "parent": 40,
+          "parent_name": "RightShoulder",
+          "positive_vertex_count": 512,
+          "argmax_vertex_count": 329,
+          "weight_sum": 325.94162331677376
+        },
+        {
+          "index": 42,
+          "name": "RightForeArm",
+          "parent": 41,
+          "parent_name": "RightArm",
+          "positive_vertex_count": 462,
+          "argmax_vertex_count": 354,
+          "weight_sum": 350.56562185899435
+        },
+        {
+          "index": 43,
+          "name": "RightHand",
+          "parent": 42,
+          "parent_name": "RightForeArm",
+          "positive_vertex_count": 356,
+          "argmax_vertex_count": 137,
+          "weight_sum": 123.98023260591847
+        },
+        {
+          "index": 44,
+          "name": "RightHandThumb1",
+          "parent": 43,
+          "parent_name": "RightHand",
+          "positive_vertex_count": 387,
+          "argmax_vertex_count": 104,
+          "weight_sum": 118.10376391504118
+        },
+        {
+          "index": 45,
+          "name": "RightHandThumb2",
+          "parent": 44,
+          "parent_name": "RightHandThumb1",
+          "positive_vertex_count": 493,
+          "argmax_vertex_count": 134,
+          "weight_sum": 134.48195892029435
+        },
+        {
+          "index": 46,
+          "name": "RightHandThumb3",
+          "parent": 45,
+          "parent_name": "RightHandThumb2",
+          "positive_vertex_count": 201,
+          "argmax_vertex_count": 44,
+          "weight_sum": 51.17196603330038
+        },
+        {
+          "index": 47,
+          "name": "RightHandThumbEnd",
+          "parent": 46,
+          "parent_name": "RightHandThumb3",
+          "positive_vertex_count": 172,
+          "argmax_vertex_count": 125,
+          "weight_sum": 115.23560679663206
+        },
+        {
+          "index": 48,
+          "name": "RightHandIndex1",
+          "parent": 43,
+          "parent_name": "RightHand",
+          "positive_vertex_count": 544,
+          "argmax_vertex_count": 171,
+          "weight_sum": 158.99250998173284
+        },
+        {
+          "index": 49,
+          "name": "RightHandIndex2",
+          "parent": 48,
+          "parent_name": "RightHandIndex1",
+          "positive_vertex_count": 425,
+          "argmax_vertex_count": 133,
+          "weight_sum": 132.58092609410255
+        },
+        {
+          "index": 50,
+          "name": "RightHandIndex3",
+          "parent": 49,
+          "parent_name": "RightHandIndex2",
+          "positive_vertex_count": 323,
+          "argmax_vertex_count": 142,
+          "weight_sum": 135.73056500664845
+        },
+        {
+          "index": 51,
+          "name": "RightHandIndex4",
+          "parent": 50,
+          "parent_name": "RightHandIndex3",
+          "positive_vertex_count": 256,
+          "argmax_vertex_count": 57,
+          "weight_sum": 63.138148786204646
+        },
+        {
+          "index": 52,
+          "name": "RightHandIndexEnd",
+          "parent": 51,
+          "parent_name": "RightHandIndex4",
+          "positive_vertex_count": 242,
+          "argmax_vertex_count": 116,
+          "weight_sum": 116.8442381920039
+        },
+        {
+          "index": 53,
+          "name": "RightHandMiddle1",
+          "parent": 43,
+          "parent_name": "RightHand",
+          "positive_vertex_count": 488,
+          "argmax_vertex_count": 46,
+          "weight_sum": 58.49573680021362
+        },
+        {
+          "index": 54,
+          "name": "RightHandMiddle2",
+          "parent": 53,
+          "parent_name": "RightHandMiddle1",
+          "positive_vertex_count": 656,
+          "argmax_vertex_count": 164,
+          "weight_sum": 164.39384767013667
+        },
+        {
+          "index": 55,
+          "name": "RightHandMiddle3",
+          "parent": 54,
+          "parent_name": "RightHandMiddle2",
+          "positive_vertex_count": 286,
+          "argmax_vertex_count": 127,
+          "weight_sum": 127.64635875594439
+        },
+        {
+          "index": 56,
+          "name": "RightHandMiddle4",
+          "parent": 55,
+          "parent_name": "RightHandMiddle3",
+          "positive_vertex_count": 205,
+          "argmax_vertex_count": 74,
+          "weight_sum": 75.32180933669042
+        },
+        {
+          "index": 57,
+          "name": "RightHandMiddleEnd",
+          "parent": 56,
+          "parent_name": "RightHandMiddle4",
+          "positive_vertex_count": 174,
+          "argmax_vertex_count": 125,
+          "weight_sum": 120.35830587449986
+        },
+        {
+          "index": 58,
+          "name": "RightHandRing1",
+          "parent": 43,
+          "parent_name": "RightHand",
+          "positive_vertex_count": 532,
+          "argmax_vertex_count": 72,
+          "weight_sum": 71.47677161150403
+        },
+        {
+          "index": 59,
+          "name": "RightHandRing2",
+          "parent": 58,
+          "parent_name": "RightHandRing1",
+          "positive_vertex_count": 496,
+          "argmax_vertex_count": 180,
+          "weight_sum": 173.9176572525551
+        },
+        {
+          "index": 60,
+          "name": "RightHandRing3",
+          "parent": 59,
+          "parent_name": "RightHandRing2",
+          "positive_vertex_count": 273,
+          "argmax_vertex_count": 114,
+          "weight_sum": 121.04838707839372
+        },
+        {
+          "index": 61,
+          "name": "RightHandRing4",
+          "parent": 60,
+          "parent_name": "RightHandRing3",
+          "positive_vertex_count": 160,
+          "argmax_vertex_count": 50,
+          "weight_sum": 52.272619530558586
+        },
+        {
+          "index": 62,
+          "name": "RightHandRingEnd",
+          "parent": 61,
+          "parent_name": "RightHandRing4",
+          "positive_vertex_count": 209,
+          "argmax_vertex_count": 133,
+          "weight_sum": 129.75818205757682
+        },
+        {
+          "index": 63,
+          "name": "RightHandPinky1",
+          "parent": 43,
+          "parent_name": "RightHand",
+          "positive_vertex_count": 470,
+          "argmax_vertex_count": 117,
+          "weight_sum": 118.66626318513407
+        },
+        {
+          "index": 64,
+          "name": "RightHandPinky2",
+          "parent": 63,
+          "parent_name": "RightHandPinky1",
+          "positive_vertex_count": 507,
+          "argmax_vertex_count": 181,
+          "weight_sum": 178.6034649534391
+        },
+        {
+          "index": 65,
+          "name": "RightHandPinky3",
+          "parent": 64,
+          "parent_name": "RightHandPinky2",
+          "positive_vertex_count": 278,
+          "argmax_vertex_count": 111,
+          "weight_sum": 114.30693534016609
+        },
+        {
+          "index": 66,
+          "name": "RightHandPinky4",
+          "parent": 65,
+          "parent_name": "RightHandPinky3",
+          "positive_vertex_count": 187,
+          "argmax_vertex_count": 62,
+          "weight_sum": 58.19955314812738
+        },
+        {
+          "index": 67,
+          "name": "RightHandPinkyEnd",
+          "parent": 66,
+          "parent_name": "RightHandPinky4",
+          "positive_vertex_count": 173,
+          "argmax_vertex_count": 125,
+          "weight_sum": 127.52147849742323
+        },
+        {
+          "index": 68,
+          "name": "LeftLeg",
+          "parent": 1,
+          "parent_name": "Hips",
+          "positive_vertex_count": 621,
+          "argmax_vertex_count": 360,
+          "weight_sum": 366.64835996274996
+        },
+        {
+          "index": 69,
+          "name": "LeftShin",
+          "parent": 68,
+          "parent_name": "LeftLeg",
+          "positive_vertex_count": 539,
+          "argmax_vertex_count": 429,
+          "weight_sum": 416.4207467979925
+        },
+        {
+          "index": 70,
+          "name": "LeftFoot",
+          "parent": 69,
+          "parent_name": "LeftShin",
+          "positive_vertex_count": 374,
+          "argmax_vertex_count": 245,
+          "weight_sum": 254.26732720527798
+        },
+        {
+          "index": 71,
+          "name": "LeftToeBase",
+          "parent": 70,
+          "parent_name": "LeftFoot",
+          "positive_vertex_count": 1069,
+          "argmax_vertex_count": 1007,
+          "weight_sum": 1002.9831728655845
+        },
+        {
+          "index": 72,
+          "name": "LeftToeEnd",
+          "parent": 71,
+          "parent_name": "LeftToeBase",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        },
+        {
+          "index": 73,
+          "name": "RightLeg",
+          "parent": 1,
+          "parent_name": "Hips",
+          "positive_vertex_count": 621,
+          "argmax_vertex_count": 360,
+          "weight_sum": 366.64825911646403
+        },
+        {
+          "index": 74,
+          "name": "RightShin",
+          "parent": 73,
+          "parent_name": "RightLeg",
+          "positive_vertex_count": 539,
+          "argmax_vertex_count": 429,
+          "weight_sum": 416.4207467979925
+        },
+        {
+          "index": 75,
+          "name": "RightFoot",
+          "parent": 74,
+          "parent_name": "RightShin",
+          "positive_vertex_count": 374,
+          "argmax_vertex_count": 245,
+          "weight_sum": 254.26732720341533
+        },
+        {
+          "index": 76,
+          "name": "RightToeBase",
+          "parent": 75,
+          "parent_name": "RightFoot",
+          "positive_vertex_count": 1069,
+          "argmax_vertex_count": 1007,
+          "weight_sum": 1002.9831728655845
+        },
+        {
+          "index": 77,
+          "name": "RightToeEnd",
+          "parent": 76,
+          "parent_name": "RightToeBase",
+          "positive_vertex_count": 0,
+          "argmax_vertex_count": 0,
+          "weight_sum": 0.0
+        }
+      ]
+    },
+    "joint_common_regions": [
+      "hips",
+      "hips",
+      "torso",
+      "torso",
+      "torso",
+      "neck",
+      "neck",
+      "head/face",
+      "head/face",
+      "head/face",
+      "head/face",
+      "head/face",
+      "leftShoulder",
+      "leftArm",
+      "leftForeArm",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "leftHand",
+      "rightShoulder",
+      "rightArm",
+      "rightForeArm",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "rightHand",
+      "leftUpLeg",
+      "leftLeg",
+      "leftFoot",
+      "leftFoot",
+      "leftFoot",
+      "rightUpLeg",
+      "rightLeg",
+      "rightFoot",
+      "rightFoot",
+      "rightFoot"
+    ],
+    "labels": {
+      "counts": {
+        "head/face": 4747,
+        "hips": 366,
+        "leftArm": 290,
+        "leftFoot": 1273,
+        "leftForeArm": 367,
+        "leftHand": 2835,
+        "leftLeg": 419,
+        "leftShoulder": 107,
+        "leftUpLeg": 347,
+        "neck": 480,
+        "rightArm": 292,
+        "rightFoot": 1273,
+        "rightForeArm": 370,
+        "rightHand": 2832,
+        "rightLeg": 435,
+        "rightShoulder": 124,
+        "rightUpLeg": 322,
+        "torso": 1177
+      },
+      "label_to_grouped_lbs_argmax": {
+        "head/face": {
+          "head/face": 4703,
+          "neck": 44
+        },
+        "hips": {
+          "hips": 269,
+          "leftUpLeg": 11,
+          "rightUpLeg": 13,
+          "torso": 73
+        },
+        "leftArm": {
+          "leftArm": 290
+        },
+        "leftFoot": {
+          "leftFoot": 1252,
+          "leftLeg": 21
+        },
+        "leftForeArm": {
+          "leftArm": 4,
+          "leftForeArm": 348,
+          "leftHand": 15
+        },
+        "leftHand": {
+          "leftForeArm": 3,
+          "leftHand": 2832
+        },
+        "leftLeg": {
+          "leftLeg": 407,
+          "leftUpLeg": 12
+        },
+        "leftShoulder": {
+          "leftArm": 23,
+          "leftShoulder": 83,
+          "torso": 1
+        },
+        "leftUpLeg": {
+          "hips": 9,
+          "leftLeg": 1,
+          "leftUpLeg": 337
+        },
+        "neck": {
+          "head/face": 48,
+          "neck": 429,
+          "torso": 3
+        },
+        "rightArm": {
+          "rightArm": 292
+        },
+        "rightFoot": {
+          "rightFoot": 1252,
+          "rightLeg": 21
+        },
+        "rightForeArm": {
+          "rightArm": 4,
+          "rightForeArm": 349,
+          "rightHand": 17
+        },
+        "rightHand": {
+          "rightForeArm": 2,
+          "rightHand": 2830
+        },
+        "rightLeg": {
+          "rightLeg": 408,
+          "rightUpLeg": 27
+        },
+        "rightShoulder": {
+          "rightArm": 27,
+          "rightShoulder": 95,
+          "torso": 2
+        },
+        "rightUpLeg": {
+          "hips": 2,
+          "rightUpLeg": 320
+        },
+        "torso": {
+          "leftArm": 12,
+          "leftShoulder": 155,
+          "neck": 59,
+          "rightArm": 6,
+          "rightShoulder": 143,
+          "torso": 802
+        }
+      },
+      "disagreement_count": 758,
+      "confident_argmax_disagreements": 98,
+      "label_lbs_mass": {
+        "min": 0.0,
+        "mean": 0.9343293905258179,
+        "p50": 1.0,
+        "p95": 1.0,
+        "max": 1.0000001192092896
+      },
+      "label_lbs_mass_below_half": 862,
+      "per_label": {
+        "head/face": {
+          "vertices": 4747,
+          "argmax_disagreements": 44,
+          "label_mass": {
+            "min": 0.23876941204071045,
+            "mean": 0.9823307394981384,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "hips": {
+          "vertices": 366,
+          "argmax_disagreements": 97,
+          "label_mass": {
+            "min": 0.11709059774875641,
+            "mean": 0.6542547941207886,
+            "p50": 0.7143434286117554,
+            "p95": 0.9432877898216248,
+            "max": 0.992533802986145
+          }
+        },
+        "leftArm": {
+          "vertices": 290,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.6017677783966064,
+            "mean": 0.9466996788978577,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "leftFoot": {
+          "vertices": 1273,
+          "argmax_disagreements": 21,
+          "label_mass": {
+            "min": 0.14964517951011658,
+            "mean": 0.9839070439338684,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "leftForeArm": {
+          "vertices": 367,
+          "argmax_disagreements": 19,
+          "label_mass": {
+            "min": 0.060719966888427734,
+            "mean": 0.9075927734375,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "leftHand": {
+          "vertices": 2835,
+          "argmax_disagreements": 3,
+          "label_mass": {
+            "min": 0.35555407404899597,
+            "mean": 0.9950706958770752,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0000001192092896
+          }
+        },
+        "leftLeg": {
+          "vertices": 419,
+          "argmax_disagreements": 12,
+          "label_mass": {
+            "min": 0.2433331310749054,
+            "mean": 0.9281955361366272,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "leftShoulder": {
+          "vertices": 107,
+          "argmax_disagreements": 24,
+          "label_mass": {
+            "min": 0.17618630826473236,
+            "mean": 0.5989121794700623,
+            "p50": 0.6192141771316528,
+            "p95": 0.8261470735073089,
+            "max": 0.8477316498756409
+          }
+        },
+        "leftUpLeg": {
+          "vertices": 347,
+          "argmax_disagreements": 10,
+          "label_mass": {
+            "min": 0.13327656686306,
+            "mean": 0.9148176312446594,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "neck": {
+          "vertices": 480,
+          "argmax_disagreements": 51,
+          "label_mass": {
+            "min": 0.0,
+            "mean": 0.6688875555992126,
+            "p50": 0.7407528162002563,
+            "p95": 0.8512339293956757,
+            "max": 0.8813362121582031
+          }
+        },
+        "rightArm": {
+          "vertices": 292,
+          "argmax_disagreements": 0,
+          "label_mass": {
+            "min": 0.6017677783966064,
+            "mean": 0.9444268345832825,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "rightFoot": {
+          "vertices": 1273,
+          "argmax_disagreements": 21,
+          "label_mass": {
+            "min": 0.14964517951011658,
+            "mean": 0.9839070439338684,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "rightForeArm": {
+          "vertices": 370,
+          "argmax_disagreements": 21,
+          "label_mass": {
+            "min": 0.060719966888427734,
+            "mean": 0.9042307138442993,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "rightHand": {
+          "vertices": 2832,
+          "argmax_disagreements": 2,
+          "label_mass": {
+            "min": 0.35555407404899597,
+            "mean": 0.9955876469612122,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0000001192092896
+          }
+        },
+        "rightLeg": {
+          "vertices": 435,
+          "argmax_disagreements": 27,
+          "label_mass": {
+            "min": 0.01002405770123005,
+            "mean": 0.9021212458610535,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "rightShoulder": {
+          "vertices": 124,
+          "argmax_disagreements": 29,
+          "label_mass": {
+            "min": 0.17618630826473236,
+            "mean": 0.596730649471283,
+            "p50": 0.6107428073883057,
+            "p95": 0.8268048137426376,
+            "max": 0.8477316498756409
+          }
+        },
+        "rightUpLeg": {
+          "vertices": 322,
+          "argmax_disagreements": 2,
+          "label_mass": {
+            "min": 0.3107219934463501,
+            "mean": 0.9357118606567383,
+            "p50": 1.0,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        },
+        "torso": {
+          "vertices": 1177,
+          "argmax_disagreements": 375,
+          "label_mass": {
+            "min": 0.08125890791416168,
+            "mean": 0.6329017281532288,
+            "p50": 0.6321849226951599,
+            "p95": 1.0,
+            "max": 1.0
+          }
+        }
+      }
+    },
+    "wrapper_binding_error_obj_units": {
+      "min": 6.250455448358894e-12,
+      "mean": 0.0004719913122244179,
+      "p50": 3.109726378625055e-07,
+      "p95": 0.0010267218458466232,
+      "max": 0.059377238154411316
+    },
+    "wrapper_complete_nearest_triangle_check": {
+      "projection_error_excess": {
+        "min": -1.4210854715202004e-14,
+        "mean": 1.130611479993604e-07,
+        "p50": 0.0,
+        "p95": 0.0,
+        "max": 0.00018191151320934296
+      },
+      "excess_over_1micrometer": 93,
+      "raw55_changed": 13,
+      "native17_changed": 0,
+      "note": "Changes can include equal-distance shared-edge face ties; no upstream labels are replaced."
+    },
+    "base_obj_bounds": [
+      [
+        -0.8189619779586792,
+        -1.301826000213623,
+        -0.15176400542259216
+      ],
+      [
+        0.8189830183982849,
+        0.4170539975166321,
+        0.14223699271678925
+      ]
+    ],
+    "wrapper_obj_bounds": [
+      [
+        -0.818681001663208,
+        -1.3022899627685547,
+        -0.1505039930343628
+      ],
+      [
+        0.8187010288238525,
+        0.4170350134372711,
+        0.14142900705337524
+      ]
+    ],
+    "wrapper_polygons_equal_template": true,
+    "wrapper_triangulated_faces_equal_template": false,
+    "wrapper_triangulation_note": "Original polygon vertex order matches exactly; Trimesh quad diagonals differ from official triangles. UMR transfers vertex labels, so triangle identity is not required.",
+    "smpl_base_faces_equal_loaded_model": true,
+    "native17_mixed_vertex_faces": 1099,
+    "native17_face_count": 36108,
+    "native17_majority_face_labels": {
+      "1": 5662,
+      "2": 646,
+      "3": 582,
+      "4": 10452,
+      "5": 838,
+      "6": 2544,
+      "7": 2358,
+      "8": 2544,
+      "9": 584,
+      "10": 5668,
+      "11": 870,
+      "12": 734,
+      "13": 740,
+      "14": 694,
+      "15": 732,
+      "16": 214,
+      "17": 246
+    },
+    "model_arrays": {
+      "mean": {
+        "shape": [
+          18056,
+          3
+        ],
+        "finite": true
+      },
+      "shapedirs": {
+        "shape": [
+          128,
+          54168
+        ],
+        "finite": true
+      },
+      "eigenvalues": {
+        "shape": [
+          128
+        ],
+        "finite": true
+      },
+      "bind_shape": {
+        "shape": [
+          18056,
+          3
+        ],
+        "finite": true
+      },
+      "bind_pose_world": {
+        "shape": [
+          78,
+          4,
+          4
+        ],
+        "finite": true
+      },
+      "t_pose_world": {
+        "shape": [
+          78,
+          4,
+          4
+        ],
+        "finite": true
+      }
+    },
+    "template_bounds_m": [
+      [
+        -0.9126183390617371,
+        -0.00045777944615110755,
+        -0.12054694443941116
+      ],
+      [
+        0.9125918745994568,
+        1.771514892578125,
+        0.22382202744483948
+      ]
+    ]
+  },
+  "diagnostics_npz_sha256": "7a3bdf8166c3017bc5771a559bdc32dd6fd7f8de83fef6a4802122cd39a11d11"
+}

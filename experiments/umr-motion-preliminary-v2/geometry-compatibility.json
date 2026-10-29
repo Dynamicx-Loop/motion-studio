@@ -1,0 +1,7 @@
+{
+  "visual_kinematic_xml_equal_after_removing_group3_geoms": true,
+  "audited_mesh_hashes_match": 51,
+  "current_xml_sha256": "4feeec2d7b08152e809a0325919eba6cbcfdf9fe321febd10341b9b681dda12c",
+  "audited_xml_sha256": "9df1549627abc9ed18b3d42e43d5850833ba5a53a8152a454ec92c806f4ecbef",
+  "note": "Concurrent collision-only refinements preserved, not used for binding or self-collision. Numeric geom IDs can shift; binding is rebuilt against current model, not reused by numeric ID."
+}

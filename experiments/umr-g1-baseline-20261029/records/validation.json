@@ -1,0 +1,62 @@
+{
+  "frames": 5468,
+  "fps": 90.00090026855469,
+  "duration_seconds": 60.75494782478813,
+  "qpos_shape": [
+    5468,
+    36
+  ],
+  "robot_joint_names": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_roll_joint",
+    "waist_pitch_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint"
+  ],
+  "all_source_frames_preserved": true,
+  "official_dataset_and_slots_compatible": true,
+  "static_geometry_matches_within_200nm": true,
+  "finite_motion": true,
+  "quaternion_norm_max_error": 5.960464477539063e-08,
+  "joint_limit_max_excess_rad": 0.0,
+  "joint_step_p95_rad_per_frame": 0.024252676963806143,
+  "joint_step_max_rad_per_frame": 0.15312659740447998,
+  "conventions": {
+    "units": "metres/radians",
+    "source_axes": "Y-up",
+    "robot_axes": "Z-up",
+    "root_quaternion": "wxyz",
+    "joint_order": "robot_joint_names; free-root first 7 qpos"
+  },
+  "limitations": [
+    "Single clip and seed",
+    "No visual review performed",
+    "No independent floor, contact, sliding or collision audit",
+    "No dynamics, controller or hardware validation",
+    "Static anatomical diagnostic is not a motion-quality score"
+  ]
+}

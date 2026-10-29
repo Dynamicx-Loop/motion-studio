@@ -1,0 +1,28 @@
+{
+  "source": "/data/motions/datasets/fzmotion/raw/bvh/wendy/2026-10-19/wendy_happy_dance_Skeleton1.bvh",
+  "model": "/data/motions/human_models/smplx/1.1/models_smplx_v1_1/models/smplx/SMPLX_NEUTRAL.npz",
+  "output": "outputs/smplx/wendy_happy_dance_full.npz",
+  "frames": 6924,
+  "output_up": "y",
+  "unit_scale": 0.01,
+  "betas": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mapping_overrides": {
+    "spine": "Spine1",
+    "spine2": "Spine2",
+    "chest": "Chest",
+    "left_toe": "LeftToe",
+    "right_toe": "RightToe"
+  },
+  "start_frame": 0
+}

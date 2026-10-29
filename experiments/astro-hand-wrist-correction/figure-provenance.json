@@ -1,0 +1,33 @@
+{
+  "figure_language": "en",
+  "inputs": {
+    "outputs/astro-hands-correspondence/smplx_astro_spine1/dataset.npz": "dc625e316cfadc0824c919bed33a7a00488740e81a71e5611686da45e9a9006a",
+    "outputs/astro-hands-correspondence/smplx_astro_spine1-audit.npz": "41ac25a566a43070a8d3356689d65544590451e28057cc72e9409f6fe92b8931",
+    "outputs/astro-hand-wrist-correction/smplx_astro_spine1-audit.npz": "a5d9b87156e8bab2faefeee600119db8af525ea81b0f1d1e9f8281be2d01e034",
+    "outputs/segment-binding-audit/g1/dataset.npz": "8ca161fb796a7482bc863da06033f5a78ccab2b88f88312b660c07df405bfad4",
+    "outputs/soma-correspondence-audit/smplx_g1_spine1-audit.npz": "6bb5734cdb77f6418635564ea496bf2d1439cd04cb0c41c3762c54bf869daf0b",
+    "outputs/astro-hand-wrist-correction/smplx_g1_spine1-audit.npz": "0d2c9bb49a09fca13e88fd473bed9e637b42ed5ccc3d7c48892ada770ff6c2e5",
+    "outputs/astro-hands-correspondence/smplx_astro_bbox50/dataset.npz": "84eb7fcecea84190528e20cb07a63052c18b40f54f8e92ba25ab535219761c9d",
+    "outputs/astro-hands-correspondence/smplx_astro_bbox50-audit.npz": "a8b366602111414d6c6f92756e706dec9c13ba4f4cd6c6dafae434797c84151c",
+    "outputs/astro-hand-wrist-correction/smplx_astro_bbox50-audit.npz": "8558b430672fc5667cb990659eb7a6ba0b2c62eed53153a8d74d8cea034f54a1",
+    "outputs/soma-correspondence-audit/smplx_g1_bbox50/dataset.npz": "3cb2c6de104206381c50b4cf2c5c3e93c82dce6e35dc737555ea6aafe6ba08d0",
+    "outputs/soma-correspondence-audit/smplx_g1_bbox50-audit.npz": "5a91cc52bfb531ab79379590c1c291548dcda634e29143730b24dafd69644270",
+    "outputs/astro-hand-wrist-correction/smplx_g1_bbox50-audit.npz": "12682bda7bb3af82777da35110d71e6c02c3ed615b5557c1823cd48a3c3c8e7a",
+    "outputs/astro-hands-correspondence/soma_astro_spine1/dataset.npz": "fbf949e6077c1824c9fc20ed02963909212b8acdc00bd0e09e0dfeb62f8f30a8",
+    "outputs/astro-hands-correspondence/soma_astro_spine1-audit.npz": "9be757b1e9e27ae08f2aae02237d0bfc2af3090ef132acf0ef0cfeb8a8f2e18b",
+    "outputs/astro-hand-wrist-correction/soma_astro_spine1-audit.npz": "2ea39ba5caeaae856050dcfdf9679c5904136c42ae8494d56b48ce93e5b492a4",
+    "outputs/soma-correspondence-audit/soma_g1_spine1/dataset.npz": "6de6d44935be603e1eb4968ccd8fcb460999bec03b50813b4f2438c249f4fac9",
+    "outputs/soma-correspondence-audit/soma_g1_spine1-audit.npz": "6f092f322e17c4ae4e2cf2cc6896e8429979e10e0e001a2e53b9a81f230d1ca1",
+    "outputs/astro-hand-wrist-correction/soma_g1_spine1-audit.npz": "db2d4b7795205949f288908308ec4e68572ad919425d1a32bacced75f0e62f76",
+    "outputs/astro-hands-correspondence/soma_astro_bbox50/dataset.npz": "94af5e6d8bd0c1d297e394cc4bf189294835668300584328a4a90d157c025a86",
+    "outputs/astro-hands-correspondence/soma_astro_bbox50-audit.npz": "1796602ffc4d1b0b30fe646da54e0bd6d093020a7c480cc5ce5bf4a5f864826d",
+    "outputs/astro-hand-wrist-correction/soma_astro_bbox50-audit.npz": "4de9c81d6bfd39df2b93c1f46e4e3e33b729fd7c8e1f334ff66e0d9b28c379a1",
+    "outputs/soma-correspondence-audit/soma_g1_bbox50/dataset.npz": "a7fd4408b9fd4af2300102def77a89d53ea0a5980da3f8f38c1beddbdc5368fd",
+    "outputs/soma-correspondence-audit/soma_g1_bbox50-audit.npz": "c13e222d18d27ff2272e0b6626e59a9ee607e92986e7dd34f85cc5cdd29fe69f",
+    "outputs/astro-hand-wrist-correction/soma_g1_bbox50-audit.npz": "3a5e063f599dedafc18fcb9b4a694384aedf039a1d0307673d078857179e3029"
+  },
+  "outputs": {
+    "outputs/astro-hand-wrist-correction/wrist-calibration-closeups.png": "5d9c0af534971beabae1ba775a31242437410605ae63415216db265bedfa9162"
+  },
+  "view": "left hands; both hands measured in tables; fixed physical metre scales within matched pairs"
+}

@@ -1,0 +1,200 @@
+diff --git a/robots/astro_p2_43dof_dex3_1/MJCF.md b/robots/astro_p2_43dof_dex3_1/MJCF.md
+index a3a6e72..81accef 100644
+--- a/robots/astro_p2_43dof_dex3_1/MJCF.md
++++ b/robots/astro_p2_43dof_dex3_1/MJCF.md
+@@ -3,8 +3,8 @@
+ `astro_p2_43dof_dex3_1.xml` corresponds to the sibling URDF: floating base,
+ 29 Astro body hinges, 14 Dex3-1 finger hinges, no actuators (`nq=50`, `nv=49`).
+ Visual meshes are collision-disabled in group 1; collisions are group 3.
+-All collision geoms are primitives: 53 native capsules (39 body + 14 finger), 11 cylinders,
+-4 boxes (two feet + two palms), and one sphere. Source explicit
++All collision geoms are primitives: 57 native capsules (43 body + 14 finger), 11 cylinders,
++6 boxes (two feet + two per palm), and one sphere. Source explicit
+ inertias are retained with inference disabled. Fixed frames remain named.
+ 
+ Read [README.md](README.md) for sample mounting assumptions, joint-order mapping,
+@@ -12,3 +12,57 @@ source licensing, mass accounting, regeneration and validation. Relative mesh
+ paths are self-contained; keep `meshes/` next to the XML. No floor, initial
+ standing offset, actuator, controller, hand calibration or retargeting is added.
+ `mjcf-conversion.json` includes hashes and the source-to-capsule mapping.
++
++## MJCF-only contact refinement
++
++The MJCF now intentionally differs from the URDF collision geometry:
++- Each shin capsule's lower endpoint is raised from -0.260 to -0.230 m in the knee frame, retaining its 53 mm radius and upper endpoint.
++- Each palm uses two simple boxes, leaving a notch at the thumb-side rear corner. The full-width front box spans X=52–86.7 mm; the narrower rear box spans X=0–52 mm.
++- Proximal thumb capsules use a 12 mm radius and begin 18 mm along the thumb segment, removing the oversized root overlap. Their distal center remains at 41.175 mm.
++
++All sole/foot-side shapes, distal finger capsules, visual geometry, inertias and joints are unchanged. No contact exclusions or collision masks were changed.
++
++`mjcf-refinement.json` records the current hash and checks: zero contacts in the zero pose, a 315-pose ankle pitch/roll grid, and a 315-pose thumb-root joint grid. Other joints were zero; these are static contact checks, not whole-body or dynamic validation.
++
++The original `mjcf-conversion.json` describes the pre-refinement URDF conversion. Running the URDF converter again will overwrite these intentional MJCF-only edits; preserve/reapply them if rebuilding. The URDF comparison in the viewer therefore shows the earlier collision geometry.
++
++## MJCF-only torso and arm refinement
++
++Four added native capsules cover the lower upper arms and wrist-roll housings
++(one per side on each segment). Wrist-yaw cylinders use radius 29 mm, half-length
++21 mm and center X=47 mm. The head-adjacent upper-back capsule was removed at the
++user's request; the head sphere and three neck-handle capsules are retained.
++
++The torso was subsequently adjusted to eliminate 18 newly introduced arm-contact
++cases. The upper capsule returns to its original radius 90 mm and Y endpoints
+++/-44.5 mm at Z=250 mm. The middle capsule uses radius 93 mm and Y endpoints
+++/-18 mm, centered at X=2 mm, Z=160 mm. The lower capsule is unchanged. The shorter
++middle capsule gives arms more side clearance while retaining slightly more depth
++than the original 90 mm radius. No exclusions or masks were changed.
++
++With 10,000 fixed-seed visual-surface samples per mesh, torso 95th-percentile
++outside distance is 19.7 mm versus 18.8 mm before the torso/arm refinement; maximum
++sampled distance remains 32.2 mm. This is a modest coverage tradeoff for clearance,
++not an exact mesh envelope. All other current per-link metrics are recorded in
++`mjcf-refinement.json`.
++
++## Motion checks after torso and wrist clearance adjustments
++
++- All 18 previously recorded new contact cases now have zero contacts.
++- All 43 joint limits remain unchanged. Individual full-range sweeps (2,623 poses)
++  produce no newly colliding poses; 142 poses already collided in the baseline.
++- The original 6,000 combined arm samples have no newly colliding poses.
++- An additional 20,000 combined arm samples have no newly colliding poses. These
++  expanded samples informed tuning. The saved wrist-to-hip case and its mirrored
++  right-arm configuration are both clear after reducing the wrist cylinder radius
++  from 30 to 29 mm; length and center are retained.
++- The previous 630 ankle/thumb regression poses remain clear. Two thousand sampled
++  combined hand configurations retain their prior clear/contact classifications,
++  and all 1,000 combined waist configurations are clear.
++
++`mjcf-mobility-review.json` records the original suite, and
++`mjcf-torso-clearance-review.json` records all 18 resolved configurations and the
++expanded sample results, including the resolved wrist-to-hip configuration.
++These are static `mj_forward` contact checks against the pre-upper-body-refinement
++baseline, not dynamic stepping or proof of clearance for every possible motion.
++Visuals, inertias, joints, hands, feet, shin refinements, and URDF are unchanged.
+diff --git a/robots/astro_p2_43dof_dex3_1/README.md b/robots/astro_p2_43dof_dex3_1/README.md
+index ed6fc1f..ba99da3 100644
+--- a/robots/astro_p2_43dof_dex3_1/README.md
++++ b/robots/astro_p2_43dof_dex3_1/README.md
+@@ -103,3 +103,9 @@ free simulation, hand contact behavior or a collision-free operating envelope.
+ | Open right | Bent right |
+ |---|---|
+ | ![Open right hand](preview-right-open.png) | ![Bent right hand](preview-right-bent.png) |
++
++## Later MJCF-only refinement
++
++The MJCF has additional shin/foot and palm/thumb-root contact refinements, while the URDF remains at the approved prior geometry. See [MJCF.md](MJCF.md) before regenerating: the conversion command above overwrites these MJCF-only adjustments. The sole and distal finger collisions are identical in both editions.
++
++The MJCF-only refinement also improves torso, upper-arm and wrist coverage; see `MJCF.md` and `mjcf-refinement.json` for geometry changes and static contact checks.
+diff --git a/robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml b/robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml
+index bd28412..d8f596a 100644
+--- a/robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml
++++ b/robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml
+@@ -79,7 +79,7 @@
+               <inertial pos="0.0169866 0.00065948 -0.12137855" mass="2.46888842" fullinertia="0.01623141 0.01582703 0.00301964 2.467e-05 0.00031356 -0.00019476" />
+               <joint name="left_knee_joint" pos="0 0 0" axis="0 1 0" range="-0.09 2.44" actuatorfrcrange="-130 130" />
+               <geom name="left_knee_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.69804 0.69804 0.69804 1" mesh="left_knee_link" />
+-              <geom name="left_knee_link_1_capsule_collision" size="0.053" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.015 0 -0.26 0.015 0 0" group="3" />
++              <geom name="left_knee_link_1_capsule_collision" size="0.053" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.015 0 -0.23 0.015 0 0" group="3" />
+               <geom name="left_knee_link_cylinder_collision_1" size="0.053 0.05" quat="0.707107 0.707107 0 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
+               <body name="left_ankle_pitch_link" pos="0.016 0 -0.283">
+                 <inertial pos="2.311e-05 0.00039883 -0.00517577" mass="0.13481185" fullinertia="2.294e-05 1.743e-05 1.761e-05 0 7e-08 -2.8e-07" />
+@@ -126,7 +126,7 @@
+               <inertial pos="0.01698659 0.00065948 -0.12137855" mass="2.46888834" fullinertia="0.01623141 0.01582703 0.00301964 2.467e-05 0.00031356 -0.00019476" />
+               <joint name="right_knee_joint" pos="0 0 0" axis="0 1 0" range="-0.09 2.44" actuatorfrcrange="-130 130" />
+               <geom name="right_knee_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.69804 0.69804 0.69804 1" mesh="right_knee_link" />
+-              <geom name="right_knee_link_1_capsule_collision" size="0.053" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.015 0 -0.26 0.015 0 0" group="3" />
++              <geom name="right_knee_link_1_capsule_collision" size="0.053" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.015 0 -0.23 0.015 0 0" group="3" />
+               <geom name="right_knee_link_cylinder_collision_1" size="0.053 0.05" quat="0.707107 -0.707107 0 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
+               <body name="right_ankle_pitch_link" pos="0.016 0 -0.283">
+                 <inertial pos="2.311e-05 0.00039883 -0.00517577" mass="0.13481185" fullinertia="2.294e-05 1.743e-05 1.761e-05 0 7e-08 -2.8e-07" />
+@@ -168,7 +168,7 @@
+             <joint name="waist_roll_joint" pos="0 0 0" axis="1 0 0" range="-0.28 0.28" actuatorfrcrange="-50 50" />
+             <geom name="waist_roll_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.89804 0.91765 0.92941 1" mesh="waist_roll_link" />
+             <geom name="waist_roll_link_1_capsule_collision" size="0.09" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0 0.0445 0.25 0 -0.0445 0.25" group="3" />
+-            <geom name="waist_roll_link_2_capsule_collision" size="0.09" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.002 0.03 0.16 0.002 -0.03 0.16" group="3" />
++            <geom name="waist_roll_link_2_capsule_collision" size="0.093" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto=".002 .018 .16 .002 -.018 .16" group="3" />
+             <geom name="waist_roll_link_3_capsule_collision" size="0.09" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0 0.01 0.0700000000001 0 -0.01 0.0699999999999" group="3" />
+             <geom name="waist_roll_link_4_capsule_collision" size="0.0075" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="-0.116 0.0375 0.337 -0.116 -0.0375 0.337" group="3" />
+             <geom name="neck_handle_left_support_capsule" size="0.0075" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="-0.106 0.051 0.337 -0.071 0.051 0.337" group="3" />
+@@ -190,6 +190,7 @@
+                     <inertial pos="-2.087e-05 0.00440036 -0.07801697" mass="0.77178697" fullinertia="0.00100471 0.00095112 0.00051847 -3.85e-06 5.3e-06 4.05e-05" />
+                     <joint name="left_shoulder_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.92 1.92" actuatorfrcrange="-30 30" />
+                     <geom name="left_shoulder_yaw_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="left_shoulder_yaw_link" />
++                    <geom name="left_upper_arm_capsule_collision" size=".035" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0 0 -.015 0 0 -.06" group="3" />
+                     <body name="left_elbow_link" pos="0 0 -0.0895">
+                       <inertial pos="0.07067376 0.00094748 -0.00025468" mass="0.75085788" fullinertia="0.00063395 0.00119563 0.00132563 3.486e-05 -8.37e-06 -8e-07" />
+                       <joint name="left_elbow_joint" pos="0 0 0" axis="0 1 0" range="-0.52 1.66" actuatorfrcrange="-30 30" />
+@@ -200,6 +201,7 @@
+                         <inertial pos="0.02236437 -0.0017382 1.87e-06" mass="0.15772072" fullinertia="0.0001724 0.0001213 0.0001973 -4.24e-06 0 -1e-08" />
+                         <joint name="left_wrist_roll_joint" pos="0 0 0" axis="1 0 0" range="-1.92 1.92" actuatorfrcrange="-30 30" />
+                         <geom name="left_wrist_roll_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="left_wrist_roll_link" />
++                        <geom name="left_wrist_roll_shell_capsule_collision" size=".034" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.006 0 0 0.027 0 0" group="3" />
+                         <body name="left_wrist_pitch_link" pos="0.047 0 0">
+                           <inertial pos="0.02246818 0.00317842 0.00316732" mass="0.71257671" fullinertia="0.00035764 0.00069296 0.00069262 4.732e-05 -4.621e-05 7.64e-06" />
+                           <joint name="left_wrist_pitch_joint" pos="0 0 0" axis="0 1 0" range="-1.31 1.31" actuatorfrcrange="-10 10" />
+@@ -210,12 +212,13 @@
+                             <inertial pos="0.03046398 5.69e-06 -0.00037971" mass="0.18734799" fullinertia="0.00018749 0.00025305 0.00016328 0 1.4e-07 -1e-08" />
+                             <joint name="left_wrist_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.31 1.31" actuatorfrcrange="-10 10" />
+                             <geom name="left_wrist_yaw_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.69804 0.69804 0.69804 1" mesh="left_wrist_yaw_link" />
+-                            <geom name="left_wrist_yaw_link_cylinder_collision_1" size="0.027 0.015" pos="0.053 0 0" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
++                            <geom name="left_wrist_yaw_link_cylinder_collision_1" size=".029 .021" pos=".047 0 0" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
+                             <body name="left_hand_link" pos="0.067502 0 0">
+                               <body name="left_hand_palm_link">
+                                 <inertial pos="0.06214634836 -0.00050869656 -0.00058171093" mass="0.37283854" fullinertia="0.00027535181027 0.00053951827219 0.00039623390907 -1.595519465e-05 -2.4216189e-06 -4.2279435e-07" />
+                                 <geom name="left_hand_palm_link_visual_0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1" mesh="left_hand_palm_link" />
+-                                <geom name="left_hand_palm_link_bounds_collision_0" size="0.04335 0.0208672 0.0438968" pos="0.04335 0.000549028 8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
++                                <geom name="left_hand_palm_link_bounds_collision_0" size="0.01735 0.0208672 0.0438968" pos="0.06935 0.000549028 8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
++                                <geom name="left_hand_palm_rear_collision" size="0.026 0.0137081 0.0438968" pos="0.026 0.0077081 8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
+                                 <body name="left_hand_thumb_0_link" pos="0.0255 0 0">
+                                   <inertial pos="-0.0008842458 -0.00863407079 0.00094429336" mass="0.08623657" fullinertia="1.602919238e-05 1.451795012e-05 1.637877663e-05 1.0683177e-07 1.6728875e-07 -5.1094752e-07" />
+                                   <joint name="left_hand_thumb_0_joint" pos="0 0 0" axis="0 1 0" range="-1.04719755 1.04719755" actuatorfrcrange="-2.45 2.45" />
+@@ -225,7 +228,7 @@
+                                     <inertial pos="-0.00082788768 -0.03547435774 -0.0003808996" mass="0.05885070" fullinertia="1.274699945e-05 6.01573947e-06 1.234543582e-05 -5.0770784e-07 1.608885e-07 -2.7839003e-07" />
+                                     <joint name="left_hand_thumb_1_joint" pos="0 0 0" axis="0 0 1" range="-0.61086523 1.04719755" actuatorfrcrange="-1.4 1.4" />
+                                     <geom name="left_hand_thumb_1_link_visual_0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1" mesh="left_hand_thumb_1_link" />
+-                                    <geom name="left_hand_thumb_1_link_cylinder_collision_0" size="0.0136250020005" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.00102500198409 -0.0066250017844 -5.00003807247e-05 0.00102500198409 -0.0411749980412 -5.00003807247e-05" group="3" />
++                                    <geom name="left_hand_thumb_1_link_cylinder_collision_0" size="0.012" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.001025 -0.018 -5e-05 0.001025 -0.041175 -5e-05" group="3" />
+                                     <body name="left_hand_thumb_2_link" pos="0 -0.0458 0">
+                                       <inertial pos="-0.00171735242 -0.02628192939 0.00010778879" mass="0.02030626" fullinertia="4.61267817e-06 1.53561368e-06 3.86625776e-06 -3.42213e-08 -8.23881e-09 -2.549885e-08" />
+                                       <joint name="left_hand_thumb_2_joint" pos="0 0 0" axis="0 0 1" range="0 1.74533" actuatorfrcrange="-1.4 1.4" />
+@@ -281,6 +284,7 @@
+                     <inertial pos="-2.373e-05 -0.0043998 -0.07825482" mass="0.77170227" fullinertia="0.0010088 0.0009552 0.00051833 3.8e-06 3.61e-06 -3.563e-05" />
+                     <joint name="right_shoulder_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.92 1.92" actuatorfrcrange="-30 30" />
+                     <geom name="right_shoulder_yaw_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.86667 0.86667 0.8902 1" mesh="right_shoulder_yaw_link" />
++                    <geom name="right_upper_arm_capsule_collision" size=".035" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0 0 -.015 0 0 -.06" group="3" />
+                     <body name="right_elbow_link" pos="0 0 -0.0895">
+                       <inertial pos="0.07067216 -0.00095006 -0.00042388" mass="0.75092542" fullinertia="0.00063392 0.00119563 0.0013257 -3.488e-05 -9.14e-06 -1.2e-07" />
+                       <joint name="right_elbow_joint" pos="0 0 0" axis="0 1 0" range="-0.52 1.66" actuatorfrcrange="-30 30" />
+@@ -291,6 +295,7 @@
+                         <inertial pos="0.02236437 0.0017382 -1.87e-06" mass="0.15772072" fullinertia="0.0001724 0.0001213 0.0001973 4.24e-06 0 -1e-08" />
+                         <joint name="right_wrist_roll_joint" pos="0 0 0" axis="1 0 0" range="-1.92 1.92" actuatorfrcrange="-30 30" />
+                         <geom name="right_wrist_roll_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="right_wrist_roll_link" />
++                        <geom name="right_wrist_roll_shell_capsule_collision" size=".034" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.006 0 0 0.027 0 0" group="3" />
+                         <body name="right_wrist_pitch_link" pos="0.047 0 0">
+                           <inertial pos="0.0224677 -0.00317464 0.0031669" mass="0.71258211" fullinertia="0.00035765 0.00069298 0.00069265 -4.731e-05 -4.621e-05 -7.63e-06" />
+                           <joint name="right_wrist_pitch_joint" pos="0 0 0" axis="0 1 0" range="-1.31 1.31" actuatorfrcrange="-10 10" />
+@@ -301,12 +306,13 @@
+                             <inertial pos="0.03046236 5.69e-06 -0.00037971" mass="0.18734799" fullinertia="0.00018749 0.00025305 0.00016328 0 1.4e-07 -1e-08" />
+                             <joint name="right_wrist_yaw_joint" pos="0 0 0" axis="0 0 1" range="-1.31 1.31" actuatorfrcrange="-10 10" />
+                             <geom name="right_wrist_yaw_link_visual" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.79216 0.81961 0.93333 1" mesh="right_wrist_yaw_link" />
+-                            <geom name="right_wrist_yaw_link_cylinder_collision_1" size="0.027 0.015" pos="0.053 0 0" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
++                            <geom name="right_wrist_yaw_link_cylinder_collision_1" size=".029 .021" pos=".047 0 0" quat="0.707107 0 0.707107 0" type="cylinder" rgba="0.1 0.65 0.95 0.65" group="3" />
+                             <body name="right_hand_link" pos="0.0675 0 0">
+                               <body name="right_hand_palm_link">
+                                 <inertial pos="0.06214634836 0.00050869656 -0.00058171093" mass="0.37283854" fullinertia="0.00027535181027 0.00053951827219 0.00039623390907 1.595519465e-05 -2.4216189e-06 4.2279435e-07" />
+                                 <geom name="right_hand_palm_link_visual_0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1" mesh="right_hand_palm_link" />
+-                                <geom name="right_hand_palm_link_bounds_collision_0" size="0.04335 0.0208672 0.0438968" pos="0.04335 -0.000549028 -8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
++                                <geom name="right_hand_palm_link_bounds_collision_0" size="0.01735 0.0208672 0.0438968" pos="0.06935 -0.000549028 -8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
++                                <geom name="right_hand_palm_rear_collision" size="0.026 0.0137081 0.0438968" pos="0.026 -0.0077081 -8.90344e-07" type="box" rgba="0.1 0.65 0.95 0.65" group="3" />
+                                 <body name="right_hand_thumb_0_link" pos="0.0255 0 0">
+                                   <inertial pos="-0.0008842458 0.00863407079 0.00094429336" mass="0.08623657" fullinertia="1.602919238e-05 1.451795012e-05 1.637877663e-05 -1.0683177e-07 1.6728875e-07 5.1094752e-07" />
+                                   <joint name="right_hand_thumb_0_joint" pos="0 0 0" axis="0 1 0" range="-1.04719755 1.04719755" actuatorfrcrange="-2.45 2.45" />
+@@ -316,7 +322,7 @@
+                                     <inertial pos="-0.00082788768 0.03547435774 -0.0003808996" mass="0.05885070" fullinertia="1.274699945e-05 6.01573947e-06 1.234543582e-05 5.0770784e-07 1.608885e-07 2.7839003e-07" />
+                                     <joint name="right_hand_thumb_1_joint" pos="0 0 0" axis="0 0 1" range="-1.04719755 0.61086523" actuatorfrcrange="-1.4 1.4" />
+                                     <geom name="right_hand_thumb_1_link_visual_0" type="mesh" contype="0" conaffinity="0" group="1" density="0" rgba="0.2 0.2 0.2 1" mesh="right_hand_thumb_1_link" />
+-                                    <geom name="right_hand_thumb_1_link_cylinder_collision_0" size="0.0136250020005" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.00102500198409 0.0411749980412 5.00003807247e-05 0.00102500198409 0.0066250017844 5.00003807247e-05" group="3" />
++                                    <geom name="right_hand_thumb_1_link_cylinder_collision_0" size="0.012" type="capsule" rgba="0.1 0.65 0.95 0.65" fromto="0.001025 0.018 5e-05 0.001025 0.041175 5e-05" group="3" />
+                                     <body name="right_hand_thumb_2_link" pos="0 0.0458 0">
+                                       <inertial pos="-0.00171735242 0.02628192939 0.00010778879" mass="0.02030626" fullinertia="4.61267817e-06 1.53561368e-06 3.86625776e-06 3.42213e-08 -8.23881e-09 2.549885e-08" />
+                                       <joint name="right_hand_thumb_2_joint" pos="0 0 0" axis="0 0 1" range="-1.74533 0" actuatorfrcrange="-1.4 1.4" />

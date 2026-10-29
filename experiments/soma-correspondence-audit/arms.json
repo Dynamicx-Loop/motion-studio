@@ -1,0 +1,10 @@
+{
+  "smplx_astro_spine1": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/smplx_astro_spine1.json",
+  "smplx_astro_bbox50": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/smplx_astro_bbox50.json",
+  "soma_astro_spine1": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/soma_astro_spine1.json",
+  "soma_astro_bbox50": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/soma_astro_bbox50.json",
+  "smplx_g1_spine1": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/smplx_g1_spine1.json",
+  "smplx_g1_bbox50": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/smplx_g1_bbox50.json",
+  "soma_g1_spine1": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/soma_g1_spine1.json",
+  "soma_g1_bbox50": "/data/workspace/motion_studio/experiments/soma-correspondence-audit/soma_g1_bbox50.json"
+}

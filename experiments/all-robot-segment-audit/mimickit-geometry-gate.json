@@ -1,0 +1,294 @@
+{
+  "baseline": [
+    {
+      "geom": 0,
+      "name": "pelvis",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 1,
+      "name": "upper_waist",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 2,
+      "name": "torso",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 3,
+      "name": "right_clavicle",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 4,
+      "name": "left_clavicle",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 5,
+      "name": "head",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 6,
+      "name": "right_upper_arm",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 7,
+      "name": "right_lower_arm",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 8,
+      "name": "right_hand",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 9,
+      "name": "left_upper_arm",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 10,
+      "name": "left_lower_arm",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 11,
+      "name": "left_hand",
+      "triangles": 576,
+      "degenerate": 48,
+      "inward": 528,
+      "outward": 0
+    },
+    {
+      "geom": 12,
+      "name": "right_thigh",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 13,
+      "name": "right_shin",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 14,
+      "name": "right_foot",
+      "triangles": 12,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 12
+    },
+    {
+      "geom": 15,
+      "name": "left_thigh",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 16,
+      "name": "left_shin",
+      "triangles": 816,
+      "degenerate": 48,
+      "inward": 768,
+      "outward": 0
+    },
+    {
+      "geom": 17,
+      "name": "left_foot",
+      "triangles": 12,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 12
+    }
+  ],
+  "experimental": [
+    {
+      "geom": 0,
+      "name": "pelvis",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 1,
+      "name": "upper_waist",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 2,
+      "name": "torso",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 3,
+      "name": "right_clavicle",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 4,
+      "name": "left_clavicle",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 5,
+      "name": "head",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 6,
+      "name": "right_upper_arm",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 7,
+      "name": "right_lower_arm",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 8,
+      "name": "right_hand",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 9,
+      "name": "left_upper_arm",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 10,
+      "name": "left_lower_arm",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 11,
+      "name": "left_hand",
+      "triangles": 528,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 528
+    },
+    {
+      "geom": 12,
+      "name": "right_thigh",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 13,
+      "name": "right_shin",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 14,
+      "name": "right_foot",
+      "triangles": 12,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 12
+    },
+    {
+      "geom": 15,
+      "name": "left_thigh",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 16,
+      "name": "left_shin",
+      "triangles": 768,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 768
+    },
+    {
+      "geom": 17,
+      "name": "left_foot",
+      "triangles": 12,
+      "degenerate": 0,
+      "inward": 0,
+      "outward": 12
+    }
+  ]
+}

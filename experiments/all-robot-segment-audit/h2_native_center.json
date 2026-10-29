@@ -1,0 +1,84 @@
+{
+  "robot": {
+    "name": "unitree_h2",
+    "xml": "/data/workspace/motion_studio/externals/UMR/assets/h2_description/H2_stl_mjcf.xml",
+    "point_cloud_center": "body:waist_yaw_link",
+    "xml_policy": {
+      "floating_root_body": "h2_float_root",
+      "floating_freejoint": "h2_root_freejoint"
+    },
+    "tpose_qpos": {
+      "left_shoulder_pitch_joint": 0.0,
+      "left_shoulder_roll_joint": 1.5707963267948966,
+      "left_shoulder_yaw_joint": 0.0,
+      "left_elbow_joint": 1.5707963267948966,
+      "left_wrist_roll_joint": 0.0,
+      "left_wrist_pitch_joint": 0.0,
+      "left_wrist_yaw_joint": 0.0,
+      "right_shoulder_pitch_joint": 0.0,
+      "right_shoulder_roll_joint": -1.5707963267948966,
+      "right_shoulder_yaw_joint": 0.0,
+      "right_elbow_joint": 1.5707963267948966,
+      "right_wrist_roll_joint": 0.0,
+      "right_wrist_pitch_joint": 0.0,
+      "right_wrist_yaw_joint": 0.0
+    },
+    "visual_geom_policy": "auto"
+  },
+  "correspondence": {
+    "reuse_across_smplx_betas": false,
+    "shared_config": null,
+    "shared_smplx_template": null,
+    "slots": null,
+    "smpl_name": "auto",
+    "train": {
+      "device": "cuda",
+      "out_dir": "/data/workspace/motion_studio/outputs/all-robot-segment-audit/h2_native_center/train",
+      "epochs": 500,
+      "batch_size": 1,
+      "fixed_template": true,
+      "seed": 0,
+      "log_every": 50,
+      "save_every": 500,
+      "noise_std": 0.002,
+      "dropout_ratio": 0.0,
+      "resample_every": 0
+    },
+    "dataset": {
+      "out": "/data/workspace/motion_studio/outputs/all-robot-segment-audit/h2_native_center/dataset.npz",
+      "num_points": 4096,
+      "seed": 0,
+      "smpl_center": "bbox_ratio",
+      "surface_oversample_ratio": 8,
+      "surface_curvature_weight": 0.0,
+      "surface_curvature_power": 1.0,
+      "exterior_surface": true,
+      "exterior_method": "first_hit",
+      "bbox_center_ratio": 0.6156926988023894
+    }
+  },
+  "retarget": {
+    "smplx_device": "cuda",
+    "smplx_batch_size": 128,
+    "smplx_batch_size_max": 128,
+    "out": "/data/workspace/motion_studio/outputs/all-robot-segment-audit/h2_native_center/NOT_AUTHORIZED_retarget.npz"
+  },
+  "motion": {
+    "data": "/data/workspace/motion_studio/externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+    "seq_index": 0,
+    "seq_key": "motion_actor_smplx"
+  },
+  "experiment": {
+    "stage": "correspondence_only",
+    "retarget_authorized": false,
+    "comparison_group": "native_center_sensitivity_only"
+  },
+  "smplx_model_dir": "/data/motions/human_models/smplx/1.1/models_smplx_v1_1/models/smplx",
+  "smpl_template": {
+    "source": "motion",
+    "type": "smplx",
+    "use_betas": true,
+    "use_gender": true,
+    "name": "auto"
+  }
+}

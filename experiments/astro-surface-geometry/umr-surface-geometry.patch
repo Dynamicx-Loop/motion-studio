@@ -1,0 +1,547 @@
+diff --git a/scripts/build_correspondence_ae_dataset.py b/scripts/build_correspondence_ae_dataset.py
+index d4228dc..485690f 100644
+--- a/scripts/build_correspondence_ae_dataset.py
++++ b/scripts/build_correspondence_ae_dataset.py
+@@ -28,6 +28,7 @@ import soma_source
+ import nr_source
+ from smplx_model_loader import build_smplx_model
+ from mujoco_geom_surface import geom_local_mesh, surface_geom_ids
++from primitive_surface import PrimitiveUnion
+ from mujoco_point_cloud_center import (
+     bbox_ratio_center_frame,
+     bbox_ratio_from_center_spec,
+@@ -356,6 +357,7 @@ def sample_surface(
+     exterior_ray_offset=1e-4,
+     exterior_method="normal_occlusion",
+     exterior_ray_distance=0.0,
++    point_filter=None,
+ ):
+     vertices = np.asarray(vertices, dtype=np.float64)
+     faces = np.asarray(faces, dtype=np.int32)
+@@ -410,6 +412,15 @@ def sample_surface(
+                 f"{num_points}. Increase --surface-oversample-ratio, lower strictness, or use "
+                 f"--robot-exterior-method normal_occlusion. Refusing to fall back to internal surfaces."
+             )
++    if point_filter is not None:
++        keep_points = np.asarray(point_filter(candidate_points, candidate_face_ids), dtype=bool)
++        if keep_points.shape != (len(candidate_points),):
++            raise ValueError("Point filter must return one boolean per candidate.")
++        candidate_points = candidate_points[keep_points]
++        candidate_face_ids = candidate_face_ids[keep_points]
++        if len(candidate_points) < num_points:
++            raise RuntimeError(f"Primitive union kept {len(candidate_points)} points; need {num_points}. "
++                               "Increase oversampling; refusing interior fallback.")
+     keep = farthest_point_sampling(candidate_points, num_points, seed=seed)
+     points = candidate_points[keep]
+     face_ids = candidate_face_ids[keep]
+@@ -1123,11 +1134,11 @@ def apply_g1_tpose(model, data):
+     apply_mimic_qpos(model, data, G1_BRAINCO_HAND_MIMIC_QPOS)
+ 
+ 
+-def visual_mesh_geom_ids(model):
+-    return surface_geom_ids(model).astype(np.int32)
++def visual_mesh_geom_ids(model, policy="auto"):
++    return surface_geom_ids(model, policy).astype(np.int32)
+ 
+ 
+-def robot_visual_mesh_in_root_frame(
++def _robot_surface_in_root_frame(
+     xml_path,
+     point_cloud_center_name,
+     to_smpl_frame=True,
+@@ -1135,6 +1146,7 @@ def robot_visual_mesh_in_root_frame(
+     tpose_qpos=None,
+     mimic_qpos=None,
+     reset_key=None,
++    visual_geom_policy="auto",
+ ):
+     model = load_mujoco_model(xml_path)
+     data = mujoco.MjData(model)
+@@ -1152,7 +1164,8 @@ def robot_visual_mesh_in_root_frame(
+ 
+     world_vertices_by_geom = []
+     local_faces_by_geom = []
+-    for geom_id in visual_mesh_geom_ids(model):
++    geom_ids = visual_mesh_geom_ids(model, visual_geom_policy)
++    for geom_id in geom_ids:
+         local_vertices, local_faces = geom_local_mesh(model, int(geom_id))
+         geom_rot = data.geom_xmat[geom_id].reshape(3, 3)
+         geom_pos = data.geom_xpos[geom_id]
+@@ -1187,7 +1200,21 @@ def robot_visual_mesh_in_root_frame(
+     faces = np.concatenate(all_faces, axis=0).astype(np.int32)
+     if to_smpl_frame:
+         vertices = g1_mujoco_to_smpl_frame(vertices)
+-    return vertices, faces
++    face_geom_ids = np.concatenate([np.full(len(f), gid, dtype=np.int32)
++                                    for gid, f in zip(geom_ids, local_faces_by_geom)])
++    union = (PrimitiveUnion.from_model(model, data, geom_ids, center_pos, center_rot)
++             if visual_geom_policy == "collision_primitives" else None)
++    return vertices, faces, face_geom_ids, union
++
++
++def robot_visual_mesh_in_root_frame(
++    xml_path, point_cloud_center_name, to_smpl_frame=True, pose="tpose",
++    tpose_qpos=None, mimic_qpos=None, reset_key=None, visual_geom_policy="auto",
++):
++    return _robot_surface_in_root_frame(
++        xml_path, point_cloud_center_name, to_smpl_frame, pose, tpose_qpos,
++        mimic_qpos, reset_key, visual_geom_policy,
++    )[:2]
+ 
+ 
+ def g1_visual_mesh_in_root_frame(xml_path, to_smpl_frame=True, pose="tpose"):
+@@ -1220,10 +1247,11 @@ def build_robot_sample(
+     mimic_qpos=None,
+     reset_key=None,
+     root_body_name=None,
++    visual_geom_policy="auto",
+ ):
+     if root_body_name is not None:
+         point_cloud_center_name = root_body_name
+-    vertices, faces = robot_visual_mesh_in_root_frame(
++    vertices, faces, face_geom_ids, union = _robot_surface_in_root_frame(
+         xml_path,
+         point_cloud_center_name,
+         to_smpl_frame=to_smpl_frame,
+@@ -1231,7 +1259,12 @@ def build_robot_sample(
+         tpose_qpos=tpose_qpos,
+         mimic_qpos=mimic_qpos,
+         reset_key=reset_key,
++        visual_geom_policy=visual_geom_policy,
+     )
++    def primitive_filter(points, face_ids):
++        root_points = points[:, [2, 0, 1]] if to_smpl_frame else points
++        return union.exterior_mask(root_points, face_geom_ids[face_ids])
++
+     points, face_ids = sample_surface(
+         vertices,
+         faces,
+@@ -1244,6 +1277,7 @@ def build_robot_sample(
+         exterior_occlusion_distance=exterior_occlusion_distance,
+         exterior_method=exterior_method,
+         exterior_ray_distance=exterior_ray_distance,
++        point_filter=primitive_filter if union is not None else None,
+     )
+     print(
+         f"[Dataset] Added {name}: verts={len(vertices)} faces={len(faces)} "
+@@ -1255,6 +1289,8 @@ def build_robot_sample(
+         "vertices": as_root_frame(vertices),
+         "faces": faces,
+         "sample_face_ids": face_ids,
++        "face_geom_ids": face_geom_ids,
++        "visual_geom_policy": visual_geom_policy,
+         "root_offset": np.zeros(3, dtype=np.float32),
+         "center_mode": point_cloud_center_name,
+     }
+diff --git a/scripts/humanoid_retarget_pipeline.py b/scripts/humanoid_retarget_pipeline.py
+index e567e89..952caca 100644
+--- a/scripts/humanoid_retarget_pipeline.py
++++ b/scripts/humanoid_retarget_pipeline.py
+@@ -842,6 +842,7 @@ def build_correspondence_dataset(config: dict[str, Any], force=False, dry_run=Fa
+             tpose_qpos=robot_sample_qpos,
+             mimic_qpos=mimic_qpos_for_build(robot),
+             reset_key=robot.get("reset_key"),
++            visual_geom_policy=robot.get("visual_geom_policy", "auto"),
+         )
+     )
+     if not samples:
+@@ -866,6 +867,7 @@ def build_correspondence_dataset(config: dict[str, Any], force=False, dry_run=Fa
+         "robot_exterior_occlusion_distance": np.asarray(exterior_occlusion_distance, dtype=np.float32),
+         "robot_exterior_method": np.asarray(exterior_method),
+         "robot_exterior_ray_distance": np.asarray(exterior_ray_distance, dtype=np.float32),
++        "custom_robot_visual_geom_policy": np.asarray(robot.get("visual_geom_policy", "auto")),
+         "custom_robot_name": np.asarray(robot_name),
+         "custom_robot_xml": np.asarray(str(robot_xml)),
+         "custom_robot_point_cloud_center": np.asarray(sample_point_cloud_center),
+diff --git a/scripts/mujoco_geom_surface.py b/scripts/mujoco_geom_surface.py
+index 35fa9d1..d7708d1 100644
+--- a/scripts/mujoco_geom_surface.py
++++ b/scripts/mujoco_geom_surface.py
+@@ -65,6 +65,13 @@ def primitive_geom_ids(model) -> np.ndarray:
+ 
+ 
+ def surface_geom_ids(model, policy: str = "auto") -> np.ndarray:
++    if policy == "collision_primitives":
++        ids = primitive_geom_ids(model)
++        ids = ids[(model.geom_group[ids] == 3) &
++                  ((model.geom_contype[ids] != 0) | (model.geom_conaffinity[ids] != 0))]
++        if not len(ids):
++            raise ValueError("collision_primitives requires non-floor group-3 collision-enabled primitives.")
++        return ids
+     mesh_ids = mesh_geom_ids(model, policy)
+     if mesh_ids.size > 0:
+         return mesh_ids
+@@ -90,11 +97,17 @@ def _connect_rings(ring_count: int, segments: int) -> np.ndarray:
+         nxt = (row + 1) * int(segments)
+         for col in range(int(segments)):
+             j = (col + 1) % int(segments)
+-            faces.append([base + col, nxt + col, nxt + j])
+-            faces.append([base + col, nxt + j, base + j])
++            faces.append([base + col, nxt + j, nxt + col])
++            faces.append([base + col, base + j, nxt + j])
+     return np.asarray(faces, dtype=np.int32)
+ 
+ 
++def _nondegenerate_faces(vertices, faces):
++    tri = vertices[faces]
++    area2 = np.linalg.norm(np.cross(tri[:, 1] - tri[:, 0], tri[:, 2] - tri[:, 0]), axis=1)
++    return faces[area2 > 1e-12]
++
++
+ def sphere_mesh(radius: float, segments: int = 24, rings: int = 12, scale=(1.0, 1.0, 1.0)):
+     vertices = []
+     for row in range(int(rings) + 1):
+@@ -102,7 +115,7 @@ def sphere_mesh(radius: float, segments: int = 24, rings: int = 12, scale=(1.0,
+         vertices.append(_ring_vertices(float(radius) * np.cos(theta), float(radius) * np.sin(theta), int(segments)))
+     vertices = np.concatenate(vertices, axis=0)
+     vertices *= np.asarray(scale, dtype=np.float64).reshape(1, 3)
+-    return vertices.astype(np.float32), _connect_rings(int(rings) + 1, int(segments))
++    return vertices.astype(np.float32), _nondegenerate_faces(vertices, _connect_rings(int(rings) + 1, int(segments)))
+ 
+ 
+ def capsule_mesh(radius: float, half_length: float, segments: int = 24, hemi_rings: int = 8):
+@@ -117,7 +130,7 @@ def capsule_mesh(radius: float, half_length: float, segments: int = 24, hemi_rin
+         theta = 0.5 * np.pi * row / int(hemi_rings)
+         rings.append(_ring_vertices(radius * np.cos(theta), half_length + radius * np.sin(theta), int(segments)))
+     vertices = np.concatenate(rings, axis=0)
+-    return vertices.astype(np.float32), _connect_rings(len(rings), int(segments))
++    return vertices.astype(np.float32), _nondegenerate_faces(vertices, _connect_rings(len(rings), int(segments)))
+ 
+ 
+ def cylinder_mesh(radius: float, half_length: float, segments: int = 24):
+diff --git a/scripts/retarget_smpl_to_humanoid_surface_vector.py b/scripts/retarget_smpl_to_humanoid_surface_vector.py
+index eb53a37..0abcf5f 100644
+--- a/scripts/retarget_smpl_to_humanoid_surface_vector.py
++++ b/scripts/retarget_smpl_to_humanoid_surface_vector.py
+@@ -38,6 +38,7 @@ import smpl_surface_retarget_common as common  # noqa: E402
+ import shared_smplx_correspondence  # noqa: E402
+ from humanoid_retarget_config import load_config, resolve_path, robot_config, section  # noqa: E402
+ from mujoco_geom_surface import geom_local_mesh, surface_geom_ids  # noqa: E402
++from primitive_surface import PrimitiveUnion  # noqa: E402
+ from mujoco_point_cloud_center import point_cloud_center_frame  # noqa: E402
+ from surface_sampling import sample_first_hit_surface_points  # noqa: E402
+ from retarget_composite_racket import (  # noqa: E402
+@@ -687,7 +688,18 @@ def bind_robot_slots(
+     )
+     matrix = cfg_get(config, "robot.frame_transform.smpl_to_robot_root_matrix")
+     points_root = smpl_frame_to_robot_root(robot_slot_points_smpl, matrix)
+-    binding = common.bind_points_to_mesh(points_root, vertices, faces, nearest_vertex_k=nearest_vertex_k)
++    primitive_policy = robot.get("visual_geom_policy", "auto") == "collision_primitives"
++    binding = common.bind_points_to_mesh(
++        points_root, vertices, faces, nearest_vertex_k=nearest_vertex_k,
++        method="exact" if primitive_policy else "nearest_vertex",
++    )
++    if primitive_policy:
++        union = PrimitiveUnion.from_model(model, ref_data, geom_ids, center_pos, center_rot)
++        checked_points = binding["closest_points"] if project_to_surface else points_root
++        exterior = union.exterior_mask(checked_points, face_geom_ids[binding["face_ids"]])
++        if not np.all(exterior):
++            raise ValueError(f"Primitive binding rejected {int((~exterior).sum())} interior slots; "
++                             "refusing buried surface bindings.")
+     bound_geom_ids = face_geom_ids[binding["face_ids"]]
+     points_root_bound = binding["closest_points"] if project_to_surface else points_root
+     normals_world = binding["closest_normals"] @ center_rot.T
+diff --git a/scripts/retarget_smpl_to_humanoid_surface_vector_batch.py b/scripts/retarget_smpl_to_humanoid_surface_vector_batch.py
+index 610ace3..f7ddf55 100644
+--- a/scripts/retarget_smpl_to_humanoid_surface_vector_batch.py
++++ b/scripts/retarget_smpl_to_humanoid_surface_vector_batch.py
+@@ -34,6 +34,7 @@ import retarget_smpl_to_humanoid_surface_vector as full_retarget  # noqa: E402
+ import shared_smplx_correspondence  # noqa: E402
+ from humanoid_retarget_config import load_config, resolve_path, robot_config, section  # noqa: E402
+ from mujoco_geom_surface import geom_local_mesh, surface_geom_ids  # noqa: E402
++from primitive_surface import PrimitiveUnion  # noqa: E402
+ from mujoco_point_cloud_center import point_cloud_center_frame  # noqa: E402
+ 
+ 
+@@ -696,7 +697,18 @@ def bind_robot_slots(
+     )
+     matrix = cfg_get(config, "robot.frame_transform.smpl_to_robot_root_matrix")
+     points_root = smpl_frame_to_robot_root(robot_slot_points_smpl, matrix)
+-    binding = common.bind_points_to_mesh(points_root, vertices, faces, nearest_vertex_k=nearest_vertex_k)
++    primitive_policy = robot.get("visual_geom_policy", "auto") == "collision_primitives"
++    binding = common.bind_points_to_mesh(
++        points_root, vertices, faces, nearest_vertex_k=nearest_vertex_k,
++        method="exact" if primitive_policy else "nearest_vertex",
++    )
++    if primitive_policy:
++        union = PrimitiveUnion.from_model(model, ref_data, geom_ids, center_pos, center_rot)
++        checked_points = binding["closest_points"] if project_to_surface else points_root
++        exterior = union.exterior_mask(checked_points, face_geom_ids[binding["face_ids"]])
++        if not np.all(exterior):
++            raise ValueError(f"Primitive binding rejected {int((~exterior).sum())} interior slots; "
++                             "refusing buried surface bindings.")
+     bound_geom_ids = face_geom_ids[binding["face_ids"]]
+     points_root_bound = binding["closest_points"] if project_to_surface else points_root
+     normals_world = binding["closest_normals"] @ center_rot.T
+diff --git a/scripts/smpl_surface_retarget_common.py b/scripts/smpl_surface_retarget_common.py
+index 40e546c..3316307 100644
+--- a/scripts/smpl_surface_retarget_common.py
++++ b/scripts/smpl_surface_retarget_common.py
+@@ -708,7 +708,12 @@ def load_slot_data(slots_path, name, field):
+     return data[field][idx].astype(np.float32), str(center_modes[idx]), name
+ 
+ 
+-def bind_points_to_mesh(points, vertices, faces, nearest_vertex_k=24):
++def bind_points_to_mesh(points, vertices, faces, nearest_vertex_k=24, method="nearest_vertex"):
++    if method == "exact":
++        from primitive_surface import bind_points_to_mesh_exact
++        return bind_points_to_mesh_exact(points, vertices, faces)
++    if method != "nearest_vertex":
++        raise ValueError(f"Unknown mesh binding method {method!r}")
+     points = np.asarray(points, dtype=np.float32)
+     vertices = np.asarray(vertices, dtype=np.float32)
+     faces = np.asarray(faces, dtype=np.int32)
+diff --git a/scripts/primitive_surface.py b/scripts/primitive_surface.py
+new file mode 100644
+index 0000000..56be885
+--- /dev/null
++++ b/scripts/primitive_surface.py
+@@ -0,0 +1,144 @@
++"""Pointwise primitive-union exposure and exact triangle binding.
++
++All points are (N, 3), metres. Geometry IDs retain compiled MuJoCo ordering.
++Exposure excludes the generating geom: triangulated curved faces are inscribed
++in their own analytic primitive. Other primitive interiors are rejected with a
++10 micrometre margin. This is a reference-pose filter, not a Boolean mesher.
++"""
++from dataclasses import dataclass
++
++import mujoco
++import numpy as np
++from scipy.spatial import cKDTree
++
++
++@dataclass(frozen=True)
++class PrimitiveUnion:
++    geom_ids: np.ndarray
++    types: np.ndarray
++    sizes: np.ndarray
++    positions: np.ndarray
++    rotations: np.ndarray
++    tolerance: float = 1e-5
++
++    @classmethod
++    def from_model(cls, model, data, geom_ids, center_pos, center_rot):
++        ids = np.asarray(geom_ids, dtype=np.int32)
++        return cls(ids, model.geom_type[ids].copy(), model.geom_size[ids].copy(),
++                   (data.geom_xpos[ids] - center_pos) @ center_rot,
++                   np.asarray([center_rot.T @ data.geom_xmat[i].reshape(3, 3) for i in ids]))
++
++    def exterior_mask(self, points, owner_geom_ids):
++        """Keep samples not strictly inside another selected analytic primitive."""
++        points = np.asarray(points, dtype=np.float64)
++        owners = np.asarray(owner_geom_ids, dtype=np.int32)
++        if points.ndim != 2 or points.shape[1] != 3 or owners.shape != (len(points),):
++            raise ValueError("Expected points (N, 3) and owner_geom_ids (N,).")
++        if not np.isfinite(points).all() or not np.isin(owners, self.geom_ids).all():
++            raise ValueError("Nonfinite points or owners outside selected geometry.")
++        keep = np.ones(len(points), dtype=bool)
++        for gid, kind, size, pos, rot in zip(self.geom_ids, self.types, self.sizes,
++                                             self.positions, self.rotations):
++            local = (points - pos) @ rot
++            t = self.tolerance
++            if kind == mujoco.mjtGeom.mjGEOM_SPHERE:
++                inside = np.linalg.norm(local, axis=1) < size[0] - t
++            elif kind == mujoco.mjtGeom.mjGEOM_CAPSULE:
++                delta = local.copy()
++                delta[:, 2] -= np.clip(local[:, 2], -size[1], size[1])
++                inside = np.linalg.norm(delta, axis=1) < size[0] - t
++            elif kind == mujoco.mjtGeom.mjGEOM_CYLINDER:
++                inside = ((np.linalg.norm(local[:, :2], axis=1) < size[0] - t)
++                          & (np.abs(local[:, 2]) < size[1] - t))
++            elif kind == mujoco.mjtGeom.mjGEOM_BOX:
++                inside = np.all(np.abs(local) < size[:3] - t, axis=1)
++            elif kind == mujoco.mjtGeom.mjGEOM_ELLIPSOID:
++                inside = np.linalg.norm(local / size[:3], axis=1) < 1 - t / size[:3].min()
++            else:
++                raise ValueError(f"Unsupported primitive type {kind}.")
++            keep &= ~(inside & (owners != gid))
++        return keep
++
++
++def _closest_on_triangles(triangles, points):
++    """Plane projection inside a triangle, otherwise the nearest bounded edge.
++
++    Region decisions use dimensionless barycentrics, with no absolute fourth-
++    order tolerance that can collapse millimetre triangles to their edges.
++    Callers exclude degenerate triangles.
++    """
++    a, b, c = triangles[:, 0], triangles[:, 1], triangles[:, 2]
++    normal = np.cross(b - a, c - a)
++    norm2 = np.sum(normal * normal, axis=1)
++    projected = points - (np.sum((points - a) * normal, axis=1) / norm2)[:, None] * normal
++    v = np.sum(np.cross(projected - a, c - a) * normal, axis=1) / norm2
++    w = np.sum(np.cross(b - a, projected - a) * normal, axis=1) / norm2
++    interior = (v >= 0) & (w >= 0) & (v + w <= 1)
++    edges = []
++    for start, end in ((a, b), (b, c), (c, a)):
++        delta = end - start
++        factor = np.sum((points - start) * delta, axis=1) / np.sum(delta * delta, axis=1)
++        edges.append(start + np.clip(factor, 0, 1)[:, None] * delta)
++    edges = np.stack(edges, axis=1)
++    distances = np.sum((edges - points[:, None, :]) ** 2, axis=2)
++    closest = edges[np.arange(len(points)), np.argmin(distances, axis=1)]
++    closest[interior] = projected[interior]
++    return closest
++
++
++def bind_points_to_mesh_exact(points, vertices, faces):
++    """Globally nearest nondegenerate triangle, with deterministic face ties.
++
++    A centroid tree supplies candidates. Its radius is the distance to an initial
++    triangle plus the largest centroid-to-vertex radius. The triangle inequality
++    guarantees that a closer triangle cannot be omitted. No nearest-vertex
++    shortcut or dependency on optional spatial-index packages is used.
++    """
++    points = np.asarray(points, dtype=np.float64)
++    vertices = np.asarray(vertices, dtype=np.float64)
++    faces = np.asarray(faces, dtype=np.int32)
++    if points.ndim != 2 or points.shape[1] != 3 or vertices.ndim != 2 or vertices.shape[1] != 3:
++        raise ValueError("Expected points and vertices with shape (N, 3).")
++    if faces.ndim != 2 or faces.shape[1] != 3 or not len(faces):
++        raise ValueError("Expected nonempty triangular faces (F, 3).")
++    if not np.isfinite(points).all() or not np.isfinite(vertices).all():
++        raise ValueError("Mesh and query points must be finite.")
++    if faces.min() < 0 or faces.max() >= len(vertices):
++        raise ValueError("Face index outside vertex array.")
++    tri = vertices[faces]
++    cross = np.cross(tri[:, 1] - tri[:, 0], tri[:, 2] - tri[:, 0])
++    lengths = np.linalg.norm(cross, axis=1)
++    valid_ids = np.flatnonzero(lengths > 1e-12)
++    if not len(valid_ids):
++        raise ValueError("No nondegenerate triangles for binding.")
++    triangles = tri[valid_ids]
++    centers = triangles.mean(axis=1)
++    radii = np.linalg.norm(triangles - centers[:, None, :], axis=2).max(axis=1)
++    tree = cKDTree(centers)
++    _, initial_ids = tree.query(points, k=1)
++    first = _closest_on_triangles(triangles[initial_ids], points)
++    bounds = np.linalg.norm(first - points, axis=1)
++    chosen = np.empty(len(points), dtype=np.int32)
++    closest = np.empty_like(points)
++    for i, point in enumerate(points):
++        candidates = np.asarray(tree.query_ball_point(point, bounds[i] + radii.max() + 1e-12), dtype=int)
++        lower = np.linalg.norm(centers[candidates] - point, axis=1) - radii[candidates]
++        candidates = np.sort(candidates[lower <= bounds[i] + 1e-12])
++        projected = _closest_on_triangles(triangles[candidates], np.broadcast_to(point, (len(candidates), 3)))
++        dist2 = np.sum((projected - point) ** 2, axis=1)
++        best = int(np.argmin(dist2))
++        chosen[i] = valid_ids[candidates[best]]
++        closest[i] = projected[best]
++    selected = tri[chosen]
++    v0, v1, v2 = selected[:, 1] - selected[:, 0], selected[:, 2] - selected[:, 0], closest - selected[:, 0]
++    dot = lambda a, b: np.sum(a * b, axis=1)
++    d00, d01, d11 = dot(v0, v0), dot(v0, v1), dot(v1, v1)
++    d20, d21 = dot(v2, v0), dot(v2, v1)
++    denom = d00 * d11 - d01 * d01
++    v = (d11 * d20 - d01 * d21) / denom
++    w = (d00 * d21 - d01 * d20) / denom
++    bary = np.stack([1 - v - w, v, w], axis=1)
++    return {"face_ids": chosen, "bary": bary.astype(np.float32),
++            "closest_points": closest.astype(np.float32),
++            "closest_normals": (cross[chosen] / lengths[chosen, None]).astype(np.float32),
++            "errors": np.linalg.norm(closest - points, axis=1).astype(np.float32)}
+diff --git a/tests/test_surface_geometry.py b/tests/test_surface_geometry.py
+new file mode 100644
+index 0000000..a2a8337
+--- /dev/null
++++ b/tests/test_surface_geometry.py
+@@ -0,0 +1,98 @@
++"""Deterministic regressions for the isolated primitive surface experiment."""
++import sys
++import unittest
++from pathlib import Path
++
++import mujoco
++import numpy as np
++
++sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
++import mujoco_geom_surface as geom
++import smpl_surface_retarget_common as common
++from primitive_surface import PrimitiveUnion
++from types import SimpleNamespace
++import retarget_smpl_to_humanoid_surface_vector as single
++import retarget_smpl_to_humanoid_surface_vector_batch as batch
++
++
++class SurfaceGeometryTests(unittest.TestCase):
++    def test_explicit_collision_selection_excludes_visual_hand_and_floor(self):
++        model = mujoco.MjModel.from_xml_string('''<mujoco><worldbody>
++          <geom name="floor" type="plane" size="1 1 .1"/>
++          <body><geom name="proxy" type="sphere" size=".2" group="3"/>
++          <geom name="visual_hand" type="sphere" size=".2" group="1" contype="0" conaffinity="0"/>
++          </body></worldbody></mujoco>''')
++        names = [mujoco.mj_id2name(model, mujoco.mjtObj.mjOBJ_GEOM, int(i))
++                 for i in geom.surface_geom_ids(model, "collision_primitives")]
++        self.assertEqual(names, ["proxy"])
++
++    def test_primitive_normals_are_outward_and_faces_nondegenerate(self):
++        for vertices, faces in (geom.sphere_mesh(.2), geom.capsule_mesh(.2, .4),
++                                geom.cylinder_mesh(.2, .4), geom.box_mesh([.2, .3, .4]),
++                                geom.sphere_mesh(1., scale=[.2, .3, .4])):
++            tri = vertices[faces].astype(float)
++            normal = np.cross(tri[:, 1] - tri[:, 0], tri[:, 2] - tri[:, 0])
++            self.assertTrue(np.all(np.linalg.norm(normal, axis=1) > 1e-12))
++            self.assertTrue(np.all(np.sum(normal * tri.mean(axis=1), axis=1) > 0))
++
++    def test_large_triangle_identity_binding(self):
++        vertices = [[-10, -10, 0], [10, -10, 0], [0, 10, 0]]
++        faces = [[0, 1, 2]]
++        for i in range(10):
++            a = 2 * np.pi * i / 10
++            x, y = .2 * np.cos(a), .2 * np.sin(a)
++            k = len(vertices)
++            vertices.extend([[x, y, .1], [x + .01, y, .1], [x, y + .01, .1]])
++            faces.append([k, k + 1, k + 2])
++        bound = common.bind_points_to_mesh([[0., 0., 0.]], vertices, faces, method="exact")
++        self.assertLess(float(bound["errors"].max()), 1e-7)
++        self.assertEqual(int(bound["face_ids"][0]), 0)
++
++    def test_small_triangle_projection_has_no_absolute_region_tolerance(self):
++        vertices = [[0, 0, 0], [.001, 0, 0], [0, .001, 0]]
++        point = [[.00002, .00002, 0.]]
++        binding = common.bind_points_to_mesh(point, vertices, [[0, 1, 2]], method="exact")
++        np.testing.assert_allclose(binding["closest_points"], point, atol=1e-11, rtol=0)
++
++    def test_exact_binding_matches_exhaustive_reference(self):
++        import trimesh
++        rng = np.random.default_rng(17)
++        vertices = rng.normal(size=(90, 3))
++        faces = np.arange(90).reshape(-1, 3)
++        points = rng.normal(size=(20, 3))
++        bound = common.bind_points_to_mesh(points, vertices, faces, method="exact")
++        for i, point in enumerate(points):
++            closest = trimesh.triangles.closest_point(vertices[faces], np.tile(point, (len(faces), 1)))
++            distances = np.linalg.norm(closest - point, axis=1)
++            self.assertAlmostEqual(float(bound["errors"][i]), distances.min(), delta=1e-6)
++            reconstructed = bound["bary"][i] @ vertices[faces[bound["face_ids"][i]]]
++            np.testing.assert_allclose(reconstructed, bound["closest_points"][i], atol=1e-6)
++
++    def test_union_rejects_buried_point_and_binders_fail_closed(self):
++        model = mujoco.MjModel.from_xml_string('''<mujoco><worldbody><body name="pelvis">
++          <geom type="sphere" name="a" size=".2" group="3"/>
++          <geom type="sphere" name="b" pos=".25 0 0" size=".2" group="3"/>
++          </body></worldbody></mujoco>''')
++        data = mujoco.MjData(model)
++        mujoco.mj_forward(model, data)
++        ids = geom.surface_geom_ids(model, "collision_primitives")
++        union = PrimitiveUnion.from_model(model, data, ids, np.zeros(3), np.eye(3))
++        self.assertEqual(union.exterior_mask([[.2, 0, 0], [-.2, 0, 0]], [0, 0]).tolist(), [False, True])
++        config = {"robot": {"name": "synthetic", "xml": "unused.xml", "point_cloud_center": "body:pelvis",
++                            "visual_geom_policy": "collision_primitives", "tpose_qpos": {}}}
++        for binder in (single.bind_robot_slots, batch.bind_robot_slots):
++            with self.assertRaisesRegex(ValueError, "interior slots"):
++                binder(model, SimpleNamespace(config_data=config), [[0, 0, .2]])
++
++    def test_empty_selection_and_invalid_exact_mesh_fail(self):
++        model = mujoco.MjModel.from_xml_string('<mujoco><worldbody><geom type="sphere" size=".2"/></worldbody></mujoco>')
++        with self.assertRaisesRegex(ValueError, "group-3"):
++            geom.surface_geom_ids(model, "collision_primitives")
++        with self.assertRaises(ValueError):
++            common.bind_points_to_mesh([[0, 0, 0]], [[0, 0, 0]], [[0, 0, 0]], method="exact")
++        with self.assertRaises(ValueError):
++            common.bind_points_to_mesh([[np.nan, 0, 0]], np.eye(3), [[0, 1, 2]], method="exact")
++
++
++if __name__ == "__main__":
++    unittest.main()

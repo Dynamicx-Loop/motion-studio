@@ -1,0 +1,21 @@
+{
+  "reuse": "Exact processed HiPHI source viewer data; source motion, actor shape and zero-source-finger preprocessing unchanged; robot transforms freshly computed",
+  "files": {
+    "/data/workspace/motion_studio/outputs/umr-motion-canonical-v1/viewer/source-v.bin": {
+      "sha256": "4b48438e2cc4262b9c517eb4c9d6ef76bf544f0e772ea7bb86d35bb3017b0f96",
+      "copied_sha256": "4b48438e2cc4262b9c517eb4c9d6ef76bf544f0e772ea7bb86d35bb3017b0f96"
+    },
+    "/data/workspace/motion_studio/outputs/umr-motion-canonical-v1/viewer/source-f.bin": {
+      "sha256": "ba3efe72d485634742a3f7f36c6ec5cebe7475182d056da7c3e8f8afb17c4e23",
+      "copied_sha256": "ba3efe72d485634742a3f7f36c6ec5cebe7475182d056da7c3e8f8afb17c4e23"
+    },
+    "/data/workspace/motion_studio/outputs/umr-motion-canonical-v1/viewer/source-joints.npy": {
+      "sha256": "439a0033111440f09363d8a75dcb7974f8391762b43a6e50af032ac884e738f7",
+      "copied_sha256": "439a0033111440f09363d8a75dcb7974f8391762b43a6e50af032ac884e738f7"
+    },
+    "/data/workspace/motion_studio/outputs/umr-motion-canonical-v1/viewer/source.json": {
+      "sha256": "ff43b8b7a5d74e29c03acc426b2a8c8b0df95d5834a1954197cd8fae154d3a89",
+      "copied_sha256": "ff43b8b7a5d74e29c03acc426b2a8c8b0df95d5834a1954197cd8fae154d3a89"
+    }
+  }
+}
