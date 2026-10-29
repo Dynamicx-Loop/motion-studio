@@ -184,3 +184,19 @@ Ordinary verify CLI and all 18 selected pure/JavaScript suites passed after merg
 Other three tiers already passed in ticket 13; direct-file rendering stays
 unverified. Durable ticket13 acceptance receipts have a per-directory alias here.
 Final review uses fixed source seed `8d7dff5374d2d19caa7e5482147549c3f742f0cd`.
+
+### Final review corrections integrated — focused verification pending
+
+Review correction branch integrated at `9837f02`: two P2 spec findings and the
+separate P3 legacy banner issue are corrected. Unknown mesh checks are unverified,
+known hash-bound collision policy never implies equality, and report version 2
+rejects earlier unsafe claims. Wendy preflight protects linked/common external
+roots before writes. Corrected legacy banners render LEGACY.
+The guarded sealed review edition was published as a per-child read-only alias;
+previous entries are archived in `outputs/docs-site/review-publication/`.
+Alias/physical verification and ordinary CLI passed: 62 documents, 3,797 source
+hashes, 3,651 output hashes and 1,427 links. All 18 selected pure/JavaScript
+suites passed after merge; the other three tiers were already passed by the fix
+implementer. Durable review receipts have a per-directory alias here.
+The parent spec remains claimed pending focused review verification. No worktree
+cleanup or completion status change was performed.
