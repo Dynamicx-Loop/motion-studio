@@ -23,6 +23,7 @@ in this project handle their functions, formats, and runtimes. See the
 | Project | Local checkout | Role |
 | --- | --- | --- |
 | UMR | [externals/UMR](externals/UMR/README.md) | Learned surface correspondence and motion retargeting |
+| hiphi2smplx | [externals/hiphi2smplx](externals/hiphi2smplx/README.md) | Active HiPHI/Wendy BVH to SMPL-X conversion |
 | hhtools | [externals/human-humanoid-tools](externals/human-humanoid-tools/README.md) | Import, calibration, retargeting, visualization, and export |
 | ProtoMotions | [externals/ProtoMotions](externals/ProtoMotions/README.md) | PyRoki retargeting workflows and motion processing |
 | PyRoki | [externals/pyroki](externals/pyroki/README.md) | Kinematic optimization library used by ProtoMotions |
@@ -40,6 +41,9 @@ On a fresh checkout, run `python3 scripts/workspace.py bootstrap` to clone missi
 external repositories at the revisions in `externals/manifest.json`. Existing
 checkouts are never reset or updated. Then follow each project's linked README
 from its own directory to install dependencies and run it.
+
+See [dependency roles and historical recovery](docs/dependency-roles.md) for local
+state, separate runtime prerequisites and read-only inspection from a worktree.
 
 The migrated hhtools checkout includes local Astro robot changes, its existing
 environment, local assets, and Git history. Those local changes are not reproduced

@@ -19,14 +19,24 @@ def git(path, *args):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('command', choices=['list', 'check', 'bootstrap'])
+    parser.add_argument('--source-workspace', type=Path,
+                        help='Read-only checkout inspection root; manifest stays owned by this workspace')
     args = parser.parse_args()
+    if args.source_workspace is not None and args.command == 'bootstrap':
+        parser.error('--source-workspace is for read-only list/check only')
+    source = args.source_workspace.resolve() if args.source_workspace is not None else ROOT
+    if not source.is_dir():
+        raise ValueError(f'Source workspace does not exist: {source}')
     manifest = json.loads((ROOT / 'externals/manifest.json').read_text())
     if manifest['schema_version'] != 1:
         raise ValueError('Unsupported manifest schema')
     failed = False
     for project in manifest['projects']:
-        path = ROOT / project['path']
-        if path.resolve().parent != (ROOT / 'externals').resolve():
+        relative = Path(project['path'])
+        if relative.is_absolute() or len(relative.parts) != 2 or relative.parts[0] != 'externals' or relative.parts[1] in ('.', '..'):
+            raise ValueError(f'External path must be directly under externals: {relative}')
+        path = source / relative
+        if path.resolve().parent != (source / 'externals').resolve():
             raise ValueError(f'External path must be directly under externals: {path}')
         if args.command == 'list':
             print(f"{project['name']}: {project['path']} @ {project['revision']}")
