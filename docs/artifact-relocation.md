@@ -189,6 +189,8 @@ counts those same bytes logically. Copy duplication peaked at 1,379,156,370
 additional bytes because the batches were sequential. There is no claim of
 workspace-size reduction or deduplication; the existing multi-gigabyte outputs,
 external assets, environments and new reading edition remain intentionally stored.
+The 21 already-placed sealed output cohorts retain 13,503,142,270 logical bytes
+and 13,496,851,770 unique ordinary-file bytes at the original seal.
 The ledger reports the original output-cohort logical and unique storage totals
 separately, without counting aliases as independent copies.
 
@@ -207,7 +209,7 @@ including each final 68-frame chunk, with exact float32 byte counts. All 123
 binary resources loaded in HTTP browser checks; both actors rendered, playback
 advanced, 10 s / 20 s / final-frame seeks and overlay worked. The head viewer
 loaded all 148 binaries, rendered, switched to G1 and its final frame, returned
-to Astro, played and toggled overlay. App error text stayed empty. Direct-file
+to Astro, played and toggled overlay. App error text stayed empty; one conversion favicon request returned 404. Direct-file
 WebGL and optional-inspector browser interaction were not exercised. Static
 resource readability and HTTP playback make no numerical or dynamic claim.
 

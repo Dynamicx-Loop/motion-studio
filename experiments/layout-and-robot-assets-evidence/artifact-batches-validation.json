@@ -47,7 +47,8 @@
       "rendered": true,
       "robot_switch": true
     },
-    "mode": "HTTP"
+    "mode": "HTTP",
+    "network_note": "One missing conversion favicon404; binary resources loaded, head console empty."
   },
   "canonical_data_workspace": "/data/workspace/motion_studio",
   "checks": {
@@ -70,8 +71,25 @@
     "readme_config_edges": 681,
     "recorded_inbound_reader_edges": 935,
     "restore": "exact archived 3538-byte export.log restored in isolated probe, archive retained",
-    "root_pure_suites": "14/14 before integration refresh",
+    "root_pure_suites": "16/16 after merging integration fabdc61f2ba0a7ac9c805badc795612c160cab8e",
     "write_refusal": "five real readonly alias targets refused permission-only r+b open as normal uid; no write"
+  },
+  "final_review": {
+    "canonical_repository_drift": 0,
+    "changed_sealed_bytes": 0,
+    "declared_aliases": 493,
+    "existing_output_bulk_logical_bytes": 13503142270,
+    "existing_output_bulk_unique_bytes_at_seal": 13496851770,
+    "new_paths_are_only_additive_outputs": true,
+    "preservation_error_categories": {
+      "Changed source kind": 493,
+      "New unrecorded source": 4304
+    },
+    "restored_probe_original_mode": 436,
+    "root_pure_suites": "16/16",
+    "source_integration_parent": "fabdc61f2ba0a7ac9c805badc795612c160cab8e",
+    "validation_merge": "e4d183ea354449d658d3734acf11133346aff605",
+    "whole_inventory_pass": false
   },
   "inventory_sha256": "32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7",
   "ledger_coverage": {
@@ -117,6 +135,8 @@
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/check_embedded_models.py": "4d8ab4865cb2a05b376468297958ac0ad71caae1c33d6c104291db75813b5e4b",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/docs-edition-path-note.json": "c39420a74d58f07cfa96a33c53c65b378594af33d7aa39beb44049952304f9be",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/docs-edition-verify.json": "91f4e4c35dc8dbaa142c060ba153f611fa05017d3067fb0aaf912c69a22d93a5",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/final-pure-check-output.txt": "505576ec6ce8c37b1c44169e4b7a7c7efc770ab5a526cdcb0478549019cb0131",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/final-review.json": "7c3c1d79209b0725c83a843fa76f3cc531233ced9a158a9a335be45ab53c41c9",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/final_audit.py": "de751f0817133493dd40d612ff9c56de6fcf73d9c2f968c315b803d8a3ca1cf0",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/frozen-cross-cohort-models.json": "0b9505c5547e7a7d6b5dbb930a4c61db9bde7bc2fa3443dd3f13fc6d4b5ac775",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/head-embedded-model-closures.json": "1de567916120d9dff0495361e62974a3d1ad00dd25e18d5017ebe08367367540",
@@ -133,6 +153,7 @@
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/hiphi-head-objective-independent-copied.json": "856084e3c302ed544d0a0f1f9618428114909922963014e1f799f1ac1b686749",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/hiphi-head-objective-plan.json": "e77709dbeca20ecd3e5ab4007f5210ac086342a3fa6147b8109d09e256e1ce5e",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/hiphi-head-objective-verify.json": "8b5852f41e571cbaae00b504a9e06f7f18e685688f49f70d929182f50fc08fab",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/http-smoke-summary.json": "63dc2e79d4f3198d7068fe5baf1aecc3eb0bdeb8ac83f8d6f59bc3f1b0c14624",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/inbound-reader-paths.json": "d4457fa1ad5a498ce1896820e0730d0249fdd6db52d33c49a01a0c598088a777",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/independent-sha256sum-samples.json": "ab13098bc5285f1fbc6b884d6be93004f37c66994ed0acb75c39e2cd14c3456d",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/normal-user-write-refusal.json": "1d2d7ca32a8879ec75cd4c6c0c89b44f2e29e6c1b74006afb75e890d8bf6b6a6",
@@ -140,12 +161,14 @@
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-after.json": "8fac82d44b7cba23ff1c41d0e2e0fc3dbd87c4ec5109a979daffb81b3abd33a7",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-analysis.json": "8f9af0f5a7e2670e3527929fea8d744f39eb9d5642a8204bc526a7abaf674719",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-before.json": "f1f04604c5f479eba4cb895301b018846a6874b51e1c456d1207ff4eb71fbb2c",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-final.json": "0a5e65484949238d327cedd787e67728372316a396fac85b5523b7250a022937",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-summary-after.json": "7b13f40c58d1897ac5009ddb1433403c5366ed1d65059566586a945de9b1e1a4",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/preservation-summary-before.json": "40bb686dd0ab22b62eb481951e03f7dea5ff89f8559c88047565971d9ca21275",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/pure-check-output.txt": "0a0f12320b57f5f3095ce946a3d4ac45ec897ea54498e65ec3104b29cf9ab7f1",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/readme-config-paths.json": "1b0c12b031279637684478209bfd2b2d58a4be3158a7d863642e913ecb5b1e8c",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/repository-worktrees-after.json": "3477a455016702e0790a4950269e1bdb86c117d3991a05d85e263349fcdc7490",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/repository-worktrees-before.json": "1a86f1868ffd8fd2b95467687b6751f20dae702fe010d7600edd95c722de30d3",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/repository-worktrees-final.json": "703fba3b270829cc72d2142339f66db154ac1db5f9070ceda9beeaf09b396ad7",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/restore-probe.json": "3527281b63f93dc0749906aa42cb45af0a93273775ba2548aec9224011597d03",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/restore-probe/experiments/hiphi-conversion-control/export.log": "da55be1553f306ead5997cd2cb6ec8fb3375d27aa873446c1806111886cb2cb0",
     "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/restore-probe/outputs/probe-archive/files/experiments/hiphi-conversion-control/export.log": "da55be1553f306ead5997cd2cb6ec8fb3375d27aa873446c1806111886cb2cb0",

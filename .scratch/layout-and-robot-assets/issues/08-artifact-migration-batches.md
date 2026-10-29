@@ -91,7 +91,7 @@ Tracked additive maps and evidence:
 Durable local scripts and independent before/after/mode/restore/preservation
 receipts live under
 `/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/`.
-No receipt depends on a disposable cleanup location. Canonical legacy readers
+Migration and restore receipts live in durable canonical output storage. Canonical legacy readers
 continue using their existing paths; the small restore probe materialized an exact
 archived 3,538-byte export log in isolated output storage, restored it to an
 ordinary file through the public operation, and retained the verified archive.
@@ -129,3 +129,8 @@ peaked at another 1,379,156,370 bytes. No workspace-size reduction is claimed.
 Root `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` passed all 14 pure suites
 before integration refresh; `git diff --check` passed. No production behavior was
 added, so existing relocation success/failure/resume/restore suites were reused.
+
+After merging the newest integration tip `fabdc61`, root pure checks passed **16/16**.
+The final original-preservation scan again found only 493 declared aliases and
+additive outputs, with no sealed-byte or canonical repository drift. All final
+receipts are hash-anchored in the tracked validation map.
