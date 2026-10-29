@@ -11,7 +11,7 @@ import shutil
 import subprocess
 import sys
 
-TIERS = ('pure', 'saved-evidence', 'javascript', 'umr-static')
+TIERS = ('pure', 'saved-evidence', 'javascript', 'umr-static', 'robot-static')
 
 
 @dataclass(frozen=True)
@@ -78,7 +78,7 @@ class Report:
 
 def check(root: Path, *, tiers: tuple[str, ...] = ('pure',),
           umr_python: Path | None = None, umr_run: Path | None = None,
-          docs_edition: Path | None = None) -> Report:
+          docs_edition: Path | None = None, robot_python: Path | None = None) -> Report:
     """Run selected tiers; unavailable prerequisites fail without importing tests.
 
     Each suite executes in a separate subprocess. Static reproduction checks use
@@ -105,6 +105,10 @@ def check(root: Path, *, tiers: tuple[str, ...] = ('pure',),
         node = shutil.which('node')
         if suite.tier == 'javascript' and not node:
             missing.append('Node.js executable on PATH')
+        if suite.tier == 'robot-static':
+            if robot_python is None or not robot_python.is_file():
+                missing.append('--robot-python must name an existing MuJoCo interpreter')
+            python = str(robot_python)
         if suite.tier == 'umr-static':
             if umr_python is None or not umr_python.is_file():
                 missing.append('--umr-python must name an existing interpreter')
