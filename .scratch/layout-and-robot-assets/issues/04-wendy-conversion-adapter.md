@@ -65,7 +65,8 @@ Historical direct import callers are inventoried in
 [owned conversion documentation](../../../docs/wendy-conversion-adapter.md).
 
 Validation: root `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` passed
-12/12 selected pure suites, including ten public conversion/CLI tests. Fresh CPU
+16/16 selected pure suites after merging integration tip `a9ef925`, including
+ten public conversion/CLI tests. Fresh CPU
 Wendy excerpt `[3,6)` matched all 12 legacy NPZ/diagnostic fields (maximum absolute
 difference 0, atol 1e-7, rtol 0), and all 16 report fields exactly. Synthetic
 five-frame source `[3,5)` verified 100 FPS, original timestamps and known metre
