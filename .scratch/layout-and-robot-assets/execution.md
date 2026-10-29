@@ -170,3 +170,17 @@ Official G1 baseline behavior and frozen inputs remain unchanged. Root pure
 checks passed 17/17. Tickets 01–12 are integrated; ticket 13 closeout is ready
 for navigation, full bounded acceptance and fresh documentation publication.
 Final standards/spec review against seed `8d7dff5` still gates completion.
+
+### Closeout integration — final review pending
+
+Ticket 13 integrated at `c0f1724`. All thirteen implementation tickets are resolved
+and merged; the parent spec remains claimed until final standards/spec review
+and any resulting fixes are complete. No worktree cleanup has happened.
+The SHA-verified guarded publisher installed the sealed 62-document final edition
+via one read-only child alias; the prior three complete entries are archived in
+`outputs/docs-site/ticket13-publication/`. Alias and physical-target verification
+passed, with 3,796 source hashes, 3,647 output hashes and 1,424 local links.
+Ordinary verify CLI and all 18 selected pure/JavaScript suites passed after merge.
+Other three tiers already passed in ticket 13; direct-file rendering stays
+unverified. Durable ticket13 acceptance receipts have a per-directory alias here.
+Final review uses fixed source seed `8d7dff5374d2d19caa7e5482147549c3f742f0cd`.
