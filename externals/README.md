@@ -22,3 +22,30 @@ manifest. Commit local development inside the external project separately.
 Projects with `skip_lfs: true` clone with Git LFS smudging disabled. Their source is
 available, but large assets may remain pointer files until explicitly fetched.
 ProtoMotions uses this setting; see [setup notes](../docs/protomotions-pyroki.md).
+
+## Active and historical roles
+
+The manifest includes active hiphi2smplx conversion at the inspected commit
+`65e51315ebbc82b2f0ff8e35a94565beb1b345e1`. Its MIT license applies to the
+code; SMPL-X models and beta-fit priors have separate terms and are not bundled.
+Its local README, LICENSE and pyproject.toml were inspected without installation.
+
+The historical UMR baseline worktree and surface experiment clone remain outside
+default bootstrap. menagerie_x remains at its supplied local path, also outside
+bootstrap. See [dependency roles](../docs/dependency-roles.md) and the
+[machine-readable record](../configs/dependency-roles.json) for exact revisions,
+recovery hashes, source coverage and validation limits.
+
+From an isolated owned worktree, inspect the actual canonical checkouts against
+that worktree's manifest with:
+
+```sh
+python3 scripts/workspace.py list
+python3 scripts/workspace.py check --source-workspace /data/workspace/motion_studio
+```
+
+`--source-workspace` is read-only and available only for list/check. It does not
+read the other workspace's manifest or redirect bootstrap. The default resolved
+child-path restriction remains: a checkout link escaping externals is rejected.
+Bootstrap never installs runtimes, updates an existing checkout or materializes
+historical local patches.

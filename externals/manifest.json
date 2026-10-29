@@ -29,6 +29,13 @@
       "url": "https://github.com/chungmin99/pyroki.git",
       "upstream": "https://github.com/chungmin99/pyroki.git",
       "revision": "388e43e1fc0d0ee382968d3dd72970fd62a0450c"
+    },
+    {
+      "name": "hiphi2smplx",
+      "path": "externals/hiphi2smplx",
+      "url": "https://github.com/noitom-robotics/hiphi2smplx.git",
+      "upstream": "https://github.com/noitom-robotics/hiphi2smplx.git",
+      "revision": "65e51315ebbc82b2f0ff8e35a94565beb1b345e1"
     }
   ]
 }
