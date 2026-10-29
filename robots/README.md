@@ -116,7 +116,7 @@ joints are assigned explicitly by name at every pose; keyframe defaults are igno
 `report.findings` contains exact `check`, `status`, `detail` records. `supports(name)`
 and `require_supported(names)` guard **only** named claims; unknown names fail.
 Callers must state the checks their comparison needs. Standalone MJCF preparation
-requires no assertion that a URDF pair is equivalent. Report `schema_version=1`
+requires no assertion that a URDF pair is equivalent. Report `schema_version=2`
 records selection identities, source hashes, policy hash, runtime and tolerances.
 
 The declared summary checks are `joint_metadata`, `joint_order`, `named_frames`,

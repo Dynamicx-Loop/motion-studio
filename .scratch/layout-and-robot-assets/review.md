@@ -96,3 +96,55 @@ previous protocol restriction remains. No GPU, installation, full conversion,
 training, retargeting or dynamic-feasibility checks. Mesh geometry is unsupported.
 Prior prepared receipts use earlier adapter code and require regeneration; this
 is explicit cache invalidation, not a numerical-regression claim.
+
+## Focused review closure — corrected current report version
+
+The focused spec review verified the correctness changes (29 pure checks and five
+real runtime fixtures); the focused standards review found one related current
+documentation contradiction. `robots/README.md` still called the report schema v1
+in the introductory contract while its corrected-semantics paragraph said v2.
+That sentence now consistently says `schema_version=2`. Current contract mentions
+were audited: robot asset/pose/policy schemas and canonical preparation/cache
+formats deliberately remain v1. No code, scientific report, tolerance, asset,
+selection, solver or baseline changed. Branch fast-forwarded to integration
+`ea28aabc5d4ee6fbb825c52ea98291e04937ad72` before this correction.
+
+The new **current** reading edition is `review-20261029-complete`. The earlier
+`review-20261029-final` publication instructions above are historical; use the
+superseding complete-edition command below after merging this docs correction.
+Authored catalog sources were finalized before the single new edition build.
+Source snapshot and rendered robot record both contain the corrected version.
+Verification passed 62 documents, 3,797 source hashes, 3,651 output hashes and
+1,427 local links with no missing fragments. Selected JavaScript, robot README
+Markdown links and focused whitespace checks passed. Scientific/unit suites were
+not rerun for this docs-only correction.
+
+The complete edition seals 3,652 regular files / 2,600,601,933 file bytes and was
+copied once to the canonical same-relative location before installing the local
+per-edition alias. All 3,652 regular files of the preceding review edition still
+match its full seal. Frozen 06/13 manifest anchors also match their prior complete
+preservation verification. The prior full inventory remains anchored in the
+first review receipt; this focused change adds only the complete edition,
+handoff, publication-smoke and validation receipts. It does not alter/reseal the
+inventory or claim another whole-inventory scan. All prior browser, mesh,
+scientific execution and dynamic-feasibility limitations remain.
+
+Focused durable receipt:
+`/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/review-docs-20261029/focused-validation.json`.
+The unchanged publisher has the same tested hash and rollback semantics; it
+successfully published and verified the new local alias/root entries. The main
+integration checkout's publication is left for the coordinating session:
+
+```sh
+python3 -B /data/workspace/motion_studio/outputs/docs-site/review-20261029-complete-handoff/guarded-handoff.py \
+  --root /home/android/.codex/worktrees/layout-robot-assets/motion_studio \
+  --frozen /data/workspace/motion_studio/outputs/docs-site/review-20261029-complete \
+  --seal /data/workspace/motion_studio/outputs/docs-site/review-20261029-complete-handoff/frozen-closure.json \
+  --receipt /home/android/.codex/worktrees/layout-robot-assets/motion_studio/outputs/docs-site/review-complete-publication
+python3 -B scripts/verify_docs.py --edition review-20261029-complete
+```
+
+Manifest SHA-256: `9dd6116dfbf1ff1529d42faaeb899583322d90a712eff1c8ecfc84aed44b8d8e`.
+Seal SHA-256: `9d8bc6df34c526fce07f44abcb90e467c9d85a24d7323c60cfd1f7b2d1877eec`.
+Publisher SHA-256: `847c3fb2c9e6883da957d1036c85efae5c4a91303267617e617b7adaeccc0ae3`.
+Parent remains claimed pending coordinating approval and cleanup.
