@@ -1,6 +1,6 @@
 # 07 — Relocate one artifact cohort with verified legacy compatibility
 
-Status: ready-for-agent
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 01, 02
@@ -55,3 +55,63 @@ record actual migrated bytes, compatibility checks and retained exceptions.
 
 Planning only. The pilot expands supported locations before migrating consumers;
 compatibility removal is not part of this ticket.
+
+Claimed by ticket07 implementer on codex/layout-assets-07 from f0314c5.
+
+## Answer
+
+Implemented the owned `motion_studio.artifacts` plan/copy/verify/alias/restore
+operation and thin `scripts/relocate_artifacts.py`. The concrete fresh legacy
+UMR preparation is in `motion_studio.integrations.umr_hiphi_control`.
+[Operator documentation](../../../docs/artifact-relocation.md) records the API,
+writer hazards, guarded fresh route, restore and limitations.
+
+The actual canonical pilot relocated **173 explicit generated files /
+258,336,820 bytes** into
+`outputs/artifact-archives/hiphi-robot-control-20261029-01`, then installed 173
+recorded relative aliases. Copying stopped before any alias; every source/copy was
+independently compared with ticket 01's unchanged original inventory SHA-256
+`32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7`.
+The same independent check passed through both names afterward. All archive files
+have write bits removed and original modes recorded for restoration. Thirteen
+source/config/provenance/small-result files remain byte-identical. External
+trajectory XML identities and mesh closures remain preserved; no upstream writes.
+
+Tracked additive records:
+
+- [Explicit plan](../../../experiments/layout-and-robot-assets-evidence/artifact-pilot-plan.json):
+  original/new paths, hashes, bytes, roles, inbound references and aliases.
+- [Retained closure/context](../../../experiments/layout-and-robot-assets-evidence/artifact-pilot-context.json):
+  frozen model/mesh closure and source bytes, retained exceptions and first-write hazards.
+- [Validation anchors](../../../experiments/layout-and-robot-assets-evidence/artifact-pilot-validation.json):
+  durable canonical receipt paths and SHA-256 values, storage accounting and limits.
+
+Prepared four fresh effective configurations and 74 verified run-local model/mesh
+files in `outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01`.
+`preparation.json` records input/config hashes, identity and argv/cwd/fresh logs;
+additive source/viewer context records source hashes and copied source templates
+at a fresh explicit viewer destination. No training, export, conversion, pipeline,
+GPU, dependency installation or historical runner/exporter/summarizer execution.
+The prepared model identity is the sealed input closure; no numerical rerun or
+historical parity claim. Human model/runtime prerequisites remain unexercised.
+
+Validation: nine behavioral tests across three new pure suites cover source/archive
+drift, destination conflict, stale resume receipt, nested relative links, ancestor
+symlink refusal, interrupted copy and alias phases, restoration without deleting
+archives, normal-user first-write refusal, missing viewer resources/transform sizes,
+and fresh run-local config/model isolation. Root `PYTHONDONTWRITEBYTECODE=1 python3
+scripts/check.py` passed 10/10 pure suites before integration refresh. CLI help and
+`git diff --check` passed. Old/new viewer graphs agree: 148 bins, 35/37 robot parts,
+5468 frames and exact transform byte counts. Browser HTTP smoke loaded all bins,
+rendered a canvas, advanced Astro playback, and exercised pause/G1 seek/robot switch/
+overlay with empty app error text. One missing favicon 404; direct-file WebGL not
+established. No numerical/dynamic validation is implied.
+
+Original preservation verification was rerun without weakening its seal: all
+recorded bytes and repository states remain intact; diagnostics consist of 173
+declared source-kind changes plus new own/integration output files. Concurrent
+dependency-role/documentation outputs are additive differences, not a whole-
+inventory pass. Full local before/after and explanation receipts are retained.
+The selected cohort's unique ordinary bytes remain 258,336,820 after migration;
+old lexical paths still count those bytes logically. Peak temporary duplication
+was another 258,336,820 bytes; no overall workspace-size reduction is claimed.

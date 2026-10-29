@@ -1,0 +1,34 @@
+{
+  "after_unique_archive_bytes": 258336820,
+  "aliases": 173,
+  "archive": "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01",
+  "before_unique_file_bytes": 258336820,
+  "browser": {
+    "app_error_text": "",
+    "astro_playback_observed": true,
+    "g1_seek_observed": true,
+    "loaded_bins": 148,
+    "mode": "HTTP"
+  },
+  "migrated_files": 173,
+  "migrated_logical_bytes": 258336820,
+  "peak_temporary_duplicate_bytes": 258336820,
+  "prepared_only": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01",
+  "preservation": "No changed sealed bytes or repository-state diagnostics; original checker reports 173 declared aliases and additive outputs. No whole-inventory pass claimed.",
+  "receipt_sha256": {
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/browser-smoke.json": "fd391f5fb0edd587f02a970dc226ecccc46d564b5de992d50b529217a98a2162",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/independent-after-alias.json": "3f1554eb01e0fba3d3f3144a03d3e6a5ab21aa584a2865a223d395b1227dd8be",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/independent-before-alias.json": "73b830d1580cec5c4a7740dbef5ca61728a11af63567bf8b45500ea4c16b01fd",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/preservation-after.json": "1192d563e2fb5a4708629055720defbf51a2fae1a119f3c22879869eb6ea7971",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/preservation-analysis.json": "fae885cd3d2f10c0291e870848c51b90d25a2c2fa7d9e80a8163ff80ade6612b",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/preservation-summary.json": "031227a88c2b73ecf9f502cf95768ed4be6ea30927b23b56daaaf8fb250f8069",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/relocation.json": "38c49690bf08f90957688472bac3afcc95cdc81f5720bfb6ce9d4e078c549513",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/viewer-graph-final.json": "f731719082756331d1cc3db00ee7dc696ecc20bb8520e965f04ed7bdda265009",
+    "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/fresh-viewer-context.json": "5c2da1882e5fd299e13f3ae2da4d54e11e8d03eead9a9c76942774328d0bdc6c",
+    "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/preparation-source-context.json": "be525f0ed6431a1d7813d1b6c428f491785dfd418c7e1b31bb27ab1a131f15cc",
+    "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/preparation.json": "2a5bef72e70f1fc43bcd801ea6770241e266b78fd960593fbfc564b033374ceb",
+    "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/preservation-before.json": "e6becb548606bc9239a8d99ed612d798667c0de0673025c44952797a7eb650ee"
+  },
+  "retained_source_config_small_result_files": 13,
+  "schema_version": 1
+}
