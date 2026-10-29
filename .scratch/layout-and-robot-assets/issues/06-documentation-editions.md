@@ -1,6 +1,6 @@
 # 06 — Build offline documentation editions separately from research evidence
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 01, 02
@@ -52,3 +52,5 @@ rendering separately; HTTP/static success does not prove file-open success.
 
 Planning only. Keep optional HTTP 3D tools distinct from server-free reading;
 do not alter browser security or redistribute licensed bundled media.
+
+Claimed ticket 06 in isolated branch `codex/layout-assets-06`, based on sealed integration tip `de0d6f54bffdb8fc915fa4e2df2e09a6a1892f2c`; canonical workspace remains read-only.

@@ -19,6 +19,8 @@ def main():
                         help='Repeat to select tiers; default: pure')
     parser.add_argument('--list', action='store_true', help='Inventory without importing tests')
     parser.add_argument('--json', action='store_true', help='Emit machine-readable inventory/results')
+    parser.add_argument('--docs-edition', type=Path,
+                        help='Selected reading edition directory for the Node search check')
     parser.add_argument('--umr-python', type=Path, help='Explicit interpreter for static saved-run checks')
     parser.add_argument('--umr-run', type=Path, help='Preserved static run; no training or retargeting')
     args = parser.parse_args()
@@ -34,7 +36,8 @@ def main():
                         print(f'  requires: {value}')
             return 0 if suites else 1
         report = check(args.root, tiers=tuple(args.tier or ['pure']),
-                       umr_python=args.umr_python, umr_run=args.umr_run)
+                       umr_python=args.umr_python, umr_run=args.umr_run,
+                       docs_edition=args.docs_edition)
         if args.json:
             print(json.dumps({'selected_tiers': args.tier or ['pure'],
                               'exit_code': report.exit_code, **asdict(report)}, indent=2))

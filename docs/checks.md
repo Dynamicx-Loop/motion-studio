@@ -34,7 +34,7 @@ python3 scripts/check.py --tier umr-static \
 | --- | --- |
 | `pure` | G1 interface safety, recorded motion paths, Markdown reading and check-command fixtures; subsequent owned pure tests are discovered automatically. |
 | `saved-evidence` | Retrospective legacy reconstruction, declared saved experiment records and schema-validation package in the calling Python. No numerical rerun. |
-| `javascript` | Node.js search check against the existing generated reading bundle. Its six cases do not establish browser direct-file rendering. |
+| `javascript` | Node.js search check against the selected generated reading edition (historical research bundle by default). Its six cases do not establish browser direct-file rendering. |
 | `umr-static` | Original static-pair suite, explicit external interpreter, preserved run/config/assets and the pinned historical checkout. No training, retargeting or simulation. |
 
 An unavailable selected prerequisite produces `unavailable` and a nonzero exit;
@@ -72,3 +72,22 @@ the pure tier. Keep unit fixtures small and independent of the full real workspa
 The owned API is `motion_studio.checks.discover(root)` for immutable suite records
 and `check(root, tiers=..., umr_python=..., umr_run=...)` for immutable outcomes
 and an aggregate exit code. The command only parses arguments and renders reports.
+
+
+## Select a documentation edition
+
+```sh
+python3 scripts/check.py --tier javascript --docs-edition outputs/docs-site/<edition>
+node scripts/docs_site/test_search.cjs --edition <edition>
+node scripts/docs_site/test_search.cjs --output /absolute/path/to/edition
+```
+
+The root command checks the selected edition's `supporting-records.html` before
+starting Node and reports a missing edition as `unavailable` with a nonzero exit.
+Its `--docs-edition` directory is relative to the selected source root unless
+absolute. It changes only the documentation search suite. Without selection, the
+historical report prerequisite and standalone Node command remain supported.
+Direct Node invocation also accepts `MOTION_STUDIO_DOCS_EDITION` as a directory;
+the root check command uses its explicit flag so preflight and execution agree.
+The owned `check(..., docs_edition=Path(...))` API accepts the same selection.
+New pure documentation fixture tests are discovered automatically.
