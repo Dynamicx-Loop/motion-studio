@@ -1,4 +1,13 @@
 """Focused safety checks for the prepared static pair; no training or simulation."""
+CHECK_TIER = 'umr-static'
+CHECK_MODULES = ('numpy', 'mujoco')
+CHECK_INPUTS = (
+    'externals/UMR-baseline-v1/scripts/humanoid_retarget_pipeline.py',
+)
+CHECK_RUN_INPUTS = (
+    'provenance.json', 'configs/g1-resolved.json', 'configs/astro-resolved.json',
+    'assets/astro/fist-pose.json',
+)
 import json
 from pathlib import Path
 import sys

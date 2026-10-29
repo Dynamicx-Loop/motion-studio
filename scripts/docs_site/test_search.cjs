@@ -1,4 +1,5 @@
 // Run the generated search script with a small DOM stub: no browser or network.
+// CHECK_INPUTS: ["outputs/umr-binding-report/supporting-records.html"]
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');

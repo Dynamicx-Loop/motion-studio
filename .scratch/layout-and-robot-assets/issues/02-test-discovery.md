@@ -1,6 +1,6 @@
 # 02 — Provide one check entry with explicit runtime tiers
 
-Status: ready-for-agent
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: none
@@ -46,3 +46,39 @@ claim the static suite passed unless executed with its real run path and venv.
 
 Planning only. Preserve the existing tests' behavior; later slices update this
 entry as their owned modules and fixtures become available.
+
+Implementation claimed by ticket02 subagent on codex/layout-assets-02, based on integration seed 8d7dff5.
+
+## Answer
+
+Implemented on `codex/layout-assets-02` from integration source seed `8d7dff5`.
+The [root command](../../../scripts/check.py) calls the owned
+[discovery/run interface](../../../motion_studio/checks.py); its private unittest
+loader preserves relative script-package imports and rejects empty suites.
+[Usage and tier metadata](../../../docs/checks.md) document the command and its
+prerequisites. New owned Python test files are discovered as pure automatically;
+AST-only literal metadata classifies saved-evidence/static suites. JavaScript
+search is inventoried separately. No upstream runtime is imported by inventory.
+
+Validation in the isolated ticket worktree:
+
+- TDD: observed failing cases before implementing auto-discovery, empty discovery,
+  empty suite, package-relative imports, tier isolation, unknown tier, saved input,
+  runtime module, static run input, JavaScript discovery and CLI failure behavior.
+  Ten fixture tests exercise the public API/CLI using independent tiny projects.
+- `python3 scripts/check.py`: four pure suites passed, 23 Python tests. All three
+  non-default tiers were visibly not selected rather than silently called passed.
+- `python3 scripts/check.py --tier saved-evidence --tier javascript --tier umr-static
+  --json` before local resource links: saved evidence passed; JavaScript and
+  static suites reported missing inputs/interpreter/run as unavailable; exit 1.
+- Full explicit run selected `pure`, `saved-evidence`, `javascript`, `umr-static`,
+  with `--umr-python /data/workspace/motion_studio/externals/UMR/.venv/bin/python`
+  and `--umr-run /data/workspace/motion_studio/outputs/umr-astro-baseline-v1/static-20261024-01`:
+  all seven suites passed (30 Python tests, Node search six cases/46 documents).
+  Static tests validated saved configs/input hashes; no training or numerical
+  retargeting rerun occurred. JavaScript success is not browser file-open validation.
+- Local ignored child links provided read-only UMR/historical checkout and reading
+  bundle access; no external/output data was provisioned, installed or modified.
+- `git diff --check` passed for the ticket changes. Files remain below 200 lines.
+
+Status changed from claimed to resolved after the selected tier checks passed.

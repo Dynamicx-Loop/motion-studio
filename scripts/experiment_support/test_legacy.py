@@ -1,4 +1,25 @@
 """Regression checks for retrospective evidence boundaries; no numerical reruns."""
+CHECK_TIER = 'saved-evidence'
+CHECK_MODULES = ('jsonschema',)
+CHECK_INPUTS = (
+    'experiments/umr-binding-report/build_report.py',
+    'experiments/soma-correspondence-audit/results.json',
+    'experiments/astro-hands-correspondence/results.json',
+    'experiments/astro-hand-wrist-correction/results.json',
+    'experiments/astro-canonical-static-v1/results.json',
+    'experiments/astro-canonical-wrist-v1/results.json',
+    'experiments/astro-fist-static-v1/results.json',
+    'experiments/astro-fist-wrist-v1/results.json',
+    'experiments/umr-motion-preliminary-v1/results.json',
+    'experiments/umr-motion-preliminary-v2/results.json',
+    'experiments/umr-motion-canonical-v1/results.json',
+    'experiments/umr-motion-fist-v1/results.json',
+    'schemas/experiments/result.schema.json',
+    'docs/umr-head-objective-investigation.md',
+    'docs/umr-solver-investigation.md',
+    'docs/umr-soma-setup.md',
+    'docs/umr-astro-baseline-proposal.md',
+)
 import copy
 import json
 from pathlib import Path
