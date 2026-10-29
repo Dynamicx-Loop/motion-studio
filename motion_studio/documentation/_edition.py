@@ -63,7 +63,7 @@ def build_edition(source_root: Path, evidence_root: Path, *, edition='current',
         raise ValueError('Edition must be a single safe directory name')
     output = Path(output).absolute() if output else source_root / 'outputs/docs-site' / edition
     report = evidence_root / REPORT
-    if output.exists():
+    if output.exists() or output.is_symlink():
         raise FileExistsError(f'Edition must be fresh: {output}')
     if output.resolve().is_relative_to(report.resolve()) or report.resolve().is_relative_to(output.resolve()):
         raise ValueError('Edition output must be separate from research input')

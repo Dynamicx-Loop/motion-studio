@@ -476,5 +476,3 @@ def table(headers: list, rows: list) -> str:
         )
         + "</tbody></table></div>"
     )
-
-
