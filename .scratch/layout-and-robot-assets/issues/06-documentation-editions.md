@@ -1,6 +1,6 @@
 # 06 — Build offline documentation editions separately from research evidence
 
-Status: claimed
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 01, 02
@@ -54,3 +54,88 @@ Planning only. Keep optional HTTP 3D tools distinct from server-free reading;
 do not alter browser security or redistribute licensed bundled media.
 
 Claimed ticket 06 in isolated branch `codex/layout-assets-06`, based on sealed integration tip `de0d6f54bffdb8fc915fa4e2df2e09a6a1892f2c`; canonical workspace remains read-only.
+
+
+## Answer
+
+Implemented isolated documentation editions through
+`motion_studio.documentation.build_edition()` and `verify_edition()`. The public
+commands remain thin; historical renderer imports and the original standalone
+Node command remain available. Catalog/templates/styles/search are owned sources;
+`docs/site/home.html` is explicitly a generated compatibility entry. Generated
+root/basic/home entries are ignored local artifacts, never script redirects.
+
+Builds take explicit source/evidence roots and a fresh destination, defaulting to
+`outputs/docs-site/<edition>`. They copy the saved research closure, decorate only
+copies, preserve original legacy HTML/anchors and existing compatibility entry
+bytes, and stage required inputs and reading-link checks before publication.
+Failure fixtures cover missing canonical input, corrupt saved snapshots and a
+broken authored link; previous entries and editions remain intact. Explicit
+hash-checked saved-source fallback is visibly labeled on generated pages.
+
+The check runner accepts `--docs-edition PATH` for its automatically discovered
+Node suite. Its selected input is checked before execution: missing editions are
+`unavailable` with a nonzero exit. The historical metadata/default remains intact.
+The pure fixture includes selection without a historical bundle or Node runtime.
+
+Validation after merging integration `f0314c54e58f98d009ff179e06c48555a50cb14a`
+(merge `1fbb2e5`; final edition built from that source revision):
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py --tier pure --tier javascript --docs-edition outputs/docs-site/ticket06-20261029-validated
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_docs.py --edition ticket06-20261029-validated
+node scripts/docs_site/test_search.cjs --edition ticket06-20261029-validated
+```
+
+All eight pure suites (53 tests) and the selected Node suite passed; four tests
+exercise owned documentation publication and fallback. Node search passed six
+cases. The real edition has 46 documents, 3,766 checked source hashes, 3,604 checked
+output hashes, 1,134 local links, no missing fragments or remote core runtime
+resources, two saved figure hashes and eight preserved legacy HTML originals.
+Existing root/basic/home entries were archived and hash-checked before replacement.
+All 3,601 copied research-input files remained hash-stable before/after building.
+`git diff --check` passed for the implementation paths.
+
+HTTP browser observation confirmed Overview → Installation → Quick Start →
+UMR Experiments → Supporting records, plus the basic entry and compatibility
+home, each with its complete primary heading and distinct appropriate URL.
+Direct `file://` navigation was rejected by the browser protocol policy; no
+retry, alternate browser or security bypass followed. Direct-file rendering
+remains unverified. Optional 3D execution and all historical interactive archives
+were not exercised; no numerical experiment, download or external modification
+occurred.
+
+The frozen durable edition is
+`/data/workspace/motion_studio/outputs/docs-site/ticket06-20261029-validated`:
+3,612 regular files, one internal relative history link, 2,598,959,968 file bytes.
+Its manifest SHA-256 is
+`a0ea2bfe68cce7a123a5750d2741c9d11320e9862d06bc2c5fcc13238728d4fe`.
+The separate durable handoff directory is
+`/data/workspace/motion_studio/outputs/docs-site/ticket06-20261029-handoff`.
+Its `frozen-closure.json` records every file/link and the unchanged-input inventory;
+SHA-256 `24da2c7b78528c871d4a950c45cdd6d1470d49cbf076cf69179bd40b0b5ad3db`.
+The edition includes verification, root-check, search and browser receipts.
+
+The merger can publish without rebuilding or modifying the frozen edition:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 /data/workspace/motion_studio/outputs/docs-site/ticket06-20261029-handoff/publish-integration.py /home/android/.codex/worktrees/layout-robot-assets/motion_studio
+```
+
+The handoff script SHA-256 is
+`a3cacd615af43c1a8a508bccb125a8e5fed55693a2ca06c666c9ee208b4f55bb`.
+It checks frozen/source hashes, creates only a per-edition alias beneath a real
+integration `outputs/docs-site/`, derives complete entries with the owned static
+rebasing helper, asserts the entry hashes match the manifest, preserves prior
+entries in a fresh `ticket06-publication` receipt, and rolls back entry publication
+if final verification fails. An independent equivalent-layout recipient passed
+all source/output/link checks and preserved three prior entries byte-exactly;
+`publication-test.json` records that result. The original build-root pathname in
+the frozen manifest is provenance; publication explicitly verifies against the
+merged integration source root and requires no disposable checkout afterward.
+
+Only disposable editions created by this ticket were removed after the durable
+copy was hash-verified; the implementer output now uses a per-edition alias to the
+frozen edition. The canonical source tree, research bundle, preserved evidence,
+external repositories and worktree metadata were not cleaned or switched.
