@@ -139,3 +139,11 @@ Only disposable editions created by this ticket were removed after the durable
 copy was hash-verified; the implementer output now uses a per-edition alias to the
 frozen edition. The canonical source tree, research bundle, preserved evidence,
 external repositories and worktree metadata were not cleaned or switched.
+
+Final integration freshness check: merged the newer robot-definition integration
+tip `54ac3e3b7679ff8715b515eafefc82517448fed7` as `1c4ebf4b`. None of its
+changed paths belongs to the frozen documentation input inventory. All nine
+current pure suites passed afterward, and the frozen edition's current source,
+output, original and link verification passed again. Those receipts are
+`latest-root-checks.json` and `latest-verification.json` in the durable handoff
+directory; the build revision and frozen edition checksums remain unchanged.
