@@ -67,3 +67,11 @@ only. Stable preservation and dependency-role receipts have per-child ignored
 read-only links under this worktree's own outputs directory. No ticket worktree
 or ignored receipt has been deleted. Stable ticket 05 evidence is committed under
 `experiments/layout-and-robot-assets-evidence/`.
+
+### Resolver integration
+
+Ticket 09 integrated at `55d43a7`: immutable pinned Astro selection, schema and
+pose/closure validation. Root pure checks passed (8/8); runtime representation
+validation remains explicitly unverified until ticket 11. Tickets 01/02/03/05/09
+are integrated. Ticket 06 is finalizing its persisted edition, 07 is active, and
+10/11 are unblocked by resolver integration. No canonical source change occurred.
