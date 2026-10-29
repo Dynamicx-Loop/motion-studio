@@ -95,3 +95,9 @@ No GPU job, training, motion retargeting, simulation stepping, upstream writes,
 asset regeneration or historical baseline advancement was performed. Prior
 MuJoCo 3.11 controlled-import measurements are labeled prior observations;
 the new 3.3.7 compile is not a parity claim or a newly passed numerical baseline.
+
+Post-integration verification: merged ticket 06 integration tip `bf29d30` into
+this branch (`fb9dd88`). Root pure checks passed **11/11**; diff whitespace check
+against the ticket's original base passed, and the working tree was clean before
+recording this final result. No G1 schema or scientific behavior changed during
+the integration merge.
