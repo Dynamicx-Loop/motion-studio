@@ -143,3 +143,17 @@ read-only alias here. Root pure checks passed 16/16; no full conversion/GPU or
 source/upstream mutation was performed. Tickets 01/02/03/04/05/06/07/09/10/11
 are integrated. Ticket 08 storage ledger and 12 canonical preparation are active;
 13 closeout remains gated on those outcomes.
+
+### Remaining artifact batches integration
+
+Ticket 08 integrated at `e0283aa`: the bounded ledger accounts for all 1,019
+sealed experiment files across 24 directories plus 21 original output cohorts.
+Including the pilot, 493 files / 1,656,674,064 bytes now live in verified ignored
+archives behind compatibility aliases; 526 small/source files are retained with
+explicit reasons. Original inventory differences remain 493 declared kind changes
+plus additive receipts, with no changed sealed bytes or canonical repository
+drift. No whole-inventory pass or disk-size reduction is claimed.
+Durable ticket08 receipts have a per-directory read-only alias here. Root pure
+checks passed 16/16; optional viewers/direct-file limits remain as recorded.
+Tickets 01 through 11 are integrated. Ticket 12 canonical preparation remains
+active and is the final prerequisite for ticket 13 closeout.
