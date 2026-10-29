@@ -5,7 +5,10 @@ const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
 const root = path.resolve(__dirname, '../..');
-const bundle = path.join(root, 'outputs/umr-binding-report');
+const selected = process.argv.indexOf('--output');
+const edition = process.argv.indexOf('--edition');
+const bundle = path.resolve(selected >= 0 ? process.argv[selected + 1] :
+  (process.env.MOTION_STUDIO_DOCS_EDITION || (edition >= 0 ? path.join(root, 'outputs/docs-site', process.argv[edition + 1]) : path.join(root, 'outputs/umr-binding-report'))));
 const html = fs.readFileSync(path.join(bundle, 'supporting-records.html'), 'utf8');
 const data = html.match(/<script id="search-data" type="application\/json">([\s\S]*?)<\/script>/)[1];
 class Element {

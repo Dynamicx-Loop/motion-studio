@@ -5,6 +5,7 @@ import subprocess
 import sys
 import tempfile
 import unittest
+from unittest.mock import patch
 
 from motion_studio.checks import check, discover
 
@@ -131,6 +132,27 @@ class Failure(unittest.TestCase):
         output = json.loads(result.stdout)
         self.assertEqual(output['outcomes'][0]['status'], 'failed')
         self.assertIn('37 != 41', output['outcomes'][0]['detail'])
+
+    def test_selected_docs_edition_needs_no_historical_bundle(self):
+        # Stand-in executable at the process boundary keeps this test pure.
+        # The harmless string carries the same inventory metadata as real search.
+        self.write_suite('scripts/docs_site/test_search.cjs', '''"""
+// CHECK_INPUTS: ["outputs/umr-binding-report/supporting-records.html"]
+"""
+import pathlib, sys
+assert sys.argv[1] == '--output'
+assert pathlib.Path(sys.argv[2], 'supporting-records.html').read_text() == 'Selected edition'
+''')
+        selected = self.root / 'outputs/docs-site/selected'
+        selected.mkdir(parents=True)
+        (selected / 'supporting-records.html').write_text('Selected edition')
+        with patch('motion_studio.checks.shutil.which', return_value=sys.executable):
+            result = check(self.root, tiers=('javascript',), docs_edition=selected)
+        self.assertEqual(result.exit_code, 0, result.outcomes)
+        absent = check(self.root, tiers=('javascript',), docs_edition=self.root / 'missing')
+        self.assertEqual(absent.outcomes[0].status, 'unavailable')
+        self.assertNotEqual(absent.exit_code, 0)
+        self.assertIn('missing/supporting-records.html', absent.outcomes[0].detail)
 
 
 if __name__ == '__main__':

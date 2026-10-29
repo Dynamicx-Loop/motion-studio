@@ -77,7 +77,8 @@ class Report:
 
 
 def check(root: Path, *, tiers: tuple[str, ...] = ('pure',),
-          umr_python: Path | None = None, umr_run: Path | None = None) -> Report:
+          umr_python: Path | None = None, umr_run: Path | None = None,
+          docs_edition: Path | None = None) -> Report:
     """Run selected tiers; unavailable prerequisites fail without importing tests.
 
     Each suite executes in a separate subprocess. Static reproduction checks use
@@ -94,7 +95,12 @@ def check(root: Path, *, tiers: tuple[str, ...] = ('pure',),
             outcomes.append(Outcome(suite.path, suite.tier, 'not-selected',
                                     'Select this tier explicitly'))
             continue
-        missing = [name for name in suite.inputs if not (root / name).exists()]
+        selected_docs = (docs_edition is not None and
+                         suite.path == 'scripts/docs_site/test_search.cjs')
+        edition_path = (root / docs_edition).resolve() if selected_docs else None
+        inputs = ((str(edition_path / 'supporting-records.html'),)
+                  if selected_docs else suite.inputs)
+        missing = [name for name in inputs if not (root / name).exists()]
         python = sys.executable
         node = shutil.which('node')
         if suite.tier == 'javascript' and not node:
@@ -121,6 +127,8 @@ def check(root: Path, *, tiers: tuple[str, ...] = ('pure',),
             command = [python, str(path), str(umr_run.resolve()), '-v']
         if suite.tier == 'javascript':
             command = [node, str(path)]
+            if selected_docs:
+                command.extend(('--output', str(edition_path)))
         try:
             if suite.modules:
                 probe = subprocess.run(
