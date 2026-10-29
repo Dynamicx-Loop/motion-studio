@@ -157,3 +157,16 @@ Durable ticket08 receipts have a per-directory read-only alias here. Root pure
 checks passed 16/16; optional viewers/direct-file limits remain as recorded.
 Tickets 01 through 11 are integrated. Ticket 12 canonical preparation remains
 active and is the final prerequisite for ticket 13 closeout.
+
+### Canonical comparison preparation integration
+
+Ticket 12 integrated at `b1d37da`: typed explicit canonical preparation with exact
+representation-claim guards, stage fingerprints and cache artifact hash checks.
+All successful receipts remain prepared-only/execution-readiness false. Final
+fresh G1/Astro29/Dex3 CPU preparation/compile evidence is preserved under canonical
+`outputs/implementation/layout-and-robot-assets/ticket12-20261029-validated/`
+with a per-directory read-only alias here; earlier sets remain separate.
+Official G1 baseline behavior and frozen inputs remain unchanged. Root pure
+checks passed 17/17. Tickets 01–12 are integrated; ticket 13 closeout is ready
+for navigation, full bounded acceptance and fresh documentation publication.
+Final standards/spec review against seed `8d7dff5` still gates completion.
