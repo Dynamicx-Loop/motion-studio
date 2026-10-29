@@ -91,3 +91,15 @@ Direct-file browser rendering remains unverified. The publication receipt is
 `outputs/docs-site/ticket06-publication/`; original entries are preserved there
 if present. Root pure plus selected JavaScript checks passed (10/10 suites).
 Tickets 01/02/03/05/06/09 are integrated. Ticket 07 pilot and 10 G1 guard are active.
+
+### G1 definition and baseline guard integration
+
+Ticket 10 integrated at `5c5d166`: explicit pinned G1 comparison definition plus
+regression coverage preserving catalog-independent official baseline preparation.
+The URDF/MJCF pair is reported incompatible at unchanged tolerances; shared
+runtime consistency validation remains ticket 11. Fresh run-local MJCF compile
+evidence is preserved under the durable canonical
+`outputs/implementation/layout-and-robot-assets/ticket10/` with a per-directory
+read-only alias here; seed receipt storage remains a real directory.
+Root pure checks passed 11/11. Tickets 01/02/03/05/06/09/10 are integrated;
+07/11 are active and 04 is next available implementation work.
