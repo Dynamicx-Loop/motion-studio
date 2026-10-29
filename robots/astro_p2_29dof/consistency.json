@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "model_sha256": {
+    "urdf": "361b9c14ba36a4348f5fe3b760677c3297bffc75305a8dacd69297e4f45fb334",
+    "mjcf": "89f179ea9fb51ff53a9a1d3fa9cef6049f843e0e3ad21a886677e3a5341767f7"
+  },
+  "collision_differences": [
+    "39 cylinder-plus-two-sphere assemblies represented by native capsules, including 27 to 11 collision primitives per foot; explicit inertias retained."
+  ],
+  "keyframe_behavior": "Explicit poses override qpos; normal MjData/reset remains zero. Dex3 viewer alone explicitly selects fist.",
+  "source_revision": "d2070956558ffbf9226dcf74017d40740724d8d8",
+  "closure_sha256": {
+    "urdf": "c397f6a855d9f0c08048ae18367da0383270869ff338f34a30e5c0097b8a6acb",
+    "mjcf": "a38d46f1f79e04a7ba49a7de0caa92c07257a9fb63cb1f81f0d587f0eb16c504"
+  }
+}

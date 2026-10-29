@@ -1,0 +1,106 @@
+{
+  "validation": "fresh CPU excerpt [3,6), original driver at e215cc2",
+  "frames": 3,
+  "frame_time": 0.00833333,
+  "source_timestamps": [
+    0.02499999,
+    0.03333332,
+    0.04166665
+  ],
+  "comparisons": {
+    ".npz:poses": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".npz:trans": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".npz:betas": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".npz:gender": {
+      "exact": true
+    },
+    ".npz:mocap_framerate": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".npz:output_up": {
+      "exact": true
+    },
+    ".diagnostics.npz:fitted_joints": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".diagnostics.npz:residuals": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".diagnostics.npz:final_losses": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".diagnostics.npz:source_joints": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".diagnostics.npz:source_parents": {
+      "max_abs_difference": 0.0,
+      "atol": 1e-07,
+      "rtol": 0
+    },
+    ".diagnostics.npz:source_names": {
+      "exact": true
+    }
+  },
+  "legacy_report_fields_exact": [
+    "start_frame",
+    "frames",
+    "frame_time",
+    "fps",
+    "duration_seconds",
+    "output_up",
+    "units",
+    "residual_mean_m",
+    "residual_max_frame_mean_m",
+    "trans_min",
+    "trans_max",
+    "source_bounds",
+    "all_finite",
+    "shape",
+    "fingers",
+    "face"
+  ],
+  "files_sha256": {
+    "reference-driver.py": "51619b511d8340d162afa58b864fe05b4ee5e64993380d860abe2ec2a13eec97",
+    "reference-config.json": "db15cc14698bae37a5aee882a282264fd78f1d05efd891773bf9403eb3c73e5a",
+    "reference.log": "bb0f7d6a6b8de2454fef82ccda6314c25dcd180dad6290366a871fbc9d4483d8",
+    "reference/motion.npz": "50cd34b25ac09253cf8f0802131dee7494ae6d19407be3d420834573941b63c1",
+    "reference/motion.source.bvh": "46d52a72f8a47c847e5b5254438fe9ee485a460e41a37b0646ad9bdc54b760cc",
+    "reference/motion.diagnostics.npz": "85256b67bd8bdef503536603fdb97942eb6d0cca5fe2ec3095b72cef09903fcb",
+    "reference/motion.report.json": "d24885b25277128425726791fd023284ca99bb1091d4ee4e797f5f4e7106400c",
+    "owned-final/motion.conversion.log": "19050cb2a1fbcf6696ef7ade939b7a7cd1224828640f56ffb3321db26be36fc6",
+    "owned-final/motion.conversion.lock": "0bc59f4d01e76723c25efef874d2e754dbeb0d58a3edd3db175011a52b449b19",
+    "owned-final/motion.provenance.json": "0bd84cc34d01d73110a4ef9bdc732632ea0801305f3f9ecebca468975ab6f860",
+    "owned-final/motion.npz": "b134f55a2d07fcc4a4a09694fda3db245b734c9836e5c7b817cde5cc1d427268",
+    "owned-final/motion.source.bvh": "46d52a72f8a47c847e5b5254438fe9ee485a460e41a37b0646ad9bdc54b760cc",
+    "owned-final/motion.diagnostics.npz": "5ecfd147c3ecd59916c6feae64916671d3a4c9a15e455474c59f8fdf8c97eb80",
+    "owned-final/motion.report.json": "5c71713667b188dbdb0303524e770e81e4deab9215c209d9b9582cd7d4aebef0",
+    "owned-final/motion.conversion/request.json": "03a536ca2bf8f2222b85bf3f6dee8146c8f3030d6bf2952c5f5ca437e8368054",
+    "owned-final/motion.conversion/environment.json": "d68ae2d95ed4903f0e194f54e50e8db5a6483c402385d5332dac68dfa5d66cbf"
+  },
+  "limits": [
+    "No full historical conversion rerun",
+    "No GPU or dynamic feasibility check"
+  ]
+}

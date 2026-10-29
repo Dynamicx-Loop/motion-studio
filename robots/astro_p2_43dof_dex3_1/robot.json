@@ -1,0 +1,1634 @@
+{
+  "schema_version": 1,
+  "id": "astro_p2_43dof_dex3_1",
+  "version": 1,
+  "source": {
+    "key": "menagerie_x",
+    "repository": "https://github.com/notAnyrobot/menagerie_x",
+    "revision": "d2070956558ffbf9226dcf74017d40740724d8d8"
+  },
+  "provenance": {
+    "license_coverage": "unknown",
+    "license_note": "LICENSE.Unitree covers bundled vendor hand component only; full Astro assembly and mesh redistribution coverage unknown.",
+    "modifications": [
+      "Sample Dex3 mounting and mirrored source axes; no hardware calibration.",
+      "MJCF-only shin, palm/thumb, torso/arm/wrist and pelvis refinements and explicit fist keyframe. Earlier URDF retained."
+    ],
+    "files": [
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/LICENSE.Unitree",
+        "sha256": "84aac59fd3246e3ddc49d1387644e8fcf43b0def4f0b9fe687f372e90446df2d",
+        "role": "notice"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/MJCF.md",
+        "sha256": "a2d108f685b03b5d12ce01e0dbf20ef6c6c5589c40ea6096162b3bea8c30f752",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/README.md",
+        "sha256": "f7b25dfef064d040ff0b06936e90c55204896ff70a7bbf7f059e0438ab614088",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/SOURCE.json",
+        "sha256": "7746a1b60ad8106bac4cf8f367d7fdc2f9364ba71138a2519a2475b752a234fd",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/fist-pose.json",
+        "sha256": "65aa714e64a642058237351515951e3840982d0692cc04c079356e1eb0e0ed7b",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/hand-collision-shapes.json",
+        "sha256": "6f002ecd31b142d0f9cdbafe4b8a6ab0d7067cd330b7625ffe9348438512722d",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/joint-order.json",
+        "sha256": "c186ab8f4729841ba2dcd6f5152b56e4722b9fdd29429dadf6c3f5ff9a49c917",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-conversion.json",
+        "sha256": "d702bc2a7adc4f771d4c54a456dfab51d68ec3a5d3e5a98e3c265c4043d4c13c",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-fist-review.json",
+        "sha256": "a20e764bc81826c94b1c4701fa35d497bb37f738eee9024eb2249005d80a6a30",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-mobility-review.json",
+        "sha256": "cff7c8650c4d218c1cbf17eb7d3bdb84eecedd02db8e2784e77fba6eae930482",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-pelvis-review.json",
+        "sha256": "9888e74afa63b8ac5e8c9cb823406ad81322e414ba2fa48494a41045772821e0",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-refinement.json",
+        "sha256": "78208bcf7574c8f8db45ede551e54fb1a7279eafdfe715dc9aec5740cc50f36e",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/mjcf-torso-clearance-review.json",
+        "sha256": "55f5b4c27ca975dea322ba359bcbc8754f301079a8a60a5c283298fb14c02e01",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/robot.yaml",
+        "sha256": "5be795b0def602ec0a60863ac8ff8671dd92c7d98c5db0afca25884f34934b70",
+        "role": "source-record"
+      },
+      {
+        "path": "robots/astro_p2_43dof_dex3_1/validation.json",
+        "sha256": "c5bd4bd80a6cb9d22d8ef14d1872c34db8bea2c19f69dffa0aae3447bbbebe1a",
+        "role": "source-record"
+      }
+    ]
+  },
+  "conventions": {
+    "length_unit": "metre",
+    "angle_unit": "radian",
+    "up_axis": "+Z",
+    "forward_axis": "+X",
+    "left_axis": "+Y",
+    "root_frame": "pelvis",
+    "root_translation_unit": "metre",
+    "root_quaternion_order": "wxyz"
+  },
+  "joint_order": [
+    "left_hip_pitch_joint",
+    "left_hip_roll_joint",
+    "left_hip_yaw_joint",
+    "left_knee_joint",
+    "left_ankle_pitch_joint",
+    "left_ankle_roll_joint",
+    "right_hip_pitch_joint",
+    "right_hip_roll_joint",
+    "right_hip_yaw_joint",
+    "right_knee_joint",
+    "right_ankle_pitch_joint",
+    "right_ankle_roll_joint",
+    "waist_yaw_joint",
+    "waist_pitch_joint",
+    "waist_roll_joint",
+    "left_shoulder_pitch_joint",
+    "left_shoulder_roll_joint",
+    "left_shoulder_yaw_joint",
+    "left_elbow_joint",
+    "left_wrist_roll_joint",
+    "left_wrist_pitch_joint",
+    "left_wrist_yaw_joint",
+    "right_shoulder_pitch_joint",
+    "right_shoulder_roll_joint",
+    "right_shoulder_yaw_joint",
+    "right_elbow_joint",
+    "right_wrist_roll_joint",
+    "right_wrist_pitch_joint",
+    "right_wrist_yaw_joint",
+    "left_hand_thumb_0_joint",
+    "left_hand_thumb_1_joint",
+    "left_hand_thumb_2_joint",
+    "left_hand_middle_0_joint",
+    "left_hand_middle_1_joint",
+    "left_hand_index_0_joint",
+    "left_hand_index_1_joint",
+    "right_hand_thumb_0_joint",
+    "right_hand_thumb_1_joint",
+    "right_hand_thumb_2_joint",
+    "right_hand_middle_0_joint",
+    "right_hand_middle_1_joint",
+    "right_hand_index_0_joint",
+    "right_hand_index_1_joint"
+  ],
+  "representations": {
+    "urdf": {
+      "model": "robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.urdf",
+      "root": "unencoded",
+      "files": [
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.urdf",
+          "sha256": "b10f4c4f96d6801e3b2d4796cef66118704730b7f5cdded7ccb2a9531f4ccd8c",
+          "role": "model"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/head_link.stl",
+          "sha256": "d74590eacd98fe4dc2e45419f5fb66cba81aa7302a721e5426e77987d0bb8d11",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/imu_1_link.stl",
+          "sha256": "3407098aeb026eff766506e291d0ba7093a4748aed243232334ff6fdf2fe6f87",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/imu_2_link.stl",
+          "sha256": "16519e4c6a38ae8282a0c5782204ae6fa7b30967f55225defed9a4ce473ddde7",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_ankle_pitch_link.stl",
+          "sha256": "0608f442342c57392d7025167ee18b1168379031dea97f01a2fa4ec82fbec1eb",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_ankle_roll_link.stl",
+          "sha256": "8d38904e7cec673f99f42200b37ec70d5ff01aa36ddcebcf376fc54e697af2bf",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_elbow_link.stl",
+          "sha256": "37dac06a14e653b35641c26ece58fd5788c09fb3693165f522b91673c71bd70e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_index_0_link.STL",
+          "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_index_1_link.STL",
+          "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_middle_0_link.STL",
+          "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_middle_1_link.STL",
+          "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_palm_link.STL",
+          "sha256": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_0_link.STL",
+          "sha256": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_1_link.STL",
+          "sha256": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_2_link.STL",
+          "sha256": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_pitch_link.stl",
+          "sha256": "909253cb045cb00d2149f2dcffe30d133957631cf2dd30415ed09f4a2aff075f",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_roll_link.stl",
+          "sha256": "ce333b46b8da1f4805f0f6e1cb33b80537c97ae3a59d2aa6db468605773122c2",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_yaw_link.stl",
+          "sha256": "76e8f881aab9cc38808711df4ee948e4642c5ed152f37f6aeb6c70c0249dac5b",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_knee_link.stl",
+          "sha256": "9a599c7247a4736b3e7de8488bec683ec917d638e9f849c7c4b98a41ffab59a4",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_pitch_link.stl",
+          "sha256": "686557d66b4d6ecca7087c5d63557a79c26ac90e08ac6d3548eb9918a061607e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_roll_link.stl",
+          "sha256": "c73170cd57407bf60146a25e36b4541b0c372c9bce9fe4f29f22c4b99738a071",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_yaw_link.stl",
+          "sha256": "5fb713934ed9ef21d66957c3870094fe496b4775fcb2bdf9e0a5436bc863c61a",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_pitch_link.stl",
+          "sha256": "6498e8ee9a88ce20f8e00e9a1d9e489d352ffa7eed54f1b3ddb1f68b4da49a6f",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_roll_link.stl",
+          "sha256": "6d1c31fe33c8b3c49d794011725675df04324dca7c563f6c45816adf523e2723",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_yaw_link.stl",
+          "sha256": "4d6456e0aa3d3cb8b6d6228cdc56539c2e0ae88402b9529cad21ac20150de3ba",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/lidar_link.stl",
+          "sha256": "95da21801def68d85f139e31098bdab02e53bdfd585d2a87077d39910e4fad1b",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/pelvis.stl",
+          "sha256": "7c023ca1c8a2c52f0c9fdec90cbaa14ad8b8f6c5952f3317469f638cdd8b7301",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_ankle_pitch_link.stl",
+          "sha256": "dabfd7181a1cd1becd5af86284931f3b22ffc58313244a7ccc4e2bdc820e4ad8",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_ankle_roll_link.stl",
+          "sha256": "65f4573af5b56f8e43791e27cfded36b87dbc30d8fd8f70b1f5dbc09bb9c4da9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_elbow_link.stl",
+          "sha256": "a9e700794080319789f4e0bf82184c5713260d68acb78488ffe99fae17a8ba61",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_index_0_link.STL",
+          "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_index_1_link.STL",
+          "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_middle_0_link.STL",
+          "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_middle_1_link.STL",
+          "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_palm_link.STL",
+          "sha256": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_0_link.STL",
+          "sha256": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_1_link.STL",
+          "sha256": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_2_link.STL",
+          "sha256": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_pitch_link.stl",
+          "sha256": "34b821a8729f5cc698daa3d16632d06fc2b2f73a385894f41a2461fa9ff027b9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_roll_link.stl",
+          "sha256": "d37431152103f805fff4398d474258c749a2f065a0384c13f1057be30b277b7c",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_yaw_link.stl",
+          "sha256": "f734f311702c2cd9eed91ee69395fb0b30c93b69eb9c4d0b02a6d0683a7b6814",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_knee_link.stl",
+          "sha256": "2d2a47b99f38ed6d7d684fd398fbcdd6d1fa4a66573914c815a9e646fe2c0945",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_pitch_link.stl",
+          "sha256": "b9aa1df377bcc7f8641aedc390159ea293c236e18981dd91541533eb7810073a",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_roll_link.stl",
+          "sha256": "508dbbf4c0fd493d4c161534abfe9db2180c5b272073a81b7684cea88f2ac967",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_yaw_link.stl",
+          "sha256": "bf3ce8453f58ff2b78c877b43001a62d5cdd5d02f71d2c6cce7d21aed8b5622e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_pitch_link.stl",
+          "sha256": "bc810b534a88dc9476d0dd7619128f2cee52e598d31fd61d4918f83d7ca067b1",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_roll_link.stl",
+          "sha256": "07c8e78cb2bbabdf9a1709e640c5c9e32d862745ad2110ff0bd204a6637f7747",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_yaw_link.stl",
+          "sha256": "1f024b40172c534b331f50f8ab5e6c7a53337bf4493e4a1085a7f1939658d550",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/torso_link.stl",
+          "sha256": "d07cbd3ba95cd79404ded2de1d6c2a262d056a2094d5a621ce26379b584ba803",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_pitch_link.stl",
+          "sha256": "e999db74c5c0a902995b98ec9bd9a3169f63e6804ff21c8663c1b84a95c8e502",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_roll_link.stl",
+          "sha256": "dcba99a3f39ce942dcd546ffb4516b000a3bd349addb8390d66f0419c034d679",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_yaw_link.stl",
+          "sha256": "ee207141a43a78517c3dc64d6e580d199de3c797bf89d87944d1df72b9fa9037",
+          "role": "mesh"
+        }
+      ],
+      "joints": [
+        {
+          "name": "left_hip_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 2.62
+        },
+        {
+          "name": "left_hip_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.26,
+          "upper": 2.79
+        },
+        {
+          "name": "left_hip_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57,
+          "upper": 3.67
+        },
+        {
+          "name": "left_knee_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.09,
+          "upper": 2.44
+        },
+        {
+          "name": "left_ankle_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.79,
+          "upper": 0.52
+        },
+        {
+          "name": "left_ankle_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.35,
+          "upper": 0.35
+        },
+        {
+          "name": "right_hip_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 2.62
+        },
+        {
+          "name": "right_hip_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 0.26
+        },
+        {
+          "name": "right_hip_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -3.67,
+          "upper": 1.57
+        },
+        {
+          "name": "right_knee_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.09,
+          "upper": 2.44
+        },
+        {
+          "name": "right_ankle_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.79,
+          "upper": 0.52
+        },
+        {
+          "name": "right_ankle_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.35,
+          "upper": 0.35
+        },
+        {
+          "name": "waist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57,
+          "upper": 3.67
+        },
+        {
+          "name": "waist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.37,
+          "upper": 0.44
+        },
+        {
+          "name": "waist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.28,
+          "upper": 0.28
+        },
+        {
+          "name": "left_shoulder_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 2.79
+        },
+        {
+          "name": "left_shoulder_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.26,
+          "upper": 2.62
+        },
+        {
+          "name": "left_shoulder_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "left_elbow_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.52,
+          "upper": 1.66
+        },
+        {
+          "name": "left_wrist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "left_wrist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "left_wrist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "right_shoulder_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 2.79
+        },
+        {
+          "name": "right_shoulder_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 0.26
+        },
+        {
+          "name": "right_shoulder_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "right_elbow_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.52,
+          "upper": 1.66
+        },
+        {
+          "name": "right_wrist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "right_wrist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "right_wrist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "left_hand_thumb_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.04719755,
+          "upper": 1.04719755
+        },
+        {
+          "name": "left_hand_thumb_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -0.61086523,
+          "upper": 1.04719755
+        },
+        {
+          "name": "left_hand_thumb_2_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74532925
+        },
+        {
+          "name": "left_hand_middle_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57079632,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_middle_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74532925,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_index_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57079632,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_index_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74532925,
+          "upper": 0.0
+        },
+        {
+          "name": "right_hand_thumb_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.04719755,
+          "upper": 1.04719755
+        },
+        {
+          "name": "right_hand_thumb_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.04719755,
+          "upper": 0.61086523
+        },
+        {
+          "name": "right_hand_thumb_2_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74532925,
+          "upper": 0.0
+        },
+        {
+          "name": "right_hand_middle_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.57079632
+        },
+        {
+          "name": "right_hand_middle_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74532925
+        },
+        {
+          "name": "right_hand_index_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.57079632
+        },
+        {
+          "name": "right_hand_index_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74532925
+        }
+      ]
+    },
+    "mjcf": {
+      "model": "robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml",
+      "root": "free",
+      "files": [
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/astro_p2_43dof_dex3_1.xml",
+          "sha256": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66",
+          "role": "model"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/head_link.stl",
+          "sha256": "d74590eacd98fe4dc2e45419f5fb66cba81aa7302a721e5426e77987d0bb8d11",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/imu_1_link.stl",
+          "sha256": "3407098aeb026eff766506e291d0ba7093a4748aed243232334ff6fdf2fe6f87",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/imu_2_link.stl",
+          "sha256": "16519e4c6a38ae8282a0c5782204ae6fa7b30967f55225defed9a4ce473ddde7",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_ankle_pitch_link.stl",
+          "sha256": "0608f442342c57392d7025167ee18b1168379031dea97f01a2fa4ec82fbec1eb",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_ankle_roll_link.stl",
+          "sha256": "8d38904e7cec673f99f42200b37ec70d5ff01aa36ddcebcf376fc54e697af2bf",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_elbow_link.stl",
+          "sha256": "37dac06a14e653b35641c26ece58fd5788c09fb3693165f522b91673c71bd70e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_index_0_link.STL",
+          "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_index_1_link.STL",
+          "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_middle_0_link.STL",
+          "sha256": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_middle_1_link.STL",
+          "sha256": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_palm_link.STL",
+          "sha256": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_0_link.STL",
+          "sha256": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_1_link.STL",
+          "sha256": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hand_thumb_2_link.STL",
+          "sha256": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_pitch_link.stl",
+          "sha256": "909253cb045cb00d2149f2dcffe30d133957631cf2dd30415ed09f4a2aff075f",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_roll_link.stl",
+          "sha256": "ce333b46b8da1f4805f0f6e1cb33b80537c97ae3a59d2aa6db468605773122c2",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_hip_yaw_link.stl",
+          "sha256": "76e8f881aab9cc38808711df4ee948e4642c5ed152f37f6aeb6c70c0249dac5b",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_knee_link.stl",
+          "sha256": "9a599c7247a4736b3e7de8488bec683ec917d638e9f849c7c4b98a41ffab59a4",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_pitch_link.stl",
+          "sha256": "686557d66b4d6ecca7087c5d63557a79c26ac90e08ac6d3548eb9918a061607e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_roll_link.stl",
+          "sha256": "c73170cd57407bf60146a25e36b4541b0c372c9bce9fe4f29f22c4b99738a071",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_shoulder_yaw_link.stl",
+          "sha256": "5fb713934ed9ef21d66957c3870094fe496b4775fcb2bdf9e0a5436bc863c61a",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_pitch_link.stl",
+          "sha256": "6498e8ee9a88ce20f8e00e9a1d9e489d352ffa7eed54f1b3ddb1f68b4da49a6f",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_roll_link.stl",
+          "sha256": "6d1c31fe33c8b3c49d794011725675df04324dca7c563f6c45816adf523e2723",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/left_wrist_yaw_link.stl",
+          "sha256": "4d6456e0aa3d3cb8b6d6228cdc56539c2e0ae88402b9529cad21ac20150de3ba",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/lidar_link.stl",
+          "sha256": "95da21801def68d85f139e31098bdab02e53bdfd585d2a87077d39910e4fad1b",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/pelvis.stl",
+          "sha256": "7c023ca1c8a2c52f0c9fdec90cbaa14ad8b8f6c5952f3317469f638cdd8b7301",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_ankle_pitch_link.stl",
+          "sha256": "dabfd7181a1cd1becd5af86284931f3b22ffc58313244a7ccc4e2bdc820e4ad8",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_ankle_roll_link.stl",
+          "sha256": "65f4573af5b56f8e43791e27cfded36b87dbc30d8fd8f70b1f5dbc09bb9c4da9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_elbow_link.stl",
+          "sha256": "a9e700794080319789f4e0bf82184c5713260d68acb78488ffe99fae17a8ba61",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_index_0_link.STL",
+          "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_index_1_link.STL",
+          "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_middle_0_link.STL",
+          "sha256": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_middle_1_link.STL",
+          "sha256": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_palm_link.STL",
+          "sha256": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_0_link.STL",
+          "sha256": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_1_link.STL",
+          "sha256": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hand_thumb_2_link.STL",
+          "sha256": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_pitch_link.stl",
+          "sha256": "34b821a8729f5cc698daa3d16632d06fc2b2f73a385894f41a2461fa9ff027b9",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_roll_link.stl",
+          "sha256": "d37431152103f805fff4398d474258c749a2f065a0384c13f1057be30b277b7c",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_hip_yaw_link.stl",
+          "sha256": "f734f311702c2cd9eed91ee69395fb0b30c93b69eb9c4d0b02a6d0683a7b6814",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_knee_link.stl",
+          "sha256": "2d2a47b99f38ed6d7d684fd398fbcdd6d1fa4a66573914c815a9e646fe2c0945",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_pitch_link.stl",
+          "sha256": "b9aa1df377bcc7f8641aedc390159ea293c236e18981dd91541533eb7810073a",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_roll_link.stl",
+          "sha256": "508dbbf4c0fd493d4c161534abfe9db2180c5b272073a81b7684cea88f2ac967",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_shoulder_yaw_link.stl",
+          "sha256": "bf3ce8453f58ff2b78c877b43001a62d5cdd5d02f71d2c6cce7d21aed8b5622e",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_pitch_link.stl",
+          "sha256": "bc810b534a88dc9476d0dd7619128f2cee52e598d31fd61d4918f83d7ca067b1",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_roll_link.stl",
+          "sha256": "07c8e78cb2bbabdf9a1709e640c5c9e32d862745ad2110ff0bd204a6637f7747",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/right_wrist_yaw_link.stl",
+          "sha256": "1f024b40172c534b331f50f8ab5e6c7a53337bf4493e4a1085a7f1939658d550",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/torso_link.stl",
+          "sha256": "d07cbd3ba95cd79404ded2de1d6c2a262d056a2094d5a621ce26379b584ba803",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_pitch_link.stl",
+          "sha256": "e999db74c5c0a902995b98ec9bd9a3169f63e6804ff21c8663c1b84a95c8e502",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_roll_link.stl",
+          "sha256": "dcba99a3f39ce942dcd546ffb4516b000a3bd349addb8390d66f0419c034d679",
+          "role": "mesh"
+        },
+        {
+          "path": "robots/astro_p2_43dof_dex3_1/meshes/waist_yaw_link.stl",
+          "sha256": "ee207141a43a78517c3dc64d6e580d199de3c797bf89d87944d1df72b9fa9037",
+          "role": "mesh"
+        }
+      ],
+      "joints": [
+        {
+          "name": "left_hip_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 2.62
+        },
+        {
+          "name": "left_hip_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.26,
+          "upper": 2.79
+        },
+        {
+          "name": "left_hip_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57,
+          "upper": 3.67
+        },
+        {
+          "name": "left_knee_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.09,
+          "upper": 2.44
+        },
+        {
+          "name": "left_ankle_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.79,
+          "upper": 0.52
+        },
+        {
+          "name": "left_ankle_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.35,
+          "upper": 0.35
+        },
+        {
+          "name": "right_hip_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 2.62
+        },
+        {
+          "name": "right_hip_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 0.26
+        },
+        {
+          "name": "right_hip_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -3.67,
+          "upper": 1.57
+        },
+        {
+          "name": "right_knee_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.09,
+          "upper": 2.44
+        },
+        {
+          "name": "right_ankle_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.79,
+          "upper": 0.52
+        },
+        {
+          "name": "right_ankle_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.35,
+          "upper": 0.35
+        },
+        {
+          "name": "waist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57,
+          "upper": 3.67
+        },
+        {
+          "name": "waist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.37,
+          "upper": 0.44
+        },
+        {
+          "name": "waist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.28,
+          "upper": 0.28
+        },
+        {
+          "name": "left_shoulder_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 2.79
+        },
+        {
+          "name": "left_shoulder_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -0.26,
+          "upper": 2.62
+        },
+        {
+          "name": "left_shoulder_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "left_elbow_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.52,
+          "upper": 1.66
+        },
+        {
+          "name": "left_wrist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "left_wrist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "left_wrist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "left_hand_thumb_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.04719755,
+          "upper": 1.04719755
+        },
+        {
+          "name": "left_hand_thumb_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -0.61086523,
+          "upper": 1.04719755
+        },
+        {
+          "name": "left_hand_thumb_2_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74533
+        },
+        {
+          "name": "left_hand_middle_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57079632,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_middle_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74533,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_index_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.57079632,
+          "upper": 0.0
+        },
+        {
+          "name": "left_hand_index_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74533,
+          "upper": 0.0
+        },
+        {
+          "name": "right_shoulder_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -2.79,
+          "upper": 2.79
+        },
+        {
+          "name": "right_shoulder_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -2.62,
+          "upper": 0.26
+        },
+        {
+          "name": "right_shoulder_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "right_elbow_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -0.52,
+          "upper": 1.66
+        },
+        {
+          "name": "right_wrist_roll_joint",
+          "kind": "revolute",
+          "axis": [
+            1.0,
+            0.0,
+            0.0
+          ],
+          "lower": -1.92,
+          "upper": 1.92
+        },
+        {
+          "name": "right_wrist_pitch_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "right_wrist_yaw_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.31,
+          "upper": 1.31
+        },
+        {
+          "name": "right_hand_thumb_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            1.0,
+            0.0
+          ],
+          "lower": -1.04719755,
+          "upper": 1.04719755
+        },
+        {
+          "name": "right_hand_thumb_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.04719755,
+          "upper": 0.61086523
+        },
+        {
+          "name": "right_hand_thumb_2_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": -1.74533,
+          "upper": 0.0
+        },
+        {
+          "name": "right_hand_middle_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.57079632
+        },
+        {
+          "name": "right_hand_middle_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74533
+        },
+        {
+          "name": "right_hand_index_0_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.57079632
+        },
+        {
+          "name": "right_hand_index_1_joint",
+          "kind": "revolute",
+          "axis": [
+            0.0,
+            0.0,
+            1.0
+          ],
+          "lower": 0.0,
+          "upper": 1.74533
+        }
+      ]
+    }
+  }
+}

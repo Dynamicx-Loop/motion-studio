@@ -1,0 +1,34 @@
+{
+  "source_states_before": {
+    "menagerie_x": {
+      "revision": "d2070956558ffbf9226dcf74017d40740724d8d8",
+      "status_sha256": "4afe64e826dddc80f20e9c0e77d9a7999da75c2852bebe438d973353400f7953"
+    },
+    "UMR": {
+      "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+      "status_sha256": "b79688f3b59d7483e6a35222846b087c6e0db0c6939da91268265dc1402b448c"
+    }
+  },
+  "source_states_after": {
+    "menagerie_x": {
+      "revision": "d2070956558ffbf9226dcf74017d40740724d8d8",
+      "status_sha256": "4afe64e826dddc80f20e9c0e77d9a7999da75c2852bebe438d973353400f7953"
+    },
+    "UMR": {
+      "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+      "status_sha256": "b79688f3b59d7483e6a35222846b087c6e0db0c6939da91268265dc1402b448c"
+    }
+  },
+  "source_status_unchanged": true,
+  "implementation_files": {
+    "motion_studio/robots/_consistency.py": "87295087f6be054bd217eca5431521635c702c464de2259c35311026ec6efcc8",
+    "motion_studio/robots/_consistency_worker.py": "cd1f05a3ca262b4ad3dbfabb248684a84587c58c90eb506973dfa432b0e23b41"
+  },
+  "reports": {
+    "dex3-report.json": "a3756f60749eee09e17ef0ba47be1013d99c96a8349defdae47373a3f84510fc",
+    "g1-report.json": "c05e54400d115bbcf5f507d9cb2a5d5781fc27273031f05cb6d4e059b0021d15",
+    "astro29-report.json": "80494e104c87744e464053619c2f0c72793be3cfad2dd644fe8458b34ccc38dc"
+  },
+  "dex3_smoke": "10 selections; 43 named coordinates; explicit mirrored fist values; different native/application order verified",
+  "implementation_base": "1935afab73e05ddd0aba3f7f829f64580d89f972"
+}

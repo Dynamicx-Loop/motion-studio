@@ -101,3 +101,62 @@ not a representation-parity certificate.
 Run `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` for the automatically
 discovered pure fixture tests. A read-only real-source smoke check is the example
 above with `urdf`/`mjcf` and `zero`/`tpose` selected explicitly.
+
+## Bounded representation checks
+
+`compare_representations(definition_id, source_roots, *, poses=('zero','tpose'),
+runtime_python=None, definitions_root=None)` returns a frozen `ConsistencyReport`.
+It reuses verified selections; no runtime means runtime claims remain unverified.
+An explicit existing MuJoCo interpreter runs a separate CPU worker, compiling
+original MJCF and an in-memory URDF with absolute mesh paths, explicit compiler
+settings, and a massless `world` link/floating joint to the declared root. No model
+files are rewritten and no simulation is stepped. XYZ/wxyz root values and scalar
+joints are assigned explicitly by name at every pose; keyframe defaults are ignored.
+
+`report.findings` contains exact `check`, `status`, `detail` records. `supports(name)`
+and `require_supported(names)` guard **only** named claims; unknown names fail.
+Callers must state the checks their comparison needs. Standalone MJCF preparation
+requires no assertion that a URDF pair is equivalent. Report `schema_version=1`
+records selection identities, source hashes, policy hash, runtime and tolerances.
+
+The declared summary checks are `joint_metadata`, `joint_order`, `named_frames`,
+`inertial_totals`, `visual_geometry_equality` and `collision_policy`. Global
+`status` summarizes these checks plus pose/representation/runtime failures.
+`collision_geometry_equality` is a separate optional finding excluded from that
+summary: accepted intentional refinements **never** establish collision equality.
+The visual/collision geometry equality scope is compiled body-local type, size,
+position, quaternion and mesh name with verified source closure bytes, excluding
+world environment geoms. It does not establish rendered surface, material,
+contact response, controller, or dynamic equivalence.
+
+Position uses maximum named-body translation **Euclidean distance** in metres;
+rotation uses maximum relative rotation angle in radians. Both defaults are
+`1e-6`, without per-robot exceptions. Inertial checks measure total mass (kg),
+world COM distance (m), and maximum absolute component of the aggregate world
+inertia tensor about that COM (kg m²), including rotated principal inertias and
+parallel-axis terms at each pose. The initial conservative thresholds are
+`1e-6 kg`, `1e-6 m`, `1e-6 kg m²`; these are numerical comparison criteria, not
+sensor accuracy or physical equivalence claims. Astro mass totals agree, but
+measured aggregate inertia errors slightly exceed this threshold, so the
+inertial claim remains incompatible rather than widening the tolerance.
+
+`consistency.json` enumerates narrow accepted collision refinements and binds
+both original model hashes, entire representation closures and source revision.
+Any unrecognized changed pair cannot use these allowances. Resolver hash/commit
+validation still applies before and after the worker. Geometry findings are
+separate from frame/joint/inertial findings; no full-pose-space guarantee follows.
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py --tier robot-static \
+  --robot-python /data/workspace/notAnyrobot/menagerie_x/.venv/bin/python
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/compare_robot_representations.py \
+  astro_p2_43dof_dex3_1 --source menagerie_x /data/workspace/notAnyrobot/menagerie_x \
+  --pose zero --pose tpose --pose fist --pose tpose_fist \
+  --runtime-python /data/workspace/notAnyrobot/menagerie_x/.venv/bin/python
+```
+
+The explicit `robot-static` tier runs analytic fixture models and reports an
+unavailable interpreter/dependency as unavailable. Default pure checks never
+import MuJoCo/NumPy. The report CLI emits findings even when incompatible; its
+exit code means successful reporting, not certification. Inspect exact claims.
+See the committed [measured reports](../experiments/layout-and-robot-assets-evidence/ticket11/README.md).

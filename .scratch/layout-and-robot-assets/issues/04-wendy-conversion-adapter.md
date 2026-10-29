@@ -1,6 +1,6 @@
 # 04 — Run active Wendy conversion through an owned operation
 
-Status: ready-for-agent
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 02, 03
@@ -48,5 +48,28 @@ do not overwrite or rerun the full historical Wendy conversion as a unit test.
 
 ## Comments
 
-Planning only. The scope is current conversion behavior, not a general import
+Claimed on `codex/layout-assets-04` from `e215cc2`; public conversion seam approved in parent orchestration. The scope is current conversion behavior, not a general import
 format or mass refactor of experimental scripts.
+
+
+## Answer
+
+Implemented `motion_studio.integrations.wendy.convert_wendy` with typed request
+and result, system-Python preflight, process-isolated pinned hiphi worker and thin
+existing CLI. Preserved solver defaults, fixed shape, source frame spacing,
+original motion/diagnostic fields and all 16 report fields. Added original
+indices/timestamps, explicit information loss, whole-input/code/config/model/
+environment hashes and output ownership. All sibling outputs and invalid source/
+config/range/mapping are checked before writes; publication never overwrites.
+Historical direct import callers are inventoried in
+[owned conversion documentation](../../../docs/wendy-conversion-adapter.md).
+
+Validation: root `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` passed
+16/16 selected pure suites after merging integration tip `a9ef925`, including
+ten public conversion/CLI tests. Fresh CPU
+Wendy excerpt `[3,6)` matched all 12 legacy NPZ/diagnostic fields (maximum absolute
+difference 0, atol 1e-7, rtol 0), and all 16 report fields exactly. Synthetic
+five-frame source `[3,5)` verified 100 FPS, original timestamps and known metre
+positions independently. [Experiment and preserved receipts](../../../experiments/wendy-conversion-adapter/README.md)
+record commands, hashes and limits. No upstream edits/install, full historical
+conversion, GPU job or dynamic-feasibility claim. Existing outputs were retained.
