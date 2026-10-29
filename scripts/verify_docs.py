@@ -17,7 +17,7 @@ def main():
     parser.add_argument('--evidence-root', type=Path)
     args = parser.parse_args()
     result = verify_edition(args.output or root / 'outputs/docs-site' / args.edition,
-                           source_root=args.source_root, evidence_root=args.evidence_root)
+                           source_root=args.source_root or root, evidence_root=args.evidence_root)
     if args.report:
         args.report.write_text(json.dumps(result, indent=2) + '\n')
     print(json.dumps(result, indent=2))

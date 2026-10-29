@@ -1,0 +1,120 @@
+{
+  "schema_version": 1,
+  "date": "2026-10-29",
+  "integration_base": "7abd884575148bd5e91faa01e4a24bc914523058",
+  "parent_state": "claimed pending final standards/spec review",
+  "cohort": "structural acceptance and prepared-only smoke; no numerical rerun",
+  "checks": {
+    "pure": {
+      "passed_suites": 17,
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/final-pure.json",
+      "sha256": "29df2d6e790a5dc6d5714a598a7a8be71a145b7d27052c2309f0be99f7200a17"
+    },
+    "saved-evidence": {
+      "passed_suites": 1,
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/saved-evidence.json",
+      "sha256": "cedbfc6c359edd622c3b8def27d9169923ade5550d536d857513ac779bbc99f3"
+    },
+    "umr-static": {
+      "passed_suites": 1,
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/umr-static.json",
+      "sha256": "50fcb9efa522df77abd2fc8b1b3584ca5e22a75a35d9557213fc3316f132dd69"
+    },
+    "robot-static": {
+      "passed_suites": 1,
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/robot-static.json",
+      "sha256": "83208cf35669724c28e27d1a0479dc1bd640bd7d489947321c262fde2d2a90c0"
+    },
+    "javascript": {
+      "passed_suites": 1,
+      "receipt": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/post-alias-javascript.json",
+      "sha256": "867d47e326ee58a357f019c843399f7ee9711513b6a65e0141bea7a1f0ee9b34"
+    }
+  },
+  "documentation": {
+    "edition": "ticket13-20261029-final",
+    "documents": 62,
+    "source_hashes": 3796,
+    "output_hashes": 3647,
+    "local_links": 1424,
+    "frozen_files": 3648,
+    "file_bytes": 2600568309,
+    "manifest_sha256": "f5f9fe87a519a8f4b9c3a15ece4cd9b53af00b3f63af8a1b643694e4590f3e09",
+    "seal": "/data/workspace/motion_studio/outputs/docs-site/ticket13-20261029-handoff/frozen-closure.json",
+    "seal_sha256": "62bed22c20e99053d380f65b1ee08b6f90408581a9e7ad42be2ebc885230b490",
+    "publisher": "/data/workspace/motion_studio/outputs/docs-site/ticket13-20261029-handoff/guarded-handoff.py",
+    "publisher_sha256": "847c3fb2c9e6883da957d1036c85efae5c4a91303267617e617b7adaeccc0ae3",
+    "entry_sha256": {
+      "docs.html": "797d838cacb4f3c767f5fb916b54490e1bdfee505ba0345dbb387a7a4a4d8f6b",
+      "docs-basic.html": "327a9d142273e2d6870e5592ee55d40ef24ec57ebfcbae2819596147da2d9a6e",
+      "docs/site/home.html": "46ff5389ae1c1e8c2d7261fd4e9f94bfcc3d2ce183b0a9d691d3ea886bf805a9"
+    },
+    "alias_and_physical_target_verified": true,
+    "post_cleanup_cli_fixture_passed": true,
+    "direct_file_browser_verified": false,
+    "http_navigation_and_closeout_search_passed": true
+  },
+  "preservation": {
+    "inventory_sha256": "32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7",
+    "whole_inventory_pass": false,
+    "changed_sealed_bytes": 0,
+    "repository_head_status_patch_diagnostics": 0,
+    "declared_alias_kind_changes": 493,
+    "new_output_paths": 8865,
+    "new_output_group_counts": {
+      "outputs/artifact-archives/hiphi-conversion-control-20261029-01": 134,
+      "outputs/artifact-archives/hiphi-head-objective-20261029-01": 188,
+      "outputs/artifact-archives/hiphi-robot-control-20261029-01": 183,
+      "outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01": 84,
+      "outputs/dependency-roles/layout-and-robot-assets-20261029-03-verified": 6,
+      "outputs/dependency-roles/layout-and-robot-assets-20261029-03": 4,
+      "outputs/docs-site/ticket06-20261029-handoff": 5,
+      "outputs/docs-site/ticket06-20261029-validated": 3613,
+      "outputs/docs-site/ticket13-20261029-final": 3649,
+      "outputs/docs-site/ticket13-20261029-handoff": 4,
+      "outputs/implementation/layout-and-robot-assets": 995
+    },
+    "migration_files": 493,
+    "migration_logical_bytes": 1656674064,
+    "retained_files": 526,
+    "retained_bytes": 10101981,
+    "sealed_experiment_members": 1019,
+    "experiment_directories": 24,
+    "old_output_cohorts": 21,
+    "ticket06_frozen_files_verified": 3612,
+    "workspace_size_reduction_claimed": false
+  },
+  "source_change_accounting": {
+    "snapshot": "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/source-changes.json",
+    "sha256": "44fb8c43ceab189beb0ed62ac2a3a5dbbe06275e28a0d5463d8e59503079569c",
+    "snapshot_paths": 154,
+    "additive_finalization_path": "experiments/layout-and-robot-assets-evidence/ticket13/closeout.json",
+    "tracker_hash_scope": "Snapshot precedes final ticket Answer/status; final Git commit records tracker finalization. Coordinating ledger/review records follow separately.",
+    "external_source_edits": 0
+  },
+  "durable_receipt_sha256": {
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/preservation-final.json": "2f739e6391ecd1e3f6c36a52718cc76ab1ab8546bb455f78bf4a6973a0d3ab7b",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/final-preservation-accounting.json": "f9c8d36ecaf0a8455f61861053614a31da82942b201af7399d7ad42b6f54f85c",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/source-changes.json": "44fb8c43ceab189beb0ed62ac2a3a5dbbe06275e28a0d5463d8e59503079569c",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/navigation-audit.json": "9643bab884f7b44efe519ea4eec5bb20ad0bcc64661d7e4b74920d71bdb2091b",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/smoke-commands.json": "0994d231307b2ac924947a258c14310aa583f6fb965fb47702208abcfbe8f00b",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/wendy-parity.json": "e4004081e338ea41a3ceb39cfa657699d12ee56af194d042a14b2264ed5f0bc1",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/evidence.json": "00276e18e182f32ae067e42a1c02b80bbcf9fdcf2d136599787ae68c6be698ca",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/selections.json": "4ddc9ca2530c8fedea1281885fcd5d548fb128899e288821678fe6f06fc2f369",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/preparation-command.json": "f567b36c7ea8aea4810a895fd7b6f0f883e9fb4c6cceea7b2899a1272fc1bc62",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/compile-prepared.json": "80d2d9962d8f03be3d3a3793b815705e08564d29ab06684a493f74573e9f0d02",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/docs-verification.json": "d7740057e41c32d7fcdf55d58c3911906c3e052c598714fde31cb9a0938520e3",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/post-alias-cli.json": "d7740057e41c32d7fcdf55d58c3911906c3e052c598714fde31cb9a0938520e3",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/physical-target-cli.json": "d7740057e41c32d7fcdf55d58c3911906c3e052c598714fde31cb9a0938520e3",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/handoff-fixtures.txt": "a74157e4f452f46b4be5e1ff4b5147b2e8372a03265c2e08dda0b642a4b06763",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/fresh-edition-refusal.json": "a24e086c37452aefc57e51befe5f1ff29ad8bc59ad5e234eea2a51ac749158c9",
+    "/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket13-20261029-validated/receipts/browser-http.json": "4640012d67ca43d74f101f496a96be707b53c134ec30c09e31a971684910db75"
+  },
+  "limitations": [
+    "Browser URL policy rejected file://; HTTP/static/Node checks do not establish direct-file rendering.",
+    "Optional-inspector browser interactions and direct-file WebGL were not exercised; ticket08 retained static graphs and HTTP viewer observations.",
+    "No GPU, full conversion fitting, numerical rerun, training, retargeting, simulation stepping, physical robot or dynamic-feasibility validation.",
+    "Canonical cache fingerprints prove metadata compatibility only; all prepared cohorts have execution_readiness=false.",
+    "Strict Astro inertia and G1 representation incompatibilities remain; collision-policy acceptance does not imply equality."
+  ]
+}

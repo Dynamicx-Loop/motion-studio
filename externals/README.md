@@ -49,3 +49,15 @@ read the other workspace's manifest or redirect bootstrap. The default resolved
 child-path restriction remains: a checkout link escaping externals is rejected.
 Bootstrap never installs runtimes, updates an existing checkout or materializes
 historical local patches.
+
+## Owned workflow navigation
+
+[Wendy conversion](../docs/wendy-conversion-adapter.md) uses a concrete adapter
+and an explicit existing interpreter. [Robot selection](../robots/README.md) accepts
+source keys such as `menagerie_x` and `UMR` with local checkout roots, validating
+exact revisions and required bytes without moving them into bootstrap.
+[Canonical preparation](../docs/umr-canonical-preparation.md) makes fresh run-local
+copies and records prepared-only identity/cache evidence. Official G1 reproduction
+continues to use its own bundled assets. See [check tiers](../docs/checks.md) and
+the [closeout evidence](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+for measured CPU/structural checks and unavailable workflows.

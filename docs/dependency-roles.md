@@ -8,7 +8,7 @@ retain historical cohort requirements unchanged. All paths below are local input
 | Checkout | Role and state | Runtime boundary |
 | --- | --- | --- |
 | `externals/UMR` | Active official reproduction; pinned `d1cdaedaf67a827198da71c5fa831f48b2e51f91`; one untracked data link | Existing `.venv`; official bundled assets and original cohorts remain unchanged |
-| `externals/hiphi2smplx` | Active conversion; clean detached `65e51315ebbc82b2f0ff8e35a94565beb1b345e1` | Python >=3.10; NumPy, SciPy, Mink, MuJoCo, qpsolvers, DAQP, Torch, h5py, smplx, tqdm declared upstream; no install or runtime test |
+| `externals/hiphi2smplx` | Active conversion; clean detached `65e51315ebbc82b2f0ff8e35a94565beb1b345e1` | Python >=3.10; NumPy, SciPy, Mink, MuJoCo, qpsolvers, DAQP, Torch, h5py, smplx, tqdm declared upstream; registration itself performed no install/runtime test |
 | `externals/ProtoMotions` | Clean at manifest pin; source only | LFS smudging disabled; assets, environment and jobs unverified |
 | `externals/pyroki` | Clean at manifest pin; source only | Independent environment unverified |
 | `externals/human-humanoid-tools` | At manifest pin with eight status entries | Existing Astro changes, assets, venv and compatibility links preserved |
@@ -100,3 +100,16 @@ inspection. These structural checks do not establish environment readiness,
 numerical equivalence, robot dynamics or hardware safety. Git object databases,
 licensed models, ignored assets and excluded sensitive configuration are not a
 complete machine backup; exact recovery exclusions remain in the inventory.
+
+## Later owned validation and selection
+
+The table records ticket 03 registration evidence. Subsequently the
+[Wendy adapter](wendy-conversion-adapter.md) ran a bounded three-frame CPU excerpt
+with exact saved-field parity; this does not establish a full conversion or GPU
+workflow. [Canonical preparation](umr-canonical-preparation.md) later copied and
+CPU-compiled explicitly selected G1/Astro MJCF cohorts; all remain prepared-only.
+Use [robot definitions](../robots/README.md) for source-key locators and separate
+representation findings, [checks](checks.md) for exact runtime prerequisites, and
+the [closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+for bounded cross-workflow validation. Original recovery claims above retain their
+dated scope; no upstream pin, environment or historical baseline was advanced.

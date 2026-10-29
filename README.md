@@ -74,23 +74,54 @@ server or localhost URL is required for reading. See the
 [documentation guide](docs/offline-documentation.md) for rebuilding, portability,
 the direct-file verification limit and separately optional 3D tools.
 Legacy evidence and the prospective static baseline remain labeled separately.
-Generated HTML and evidence bundles stay local; after editing documentation sources,
-run `python3 scripts/build_docs.py` and `python3 scripts/verify_docs.py`.
+Generated HTML and evidence bundles stay local. After editing sources, select an
+unused edition ID for each build (an existing destination is refused):
+
+```sh
+python3 scripts/build_docs.py --edition local-20261029-03
+python3 scripts/verify_docs.py --edition local-20261029-03
+```
 A fresh clone also needs the preserved local report/evidence artifacts described
 in the guide.
 
 ## Layout
 
 ```text
-externals/       Independent upstream Git checkouts and their manifest
+motion_studio/   Owned operations, typed interfaces and concrete integrations/ adapters
+scripts/         Thin CLI wiring and explicit frozen compatibility entry points
+tests/           Owned behavior tests; root check command discovers pure suites
+schemas/         Experiment plan/result JSON schemas
+robots/          Pinned robot definitions, named poses and source notices
+externals/       Independent upstream checkouts and their manifest
 references/      Zotero-derived bibliography and reading index
-docs/            Scope, workflow, roadmap, and migration notes
-configs/         Shared configuration examples as integrations emerge
-experiments/     Reproducible experiment notes and comparison records
-scripts/         Workspace management utilities
+docs/            Authored guidance, reader templates and catalog
+configs/         Owned configuration and dependency-role records
+experiments/     Reproduction source, provenance and small reviewed results
+.scratch/        Authoritative local specs, tickets and execution records
 data/            Local input data (contents ignored)
-outputs/         Generated results (contents ignored)
+outputs/         Fresh runs, reading editions and verified archives (ignored)
 ```
+
+The package owns `evidence/`, `documentation/`, `preservation/`, `artifacts/`,
+`robots/`, `checks.py` and `motion_data_paths.py`; robot schema validation lives in
+`motion_studio/robots/_schema.py`. An ignored `.cache/` may hold verified immutable
+source closures; generated models, geometry and learned artifacts belong to fresh
+runs. No shared environment or automatic asset download is introduced.
+
+Use the [check command and runtime tiers](docs/checks.md),
+[Wendy conversion adapter](docs/wendy-conversion-adapter.md),
+[saved evidence operations](docs/evidence.md), [robot selection](robots/README.md),
+and [canonical UMR preparation](docs/umr-canonical-preparation.md). Canonical
+preparation is explicitly selected and remains prepared-only; official G1
+reproduction above keeps its own pinned bundled assets and does not consult the
+robot catalog. Named-frame checks, inertia and geometry claims remain separate.
+
+For storage and recovery, see [preservation receipts](docs/preservation.md),
+[verified relocation and restoration](docs/artifact-relocation.md), and the
+[additive layout closeout](experiments/layout-and-robot-assets-evidence/ticket13/README.md).
+Legacy aliases retain original bytes; frozen historical writers must use fresh
+preparation/output routes. Existing bulky outputs and retained exceptions are
+accounted for in the relocation ledger, without a workspace-size reduction claim.
 
 Shared local datasets and human-model assets are organized under `/data/motions`;
 see [local data conventions](data/README.md).

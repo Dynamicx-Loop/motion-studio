@@ -4,6 +4,9 @@ import base64
 import json
 import re
 import shutil
+import os
+import subprocess
+import sys
 from pathlib import Path
 import unittest
 
@@ -69,6 +72,40 @@ def fixture(root):
 
 
 class DocumentationPublicationTests(unittest.TestCase):
+    def test_alias_and_physical_edition_verify_identical_destinations(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root = fixture(base / 'workspace')
+            result = build_edition(root, root, edition='first')
+            physical = base / 'preserved-edition'
+            result.output.rename(physical)
+            result.output.symlink_to(physical, target_is_directory=True)
+            expected = verify_edition(result.output)
+            self.assertEqual(verify_edition(physical), expected)
+            # Publication hashes still guard the actual root entry bytes.
+            (root / 'docs.html').write_text((root / 'docs.html').read_text() + 'changed')
+            with self.assertRaises(AssertionError):
+                verify_edition(physical)
+
+    def test_cli_uses_current_source_workspace_after_handoff(self):
+        with tempfile.TemporaryDirectory() as directory:
+            base = Path(directory)
+            root = fixture(base / 'build-workspace')
+            script = root / 'scripts/verify_docs.py'
+            shutil.copyfile(REPOSITORY / 'scripts/verify_docs.py', script)
+            evidence = base / 'stable-evidence'
+            shutil.copytree(root / 'outputs', evidence / 'outputs')
+            build_edition(root, evidence, edition='first')
+            current = base / 'current-workspace'
+            root.rename(current)
+            environment = {**os.environ, 'PYTHONPATH': str(REPOSITORY),
+                           'PYTHONDONTWRITEBYTECODE': '1'}
+            result = subprocess.run([sys.executable, str(current / 'scripts/verify_docs.py'),
+                                     '--edition', 'first'], env=environment,
+                                    capture_output=True, text=True)
+            self.assertEqual(result.returncode, 0, result.stdout + result.stderr)
+            self.assertEqual(json.loads(result.stdout)['new_experiments_run'], 0)
+
     def test_missing_inputs_leave_working_entries_and_edition_intact(self):
         with tempfile.TemporaryDirectory() as directory:
             root = Path(directory)

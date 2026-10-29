@@ -28,6 +28,8 @@ python3 scripts/check.py --tier javascript
 python3 scripts/check.py --tier umr-static \
   --umr-python externals/UMR/.venv/bin/python \
   --umr-run outputs/umr-astro-baseline-v1/static-20261024-01
+python3 scripts/check.py --tier robot-static \
+  --robot-python /data/workspace/notAnyrobot/menagerie_x/.venv/bin/python
 ```
 
 | Tier | Checks and prerequisites |
@@ -35,7 +37,8 @@ python3 scripts/check.py --tier umr-static \
 | `pure` | G1 interface safety, recorded motion paths, evidence/preparation fixtures, Markdown reading and check-command fixtures; subsequent owned pure tests are discovered automatically. |
 | `saved-evidence` | Retrospective legacy reconstruction, declared saved experiment records and schema-validation package in the calling Python. No numerical rerun. |
 | `javascript` | Node.js search check against the selected generated reading edition (historical research bundle by default). Its six cases do not establish browser direct-file rendering. |
-| `umr-static` | Original static-pair suite, explicit external interpreter, preserved run/config/assets and the pinned historical checkout. No training, retargeting or simulation. |
+| `umr-static` | Original static-pair suite, explicit external interpreter with NumPy/MuJoCo, preserved run/config/assets and pinned historical checkout. Import can require the existing upstream runtime. No training, retargeting or simulation. |
+| `robot-static` | Analytic URDF/MJCF fixture models in an explicit existing MuJoCo/NumPy interpreter; no external robot assets, training or simulation stepping. Real-source reports are separate observations. |
 
 An unavailable selected prerequisite produces `unavailable` and a nonzero exit;
 it is never a passing or silently skipped check. A failing suite, empty test suite
@@ -70,7 +73,7 @@ requiring a generated edition must declare that input rather than appearing in
 the pure tier. Keep unit fixtures small and independent of the full real workspace.
 
 The owned API is `motion_studio.checks.discover(root)` for immutable suite records
-and `check(root, tiers=..., umr_python=..., umr_run=...)` for immutable outcomes
+and `check(root, tiers=..., umr_python=..., umr_run=..., robot_python=..., docs_edition=...)` for immutable outcomes
 and an aggregate exit code. The command only parses arguments and renders reports.
 
 
@@ -96,3 +99,8 @@ The evidence fixture suite declares `jsonschema` as a tooling prerequisite; a mi
 module is reported as unavailable. Its small saved-input examples need no external
 checkout or historical report builder. Full legacy reconstruction stays in the
 `saved-evidence` tier; see [the owned evidence operations](evidence.md).
+
+For the final available-tier commands, interpreter/run paths and explicit limits,
+see the [layout closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md).
+A successful representation-report CLI means findings were produced; inspect
+exact claim statuses rather than treating its exit code as certification.

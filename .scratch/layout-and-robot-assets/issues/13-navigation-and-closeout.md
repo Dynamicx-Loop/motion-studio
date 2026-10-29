@@ -1,6 +1,6 @@
 # 13 — Publish layout navigation and verify preserved workflows
 
-Status: ready-for-agent
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 04, 05, 06, 08, 12
@@ -56,3 +56,87 @@ Record any unavailable environment/assets/hardware without declaring full parity
 
 Planning only. Close this implementation effort only after the concrete acceptance
 evidence exists; publishing the spec and tickets does not resolve them.
+
+Claimed on 2026-10-29 by ticket 13 implementer from integration
+`7abd884575148bd5e91faa01e4a24bc914523058` on `codex/layout-assets-13`.
+All listed parents are resolved. Parent closeout remains claimed pending the
+coordinating session's final standards/spec review.
+
+## Answer
+
+Published actual navigation for owned operations/adapters, thin and frozen scripts,
+tests/schemas/robot definitions, local tracker, experiments, ignored outputs/cache,
+independent dependency roles and restoration. The expanded template records cohort,
+identity, pose/orders, representation/geometry claims, provenance and stage/cache
+limits. Original hhtools migration and historical experiments remain unchanged.
+The parent spec is claimed with current scope; final standards/spec review belongs
+to the coordinating session and is not preempted by this ticket's resolution.
+
+Two small handoff fixes preserve existing hash checks: `verify_edition` compares
+root/home links by resolved destinations, accepting aliases and physical editions;
+`verify_docs.py` defaults its source root to the executing checkout. Public tests
+first reproduced both failures, then passed alias/target and source-workspace
+relocation cases. Publication root bytes remain hashed; public API recorded-root
+semantics remain explicit.
+
+[Additive evidence](../../../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+and the [tracked final receipt](../../../experiments/layout-and-robot-assets-evidence/ticket13/closeout.json)
+record all checks, durable paths, SHA-256 anchors and limits. Available tiers all
+passed: pure 17/17, saved-evidence, JavaScript, UMR static with explicit
+`/data/workspace/motion_studio/externals/UMR/.venv/bin/python` and preserved
+`outputs/umr-astro-baseline-v1/static-20261024-01`, and robot-static with explicit
+`/data/workspace/notAnyrobot/menagerie_x/.venv/bin/python`. CLI help, pin inspection,
+saved Wendy 12-array/16-report-field parity, fresh legacy reconstruction (76 arms,
+1,924 rows), three real robot selections and fresh Astro 29 preparation/CPU compile
+passed. Its 112 prepared hashes and XYZ/wxyz/scalar pose matched at `1e-12`;
+MuJoCo 3.3.7 reported nq/nv 36/35, zero simulation steps, prepared-only state and
+execution readiness false. No numerical rerun or cache-runtime claim follows.
+
+The fresh `ticket13-20261029-final` edition contains 62 documents, 3,796 verified
+source hashes, 3,647 output hashes and 1,424 local links, with zero missing anchors.
+Its full 3,648-file / 2,600,568,309-byte closure is independently sealed and copied
+once to canonical `outputs/docs-site/ticket13-20261029-final`, with a read-only
+per-edition alias in this worktree. HTTP root→Installation→Quick Start→UMR→Supporting,
+search, basic and compatibility home entries worked. Current `file://` navigation
+was explicitly rejected by the browser protocol policy; no workaround was attempted.
+Optional-inspector browser interaction/direct-file WebGL remain unverified.
+
+The final original-inventory check reports exactly **493 declared alias kind changes
+and 8,865 additive output paths**, all individually accounted for: zero changed
+sealed bytes, zero canonical/external HEAD/status/patch drift, retained original
+worktree paths/branches/compatibility links and unchanged frozen ticket06 closure
+(3,612 files). No whole-inventory pass or workspace-size reduction is claimed.
+The sealed inventory is not rewritten. All 1,019 experiment members/24 directories
+and 21 old output cohorts are covered; 526 small source/evidence members remain
+with reasons. Source-change snapshot accounts for 154 owned paths, plus this
+additive final receipt and final tracker/review metadata. `git diff --check`,
+186 Markdown path/anchor checks, ticket numbering/dependencies, package-to-script
+import audit and changed-file growth review passed. Changed source/test files are
+287/27/177 lines; no abstraction or upstream source edit was added.
+
+### Exact guarded handoff after integration
+
+The publisher is tested for successful handoff, conflicting alias refusal, frozen
+byte drift refusal and post-publication rollback. It rechecks the complete seal,
+current source hashes, and same-relative regenerated root/basic/home hashes before
+publishing. Run only after this ticket is merged into the unchanged source tree:
+
+```sh
+PYTHONDONTWRITEBYTECODE=1 python3 /data/workspace/motion_studio/outputs/docs-site/ticket13-20261029-handoff/guarded-handoff.py \
+  --root /home/android/.codex/worktrees/layout-robot-assets/motion_studio \
+  --frozen /data/workspace/motion_studio/outputs/docs-site/ticket13-20261029-final \
+  --seal /data/workspace/motion_studio/outputs/docs-site/ticket13-20261029-handoff/frozen-closure.json \
+  --receipt /home/android/.codex/worktrees/layout-robot-assets/motion_studio/outputs/docs-site/ticket13-publication
+PYTHONDONTWRITEBYTECODE=1 python3 scripts/verify_docs.py --edition ticket13-20261029-final
+```
+
+Publisher SHA-256: `847c3fb2c9e6883da957d1036c85efae5c4a91303267617e617b7adaeccc0ae3`.
+Seal SHA-256: `62bed22c20e99053d380f65b1ee08b6f90408581a9e7ad42be2ebc885230b490`.
+Manifest SHA-256: `f5f9fe87a519a8f4b9c3a15ece4cd9b53af00b3f63af8a1b643694e4590f3e09`.
+Only the edition child becomes an alias; the output parent stays real. The fresh
+publication receipt archives all previous entries under `originals/<path>` and
+records their hashes. On any publication/verification failure the script restores
+those bytes and removes only a newly installed alias. For deliberate rollback,
+copy those verified originals back to their exact recorded root/basic/home paths;
+keep both frozen editions and their receipts. Reusing an existing edition was
+independently refused with all current entry hashes unchanged.

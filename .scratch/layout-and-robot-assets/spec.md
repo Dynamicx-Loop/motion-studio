@@ -1,9 +1,9 @@
 # Motion Studio layout cleanup and shared robot asset ownership
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Date: 2026-10-29
-Scope: implementation specification and local tickets; implementation has not started.
+Scope: implementation complete through tickets 01–12; ticket 13 navigation and acceptance are in progress. Final review remains pending; see [execution](execution.md).
 
 ## Problem Statement
 
@@ -284,8 +284,8 @@ behavior against independent examples or sealed records, not private helper call
 
 ## Out of Scope
 
-No implementation occurs while publishing this spec/tickets. Future implementation
-does not include solver/method changes, baseline advancement, bulk historical
+The planning publication did not itself implement these tickets. This implementation
+effort excludes solver/method changes, baseline advancement, bulk historical
 rewrites, dependency upgrades, shared environments, new upstream patches, physical
 robot validation, mechanical hand calibration, a universal motion format, a plugin
 framework, asset redistribution, remote issue publication or automatic downloads.
@@ -305,9 +305,10 @@ Unresolved choices have safe defaults and owners:
 | Numeric migration parity | Preserve bytes; if a conversion is required, retain original, record conversion and create a new identity instead of calling it relocation. |
 | Future second solver adoption | Reuse the selection contract when a real comparison needs it; no speculative adapter added now. |
 
-All implementation tickets are `ready-for-agent` because their outcomes and safe
-defaults are specified; dependencies still gate execution. Claim only an unblocked
-ticket. The implementation frontier begins with 01 and 02. No GitHub issue exists.
+Tickets 01–12 are resolved and integrated. Ticket 13 is claimed for final navigation
+and bounded acceptance; the parent remains claimed until final standards/spec review.
+The [execution record](execution.md) records commits, checks and preservation limits.
+No GitHub issue exists.
 
 | Ticket | Outcome | Blocked by |
 | --- | --- | --- |

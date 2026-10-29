@@ -37,7 +37,8 @@ For a worktree with source files but separately preserved evidence:
 ```sh
 python3 scripts/build_docs.py --source-root . \
   --evidence-root /data/workspace/motion_studio --edition local-20261029-02
-python3 scripts/verify_docs.py --edition local-20261029-02
+python3 scripts/verify_docs.py --source-root . \
+  --evidence-root /data/workspace/motion_studio --edition local-20261029-02
 ```
 
 `source-root` owns the catalog, authored templates, styles, search, Markdown
@@ -91,8 +92,13 @@ restored or changed by fallback.
 `motion_studio.documentation.verify_edition(output)` verifies source/output and
 preserved-original hashes, local links and fragments, catalog/search destinations,
 inline reading resources, saved figures and original legacy anchor retention.
-The manifest records source/evidence roots; optional overrides support a relocated
-local workspace. `verify_docs.py --report PATH` saves an explicit verification
+The manifest records the original source/evidence roots. The CLI defaults its
+source root to the executing checkout, so an ordinary `--edition` verification
+survives a handoff from a temporary build worktree. The Python API retains recorded
+roots unless explicitly overridden. Use `--source-root` and `--evidence-root` when
+checking a different or relocated workspace. Both a same-relative per-edition alias
+and its physical target verify by resolved link destinations; source/output and
+root-entry byte hashes remain enforced. `verify_docs.py --report PATH` saves an explicit verification
 receipt. Verification alone does not mutate the research bundle.
 
 Pure fixture tests run in `python3 scripts/check.py`. They exercise publication,
@@ -171,3 +177,17 @@ explicitly; it does not reconstruct or advance a baseline. The generated
 authored site directory. Do not edit generated entries by hand. Source templates,
 owned build/verify code and tests are versioned; generated entries and editions
 remain ignored local artifacts.
+
+## Layout implementation edition
+
+The closeout selects the fresh ID `ticket13-20261029-final` with authored sources
+in the implementation checkout and read-only evidence at
+`/data/workspace/motion_studio`. Its publication preserves the portable relative
+layout above; each checkout keeps a real `outputs/docs-site/` directory and only
+the selected edition child may be a verified read-only alias. Never replace the
+whole directory or rebuild into an existing edition. Final validation and guarded
+handoff/rollback records are identified in the
+[closeout record](../experiments/layout-and-robot-assets-evidence/ticket13/README.md).
+The frozen ticket 06 edition remains intact; a later publication intentionally
+changes current root entries, so its historical publication evidence and frozen
+closure hashes are distinct from verification against today's source/entries.

@@ -91,10 +91,39 @@ Bring proven adapters into a consistent editing and visualization interface, wit
 batch execution, provenance, and reproducible exports. This is a direction, not an
 implemented feature set or a commitment to a particular frontend or solver.
 
+## Implemented workflow entry points
+
+Owned operations now cover [Wendy conversion](wendy-conversion-adapter.md),
+[retrospective evidence reconstruction](evidence.md),
+[fresh offline reading editions](offline-documentation.md), and
+[explicit canonical UMR preparation](umr-canonical-preparation.md). The latter
+resolves [robot definitions and named poses](../robots/README.md), copies a closed
+run-local input bundle and records stage fingerprints; it always remains
+prepared-only. Metadata compatibility does not establish numerical cache validity.
+Official [G1 reproduction](../experiments/umr-g1-baseline-20261029/README.md) retains
+its pinned bundled assets and full training/retarget route independently of this
+catalog. Representation findings guard exact requested claims: accepted collision
+policy is separate from collision equality, and passing named frames does not
+establish inertial or model equivalence. Changed geometry/settings create a new
+cohort and can require resampling, correspondence training and binding.
+
+Use [dependency roles](dependency-roles.md) for explicit source locators and
+independent environments, [checks](checks.md) for pure and opt-in runtime tiers,
+and the [experiment template](../experiments/TEMPLATE.md) for current provenance.
+Keep new runs and documentation IDs fresh; never redirect a writer through an old
+archive alias. [Preservation](preservation.md) and
+[relocation/restoration](artifact-relocation.md) describe immutable receipts,
+legacy readers and retained paths. The
+[layout closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+records the bounded acceptance and limits; historical experiment records remain
+authoritative for their own cohorts.
+
 ## Next practical milestones
 
-- Reproduce one UMR example and one hhtools example on the same target robot.
-- Capture an Astro P2 baseline, including the existing local robot changes.
+- Official G1 full-clip reproduction and the earlier Astro/G1 static pair are
+  recorded separate cohorts; follow up with a matched hhtools example rather than
+  treating preparation or structural parity as a new numerical baseline.
 - Read and annotate the Zotero references, linking methods to experiments.
 - Compare a locomotion clip and an interaction clip with explicit quality criteria.
-- Promote the first repeated conversion or editing step into a shared utility.
+- Extend proven conversion/preparation interfaces only when another real workflow
+  demonstrates a shared rule; full canonical retargeting/retraining remains future work.

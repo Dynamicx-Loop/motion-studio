@@ -41,12 +41,22 @@ def sha(path):
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _link_destinations(page):
+    """Resolve local page links independently of a publication alias's spelling."""
+    destinations = set()
+    for reference in page.links:
+        url = urlsplit(reference)
+        if not url.scheme and not url.netloc:
+            destinations.add((page.path.parent / unquote(url.path)).resolve()
+                             if url.path else page.path.resolve())
+    return destinations
+
+
 def verify_edition(output, *, source_root=None, evidence_root=None):
     OUT = Path(output).absolute()
     manifest = json.loads((OUT / "documentation/manifest.json").read_text())
     ROOT = Path(source_root or manifest["source_root"]).resolve()
     EVIDENCE = Path(evidence_root or manifest["evidence_root"]).resolve()
-    prefix = __import__('os').path.relpath(OUT, ROOT).replace(__import__('os').sep, '/') + '/'
 
     def source_path(name):
         saved = manifest.get("reused_source_snapshots", {}).get(name)
@@ -161,16 +171,14 @@ def verify_edition(output, *, source_root=None, evidence_root=None):
         assert source.count("<h1>") == 1 and f"<h1>{title}</h1>" in source
         assert f'href="{name}.html" aria-current="page"' in source
         assert "<script" not in source
-        assert (
-            prefix + name + ".html"
-            in parsed[(ROOT / "docs.html").resolve()].links
-        )
+        assert (OUT / (name + ".html")).resolve() in _link_destinations(
+            parsed[(ROOT / "docs.html").resolve()])
     assert (ROOT / "docs.html").read_text().count("<h1>") == 1
     assert "<script" not in (ROOT / "docs.html").read_text()
     alias = parsed[(ROOT / compatibility["path"]).resolve()]
     for name in ("installation", "quick-start", "umr-experiments"):
-        assert "../../" + prefix + name + ".html" in alias.links
-    assert "../../docs.html" in alias.links
+        assert (OUT / (name + ".html")).resolve() in _link_destinations(alias)
+    assert (ROOT / "docs.html").resolve() in _link_destinations(alias)
     assert "{{" not in alias.path.read_text()
     assert (
         "<style>" in alias.path.read_text() and "<script" not in alias.path.read_text()

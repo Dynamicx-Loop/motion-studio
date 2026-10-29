@@ -323,6 +323,118 @@
       "title": "Official UMR G1 reproduction through Motion Studio",
       "state": "baseline",
       "description": "Fresh full-clip reproduction; separate from the October 24 static pair."
+    },
+    {
+      "id": "docs--checks",
+      "path": "docs/checks.md",
+      "title": "Owned check command",
+      "state": "workspace",
+      "description": "Runtime tiers and explicit prerequisites."
+    },
+    {
+      "id": "docs--dependency-roles",
+      "path": "docs/dependency-roles.md",
+      "title": "Dependency roles and historical recovery",
+      "state": "workspace",
+      "description": "Pinned source locators, runtime boundaries and recovery."
+    },
+    {
+      "id": "docs--preservation",
+      "path": "docs/preservation.md",
+      "title": "Workspace preservation receipts",
+      "state": "workspace",
+      "description": "Immutable inventory, recovery coverage and limits."
+    },
+    {
+      "id": "docs--artifact-relocation",
+      "path": "docs/artifact-relocation.md",
+      "title": "Local artifact preservation and relocation",
+      "state": "workspace",
+      "description": "Copy/verify/alias storage, restoration and complete ledger."
+    },
+    {
+      "id": "docs--evidence",
+      "path": "docs/evidence.md",
+      "title": "Owned saved-evidence operations",
+      "state": "workspace",
+      "description": "Retrospective reconstruction and prepared-only boundaries."
+    },
+    {
+      "id": "docs--wendy-conversion-adapter",
+      "path": "docs/wendy-conversion-adapter.md",
+      "title": "Wendy conversion adapter",
+      "state": "workspace",
+      "description": "Typed conversion interface and bounded CPU parity."
+    },
+    {
+      "id": "docs--umr-canonical-preparation",
+      "path": "docs/umr-canonical-preparation.md",
+      "title": "Canonical UMR preparation",
+      "state": "workspace",
+      "description": "Explicit selected inputs, exact claims and stage fingerprints."
+    },
+    {
+      "id": "robots--readme",
+      "path": "robots/README.md",
+      "title": "Robot definitions",
+      "state": "workspace",
+      "description": "Pinned selection, named poses and separate consistency claims."
+    },
+    {
+      "id": "robots--astro-p2-29dof--readme",
+      "path": "robots/astro_p2_29dof/README.md",
+      "title": "Astro P2 29-DoF selection",
+      "state": "workspace",
+      "description": "Source closure, conventions and pose definitions."
+    },
+    {
+      "id": "robots--g1-29dof--readme",
+      "path": "robots/g1_29dof/README.md",
+      "title": "G1 comparison selection",
+      "state": "workspace",
+      "description": "Deliberate selection independent of official reproduction."
+    },
+    {
+      "id": "robots--astro-p2-43dof-dex3-1--readme",
+      "path": "robots/astro_p2_43dof_dex3_1/README.md",
+      "title": "Astro Dex3 selection",
+      "state": "workspace",
+      "description": "Application/native order, fist overlay and geometry refinements."
+    },
+    {
+      "id": "experiments--wendy-conversion-adapter--readme",
+      "path": "experiments/wendy-conversion-adapter/README.md",
+      "title": "Wendy adapter CPU parity",
+      "state": "workspace",
+      "description": "Bounded saved-field and timing evidence."
+    },
+    {
+      "id": "experiments--layout-and-robot-assets-evidence--readme",
+      "path": "experiments/layout-and-robot-assets-evidence/README.md",
+      "title": "Owned legacy reconstruction parity",
+      "state": "workspace",
+      "description": "Byte-preserving reconstruction; no numerical rerun."
+    },
+    {
+      "id": "experiments--layout-and-robot-assets-evidence--ticket11--readme",
+      "path": "experiments/layout-and-robot-assets-evidence/ticket11/README.md",
+      "title": "Measured robot representation findings",
+      "state": "workspace",
+      "description": "Named frames, inertia and separate geometry claims."
+    },
+    {
+      "id": "experiments--layout-and-robot-assets-evidence--ticket12--readme",
+      "path": "experiments/layout-and-robot-assets-evidence/ticket12/README.md",
+      "title": "Canonical preparation CPU smoke",
+      "state": "workspace",
+      "description": "Three prepared-only run-local cohorts; no training or retarget."
+    },
+    {
+      "id": "experiments--layout-and-robot-assets-evidence--ticket13--readme",
+      "path": "experiments/layout-and-robot-assets-evidence/ticket13/README.md",
+      "title": "Layout navigation and acceptance",
+      "state": "workspace",
+      "description": "Additive closeout, preservation accounting and final limitations."
     }
   ],
   "timeline": [
