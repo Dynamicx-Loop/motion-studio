@@ -23,6 +23,7 @@ def main():
                         help='Selected reading edition directory for the Node search check')
     parser.add_argument('--umr-python', type=Path, help='Explicit interpreter for static saved-run checks')
     parser.add_argument('--umr-run', type=Path, help='Preserved static run; no training or retargeting')
+    parser.add_argument('--robot-python', type=Path, help='Existing MuJoCo interpreter for read-only analytic robot fixtures')
     args = parser.parse_args()
     try:
         if args.list:
@@ -37,7 +38,7 @@ def main():
             return 0 if suites else 1
         report = check(args.root, tiers=tuple(args.tier or ['pure']),
                        umr_python=args.umr_python, umr_run=args.umr_run,
-                       docs_edition=args.docs_edition)
+                       docs_edition=args.docs_edition, robot_python=args.robot_python)
         if args.json:
             print(json.dumps({'selected_tiers': args.tier or ['pure'],
                               'exit_code': report.exit_code, **asdict(report)}, indent=2))

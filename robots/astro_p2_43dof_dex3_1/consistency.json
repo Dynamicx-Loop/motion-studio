@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "model_sha256": {
+    "urdf": "b10f4c4f96d6801e3b2d4796cef66118704730b7f5cdded7ccb2a9531f4ccd8c",
+    "mjcf": "c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66"
+  },
+  "collision_differences": [
+    "Cylinder-plus-sphere assemblies converted to native capsules; source-to-capsule mapping in mjcf-conversion.json.",
+    "Shin capsule lower endpoints raised -0.260 to -0.230 m, radius 0.053 m unchanged.",
+    "Palm two-box thumb notch and final fist envelope trimming; thumb proximal capsule radius 0.012 m, start 0.018 m.",
+    "Lower upper-arm and wrist-roll capsules added; wrist-yaw cylinders radius 0.029 m, half-length 0.021 m, center X=0.047 m.",
+    "Head-adjacent upper-back capsule removed; torso upper radius 0.090 m, middle radius 0.093 m with Y endpoints +/-0.018 m.",
+    "Pelvis upper shell cylinder radius 0.057 m, half-height 0.014 m, Z=0.086 m.",
+    "Sole/distal-finger collisions, visual geometry, explicit inertias, axes, ranges and masks retained according to pinned source review; no equality of collision models."
+  ],
+  "keyframe_behavior": "Explicit poses override qpos; normal MjData/reset remains zero. Dex3 viewer alone explicitly selects fist.",
+  "source_revision": "d2070956558ffbf9226dcf74017d40740724d8d8",
+  "closure_sha256": {
+    "urdf": "0c99d5df8e375097996f0b52cf785b5bd9ac269f0cfec720c65d3c4f13a47dec",
+    "mjcf": "f37c4c4332c6737ce8dffc4642b3e4533bf17bc91be873ef94a74c8fa11362f0"
+  }
+}

@@ -1,0 +1,1145 @@
+{
+  "frozen_trajectory_models": [
+    {
+      "action": "retain original external frozen generated model; do not rewrite NPZ identity",
+      "anchor": "sealed viewer manifest report robot_xml_sha256",
+      "mesh_closure": [
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/pelvis.stl",
+          "sha256": "7c023ca1c8a2c52f0c9fdec90cbaa14ad8b8f6c5952f3317469f638cdd8b7301"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_pitch_link.stl",
+          "sha256": "909253cb045cb00d2149f2dcffe30d133957631cf2dd30415ed09f4a2aff075f"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_roll_link.stl",
+          "sha256": "ce333b46b8da1f4805f0f6e1cb33b80537c97ae3a59d2aa6db468605773122c2"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_yaw_link.stl",
+          "sha256": "76e8f881aab9cc38808711df4ee948e4642c5ed152f37f6aeb6c70c0249dac5b"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_knee_link.stl",
+          "sha256": "9a599c7247a4736b3e7de8488bec683ec917d638e9f849c7c4b98a41ffab59a4"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_pitch_link.stl",
+          "sha256": "0608f442342c57392d7025167ee18b1168379031dea97f01a2fa4ec82fbec1eb"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_roll_link.stl",
+          "sha256": "8d38904e7cec673f99f42200b37ec70d5ff01aa36ddcebcf376fc54e697af2bf"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_pitch_link.stl",
+          "sha256": "34b821a8729f5cc698daa3d16632d06fc2b2f73a385894f41a2461fa9ff027b9"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_roll_link.stl",
+          "sha256": "d37431152103f805fff4398d474258c749a2f065a0384c13f1057be30b277b7c"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_yaw_link.stl",
+          "sha256": "f734f311702c2cd9eed91ee69395fb0b30c93b69eb9c4d0b02a6d0683a7b6814"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_knee_link.stl",
+          "sha256": "2d2a47b99f38ed6d7d684fd398fbcdd6d1fa4a66573914c815a9e646fe2c0945"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_pitch_link.stl",
+          "sha256": "dabfd7181a1cd1becd5af86284931f3b22ffc58313244a7ccc4e2bdc820e4ad8"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_roll_link.stl",
+          "sha256": "65f4573af5b56f8e43791e27cfded36b87dbc30d8fd8f70b1f5dbc09bb9c4da9"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_yaw_link.stl",
+          "sha256": "ee207141a43a78517c3dc64d6e580d199de3c797bf89d87944d1df72b9fa9037"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_pitch_link.stl",
+          "sha256": "e999db74c5c0a902995b98ec9bd9a3169f63e6804ff21c8663c1b84a95c8e502"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_roll_link.stl",
+          "sha256": "dcba99a3f39ce942dcd546ffb4516b000a3bd349addb8390d66f0419c034d679"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/torso_link.stl",
+          "sha256": "d07cbd3ba95cd79404ded2de1d6c2a262d056a2094d5a621ce26379b584ba803"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_pitch_link.stl",
+          "sha256": "686557d66b4d6ecca7087c5d63557a79c26ac90e08ac6d3548eb9918a061607e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_roll_link.stl",
+          "sha256": "c73170cd57407bf60146a25e36b4541b0c372c9bce9fe4f29f22c4b99738a071"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_yaw_link.stl",
+          "sha256": "5fb713934ed9ef21d66957c3870094fe496b4775fcb2bdf9e0a5436bc863c61a"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_elbow_link.stl",
+          "sha256": "37dac06a14e653b35641c26ece58fd5788c09fb3693165f522b91673c71bd70e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_roll_link.stl",
+          "sha256": "6d1c31fe33c8b3c49d794011725675df04324dca7c563f6c45816adf523e2723"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_pitch_link.stl",
+          "sha256": "6498e8ee9a88ce20f8e00e9a1d9e489d352ffa7eed54f1b3ddb1f68b4da49a6f"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_yaw_link.stl",
+          "sha256": "4d6456e0aa3d3cb8b6d6228cdc56539c2e0ae88402b9529cad21ac20150de3ba"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_pitch_link.stl",
+          "sha256": "b9aa1df377bcc7f8641aedc390159ea293c236e18981dd91541533eb7810073a"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_roll_link.stl",
+          "sha256": "508dbbf4c0fd493d4c161534abfe9db2180c5b272073a81b7684cea88f2ac967"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_yaw_link.stl",
+          "sha256": "bf3ce8453f58ff2b78c877b43001a62d5cdd5d02f71d2c6cce7d21aed8b5622e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_elbow_link.stl",
+          "sha256": "a9e700794080319789f4e0bf82184c5713260d68acb78488ffe99fae17a8ba61"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_roll_link.stl",
+          "sha256": "07c8e78cb2bbabdf9a1709e640c5c9e32d862745ad2110ff0bd204a6637f7747"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_pitch_link.stl",
+          "sha256": "bc810b534a88dc9476d0dd7619128f2cee52e598d31fd61d4918f83d7ca067b1"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_yaw_link.stl",
+          "sha256": "1f024b40172c534b331f50f8ab5e6c7a53337bf4493e4a1085a7f1939658d550"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/head_link.stl",
+          "sha256": "d74590eacd98fe4dc2e45419f5fb66cba81aa7302a721e5426e77987d0bb8d11"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_2_link.stl",
+          "sha256": "16519e4c6a38ae8282a0c5782204ae6fa7b30967f55225defed9a4ce473ddde7"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_1_link.stl",
+          "sha256": "3407098aeb026eff766506e291d0ba7093a4748aed243232334ff6fdf2fe6f87"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/lidar_link.stl",
+          "sha256": "95da21801def68d85f139e31098bdab02e53bdfd585d2a87077d39910e4fad1b"
+        }
+      ],
+      "model": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/reference.floating_mjcf.xml",
+      "sha256": "83478b8963f402a1db1347bd3f4bd3d985b927141ddaff1daba6538303beb0e7",
+      "trajectory": "experiments/hiphi-robot-control/astro/reference.npz"
+    },
+    {
+      "action": "retain original external frozen generated model; do not rewrite NPZ identity",
+      "anchor": "sealed viewer manifest report robot_xml_sha256",
+      "mesh_closure": [
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/pelvis.stl",
+          "sha256": "7c023ca1c8a2c52f0c9fdec90cbaa14ad8b8f6c5952f3317469f638cdd8b7301"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_pitch_link.stl",
+          "sha256": "909253cb045cb00d2149f2dcffe30d133957631cf2dd30415ed09f4a2aff075f"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_roll_link.stl",
+          "sha256": "ce333b46b8da1f4805f0f6e1cb33b80537c97ae3a59d2aa6db468605773122c2"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_yaw_link.stl",
+          "sha256": "76e8f881aab9cc38808711df4ee948e4642c5ed152f37f6aeb6c70c0249dac5b"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_knee_link.stl",
+          "sha256": "9a599c7247a4736b3e7de8488bec683ec917d638e9f849c7c4b98a41ffab59a4"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_pitch_link.stl",
+          "sha256": "0608f442342c57392d7025167ee18b1168379031dea97f01a2fa4ec82fbec1eb"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_roll_link.stl",
+          "sha256": "8d38904e7cec673f99f42200b37ec70d5ff01aa36ddcebcf376fc54e697af2bf"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_pitch_link.stl",
+          "sha256": "34b821a8729f5cc698daa3d16632d06fc2b2f73a385894f41a2461fa9ff027b9"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_roll_link.stl",
+          "sha256": "d37431152103f805fff4398d474258c749a2f065a0384c13f1057be30b277b7c"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_yaw_link.stl",
+          "sha256": "f734f311702c2cd9eed91ee69395fb0b30c93b69eb9c4d0b02a6d0683a7b6814"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_knee_link.stl",
+          "sha256": "2d2a47b99f38ed6d7d684fd398fbcdd6d1fa4a66573914c815a9e646fe2c0945"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_pitch_link.stl",
+          "sha256": "dabfd7181a1cd1becd5af86284931f3b22ffc58313244a7ccc4e2bdc820e4ad8"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_roll_link.stl",
+          "sha256": "65f4573af5b56f8e43791e27cfded36b87dbc30d8fd8f70b1f5dbc09bb9c4da9"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_yaw_link.stl",
+          "sha256": "ee207141a43a78517c3dc64d6e580d199de3c797bf89d87944d1df72b9fa9037"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_pitch_link.stl",
+          "sha256": "e999db74c5c0a902995b98ec9bd9a3169f63e6804ff21c8663c1b84a95c8e502"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_roll_link.stl",
+          "sha256": "dcba99a3f39ce942dcd546ffb4516b000a3bd349addb8390d66f0419c034d679"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/torso_link.stl",
+          "sha256": "d07cbd3ba95cd79404ded2de1d6c2a262d056a2094d5a621ce26379b584ba803"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_pitch_link.stl",
+          "sha256": "686557d66b4d6ecca7087c5d63557a79c26ac90e08ac6d3548eb9918a061607e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_roll_link.stl",
+          "sha256": "c73170cd57407bf60146a25e36b4541b0c372c9bce9fe4f29f22c4b99738a071"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_yaw_link.stl",
+          "sha256": "5fb713934ed9ef21d66957c3870094fe496b4775fcb2bdf9e0a5436bc863c61a"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_elbow_link.stl",
+          "sha256": "37dac06a14e653b35641c26ece58fd5788c09fb3693165f522b91673c71bd70e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_roll_link.stl",
+          "sha256": "6d1c31fe33c8b3c49d794011725675df04324dca7c563f6c45816adf523e2723"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_pitch_link.stl",
+          "sha256": "6498e8ee9a88ce20f8e00e9a1d9e489d352ffa7eed54f1b3ddb1f68b4da49a6f"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_yaw_link.stl",
+          "sha256": "4d6456e0aa3d3cb8b6d6228cdc56539c2e0ae88402b9529cad21ac20150de3ba"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_pitch_link.stl",
+          "sha256": "b9aa1df377bcc7f8641aedc390159ea293c236e18981dd91541533eb7810073a"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_roll_link.stl",
+          "sha256": "508dbbf4c0fd493d4c161534abfe9db2180c5b272073a81b7684cea88f2ac967"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_yaw_link.stl",
+          "sha256": "bf3ce8453f58ff2b78c877b43001a62d5cdd5d02f71d2c6cce7d21aed8b5622e"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_elbow_link.stl",
+          "sha256": "a9e700794080319789f4e0bf82184c5713260d68acb78488ffe99fae17a8ba61"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_roll_link.stl",
+          "sha256": "07c8e78cb2bbabdf9a1709e640c5c9e32d862745ad2110ff0bd204a6637f7747"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_pitch_link.stl",
+          "sha256": "bc810b534a88dc9476d0dd7619128f2cee52e598d31fd61d4918f83d7ca067b1"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_yaw_link.stl",
+          "sha256": "1f024b40172c534b331f50f8ab5e6c7a53337bf4493e4a1085a7f1939658d550"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/head_link.stl",
+          "sha256": "d74590eacd98fe4dc2e45419f5fb66cba81aa7302a721e5426e77987d0bb8d11"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_2_link.stl",
+          "sha256": "16519e4c6a38ae8282a0c5782204ae6fa7b30967f55225defed9a4ce473ddde7"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_1_link.stl",
+          "sha256": "3407098aeb026eff766506e291d0ba7093a4748aed243232334ff6fdf2fe6f87"
+        },
+        {
+          "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/lidar_link.stl",
+          "sha256": "95da21801def68d85f139e31098bdab02e53bdfd585d2a87077d39910e4fad1b"
+        }
+      ],
+      "model": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/reconverted.floating_mjcf.xml",
+      "sha256": "83478b8963f402a1db1347bd3f4bd3d985b927141ddaff1daba6538303beb0e7",
+      "trajectory": "experiments/hiphi-robot-control/astro/reconverted.npz"
+    },
+    {
+      "action": "retain original external frozen generated model; do not rewrite NPZ identity",
+      "anchor": "sealed viewer manifest report robot_xml_sha256",
+      "mesh_closure": [
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis.obj",
+          "sha256": "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis_contour_link.obj",
+          "sha256": "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_pitch_link.obj",
+          "sha256": "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_roll_link.obj",
+          "sha256": "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_yaw_link.obj",
+          "sha256": "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_knee_link.obj",
+          "sha256": "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_pitch_link.obj",
+          "sha256": "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_roll_link.obj",
+          "sha256": "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_pitch_link.obj",
+          "sha256": "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_roll_link.obj",
+          "sha256": "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_yaw_link.obj",
+          "sha256": "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_knee_link.obj",
+          "sha256": "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_pitch_link.obj",
+          "sha256": "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_roll_link.obj",
+          "sha256": "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_yaw_link.obj",
+          "sha256": "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_roll_link.obj",
+          "sha256": "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/torso_link.obj",
+          "sha256": "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/logo_link.obj",
+          "sha256": "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/head_link.obj",
+          "sha256": "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_support_link.obj",
+          "sha256": "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_pitch_link.obj",
+          "sha256": "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_roll_link.obj",
+          "sha256": "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_yaw_link.obj",
+          "sha256": "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_elbow_link.obj",
+          "sha256": "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_roll_link.obj",
+          "sha256": "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_pitch_link.obj",
+          "sha256": "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_yaw_link.obj",
+          "sha256": "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_rubber_hand.obj",
+          "sha256": "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_pitch_link.obj",
+          "sha256": "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_roll_link.obj",
+          "sha256": "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_yaw_link.obj",
+          "sha256": "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_elbow_link.obj",
+          "sha256": "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_roll_link.obj",
+          "sha256": "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_pitch_link.obj",
+          "sha256": "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_yaw_link.obj",
+          "sha256": "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_rubber_hand.obj",
+          "sha256": "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8"
+        }
+      ],
+      "model": "/data/workspace/motion_studio/externals/UMR/assets/g1/reference.floating_mjcf.xml",
+      "sha256": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+      "trajectory": "experiments/hiphi-robot-control/g1/reference.npz"
+    },
+    {
+      "action": "retain original external frozen generated model; do not rewrite NPZ identity",
+      "anchor": "sealed viewer manifest report robot_xml_sha256",
+      "mesh_closure": [
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis.obj",
+          "sha256": "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis_contour_link.obj",
+          "sha256": "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_pitch_link.obj",
+          "sha256": "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_roll_link.obj",
+          "sha256": "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_yaw_link.obj",
+          "sha256": "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_knee_link.obj",
+          "sha256": "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_pitch_link.obj",
+          "sha256": "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_roll_link.obj",
+          "sha256": "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_pitch_link.obj",
+          "sha256": "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_roll_link.obj",
+          "sha256": "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_yaw_link.obj",
+          "sha256": "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_knee_link.obj",
+          "sha256": "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_pitch_link.obj",
+          "sha256": "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_roll_link.obj",
+          "sha256": "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_yaw_link.obj",
+          "sha256": "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_roll_link.obj",
+          "sha256": "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/torso_link.obj",
+          "sha256": "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/logo_link.obj",
+          "sha256": "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/head_link.obj",
+          "sha256": "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_support_link.obj",
+          "sha256": "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_pitch_link.obj",
+          "sha256": "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_roll_link.obj",
+          "sha256": "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_yaw_link.obj",
+          "sha256": "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_elbow_link.obj",
+          "sha256": "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_roll_link.obj",
+          "sha256": "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_pitch_link.obj",
+          "sha256": "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_yaw_link.obj",
+          "sha256": "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_rubber_hand.obj",
+          "sha256": "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_pitch_link.obj",
+          "sha256": "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_roll_link.obj",
+          "sha256": "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_yaw_link.obj",
+          "sha256": "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_elbow_link.obj",
+          "sha256": "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_roll_link.obj",
+          "sha256": "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_pitch_link.obj",
+          "sha256": "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_yaw_link.obj",
+          "sha256": "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279"
+        },
+        {
+          "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_rubber_hand.obj",
+          "sha256": "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8"
+        }
+      ],
+      "model": "/data/workspace/motion_studio/externals/UMR/assets/g1/reconverted.floating_mjcf.xml",
+      "sha256": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+      "trajectory": "experiments/hiphi-robot-control/g1/reconverted.npz"
+    }
+  ],
+  "inventory_sha256": "32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7",
+  "preparation_identity": "b58b0bfeb9a564f61f489bc4923fe1f229016b86b6b73f3ba1b0470931afb33d",
+  "prepared_run": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01",
+  "read_only_source_closure": [
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/astro_p2_29dof.xml",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/astro_p2_29dof.xml",
+      "sha256": "89f179ea9fb51ff53a9a1d3fa9cef6049f843e0e3ad21a886677e3a5341767f7"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/head_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/head_link.stl",
+      "sha256": "d74590eacd98fe4dc2e45419f5fb66cba81aa7302a721e5426e77987d0bb8d11"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/imu_1_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_1_link.stl",
+      "sha256": "3407098aeb026eff766506e291d0ba7093a4748aed243232334ff6fdf2fe6f87"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/imu_2_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/imu_2_link.stl",
+      "sha256": "16519e4c6a38ae8282a0c5782204ae6fa7b30967f55225defed9a4ce473ddde7"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_ankle_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_pitch_link.stl",
+      "sha256": "0608f442342c57392d7025167ee18b1168379031dea97f01a2fa4ec82fbec1eb"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_ankle_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_ankle_roll_link.stl",
+      "sha256": "8d38904e7cec673f99f42200b37ec70d5ff01aa36ddcebcf376fc54e697af2bf"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_elbow_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_elbow_link.stl",
+      "sha256": "37dac06a14e653b35641c26ece58fd5788c09fb3693165f522b91673c71bd70e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_hip_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_pitch_link.stl",
+      "sha256": "909253cb045cb00d2149f2dcffe30d133957631cf2dd30415ed09f4a2aff075f"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_hip_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_roll_link.stl",
+      "sha256": "ce333b46b8da1f4805f0f6e1cb33b80537c97ae3a59d2aa6db468605773122c2"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_hip_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_hip_yaw_link.stl",
+      "sha256": "76e8f881aab9cc38808711df4ee948e4642c5ed152f37f6aeb6c70c0249dac5b"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_knee_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_knee_link.stl",
+      "sha256": "9a599c7247a4736b3e7de8488bec683ec917d638e9f849c7c4b98a41ffab59a4"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_shoulder_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_pitch_link.stl",
+      "sha256": "686557d66b4d6ecca7087c5d63557a79c26ac90e08ac6d3548eb9918a061607e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_shoulder_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_roll_link.stl",
+      "sha256": "c73170cd57407bf60146a25e36b4541b0c372c9bce9fe4f29f22c4b99738a071"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_shoulder_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_shoulder_yaw_link.stl",
+      "sha256": "5fb713934ed9ef21d66957c3870094fe496b4775fcb2bdf9e0a5436bc863c61a"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_wrist_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_pitch_link.stl",
+      "sha256": "6498e8ee9a88ce20f8e00e9a1d9e489d352ffa7eed54f1b3ddb1f68b4da49a6f"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_wrist_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_roll_link.stl",
+      "sha256": "6d1c31fe33c8b3c49d794011725675df04324dca7c563f6c45816adf523e2723"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/left_wrist_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/left_wrist_yaw_link.stl",
+      "sha256": "4d6456e0aa3d3cb8b6d6228cdc56539c2e0ae88402b9529cad21ac20150de3ba"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/lidar_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/lidar_link.stl",
+      "sha256": "95da21801def68d85f139e31098bdab02e53bdfd585d2a87077d39910e4fad1b"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/pelvis.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/pelvis.stl",
+      "sha256": "7c023ca1c8a2c52f0c9fdec90cbaa14ad8b8f6c5952f3317469f638cdd8b7301"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_ankle_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_pitch_link.stl",
+      "sha256": "dabfd7181a1cd1becd5af86284931f3b22ffc58313244a7ccc4e2bdc820e4ad8"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_ankle_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_ankle_roll_link.stl",
+      "sha256": "65f4573af5b56f8e43791e27cfded36b87dbc30d8fd8f70b1f5dbc09bb9c4da9"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_elbow_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_elbow_link.stl",
+      "sha256": "a9e700794080319789f4e0bf82184c5713260d68acb78488ffe99fae17a8ba61"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_hip_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_pitch_link.stl",
+      "sha256": "34b821a8729f5cc698daa3d16632d06fc2b2f73a385894f41a2461fa9ff027b9"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_hip_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_roll_link.stl",
+      "sha256": "d37431152103f805fff4398d474258c749a2f065a0384c13f1057be30b277b7c"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_hip_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_hip_yaw_link.stl",
+      "sha256": "f734f311702c2cd9eed91ee69395fb0b30c93b69eb9c4d0b02a6d0683a7b6814"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_knee_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_knee_link.stl",
+      "sha256": "2d2a47b99f38ed6d7d684fd398fbcdd6d1fa4a66573914c815a9e646fe2c0945"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_shoulder_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_pitch_link.stl",
+      "sha256": "b9aa1df377bcc7f8641aedc390159ea293c236e18981dd91541533eb7810073a"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_shoulder_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_roll_link.stl",
+      "sha256": "508dbbf4c0fd493d4c161534abfe9db2180c5b272073a81b7684cea88f2ac967"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_shoulder_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_shoulder_yaw_link.stl",
+      "sha256": "bf3ce8453f58ff2b78c877b43001a62d5cdd5d02f71d2c6cce7d21aed8b5622e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_wrist_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_pitch_link.stl",
+      "sha256": "bc810b534a88dc9476d0dd7619128f2cee52e598d31fd61d4918f83d7ca067b1"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_wrist_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_roll_link.stl",
+      "sha256": "07c8e78cb2bbabdf9a1709e640c5c9e32d862745ad2110ff0bd204a6637f7747"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/right_wrist_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/right_wrist_yaw_link.stl",
+      "sha256": "1f024b40172c534b331f50f8ab5e6c7a53337bf4493e4a1085a7f1939658d550"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/torso_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/torso_link.stl",
+      "sha256": "d07cbd3ba95cd79404ded2de1d6c2a262d056a2094d5a621ce26379b584ba803"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/waist_pitch_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_pitch_link.stl",
+      "sha256": "e999db74c5c0a902995b98ec9bd9a3169f63e6804ff21c8663c1b84a95c8e502"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/waist_roll_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_roll_link.stl",
+      "sha256": "dcba99a3f39ce942dcd546ffb4516b000a3bd349addb8390d66f0419c034d679"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/astro/meshes/waist_yaw_link.stl",
+      "path": "/data/workspace/notAnyrobot/menagerie_x/robots/astro_p2_29dof/meshes/waist_yaw_link.stl",
+      "sha256": "ee207141a43a78517c3dc64d6e580d199de3c797bf89d87944d1df72b9fa9037"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/head_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/head_link.obj",
+      "sha256": "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_ankle_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_pitch_link.obj",
+      "sha256": "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_ankle_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_ankle_roll_link.obj",
+      "sha256": "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_elbow_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_elbow_link.obj",
+      "sha256": "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_hip_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_pitch_link.obj",
+      "sha256": "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_hip_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_roll_link.obj",
+      "sha256": "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_hip_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_hip_yaw_link.obj",
+      "sha256": "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_knee_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_knee_link.obj",
+      "sha256": "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_rubber_hand.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_rubber_hand.obj",
+      "sha256": "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_shoulder_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_pitch_link.obj",
+      "sha256": "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_shoulder_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_roll_link.obj",
+      "sha256": "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_shoulder_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_shoulder_yaw_link.obj",
+      "sha256": "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_wrist_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_pitch_link.obj",
+      "sha256": "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_wrist_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_roll_link.obj",
+      "sha256": "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/left_wrist_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/left_wrist_yaw_link.obj",
+      "sha256": "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/logo_link.mtl",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/logo_link.mtl",
+      "sha256": "cd787ead96363aa676d9a79626803f9053ecc7a3cef6d4f1640176a8cf2785d3"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/logo_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/logo_link.obj",
+      "sha256": "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/pelvis.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis.obj",
+      "sha256": "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/pelvis_contour_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/pelvis_contour_link.obj",
+      "sha256": "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_ankle_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_pitch_link.obj",
+      "sha256": "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_ankle_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_ankle_roll_link.obj",
+      "sha256": "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_elbow_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_elbow_link.obj",
+      "sha256": "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_hip_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_pitch_link.obj",
+      "sha256": "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_hip_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_roll_link.obj",
+      "sha256": "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_hip_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_hip_yaw_link.obj",
+      "sha256": "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_knee_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_knee_link.obj",
+      "sha256": "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_rubber_hand.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_rubber_hand.obj",
+      "sha256": "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_shoulder_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_pitch_link.obj",
+      "sha256": "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_shoulder_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_roll_link.obj",
+      "sha256": "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_shoulder_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_shoulder_yaw_link.obj",
+      "sha256": "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_wrist_pitch_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_pitch_link.obj",
+      "sha256": "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_wrist_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_roll_link.obj",
+      "sha256": "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/right_wrist_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/right_wrist_yaw_link.obj",
+      "sha256": "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/torso_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/torso_link.obj",
+      "sha256": "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/waist_roll_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_roll_link.obj",
+      "sha256": "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/waist_support_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_support_link.obj",
+      "sha256": "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/assets/waist_yaw_link.obj",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/assets/waist_yaw_link.obj",
+      "sha256": "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e"
+    },
+    {
+      "action": "retain external original; verified local fresh-run copy only",
+      "fresh_copy": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/assets/g1/g1_29dof.xml",
+      "path": "/data/workspace/motion_studio/externals/UMR/assets/g1/g1_29dof.xml",
+      "sha256": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    }
+  ],
+  "relocation_plan": "artifact-pilot-plan.json",
+  "relocation_plan_sha256": "bce60db8c993ccbf8b481300368cb908d310f7bce6e643e234c2846b99108b13",
+  "retained": [
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 5495,
+      "path": "experiments/hiphi-robot-control/README.md",
+      "sha256": "29c4e63d78d65577830d8dc7bb1acf635ca7c9506466a7e254d899f4383d08b6"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 6805,
+      "path": "experiments/hiphi-robot-control/configs/astro-reconverted-resolved.json",
+      "sha256": "dfdb2b36bc30426b4f18c30e028fa531d039e83b79fb5aa5c8495fd62b3454ca"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 1042,
+      "path": "experiments/hiphi-robot-control/configs/astro-reconverted.json",
+      "sha256": "90fa58ecd038f6cc1a968f46e73f834f7539b1a066b2fc02c675455708d0f107"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 6855,
+      "path": "experiments/hiphi-robot-control/configs/astro-reference-resolved.json",
+      "sha256": "4e8b43fec7cf683c5f39aaf28ee14a16a88020a1ffdfaf3dd7b84c2b3d822bab"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 1092,
+      "path": "experiments/hiphi-robot-control/configs/astro-reference.json",
+      "sha256": "2a241a96b1b1e0d437b116e9cade2bd6414af60153573bd2c1664b68db5f31dc"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 6520,
+      "path": "experiments/hiphi-robot-control/configs/g1-reconverted-resolved.json",
+      "sha256": "d46bb0ce46fda9d1dce9c79b02e2e899813e2c57cb22bbeadbe8624e81b4103b"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 1169,
+      "path": "experiments/hiphi-robot-control/configs/g1-reconverted.json",
+      "sha256": "13890c4ddb2a1c6a3f9380d9c862bb02aec98bfba20bb07dbc2b9664e3b59a07"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 6570,
+      "path": "experiments/hiphi-robot-control/configs/g1-reference-resolved.json",
+      "sha256": "393d4e29ae50e5e3abda83cb9865d5465f0ee54f0058b34bbc265f75e07f8ba4"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 1219,
+      "path": "experiments/hiphi-robot-control/configs/g1-reference.json",
+      "sha256": "9afb074baf54a1b3bc464b6b7249d9328402badc3b22867915640efb6ca37c5b"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 1248,
+      "path": "experiments/hiphi-robot-control/provenance.json",
+      "sha256": "7be94107c226731bc9f095e8f50ec754fe5f92888c0bc8b8af45a3b1904531f3"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 9809,
+      "path": "experiments/hiphi-robot-control/report.json",
+      "sha256": "3ff76de327f0a75ed324cf8e33e8adc947f9d75621c558a05a78b080899dc3be"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 565,
+      "path": "experiments/hiphi-robot-control/run.py",
+      "sha256": "e55961c5ff82f09d556d74114459617de953faf066218b107f25c0771cd1a8cd"
+    },
+    {
+      "action": "retain frozen source/config/small result (or already ignored cache)",
+      "bytes": 2394,
+      "path": "experiments/hiphi-robot-control/summarize.py",
+      "sha256": "cef7159c179fb99331b93d19edd9709e5c2c44ec27f6504b6775ae754aa50b95"
+    }
+  ],
+  "schema_version": 1,
+  "writer_hazards": {
+    "exporter": "First mesh binary write precedes small report writes; alias target is mode 0444. Do not execute historical exporter.",
+    "runner": "First write truncates astro-reference.log before pipeline launch; alias target is mode 0444. Do not execute historical runner.",
+    "summarizer": "Rewrites README; retained as historical source and must not be executed over frozen experiment."
+  }
+}

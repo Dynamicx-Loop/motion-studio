@@ -101,6 +101,18 @@ if __name__ == '__main__': unittest.main()
                        umr_python=Path(sys.executable), umr_run=run)
         self.assertEqual(actual.exit_code, 0, actual.outcomes)
 
+    def test_robot_static_tier_requires_an_explicit_existing_interpreter(self):
+        self.write_suite('tests/test_robot.py', """CHECK_TIER = 'robot-static'
+import unittest
+class Robot(unittest.TestCase):
+    def test_selected_runtime(self): self.assertTrue(True)
+""")
+        missing = check(self.root, tiers=('robot-static',))
+        self.assertEqual(missing.outcomes[0].status, 'unavailable')
+        selected = check(self.root, tiers=('robot-static',),
+                         robot_python=Path(sys.executable))
+        self.assertEqual(selected.exit_code, 0, selected.outcomes)
+
     def test_javascript_check_is_visible_and_requires_declared_saved_bundle(self):
         self.write_suite('scripts/test_search.cjs',
                          '// CHECK_INPUTS: ["records/search.html"]\nprocess.exit(0);\n')

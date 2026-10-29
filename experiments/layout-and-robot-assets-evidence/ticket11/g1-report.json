@@ -1,0 +1,262 @@
+{
+  "definition_id": "g1_29dof",
+  "poses": [
+    "zero",
+    "tpose"
+  ],
+  "findings": [
+    {
+      "check": "joint_metadata",
+      "status": "incompatible",
+      "detail": "left_wrist_roll_joint: physical limits differ; right_wrist_roll_joint: physical limits differ"
+    },
+    {
+      "check": "joint_order",
+      "status": "supported",
+      "detail": "{\"urdf\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28], \"mjcf\": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28]}"
+    },
+    {
+      "check": "named_frames",
+      "status": "incompatible",
+      "detail": "zero: {\"compared_frames\": 50, \"matches\": false, \"max_angle_rad\": 1.4563223238088084e-06, \"max_position_m\": 3.4722706725577904e-07, \"missing_frames\": [\"d435_link\", \"head_link\", \"imu_link\", \"logo_link\", \"mid360_link\"]}"
+    },
+    {
+      "check": "inertial_totals",
+      "status": "incompatible",
+      "detail": "zero: {\"com_difference_m\": 0.0024171402093144815, \"com_world_m\": [[0.019604706649629523, 7.210180859202695e-05, -0.07173461787058986], [0.02171006364910009, 0.0005728181591856701, -0.0706578997865431]], \"inertia_world_com_kg_m2\": [[[3.9118264715961613, -4.156355207269815e-05, -0.009360768591960717], [-4.156355207269815e-05, 3.63860499727937, -0.0007002977202159719], [-0.009360768591960717, -0.0007002977202159719, 0.4760654143686781]], [[3.9436858825517014, -0.003565089926715356, -0.019860709868253695], [-0.003565089926715356, 3.681684397723689, -0.005350195232047524], [-0.019860709868253702, -0.005350195232047524, 0.5039708699281824]]], \"mass_difference_kg\": 0.375999979999996, \"masses_kg\": [35.14914202, 35.525141999999995], \"matches\": false, \"max_inertia_difference_kg_m2\": 0.04307940044431868}"
+    },
+    {
+      "check": "visual_geometry_equality",
+      "status": "incompatible",
+      "detail": "zero: {\"counts\": [52, 53], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "collision_policy",
+      "status": "incompatible",
+      "detail": "zero: {\"counts\": [48, 48], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "collision_geometry_equality",
+      "status": "incompatible",
+      "detail": "zero: {\"counts\": [48, 48], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "named_frames",
+      "status": "incompatible",
+      "detail": "tpose: {\"compared_frames\": 50, \"matches\": false, \"max_angle_rad\": 1.4563223239669607e-06, \"max_position_m\": 8.086425707943001e-07, \"missing_frames\": [\"d435_link\", \"head_link\", \"imu_link\", \"logo_link\", \"mid360_link\"]}"
+    },
+    {
+      "check": "inertial_totals",
+      "status": "incompatible",
+      "detail": "tpose: {\"com_difference_m\": 0.002712984378190791, \"com_world_m\": [[0.007842648740669502, 7.210180859203304e-05, -0.04524698797102779], [0.0076869520682029974, 0.00025896594278784806, -0.042544928649354524]], \"inertia_world_com_kg_m2\": [[[5.096458328179953, -6.930520075709224e-05, 0.06052515839158688], [-6.930520075709137e-05, 4.057526258707898, -0.0006378247644760438], [0.06052515839158688, -0.0006378247644760438, 1.1037574888521828]], [[5.260952068936638, -0.0009618851638398028, 0.06360148781624539], [-0.0009618851638398033, 4.112466180018628, -0.011289986076835781], [0.06360148781624539, -0.011289986076835781, 1.2140008703808833]]], \"mass_difference_kg\": 0.375999979999996, \"masses_kg\": [35.14914202, 35.525141999999995], \"matches\": false, \"max_inertia_difference_kg_m2\": 0.16449374075668555}"
+    },
+    {
+      "check": "visual_geometry_equality",
+      "status": "incompatible",
+      "detail": "tpose: {\"counts\": [52, 53], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "collision_policy",
+      "status": "incompatible",
+      "detail": "tpose: {\"counts\": [48, 48], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "collision_geometry_equality",
+      "status": "incompatible",
+      "detail": "tpose: {\"counts\": [48, 48], \"matches\": false, \"scope\": \"Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.\"}"
+    },
+    {
+      "check": "import_conventions",
+      "status": "supported",
+      "detail": "URDF imported in memory with absolute mesh paths, discardvisual=false, fusestatic=false, strippath=false, inertiafromgeom=false, and an added massless world link/floating joint to the declared root; original MJCF compiled directly. Explicit named scalar qpos and XYZ/wxyz root at each pose; mj_forward only, no keyframe reset or integration. World-frame aggregate mass/COM/inertia includes parallel-axis contributions."
+    }
+  ],
+  "identities": [
+    "ae762a036d62a96297f3e03c30bef43e2cf01c75d9509cf527df6972feefa233",
+    "fac072b4df65b47a71cee6b6e349124bb9dfe944d3e81a90807ea720aeff54a0",
+    "864eb2e8b60dc6830aeb8205bcc841338f7a6285ab0c66cc39b21a580b53ce54",
+    "db75dd1c17edf3065f7fa7c38555bfe8542e464b302857d81e603114192aca6e"
+  ],
+  "source_hashes": [
+    [
+      "LICENSE",
+      "7976e004a50466e0ac0c03dac800ac78dd3d4aa483f0545a04e98deb9150b8ee"
+    ],
+    [
+      "assets/g1/assets/head_link.obj",
+      "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930"
+    ],
+    [
+      "assets/g1/assets/left_ankle_pitch_link.obj",
+      "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82"
+    ],
+    [
+      "assets/g1/assets/left_ankle_roll_link.obj",
+      "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb"
+    ],
+    [
+      "assets/g1/assets/left_elbow_link.obj",
+      "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3"
+    ],
+    [
+      "assets/g1/assets/left_hip_pitch_link.obj",
+      "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e"
+    ],
+    [
+      "assets/g1/assets/left_hip_roll_link.obj",
+      "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781"
+    ],
+    [
+      "assets/g1/assets/left_hip_yaw_link.obj",
+      "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142"
+    ],
+    [
+      "assets/g1/assets/left_knee_link.obj",
+      "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7"
+    ],
+    [
+      "assets/g1/assets/left_rubber_hand.obj",
+      "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab"
+    ],
+    [
+      "assets/g1/assets/left_shoulder_pitch_link.obj",
+      "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e"
+    ],
+    [
+      "assets/g1/assets/left_shoulder_roll_link.obj",
+      "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6"
+    ],
+    [
+      "assets/g1/assets/left_shoulder_yaw_link.obj",
+      "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9"
+    ],
+    [
+      "assets/g1/assets/left_wrist_pitch_link.obj",
+      "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6"
+    ],
+    [
+      "assets/g1/assets/left_wrist_roll_link.obj",
+      "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff"
+    ],
+    [
+      "assets/g1/assets/left_wrist_yaw_link.obj",
+      "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287"
+    ],
+    [
+      "assets/g1/assets/logo_link.mtl",
+      "cd787ead96363aa676d9a79626803f9053ecc7a3cef6d4f1640176a8cf2785d3"
+    ],
+    [
+      "assets/g1/assets/logo_link.obj",
+      "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08"
+    ],
+    [
+      "assets/g1/assets/pelvis.obj",
+      "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8"
+    ],
+    [
+      "assets/g1/assets/pelvis_contour_link.obj",
+      "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f"
+    ],
+    [
+      "assets/g1/assets/right_ankle_pitch_link.obj",
+      "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9"
+    ],
+    [
+      "assets/g1/assets/right_ankle_roll_link.obj",
+      "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1"
+    ],
+    [
+      "assets/g1/assets/right_elbow_link.obj",
+      "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc"
+    ],
+    [
+      "assets/g1/assets/right_hip_pitch_link.obj",
+      "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba"
+    ],
+    [
+      "assets/g1/assets/right_hip_roll_link.obj",
+      "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596"
+    ],
+    [
+      "assets/g1/assets/right_hip_yaw_link.obj",
+      "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318"
+    ],
+    [
+      "assets/g1/assets/right_knee_link.obj",
+      "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c"
+    ],
+    [
+      "assets/g1/assets/right_rubber_hand.obj",
+      "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8"
+    ],
+    [
+      "assets/g1/assets/right_shoulder_pitch_link.obj",
+      "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6"
+    ],
+    [
+      "assets/g1/assets/right_shoulder_roll_link.obj",
+      "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019"
+    ],
+    [
+      "assets/g1/assets/right_shoulder_yaw_link.obj",
+      "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2"
+    ],
+    [
+      "assets/g1/assets/right_wrist_pitch_link.obj",
+      "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3"
+    ],
+    [
+      "assets/g1/assets/right_wrist_roll_link.obj",
+      "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48"
+    ],
+    [
+      "assets/g1/assets/right_wrist_yaw_link.obj",
+      "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279"
+    ],
+    [
+      "assets/g1/assets/torso_link.obj",
+      "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863"
+    ],
+    [
+      "assets/g1/assets/waist_roll_link.obj",
+      "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d"
+    ],
+    [
+      "assets/g1/assets/waist_support_link.obj",
+      "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e"
+    ],
+    [
+      "assets/g1/assets/waist_yaw_link.obj",
+      "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e"
+    ],
+    [
+      "assets/g1/g1_29dof.urdf",
+      "1c5a19d8440d246fd6a21645de0b9bc8b92c99ee5cd895607a402db9eb02a32b"
+    ],
+    [
+      "assets/g1/g1_29dof.xml",
+      "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+    ],
+    [
+      "robot_configs/humanoid_retarget_unitree_g1_example.json",
+      "233e7173edaf20b41bde79042e230d635ef3bd9cee220407400d5a5f82b2ced9"
+    ]
+  ],
+  "runtime": "MuJoCo 3.11.0; NumPy 2.4.4",
+  "position_tolerance_m": 1e-06,
+  "angle_tolerance_rad": 1e-06,
+  "mass_tolerance_kg": 1e-06,
+  "inertia_tolerance_kg_m2": 1e-06,
+  "schema_version": 1,
+  "policy_sha256": "",
+  "declared_checks": [
+    "joint_metadata",
+    "joint_order",
+    "named_frames",
+    "inertial_totals",
+    "visual_geometry_equality",
+    "collision_policy"
+  ],
+  "status": "incompatible"
+}

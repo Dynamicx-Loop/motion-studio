@@ -103,3 +103,30 @@ evidence is preserved under the durable canonical
 read-only alias here; seed receipt storage remains a real directory.
 Root pure checks passed 11/11. Tickets 01/02/03/05/06/09/10 are integrated;
 07/11 are active and 04 is next available implementation work.
+
+### Artifact pilot integration
+
+Ticket 07 integrated at `ba49d3b`: explicit copy-first preservation operations,
+viewer validation and isolated UMR HiPHI preparation. The authorized canonical
+pilot installed 173 verified legacy aliases for 258,336,820 bytes, retaining
+independent original hashes and read-only archives. Durable archive/prepared-run
+receipts have per-directory read-only links here beneath real output parents.
+The initial inventory correctly records 173 declared kind changes plus additive
+03/06/07 receipts; this is not described as an unchanged whole-inventory pass.
+No protected sealed bytes or dependency HEAD/status values drifted.
+Root pure checks passed 14/14. Tickets 01/02/03/05/06/07/09/10 are integrated;
+08 is unblocked, and 04/11 are active.
+
+### Dex3 and representation consistency integration
+
+Ticket 11 integrated at `48aa3b6`: pinned 43-joint Dex3 poses/closure and immutable
+exact-claim representation reports with a separate optional CPU runtime tier.
+Durable measured reports/preservation receipt are committed under
+`experiments/layout-and-robot-assets-evidence/ticket11/`. Astro named-frame and
+scalar metadata claims pass, while aggregate inertia remains incompatible at
+the original conservative tolerance. G1 discrepancies and separate collision
+policy/equality claims remain explicit. No geometry-equivalence or dynamics claim
+was introduced. Root pure checks passed 15/15; the implementer independently
+passed the optional four-case runtime fixture suite and read-only real pairs.
+Tickets 01/02/03/05/06/07/09/10/11 are integrated. Ticket 12 is unblocked;
+04 conversion and 08 storage batches are active, with 13 pending closeout.
