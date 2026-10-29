@@ -75,3 +75,19 @@ pose/closure validation. Root pure checks passed (8/8); runtime representation
 validation remains explicitly unverified until ticket 11. Tickets 01/02/03/05/09
 are integrated. Ticket 06 is finalizing its persisted edition, 07 is active, and
 10/11 are unblocked by resolver integration. No canonical source change occurred.
+
+### Documentation edition integration
+
+Ticket 06 integrated at `074e32c` and its frozen durable edition was published
+using the SHA-256-verified guarded handoff publisher. Integration root/basic/home
+entries are complete static pages and `outputs/docs-site/` remains a real local
+directory with one read-only per-edition alias to canonical
+`outputs/docs-site/ticket06-20261029-validated`. No research input or frozen
+edition was written, and no second 2.5 GB edition copy was made.
+
+Publication verified 3,766 source hashes, 3,604 output hashes, 1,134 local links,
+eight preserved legacy originals, 46 documents and zero new experiments.
+Direct-file browser rendering remains unverified. The publication receipt is
+`outputs/docs-site/ticket06-publication/`; original entries are preserved there
+if present. Root pure plus selected JavaScript checks passed (10/10 suites).
+Tickets 01/02/03/05/06/09 are integrated. Ticket 07 pilot and 10 G1 guard are active.
