@@ -67,3 +67,39 @@ only. Stable preservation and dependency-role receipts have per-child ignored
 read-only links under this worktree's own outputs directory. No ticket worktree
 or ignored receipt has been deleted. Stable ticket 05 evidence is committed under
 `experiments/layout-and-robot-assets-evidence/`.
+
+### Resolver integration
+
+Ticket 09 integrated at `55d43a7`: immutable pinned Astro selection, schema and
+pose/closure validation. Root pure checks passed (8/8); runtime representation
+validation remains explicitly unverified until ticket 11. Tickets 01/02/03/05/09
+are integrated. Ticket 06 is finalizing its persisted edition, 07 is active, and
+10/11 are unblocked by resolver integration. No canonical source change occurred.
+
+### Documentation edition integration
+
+Ticket 06 integrated at `074e32c` and its frozen durable edition was published
+using the SHA-256-verified guarded handoff publisher. Integration root/basic/home
+entries are complete static pages and `outputs/docs-site/` remains a real local
+directory with one read-only per-edition alias to canonical
+`outputs/docs-site/ticket06-20261029-validated`. No research input or frozen
+edition was written, and no second 2.5 GB edition copy was made.
+
+Publication verified 3,766 source hashes, 3,604 output hashes, 1,134 local links,
+eight preserved legacy originals, 46 documents and zero new experiments.
+Direct-file browser rendering remains unverified. The publication receipt is
+`outputs/docs-site/ticket06-publication/`; original entries are preserved there
+if present. Root pure plus selected JavaScript checks passed (10/10 suites).
+Tickets 01/02/03/05/06/09 are integrated. Ticket 07 pilot and 10 G1 guard are active.
+
+### G1 definition and baseline guard integration
+
+Ticket 10 integrated at `5c5d166`: explicit pinned G1 comparison definition plus
+regression coverage preserving catalog-independent official baseline preparation.
+The URDF/MJCF pair is reported incompatible at unchanged tolerances; shared
+runtime consistency validation remains ticket 11. Fresh run-local MJCF compile
+evidence is preserved under the durable canonical
+`outputs/implementation/layout-and-robot-assets/ticket10/` with a per-directory
+read-only alias here; seed receipt storage remains a real directory.
+Root pure checks passed 11/11. Tickets 01/02/03/05/06/09/10 are integrated;
+07/11 are active and 04 is next available implementation work.

@@ -16,3 +16,8 @@ __pycache__/
 /.codex/
 /.agents/
 /.aws/
+
+# Generated complete documentation compatibility entries.
+/docs.html
+/docs-basic.html
+/docs/site/home.html

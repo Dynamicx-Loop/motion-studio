@@ -1,6 +1,6 @@
 # 10 — Define comparison G1 while preserving official UMR reproduction
 
-Status: ready-for-agent
+Status: resolved
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 09
@@ -50,3 +50,54 @@ newly passed GPU test. Record unexercised compilation/consistency checks.
 
 Planning only. Original UMR source assets, October 24 pair and October 29 G1
 results remain frozen; this ticket does not advance either baseline.
+
+Claimed on `codex/layout-assets-10` from `54ac3e3`; approved seams are public
+`reproduce_g1_baseline`, CLI help, and `resolve_robot`.
+
+## Answer
+
+Implemented [explicit G1 comparison definition](../../../robots/g1_29dof/README.md),
+complete zero/T-pose records, and
+[bounded consistency observations](../../../robots/g1_29dof/consistency-observations.json).
+Exact pinned source closure is 38 files per representation, with two separate
+provenance files. No upstream models/assets were added to Git or modified.
+Joint metadata and poses resolve against committed UMR bytes for both formats.
+The URDF/MJCF pair is incompatible at unchanged spec tolerances (wrist limit and
+orientation differences, missing fixed frames and different mass totals); visual
+and collision equivalence remains unverified. Ticket 11 owns common runtime
+validation/certification; this record does not claim it has run.
+
+The original public baseline signature/defaults, pin, worker, configuration and
+full-bundle preparation are unchanged. A fresh-output safety gap is closed when
+`externals/UMR` or the destination resolves through symlinks into the actual
+external source. Tests operate through the public baseline in an isolated package
+with its actual default catalog removed or redirected. Tiny fixture boundaries
+replace scientific runtime, Git's pinned identity and licensed human-model I/O;
+real owned preparation copies every asset, preserves calibration/full clip, and
+keeps generated XML local. Existing output and frozen-record fixture bytes remain
+unchanged. Changed required assets, unreviewed pins and existing runs fail before
+output mutation. Public help remains runtime/catalog independent.
+
+Validation:
+
+- TDD red/green: linked-external destination test failed on original guard, passed
+  after tightening; explicit G1 selection failed before definition, passed after.
+- `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py`: all 10 pure suites passed.
+- Four real-source read-only selections (`urdf`/`mjcf`, `zero`/`tpose`) passed,
+  each with 29 ordered scalar joints and 40 required source/provenance files.
+- Existing UMR MuJoCo 3.3.7 compiled only a fresh full run-local G1 copy:
+  nq=36, nv=35, nbody=51, mass=35.525142 kg. Whole source bundle hashes matched
+  before/after. Stable ignored receipt and exact compile script:
+  `/data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket10/`.
+- `git diff --check` passed; source paths and new local documentation links checked.
+
+No GPU job, training, motion retargeting, simulation stepping, upstream writes,
+asset regeneration or historical baseline advancement was performed. Prior
+MuJoCo 3.11 controlled-import measurements are labeled prior observations;
+the new 3.3.7 compile is not a parity claim or a newly passed numerical baseline.
+
+Post-integration verification: merged ticket 06 integration tip `bf29d30` into
+this branch (`fb9dd88`). Root pure checks passed **11/11**; diff whitespace check
+against the ticket's original base passed, and the working tree was clean before
+recording this final result. No G1 schema or scientific behavior changed during
+the integration merge.

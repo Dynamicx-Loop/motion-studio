@@ -1,0 +1,105 @@
+{
+  "schema_version": 1,
+  "angle_unit": "radian",
+  "poses": {
+    "zero": {
+      "joints": {
+        "left_hip_pitch_joint": 0,
+        "left_hip_roll_joint": 0,
+        "left_hip_yaw_joint": 0,
+        "left_knee_joint": 0,
+        "left_ankle_pitch_joint": 0,
+        "left_ankle_roll_joint": 0,
+        "right_hip_pitch_joint": 0,
+        "right_hip_roll_joint": 0,
+        "right_hip_yaw_joint": 0,
+        "right_knee_joint": 0,
+        "right_ankle_pitch_joint": 0,
+        "right_ankle_roll_joint": 0,
+        "waist_yaw_joint": 0,
+        "waist_pitch_joint": 0,
+        "waist_roll_joint": 0,
+        "left_shoulder_pitch_joint": 0,
+        "left_shoulder_roll_joint": 0,
+        "left_shoulder_yaw_joint": 0,
+        "left_elbow_joint": 0,
+        "left_wrist_roll_joint": 0,
+        "left_wrist_pitch_joint": 0,
+        "left_wrist_yaw_joint": 0,
+        "right_shoulder_pitch_joint": 0,
+        "right_shoulder_roll_joint": 0,
+        "right_shoulder_yaw_joint": 0,
+        "right_elbow_joint": 0,
+        "right_wrist_roll_joint": 0,
+        "right_wrist_pitch_joint": 0,
+        "right_wrist_yaw_joint": 0
+      },
+      "root_translation": [
+        0,
+        0,
+        0
+      ],
+      "root_quaternion": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "root_handling": "Model root origin, no standing-height offset; world placement belongs to the adapter.",
+      "description": "All scalar joints zero; does not establish ground clearance or contact feasibility.",
+      "provenance": {
+        "source": "Complete scalar zero definition over inspected robot.yaml dof_order."
+      }
+    },
+    "tpose": {
+      "joints": {
+        "left_hip_pitch_joint": 0,
+        "left_hip_roll_joint": 0,
+        "left_hip_yaw_joint": 0,
+        "left_knee_joint": 0,
+        "left_ankle_pitch_joint": 0,
+        "left_ankle_roll_joint": 0,
+        "right_hip_pitch_joint": 0,
+        "right_hip_roll_joint": 0,
+        "right_hip_yaw_joint": 0,
+        "right_knee_joint": 0,
+        "right_ankle_pitch_joint": 0,
+        "right_ankle_roll_joint": 0,
+        "waist_yaw_joint": 0,
+        "waist_pitch_joint": 0,
+        "waist_roll_joint": 0,
+        "left_shoulder_pitch_joint": 0,
+        "left_shoulder_roll_joint": 1.5707963267948966,
+        "left_shoulder_yaw_joint": 0,
+        "left_elbow_joint": 1.5707963267948966,
+        "left_wrist_roll_joint": 0,
+        "left_wrist_pitch_joint": 0,
+        "left_wrist_yaw_joint": 0,
+        "right_shoulder_pitch_joint": 0,
+        "right_shoulder_roll_joint": -1.5707963267948966,
+        "right_shoulder_yaw_joint": 0,
+        "right_elbow_joint": 1.5707963267948966,
+        "right_wrist_roll_joint": 0,
+        "right_wrist_pitch_joint": 0,
+        "right_wrist_yaw_joint": 0
+      },
+      "root_translation": [
+        0,
+        0,
+        0
+      ],
+      "root_quaternion": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "root_handling": "Model root origin, no standing-height offset; world placement belongs to the adapter.",
+      "provenance": {
+        "source": "configs/umr/astro_p2_29dof.json",
+        "sha256": "4e0f69aff52297fbc10c6440ebdec28a2fe6296e03e3127c765a21f3a676a6cb",
+        "conversion": "Expanded existing complete tpose_qpos without changing values."
+      }
+    }
+  }
+}

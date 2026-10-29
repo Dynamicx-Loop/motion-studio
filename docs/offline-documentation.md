@@ -1,263 +1,173 @@
-# Offline documentation
+# Offline documentation editions
 
-## Read without a server
+Open **`docs.html`** in the project root. It is a complete static overview,
+with ordinary relative links to Installation, Quick Start, UMR Experiments and
+Supporting records. `docs-basic.html` is a plain HTML overview, and
+`docs/site/home.html` is a complete compatibility overview for the previously
+opened location. These are generated reading entries; none redirects or launches
+a server. The authoring overview is `docs/site/templates/overview.html`.
 
-Double-click **`docs.html` in the Motion Studio project root**:
-`/data/workspace/motion_studio/docs.html`.
+Core reading, navigation, saved figures and progressive search use bundled
+content, inline CSS and embedded images. The full document list remains visible
+when JavaScript is unavailable. External citations are intentional online links.
+Optional 3D inspectors need local HTTP; reading the documentation does not.
 
-This is the documentation itself, not a redirect or a localhost launcher. The
-root entry is a script-free overview. Installation, Quick Start, UMR Experiments
-and Supporting records each open as a separate generated HTML page through
-ordinary relative file links. CSS is inline; the supporting-records page embeds
-the optional JavaScript search index and saved figures. Their styles are inline and displayed images are embedded. Reading,
-search, navigation, tables and saved visual comparisons require no server,
-internet, API, service worker or account. Plain source/provenance attachments are
-local files; they are not fetched by application code.
+## Build a fresh edition
 
-The documentation continues to use the existing research viewer bundle in
-`outputs/umr-binding-report/`. Its original bilingual report remains a separate
-legacy reading view with the same anchors. New documentation is in English;
-original EN/中 pages remain bilingual. TeX is readable source notation, with no
-remote math renderer. This small Markdown reader supports the documented subset.
-
-### Direct-file verification and blank-view diagnosis
-
-The automation browser rejected `file://` navigation because its URL policy
-permits only HTTP/HTTPS. That denial was not retried or bypassed. No browser
-security, permissions or system settings were changed. Static file-link and
-embedded-resource checks, plus a JavaScript search test in Node, are automated;
-these do **not** establish a successful browser file-open test.
-
-The first user check **failed**: the built-in browser displayed a blank page.
-The reported view is not exposed to this task's browser inventory, so its cause
-is unresolved. Parsing the saved root file with an HTML5 parser found no errors,
-16,565 characters of static main content and all 44 document links. This rules
-out an empty generated document, but does not prove a browser can load the file.
-
-The revised reader keeps the complete static document library visible before
-JavaScript runs and only reveals search controls after successful initialization.
-A generated **`docs-basic.html` in the same project root** provides a small
-overview and separate-page links without CSS, JavaScript, CSP or embedded image
-payloads. The other pages remain readable without JavaScript. It is a fallback reading view,
-not a different site or a localhost launcher. Both root files are built together.
-
-The remaining manual diagnostic is to open `docs-basic.html` in the same browser
-and note its address and whether the heading and document links appear. A blank
-plain file would narrow the issue toward document loading; a visible plain page
-would narrow it toward the enhanced page or its treatment by that browser.
-Neither outcome has been observed by this task. Do not change browser security.
-
-### Confirmed authoring-template entry mistake
-
-A later Chrome tab inventory established the actual open URL as
-`file:///data/workspace/motion_studio/docs/site/home.html`. At that time this was
-an unbuilt authoring fragment: it had no document shell or CSS, still contained
-`{{DOC:...}}` tokens, and its `installation.html` and `quick-start.html` links
-resolved to nonexistent files under `docs/site/`. This explains that reported
-unstyled home and broken subpage navigation. It does not establish the cause of
-the earlier, separate report about root `docs.html`.
-
-The original template bytes are preserved at `docs/site/templates/overview.html`.
-The builder now writes a complete compatibility overview at the already-open
-`docs/site/home.html`, with inline CSS, no scripts, and correct `../../` paths
-to root entries and generated section pages. The preferred entry remains root
-`docs.html`. Reloading the already-open home file is the minimal remaining
-manual check, followed by Installation and Quick Start.
-
-Browser inventory exposed the URL, but observation of that existing file tab
-was denied by the browser URL policy (HTTP/HTTPS only). No retry, indirect
-navigation or security change followed. Disk parsing and link checks passed;
-post-repair rendering of this exact file has not been observed.
-
-## Optional advanced inspectors
-
-Only interactive 3D / motion inspectors need local HTTP for their JavaScript
-modules and saved geometry. They are visibly separated under **Optional 3D
-tools**, and are not needed to read the documentation or saved figures.
-If you choose to use them, start from the project root:
+From the owned source workspace:
 
 ```sh
-python3 -m http.server 8770 --bind 127.0.0.1 --directory outputs/umr-binding-report
+python3 scripts/build_docs.py --edition local-20261029-01
+python3 scripts/verify_docs.py --edition local-20261029-01
+node scripts/docs_site/test_search.cjs --edition local-20261029-01
+python3 scripts/check.py --tier javascript --docs-edition outputs/docs-site/local-20261029-01
 ```
 
-Then open `http://127.0.0.1:8770/inspectors/canonical-motion/index.html`.
-Reuse the server if already running; Ctrl+C stops one started in your terminal.
-This optional route was verified previously for static inspection and saved
-motion playback. It does not perform a new experiment. Untouched historical
-archives retain their original dependencies and were not all audited.
+The default edition name is `current`. Every destination must be fresh; choose a
+new name for the next build. No existing edition is overwritten. `--output PATH`
+selects a different fresh destination on build, verify and Node search commands.
+The check command's `--docs-edition PATH` selects the generated directory explicitly.
+Without selection, the historical Node command still checks
+`outputs/umr-binding-report/supporting-records.html`. Missing selected prerequisites
+are reported as unavailable by the root check command, with a nonzero exit.
+See [checks](checks.md) for runtime tiers.
 
-## Rebuild after editing
+For a worktree with source files but separately preserved evidence:
 
 ```sh
-python3 scripts/build_docs.py
-python3 scripts/verify_docs.py
+python3 scripts/build_docs.py --source-root . \
+  --evidence-root /data/workspace/motion_studio --edition local-20261029-02
+python3 scripts/verify_docs.py --edition local-20261029-02
 ```
 
-If canonical records are unavailable in the current checkout, the normal build
-fails before writing pages. An explicit preservation-only rebuild is available:
+`source-root` owns the catalog, authored templates, styles, search, Markdown
+records, small source attachments and the three compatibility entries.
+`evidence-root` supplies recorded `outputs/` paths, including the existing
+research viewer at `outputs/umr-binding-report/`, the retrospective index at
+`outputs/umr-legacy-index-20261024/`, the recorded static baseline at
+`outputs/umr-astro-baseline-v1/static-20261024-01/`, and referenced saved figures.
+A fresh Git clone does **not** contain these ignored local bundles. Source
+availability is not evidence that licensed assets, environments or GPU jobs work.
+
+The owned operation is `motion_studio.documentation.build_edition(source_root,
+evidence_root, edition=..., output=..., saved_edition=...)`. It copies the local
+report closure, including its saved history and optional inspectors, into staging;
+it never hard-links or decorates the research input. Its manifest records copied
+input and output hashes, authored-source hashes, byte-exact preserved legacy HTML,
+and any existing compatibility entry bytes before replacement. Internal relative
+history links remain local to the copied closure. No UMR import, training,
+retargeting, download or numerical experiment occurs.
+
+All rendering and required-input checks, local reading links and anchors finish
+in staging before publication. A missing source, changed saved snapshot, broken
+reading link or other build failure leaves previous entry bytes and editions
+intact. Existing root/basic/home entries are archived under
+`history/entry-pages/<sha256>/` in the fresh edition. The research input's own
+saved originals stay copied and hash-checked under its existing history paths.
+Old research URLs and bilingual anchors continue to work at the original input;
+the new edition has its own decorated copies.
+
+## Explicit saved-source fallback
+
+Ordinary builds require canonical source records. To reuse missing source text
+from a previous edition, explicitly select preservation-only fallback:
 
 ```sh
-python3 scripts/build_docs.py --saved-sources
-python3 scripts/verify_docs.py
+python3 scripts/build_docs.py --edition saved-20261029-01 --saved-sources \
+  --saved-edition outputs/docs-site/local-20261029-01
+python3 scripts/verify_docs.py --edition saved-20261029-01
 ```
 
-This mode reads a missing source only from its existing local snapshot after
-checking the previously recorded SHA-256. It never restores or alters Git files.
-Every generated page displays “Saved evidence edition”; the manifest records
-`reused_source_snapshots`. An earlier revision reused ten missing sources while the execution checkout
-reported `master` at `72647c2`, rather than the supplied experiment branch.
-After explicit user authorization, the root was safely switched back to
-`experiments/umr-astro`; the normal canonical-source build now passes with zero
-snapshot fallbacks. The earlier reason for the checkout mismatch is unknown.
+The fallback snapshot must match the prior manifest's recorded SHA-256. Missing
+or changed snapshots fail; canonical files that exist remain authoritative.
+`--saved-sources` alone explicitly selects snapshots in the input research bundle.
+Every generated reading page displays **Saved evidence edition** when fallback
+is enabled, and the manifest names each reused source snapshot. This is saved
+evidence, not fresh environment or experiment validation. No canonical file is
+restored or changed by fallback.
 
-Both commands use system Python and its standard library. They do not import
-UMR, train, retarget, install packages or use the network. The builder expects
-the existing local research bundle and saved experiment records. A fresh Git
-clone alone does not include ignored outputs or legacy user files.
+## Verification and browser limits
 
-The builder writes root `docs.html` and `docs-basic.html`, plus the existing bundle entry and
-`documentation/` under `outputs/umr-binding-report/`. Both overview entry points are built
-from the same sources; root URLs are rebased at build time. Search lives on
-`outputs/umr-binding-report/supporting-records.html`. Displayed figures are data URLs, avoiding file-origin image
-policy differences. There is no runtime path discovery.
-It preserves a byte-exact copy of each existing HTML entry it decorates under
-`history/documentation-scaffold/` before adding a legacy banner and local
-inspector dependency paths. Original experiment sources and artifacts stay
-unchanged. Rebuilding the original research report may overwrite its decorated
-HTML; run the docs builder afterward to reapply the additive navigation.
+`motion_studio.documentation.verify_edition(output)` verifies source/output and
+preserved-original hashes, local links and fragments, catalog/search destinations,
+inline reading resources, saved figures and original legacy anchor retention.
+The manifest records source/evidence roots; optional overrides support a relocated
+local workspace. `verify_docs.py --report PATH` saves an explicit verification
+receipt. Verification alone does not mutate the research bundle.
 
-The documentation manifest records source SHA-256 hashes, generated output
-hashes, preserved originals and unavailable/unbundled source links. The older
-report manifest describes its original build, before the documented decoration.
-The docs builder hashes the current baseline evidence and snapshots small JSON
-records; it does not rerun the experiment or revalidate all raw tensors.
+Pure fixture tests run in `python3 scripts/check.py`. They exercise publication,
+missing inputs, broken authored links, explicit saved fallback and corrupt
+snapshots without requiring the real local evidence. The Node search check runs
+six progressive-search cases in its explicit JavaScript tier; it does not prove
+browser direct-file rendering.
 
-## Add a study
+An earlier user file-open check produced a blank page. A later inventory found
+`docs/site/home.html` had been an unbuilt template fragment; its authoring source
+was preserved at `templates/overview.html` and the generated compatibility entry
+now has a full document shell and valid links. Those observations do not establish
+the cause of the earlier blank root entry. Browser automation has historically
+rejected `file://` navigation under its HTTP/HTTPS policy. Static checks and HTTP
+preview are distinct evidence; they do not establish successful direct-file
+rendering. Browser security settings are unchanged.
 
-1. Write a versioned Markdown note in `references/`. Separate paper claims,
-   inspected implementation, measured results and inference; pin source revisions.
-2. Add a document to `docs/site/catalog.json`: a permanent `id`, project-relative
-   `path`, `title`, `state` and short `description`. Use `study` or `reference`.
-3. Add a dated timeline item only if it records a meaningful research decision;
-   link its `source` to a registered document. Rebuild and verify.
+## Portable local bundle and optional inspectors
 
-## Add an experiment
-
-1. Start from `experiments/TEMPLATE.md`; keep inputs, configs, commands, source
-   revisions, units, axes, FPS, joint order and failure states explicit.
-2. Register its README with a permanent ID. Use `baseline` only for the separately
-   reviewed prospective cohort; previous reports remain `legacy`.
-3. Keep raw artifacts in their existing output location. Add selected local
-   figures with provenance when available; do not invent media or pool unlike
-   cohorts. The registry reads the frozen legacy index and the current baseline.
-   Updating its numerical contract requires an explicit builder change and review.
-4. Rebuild, verify, and inspect the changed page in a local browser.
-
-Supported document states are `workspace`, `reference`, `study`, `guideline`,
-`baseline` and `legacy`. These are documentation evidence labels, not tracker
-triage statuses. No ticket migration is part of this scaffold.
-
-## Portability and boundaries
-
-For the project-root entry, preserve this relative layout when copying locally:
+Keep this relative layout when moving a project-root reading edition locally:
 
 ```text
 docs.html
 docs-basic.html
-outputs/umr-binding-report/docs.html
-outputs/umr-binding-report/docs-basic.html
-outputs/umr-binding-report/installation.html
-outputs/umr-binding-report/quick-start.html
-outputs/umr-binding-report/umr-experiments.html
-outputs/umr-binding-report/supporting-records.html
-outputs/umr-binding-report/documentation/
-outputs/umr-binding-report/index.html   # original bilingual report
+docs/site/home.html
+outputs/docs-site/<edition>/docs.html
+outputs/docs-site/<edition>/docs-basic.html
+outputs/docs-site/<edition>/installation.html
+outputs/docs-site/<edition>/quick-start.html
+outputs/docs-site/<edition>/umr-experiments.html
+outputs/docs-site/<edition>/supporting-records.html
+outputs/docs-site/<edition>/documentation/
+outputs/docs-site/<edition>/index.html
+outputs/docs-site/<edition>/figures/
+outputs/docs-site/<edition>/records/
+outputs/docs-site/<edition>/history/
+outputs/docs-site/<edition>/inspectors/
 ```
 
-Copy the whole `outputs/umr-binding-report/` folder as well if you want the
-optional inspectors and historical archives. The core reading bundle is not
-just the single root file: linked reader pages and source attachments must
-accompany it. Moving the project directory together keeps relative links valid.
-Keep copies local: bundled processed human/robot geometry and legacy figures
-retain their original asset terms, and this work grants no redistribution rights.
-No external licensed media was downloaded or uploaded.
+Copy the **whole edition** to retain saved history, attachments, local Three.js
+r165 modules and optional inspector geometry. The current local research closure
+is about 2.5 GB, mostly saved inspector/history assets. Root entries reference the
+selected edition; copying only an entry file is insufficient. An edition's own
+`docs.html` is also a usable self-contained entry relative to its adjacent files.
+Verification of relocated source hashes still requires the recorded source and
+evidence roots or explicit equivalent overrides.
 
-Bundled text attachments retain original relative paths under
-`documentation/sources/`. Registered Markdown links point to rendered pages.
-External citations stay links labeled online. Links to large data, external
-checkouts, missing files or unsupported assets become explicit unbundled-path
-notes; the unchanged raw Markdown preserves the original link. Full-fidelity
-source and provenance always remain available alongside the reading view.
+For optional inspectors, open a terminal in the copied edition and run:
 
-The existing saved Three.js r165 modules are reused locally for inspectors;
-license notices are preserved. No system or browser-wide network setting is
-changed. Core pages include a restrictive content policy that prevents remote
-runtime resources; external citation navigation is still an intentional action.
+```sh
+python3 -m http.server 8770 --bind 127.0.0.1
+```
 
-See [the ProtoMotions documentation reference](protomotions-documentation-reference.md)
-for the inspected build and the simple practices reused here.
+Open `http://127.0.0.1:8770/inspectors/canonical-motion/index.html`. This loads saved
+geometry and motion; it runs no experiment. Retained historical archives preserve
+their original dependencies and are not all audited as interactive applications.
+Core reading does not depend on this server.
 
-## Authoring structure
+Keep copies local. Bundled figures, processed human geometry, datasets, model and
+robot assets retain their separate terms; copying grants no redistribution rights.
+Existing Three.js notices are preserved. No licensed media is downloaded or
+uploaded by this workflow.
 
-Edit the three initial sections under `docs/site/pages/`: `installation.html`,
-`quick-start.html`, and `umr-experiments.html`. `templates/overview.html` authors the overview; each section template now builds to its own
-HTML file. `supporting-records.html` is a separate page preserving the library,
-chronology and legacy figures without adding a primary navigation entry. The
-shared shell supplies a three-link sidebar, current-page indication and page
-outline; previous/next links move between real HTML files. Earlier overview
-fragment links retain a small compatibility link list, not concatenated content. Edit `style.css`
-for layout and `search.js` for progressive search. Original Markdown/JSON
-records remain at their original paths and are selected by `catalog.json`.
+## Authoring
 
-This borrows ProtoMotions' authored-pages versus generated-output separation,
-without adopting its Sphinx runtime. Root HTML files and the compatibility `docs/site/home.html` are generated: change the
-source and rebuild, rather than editing generated pages by hand.
+Edit `docs/site/templates/overview.html`, section templates under
+`docs/site/pages/`, `style.css`, `search.js`, and `catalog.json`. Register Markdown
+records with a permanent ID, source path, title, state and description; timeline
+items refer to registered sources. States are `workspace`, `reference`, `study`,
+`guideline`, `baseline` and `legacy`, distinct from tracker statuses.
 
-## Proposed docs branch — not executed
-
-A dedicated root-repository branch such as `docs/offline-scaffold` is useful for
-reviewing documentation independently. It is unrelated to the Git branch in
-`externals/UMR-baseline-v1`; that dependency stays untouched.
-
-After the existing no-commit hold is lifted and the root checkout mismatch is
-resolved, first inventory and hash the docs-owned changes. Preserve a copy of
-the portable output bundle and a whitelist of authored files. Create a separate
-root-repository worktree from the verified `experiments/umr-astro` revision, then
-create the docs branch there. Copy only that whitelist and the README docs
-section into the new worktree; compare hashes and review its diff before any
-selective staging or commit. Leave the original checkout, its untracked files
-and all nested repositories in place. Do not use a blanket stash, reset or clean.
-
-The whitelist is `docs/site/`, `docs/offline-documentation.md`,
-`docs/protomotions-documentation-reference.md`, `scripts/build_docs.py`,
-`scripts/verify_docs.py`, `scripts/docs_site/`, the README documentation section,
-and generated root entries for review. The generated bundle under ignored
-`outputs/` is necessary for reading and must accompany a local handoff; a fresh
-Git clone does not currently reproduce it. Whether to version a distributable
-bundle is a separate review decision, not an ignore-policy change made here.
-No branch, worktree, stage or commit was created by this proposal.
-
-### Separate-page revision validation
-
-The root overview and three primary pages contain no scripts. Supporting records
-contains the prebundled search index and its optional enhancement; its complete
-44-document list is authored HTML. Static checks validate cross-page anchors and
-current-page markers. In the local HTTP preview, the full sequence Overview →
-Installation → Quick Start → UMR Experiments → Supporting records changed to
-distinct HTML URLs with one primary heading each. Desktop and mobile checks and
-SOMA + baseline search passed. This does not establish direct-file browser
-acceptance or explain the original blank built-in-browser report.
-
-## What the documentation commit contains
-
-The local documentation commit versions authored templates, catalog, CSS/JS,
-build/verification scripts, reading tests and small verification notes. Generated
-`docs.html`, `docs-basic.html`, compatibility `docs/site/home.html` and the
-`outputs/umr-binding-report/` reading bundle remain local generated artifacts.
-They are preserved and reproducible here with the normal build command. They
-are not committed as launchers pointing to an absent generated bundle.
-
-A fresh clone still requires the recorded local research/evidence artifacts and
-legacy records before the complete documentation build can run. This source
-commit does not package licensed media, checkpoints, models, external dependency
-contents or unrelated user work, and does not change ignore policies.
+Keep original experiment provenance, revisions, units, conventions and results.
+The reader renders selected recorded evidence and exposes unbundled local paths
+explicitly; it does not reconstruct or advance a baseline. The generated
+`docs/site/home.html` compatibility page is the documented exception inside the
+authored site directory. Do not edit generated entries by hand. Source templates,
+owned build/verify code and tests are versioned; generated entries and editions
+remain ignored local artifacts.
