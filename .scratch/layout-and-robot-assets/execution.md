@@ -1,6 +1,6 @@
 # Implementation orchestration
 
-Status: active
+Status: complete
 
 The user authorized `ask-matt` → `implement-spec` orchestration on 2026-10-29.
 Implementer subagents work on individual branches/worktrees; a merger integrates
@@ -200,3 +200,22 @@ suites passed after merge; the other three tiers were already passed by the fix
 implementer. Durable review receipts have a per-directory alias here.
 The parent spec remains claimed pending focused review verification. No worktree
 cleanup or completion status change was performed.
+
+### Final reviewed completion
+
+Both review axes are closed: zero documented-standard violations; two P2 spec
+findings corrected and focused-verification passed, plus the P3 LEGACY label and
+report-version docs correction. Parent spec is resolved. Final current edition
+`review-20261029-complete` passed ordinary CLI, physical/alias checks, selected
+JavaScript and rendered v2/LEGACY checks; previous editions/entry bytes remain.
+No numerical tests were rerun solely for the one-word final docs correction.
+
+All 14 manual worktrees passed clean status and integrated-HEAD ancestry checks.
+Before removal, all 379 non-cache ignored ordinary files (726,157,963 bytes) were
+conservatively copied and independently hashed under canonical
+`outputs/implementation/layout-and-robot-assets/worktree-cleanup-20261029/`.
+Its manifest SHA-256 is
+`87073206709e2e64efb3964d65f82b87674b98dcec803fcd9c8e5b9906fb22dd`.
+Resource symlink targets were recorded without traversal; caches are disposable.
+The canonical checkout, integration worktree, externals and old compatibility
+worktrees are excluded from cleanup. Branch references are retained.
