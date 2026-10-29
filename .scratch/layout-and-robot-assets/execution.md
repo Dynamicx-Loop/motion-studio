@@ -130,3 +130,30 @@ was introduced. Root pure checks passed 15/15; the implementer independently
 passed the optional four-case runtime fixture suite and read-only real pairs.
 Tickets 01/02/03/05/06/07/09/10/11 are integrated. Ticket 12 is unblocked;
 04 conversion and 08 storage batches are active, with 13 pending closeout.
+
+### Wendy conversion adapter integration
+
+Ticket 04 integrated at `5f6e3ba`: typed owned conversion operation with pinned
+private runtime, exclusive preflight/publication, true source timing and thin CLI.
+Implementer CPU excerpt parity matched all 12 historical array fields and
+16 report fields; synthetic timing/metre expectations were independently checked.
+Durable receipts are preserved under canonical
+`outputs/implementation/layout-and-robot-assets/ticket04/` with a per-directory
+read-only alias here. Root pure checks passed 16/16; no full conversion/GPU or
+source/upstream mutation was performed. Tickets 01/02/03/04/05/06/07/09/10/11
+are integrated. Ticket 08 storage ledger and 12 canonical preparation are active;
+13 closeout remains gated on those outcomes.
+
+### Remaining artifact batches integration
+
+Ticket 08 integrated at `e0283aa`: the bounded ledger accounts for all 1,019
+sealed experiment files across 24 directories plus 21 original output cohorts.
+Including the pilot, 493 files / 1,656,674,064 bytes now live in verified ignored
+archives behind compatibility aliases; 526 small/source files are retained with
+explicit reasons. Original inventory differences remain 493 declared kind changes
+plus additive receipts, with no changed sealed bytes or canonical repository
+drift. No whole-inventory pass or disk-size reduction is claimed.
+Durable ticket08 receipts have a per-directory read-only alias here. Root pure
+checks passed 16/16; optional viewers/direct-file limits remain as recorded.
+Tickets 01 through 11 are integrated. Ticket 12 canonical preparation remains
+active and is the final prerequisite for ticket 13 closeout.
