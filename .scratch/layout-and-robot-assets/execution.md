@@ -49,3 +49,21 @@ byte-exactly. The initial staged whitespace check reports pre-existing findings
 in 23 files; full output is in the ignored seed-whitespace receipt.
 Do not reformat historical evidence to clear those baseline findings. New
 implementation diffs are checked relative to this source checkpoint.
+
+## Integration ledger
+
+As of ticket 05 integration, tickets 01, 02, 03 and 05 are resolved and merged.
+Ticket 06 (documentation editions) and ticket 09 (robot resolver) are active.
+Tickets 04, 07, 08, 10, 11, 12 and 13 remain pending dependency-frontier dispatch.
+The initial source checkpoint above remains unchanged and is the review base.
+
+- 02: `370c106` — explicit test discovery/runtime tiers; pure checks passed.
+- 01: `de0d6f5` — sealed canonical inventory and recovery; pure checks passed.
+- 03: `bbd6dac` — pinned conversion dependency and preserved historical roles; pure checks passed.
+- 05: `7cd852e` — owned legacy evidence operations and motion-path compatibility; pure checks passed.
+
+Root checks run with `PYTHONDONTWRITEBYTECODE=1`; shared evidence links are inputs
+only. Stable preservation and dependency-role receipts have per-child ignored
+read-only links under this worktree's own outputs directory. No ticket worktree
+or ignored receipt has been deleted. Stable ticket 05 evidence is committed under
+`experiments/layout-and-robot-assets-evidence/`.

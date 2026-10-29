@@ -32,7 +32,7 @@ python3 scripts/check.py --tier umr-static \
 
 | Tier | Checks and prerequisites |
 | --- | --- |
-| `pure` | G1 interface safety, recorded motion paths, Markdown reading and check-command fixtures; subsequent owned pure tests are discovered automatically. |
+| `pure` | G1 interface safety, recorded motion paths, evidence/preparation fixtures, Markdown reading and check-command fixtures; subsequent owned pure tests are discovered automatically. |
 | `saved-evidence` | Retrospective legacy reconstruction, declared saved experiment records and schema-validation package in the calling Python. No numerical rerun. |
 | `javascript` | Node.js search check against the selected generated reading edition (historical research bundle by default). Its six cases do not establish browser direct-file rendering. |
 | `umr-static` | Original static-pair suite, explicit external interpreter, preserved run/config/assets and the pinned historical checkout. No training, retargeting or simulation. |
@@ -91,3 +91,8 @@ Direct Node invocation also accepts `MOTION_STUDIO_DOCS_EDITION` as a directory;
 the root check command uses its explicit flag so preflight and execution agree.
 The owned `check(..., docs_edition=Path(...))` API accepts the same selection.
 New pure documentation fixture tests are discovered automatically.
+
+The evidence fixture suite declares `jsonschema` as a tooling prerequisite; a missing
+module is reported as unavailable. Its small saved-input examples need no external
+checkout or historical report builder. Full legacy reconstruction stays in the
+`saved-evidence` tier; see [the owned evidence operations](evidence.md).

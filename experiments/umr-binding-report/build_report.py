@@ -9,6 +9,11 @@ import hashlib
 import html
 import json
 import math
+import sys
+
+# Historical builder remains callable; reusable evidence rules are owned centrally.
+sys.path.insert(0, str(Path(__file__).resolve().parents[2]))
+from motion_studio.evidence import normalize_segment, validate_static_result as validate_result
 from localization import validate_translation
 from hands_report import extend as extend_hands
 from correction_report import extend as extend_correction
@@ -68,28 +73,6 @@ def pair(d, suffix):
 def arm_label(arm):
     source, robot, center = arm.split('_')
     return f"{'SMPL-X' if source == 'smplx' else 'SOMA'} · {'Astro old / no hand meshes' if robot == 'astro' else 'G1'} · {center}"
-
-
-def normalize_segment(row, common):
-    return {
-        'segment': row['source'], 'slots': row['slots'],
-        'compatible': row['compatible'] if common else row['compatible_zone_slots'],
-        'precision': row['zone_precision'],
-        'coverage': row.get('coverage_within_20mm') if common else row.get('expected_sample_coverage_within_20mm'),
-        'high_slots': row.get('high_confidence_slots'),
-        'high_compatible': row.get('high_confidence_compatible'),
-    }
-
-
-def validate_result(d, common=False):
-    rows = d['common_per_segment'] if common else d['per_segment']
-    assert len(rows) == (18 if common else 19)
-    assert sum(r['slots'] for r in rows) == 4096
-    for row in rows:
-        pct(row['zone_precision'])
-        n = row.get('compatible', row.get('compatible_zone_slots'))
-        assert 0 <= n <= row['slots']
-        assert abs(n / row['slots'] - row['zone_precision']) < 1e-12
 
 
 def snapshot_records(catalog):
@@ -243,6 +226,7 @@ def main():
     read(HERE / 'localization.py')
     read(HERE / 'plot_report.py')
     read(HERE / 'build_report.py')
+    read(ROOT / 'motion_studio/evidence/report_rules.py')
     read(HERE / 'README.md')
     manifest = {'schema_version': 1, 'snapshot_date': catalog['snapshot_date'],
                 'purpose': 'Read-only synthesis inputs; no experiment executed',
