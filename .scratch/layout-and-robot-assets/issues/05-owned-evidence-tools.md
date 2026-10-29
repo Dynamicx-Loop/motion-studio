@@ -1,6 +1,6 @@
 # 05 — Reconstruct sealed legacy evidence through owned modules
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 01, 02
@@ -49,3 +49,6 @@ Record unavailable saved evidence separately from passing fixture checks.
 
 Planning only. Moving code does not authorize a numerical rerun, new metrics,
 changing experiment classifications or rewriting historical scripts wholesale.
+
+Claimed on 2026-10-29 in `codex/layout-assets-05` at integration checkpoint
+`de0d6f54bffdb8fc915fa4e2df2e09a6a1892f2c`; scope limited to owned evidence tools.

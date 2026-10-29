@@ -2,7 +2,6 @@
 CHECK_TIER = 'saved-evidence'
 CHECK_MODULES = ('jsonschema',)
 CHECK_INPUTS = (
-    'experiments/umr-binding-report/build_report.py',
     'experiments/soma-correspondence-audit/results.json',
     'experiments/astro-hands-correspondence/results.json',
     'experiments/astro-hand-wrist-correction/results.json',

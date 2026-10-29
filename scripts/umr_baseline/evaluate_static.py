@@ -15,7 +15,8 @@ import numpy as np
 from scipy.spatial import cKDTree
 
 from static_pair import UMR, WORKSPACE, check_official_source, sha, write
-from motion_data_paths import canonical_motion_config
+from motion_studio.motion_data_paths import canonical_motion_config
+from motion_studio.evidence import validate_static_result
 import build_correspondence_ae_dataset as build
 import humanoid_retarget_pipeline as pipeline
 import retarget_smpl_to_humanoid_surface_vector as rb
@@ -43,9 +44,6 @@ def evaluate(run, workspace):
             raise ValueError('Frozen input changed: ' + path)
     region_path = workspace / 'experiments/segment-binding-audit/regions.py'
     region = load_module('existing_anatomical_regions', region_path)
-    report_folder = workspace / 'experiments/umr-binding-report'
-    sys.path.insert(0, str(report_folder))
-    report = load_module('existing_report_validators', report_folder / 'build_report.py')
     destination = run / 'evaluation'
     destination.mkdir(exist_ok=False)
     results, datasets, learned_human = {}, {}, {}
@@ -111,7 +109,7 @@ def evaluate(run, workspace):
                   'dataset_sha256': sha(dataset_path), 'slots_sha256': sha(slot_path),
                   'training_wall_seconds': receipt['wall_seconds'],
                   'native19_source_counts': {name: int((names == name).sum()) for name in sorted(set(names))}}
-        report.validate_result(result)
+        validate_static_result(result)
         results[arm] = result
         np.savez_compressed(destination / (arm + '-binding.npz'), **production,
                             source_face_ids=source_binding['face_ids'], source_bary=source_binding['bary'],
@@ -127,7 +125,8 @@ def evaluate(run, workspace):
                    'native19_report_validator_passed': True, 'official_tracked_source_unchanged': True},
         'learned_human_slot_difference_m': stats(np.linalg.norm(learned_human['astro'] - learned_human['g1'], axis=1)),
         'evaluation_sources': {str(region_path): sha(region_path),
-                               str(report_folder / 'build_report.py'): sha(report_folder / 'build_report.py'),
+                               str(WORKSPACE / 'motion_studio/evidence/report_rules.py'):
+                                   sha(WORKSPACE / 'motion_studio/evidence/report_rules.py'),
                                str(Path(__file__)): sha(__file__)},
         'definitions': {'precision': 'Compatible target-zone slots divided by native19 source-segment slots',
                         'coverage': 'Fraction of sampled expected target zone within 20 mm of same-source-segment projected slots',
