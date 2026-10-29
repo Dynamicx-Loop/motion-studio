@@ -88,7 +88,9 @@ def reproduce_g1_baseline(output: Path, *, workspace: Path = _WORKSPACE) -> G1Ba
     """
     workspace, output = workspace.resolve(), output.resolve()
     checkout = workspace / 'externals/UMR'
-    if output.is_relative_to(workspace / 'externals'):
+    if (output.is_relative_to(workspace / 'externals')
+            or output.is_relative_to((workspace / 'externals').resolve())
+            or output.is_relative_to(checkout.resolve())):
         raise ValueError('Output must live outside external checkouts')
     if output.exists():
         raise FileExistsError(f'Use a fresh output directory: {output}')

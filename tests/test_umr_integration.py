@@ -28,6 +28,22 @@ class G1BaselineTests(unittest.TestCase):
                 reproduce_g1_baseline(output, workspace=workspace)
             self.assertFalse(output.exists())
 
+    def test_output_resolving_inside_linked_external_is_rejected(self):
+        with tempfile.TemporaryDirectory() as folder:
+            root = Path(folder)
+            workspace = root / 'worktree'
+            (workspace / 'externals').mkdir(parents=True)
+            source = root / 'canonical-umr'
+            source.mkdir()
+            (workspace / 'externals/UMR').symlink_to(source, target_is_directory=True)
+            alias = root / 'alias'
+            alias.symlink_to(source, target_is_directory=True)
+            for output in (source / 'run', alias / 'run'):
+                with self.subTest(output=output):
+                    with self.assertRaisesRegex(ValueError, 'outside external'):
+                        reproduce_g1_baseline(output, workspace=workspace)
+                    self.assertFalse(output.exists())
+
     def test_unreviewed_pin_is_rejected_before_creating_output(self):
         with tempfile.TemporaryDirectory() as folder:
             workspace = Path(folder)

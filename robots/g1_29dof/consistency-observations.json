@@ -1,0 +1,781 @@
+{
+  "schema_version": 1,
+  "status": "incompatible",
+  "scope": "Bounded source and prior CPU observations; no cross-method or dynamics certification. Shared runtime validator is ticket 11.",
+  "source": {
+    "key": "UMR",
+    "repository": "https://github.com/hanyang9/UMR",
+    "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91"
+  },
+  "model_sha256": {
+    "urdf": "1c5a19d8440d246fd6a21645de0b9bc8b92c99ee5cd895607a402db9eb02a32b",
+    "mjcf": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78"
+  },
+  "tolerances": {
+    "translation_m": 1e-06,
+    "orientation_rad": 1e-06,
+    "limit_rad": 1e-06
+  },
+  "joints": [
+    {
+      "name": "left_hip_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -2.5307,
+        "upper": 2.8798
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -2.5307,
+        "upper": 2.8798
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_hip_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.5236,
+        "upper": 2.9671
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.5236,
+        "upper": 2.9671
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_hip_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.7576,
+        "upper": 2.7576
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.7576,
+        "upper": 2.7576
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_knee_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.087267,
+        "upper": 2.8798
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.087267,
+        "upper": 2.8798
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_ankle_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.87267,
+        "upper": 0.5236
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.87267,
+        "upper": 0.5236
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_ankle_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.2618,
+        "upper": 0.2618
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.2618,
+        "upper": 0.2618
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_hip_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -2.5307,
+        "upper": 2.8798
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -2.5307,
+        "upper": 2.8798
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_hip_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -2.9671,
+        "upper": 0.5236
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -2.9671,
+        "upper": 0.5236
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_hip_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.7576,
+        "upper": 2.7576
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.7576,
+        "upper": 2.7576
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_knee_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.087267,
+        "upper": 2.8798
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.087267,
+        "upper": 2.8798
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_ankle_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.87267,
+        "upper": 0.5236
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.87267,
+        "upper": 0.5236
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_ankle_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.2618,
+        "upper": 0.2618
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.2618,
+        "upper": 0.2618
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "waist_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "waist_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.52,
+        "upper": 0.52
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -0.52,
+        "upper": 0.52
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "waist_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.52,
+        "upper": 0.52
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -0.52,
+        "upper": 0.52
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_shoulder_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -3.0892,
+        "upper": 2.6704
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -3.0892,
+        "upper": 2.6704
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_shoulder_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.5882,
+        "upper": 2.2515
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.5882,
+        "upper": 2.2515
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_shoulder_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_elbow_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.0472,
+        "upper": 2.0944
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.0472,
+        "upper": 2.0944
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "left_wrist_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.972222054,
+        "upper": 1.972222054
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.97222,
+        "upper": 1.97222
+      },
+      "max_limit_difference_rad": 2.0539999998625547e-06
+    },
+    {
+      "name": "left_wrist_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.614429558,
+        "upper": 1.614429558
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.61443,
+        "upper": 1.61443
+      },
+      "max_limit_difference_rad": 4.4199999993388417e-07
+    },
+    {
+      "name": "left_wrist_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -1.614429558,
+        "upper": 1.614429558
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -1.61443,
+        "upper": 1.61443
+      },
+      "max_limit_difference_rad": 4.4199999993388417e-07
+    },
+    {
+      "name": "right_shoulder_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -3.0892,
+        "upper": 2.6704
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -3.0892,
+        "upper": 2.6704
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_shoulder_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -2.2515,
+        "upper": 1.5882
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -2.2515,
+        "upper": 1.5882
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_shoulder_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -2.618,
+        "upper": 2.618
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_elbow_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.0472,
+        "upper": 2.0944
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.0472,
+        "upper": 2.0944
+      },
+      "max_limit_difference_rad": 0.0
+    },
+    {
+      "name": "right_wrist_roll_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.972222054,
+        "upper": 1.972222054
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          1.0,
+          0.0,
+          0.0
+        ],
+        "lower": -1.97222,
+        "upper": 1.97222
+      },
+      "max_limit_difference_rad": 2.0539999998625547e-06
+    },
+    {
+      "name": "right_wrist_pitch_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.614429558,
+        "upper": 1.614429558
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          1.0,
+          0.0
+        ],
+        "lower": -1.61443,
+        "upper": 1.61443
+      },
+      "max_limit_difference_rad": 4.4199999993388417e-07
+    },
+    {
+      "name": "right_wrist_yaw_joint",
+      "urdf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -1.614429558,
+        "upper": 1.614429558
+      },
+      "mjcf": {
+        "kind": "revolute",
+        "axis": [
+          0.0,
+          0.0,
+          1.0
+        ],
+        "lower": -1.61443,
+        "upper": 1.61443
+      },
+      "max_limit_difference_rad": 4.4199999993388417e-07
+    }
+  ],
+  "prior_runtime_observation": {
+    "mujoco": "3.11.0",
+    "importer_settings": {
+      "discardvisual": "false",
+      "fusestatic": "false",
+      "strippath": "false",
+      "inertiafromgeom": "false"
+    },
+    "masses": [
+      35.14914202,
+      35.525141999999995
+    ],
+    "counts": [
+      [
+        36,
+        35,
+        56
+      ],
+      [
+        36,
+        35,
+        51
+      ]
+    ],
+    "poses": {
+      "zero": {
+        "max_position_component_error_m": 3.4300192552905173e-07,
+        "max_orientation_angle_rad": 1.4563550618733997e-06,
+        "worst_position_frame": "right_pinky_link"
+      },
+      "tpose": {
+        "max_position_component_error_m": 8.085280510661264e-07,
+        "max_orientation_angle_rad": 1.4568123880149512e-06,
+        "worst_position_frame": "right_pinky_link"
+      }
+    },
+    "urdf_only_named_frames": [
+      "d435_link",
+      "head_link",
+      "imu_link",
+      "logo_link",
+      "mid360_link"
+    ],
+    "mjcf_only_named_frames": []
+  },
+  "visual_inventory": {
+    "urdf_visual_elements": 52,
+    "mjcf_explicit_noncontact_geoms": 53,
+    "status": "unverified",
+    "note": "Contact geoms may also render; counts are not equivalent visual surfaces. Same 36 OBJ files referenced by each model. No blanket visual equality claim."
+  },
+  "collision_inventory": {
+    "urdf_collision_elements": 48,
+    "mjcf_robot_contact_geoms": 48,
+    "mjcf_world_ground_planes": 1,
+    "status": "unverified",
+    "note": "Mesh/contact defaults, local frames and primitive allocation require separate inspection. Equal counts do not imply equivalent collision geometry."
+  },
+  "known_differences": [
+    "URDF-only fixed frames: d435_link, head_link, imu_link, logo_link, mid360_link.",
+    "Wrist-roll lower/upper limits differ by 2.054e-6 rad, exceeding 1e-6 rad.",
+    "Named-frame orientation exceeds 1e-6 rad at zero and tpose in prior controlled import.",
+    "URDF/MJCF total masses 35.14914202/35.525142 kg under controlled import. Pelvis 3.813/3.814 kg; knees 1.932/1.942 kg; ankle-roll .608/.613 kg; wrist-yaw .08457647/.256576 kg. Fixed-hand merges complicate per-body accounting."
+  ]
+}
