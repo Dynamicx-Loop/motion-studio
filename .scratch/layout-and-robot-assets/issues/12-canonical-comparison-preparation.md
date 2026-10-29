@@ -1,6 +1,6 @@
 # 12 — Prepare explicit canonical UMR cohorts with provenance guards
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: [Layout and robot assets](../spec.md)
 Blocked by: 03, 10, 11
@@ -60,3 +60,5 @@ No training, full retarget, cross-method quality or dynamics result is claimed.
 
 Planning only. This is deliberate adapter adoption for comparison preparation;
 a second method and numerical comparison runs require separate concrete needs.
+
+Claimed on 2026-10-29 in `codex/layout-assets-12`, from integration `a9ef925`.
