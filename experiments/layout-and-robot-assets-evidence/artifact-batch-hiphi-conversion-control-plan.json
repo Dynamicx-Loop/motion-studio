@@ -1,0 +1,1747 @@
+{
+  "archive": "outputs/artifact-archives/hiphi-conversion-control-20261029-01",
+  "files": [
+    {
+      "alias_target": "../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/conversion.log",
+      "bytes": 19324,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/conversion.log",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated historical execution log; readonly alias blocks accidental first-write runner",
+      "sha256": "e006b4f67302037d63bfc4b3532f347e56dc88735ca75da6b16bae67f043bd56",
+      "source": "experiments/hiphi-conversion-control/conversion.log"
+    },
+    {
+      "alias_target": "../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/export.log",
+      "bytes": 3538,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/export.log",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated historical execution log; readonly alias blocks accidental first-write runner",
+      "sha256": "da55be1553f306ead5997cd2cb6ec8fb3375d27aa873446c1806111886cb2cb0",
+      "source": "experiments/hiphi-conversion-control/export.log"
+    },
+    {
+      "alias_target": "../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/reconverted.npz",
+      "bytes": 1436382,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/reconverted.npz",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated motion/metric array or neutral derived source; preserve frozen bytes",
+      "sha256": "ed21bdfdbc06cd21e8b24e24420609f0243a1e7bb6cbbc83232eadb01ce5ac61",
+      "source": "experiments/hiphi-conversion-control/reconverted.npz"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-000.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-000.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "edc2a52651ff465c13fafd8e5197e3995eaaaace1ca704ce6ac309e45ac4ad56",
+      "source": "experiments/hiphi-conversion-control/viewer/0-000.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-001.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-001.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "dbe971d7046ec1ca70db1d7b45ff5fc716b402a5cadc19adb46d6da438f43813",
+      "source": "experiments/hiphi-conversion-control/viewer/0-001.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-002.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-002.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "00b9f08d69efc06eee1f5450042419f584f4043e0b5c20f8959cce6cf8b15143",
+      "source": "experiments/hiphi-conversion-control/viewer/0-002.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-003.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-003.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "9b2905cbb24cb4d5b84c59c7c0bae9fb2a8bd28d0b38495ca6dd1f5e54a9c30e",
+      "source": "experiments/hiphi-conversion-control/viewer/0-003.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-004.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-004.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "86c8acdf3d57afc268c6ca8d2f6c6bcae4e119a6e905b28fbb42a4bfa87bf485",
+      "source": "experiments/hiphi-conversion-control/viewer/0-004.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-005.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-005.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d9ca56ff73344dea41414eb20f183dcd20d1ac41e29fb754d575e97efb3c8f6a",
+      "source": "experiments/hiphi-conversion-control/viewer/0-005.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-006.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-006.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b788b13d7f21e529884092827adbe5fba5d15abd031eae71ac3a1a7aa236e91f",
+      "source": "experiments/hiphi-conversion-control/viewer/0-006.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-007.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-007.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "bbc06a7000d2ce1aad8cdb56f18991fd103fc8ff079cebe45b092f086b48998b",
+      "source": "experiments/hiphi-conversion-control/viewer/0-007.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-008.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-008.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "dbcbd0c040301332fc8d48bec6c8fac6451a74d13cd34c72d679f87253614f12",
+      "source": "experiments/hiphi-conversion-control/viewer/0-008.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-009.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-009.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "9e7934c69339349af4c1c4b364cf450cf057543c6ab12870e1718d95f0257226",
+      "source": "experiments/hiphi-conversion-control/viewer/0-009.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-010.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-010.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "74bf88ba4d0dddc851c0c0d25edd29225f4e065bcc4ea5c75015c5813664748f",
+      "source": "experiments/hiphi-conversion-control/viewer/0-010.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-011.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-011.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "24ede0d2891080b49f1962397073ac094690f8a9546850f941b5860479073472",
+      "source": "experiments/hiphi-conversion-control/viewer/0-011.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-012.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-012.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ae2976bade078c4de6d9f731bebfe387aa911e7d33ec217de02b526c96f2e893",
+      "source": "experiments/hiphi-conversion-control/viewer/0-012.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-013.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-013.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c99a8641ef3c503146bfd186b52d83ec8219679c4bc2166b63b11571fa968322",
+      "source": "experiments/hiphi-conversion-control/viewer/0-013.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-014.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-014.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "792c6c1603a6a2d5b9442bf3186119b96d224da03acbbac779b243af743edef8",
+      "source": "experiments/hiphi-conversion-control/viewer/0-014.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-015.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-015.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b9f101755eae98dfc386338f498c6ab3fb828a9ddafc3a4655a27d370d46923f",
+      "source": "experiments/hiphi-conversion-control/viewer/0-015.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-016.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-016.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "eec3729dd636c9eaf65f660af5d641f921f9c8e7c51028be4904cc728b6dbda5",
+      "source": "experiments/hiphi-conversion-control/viewer/0-016.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-017.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-017.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ffa23e453f0416ac96e19aaa4b91755f5347f3319eb73f06d23e96370735a898",
+      "source": "experiments/hiphi-conversion-control/viewer/0-017.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-018.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-018.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0cb13248eb807ff1a408612b2766c94170ef1bc9e1d7b21b1893eeb38bb638a6",
+      "source": "experiments/hiphi-conversion-control/viewer/0-018.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-019.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-019.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "2c4d2e087377c7894e91d5968fe303708aa140e55bbd425b42ed0b15ca17f38e",
+      "source": "experiments/hiphi-conversion-control/viewer/0-019.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-020.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-020.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "e9d9244af1b4950f09a04a3b2dd8adcc44828a424c11da8a2f2c7266fd6dc1c1",
+      "source": "experiments/hiphi-conversion-control/viewer/0-020.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-021.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-021.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "de8eb491153aff3c1e62dcf1f03166396acfb7a147dddc8e274744ce38527174",
+      "source": "experiments/hiphi-conversion-control/viewer/0-021.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-022.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-022.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "1156addd3966cef7b14656d9025aa4e547baccd60b0c616755aa8e188a762d7d",
+      "source": "experiments/hiphi-conversion-control/viewer/0-022.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-023.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-023.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "77c065060be30774d61119b78c596529939e8727661c0a19525295b265e76568",
+      "source": "experiments/hiphi-conversion-control/viewer/0-023.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-024.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-024.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "57da8a58726e1dd8fefa40bf58152dceb62b722d62e5ff5dc6eff6099cfddcaf",
+      "source": "experiments/hiphi-conversion-control/viewer/0-024.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-025.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-025.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "23a1ce8ea44b4029ebaa10b1dc86aa84b8744e2bd757caa3c53b67860902b3b8",
+      "source": "experiments/hiphi-conversion-control/viewer/0-025.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-026.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-026.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "920dc3a8852c052bff6c5a562bf11b05026677f48ab41ca91fac0530208c8813",
+      "source": "experiments/hiphi-conversion-control/viewer/0-026.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-027.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-027.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "4649555f666ef010b14bd4d500c17c4a768b4c31e7eed46130a79313f8d821ba",
+      "source": "experiments/hiphi-conversion-control/viewer/0-027.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-028.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-028.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "dc8d94b9cfd325cdaee094dec484321a9eadd56e0edfb9d8f5c38a9d70f24232",
+      "source": "experiments/hiphi-conversion-control/viewer/0-028.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-029.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-029.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "49aa6774aa9d05039c39498f6352c7d742a58ccb4974668cb34a670d2dbc4f60",
+      "source": "experiments/hiphi-conversion-control/viewer/0-029.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-030.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-030.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7f5e372e1eea0fb42508842eb14ab3be5dcec8b42e45541b37f59d70f59c86a6",
+      "source": "experiments/hiphi-conversion-control/viewer/0-030.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-031.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-031.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "2b231913aab666461e6f33f82b66be35bfd02ebb62bf3d363470d9f5745e84c8",
+      "source": "experiments/hiphi-conversion-control/viewer/0-031.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-032.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-032.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "4b0a37e177a766d50e3067f3f511c032603f8ad8064fbf2b2ee3e2f04a553c05",
+      "source": "experiments/hiphi-conversion-control/viewer/0-032.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-033.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-033.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ebfccfb6eec674e8c5e7f8ef07064160d4529cbddbb0cf8cd9d412f2145e2b91",
+      "source": "experiments/hiphi-conversion-control/viewer/0-033.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-034.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-034.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "a46e998ad3e6535f010994cf40de8479d67f5a8e165a087e7399da8748ba330e",
+      "source": "experiments/hiphi-conversion-control/viewer/0-034.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-035.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-035.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "2c550023290586a23798e8066b5788f0287df1d0b2236c2338cf4978e9e56d1e",
+      "source": "experiments/hiphi-conversion-control/viewer/0-035.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-036.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-036.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "8f5912d523a4bb804705d923c7b513e93f40ad75a7d7a71ccd4304e786f1ad50",
+      "source": "experiments/hiphi-conversion-control/viewer/0-036.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-037.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-037.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "9d334bcc9990475c0af65b177f950e3bd3d21170507838e0da89ed667ce8be96",
+      "source": "experiments/hiphi-conversion-control/viewer/0-037.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-038.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-038.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "121130b2ea7a1f24b94ee01712b636dfad63eab3b5a5c789c46c0ab2ebc3b73c",
+      "source": "experiments/hiphi-conversion-control/viewer/0-038.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-039.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-039.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "fb4aeded3697b1c7706c49ef79b53a14952824dd611c9e046c5669d4c0d664fe",
+      "source": "experiments/hiphi-conversion-control/viewer/0-039.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-040.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-040.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "bef2dc6233ff6b52d9ea39892d948d7003894aa200a12d8698857c5741683087",
+      "source": "experiments/hiphi-conversion-control/viewer/0-040.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-041.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-041.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d2a847aaf3dd0be069e344d6a3cdd45c5c08e786a6b598436efcc58195d52d34",
+      "source": "experiments/hiphi-conversion-control/viewer/0-041.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-042.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-042.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c86863fde31b7a89b09945215ae5a012238cddca05efc8a7cdcdcd4aa8c0922a",
+      "source": "experiments/hiphi-conversion-control/viewer/0-042.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-043.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-043.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "6e6207aedba68ad341892dcb2f83e69a61473a1b7a6b42846997d0abbcf7b89d",
+      "source": "experiments/hiphi-conversion-control/viewer/0-043.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-044.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-044.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "672567da9fd6c06c7aafe3f8e2be607c85cdf1f38570bad4a9e15c5d7a8fbb58",
+      "source": "experiments/hiphi-conversion-control/viewer/0-044.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-045.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-045.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "2052151341b95c966eb9bc1651fd9fc38effd3863144be21487ed5e07cc0d39d",
+      "source": "experiments/hiphi-conversion-control/viewer/0-045.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-046.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-046.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "aebe25a9a451a94f09b6b81db7d9835e7fc2d780c0533766c5ec14600d2dd9a2",
+      "source": "experiments/hiphi-conversion-control/viewer/0-046.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-047.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-047.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "44e236179d411cc994f5e140ff9fbc0e7fb3a85777842ba672cfcb330762f4db",
+      "source": "experiments/hiphi-conversion-control/viewer/0-047.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-048.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-048.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d4382c7342703ef2a75505ce717609cae6418a7893aad8821680d91535eb9f0c",
+      "source": "experiments/hiphi-conversion-control/viewer/0-048.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-049.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-049.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b128b5458eea95709788d295885082d419076df7d28632d0abd5f0bed9c70c88",
+      "source": "experiments/hiphi-conversion-control/viewer/0-049.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-050.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-050.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ccccc929bd5f3975c741b29fc11b89fbab6e4c64b7f4b7c2beaaf0618f58ee3c",
+      "source": "experiments/hiphi-conversion-control/viewer/0-050.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-051.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-051.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c46fa274b4f1cd77747f156b7bef82c0e2eee851fdfca0729a869cafb7431d0c",
+      "source": "experiments/hiphi-conversion-control/viewer/0-051.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-052.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-052.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "79f947b536ec58fa1141e5cbaf6d4894fecf67307096b1786aaf196c8b1f05f6",
+      "source": "experiments/hiphi-conversion-control/viewer/0-052.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-053.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-053.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "672474ca51f84a060d0704c03bf3defd7689700c9e5575d572f4726903dd0d7c",
+      "source": "experiments/hiphi-conversion-control/viewer/0-053.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-054.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-054.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0c6f46cafe89f84182374f4d989ae0e20ccc95d5f3fbdcf60cbfbbf3f89ddeeb",
+      "source": "experiments/hiphi-conversion-control/viewer/0-054.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-055.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-055.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "4eb9e601a9a5d837159b90fcb5c45564fffa1a9d066d87ee0bba6666f95512c9",
+      "source": "experiments/hiphi-conversion-control/viewer/0-055.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-056.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-056.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0023a1dea2245977a4d0c5909259abf075ecf7ae1c73e6e55d70a47e52521287",
+      "source": "experiments/hiphi-conversion-control/viewer/0-056.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-057.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-057.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "71360373af56d106248c83e9d98c6395fcc752c66ecbf294177e464b998082bd",
+      "source": "experiments/hiphi-conversion-control/viewer/0-057.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-058.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-058.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "fe9eb6b0a99bcd6ec490c5532ce855151b3d63cab0e283c713072b58b14b5966",
+      "source": "experiments/hiphi-conversion-control/viewer/0-058.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-059.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-059.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "f469efc38fa9b35a86de69b23621ab973808625288169db5b5766494775cb983",
+      "source": "experiments/hiphi-conversion-control/viewer/0-059.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-060.bin",
+      "bytes": 8547600,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/0-060.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b2a8b43436d68e14182aa83e55f6340e7df8522c6f9549b4c27aa9e90eb9c7c0",
+      "source": "experiments/hiphi-conversion-control/viewer/0-060.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-000.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-000.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "9bc0ff19572d72860f9290d8aa538d30aab2bdf2c0447f53e5ab07e16c21c231",
+      "source": "experiments/hiphi-conversion-control/viewer/1-000.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-001.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-001.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "66c380478aa3cd6c4a385ef057364730b571d76f1e3db87dfbcafa3bd0f89cc1",
+      "source": "experiments/hiphi-conversion-control/viewer/1-001.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-002.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-002.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "176cde921632804d404f7a4258af12bc840bba8b897b028d3ce8b6a78f2bda54",
+      "source": "experiments/hiphi-conversion-control/viewer/1-002.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-003.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-003.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "36af2c0e353ad6077b3e1e1458431b26e84132124723d424ecfac5065b51d9d6",
+      "source": "experiments/hiphi-conversion-control/viewer/1-003.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-004.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-004.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ad7899bc1dfcfaf6fb13020b1e4480f5e121b4eb9bc3aa8b3f7f6dbac6d69bf9",
+      "source": "experiments/hiphi-conversion-control/viewer/1-004.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-005.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-005.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "dedb8775289e9fe0319af5bba612610da246cec09985c41067dc4a2ee798b0b4",
+      "source": "experiments/hiphi-conversion-control/viewer/1-005.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-006.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-006.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ce93efb98df2c6da648dbb034b262c0f22220d9a2ca1c2857e7231f3266debc1",
+      "source": "experiments/hiphi-conversion-control/viewer/1-006.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-007.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-007.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d968adfaa7f23d6d60e159393e95a190a6e22eeb5f1ddbbdaf5e96d6aedcbe27",
+      "source": "experiments/hiphi-conversion-control/viewer/1-007.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-008.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-008.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b29324b0360da828491d693e68445955544164859eb732deecfc833bf2df3df6",
+      "source": "experiments/hiphi-conversion-control/viewer/1-008.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-009.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-009.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "a657a5018d2729decd4405261de7bbf803ba2f17e60abee72df59f3a0e128bb7",
+      "source": "experiments/hiphi-conversion-control/viewer/1-009.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-010.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-010.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7da09891affaa782d6a789548570b097f0cc75c3f39b7eee989018bfb6dcfb18",
+      "source": "experiments/hiphi-conversion-control/viewer/1-010.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-011.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-011.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "353c4352947cefba180eef0441f875b67abe9c01efb5dd6d37b28986b24bca74",
+      "source": "experiments/hiphi-conversion-control/viewer/1-011.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-012.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-012.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "edff45244ea248f7f87cfbe1332a388791e48be3ebf2d5020da1b6742030bc7f",
+      "source": "experiments/hiphi-conversion-control/viewer/1-012.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-013.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-013.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "4ebca3d6504168930e6635ab253a273771639b55bab77dcf20ed660030162de8",
+      "source": "experiments/hiphi-conversion-control/viewer/1-013.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-014.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-014.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "8d6e497c1d29431c2a69b96625655d1f39a5cb79950985921d7102316e8eb11e",
+      "source": "experiments/hiphi-conversion-control/viewer/1-014.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-015.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-015.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "08a477a10543e6d2d647ee11264d0aa13a142f43d5b5404007fd07786b816594",
+      "source": "experiments/hiphi-conversion-control/viewer/1-015.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-016.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-016.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ef33eb3afb9bcfa8871267c6a6c8a4787419b9eb2e472aa3c8158da912730b25",
+      "source": "experiments/hiphi-conversion-control/viewer/1-016.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-017.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-017.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "a60d3e42c0c0ebfa7067da295abdc01b89042e9a1e6abca733638fdcae8c0014",
+      "source": "experiments/hiphi-conversion-control/viewer/1-017.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-018.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-018.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "69fdae3d135dd8860a5db498e882ed4cb0a80b55a6d0d58b029dde45f8880cf5",
+      "source": "experiments/hiphi-conversion-control/viewer/1-018.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-019.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-019.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "2067489fa2d37078ffeb838805f4d9fe3cb74123cebf19dee04a29970f3b4b62",
+      "source": "experiments/hiphi-conversion-control/viewer/1-019.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-020.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-020.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "90af68691e317b99e5b00bb8308cae620424f87448f07eaaeea800d9e06455b9",
+      "source": "experiments/hiphi-conversion-control/viewer/1-020.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-021.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-021.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c362df408d2fe03fed6e101415c75558b6846abb116a1e9e7fa06d8963eb2151",
+      "source": "experiments/hiphi-conversion-control/viewer/1-021.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-022.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-022.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d53d9e14b648eaa7fc32cf0f676d0bf8b15a20c46290b424e31a7105112fdcb2",
+      "source": "experiments/hiphi-conversion-control/viewer/1-022.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-023.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-023.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "826204e16920dd4a1269fbbbca97bcfdec7dbaa27ef3e2694633980f23354e65",
+      "source": "experiments/hiphi-conversion-control/viewer/1-023.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-024.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-024.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7406f32dfc187a7f468eabfd571bda0494842847860dc95f10826c40cb58d4ef",
+      "source": "experiments/hiphi-conversion-control/viewer/1-024.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-025.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-025.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "5f508497cbf6486d3817604f594b3b1a361fc01452ad183035b30ba065dcf39d",
+      "source": "experiments/hiphi-conversion-control/viewer/1-025.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-026.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-026.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "60112fd0b9051ac26602b6439d31c55de427b5879b08379a049108ed4b89056e",
+      "source": "experiments/hiphi-conversion-control/viewer/1-026.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-027.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-027.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "26a5bac2f62f3cc5d1c13606037017ff398c8f14a608e88723a04747bdd16726",
+      "source": "experiments/hiphi-conversion-control/viewer/1-027.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-028.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-028.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "dbf3b76a3776e2012c080863aaff215a5c1417b7f3dd5495209c3ed85abd9c87",
+      "source": "experiments/hiphi-conversion-control/viewer/1-028.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-029.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-029.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "8fad17f72cad9c01598249845fd554372d8d8b008c31ebd7e0f28570ed250f9f",
+      "source": "experiments/hiphi-conversion-control/viewer/1-029.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-030.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-030.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "1cab18886b0be27c19a5f410bfa9c1daef3c6db3f6d45318a547658f5c860d6b",
+      "source": "experiments/hiphi-conversion-control/viewer/1-030.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-031.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-031.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "bcb3988fa91a91356d5eda3bbb338d85f6d82a8ff2517b994c050886ec3dfc79",
+      "source": "experiments/hiphi-conversion-control/viewer/1-031.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-032.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-032.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7e3676c2aa3bc1d85149638f325f84053d65cd7af395a308f9cc79fe83b2130b",
+      "source": "experiments/hiphi-conversion-control/viewer/1-032.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-033.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-033.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d14b1f3a142c9227b31dc1445bb9da730fc3be1d793944f6ce9df30458ad5a06",
+      "source": "experiments/hiphi-conversion-control/viewer/1-033.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-034.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-034.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "a7be6c96657219ff71577bc4f0f54c334cbf56be90a3928a08ecfec0e1d67db5",
+      "source": "experiments/hiphi-conversion-control/viewer/1-034.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-035.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-035.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7f36af898e75f9aa3f5a0d003f84fc87c9f5a439802d350b17e7066be859b642",
+      "source": "experiments/hiphi-conversion-control/viewer/1-035.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-036.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-036.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "3ee4d8b32af15ff7b12a245a89bd9ff4e498648515863f11a72270738716eaad",
+      "source": "experiments/hiphi-conversion-control/viewer/1-036.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-037.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-037.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "89a57460e004606a174049ec5347af091ccb23d8a676229374bef4ab4aeed99e",
+      "source": "experiments/hiphi-conversion-control/viewer/1-037.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-038.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-038.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d7eb86fa5ff841d02b6b3ca9c8cce1ac71b9fd53866cc15eafb13658710ab03e",
+      "source": "experiments/hiphi-conversion-control/viewer/1-038.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-039.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-039.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "495a0bab5272dc3e6befbb1043c9031515a3cbff04faccb7d78f13da0d4e54da",
+      "source": "experiments/hiphi-conversion-control/viewer/1-039.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-040.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-040.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c1364f669d2b77f995bbabdf8d9fc9e87d9a7ac0fd275af71b1051a3f6d7a496",
+      "source": "experiments/hiphi-conversion-control/viewer/1-040.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-041.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-041.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "32e27d4cf26a11841e62780fe12c4295b27caf4a89ec2e21b42b80792afb3d51",
+      "source": "experiments/hiphi-conversion-control/viewer/1-041.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-042.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-042.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "205135b9093351eb31227747b5fc03c3716fd603bbb825ced1931989a2205fd2",
+      "source": "experiments/hiphi-conversion-control/viewer/1-042.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-043.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-043.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "11ea8e1ee99bd8a2378b2241ffd0f93f4c8aeaa01f78a9f5be9b98ff926fb3f6",
+      "source": "experiments/hiphi-conversion-control/viewer/1-043.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-044.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-044.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ed45df232db54ee25d8af2345897be9128ff5a4b40ef14b55ea49b11d1cb88b9",
+      "source": "experiments/hiphi-conversion-control/viewer/1-044.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-045.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-045.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "adc93f24ccb2936c60d7c00bd00d67fda1f5096978b0b996b3e5323e0d095a9e",
+      "source": "experiments/hiphi-conversion-control/viewer/1-045.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-046.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-046.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "47ee1853a2cb1e7ab62e3e8ae08fb12998c72d71ffa3b5d040ca8b71a5eda145",
+      "source": "experiments/hiphi-conversion-control/viewer/1-046.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-047.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-047.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "59d7cdc6b40b4f71d92ae71b4c8a345eeec1d599ccc6a92a3e18ab4a32a9f77d",
+      "source": "experiments/hiphi-conversion-control/viewer/1-047.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-048.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-048.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "e9fd4e840400e656edb8c7c9564c964809502de73057437c3f8574e0c2d67efa",
+      "source": "experiments/hiphi-conversion-control/viewer/1-048.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-049.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-049.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0df7d02a17e8a3fd251e3bcde3cd868f5a1cbc6f7bb43c58d43c4968ae165ed0",
+      "source": "experiments/hiphi-conversion-control/viewer/1-049.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-050.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-050.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b0823d04603ef9e38adb1cc75be28c81db614dc227e93f80233d8143d17802de",
+      "source": "experiments/hiphi-conversion-control/viewer/1-050.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-051.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-051.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "96ef182ec6288631fc6e10568b7bd4bcb670da3477e962c1a21d43786fd73efd",
+      "source": "experiments/hiphi-conversion-control/viewer/1-051.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-052.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-052.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0ddfd715ee821ae14a245991d8e673ae37b4fd4657a04e910c200ce214092ea3",
+      "source": "experiments/hiphi-conversion-control/viewer/1-052.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-053.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-053.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "f4c7baa7ac73b1b2ed49c07fbbab4fe728c53f52ab4a8226a22ff09a4f76878d",
+      "source": "experiments/hiphi-conversion-control/viewer/1-053.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-054.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-054.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "9827764ce11e84685cf8d87c5080ebe007cb2ef361aebf5d78acc35563a21fd8",
+      "source": "experiments/hiphi-conversion-control/viewer/1-054.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-055.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-055.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "137220375e67036aaa93f3ae2e1f75bb8f41966e6d8ec13ce8d8c0a6f454ae02",
+      "source": "experiments/hiphi-conversion-control/viewer/1-055.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-056.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-056.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "7b80cbd6c32bf51836d6dd4a4b8692fa87e1839aed3c90088e65007fcabbba7c",
+      "source": "experiments/hiphi-conversion-control/viewer/1-056.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-057.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-057.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c0c5aff80b1ab7c489fa8af2b81d3f6262638acc8afefeb9dc8e526cc9698d15",
+      "source": "experiments/hiphi-conversion-control/viewer/1-057.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-058.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-058.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "d91cfa262c9489f4aa215577a40e2bbf6b14e20f8813e96ab99ffa2db3a6b401",
+      "source": "experiments/hiphi-conversion-control/viewer/1-058.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-059.bin",
+      "bytes": 11313000,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-059.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "13fe861c339e0b6d83b744cdcabdfa8159563ce00a9ca31a121b170f848c31c5",
+      "source": "experiments/hiphi-conversion-control/viewer/1-059.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-060.bin",
+      "bytes": 8547600,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/1-060.bin",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "53bbc2ff98d74081474ec36584907981124913bc1e6dd4f6400ce055e9a2efbf",
+      "source": "experiments/hiphi-conversion-control/viewer/1-060.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/app.js",
+      "bytes": 4227,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/app.js",
+      "inbound_references": [
+        "experiments/hiphi-conversion-control/viewer/index.html",
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "c6ae42e461b1724ec495b71f2d333e3c720034b10549c37aed02d1d7df1bdfca",
+      "source": "experiments/hiphi-conversion-control/viewer/app.js"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/faces.bin",
+      "bytes": 250896,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/faces.bin",
+      "inbound_references": [
+        "experiments/hiphi-conversion-control/viewer/app.js",
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "ba3efe72d485634742a3f7f36c6ec5cebe7475182d056da7c3e8f8afb17c4e23",
+      "source": "experiments/hiphi-conversion-control/viewer/faces.bin"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/index.html",
+      "bytes": 2197,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/index.html",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "b91e037a337f55a5afa741a0b859445b1ffeaed788d32d257fbc745ad3d03469",
+      "source": "experiments/hiphi-conversion-control/viewer/index.html"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/manifest.json",
+      "bytes": 125808,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/manifest.json",
+      "inbound_references": [
+        "experiments/hiphi-conversion-control/viewer/app.js",
+        "experiments/umr-astro-baseline-v1/preservation-before.json",
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "212f5411f92c62669da85667265fe97d2cc937cffab0e8a644c5721356aadb1a",
+      "source": "experiments/hiphi-conversion-control/viewer/manifest.json"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/review-10s.png",
+      "bytes": 833113,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/review-10s.png",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "4eec96e1e3cf8f0df9250221bd4c3f8ec487c4e79bf3247c92dfe7414c043419",
+      "source": "experiments/hiphi-conversion-control/viewer/review-10s.png"
+    },
+    {
+      "alias_target": "../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/review-20s.png",
+      "bytes": 508783,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/review-20s.png",
+      "inbound_references": [
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "0a64e796300e6155eb7c2762915c943608af1e12262cf4128b75a731f4cecd26",
+      "source": "experiments/hiphi-conversion-control/viewer/review-20s.png"
+    },
+    {
+      "alias_target": "../../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/vendor/OrbitControls.js",
+      "bytes": 32250,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/vendor/OrbitControls.js",
+      "inbound_references": [
+        "experiments/hiphi-conversion-control/viewer/index.html",
+        "experiments/hiphi-conversion-control/viewer/vendor/OrbitControls.js",
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "f260591ef315aa04888152e7f121865214e33fb54727145cf4e4445058db1297",
+      "source": "experiments/hiphi-conversion-control/viewer/vendor/OrbitControls.js"
+    },
+    {
+      "alias_target": "../../../../outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/vendor/three.module.js",
+      "bytes": 1284652,
+      "compatibility": "relative-symlink-readonly",
+      "destination": "outputs/artifact-archives/hiphi-conversion-control-20261029-01/files/experiments/hiphi-conversion-control/viewer/vendor/three.module.js",
+      "inbound_references": [
+        "experiments/hiphi-conversion-control/viewer/index.html",
+        "experiments/umr-root-branch-setup/before.json"
+      ],
+      "mode": 436,
+      "role": "generated viewer resource closure (manifest, geometry, copied runtime/vendor, saved reviews)",
+      "sha256": "5916c8dfb5f4e3eede312de305345868d4a0a8105383b080c6985565d6e79b46",
+      "source": "experiments/hiphi-conversion-control/viewer/vendor/three.module.js"
+    }
+  ],
+  "inventory": "/data/workspace/motion_studio/outputs/preservation/layout-and-robot-assets-20261029-01/inventory.json",
+  "inventory_sha256": "32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7",
+  "logical_bytes": 1379156370,
+  "schema_version": 1,
+  "temporary_duplicate_bytes": 1379156370,
+  "workspace": "/data/workspace/motion_studio"
+}
