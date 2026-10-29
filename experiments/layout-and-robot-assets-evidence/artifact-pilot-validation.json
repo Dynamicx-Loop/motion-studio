@@ -12,11 +12,31 @@
   },
   "migrated_files": 173,
   "migrated_logical_bytes": 258336820,
+  "owned_validation": {
+    "archive_verify": {
+      "files": 173,
+      "logical_bytes": 258336820,
+      "passed": true,
+      "state": "aliased"
+    },
+    "command": "PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py",
+    "diff_whitespace": "passed",
+    "integration_parent": "e215cc2",
+    "migration_commit": "d2d5a0e",
+    "notes": [
+      "Unselected runtime tiers were not exercised.",
+      "No whole-inventory pass claimed; declared aliases and additive integration outputs remain explicit."
+    ],
+    "output_ignore": "outputs/artifact-archives/example/model.npz ignored",
+    "pure_suites": "14/14 passed"
+  },
   "peak_temporary_duplicate_bytes": 258336820,
   "prepared_only": "/data/workspace/motion_studio/outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01",
   "preservation": "No changed sealed bytes or repository-state diagnostics; original checker reports 173 declared aliases and additive outputs. No whole-inventory pass claimed.",
   "receipt_sha256": {
     "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/browser-smoke.json": "fd391f5fb0edd587f02a970dc226ecccc46d564b5de992d50b529217a98a2162",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/final-owned-checks.json": "028960a2d4d986b2538034039b4e827040084c70e492260e481bea2eee2aba19",
+    "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/final-pure-check-output.txt": "0a0f12320b57f5f3095ce946a3d4ac45ec897ea54498e65ec3104b29cf9ab7f1",
     "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/independent-after-alias.json": "3f1554eb01e0fba3d3f3144a03d3e6a5ab21aa584a2865a223d395b1227dd8be",
     "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/independent-before-alias.json": "73b830d1580cec5c4a7740dbef5ca61728a11af63567bf8b45500ea4c16b01fd",
     "/data/workspace/motion_studio/outputs/artifact-archives/hiphi-robot-control-20261029-01/preservation-after.json": "1192d563e2fb5a4708629055720defbf51a2fae1a119f3c22879869eb6ea7971",

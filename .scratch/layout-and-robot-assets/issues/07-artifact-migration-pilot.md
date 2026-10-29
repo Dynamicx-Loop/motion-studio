@@ -100,7 +100,8 @@ drift, destination conflict, stale resume receipt, nested relative links, ancest
 symlink refusal, interrupted copy and alias phases, restoration without deleting
 archives, normal-user first-write refusal, missing viewer resources/transform sizes,
 and fresh run-local config/model isolation. Root `PYTHONDONTWRITEBYTECODE=1 python3
-scripts/check.py` passed 10/10 pure suites before integration refresh. CLI help and
+scripts/check.py` passed 10/10 pure suites before integration refresh and 14/14
+after merging the newest integration tip (e215cc2). CLI help and
 `git diff --check` passed. Old/new viewer graphs agree: 148 bins, 35/37 robot parts,
 5468 frames and exact transform byte counts. Browser HTTP smoke loaded all bins,
 rendered a canvas, advanced Astro playback, and exercised pause/G1 seek/robot switch/
