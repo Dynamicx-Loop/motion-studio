@@ -151,7 +151,7 @@ class CanonicalPreparationTests(unittest.TestCase):
     def test_exact_claim_guards_reject_stale_wrong_or_unverified_reports_before_creation(self):
         report = compare_representations('fixture', self.f.roots, poses=('zero',), definitions_root=self.f.catalog)
         self.prepare('supported', representation_report=report, required_claims=('joint_order',))
-        cases = [(None, ('joint_order',)), (report, ('named_frames',)),
+        cases = [(replace(report, schema_version=1), ('joint_order',)), (None, ('joint_order',)), (report, ('named_frames',)),
                  (report, ('collision_geometry_equality',)),
                  (replace(report, definition_id='wrong'), ('joint_order',)),
                  (replace(report, poses=('bent',)), ('joint_order',)),

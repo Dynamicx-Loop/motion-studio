@@ -90,3 +90,9 @@ Durable commands, definitions, observations and limits:
 `git diff --check` and referenced local documentation paths passed. The report
 CLI's successful exit means findings were produced; incompatible claims remain
 visible and callers must guard their exact required claims.
+
+### Final review correction — 2026-10-29
+
+Mesh names/bounds no longer certify geometry: unsupported mesh checks are unverified. Exact hash-bound Astro collision policy remains supported independently of equality. Fresh schema-v2 Astro29/Dex3/G1 reports supersede original geometry findings; original reports remain preserved.
+
+See [review and validation](../review.md). Original Answer/history above remains intact.

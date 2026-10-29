@@ -36,7 +36,7 @@ def fixture(root):
         target.write_text('fixture source')
     report = root / 'outputs/umr-binding-report'
     (report / 'inspectors/canonical-motion/vendor').mkdir(parents=True)
-    (report / 'index.html').write_text('<html><head></head><body><h1 id="legacy">EN / 中</h1></body></html>')
+    (report / 'index.html').write_text('<html><head></head><body><div class="top-actions"></div><h1 id="legacy">EN / 中</h1></body></html>')
     (report / 'inspectors/canonical-motion/index.html').write_text('<html><head></head><body>Optional inspector</body></html>')
     (report / 'inspectors/canonical-motion/vendor/three.module.js').write_text("const REVISION = '165';")
     (report / 'inspectors/canonical-motion/vendor/OrbitControls.js').write_text('// saved local module')
@@ -130,6 +130,8 @@ class DocumentationPublicationTests(unittest.TestCase):
             result = build_edition(root, root, edition='first')
             manifest = json.loads(result.manifest.read_text())
             self.assertEqual((root / 'outputs/umr-binding-report/index.html').read_bytes(), original)
+            self.assertNotIn('self.legacy', (result.output / 'index.html').read_text())
+            self.assertIn('LEGACY', (result.output / 'index.html').read_text())
             self.assertIn('motion-docs-overlay', (result.output / 'index.html').read_text())
             self.assertEqual((result.output / manifest['preserved_originals']['index.html']['archive']).read_bytes(), original)
             self.assertEqual((result.output / manifest['preserved_entries']['docs.html']['archive']).read_text(),

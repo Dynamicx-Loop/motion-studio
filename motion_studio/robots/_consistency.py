@@ -12,6 +12,9 @@ from . import RobotSelectionError, resolve_robot
 from ._schema import read_json
 
 
+CONSISTENCY_REPORT_VERSION = 2
+
+
 @dataclass(frozen=True)
 class ConsistencyFinding:
     check: str
@@ -31,18 +34,22 @@ class ConsistencyReport:
     angle_tolerance_rad: float = 1e-6
     mass_tolerance_kg: float = 1e-6
     inertia_tolerance_kg_m2: float = 1e-6
-    schema_version: int = 1
+    schema_version: int = CONSISTENCY_REPORT_VERSION
     policy_sha256: str = ""
     declared_checks: tuple[str, ...] = ("joint_metadata", "joint_order", "named_frames",
         "inertial_totals", "visual_geometry_equality", "collision_policy")
 
     @property
     def status(self) -> str:
+        if self.schema_version != CONSISTENCY_REPORT_VERSION:
+            return 'unverified'
         states = {f.status for f in self.findings if f.check in self.declared_checks or f.check in ('poses','representations','runtime')}
         return 'incompatible' if 'incompatible' in states else (
             'unverified' if 'unverified' in states else 'supported')
 
     def supports(self, check: str) -> bool:
+        if self.schema_version != CONSISTENCY_REPORT_VERSION:
+            return False
         matches = [f for f in self.findings if f.check == check]
         return bool(matches) and all(f.status == 'supported' for f in matches)
 
@@ -142,7 +149,8 @@ def compare_representations(
             for pose, observation in zip(poses, output['poses'], strict=True):
                 for check in ('named_frames','inertial_totals','visual_geometry_equality','collision_policy','collision_geometry_equality'):
                     record = observation[{'visual_geometry_equality':'visuals','collision_policy':'collisions','collision_geometry_equality':'collisions'}.get(check,check)]
-                    status = 'supported' if record['matches'] else 'incompatible'
+                    status = ('unverified' if not record.get('verified', True) else
+                              'supported' if record['matches'] else 'incompatible')
                     detail = pose + ': ' + json.dumps(record, sort_keys=True)
                     if not record['matches'] and check == 'collision_policy' and known and policy.get('collision_differences'):
                         status = 'supported'

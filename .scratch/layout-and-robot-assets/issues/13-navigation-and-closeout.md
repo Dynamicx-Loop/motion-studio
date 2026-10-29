@@ -140,3 +140,9 @@ those bytes and removes only a newly installed alias. For deliberate rollback,
 copy those verified originals back to their exact recorded root/basic/home paths;
 keep both frozen editions and their receipts. Reusing an existing edition was
 independently refused with all current entry hashes unchanged.
+
+### Final review correction — 2026-10-29
+
+Three final-review corrections and comparison-version invalidation are recorded in ../review.md. Fresh review-20261029-final edition supersedes the prior reading edition for current source verification; original frozen 06/13 closures remain intact. Parent remains claimed pending coordinating acceptance.
+
+See [review and validation](../review.md). Original Answer/history above remains intact.

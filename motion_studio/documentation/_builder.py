@@ -379,7 +379,7 @@ class Bundle:
             }
             is_main = path == self.out / "index.html"
             href = "docs.html" if is_main else "../../docs.html"
-            banner = f'''{marker}<div style="background:#fff2da;color:#563d1a;padding:12px 20px;font:14px/1.5 system-ui;border-bottom:1px solid #ba965f"><strong>self.legacy / 历史记录</strong> · Retrospective evidence, not the new baseline. <a style="color:#075c56" href="{href}">Motion Studio documentation / 文档 →</a></div>'''
+            banner = f'''{marker}<div style="background:#fff2da;color:#563d1a;padding:12px 20px;font:14px/1.5 system-ui;border-bottom:1px solid #ba965f"><strong>LEGACY / 历史记录</strong> · Retrospective evidence, not the new baseline. <a style="color:#075c56" href="{href}">Motion Studio documentation / 文档 →</a></div>'''
             if not is_main:
                 banner = banner.replace(
                     "background:#fff2da;",
@@ -389,7 +389,7 @@ class Bundle:
                 # Persistent context inside the existing sticky header, including deep links.
                 current = current.replace(
                     '<div class="top-actions">',
-                    '<a style="color:#ffe2a8;font-size:13px" href="docs.html">self.legacy · Documentation / 文档 →</a><div class="top-actions">',
+                    '<a style="color:#ffe2a8;font-size:13px" href="docs.html">LEGACY · Documentation / 文档 →</a><div class="top-actions">',
                     1,
                 )
             policy = "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'"

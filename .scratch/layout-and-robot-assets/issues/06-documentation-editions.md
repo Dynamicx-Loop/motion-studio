@@ -147,3 +147,9 @@ current pure suites passed afterward, and the frozen edition's current source,
 output, original and link verification passed again. Those receipts are
 `latest-root-checks.json` and `latest-verification.json` in the durable handoff
 directory; the build revision and frozen edition checksums remain unchanged.
+
+### Final review correction — 2026-10-29
+
+Both generated historical labels now read LEGACY. The public build fixture includes the sticky action region and rejects literal self.legacy text. Prior frozen editions remain unchanged.
+
+See [review and validation](../review.md). Original Answer/history above remains intact.

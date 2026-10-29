@@ -36,6 +36,38 @@ class WendyConversionTests(unittest.TestCase):
         config.write_text(json.dumps(value))
         return WendyConversionRequest(config, workspace=root)
 
+    def test_unrelated_linked_external_is_rejected_before_any_writes(self):
+        from unittest.mock import patch
+        for spelling in ('externals/UMR/new/motion.npz','alias/new/motion.npz'):
+            with self.subTest(spelling=spelling), tempfile.TemporaryDirectory() as folder:
+                base=Path(folder); root=base/'workspace'; root.mkdir()
+                external=base/'actual-UMR'; external.mkdir()
+                (root/'externals').mkdir()
+                (root/'externals/UMR').symlink_to(external, target_is_directory=True)
+                (root/'alias').symlink_to(external, target_is_directory=True)
+                request=self.setup_request(root,output=spelling)
+                with patch('motion_studio.integrations.wendy.dependency',side_effect=AssertionError('must reject before dependency access')):
+                    with self.assertRaisesRegex(ValueError,'external'):
+                        convert_wendy(request)
+                self.assertEqual(list(external.iterdir()),[])
+
+    def test_worktree_without_links_protects_canonical_external_target(self):
+        with tempfile.TemporaryDirectory() as folder:
+            base=Path(folder); canonical=base/'canonical'; canonical.mkdir()
+            def git(*args):
+                subprocess.run(['git','-C',str(canonical),*args],check=True,capture_output=True)
+            git('init','-q')
+            git('-c','user.name=Fixture','-c','user.email=fixture@example.invalid',
+                'commit','--allow-empty','-qm','fixture')
+            root=base/'linked'; git('worktree','add','-q','--detach',str(root))
+            external=base/'actual-UMR'; external.mkdir()
+            (canonical/'externals').mkdir()
+            (canonical/'externals/UMR').symlink_to(external,target_is_directory=True)
+            request=self.setup_request(root,output=str(external/'new/motion.npz'))
+            with self.assertRaisesRegex(ValueError,'external'):
+                convert_wendy(request)
+            self.assertEqual(list(external.iterdir()),[])
+
     def test_known_five_frame_source_rejects_end_past_five(self):
         with tempfile.TemporaryDirectory() as folder:
             root = Path(folder)

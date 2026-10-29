@@ -109,8 +109,10 @@ def compare(pair):
         max_inertia_difference_kg_m2=inertia))
     for kind in ('visuals','collisions'):
         a,b = first[4][kind],second[4][kind]
-        result[kind]=dict(matches=geometry_equal(a,b),counts=[len(a),len(b)],
-            scope='Compiled body-local type/size/position/quaternion and mesh name; source mesh bytes sealed by resolver. No surface/contact equality inferred.')
+        verified = not any(x[1] == int(mujoco.mjtGeom.mjGEOM_MESH) for x in a+b)
+        result[kind]=dict(matches=verified and geometry_equal(a,b),verified=verified,
+            counts=[len(a),len(b)],
+            scope='Compiled body-local primitive type/size/position/quaternion; mesh geometry comparison unsupported, regardless of mesh names/bounds or sealed source bytes. No rendered/contact equality inferred.')
     return result
 
 

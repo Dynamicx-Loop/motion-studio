@@ -8,6 +8,16 @@ class ConsistencyTest(unittest.TestCase):
     def report(self,fixture,**kwargs):
         return compare_representations('fixture',fixture.roots,poses=('zero','bent'),definitions_root=fixture.catalog,**kwargs)
 
+    def test_previous_report_semantics_cannot_certify_claims(self):
+        from dataclasses import replace
+        from motion_studio.robots import ConsistencyFinding
+        report=replace(self.report(PairFixture(self)),schema_version=1,
+            findings=(ConsistencyFinding('collision_policy','supported','old mesh bounds'),))
+        self.assertFalse(report.supports('collision_policy'))
+        self.assertEqual(report.status,'unverified')
+        with self.assertRaises(RobotSelectionError):
+            report.require_supported(('collision_policy',))
+
     def test_static_success_does_not_certify_runtime_claims(self):
         f=PairFixture(self);report=self.report(f)
         self.assertEqual(report.status,'unverified')

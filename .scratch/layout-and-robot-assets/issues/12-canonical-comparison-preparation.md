@@ -122,3 +122,9 @@ format/shape agreement and future numerical compatibility remain unverified;
 static preparation without a supplied runtime cannot establish its prerequisites.
 Unselected saved-evidence/JavaScript/static-runtime tiers were not rerun by this
 slice; real fresh CPU preparation/compile is the bounded runtime observation.
+
+### Final review correction — 2026-10-29
+
+Canonical required-claim guards require the current public comparison version (2). Prior schema-v1 reports expose no supported claims and fail preparation even with otherwise matching identities; a public regression first reproduced the unsafe acceptance.
+
+See [review and validation](../review.md). Original Answer/history above remains intact.

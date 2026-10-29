@@ -112,5 +112,5 @@ __all__ = ['resolve_robot', 'RobotSelection', 'RobotSelectionError',
 
 # The optional concrete worker is imported only in its own interpreter.
 from ._consistency import (compare_representations, ConsistencyReport,
-                           ConsistencyFinding)
-__all__ += ['compare_representations', 'ConsistencyReport', 'ConsistencyFinding']
+                           ConsistencyFinding, CONSISTENCY_REPORT_VERSION)
+__all__ += ['compare_representations', 'ConsistencyReport', 'ConsistencyFinding', 'CONSISTENCY_REPORT_VERSION']

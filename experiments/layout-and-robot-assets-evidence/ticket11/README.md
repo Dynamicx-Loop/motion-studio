@@ -98,3 +98,10 @@ surfaces, contact clearance, controller compatibility, dynamic feasibility,
 grasping or hardware calibration. No simulator integration step or viewer was
 run. Callers guard exact required claims, never infer parity from schema success
 or a broad status. No upstream edits or regeneration were used to improve results.
+
+## 2026-10-29 final-review correction
+
+The original reports above remain historical. Their mesh-name/compiled-bounds
+check did not establish mesh geometry equality. The [superseding reports](../review-fixes/README.md)
+leave mesh comparison unverified; only the exact enumerated Astro collision
+policy remains supported. Primitive geometry checks retain their measured scope.

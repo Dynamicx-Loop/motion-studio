@@ -16,7 +16,7 @@ import shutil
 import subprocess
 from typing import Mapping
 
-from motion_studio.robots import ConsistencyReport, RobotSelectionError, resolve_robot
+from motion_studio.robots import CONSISTENCY_REPORT_VERSION, ConsistencyReport, RobotSelectionError, resolve_robot
 from ._umr_canonical_runtime import inspect_runtime, verify_runtime_unchanged
 from ._umr_canonical_model import materialize_pose
 
@@ -102,7 +102,7 @@ def _claims(selection, report, claims, roots, catalog):
         return None
     if report is None:
         raise CanonicalPreparationError('Supply a current representation report for requested claims')
-    if (report.schema_version != 1 or report.definition_id != selection.definition_id
+    if (report.schema_version != CONSISTENCY_REPORT_VERSION or report.definition_id != selection.definition_id
             or selection.pose_name not in report.poses or len(set(report.poses)) != len(report.poses)):
         raise CanonicalPreparationError('Representation report definition/pose/schema mismatch')
     pairs = [resolve_robot(selection.definition_id, rep, pose, roots, definitions_root=catalog)

@@ -108,9 +108,26 @@ def convert_wendy(request: WendyConversionRequest) -> WendyConversionResult:
     if value['start_frame']:
         outputs['excerpt'] = output.with_suffix('.source.bvh')
     checkout = (request.checkout or root / 'externals/hiphi2smplx').resolve()
+    external_dirs = {root / 'externals', _ROOT / 'externals'}
+    # Linked worktrees can lack local external links; protect the common checkout.
+    for workspace in {root, _ROOT}:
+        try:
+            common = Path(subprocess.check_output(['git', '-C', str(workspace), 'rev-parse',
+                '--path-format=absolute', '--git-common-dir'], text=True,
+                stderr=subprocess.PIPE).strip())
+            if common.name == '.git':
+                external_dirs.add(common.parent / 'externals')
+        except (OSError, subprocess.CalledProcessError):
+            pass
+    protected = {checkout}
+    for externals in external_dirs:
+        protected.add(externals.absolute())
+        protected.add(externals.resolve())
+        if externals.is_dir():
+            protected.update(p.resolve() for p in externals.iterdir() if p.is_dir())
     for path in outputs.values():
-        if any(path.resolve().is_relative_to(protected) for protected in
-               ((root / 'externals').resolve(), checkout)):
+        if any(path.absolute().is_relative_to(p) or path.resolve().is_relative_to(p)
+               for p in protected):
             raise ValueError('Outputs must live outside external checkouts')
         if path.exists() or path.is_symlink():
             raise FileExistsError(f'Use fresh outputs; occupied path: {path}')

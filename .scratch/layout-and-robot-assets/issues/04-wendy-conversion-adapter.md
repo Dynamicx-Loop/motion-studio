@@ -73,3 +73,9 @@ five-frame source `[3,5)` verified 100 FPS, original timestamps and known metre
 positions independently. [Experiment and preserved receipts](../../../experiments/wendy-conversion-adapter/README.md)
 record commands, hashes and limits. No upstream edits/install, full historical
 conversion, GPU job or dynamic-feasibility claim. Existing outputs were retained.
+
+### Final review correction — 2026-10-29
+
+Linked external output protection now rejects lexical externals, all resolved child checkout roots and discoverable common-workspace external roots before any writes. Temporary unrelated UMR alias and absent-worktree-link regressions pass without external writes.
+
+See [review and validation](../review.md). Original Answer/history above remains intact.

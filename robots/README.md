@@ -124,10 +124,18 @@ The declared summary checks are `joint_metadata`, `joint_order`, `named_frames`,
 `status` summarizes these checks plus pose/representation/runtime failures.
 `collision_geometry_equality` is a separate optional finding excluded from that
 summary: accepted intentional refinements **never** establish collision equality.
-The visual/collision geometry equality scope is compiled body-local type, size,
-position, quaternion and mesh name with verified source closure bytes, excluding
-world environment geoms. It does not establish rendered surface, material,
-contact response, controller, or dynamic equivalence.
+Report schema version 2 identifies the corrected comparison semantics. Previous
+version reports cannot support claims or satisfy canonical preparation guards;
+regenerate them from the pinned sources.
+
+Geometry equality checks compare compiled body-local primitive type, size,
+position and quaternion, excluding world environment geoms. Any mesh in either
+side makes that geometry check **unverified**: mesh names, bounds and sealed
+source bytes do not establish geometry equality. Collision policy is likewise
+unverified for meshes unless the exact hash-bound pair has enumerated intentional
+differences. An accepted policy never promotes geometry equality. These checks
+do not establish rendered surface, material, contact response, controller, or
+dynamic equivalence.
 
 Position uses maximum named-body translation **Euclidean distance** in metres;
 rotation uses maximum relative rotation angle in radians. Both defaults are
