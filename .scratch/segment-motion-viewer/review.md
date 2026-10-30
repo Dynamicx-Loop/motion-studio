@@ -60,3 +60,28 @@ No native re-solve was needed for the orchestration/representation corrections.
 The separately completed ticket 07 full 500-epoch/5468-frame native acceptance
 and browser/quality observations remain recorded by ticket 07; representation
 checks establish neither contact quality nor dynamic feasibility.
+
+## Follow-up: cross-namespace recovery
+
+Ticket 07 exposed an actual recovery defect when a restricted-shell service at
+port 8898 read state owned by the host CUDA service: an owner absent from that
+PID namespace was falsely marked interrupted. This incident is retained as a
+failure, not evidence of successful crash recovery. The port 8898 service has
+exited; no unknown process was signalled during cleanup.
+
+The narrow correction records boot/PID namespace with each new job. Recovery
+leaves foreign or unprovable owners active, publishes a visible `recovery_notice`
+and blocks new launches. It signals groups only after confirming the same scope
+and exact worker birth identity. A previous boot proves interruption but never
+permits signalling that boot's stored PID. Invisible legacy records remain busy
+until observed/cancelled from their owning environment. Same-scope real service
+death keeps the existing explicit-retry behavior.
+
+`test_studio_owner_scope.py` covers foreign namespace and legacy invisible owners
+plus previous-boot PID collision using a real unrelated sentinel process. All
+three pass; the original implementation fails the foreign-namespace regression
+by returning `interrupted`. `owner-scope-lifecycle.log` records the existing real
+service-crash/orphan/retry and lifecycle checks. Native final acceptance will use
+fresh `outputs/studio-baseline-acceptance-20261030/final-cohort/state` under one
+host CUDA service after this correction is committed; the initial cohort remains
+preserved and is identified by its own source receipts.
