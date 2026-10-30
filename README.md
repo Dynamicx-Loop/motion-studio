@@ -66,6 +66,13 @@ Requires the existing UMR environment, local SMPL-X model, and host GPU access.
 See the [integration review](docs/umr-integration-review.md) and
 [experiment record](experiments/umr-g1-baseline-20261029/README.md).
 
+## Local Studio application
+
+Launch persistent drafts and read-only historical G1 playback with
+`python3 -B scripts/studio.py`. See [Local Studio](docs/local-studio.md) for
+historical registration, offline dependencies and owned service contracts.
+Input preparation and native execution are being added as separate slices.
+
 ## Local documentation
 
 Double-click [docs.html](docs.html) in this project root to read the offline

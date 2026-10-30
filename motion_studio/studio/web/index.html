@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Motion Studio · Local</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<header>
+<strong>Motion Studio</strong>
+<span>Local workspace</span>
+<span id="connection" role="status">Connecting…</span>
+</header>
+<aside id="library">
+<h2>Runs &amp; assets</h2>
+<form id="new-draft">
+<label>Draft name<input name="name" required maxlength="120" placeholder="Walking study">
+</label>
+<button>Create draft</button>
+</form>
+<nav id="runs" aria-label="Saved runs">
+</nav>
+<details>
+<summary>Register historical inspection</summary>
+<form id="history">
+<label>Name<input name="name" required maxlength="120" value="G1 historical reference">
+</label>
+<label>Inspection directory<input name="inspection_path" required placeholder="/absolute/path/to/inspection">
+</label>
+<button>Register read-only result</button>
+</form>
+<small id="history-roots">
+</small>
+</details>
+<h3>Managed assets</h3>
+<p class="muted">No imported assets. Robot and motion preparation will appear here.</p>
+</aside>
+<main>
+<div id="heading">
+<h1 id="run-name">Choose or create a run</h1>
+<p id="identity" class="muted">
+</p>
+</div>
+<nav id="stages" aria-label="Pipeline stages">
+</nav>
+<section id="viewport" aria-label="Stage viewport">
+<p id="empty">Saved inspections open here. Creating a draft never starts computation.</p>
+<iframe id="inspection" title="Synchronized human and robot inspection" hidden>
+</iframe>
+</section>
+</main>
+<aside id="details">
+<h2>Settings &amp; details</h2>
+<p id="kind">Select a saved run.</p>
+<div id="run-details">
+</div>
+<p class="muted">Metres · exact saved frames and FPS. Historical results preserve their original native configuration.</p>
+<a href="/THIRD_PARTY_NOTICES.md">Third-party notices</a>
+</aside>
+<footer>
+<details open>
+<summary>Status &amp; logs</summary>
+<p id="status">Idle · no computation active</p>
+<pre id="error" role="alert">
+</pre>
+<div id="logs">
+</div>
+</details>
+</footer>
+<script type="module" src="/app.js">
+</script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+:root{color-scheme:dark;font:14px system-ui;background:#101923;color:#e9eff6}
+*{box-sizing:border-box}
+body{margin:0;display:grid;grid-template-columns:250px minmax(460px,1fr) 275px;grid-template-rows:58px minmax(0,1fr) 140px;height:100vh;overflow:hidden}
+header{grid-column:1/-1;display:flex;align-items:center;gap:24px;padding:0 24px;border-bottom:1px solid #354351;background:#17232f}
+header strong{font-size:20px}
+header span{color:#9fb2c4}
+#connection{margin-left:auto;font-size:12px}
+aside{padding:20px;overflow:auto;background:#17232f}
+#library{border-right:1px solid #354351}
+#details{border-left:1px solid #354351}
+h1{font-size:23px;margin:0 0 6px}
+h2{font-size:16px;margin:0 0 18px}
+h3{font-size:14px;margin-top:28px}
+p{line-height:1.55}
+label{display:block;margin:12px 0;color:#c5d2df}
+input{display:block;width:100%;margin-top:7px;padding:9px;background:#101923;border:1px solid #53687c;border-radius:5px;color:inherit}
+button{background:#29445b;border:1px solid #53687c;border-radius:5px;color:inherit;padding:8px 10px;cursor:pointer}
+button:hover{background:#3b5a73}
+button:disabled{opacity:.45;cursor:default}
+button[aria-current=true]{background:#356783;border-color:#9bc5e0}
+nav#runs{display:grid;gap:8px;margin:22px 0}
+#runs button{text-align:left;overflow-wrap:anywhere}
+#runs small{display:block;color:#b4c4d1;margin-top:4px}
+.muted,small{color:#9fb2c4}
+main{display:flex;flex-direction:column;min-height:0}
+#heading{padding:22px 24px 12px}
+#identity{font-size:12px;overflow-wrap:anywhere}
+#stages{display:flex;flex-wrap:wrap;gap:6px;padding:0 20px 14px}
+#viewport{position:relative;flex:1;min-height:0;background:radial-gradient(ellipse at center,#25394a,#101923)}
+#empty{position:absolute;inset:35% 10%;text-align:center;color:#9fb2c4}
+iframe{width:100%;height:100%;border:0}
+iframe[hidden]{display:none}
+footer{grid-column:1/-1;padding:14px 24px;border-top:1px solid #354351;background:#131e28;overflow:auto}
+#error{color:#ffb4ad;white-space:pre-wrap}
+pre{font-size:12px;overflow-wrap:anywhere}
+a{color:#a6d9fc}
+summary{cursor:pointer}
+#history-roots{display:block;overflow-wrap:anywhere;margin-top:12px}
+#logs{display:flex;gap:12px}
+@media(max-width:1100px){body{grid-template-columns:220px minmax(420px,1fr);grid-template-rows:58px minmax(0,1fr) 140px}
+#details{display:none}
+}
