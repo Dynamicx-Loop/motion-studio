@@ -52,7 +52,7 @@ class StudioHTTPTests(unittest.TestCase):
                 status, _, body = request(server, 'GET', prefix + 'app.js')
                 self.assertEqual(status, 200)
                 self.assertNotIn(b'UNTRUSTED HISTORICAL SCRIPT', body)
-                for file in ('index.html', 'human-motion.js', 'vendor/three.module.js',
+                for file in ('index.html', 'human-motion.js', 'robot-motion.js', 'vendor/three.module.js',
                              'vendor/OrbitControls.js', 'THIRD_PARTY_NOTICES.md', 'mesh.bin'):
                     self.assertEqual(request(server, 'GET', prefix + file)[0], 200, file)
                 status, _, body = request(server, 'POST', '/api/runs/' + record['run_id'] + '/name',

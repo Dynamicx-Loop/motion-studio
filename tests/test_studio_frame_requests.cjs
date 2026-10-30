@@ -1,9 +1,10 @@
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
-const load = async name => import('data:text/javascript;base64,' + fs.readFileSync(path.join(__dirname, '../motion_studio/studio/web/stage-inspection/', name)).toString('base64'));
+const load = async name => import('data:text/javascript;base64,' + fs.readFileSync(path.join(__dirname, '../motion_studio/studio/web/', name === 'playback.js' ? 'stage-inspection/playback.js' : name)).toString('base64'));
 (async () => {
   const {humanMotion} = await load('human-motion.js');
+  assert.throws(() => humanMotion({chunk_size:2,frame_count:4,vertex_count:1,chunks:[]}, async()=>new Int16Array()), /timeline/);
   const {frameRequests} = await load('playback.js');
   const meta = {chunk_size:2,frame_count:8,vertex_count:1,
     chunks:Array.from({length:4},(_,i)=>({file:String(i),start:i*2,count:2}))};

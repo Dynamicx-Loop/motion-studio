@@ -73,7 +73,7 @@ def export_motion(run, output, reference, binding, robot, mujoco, np, *, expecte
     np.asarray(np.concatenate(vertices), dtype='<f4').tofile(output / 'motion-vertices.bin')
     np.asarray(np.concatenate(faces), dtype='<u4').tofile(output / 'motion-faces.bin')
     state = mujoco.MjData(model)
-    transforms = np.empty((len(qpos), len(ids), 3, 4), dtype='<f4')
+    transforms = np.empty((len(qpos), len(ids), 3, 4), dtype='<f8')
     # World Z-up -> Y-up uses [native y, native z, native x]. Rotation and
     # translation are both converted; local geometry remains in native axes.
     for frame, pose in enumerate(qpos):
@@ -83,10 +83,29 @@ def export_motion(run, output, reference, binding, robot, mujoco, np, *, expecte
         transforms[frame, :, :, 3] = state.geom_xpos[ids][:, [1, 2, 0]]
     if not np.isfinite(transforms).all():
         raise ValueError('Nonfinite motion transforms')
-    transforms.tofile(output / 'motion-transforms.bin')
+    transform_path = output / 'motion-transforms.bin'
+    transforms.tofile(transform_path)
+    # Gate the bytes a viewer decodes, against native binding kinematics. World
+    # coordinates may be far from the origin; float32 silently loses this gate.
+    decoded = np.fromfile(transform_path, dtype='<f8').reshape(transforms.shape)
+    slot_piece = np.asarray([ids.index(int(g)) for g in binding['geom_ids']])
+    local = binding['local_pos']
+    max_error = 0.
+    for frame, pose in enumerate(qpos):
+        state.qpos[:] = pose
+        mujoco.mj_kinematics(model, state)
+        actual = np.einsum('nij,nj->ni', decoded[frame, slot_piece, :, :3], local) + decoded[frame, slot_piece, :, 3]
+        native = np.einsum('nij,nj->ni', state.geom_xmat[binding['geom_ids']].reshape(-1, 3, 3), local) + state.geom_xpos[binding['geom_ids']]
+        error = float(np.max(np.abs(actual - native[:, [1, 2, 0]]), initial=0.))
+        if not np.isfinite(actual).all() or not np.isfinite(error) or error > 5e-7:
+            transform_path.unlink()
+            raise ValueError('Decoded robot binding axis error exceeds 5e-7 m')
+        max_error = max(max_error, error)
     return {'frame_count': len(qpos), 'fps': fps, 'frame_ids': frame_ids.tolist(),
             'qpos_width': model.nq, 'joint_names': joint_names, 'root_quaternion': 'wxyz',
-            'transforms': 'motion-transforms.bin', 'transform_layout': 'frame, geom, row, column; float32 little endian; 3x4 row-major',
+            'transforms': 'motion-transforms.bin', 'transform_schema': 2, 'transform_dtype': '<f8',
+            'transform_layout': 'frame, geom, row, column; float64 little endian; 3x4 row-major',
+            'max_binding_axis_error_m': max_error,
             'coordinates': 'geom-local native Z-up to world Y-up [native y, native z, native x]; metres',
             'vertices': 'motion-vertices.bin', 'faces': 'motion-faces.bin',
             'vertex_count': vertex_offset, 'face_count': face_offset, 'pieces': pieces,
