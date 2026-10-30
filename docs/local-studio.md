@@ -120,3 +120,66 @@ requests. Browser validation for this slice opened the preserved full G1 inspect
 stepped exact source frames, created a draft, restored each selected run on refresh,
 and checked that all page/iframe resource URLs use the local origin. Fresh native
 execution and the broader lifecycle acceptance belong to later tickets.
+
+## Robot import and named poses
+
+Import an absolute local MJCF filename in **Managed assets**, then select that
+robot in a draft. `Studio(..., robot_python=Path(...))` or CLI `--robot-python`
+selects the independent pinned MuJoCo interpreter; the default in this workspace
+is `/data/workspace/motion_studio/externals/UMR/.venv/bin/python`. Viewing existing
+historical bundles still needs no scientific runtime. Compilation and pose preview
+run in that interpreter without importing MuJoCo into the service process.
+
+The source file's parent is the closure boundary. Includes use MuJoCo's main-file
+relative path rule, including nested includes. Compiler mesh/texture directories,
+meshes, height fields and texture faces are checked and copied before compilation.
+Absolute/parent/escaping dependencies, XML entities, missing files and include cycles
+fail explicitly. Material references and defaults are checked by the compiler.
+One named-body articulated robot, one floating root at qpos index zero and named,
+finite-limit hinges are accepted. Slides, balls, ambiguous roots, multi-robot scenes
+and plugin/attached/flexible models are rejected. All body names must be unique for
+torso selection. This structural subset does not certify humanoid morphology or
+dynamic feasibility. The compiled reference pose must satisfy its hinge limits.
+
+Allow fixed-to-floating derivation explicitly in the import form. Only the managed
+expanded XML receives the free joint. A massless root receives recorded synthetic
+inertia (0.001 kg, diagonal 1e-6 kg m²); fixed-root keyframes are rejected because
+their qpos layout needs conversion. Original XML and local dependencies keep their
+bytes, including notices among referenced assets; no source is edited. Imported
+versions are SHA-256 identified under `assets/robots/<asset_id>/`; `asset.json`
+records the copied-file hashes, compiled runtime, limits and derivations. Keep any
+additional source license/notice obligations with the robot source; compilation
+does not grant redistribution rights.
+
+The mesh preview uses compiled local mesh vertices and exact `mj_forward` geometry
+transforms, in metres/Z-up; primitives are triangulated for display. Preview colors
+use compiled RGBA; texture rendering is not reproduced. Search joints, edit numeric
+radians or sliders, and edit root XYZ metres/quaternion wxyz. Nonfinite values,
+wrong nq, non-unit root quaternion and limit violations fail without saving; the
+quaternion normalization button is explicit. Reset restores compiled `qpos0`.
+Select a torso/centering body, name the pose and save. Loading/resetting changes the
+unsaved preview; saving commits an immutable named pose and a fresh run revision.
+Reopening restores the saved selection. Old poses and run revisions remain intact.
+
+Public operations return frozen `RobotAsset`, `RobotJoint` and `RobotPose` records:
+
+- `import_robot(source_path, derive_free_root=False)`, `list_robots()`,
+  `get_robot(asset_id)` and `robot_file(asset_id, registered_name)` own imported
+  versions and hash-check artifact reads. Execution should consume
+  `robot_file(asset_id, 'source/__studio_model.xml')` with native root derivation
+  disabled, never the original source filename.
+- `preview_robot(asset_id, qpos=None)` returns compiled geometry transforms only;
+  the registered `geometry.json` holds immutable display geometry.
+- `save_robot_pose(run_id, asset_id, name=…, qpos=…, torso_body=…)` returns a new
+  `RunRecord` with `robot_asset_id` and `robot_pose_id`. Identical selection is a
+  no-op. All other saved changes increment the current revision transactionally.
+  `get_robot_pose(asset_id, pose_id)` and `list_robot_poses(asset_id)` retrieve named
+  snapshots with full root/hinge qpos order and explicit units. Selection history
+  remains valid across other input revisions; writes to historical runs fail.
+
+HTTP adds `POST /api/robots` with `{source_path, derive_free_root}`, `GET /api/robots`
+and `GET /api/robots/<asset_id>`; `GET …/geometry`, `GET …/poses`;
+`POST …/preview` with `{qpos}`; and `POST /api/runs/<run_id>/robot-pose` with
+`{asset_id, name, qpos, torso_body}`. `/api/state` includes `robots`. Expected errors
+retain the existing structured HTTP contract. New selection revisions invalidate
+uncomputed downstream stages; execution/cache lifecycle handling is a later slice.

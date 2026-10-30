@@ -1,6 +1,6 @@
 # 02 — Import robot assets and edit named T-poses
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: ../spec.md
 Blocked by: 01
@@ -23,3 +23,5 @@ Use the implement-spec orchestration and TDD skill. Test public behavior. Work o
 ## Comments
 
 User explicitly approved spec/ticket synthesis and immediate implementation; this breakdown operationalizes that accepted scope.
+
+Claimed by ticket 02 implementer on isolated branch `codex/studio-02`.

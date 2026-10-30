@@ -76,6 +76,20 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             elif path.startswith('/api/runs/') and path.endswith('/name'):
                 self._fields(data, {'name'})
                 self._json(200, asdict(studio.rename_draft(self._id(path.split('/')[3]), data['name'])))
+            # ROBOT mutations: compile/preview live outside the service runtime.
+            elif path == '/api/robots':
+                self._fields(data, {'source_path', 'derive_free_root'})
+                if not isinstance(data['source_path'], str):
+                    raise StudioError('invalid_robot_path', 'MJCF path must be a string')
+                self._json(201, asdict(studio.import_robot(Path(data['source_path']),
+                    derive_free_root=data['derive_free_root'])))
+            elif path.startswith('/api/robots/') and path.endswith('/preview'):
+                self._fields(data, {'qpos'})
+                self._json(200, studio.preview_robot(path.split('/')[3], data['qpos']))
+            elif path.startswith('/api/runs/') and path.endswith('/robot-pose'):
+                self._fields(data, {'asset_id', 'name', 'qpos', 'torso_body'})
+                self._json(200, asdict(studio.save_robot_pose(self._id(path.split('/')[3]),
+                    data['asset_id'], name=data['name'], qpos=data['qpos'], torso_body=data['torso_body'])))
             else:
                 raise StudioError('not_found', 'Operation does not exist', 404)
 
@@ -83,7 +97,24 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             if path == '/api/state':
                 self._json(200, {'runs': [asdict(run) for run in studio.list_runs()],
                                  'selected_run_id': studio.selected_run_id(),
+                                 'robots': [asdict(asset) for asset in studio.list_robots()],
                                  'history_roots': [str(root) for root in studio.history_roots]})
+            # ROBOT reads: managed geometry and immutable named poses only.
+            elif path == '/api/robots':
+                self._json(200, [asdict(asset) for asset in studio.list_robots()])
+            elif path.startswith('/api/robots/'):
+                parts = path.split('/')
+                asset_id = parts[3]
+                if len(parts) == 4:
+                    self._json(200, asdict(studio.get_robot(asset_id)))
+                elif parts[4:] == ['geometry']:
+                    self._file(studio.robot_file(asset_id, 'geometry.json'))
+                elif parts[4:] == ['poses']:
+                    self._json(200, [asdict(pose) for pose in studio.list_robot_poses(asset_id)])
+                else:
+                    raise StudioError('not_found', 'Robot resource does not exist', 404)
+            elif path in {'/vendor/three.module.js', '/vendor/OrbitControls.js'}:
+                self._file(_WEB / 'inspection' / path[1:])
             elif path.startswith('/api/runs/'):
                 self._json(200, asdict(studio.get_run(self._id(path.removeprefix('/api/runs/')))))
             elif path.startswith('/inspection/'):
@@ -98,7 +129,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._file(_WEB / 'inspection' / name)
                 else:
                     self._file(studio.inspection_file(run_id, name))
-            elif path in {'/', '/app.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
+            elif path in {'/', '/app.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
                 file = 'index.html' if path == '/' else path[1:]
                 self._file(_WEB / file)
             else:

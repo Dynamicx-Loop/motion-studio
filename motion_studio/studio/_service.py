@@ -5,13 +5,16 @@ from pathlib import Path
 import sqlite3
 import uuid
 
+from ._robots import _RobotOperations
+
 from ._history import confined_file, digest, inspect_bundle
 
 from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
 
 
-class Studio:
-    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = ()):
+class Studio(_RobotOperations):
+    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (), robot_python: Path | None = None):
+        self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
         state = Path(state_root).resolve()
         self.history_roots = tuple(Path(p).resolve() for p in history_roots)
         if any(state.is_relative_to(p) or p.is_relative_to(state) for p in self.history_roots):
@@ -25,6 +28,9 @@ class Studio:
                        'created_at TEXT, inspection_path TEXT UNIQUE)')
             db.execute('CREATE TABLE IF NOT EXISTS history_files ('
                        'run_id TEXT, name TEXT, sha256 TEXT, PRIMARY KEY(run_id, name))')
+            db.execute('CREATE TABLE IF NOT EXISTS robot_selections ('
+                       'run_id TEXT, revision_id TEXT, asset_id TEXT, pose_id TEXT, '
+                       'PRIMARY KEY(run_id, revision_id))')
             db.execute('CREATE TABLE IF NOT EXISTS preferences (key TEXT PRIMARY KEY, value TEXT)')
 
     @contextmanager
@@ -125,8 +131,7 @@ class Studio:
             raise StudioError('invalid_name', 'Name must contain 1–120 characters')
         return name.strip()
 
-    @staticmethod
-    def _record(row):
+    def _record(self, row):
         historical = row['kind'] == 'historical'
         inspection_url = f"/inspection/{row['run_id']}/index.html"
         stages = tuple(
@@ -134,5 +139,8 @@ class Studio:
             if historical and stage == Stage.MOTION else StageState(stage)
             for stage in Stage
         )
+        with self._connection() as db:
+            robot = self._robot_selection(db, row['run_id'], row['revision_id'])
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
-                         historical, row['created_at'], stages, row['inspection_path'])
+                         historical, row['created_at'], stages, row['inspection_path'],
+                         robot['asset_id'] if robot else None, robot['pose_id'] if robot else None)

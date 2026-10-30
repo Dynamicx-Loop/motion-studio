@@ -37,6 +37,8 @@ class RunRecord:
     created_at: str
     stages: tuple[StageState, ...]
     inspection_path: str | None = None
+    robot_asset_id: str | None = None
+    robot_pose_id: str | None = None
 
 
 @dataclass(frozen=True)

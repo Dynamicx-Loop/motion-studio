@@ -1,3 +1,4 @@
+import {renderRobot} from '/robot.js';
 const $ = id => document.getElementById(id);
 let state, selectedStage = 'motion';
 async function api(path, data) {
@@ -46,6 +47,7 @@ function render() {
   inspection.hidden = !url; $('empty').hidden = Boolean(url);
   if (url && inspection.getAttribute('src') !== url) inspection.src = url;
   if (!url) inspection.removeAttribute('src');
+  renderRobot({state,run,api,refresh,failure});
   $('run-details').replaceChildren(); $('logs').replaceChildren();
   if (run?.read_only) {
     const note = document.createElement('p'); note.textContent = 'Preserved G1 inspection: synchronized source human and saved robot motion, reconstructed bindings. No new native run.';

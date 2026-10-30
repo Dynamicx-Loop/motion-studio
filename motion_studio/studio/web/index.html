@@ -34,7 +34,7 @@
 </small>
 </details>
 <h3>Managed assets</h3>
-<p class="muted">No imported assets. Robot and motion preparation will appear here.</p>
+<section id="robot-assets" aria-label="Robot assets"></section>
 </aside>
 <main>
 <div id="heading">
@@ -45,6 +45,8 @@
 <nav id="stages" aria-label="Pipeline stages">
 </nav>
 <section id="viewport" aria-label="Stage viewport">
+<div id="robot-preview" aria-label="Compiled robot mesh preview" hidden></div>
+<small id="robot-preview-status"></small>
 <p id="empty">Saved inspections open here. Creating a draft never starts computation.</p>
 <iframe id="inspection" title="Synchronized human and robot inspection" hidden>
 </iframe>
@@ -53,6 +55,7 @@
 <aside id="details">
 <h2>Settings &amp; details</h2>
 <p id="kind">Select a saved run.</p>
+<section id="robot-editor" aria-label="Robot pose editor"></section>
 <div id="run-details">
 </div>
 <p class="muted">Metres · exact saved frames and FPS. Historical results preserve their original native configuration.</p>
@@ -68,6 +71,7 @@
 </div>
 </details>
 </footer>
+<script type="importmap">{"imports":{"three":"/vendor/three.module.js"}}</script>
 <script type="module" src="/app.js">
 </script>
 </body>
