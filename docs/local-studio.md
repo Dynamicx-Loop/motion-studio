@@ -147,7 +147,11 @@ inertia (0.001 kg, diagonal 1e-6 kg m²); fixed-root keyframes are rejected beca
 their qpos layout needs conversion. Original XML and local dependencies keep their
 bytes, including notices among referenced assets; no source is edited. Imported
 versions are SHA-256 identified under `assets/robots/<asset_id>/`; `asset.json`
-records the copied-file hashes, compiled runtime, limits and derivations. Keep any
+records the copied-file hashes, compiled runtime, limits and derivations. Its
+SHA-256 is registered independently in the state SQLite database and verified
+before metadata is used. Older/copied asset directories without that registration
+fail with `unverified_asset`; reimport their original source closure into a fresh
+managed state directory to establish trusted metadata. Keep any
 additional source license/notice obligations with the robot source; compilation
 does not grant redistribution rights.
 
@@ -165,7 +169,9 @@ Public operations return frozen `RobotAsset`, `RobotJoint` and `RobotPose` recor
 
 - `import_robot(source_path, derive_free_root=False)`, `list_robots()`,
   `get_robot(asset_id)` and `robot_file(asset_id, registered_name)` own imported
-  versions and hash-check artifact reads. Execution should consume
+  versions and hash-check artifact reads. Returning the native model path also
+  verifies every recorded closure file, including mesh/texture dependencies;
+  missing, escaping or changed members fail before handoff. Execution should consume
   `robot_file(asset_id, 'source/__studio_model.xml')` with native root derivation
   disabled, never the original source filename.
 - `preview_robot(asset_id, qpos=None)` returns compiled geometry transforms only;

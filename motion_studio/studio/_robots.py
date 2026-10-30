@@ -18,7 +18,25 @@ class _RobotOperations:
         """
         if not isinstance(derive_free_root, bool):
             raise StudioError('invalid_robot', 'derive_free_root must be a boolean')
-        return import_asset(self.roots.assets, self.robot_python, source_path, derive_free_root)
+        asset = import_asset(self.roots.assets, self.robot_python, source_path,
+                             derive_free_root, self.get_robot)
+        # Hash trusted compiler output, never bootstrap trust from a mutable manifest.
+        manifest = json.dumps(asdict(asset), allow_nan=False).encode()
+        self._robot_metadata_digest(asset.asset_id, hashlib.sha256(manifest).hexdigest())
+        return self.get_robot(asset.asset_id)
+
+    def _robot_metadata_digest(self, asset_id, register=None):
+        with self._connection() as db:
+            db.execute('CREATE TABLE IF NOT EXISTS robot_assets ('
+                       'asset_id TEXT PRIMARY KEY, manifest_sha256 TEXT NOT NULL)')
+            if register is not None:
+                db.execute('INSERT OR IGNORE INTO robot_assets VALUES (?, ?)', (asset_id, register))
+            row = db.execute('SELECT manifest_sha256 FROM robot_assets WHERE asset_id=?',
+                             (asset_id,)).fetchone()
+        if row is None:
+            raise StudioError('unverified_asset', 'Robot asset has no trusted metadata registration; '
+                              'reimport into a fresh managed state directory', 409)
+        return row['manifest_sha256']
 
     def list_robots(self) -> tuple[RobotAsset, ...]:
         folder = self.roots.assets / 'robots'
@@ -27,9 +45,14 @@ class _RobotOperations:
     def get_robot(self, asset_id: str) -> RobotAsset:
         home = self._robot_home(asset_id)
         try:
-            return decode_asset(json.loads((home / 'asset.json').read_text()))
+            path = home / 'asset.json'
+            raw = path.read_bytes()
         except FileNotFoundError as error:
             raise StudioError('not_found', 'Robot asset does not exist', 404) from error
+        expected = self._robot_metadata_digest(asset_id)
+        if not path.resolve().is_relative_to(home) or hashlib.sha256(raw).hexdigest() != expected:
+            raise StudioError('changed_artifact', 'Managed robot metadata changed', 409)
+        return decode_asset(json.loads(raw))
 
     def _robot_home(self, asset_id):
         if not isinstance(asset_id, str) or len(asset_id) != 64 or any(c not in '0123456789abcdef' for c in asset_id):
@@ -37,22 +60,24 @@ class _RobotOperations:
         return self.roots.assets / 'robots' / asset_id
 
     def robot_file(self, asset_id: str, name: str) -> Path:
-        """Resolve a recorded immutable robot artifact, checking confinement and bytes."""
+        """Resolve a recorded artifact; native model handoff verifies its full closure."""
         asset = self.get_robot(asset_id)
         home = self._robot_home(asset_id)
         path = home / name
         if name not in asset.files or not path.resolve().is_relative_to(home) or not path.is_file():
             raise StudioError('not_found', 'Robot artifact is not registered', 404)
-        if hash_file(path) != asset.files[name]:
-            raise StudioError('changed_artifact', 'Managed robot bytes changed', 409)
+        names = asset.files if name == 'source/__studio_model.xml' else (name,)
+        for member in names:
+            candidate = home / member
+            if (not candidate.resolve().is_relative_to(home) or not candidate.is_file()
+                    or hash_file(candidate) != asset.files[member]):
+                raise StudioError('changed_artifact', 'Managed robot bytes changed', 409)
         return path
 
     def preview_robot(self, asset_id: str, qpos: list[float] | tuple[float, ...] | None = None) -> dict:
         asset = self.get_robot(asset_id)
         values = self._robot_qpos(asset, list(asset.default_qpos) if qpos is None else qpos)
         model = self.robot_file(asset_id, 'source/__studio_model.xml')
-        for name in asset.files:
-            self.robot_file(asset_id, name)
         return runtime(self.robot_python, {'operation': 'preview', 'model': str(model), 'qpos': values})
 
     @staticmethod
