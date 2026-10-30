@@ -140,14 +140,14 @@ def source_closure(source):
     return tree, files
 
 
-def import_asset(assets_root, python, source, derive_free_root):
+def import_asset(assets_root, python, source, derive_free_root, existing_asset):
     tree, sources = source_closure(source)
     fingerprint = {name: hash_file(path) for name, path in sorted(sources.items())}
     identity = hashlib.sha256(json.dumps({'schema': 'studio-robot-v1', 'files': fingerprint, 'entry': Path(source).name,
         'derive_free_root': derive_free_root}, sort_keys=True).encode()).hexdigest()
     home = assets_root / 'robots' / identity
     if home.exists():
-        return decode_asset(json.loads((home / 'asset.json').read_text()))
+        return existing_asset(identity)
     home.parent.mkdir(parents=True, exist_ok=True)
     with tempfile.TemporaryDirectory(dir=home.parent) as tmp:
         stage = Path(tmp)
