@@ -42,3 +42,32 @@ class RobotHTTPTests(unittest.TestCase):
                 self.assertEqual(len(json.loads(body)['transforms']), 2)
                 status, _, body = request(server, 'GET', '/api/state')
                 self.assertEqual(len(json.loads(body)['robots']), 1)
+
+
+@unittest.skipUnless(PYTHON.is_file(), 'pinned independent MuJoCo runtime unavailable')
+class OfficialPoseHTTPTests(unittest.TestCase):
+    def test_official_pose_is_explicit_and_rejects_generic_source(self):
+        checkout = Path('/data/workspace/motion_studio/externals/UMR')
+        with tempfile.TemporaryDirectory() as tmp:
+            studio = Studio(Path(tmp) / 'state', robot_python=PYTHON)
+            robot = studio.import_robot(checkout / 'assets/g1/g1_29dof.xml', derive_free_root=True)
+            draft = studio.create_draft('Official reference')
+            with serving(studio) as server:
+                endpoint = f'/api/robots/{robot.asset_id}/official-pose'
+                status, _, body = request(server, 'GET', endpoint)
+                self.assertEqual(status, 200, body)
+                pose = json.loads(body)
+                self.assertEqual(pose['torso_body'], 'waist_yaw_link')
+                values = {joint.name: pose['qpos'][joint.qpos_index] for joint in robot.joints}
+                self.assertAlmostEqual(values['left_shoulder_roll_joint'], 1.57079632679)
+                self.assertAlmostEqual(values['right_shoulder_roll_joint'], -1.57079632679)
+                self.assertEqual(studio.get_run(draft.run_id).revision_id, 'r0001')
+                self.assertEqual(studio.list_robot_poses(robot.asset_id), ())
+                generic = Path(tmp) / 'generic.xml'
+                generic.write_text('<mujoco><worldbody><body name="pelvis"><freejoint/>'
+                    '<geom type="box" size=".1 .1 .1"/><body name="torso"><joint name="arm" range="-90 90"/>'
+                    '<geom type="sphere" size=".1"/></body></body></worldbody></mujoco>')
+                other = studio.import_robot(generic)
+                status, _, body = request(server, 'GET', f'/api/robots/{other.asset_id}/official-pose')
+                self.assertEqual(status, 409, body)
+                self.assertEqual(json.loads(body)['error']['code'], 'unsupported_preset')

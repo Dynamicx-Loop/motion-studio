@@ -43,6 +43,15 @@ class RobotPose:
     units: str = 'metres; radians; root quaternion wxyz'
 
 
+@dataclass(frozen=True)
+class RobotPosePreset:
+    """Unsaved pose values; loading changes no run or named-pose records."""
+    name: str
+    torso_body: str
+    qpos: tuple[float, ...]
+    units: str = 'metres; radians; root quaternion wxyz'
+
+
 def decode_asset(data):
     return RobotAsset(**{**data, 'bodies': tuple(data['bodies']),
         'joints': tuple(RobotJoint(**x) for x in data['joints']),

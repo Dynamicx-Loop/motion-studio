@@ -142,6 +142,8 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._json(200, asdict(studio.get_robot(asset_id)))
                 elif parts[4:] == ['geometry']:
                     self._file(studio.robot_file(asset_id, 'geometry.json'))
+                elif parts[4:] == ['official-pose']:
+                    self._json(200, asdict(studio.official_robot_pose(asset_id)))
                 elif parts[4:] == ['poses']:
                     self._json(200, [asdict(pose) for pose in studio.list_robot_poses(asset_id)])
                 else:
