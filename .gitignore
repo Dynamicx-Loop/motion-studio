@@ -21,3 +21,6 @@ __pycache__/
 /docs.html
 /docs-basic.html
 /docs/site/home.html
+
+# Isolated local REA analysis tooling and Node runtime.
+/.cache/rea-tooling/
