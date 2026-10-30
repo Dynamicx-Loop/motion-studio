@@ -1,5 +1,7 @@
 """Persistent explicit native jobs; each attempt is fresh and receipts certify bytes."""
+from contextlib import contextmanager
 from dataclasses import asdict
+import fcntl
 from datetime import datetime, timezone
 import json
 import os
@@ -8,6 +10,8 @@ import threading
 import uuid
 
 from ._contracts import StudioError
+from ._recovery import recover_jobs, TERMINAL
+from ._process_guard import process_identity
 from ._history import digest, confined_file
 from motion_studio.integrations.umr_stages import ExecutionSettings, STAGES, NativeStages, canonical_hash
 
@@ -26,17 +30,12 @@ class _ExecutionOperations:
                        'PRIMARY KEY(run_id, revision_id, stage))')
             db.execute('CREATE TABLE IF NOT EXISTS execution_settings ('
                        'run_id TEXT, revision_id TEXT, data TEXT, PRIMARY KEY(run_id, revision_id))')
-            for row in db.execute('SELECT * FROM jobs').fetchall():
-                job = json.loads(row['data'])
-                if job['status'] in ('queued', 'running', 'cancelling'):
-                    try:
-                        os.kill(job['owner_pid'], 0)
-                    except (ProcessLookupError, KeyError):
-                        job.update(status='interrupted', message='Service exited before completion', finished_at=now())
-                        db.execute('UPDATE jobs SET data=? WHERE job_id=?', (json.dumps(job), job['job_id']))
+            recover_jobs(self, db, now())
 
     def list_jobs(self):
         with self._connection() as db:
+            db.execute('BEGIN IMMEDIATE')
+            recover_jobs(self, db, now())
             return tuple(json.loads(row['data']) for row in db.execute('SELECT data FROM jobs ORDER BY rowid'))
 
     def get_job(self, job_id):
@@ -51,14 +50,18 @@ class _ExecutionOperations:
             db.execute('BEGIN IMMEDIATE')
             row = db.execute('SELECT data FROM jobs WHERE job_id=?', (job_id,)).fetchone()
             job = json.loads(row['data'])
+            if job['status'] in TERMINAL:
+                return job
             if job['status'] == 'cancelling' and changes.get('status') == 'running':
                 changes.pop('status')
+            if job['status'] == 'cancelling' and changes.get('status') == 'completed':
+                changes.update(status='cancelled', message='Stopped; completed stage artifacts retained')
             job.update(changes)
             db.execute('UPDATE jobs SET data=? WHERE job_id=?', (json.dumps(job), job_id))
         return job
 
-    def execution_settings(self, run_id):
-        run = self.get_run(run_id)
+    def execution_settings(self, run_id, revision_id=None):
+        run = self.get_run(run_id, revision_id)
         with self._connection() as db:
             row = db.execute('SELECT data FROM execution_settings WHERE run_id=? AND revision_id<=? '
                              'ORDER BY revision_id DESC LIMIT 1', (run_id, run.revision_id)).fetchone()
@@ -74,12 +77,14 @@ class _ExecutionOperations:
         with self._connection() as db:
             db.execute('BEGIN IMMEDIATE')
             row = db.execute('SELECT revision_id FROM runs WHERE run_id=?', (run_id,)).fetchone()
-            revision = f"r{int(row['revision_id'][1:])+1:04d}"
+            parent = row['revision_id']
+            revision = f"r{int(parent[1:])+1:04d}"
             folder = self.roots.runs / run_id / revision
             folder.mkdir(parents=True, exist_ok=True)
             (folder / 'settings.json').write_text(json.dumps(controls, sort_keys=True))
             db.execute('INSERT INTO execution_settings VALUES (?, ?, ?)', (run_id, revision, json.dumps(controls)))
             db.execute('UPDATE runs SET revision_id=? WHERE run_id=?', (revision, run_id))
+        self._carry_settings_stages(run_id, parent, revision)
         return self.get_run(run_id)
 
     def _receipt(self, run_id, revision, stage):
@@ -90,6 +95,12 @@ class _ExecutionOperations:
             return None
         try:
             info = json.loads(row['receipt'])
+            if 'source_revision' in info:
+                source = info['source_revision']
+                if source >= revision:
+                    return None
+                receipt = self._receipt(run_id, source, stage)
+                return receipt if receipt and canonical_hash(receipt) == info['receipt_sha256'] else None
             folder = self.roots.runs / run_id / revision / stage
             for name, sha in info['files'].items():
                 if digest(confined_file(folder, name)) != sha:
@@ -107,7 +118,7 @@ class _ExecutionOperations:
                 if current is None or canonical_hash(current) != canonical_hash(receipt['dependencies'][dependency]):
                     return None
             return receipt
-        except (OSError, ValueError, StudioError):
+        except (OSError, ValueError, KeyError, TypeError, StudioError):
             return None
 
     def plan_execution(self, run_id, *, through='retargeting', settings=None):
@@ -125,7 +136,10 @@ class _ExecutionOperations:
         stages = list(STAGES[:STAGES.index(through)+1])
         plan = {'run_id': run_id, 'revision_id': run.revision_id, 'through': through,
                 'settings': asdict(controls), 'stages': stages, 'missing_inputs': missing,
-                'ready': False, 'completed': [], 'fingerprints': {}}
+                'ready': False, 'completed': [], 'fingerprints': {},
+                'reuse_policy': 'verified-related-revisions',
+                'reuse_message': 'Only authenticated unchanged prefix stages from related revisions are reused; '
+                'robot, pose and motion edits invalidate all stages. No cross-clip reuse.'}
         if missing:
             return plan
         captured = self.native_adapter.capture(self, run)
@@ -153,7 +167,23 @@ class _ExecutionOperations:
         plan['ready'] = True
         return plan
 
+    @contextmanager
+    def _launch_lock(self):
+        with (self.roots.state / 'execution.launch.lock').open('a') as lock:
+            try:
+                fcntl.flock(lock, fcntl.LOCK_EX | fcntl.LOCK_NB)
+            except BlockingIOError as error:
+                raise StudioError('job_active', 'Another launch is being reviewed; retry explicitly', 409) from error
+            try:
+                yield
+            finally:
+                fcntl.flock(lock, fcntl.LOCK_UN)
+
     def start_execution(self, run_id, *, through='retargeting', settings=None):
+        with self._launch_lock():
+            return self._start_execution(run_id, through=through, settings=settings)
+
+    def _start_execution(self, run_id, *, through, settings):
         if any(j['status'] in ('queued', 'running', 'cancelling') for j in self.list_jobs()):
             raise StudioError('job_active', 'Another native job is active; wait or cancel it', 409)
         if settings is not None:
@@ -164,9 +194,11 @@ class _ExecutionOperations:
         job_id = uuid.uuid4().hex
         job = {'job_id': job_id, 'run_id': run_id, 'revision_id': plan['revision_id'],
                'status': 'queued', 'stage': None, 'progress': {}, 'created_at': now(),
-               'owner_pid': os.getpid(), 'plan': plan, 'attempts': {}, 'message': 'Queued'}
+               'owner_pid': os.getpid(), 'owner_identity': process_identity(os.getpid()),
+               'plan': plan, 'attempts': {}, 'attempt_statuses': {}, 'message': 'Queued'}
         with self._connection() as db:
             db.execute('BEGIN IMMEDIATE')
+            recover_jobs(self, db, now())
             for row in db.execute('SELECT data FROM jobs'):
                 if json.loads(row['data'])['status'] in ('queued', 'running', 'cancelling'):
                     raise StudioError('job_active', 'Another native job is active; wait or cancel it', 409)
@@ -220,4 +252,4 @@ class _ExecutionOperations:
         selected = [p for p in receipt['artifacts'] if p == name or p.endswith('/' + name)]
         if len(selected) != 1:
             raise StudioError('not_found', 'Artifact is not uniquely registered in this stage', 404)
-        return confined_file(self.roots.runs / run_id / revision_id / stage, selected[0])
+        return confined_file(self.roots.runs / run_id / receipt['revision_id'] / stage, selected[0])

@@ -23,8 +23,8 @@ class _InspectionOperations:
         directory. Failure logs stay in the fresh folder; it is never published.
         """
         from motion_studio.integrations.umr_studio_inspection import InspectionInputs, export_inspection
-        run = self.get_run(run_id)
-        revision = revision_id or run.revision_id
+        run = self.get_run(run_id, revision_id)
+        revision = run.revision_id
         native_stage = 'retargeting' if stage == 'motion' else stage
         if native_stage not in ('sampling', 'training', 'binding', 'retargeting'):
             raise StudioError('invalid_stage', 'Choose sampling, training, binding or motion')

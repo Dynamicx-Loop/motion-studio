@@ -19,6 +19,8 @@ const load = async name => import('data:text/javascript;base64,' + fs.readFileSy
   const c=controller.request(7); controller.cancel();
   waiting.get(3).resolve(new Int16Array(6)); await c;
   assert.deepEqual(commits,[2], 'reference selection cancels pending frame commits');
+  assert.equal(replay.vertices(0),null, 'bounded cache evicts an unpinned older chunk');
+  assert.ok(replay.vertices(2), 'displayed frame remains pinned during pending seeks');
   const bad=controller.request(4); waiting.get(2).reject(Error('missing chunk'));
   await assert.rejects(bad,/missing chunk/); assert.deepEqual(commits,[2]);
   const retry=controller.request(4); waiting.get(2).resolve(new Int16Array(6)); await retry;

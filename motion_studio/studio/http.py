@@ -71,8 +71,9 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     raise StudioError('invalid_path', 'Inspection path must be a string')
                 self._json(201, asdict(studio.register_history(data['name'], Path(data['inspection_path']))))
             elif path == '/api/selection':
-                self._fields(data, {'run_id'})
-                self._json(200, asdict(studio.select(self._id(data['run_id']))))
+                if set(data) not in ({'run_id'}, {'run_id', 'revision_id'}):
+                    raise StudioError('invalid_fields', 'Expected run_id and optional revision_id')
+                self._json(200, asdict(studio.select(self._id(data['run_id']), data.get('revision_id'))))
             elif path.startswith('/api/runs/') and path.endswith('/name'):
                 self._fields(data, {'name'})
                 self._json(200, asdict(studio.rename_draft(self._id(path.split('/')[3]), data['name'])))
@@ -125,6 +126,8 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             if path == '/api/state':
                 self._json(200, {'runs': [asdict(run) for run in studio.list_runs()],
                                  'selected_run_id': studio.selected_run_id(),
+                                 'selected_run': asdict(studio.get_run(studio.selected_run_id(), studio.selected_revision_id())) if studio.selected_run_id() else None,
+                                 'revisions': [asdict(r) for r in studio.list_revisions(studio.selected_run_id())] if studio.selected_run_id() else [],
                                  'jobs': list(studio.list_jobs()),
                                  'motions': [asdict(asset) for asset in studio.list_motions()],
                                  'robots': [asdict(asset) for asset in studio.list_robots()],
@@ -163,6 +166,21 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 if len(parts) != 6:
                     raise StudioError('not_found', 'Stage artifact does not exist', 404)
                 self._file(studio.stage_artifact(self._id(parts[2]), parts[3], parts[4], parts[5]))
+            elif path.startswith('/api/runs/') and '/revisions/' in path:
+                parts = path.split('/')
+                if len(parts) not in (6, 7, 9):
+                    raise StudioError('not_found', 'Revision resource does not exist', 404)
+                record = studio.get_run(self._id(parts[3]), parts[5])
+                if len(parts) == 6:
+                    self._json(200, asdict(record))
+                elif parts[6:] == ['settings']:
+                    self._json(200, studio.execution_settings(record.run_id, record.revision_id))
+                elif len(parts) == 9 and parts[6] == 'stages' and parts[8] == 'receipt':
+                    self._json(200, studio.stage_receipt(record.run_id, record.revision_id, parts[7]))
+                else:
+                    raise StudioError('not_found', 'Revision resource does not exist', 404)
+            elif path.startswith('/api/runs/') and path.endswith('/revisions'):
+                self._json(200, [asdict(r) for r in studio.list_revisions(self._id(path.split('/')[3]))])
             elif path.startswith('/api/runs/') and '/stages/' in path and path.endswith('/receipt'):
                 parts = path.split('/')
                 if len(parts) != 7:

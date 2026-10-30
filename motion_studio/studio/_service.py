@@ -8,13 +8,14 @@ import uuid
 from ._inspection import _InspectionOperations
 from ._robots import _RobotOperations
 from ._execution import _ExecutionOperations
+from ._revisions import _RevisionOperations
 
 from ._history import confined_file, digest, inspect_bundle
 from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
 from ._motion import _MotionOperations
 
 
-class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _InspectionOperations):
+class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _RevisionOperations, _InspectionOperations):
     def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
                  robot_python: Path | None = None, smplx_model_dir: Path | None = None, native_adapter=None):
         self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
@@ -39,6 +40,7 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Inspect
         self._init_motions(smplx_model_dir)
         self._init_execution(native_adapter)
         self._init_inspections()
+        self._init_revisions()
 
     @contextmanager
     def _connection(self):
@@ -113,19 +115,12 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Inspect
         with self._connection() as db:
             return tuple(self._record(row) for row in db.execute('SELECT * FROM runs ORDER BY created_at, run_id'))
 
-    def get_run(self, run_id: str) -> RunRecord:
+    def get_run(self, run_id: str, revision_id: str | None = None) -> RunRecord:
         with self._connection() as db:
             row = db.execute('SELECT * FROM runs WHERE run_id = ?', (run_id,)).fetchone()
         if row is None:
             raise StudioError('not_found', 'Run does not exist', 404)
-        return self._record(row)
-
-    def select(self, run_id: str) -> RunRecord:
-        """Persist selection independently of browser storage; return the selected run."""
-        result = self.get_run(run_id)
-        with self._connection() as db:
-            db.execute('INSERT OR REPLACE INTO preferences VALUES (?, ?)', ('selected_run_id', run_id))
-        return result
+        return self._record(self._revision_row(row, revision_id) if revision_id is not None else row)
 
     def selected_run_id(self) -> str | None:
         with self._connection() as db:
@@ -155,8 +150,10 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Inspect
         if not historical:
             stages = tuple(StageState(s.stage, 'available', self._inspection_url(row['run_id'], row['revision_id'], s.stage))
                            if self._receipt(row['run_id'], row['revision_id'], 'retargeting' if s.stage == Stage.MOTION else s.stage) else s for s in stages)
+            stages = tuple(self._revision_stage(row['run_id'], row['revision_id'], s) for s in stages)
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
                          historical, row['created_at'], stages, row['inspection_path'],
                          robot_asset_id=robot['asset_id'] if robot else None,
                          robot_pose_id=robot['pose_id'] if robot else None,
-                         motion_asset_id=motion['asset_id'] if motion else None)
+                         motion_asset_id=motion['asset_id'] if motion else None,
+                         is_latest=dict(row).get('is_latest', True))
