@@ -20,6 +20,18 @@ def process_identity(pid):
         return None
 
 
+def process_scope():
+    """Identify the boot and PID namespace in which stored PIDs have meaning.
+
+    Missing OS visibility is unknown, never evidence that another owner died.
+    """
+    try:
+        return {'boot_id': Path('/proc/sys/kernel/random/boot_id').read_text().strip(),
+                'pid_namespace': os.readlink('/proc/self/ns/pid')}
+    except OSError:
+        return None
+
+
 def main():
     owner, identity = int(sys.argv[1]), sys.argv[2]
     stopping = False

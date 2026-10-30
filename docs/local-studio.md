@@ -472,13 +472,19 @@ verified prerequisites that remain and allocates fresh attempt directories for a
 work that needs restarting. No automatic queue or mid-stage epoch/frame resume is
 provided. Completed prerequisites, partial files and native logs are retained.
 
-On Linux, the service records its PID plus kernel process start identity; a small
-stdlib guard owns each native process group and watches that service identity.
+On Linux, the service records its PID, kernel process start identity, boot ID and
+PID namespace; a small stdlib guard owns each native process group and watches
+that service identity.
 Service death stops the group (TERM then KILL, including TERM-ignoring descendants).
 Reopening detects a dead owner, kills any still-owned verified group and marks the
 unfinished job and attempt `interrupted`. PID reuse cannot target an unrelated
-process. Legacy jobs without a birth identity are never signalled using an
-unverified PID. Terminal state updates are monotonic, and final publication checks
+process. Recovery signals verified groups only in the same boot and PID namespace. A
+previous boot proves interruption without signalling a stored PID. If owner
+visibility differs or cannot be established (including legacy jobs without scope
+metadata), the job stays active/busy with a visible recovery notice; absence from
+the current process namespace does not prove service death. Inspect/cancel it
+from its original service environment. Legacy jobs without a birth identity are
+never signalled using an unverified PID. Terminal state updates are monotonic, and final publication checks
 refuse cancelled, interrupted or changed-revision callbacks.
 
 Additional owned reads are `get_run(run_id, revision_id=None)`,
@@ -520,3 +526,12 @@ runtime directories; `decode_progress` translates observed native output, and
 process group, cancellation, elapsed time, retained logs and atomic receipt
 publication. These lifecycle operations share a leaf UTC timestamp module and
 have no reverse import from the native job runner to execution operations.
+
+Native CUDA acceptance services must run in the host environment that exposes
+CUDA and the owning process namespace. The validation agent's restricted shell
+can use a separate PID namespace: opening the same state there cannot establish
+host-owner death. Run the persistent service and its native workers in one
+execution environment; a browser can connect from another environment without
+starting a second service against the same state. The final acceptance cohort
+uses fresh managed state and host execution, preserving the initial cohort and
+the recorded namespace-mismatch incident.

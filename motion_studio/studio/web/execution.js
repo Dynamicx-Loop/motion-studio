@@ -14,7 +14,7 @@ function displayActive(job) {
   const host = $('active-job'); host.replaceChildren();
   if (terminal(job)) return;
   const note = document.createElement('p');
-  note.textContent = `${job.status} · ${job.stage || 'starting'} · ${job.message}. Browser closure leaves this job running. No automatic queue.`;
+  note.textContent = `${job.status} · ${job.stage || 'starting'} · ${job.recovery_notice || job.message}. Browser closure leaves this job running. No automatic queue.`;
   const stop = document.createElement('button'); stop.textContent = 'Stop active job';
   stop.disabled = job.status === 'cancelling';
   stop.onclick = async () => {

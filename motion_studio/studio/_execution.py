@@ -11,7 +11,7 @@ import uuid
 from ._contracts import StudioError
 from ._timestamps import now
 from ._recovery import recover_jobs, TERMINAL
-from ._process_guard import process_identity
+from ._process_guard import process_identity, process_scope
 from ._history import digest, confined_file
 from motion_studio.integrations.umr_stages import ExecutionSettings, STAGES, NativeStages, canonical_hash
 
@@ -191,6 +191,7 @@ class _ExecutionOperations:
         job = {'job_id': job_id, 'run_id': run_id, 'revision_id': plan['revision_id'],
                'status': 'queued', 'stage': None, 'progress': {}, 'created_at': now(),
                'owner_pid': os.getpid(), 'owner_identity': process_identity(os.getpid()),
+               'owner_scope': process_scope(),
                'plan': plan, 'attempts': {}, 'attempt_statuses': {}, 'message': 'Queued'}
         with self._connection() as db:
             db.execute('BEGIN IMMEDIATE')
