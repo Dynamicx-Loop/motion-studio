@@ -13,7 +13,7 @@ function logLinks(job) {
 function displayJob(job) {
   const p = job.progress;
   const observed = [p.epoch ? `observed epoch ${p.epoch}/${p.epochs}` : '',
-    p.frames_total ? `solved frames ${p.frames_done}/${p.frames_total}; output validation pending` : '',
+    p.frames_total ? `solved frames ${p.frames_done}/${p.frames_total}${job.status === 'completed' ? '; output validated' : '; output validation pending'}` : '',
     p.elapsed_seconds ? `${p.elapsed_seconds}s observed elapsed` : ''].filter(Boolean);
   $('status').textContent = `${job.status} · ${job.stage || 'starting'} · ${job.message}${observed.length ? ' · ' + observed.join(' · ') : ''}`;
   $('execution-progress').textContent = p.last_line || '';
@@ -85,6 +85,18 @@ export function renderExecution({state, run, api, refresh, failure}) {
       };
     } catch (error) { failure(error); } finally { review.disabled = false; }
   };
+  const outputs = {sampling:'dataset.npz', training:'train/correspondence_slots_final.npz', binding:'binding.npz', retargeting:'motion.npz'};
+  for (const stage of run.stages.filter(s => outputs[s.stage] && s.status === 'available')) {
+    const details = document.createElement('details');
+    const summary = document.createElement('summary'); summary.textContent = `${stage.stage} saved artifacts`; details.append(summary);
+    const base = `/artifacts/${run.run_id}/${run.revision_id}/${stage.stage}/`;
+    for (const [label, url] of [['Native output',base+outputs[stage.stage]], ['Resolved configuration',base+'humanoid_retarget_runtime_config.json'],
+      ['Numerical validation',base+'validation.json'], ['Completion receipt',`/api/runs/${run.run_id}/stages/${stage.stage}/receipt`]]) {
+      const a = document.createElement('a'); a.textContent = label; a.href = url; a.target = '_blank'; a.rel = 'noopener';
+      details.append(a, document.createElement('br'));
+    }
+    host.append(details);
+  }
   host.append(form);
   const cancel = document.createElement('button'); cancel.id = 'cancel-execution'; cancel.textContent = 'Cancel active stage'; cancel.hidden = true; host.append(cancel);
   const progress = document.createElement('pre'); progress.id = 'execution-progress'; host.append(progress);

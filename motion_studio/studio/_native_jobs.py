@@ -13,7 +13,7 @@ import uuid
 from ._contracts import StudioError
 from ._history import digest, confined_file
 from ._execution import now
-from motion_studio.integrations.umr_stages import STAGES, canonical_hash
+from motion_studio.integrations.umr_stages import STAGES, canonical_hash, native_environment
 
 
 def _stop(process):
@@ -24,19 +24,26 @@ def _stop(process):
     try:
         process.wait(timeout=3)
     except subprocess.TimeoutExpired:
+        pass
+    # The parent may exit before a descendant that ignores TERM. Kill any
+    # remaining group members even when wait() already reaped the worker.
+    try:
         os.killpg(process.pid, signal.SIGKILL)
-        process.wait(timeout=5)
+    except ProcessLookupError:
+        pass
+    process.wait(timeout=5)
+
 
 
 def _run(studio, job_id, stage, attempt, request):
     command = studio.native_adapter.command(request)
-    env = {**os.environ, 'PYTHONUNBUFFERED': '1', 'PYTHONDONTWRITEBYTECODE': '1',
+    env = {**native_environment(), 'PYTHONUNBUFFERED': '1', 'PYTHONDONTWRITEBYTECODE': '1',
            'HUMANOID_BATCH_PROGRESS': '1', 'XDG_CACHE_HOME': str(attempt / 'cache'),
            'TMPDIR': str(attempt / 'tmp'), 'OMP_NUM_THREADS': '4', 'MKL_NUM_THREADS': '4'}
     (attempt / 'tmp').mkdir()
     (attempt / 'cache').mkdir()
-    (attempt / 'command.json').write_text(json.dumps({'argv': command, 'overrides': {k: env[k] for k in (
-        'PYTHONUNBUFFERED', 'PYTHONDONTWRITEBYTECODE', 'HUMANOID_BATCH_PROGRESS', 'XDG_CACHE_HOME', 'TMPDIR', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS')}}))
+    (attempt / 'command.json').write_text(json.dumps({'argv': command, 'removed_environment': ['PYTHONPATH', 'PYTHONHOME'], 'overrides': {k: env[k] for k in (
+        'PYTHONUNBUFFERED', 'PYTHONNOUSERSITE', 'PYTHONDONTWRITEBYTECODE', 'HUMANOID_BATCH_PROGRESS', 'XDG_CACHE_HOME', 'TMPDIR', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS')}}))
     lines = queue.Queue()
     with (attempt / 'native.log').open('wb') as log:
         process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
@@ -119,6 +126,14 @@ def _accept(studio, job_id, stage, attempt, request, command):
         if current['status'] == 'cancelling' or revision != job['revision_id']:
             receipt_path.unlink()
             raise StudioError('stale_result', 'Late result was not published', 409)
+        # Check exact prerequisite receipt identities and every dependency byte
+        # again immediately before publication; a semantic fingerprint alone
+        # cannot detect changed completed outputs while this worker ran.
+        for dependency, captured in request['dependencies'].items():
+            current_dependency = studio._receipt(job['run_id'], job['revision_id'], dependency)
+            if current_dependency is None or canonical_hash(current_dependency) != canonical_hash(captured):
+                receipt_path.unlink()
+                raise StudioError('stale_dependency', f'{dependency} changed during {stage}; result not published', 409)
         db.execute('INSERT OR REPLACE INTO stage_completions VALUES (?, ?, ?, ?)',
                    (job['run_id'], job['revision_id'], stage, json.dumps(info)))
 

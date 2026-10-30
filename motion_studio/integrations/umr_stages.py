@@ -2,6 +2,7 @@
 from dataclasses import asdict, dataclass
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 
@@ -13,6 +14,13 @@ CHECKOUT = Path('/data/workspace/motion_studio/externals/UMR')
 
 def canonical_hash(value):
     return hashlib.sha256(json.dumps(value, sort_keys=True, separators=(',', ':'), allow_nan=False).encode()).hexdigest()
+
+
+def native_environment():
+    """Keep the independent runtime independent of the service's Python paths."""
+    env = {k: v for k, v in os.environ.items() if k not in ('PYTHONPATH', 'PYTHONHOME')}
+    env['PYTHONNOUSERSITE'] = '1'
+    return env
 
 
 @dataclass(frozen=True)
@@ -55,7 +63,7 @@ class NativeStages:
             if revision != PIN or changed:
                 raise ValueError('Pinned UMR source revision or tracked bytes changed')
             result = subprocess.run([str(self.python), '-B', '-u', str(Path(__file__).with_name('_umr_stage_worker.py')), 'probe', str(self.checkout)],
-                                    capture_output=True, text=True, timeout=45)
+                                    capture_output=True, text=True, timeout=45, env=native_environment())
             if result.returncode:
                 raise ValueError(result.stderr[-2000:] or 'Runtime probe failed')
             runtime = json.loads(result.stdout)

@@ -97,6 +97,15 @@ class _ExecutionOperations:
             receipt = json.loads(confined_file(folder, info['receipt_path']).read_text())
             if canonical_hash(receipt) != info['receipt_sha256']:
                 return None
+            if stage not in STAGES or (receipt['run_id'], receipt['revision_id'], receipt['stage']) != (run_id, revision, stage):
+                return None
+            expected = STAGES[:STAGES.index(stage)]
+            if set(receipt['dependencies']) != set(expected):
+                return None
+            for dependency in expected:
+                current = self._receipt(run_id, revision, dependency)
+                if current is None or canonical_hash(current) != canonical_hash(receipt['dependencies'][dependency]):
+                    return None
             return receipt
         except (OSError, ValueError, StudioError):
             return None

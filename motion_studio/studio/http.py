@@ -157,6 +157,12 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 if len(parts) != 6:
                     raise StudioError('not_found', 'Stage artifact does not exist', 404)
                 self._file(studio.stage_artifact(self._id(parts[2]), parts[3], parts[4], parts[5]))
+            elif path.startswith('/api/runs/') and '/stages/' in path and path.endswith('/receipt'):
+                parts = path.split('/')
+                if len(parts) != 7:
+                    raise StudioError('not_found', 'Stage receipt does not exist', 404)
+                record = studio.get_run(self._id(parts[3]))
+                self._json(200, studio.stage_receipt(record.run_id, record.revision_id, parts[5]))
             elif path.startswith('/api/runs/') and path.endswith('/settings'):
                 self._json(200, studio.execution_settings(self._id(path.split('/')[3])))
             elif path.startswith('/api/runs/'):

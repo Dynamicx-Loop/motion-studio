@@ -52,7 +52,12 @@ def export_binding(config, request, output, pipeline, dependency_file):
         raise ValueError('Invalid source barycentric binding')
     np.testing.assert_allclose(bary.sum(axis=1), 1, atol=1e-6, rtol=0)
     expected = (human_vertices[human_faces[source['face_ids']]] * bary[:,:,None]).sum(axis=1)
-    np.testing.assert_allclose(expected, source['closest_points'], atol=5e-7, rtol=0)
+    # Native's tiny-triangle barycentric fallback can select vertex0 while its
+    # nearest-point diagnostic remains on an edge. Replay/solver uses bary, so
+    # publish that representation and preserve the raw nearest diagnostic too.
+    bary_error = np.abs(expected-source['closest_points']).max(axis=1)
+    if not np.isfinite(expected).all():
+        raise ValueError('Nonfinite source barycentric reconstruction')
     replay = np.empty_like(binding['root_points'])
     for gid in np.unique(gids):
         mask = gids == gid
@@ -64,7 +69,9 @@ def export_binding(config, request, output, pipeline, dependency_file):
     if not np.isfinite(distances).all():
         raise ValueError('Nonfinite projection error')
     np.savez_compressed(output / 'binding.npz', slot_index=np.arange(4096,dtype=np.int32),
-        source_face_ids=source['face_ids'], source_bary=bary, source_points=source['closest_points'],
+        source_face_ids=source['face_ids'], source_bary=bary, source_points=expected,
+        source_native_closest_points=source['closest_points'], source_native_projection_m=source['errors'],
+        source_barycentric_vs_native_closest_axis_error_m=bary_error,
         source_normals=source['closest_normals'], source_part_ids=parts,
         target_geom_ids=gids, target_local_pos=binding['local_pos'], target_local_normals=binding['local_normals'],
         target_root_points=binding['root_points'], target_projected_smpl=projected, projection_m=distances)
@@ -81,12 +88,16 @@ def export_binding(config, request, output, pipeline, dependency_file):
     payload = {'run': request['run_id'], 'schema': segments.BODY_SEGMENT_SCHEMA, 'units': 'metres',
         'coordinates': 'SMPL Y-up; centered static reference meshes',
         'scope': 'Pre-solve binding; source semantic labels differ from target geometry ownership; solver recomputes this native recipe',
-        'geometry': geometry, 'slot_index': list(range(4096)), 'source': source['closest_points'].tolist(),
+        'geometry': geometry, 'slot_index': list(range(4096)), 'source': expected.tolist(),
+        'source_native_closest': source['closest_points'].tolist(),
+        'source_barycentric_vs_native_closest_axis_error_m': bary_error.tolist(),
         'target': projected.tolist(), 'labels': labels,
         'bodies': [model.body(int(model.geom_bodyid[int(g)])).name for g in gids], 'meshes': mesh_names,
         'geom_ids': gids.tolist(), 'geom_types': [int(model.geom_type[int(g)]) for g in gids],
         'projection_m': distances.tolist(), 'counts': {label: labels.count(label) for label in sorted(set(labels))}}
     (output / 'bindings.json').write_text(json.dumps(payload, allow_nan=False))
     return {'slot_count': 4096, 'schema': segments.BODY_SEGMENT_SCHEMA,
-            'source_barycentric_verified': True, 'target_rigid_replay_axis_tolerance_m': 5e-7,
+            'source_barycentric_verified': True,
+            'source_native_closest_axis_discrepancy_max_m': float(bary_error.max()),
+            'source_representation': 'native face+bary replay; nearest diagnostic retained separately', 'target_rigid_replay_axis_tolerance_m': 5e-7,
             'target_reference_axis_tolerance_m': 2e-7, 'motion_required': False}, artifacts

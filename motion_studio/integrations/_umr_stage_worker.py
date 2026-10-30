@@ -123,7 +123,9 @@ def configure(checkout, request, pipeline):
     if not inputs['official_g1']:
         robot['joint_limits'] = {}
     motion = inputs['motion']
-    model_dir = str(Path(motion['model_path']).parent)
+    # Native accepts an exact weight file. Never give it a directory that can
+    # activate an unrecorded overlay or a newly preferred .pkl/.npz sibling.
+    model_dir = str(Path(motion['model_path']).resolve())
     config.update({'robot': robot, 'smplx_model_dir': model_dir,
         'smpl_template': {'source': 'motion', 'type': 'smplx', 'use_betas': True,
                           'use_gender': True, 'name': 'auto'},

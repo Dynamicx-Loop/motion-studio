@@ -29,10 +29,6 @@ class ExecutionTests(unittest.TestCase):
             self.assertEqual(studio.list_jobs(), ())
 
 
-if __name__ == '__main__':
-    unittest.main()
-
-
 class ProcessJobsTests(unittest.TestCase):
     def setUp(self):
         import json
@@ -42,13 +38,16 @@ class ProcessJobsTests(unittest.TestCase):
         self.addCleanup(self.tmp.cleanup)
         self.root = Path(self.tmp.name)
         worker = self.root / 'external-fixture.py'
-        worker.write_text('''import json,sys,time
+        worker.write_text('''import json,sys,time,os
+assert 'PYTHONPATH' not in os.environ, 'native runtime inherited service Python search path'
 from pathlib import Path
 r=json.loads(Path(sys.argv[1]).read_text()); p=Path(r['attempt_dir'])
 print('[TrainResidual] epoch=00001 loss=0.25',flush=True)
 time.sleep(.15)
-(p/'dataset.npz').write_bytes(b'fixture external dataset')
-(p/'validation.json').write_text(json.dumps({'stage':r['stage'],'valid':True,'artifacts':['dataset.npz']}))
+name='train/correspondence_slots_final.npz' if r['stage']=='training' else 'dataset.npz'
+(p/name).parent.mkdir(parents=True,exist_ok=True)
+(p/name).write_bytes(b'fixture external dataset')
+(p/'validation.json').write_text(json.dumps({'stage':r['stage'],'valid':True,'artifacts':[name]}))
 ''')
         class ExternalFixture(NativeStages):
             def readiness(self):
@@ -71,7 +70,10 @@ time.sleep(.15)
         run = self.studio.create_draft('Subprocess fixture')
         run = self.studio.save_robot_pose(run.run_id, robot.asset_id, name='Reference',
                                          qpos=robot.default_qpos, torso_body='torso')
-        import numpy as np
+        try:
+            import numpy as np
+        except ImportError:
+            self.skipTest('NumPy unavailable for managed motion fixture')
         source = self.root / 'source.npz'
         np.savez(source, poses=np.zeros((3,66)), trans=np.zeros((3,3)), betas=np.zeros(10),
                  gender='neutral', fps=30., output_up='z')
@@ -131,7 +133,7 @@ time.sleep(.15)
         self.assertNotEqual(changed.revision_id, self.run.revision_id)
         self.assertEqual(self.studio.execution_settings(self.run.run_id)['epochs'], 2)
         worker = self.root / 'external-fixture.py'
-        worker.write_text(worker.read_text().replace("'artifacts':['dataset.npz']", "'artifacts':['missing.npz']"))
+        worker.write_text(worker.read_text().replace("'artifacts':[name]", "'artifacts':['missing.npz']"))
         job = self.wait(self.studio.start_execution(self.run.run_id, through='sampling'))
         self.assertEqual(job['status'], 'failed')
         self.assertEqual(job['error_code'], 'invalid_result')
@@ -159,5 +161,39 @@ time.sleep(.15)
             self.assertEqual(json.load(response)['status'], 'completed')
         with urllib.request.urlopen(base+'/api/jobs/'+job['job_id']+'/log/sampling') as response:
             self.assertIn(b'epoch=00001', response.read())
+        with urllib.request.urlopen(base+f'/api/runs/{self.run.run_id}/stages/sampling/receipt') as response:
+            self.assertEqual(json.load(response)['stage'], 'sampling')
         with urllib.request.urlopen(base+f'/artifacts/{self.run.run_id}/{done["revision_id"]}/sampling/dataset.npz') as response:
             self.assertEqual(response.read(), b'fixture external dataset')
+
+
+    def test_completed_receipt_rejects_a_changed_prerequisite(self):
+        job = self.wait(self.studio.start_execution(self.run.run_id, through='training'))
+        self.assertEqual(job['status'], 'completed', job)
+        self.studio.stage_receipt(self.run.run_id, job['revision_id'], 'training')
+        dataset = self.studio.stage_artifact(self.run.run_id, job['revision_id'], 'sampling', 'dataset.npz')
+        dataset.write_bytes(b'changed after both stages completed')
+        with self.assertRaises(StudioError):
+            self.studio.stage_receipt(self.run.run_id, job['revision_id'], 'training')
+
+
+    def test_changed_prerequisite_during_training_is_never_published(self):
+        self.wait(self.studio.start_execution(self.run.run_id, through='sampling'))
+        dataset = self.studio.stage_artifact(self.run.run_id, self.run.revision_id, 'sampling', 'dataset.npz')
+        worker = self.root / 'external-fixture.py'
+        worker.write_text(worker.read_text().replace('time.sleep(.15)', 'time.sleep(.5)'))
+        job = self.studio.start_execution(self.run.run_id, through='training')
+        import time
+        deadline = time.monotonic()+3
+        while not self.studio.get_job(job['job_id'])['progress'] and time.monotonic()<deadline:
+            time.sleep(.02)
+        dataset.write_bytes(b'changed while dependent training is active')
+        done = self.wait(job)
+        self.assertEqual(done['status'], 'failed', done)
+        self.assertEqual(done['error_code'], 'stale_dependency')
+        with self.assertRaises(StudioError):
+            self.studio.stage_receipt(self.run.run_id, self.run.revision_id, 'training')
+
+
+if __name__ == "__main__":
+    unittest.main()
