@@ -120,3 +120,51 @@ requests. Browser validation for this slice opened the preserved full G1 inspect
 stepped exact source frames, created a draft, restored each selected run on refresh,
 and checked that all page/iframe resource URLs use the local origin. Fresh native
 execution and the broader lifecycle acceptance belong to later tickets.
+
+## SMPL-X motion preparation
+
+The managed-assets panel imports a local `.npz`, inspects its metadata and selects
+it for the current editable draft. Import retains every original byte/channel and
+all frames in `assets/motions/<sha256>/source.npz`; moving the original is safe.
+The immutable version identity combines source bytes, resolved metadata and local
+model provenance. Selecting a different version creates a new draft revision and
+an immutable `runs/<id>/<revision>/motion.json`; it starts no computation.
+
+Supported motion has numeric axis-angle `poses`/`pose_aa` with shape `(N,66)`
+(root plus 21 body joints) or `(N,165)` (full SMPL-X), or `root_orient (N,3)` plus
+`pose_body (N,63)`. Translation `trans`/`trans_orig`/`transl` must be finite `(N,3)`
+metres, shape `betas`/`beta` is ten constant values `(10,)` or `(1,10)`. Gender is
+neutral/male/female. Positive constant FPS and Y/Z-up must be recorded or supplied
+explicitly in the form. Aliases, split/full poses, baseline `smpl_pose_axis_angle`,
+`coordinate_up` and `frame_time` must agree. Custom timestamps/frame IDs,
+per-frame shape, unsupported layouts and non-unit `human_scale` are rejected.
+No resampling, scaling or frame removal occurs.
+
+Every archived array is inspected with pickle disabled. Object/structured/complex
+arrays, duplicate/escaping archive names and unbounded payloads are rejected;
+NPY headers are checked against payload lengths before allocation. Original
+untrusted files never reach the native permissive loader. `normalized.npz` is a
+separately hashed, generated numeric/string-only native input with explicit
+canonical metadata. Native reconstruction uses root/body pose, neutral hands and
+omits facial channels; the UI and version record disclose this limitation.
+
+Motion import lazily needs NumPy in the service interpreter. Startup and persisted
+viewing do not import NumPy or UMR. `--smplx-model-dir` configures licensed local
+weights, defaulting to the existing `/data/motions/human_models/smplx/1.1/…/smplx`
+location. A matching `SMPLX_<GENDER>.pkl` or `.npz` must exist; it is hashed and
+referenced, never copied or unpickled by import. Missing/changed weights prevent
+selecting/reconstructing the asset while saved metadata and viewing remain usable.
+
+Additional owned operations are `import_motion(source_path, metadata=None)`,
+`list_motions()`, `get_motion(asset_id)`, `select_motion(run_id, asset_id)`,
+`motion_source(asset_id)` and `motion_file(asset_id)`. `MotionAsset` contains frame
+count/FPS, pose layout, betas, axes/units, gender, channels, metadata origins, source
+and model hashes, and reconstruction disclosure. `motion_source` verifies retained
+bytes; `motion_file` verifies the generated input and recorded model. Both return
+managed paths. Callers must use `motion_file` for native execution.
+
+HTTP adds `POST /api/motions` with `{source_path, metadata}`,
+`GET /api/motions`, `GET /api/motions/<asset_id>`, and
+`POST /api/runs/<run_id>/motion` with `{asset_id}`. `/api/state` includes `motions`
+and `RunRecord.motion_asset_id`. Expected failures include `missing_metadata`,
+`invalid_motion`, `missing_model`, `changed_model` and `changed_asset`.

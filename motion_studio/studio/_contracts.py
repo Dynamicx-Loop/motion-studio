@@ -37,6 +37,7 @@ class RunRecord:
     created_at: str
     stages: tuple[StageState, ...]
     inspection_path: str | None = None
+    motion_asset_id: str | None = None
 
 
 @dataclass(frozen=True)
