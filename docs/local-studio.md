@@ -230,3 +230,86 @@ HTTP adds `POST /api/motions` with `{source_path, metadata}`,
 `POST /api/runs/<run_id>/motion` with `{asset_id}`. `/api/state` includes `motions`
 and `RunRecord.motion_asset_id`. Expected failures include `missing_metadata`,
 `invalid_motion`, `missing_model`, `changed_model` and `changed_asset`.
+
+## Explicit native stage execution
+
+The editable draft's **Native UMR execution** form exposes sampling seed (default
+0), training epochs (500), and trajectory filter (`LQR` or `none`). Choose Run all
+or Run through sampling/training/binding, review the displayed prerequisite plan,
+then launch it. Merely viewing a tab performs no computation. Saved settings make
+an immutable new revision. Modified epochs/seed/filter are experiments; small-epoch
+smoke runs are not official-default quality acceptance. Training and solver seeds
+stay fixed at zero. The UI `none` value maps to the native solver's `off` value.
+
+The concrete `NativeStages` adapter checks the exact pinned UMR source, independent
+interpreter/packages, CUDA device, actual native segmentation/map selection and
+licensed input-model hashes. It copies the managed robot closure into a fresh
+sampling attempt, applies the saved named radians/root XYZ/wxyz pose, and disables
+native XML derivation. Official G1 solve limits apply only to the byte-verified
+bundled G1 closure; arbitrary imported robots retain their compiled limits.
+For verified official G1, the adapter replaces the generic managed pelvis free
+joint in its private copy with native's additional `unitree_g1_float_root` wrapper
+(mass 0.001 kg, diagonal inertia 1e-6 kg m²). The pinned pelvis local transform is
+verified identity, so saved root XYZ/wxyz maps identically to wrapper qpos. Every
+named body's world position/orientation is independently compared before/after
+using compiled models and saved qpos at tolerance 1e-10; `model-derivation.json`
+records the mapping, inertia and observed errors. Other robots receive no wrapper. Safe
+managed normalized motion is the only native input; all its frames are used.
+
+`Studio.plan_execution(run_id, through='retargeting', settings=None)` returns JSON
+values: captured run/revision, resolved controls, missing inputs, CUDA readiness,
+ordered `stages` needing work, completed stages and semantic fingerprints.
+`start_execution` takes the same arguments, saves changed controls as a revision,
+and returns a job. Only one native job can be active. Browser navigation and
+refresh do not own its lifetime. `get_job(job_id)`/`list_jobs()` return persistent
+status, captured plan, stage/attempt identities, observed epoch/frame/log progress
+and failure context. `cancel_job` terminates the independent process group and
+keeps its logs and partial files; retries use fresh attempts. There is no native
+checkpoint continuation. A dead service owner is recorded as interrupted.
+
+The subprocess invokes exactly one of the native dataset/trainer/retarget calls
+with `force=True`; it never invokes native `run_pipeline` or implicit stage CLI
+routes. Binding invokes the native source barycentric binding, native19 semantic
+labeling and projected rigid target-binding functions without solving motion.
+The retarget solver recomputes that binding recipe internally; it does not consume
+a saved binding NPZ. All merged scientific configuration is persisted in
+`humanoid_retarget_runtime_config.json` before native children launch. Retarget
+uses the whole managed clip, sequential warm starts and operational SMPL-X batch
+cap 128; this cap is not a quality preset.
+
+Attempts have stable fresh paths under
+`runs/<run_id>/<revision_id>/<stage>/attempt-<uuid>/`. Completion requires exit zero,
+stage-specific numerical validation, confined nonempty required outputs and exact
+SHA-256 publication. SQLite publishes the completion atomically only while the
+job/revision/settings/dependency fingerprints still match. Cancelled, failed or
+changed-input attempts never become reusable completions. A completion receipt
+records input/closure/model hashes, exact dependency receipts/artifact hashes,
+settings, native/adapter/runtime identity, command/environment overrides, validation
+findings and completed UTC. Semantic fingerprints exclude transient attempt/output
+paths. Reuse stays within the captured run/revision; changing recorded bytes
+invalidates completion. Sampling is 4096 paired points with valid reference meshes;
+training validates final checkpoint epochs, paired slots/order and normalization;
+binding validates barycentric and rigid replay/reference geometry; motion validates
+exact frame IDs/FPS, finite qpos, joint order/limits and unit root quaternions.
+These representation checks make no contact, collision or dynamics claim.
+
+`stage_receipt(run_id, revision_id, stage)` returns the detached verified receipt.
+`stage_artifact(run_id, revision_id, stage, name)` returns only a unique registered
+artifact by name/suffix after rechecking the entire receipt's bytes. The receipt's
+`artifacts` maps attempt-relative paths to SHA-256. Stage consumers should use:
+
+- sampling: `dataset.npz`, `humanoid_retarget_runtime_config.json`,
+  `model/__studio_model.xml` and copied closure;
+- training: `train/checkpoint-final.pt`,
+  `train/correspondence_slots_final.npz`;
+- binding: `binding.npz`, `bindings.json`, human/robot vertex/face binaries;
+  static JSON has geometry, paired slot indices, source/target points, semantic
+  labels, target body/geom ownership and projection errors, with no motion required;
+- retargeting: `motion.npz`; every stage also records `config.json`, `request.json`,
+  `command.json`, `native.log` and `validation.json`.
+
+HTTP adds `POST /api/runs/<id>/plan` and `…/execute` with exact fields
+`{through, settings}`, `GET …/settings`, `POST …/settings` with `{settings}`,
+`GET /api/jobs/<id>`, `POST …/cancel` with `{}`,
+`GET …/log/<stage>`, and `GET /artifacts/<run>/<revision>/<stage>/<name>`.
+`GET /api/state` includes jobs. Errors retain the structured loopback contract.

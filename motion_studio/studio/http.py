@@ -76,6 +76,17 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             elif path.startswith('/api/runs/') and path.endswith('/name'):
                 self._fields(data, {'name'})
                 self._json(200, asdict(studio.rename_draft(self._id(path.split('/')[3]), data['name'])))
+            elif path.startswith('/api/runs/') and path.endswith(('/plan', '/execute')):
+                self._fields(data, {'through', 'settings'})
+                operation = studio.plan_execution if path.endswith('/plan') else studio.start_execution
+                self._json(200 if path.endswith('/plan') else 202,
+                    operation(self._id(path.split('/')[3]), through=data['through'], settings=data['settings']))
+            elif path.startswith('/api/runs/') and path.endswith('/settings'):
+                self._fields(data, {'settings'})
+                self._json(200, asdict(studio.save_execution_settings(self._id(path.split('/')[3]), data['settings'])))
+            elif path.startswith('/api/jobs/') and path.endswith('/cancel'):
+                self._fields(data, set())
+                self._json(200, studio.cancel_job(self._id(path.split('/')[3])))
             # ROBOT mutations: compile/preview live outside the service runtime.
             elif path == '/api/robots':
                 self._fields(data, {'source_path', 'derive_free_root'})
@@ -108,6 +119,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             if path == '/api/state':
                 self._json(200, {'runs': [asdict(run) for run in studio.list_runs()],
                                  'selected_run_id': studio.selected_run_id(),
+                                 'jobs': list(studio.list_jobs()),
                                  'motions': [asdict(asset) for asset in studio.list_motions()],
                                  'robots': [asdict(asset) for asset in studio.list_robots()],
                                  'history_roots': [str(root) for root in studio.history_roots]})
@@ -131,6 +143,22 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 self._json(200, [asdict(asset) for asset in studio.list_motions()])
             elif path.startswith('/api/motions/'):
                 self._json(200, asdict(studio.get_motion(path.removeprefix('/api/motions/'))))
+            elif path.startswith('/api/jobs/'):
+                parts = path.split('/')
+                job_id = self._id(parts[3])
+                if len(parts) == 4:
+                    self._json(200, studio.get_job(job_id))
+                elif len(parts) == 6 and parts[4] == 'log':
+                    self._file(studio.job_file(job_id, parts[5]))
+                else:
+                    raise StudioError('not_found', 'Job resource does not exist', 404)
+            elif path.startswith('/artifacts/'):
+                parts = path.split('/', 5)
+                if len(parts) != 6:
+                    raise StudioError('not_found', 'Stage artifact does not exist', 404)
+                self._file(studio.stage_artifact(self._id(parts[2]), parts[3], parts[4], parts[5]))
+            elif path.startswith('/api/runs/') and path.endswith('/settings'):
+                self._json(200, studio.execution_settings(self._id(path.split('/')[3])))
             elif path.startswith('/api/runs/'):
                 self._json(200, asdict(studio.get_run(self._id(path.removeprefix('/api/runs/')))))
             elif path.startswith('/inspection/'):
@@ -145,7 +173,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._file(_WEB / 'inspection' / name)
                 else:
                     self._file(studio.inspection_file(run_id, name))
-            elif path in {'/', '/app.js', '/motion.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
+            elif path in {'/', '/app.js', '/motion.js', '/execution.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
                 file = 'index.html' if path == '/' else path[1:]
                 self._file(_WEB / file)
             else:

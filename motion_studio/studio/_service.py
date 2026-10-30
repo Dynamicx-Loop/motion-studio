@@ -6,15 +6,16 @@ import sqlite3
 import uuid
 
 from ._robots import _RobotOperations
+from ._execution import _ExecutionOperations
 
 from ._history import confined_file, digest, inspect_bundle
 from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
 from ._motion import _MotionOperations
 
 
-class Studio(_RobotOperations, _MotionOperations):
+class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations):
     def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
-                 robot_python: Path | None = None, smplx_model_dir: Path | None = None):
+                 robot_python: Path | None = None, smplx_model_dir: Path | None = None, native_adapter=None):
         self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
         state = Path(state_root).resolve()
         self.history_roots = tuple(Path(p).resolve() for p in history_roots)
@@ -35,6 +36,7 @@ class Studio(_RobotOperations, _MotionOperations):
             db.execute('CREATE TABLE IF NOT EXISTS preferences (key TEXT PRIMARY KEY, value TEXT)')
 
         self._init_motions(smplx_model_dir)
+        self._init_execution(native_adapter)
 
     @contextmanager
     def _connection(self):
@@ -148,6 +150,9 @@ class Studio(_RobotOperations, _MotionOperations):
             if not historical and robot and stage == Stage.PREPARATION else StageState(stage)
             for stage in Stage
         )
+        if not historical:
+            stages = tuple(StageState(s.stage, 'available', f"/artifacts/{row['run_id']}/{row['revision_id']}/{s.stage}/validation.json")
+                           if self._receipt(row['run_id'], row['revision_id'], s.stage) else s for s in stages)
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
                          historical, row['created_at'], stages, row['inspection_path'],
                          robot_asset_id=robot['asset_id'] if robot else None,

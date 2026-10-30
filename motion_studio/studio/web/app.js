@@ -1,4 +1,5 @@
 import {renderRobot} from '/robot.js';
+import {renderExecution} from './execution.js';
 import {renderMotion} from './motion.js';
 const $ = id => document.getElementById(id);
 let state, selectedStage = 'motion';
@@ -53,6 +54,7 @@ function render() {
   renderRobot({state,run,api,refresh,failure});
   renderMotion({state, run, api, refresh, failure});
   $('run-details').replaceChildren(); $('logs').replaceChildren();
+  renderExecution({state, run, api, refresh, failure});
   if (run?.read_only) {
     const note = document.createElement('p'); note.textContent = 'Preserved G1 inspection: synchronized source human and saved robot motion, reconstructed bindings. No new native run.';
     $('run-details').append(note);
