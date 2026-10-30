@@ -367,8 +367,9 @@ preserved HiPHI source and use two training epochs. The application still passes
 all frames of its selected managed motion without trimming/resampling. The smoke
 script records fixture conversion and original-source hash. The primitive cohort
 stops at binding with no motion file and covers native tiny-triangle diagnostics.
-Neither smoke establishes full-clip/default quality; ticket 07 retains the required
-fresh 500-epoch/all-5468-frame G1 acceptance. Ticket 05 adds rich stage/animated
+Neither smoke establishes full-clip/default quality; the separate
+[full G1 acceptance](../experiments/studio-baseline-acceptance-20261030/README.md)
+records fresh 500-epoch/all-5468-frame application execution. Ticket 05 adds rich stage/animated
 inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
 
 ## Stage inspection and standalone exports
@@ -438,9 +439,9 @@ node tests/test_studio_frame_requests.cjs
 ```
 
 The three-frame smoke establishes bounded representation and offline viewing.
-Native full-clip chunk-boundary comparisons and default-quality/full-clip
-acceptance remain the required ticket 07 run, separate from analytic 64-frame
-quantization and asynchronous chunk-boundary tests.
+Native full-clip chunk-boundary comparisons and default/full-clip execution
+are recorded in [the full acceptance experiment](../experiments/studio-baseline-acceptance-20261030/README.md),
+separate from analytic 64-frame quantization and asynchronous boundary tests.
 
 ## Recovery and immutable revision history
 

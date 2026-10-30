@@ -13,6 +13,14 @@ foot-slip or dynamic feasibility.
 
 All durable evidence is canonical beneath
 `/data/workspace/motion_studio/outputs/studio-baseline-acceptance-20261030/`.
+The final accepted cohort is `final-cohort/`, run
+`886f5c1ba3814b4eb268a84eeb8f1d1d`, immutable revision `r0003`, job
+`9f6a6647060d4bc5afd7ecfec6f33124`, executed on final reviewed product code.
+Its authoritative standalone bundle is
+`final-cohort/state/exports/886f5c1ba3814b4eb268a84eeb8f1d1d/r0003/retargeting/3fc297a962064b93b04579c249415001`.
+`final-cohort/evidence/exports.json` records all four stage bundles; the source,
+commands, machine, runtime, numerical and browser records are alongside it.
+
 The initial full run is `0b9b5cf42653470f9121fcc759cdbfb7`, revision `r0003`,
 job `0802bf7bd90e4e2ab717aba70a4840a8`. It is retained unchanged. Its original
 float32 derivative is listed in `exports-original.json`; the reviewed float64
@@ -208,9 +216,72 @@ a fresh attempt. That retry was marked interrupted by a temporary second service
 in another process namespace, which could not observe the host owner PID. This
 is retained in `cancelled-native-state.json` and `retry-completed-state.json` as a
 real failure found during acceptance, not claimed as successful crash recovery.
-The final-review follow-up addresses unknown-owner handling and repeats final
-native acceptance under one host service; fixture ticket 06 separately covers
-service death and descendant cleanup.
+The final-review correction records boot/PID-namespace ownership, treats an
+unobservable owner as unknown/busy, and never signals an unverified PID. The
+fresh final acceptance below repeats native execution under one host service;
+fixture ticket 06 separately covers service death and descendant cleanup.
 
 Ticket 07 remains claimed until final standards/spec closure. Do not interpret
 this record's measured gates as permission to waive remaining required checks.
+
+
+## Final reviewed-code acceptance and closure handoff
+
+The final host service used fresh `final-cohort/state` on port 8900, code commit
+`a6aa5c2336c010312e3ec4049fbfd6aef3850fc5` containing reviewed integration
+`e4e0eb25fa2051551f8125ce0bfd373e847e2d66`. No product code changed between
+this full run, cancellation and retry. `final-cohort/source.json` stores exact
+source hashes; `commands.json` records the actual service/HTTP commands.
+`machine.json` records Intel i9-14900HX, 32 logical CPUs, 32,571,000 kB RAM and
+Linux 7.0.0-38. The runtime receipt records the RTX 5070 Laptop CUDA environment.
+The job records its boot ID, host PID namespace, owner PID and kernel birth
+identity; browsers and the HTTP driver never opened application state directly.
+
+The final full job ran 05:29:47.550091–05:32:41.353442 UTC, **173.803 seconds**
+including orchestration. Observed retarget elapsed was **108.95 seconds**.
+HTTP sampling/training/binding/moving exports took **4.305 / 5.213 / 3.937 /
+21.405 seconds**. Every selected-frame gate above repeated with the same measured
+bounds, including exact static target reference vertices/faces. Final independent
+all-human-chunks/all-robot-frames reference tests passed **3/3 in 20.754 seconds**.
+See `evidence/independent-numeric-gates.json`,
+`evidence/full-native-reference.log`, `evidence/stage-preservation.json` and
+`validation.log`.
+
+Actual final-code lifecycle validation used separate revision `r0004`, epochs 499.
+Sampling remained available with an authenticated `r0003` receipt; affected stages
+became visibly stale. Browser closure/reopening and historical browsing left native
+training active. **Stop active job** cancelled job
+`31f4a2e065e849c08ae8dc78052b66f8` at observed epoch 100, retaining
+`attempt-4cb9597189b64a978a42e780a2aac325`. **Review explicit retry** launched only
+training as job `e7f22f0b6aea41b9b840e0a8f5297529`, fresh
+`attempt-34b2950dec8a45899736175017ec0509`. It completed with a validated
+499-epoch checkpoint, observed elapsed 34.25 s; its last periodic log was epoch
+400 rather than an invented 499 progress line. No namespace interruption recurred.
+The original full revision remained browsable throughout. `lifecycle-*.json`
+retain states, both attempts and verified reused receipts.
+
+Final browser checks inspected the sampling distinction (paired lines disabled),
+training pairs without ownership, pre-solve binding ownership, then synchronized
+motion. Reopened `r0003` stayed immutable while retry computed. Six exact seeks
+0/63/64/1800/2303/5467 took **46/20/25/225/234/227 ms** including control calls.
+The final standalone HTTP bundle reached frame 0 in **2991 ms** including opening
+and observation. Step 63→64, final-frame end-stop, loop 5466→2, source filtering,
+selected ownership, reference pose, centering, meshes, paired lines and camera
+presets passed. Console warnings/errors were empty. The 18 observed standalone
+resources were all local, including chunk 085; networking remained enabled.
+These observations and their limits are saved in `browser-evidence.json` and
+`offline-resource-audit.json`.
+
+Final owning checks passed **27 pure suites**, **3 robot-static suites** and the
+three JavaScript cache/frame/encoding suites. The official-pose HTTP test passes
+for all four preset joints and rejects a generic robot even when its filename is
+`g1_29dof.xml`. All 73 original final-cohort native artifact hashes and all 182
+bundle file hashes still match after cancellation/retry. The whole-original
+288-file/external receipt also passes (`original-preservation-final.json`).
+New documentation links, script syntax and whitespace were checked.
+
+Both integration reviewers cleared the product and namespace correction. Ticket
+07 is ready for root closeout after reviewing this final documentation/evidence
+delta; it remains claimed until that explicit orchestration step. Temporary owned
+services are stopped only after all jobs become terminal. Restart from canonical
+integrated source with the final managed state; selected revision `r0003` is saved.
