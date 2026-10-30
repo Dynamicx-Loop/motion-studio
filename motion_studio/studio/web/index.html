@@ -43,6 +43,8 @@
 <p id="identity" class="muted">
 </p>
 </div>
+<label>Saved revision<select id="revisions" aria-label="Saved revision"></select></label>
+<p id="revision-note" class="muted"></p>
 <nav id="stages" aria-label="Pipeline stages">
 </nav>
 <section id="viewport" aria-label="Stage viewport">
@@ -66,6 +68,7 @@
 <footer>
 <details open>
 <summary>Status &amp; logs</summary>
+<div id="active-job" role="status"></div>
 <p id="status">Idle · no computation active</p>
 <pre id="error" role="alert">
 </pre>

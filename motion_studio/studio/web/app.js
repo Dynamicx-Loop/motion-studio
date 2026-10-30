@@ -20,7 +20,19 @@ function link(name, url) {
   anchor.target = '_blank'; anchor.rel = 'noopener'; return anchor;
 }
 function render() {
-  const run = state.runs.find(item => item.run_id === state.selected_run_id);
+  const run = state.selected_run || state.runs.find(item => item.run_id === state.selected_run_id);
+  const revisions = $('revisions');
+  revisions.replaceChildren(...(state.revisions || []).map(item => {
+    const option = document.createElement('option'); option.value = item.revision_id;
+    option.textContent = `${item.revision_id}${item.is_latest ? ' · latest editable' : ' · saved snapshot'}`;
+    return option;
+  }));
+  revisions.value = run?.revision_id || ''; revisions.disabled = !run;
+  revisions.onchange = async () => {
+    try { await api('/api/selection', {run_id:run.run_id, revision_id:revisions.value}); await refresh(); }
+    catch (error) { failure(error); }
+  };
+  $('revision-note').textContent = run && !run.is_latest ? 'Viewing an immutable saved revision. Select latest to change inputs or launch work.' : 'Saved edits create a revision; unaffected verified prerequisites may be reused. Robot, pose or motion edits invalidate all stages.';
   $('runs').replaceChildren(...state.runs.map(item => {
     const button = document.createElement('button'); button.textContent = item.name;
     button.setAttribute('aria-current', String(item.run_id === run?.run_id));
@@ -35,13 +47,17 @@ function render() {
   $('run-name').textContent = run?.name || 'Choose or create a run';
   $('identity').textContent = run ? `Run ${run.run_id} · revision ${run.revision_id}` : '';
   $('kind').textContent = run ? run.read_only ? 'Historical reference · read-only' : 'Draft · ready for input preparation' : 'Select a saved run.';
-  $('status').textContent = run?.read_only ? 'Viewing preserved saved output · no computation active' : 'Idle · no computation active';
+  const active = state.jobs.find(job => ['queued', 'running', 'cancelling'].includes(job.status));
+  $('status').textContent = active ? `${active.status} · ${active.stage || 'starting'} · ${state.runs.find(r => r.run_id === active.run_id)?.name || active.run_id} · browser closure leaves this job running` : run?.read_only ? 'Viewing preserved saved output · no computation active' : 'Idle · no computation active';
   if (!run?.stages.some(stage => stage.stage === selectedStage && stage.status === 'available'))
     selectedStage = run?.stages.find(stage => stage.status === 'available')?.stage || 'preparation';
   $('stages').replaceChildren(...(run?.stages || []).map(stage => {
     const button = document.createElement('button');
     button.textContent = `${stage.stage[0].toUpperCase()}${stage.stage.slice(1)} · ${stage.status}`;
     button.disabled = stage.status !== 'available';
+    button.title = stage.reason || '';
+    button.dataset.status = stage.status;
+    if (stage.status === 'stale') button.textContent += ' · recompute explicitly';
     button.setAttribute('aria-current', String(stage.stage === selectedStage));
     button.onclick = () => { selectedStage = stage.stage; render(); };
     return button;

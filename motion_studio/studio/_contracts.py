@@ -25,6 +25,7 @@ class StageState:
     stage: Stage
     status: str = 'unavailable'
     inspection_url: str | None = None
+    reason: str | None = None
 
 
 @dataclass(frozen=True)
@@ -40,6 +41,7 @@ class RunRecord:
     robot_asset_id: str | None = None
     robot_pose_id: str | None = None
     motion_asset_id: str | None = None
+    is_latest: bool = True
 
 
 @dataclass(frozen=True)

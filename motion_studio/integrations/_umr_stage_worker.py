@@ -32,7 +32,7 @@ def dependency_file(request, stage, name):
     matches = [p for p in receipt['artifacts'] if p.endswith('/' + name)]
     if len(matches) != 1:
         raise ValueError(f'Missing/ambiguous {stage} dependency {name}')
-    home = Path(request['attempt_dir']).parent.parent / stage
+    home = Path(request['attempt_dir']).parents[2] / receipt['revision_id'] / stage
     path = home / matches[0]
     import hashlib
     if hashlib.sha256(path.read_bytes()).hexdigest() != receipt['artifacts'][matches[0]]:
