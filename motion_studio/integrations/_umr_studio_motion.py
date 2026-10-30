@@ -95,4 +95,3 @@ def export_motion(run, output, reference, binding, robot, mujoco, np, *, expecte
             'display_origin': [float(qpos[0, 1]), ground, float(qpos[0, 0])],
             'root_positions': qpos[:, [1, 2, 0]].tolist(),
             'scope': 'Saved qpos replay; rigid bindings reconstructed in the reference pose, no per-frame rebind or solver telemetry'}
-
