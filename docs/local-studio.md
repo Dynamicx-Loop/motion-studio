@@ -1,7 +1,7 @@
 # Local Studio
 
 The persistent local application provides saved drafts, managed robot/pose and
-SMPL-X motion preparation, and read-only historical G1 playback. Startup uses
+SMPL-X motion preparation, explicit native UMR jobs, and read-only historical G1 playback. Startup uses
 Python's standard library and independently vendored browser dependencies. Viewing needs neither CUDA nor UMR imports.
 Launch from the Motion Studio root:
 
@@ -24,8 +24,8 @@ log links remain accessible. Selecting a tab never starts work. Refresh restores
 the selected persisted run/revision. Playback position and transient camera/filter
 controls start fresh when the inspection reloads. Current historical results expose
 motion inspection, including static reference pose and synchronized human/robot
-bindings. Native execution arrives in subsequent slices; unavailable stages are disabled
-and input preparation launches no compute job.
+bindings. Unavailable stages are disabled. Input preparation launches no compute job;
+explicit execution controls below launch native stages.
 
 The service binds only `127.0.0.1`, checks Host, refuses cross-origin changes and
 accepts only bounded JSON object mutations. This is a single-user local service,
@@ -56,8 +56,8 @@ NumPy arrays, simulator models or GPU imports cross this service boundary.
 `r0001` and advances on saved input changes, `kind` is `draft` or `historical`, `read_only` explicitly identifies
 historical registrations, and `created_at` is an ISO UTC timestamp. `stages`
 contains `StageState(stage, status, inspection_url)` for preparation, sampling,
-training, binding, retargeting and motion. Preparation becomes available after a robot pose is saved. The service uses
-`unavailable` and `available`; execution will add lifecycle states. Historical availability describes
+training, binding, retargeting and motion. Preparation becomes available after a robot pose is saved. Stage availability uses
+`unavailable` and `available`; persistent jobs separately expose their lifecycle state. Historical availability describes
 saved inspection access, not a newly executed native stage or verified new solve.
 
 `studio.roots` exposes `StorageRoots(state, assets, runs, exports)`. State holds
@@ -74,8 +74,8 @@ references bytes relative to its managed stage directory. Construction alone is
 not a completion receipt: the receiving execution operation must validate exact
 identity, path confinement, hashes and stage-specific output requirements before
 publishing completion. Scientific configuration translation and runtime invocation
-stay in the concrete adapter. This preparation slice does not invoke native stage adapters or claim
-cache reuse, cancellation or stage execution.
+stay in the concrete adapter. The execution operations below publish completion only after independent-worker
+numerical validation and parent identity/hash/dependency checks.
 
 Expected failures use `StudioError(code, message, status)`. HTTP represents these as
 `{"error":{"code":"…","message":"…"}}`; missing objects are 404, historical
@@ -236,3 +236,135 @@ HTTP adds `POST /api/motions` with `{source_path, metadata}`,
 `POST /api/runs/<run_id>/motion` with `{asset_id}`. `/api/state` includes `motions`
 and `RunRecord.motion_asset_id`. Expected failures include `missing_metadata`,
 `invalid_motion`, `missing_model`, `changed_model` and `changed_asset`.
+
+## Explicit native stage execution
+
+The editable draft's **Native UMR execution** form exposes sampling seed (default
+0), training epochs (500), and trajectory filter (`LQR` or `none`). Choose Run all
+or Run through sampling/training/binding, review the displayed prerequisite plan,
+then launch it. Merely viewing a tab performs no computation. Saved settings make
+an immutable new revision. Modified epochs/seed/filter are experiments; small-epoch
+smoke runs are not official-default quality acceptance. Training and solver seeds
+stay fixed at zero. The UI `none` value maps to the native solver's `off` value.
+
+The concrete `NativeStages` adapter checks the exact pinned UMR source, independent
+interpreter/packages, CUDA device, actual native segmentation/map selection and
+licensed input-model hashes. It copies the managed robot closure into a fresh
+sampling attempt, applies the saved named radians/root XYZ/wxyz pose, and disables
+native XML derivation. Official G1 solve limits apply only to the byte-verified
+bundled G1 closure; arbitrary imported robots retain their compiled limits.
+For verified official G1, the adapter replaces the generic managed pelvis free
+joint in its private copy with native's additional `unitree_g1_float_root` wrapper
+(mass 0.001 kg, diagonal inertia 1e-6 kg m²). The pinned pelvis local transform is
+verified identity, so saved root XYZ/wxyz maps identically to wrapper qpos. Every
+named body's world position/orientation is independently compared before/after
+using compiled models and saved qpos at tolerance 1e-10; `model-derivation.json`
+records the mapping, inertia and observed errors. Other robots receive no wrapper. Safe
+managed normalized motion is the only native input; all its frames are used.
+
+`Studio.plan_execution(run_id, through='retargeting', settings=None)` returns JSON
+values: captured run/revision, resolved controls, missing inputs, CUDA readiness,
+ordered `stages` needing work, completed stages and semantic fingerprints.
+`start_execution` takes the same arguments, saves changed controls as a revision,
+and returns a job. Only one native job can be active. Browser navigation and
+refresh do not own its lifetime. `get_job(job_id)`/`list_jobs()` return persistent
+status, captured plan, stage/attempt identities, observed epoch/frame/log progress
+and failure context. `cancel_job` terminates the independent process group and
+keeps its logs and partial files; retries use fresh attempts. There is no native
+checkpoint continuation. A dead service owner is recorded as interrupted.
+
+The subprocess invokes exactly one of the native dataset/trainer/retarget calls
+with `force=True`; it never invokes native `run_pipeline` or implicit stage CLI
+routes. Binding invokes the native source barycentric binding, native19 semantic
+labeling and projected rigid target-binding functions without solving motion.
+The retarget solver recomputes that binding recipe internally; it does not consume
+a saved binding NPZ. All merged scientific configuration is persisted in
+`humanoid_retarget_runtime_config.json` before native children launch. Retarget
+uses the whole managed clip, sequential warm starts and operational SMPL-X batch
+cap 128; this cap is not a quality preset.
+
+Attempts have stable fresh paths under
+`runs/<run_id>/<revision_id>/<stage>/attempt-<uuid>/`. Completion requires exit zero,
+stage-specific numerical validation, confined nonempty required outputs and exact
+SHA-256 publication. SQLite publishes the completion atomically only while the
+job/revision/settings/dependency fingerprints still match. Cancelled, failed or
+changed-input attempts never become reusable completions. A completion receipt
+records input/closure/model hashes, exact dependency receipts/artifact hashes,
+settings, native/adapter/runtime identity, command/environment overrides, validation
+findings and completed UTC. Semantic fingerprints exclude transient attempt/output
+paths. Reuse stays within the captured run/revision; changing recorded bytes
+invalidates completion. Sampling is 4096 paired points with valid reference meshes;
+training validates final checkpoint epochs, paired slots/order and normalization;
+binding validates barycentric and rigid replay/reference geometry; motion validates
+exact frame IDs/FPS, finite qpos, joint order/limits and unit root quaternions.
+These representation checks make no contact, collision or dynamics claim.
+
+`stage_receipt(run_id, revision_id, stage)` returns the detached verified receipt.
+`stage_artifact(run_id, revision_id, stage, name)` returns only a unique registered
+artifact by name/suffix after rechecking the entire receipt's bytes. The receipt's
+`artifacts` maps attempt-relative paths to SHA-256. Stage consumers should use:
+
+- sampling: `dataset.npz`, `humanoid_retarget_runtime_config.json`,
+  `model/__studio_model.xml` and copied closure;
+- training: `train/checkpoint-final.pt`,
+  `train/correspondence_slots_final.npz`;
+- binding: `binding.npz`, `bindings.json`, human/robot vertex/face binaries;
+  static JSON has geometry, paired slot indices, source/target points, semantic
+  labels, target body/geom ownership and projection errors, with no motion required;
+- retargeting: `motion.npz`; every stage also records `config.json`, `request.json`,
+  `command.json`, `native.log` and `validation.json`.
+
+HTTP adds `POST /api/runs/<id>/plan` and `…/execute` with exact fields
+`{through, settings}`, `GET …/settings`, `POST …/settings` with `{settings}`,
+`GET /api/jobs/<id>`, `POST …/cancel` with `{}`,
+`GET …/log/<stage>`, and `GET /artifacts/<run>/<revision>/<stage>/<name>`.
+`GET /api/runs/<id>/stages/<stage>/receipt` exposes the verified current-revision
+receipt; the UI links native outputs, resolved config, numerical validation and
+receipts under each available stage. `GET /api/state` includes jobs. Errors retain
+the structured loopback contract.
+
+The independent worker removes inherited `PYTHONPATH`/`PYTHONHOME` and sets
+`PYTHONNOUSERSITE=1`; it preserves `HOME`. Readiness uses the same environment.
+Exact execution overrides are recorded in `command.json`; logs retain native
+commands and output. An externally generated checksum alone is insufficient for
+completion: both the numerical worker and the parent publication checks must pass.
+
+The static source binding deliberately uses native face IDs/barycentric weights
+for replay. Native's tiny-triangle fallback can return vertex-0 weights while its
+nearest-point diagnostic differs. `binding.npz`/`bindings.json` retain that native
+closest point and per-slot discrepancy separately; displayed source binding points
+are reconstructed from face+bary, matching the solver's replay representation.
+Semantic labels still use the unchanged native labeling inputs. No tolerance is
+relaxed to conceal this diagnostic discrepancy.
+
+
+Native model configuration passes the **exact validated `MotionAsset.model_path`
+file** for both `smplx_model_dir` and sampling `smpl_models[].dir`. Native supports
+this file argument. Consumers/exporters must preserve it rather than reverting to
+the parent directory: directory loading can select an unrecorded alternate weight
+or overlay manifest. Existing frozen historical exporters keep their old contract;
+new inspection adapters must use the exact recorded file.
+
+Publication rechecks every captured dependency receipt and all its artifact hashes
+inside the final SQLite publication transaction. Public receipt/artifact reads
+recursively recheck the dependency chain, so a changed sampling artifact also
+invalidates a previously completed training/binding/retarget receipt.
+
+Focused CUDA smoke commands (fresh destinations required):
+
+```sh
+python3 -B scripts/smoke_studio_native.py --output /absolute/fresh/g1-smoke
+python3 -B scripts/smoke_studio_native.py --output /absolute/fresh/primitive-smoke --primitive
+STUDIO_G1_SMOKE=/absolute/fresh/g1-smoke \
+STUDIO_PRIMITIVE_SMOKE=/absolute/fresh/primitive-smoke \
+  python3 -B -m unittest discover -s tests -p test_studio_native_runtime.py -v
+```
+
+These intentionally derive a separately labeled three-frame fixture from the
+preserved HiPHI source and use two training epochs. The application still passes
+all frames of its selected managed motion without trimming/resampling. The smoke
+script records fixture conversion and original-source hash. The primitive cohort
+stops at binding with no motion file and covers native tiny-triangle diagnostics.
+Neither smoke establishes full-clip/default quality; ticket 07 retains the required
+fresh 500-epoch/all-5468-frame G1 acceptance. Ticket 05 adds rich stage/animated
+inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
