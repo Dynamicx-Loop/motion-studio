@@ -234,6 +234,16 @@ class _ExecutionOperations:
             raise StudioError('changed_artifact', 'Stage has no intact completion receipt', 409)
         return receipt
 
+    def stage_artifacts(self, run_id, revision_id, stage):
+        """Batch registered paths after one recursive receipt verification.
+
+        A verified reused receipt retains its original revision identity. This
+        operation resolves that identity instead of guessing a current path.
+        """
+        receipt = self.stage_receipt(run_id, revision_id, stage)
+        folder = self.roots.runs / run_id / receipt['revision_id'] / stage
+        return {name: confined_file(folder, name) for name in receipt['artifacts']}
+
     def stage_artifact(self, run_id, revision_id, stage, name):
         self.get_run(run_id)
         receipt = self._receipt(run_id, revision_id, stage)

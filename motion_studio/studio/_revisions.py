@@ -58,13 +58,14 @@ class _RevisionOperations:
         return row['value'] if row else None
 
     def _revision_stage(self, run_id, revision_id, stage_state):
+        lookup_stage = 'retargeting' if stage_state.stage == 'motion' else stage_state.stage
         if stage_state.status == 'available':
             # The caller already verified availability; read only the source
             # reference here instead of hashing the entire chain a second time.
             with self._connection() as db:
                 row = db.execute('SELECT receipt FROM stage_completions '
                                  'WHERE run_id=? AND revision_id=? AND stage=?',
-                                 (run_id, revision_id, stage_state.stage)).fetchone()
+                                 (run_id, revision_id, lookup_stage)).fetchone()
             source = json.loads(row['receipt']).get('source_revision') if row else None
             if source:
                 return StageState(stage_state.stage, 'available', stage_state.inspection_url,
@@ -74,7 +75,7 @@ class _RevisionOperations:
             prior = db.execute('SELECT revision_id FROM stage_completions '
                                'WHERE run_id=? AND stage=? AND revision_id<=? '
                                'ORDER BY revision_id DESC LIMIT 1',
-                               (run_id, stage_state.stage, revision_id)).fetchone()
+                               (run_id, lookup_stage, revision_id)).fetchone()
         if prior:
             reason = ('Saved output failed receipt or dependency verification; recompute explicitly'
                       if prior['revision_id'] == revision_id else

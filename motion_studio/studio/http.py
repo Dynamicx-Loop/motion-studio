@@ -82,6 +82,12 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 operation = studio.plan_execution if path.endswith('/plan') else studio.start_execution
                 self._json(200 if path.endswith('/plan') else 202,
                     operation(self._id(path.split('/')[3]), through=data['through'], settings=data['settings']))
+            elif path.startswith('/api/runs/') and '/inspections/' in path:
+                self._fields(data, {'revision_id'})
+                parts = path.split('/')
+                if len(parts) != 6:
+                    raise StudioError('not_found', 'Inspection operation does not exist', 404)
+                self._json(201, studio.build_inspection(self._id(parts[3]), parts[5], revision_id=data['revision_id']))
             elif path.startswith('/api/runs/') and path.endswith('/settings'):
                 self._fields(data, {'settings'})
                 self._json(200, asdict(studio.save_execution_settings(self._id(path.split('/')[3]), data['settings'])))
@@ -191,13 +197,17 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     raise StudioError('not_found', 'Inspection file does not exist', 404)
                 run_id, name = self._id(parts[2]), parts[3]
                 if not studio.get_run(run_id).read_only:
-                    raise StudioError('not_found', 'Run has no historical inspection', 404)
+                    pieces = name.split('/', 2)
+                    if len(pieces) != 3:
+                        raise StudioError('not_found', 'Stage inspection file does not exist', 404)
+                    self._file(studio.exported_inspection_file(run_id, *pieces))
+                    return
                 if name in {'index.html', 'app.js', 'human-motion.js', 'vendor/three.module.js',
                             'vendor/OrbitControls.js', 'THIRD_PARTY_NOTICES.md'}:
                     self._file(_WEB / 'inspection' / name)
                 else:
                     self._file(studio.inspection_file(run_id, name))
-            elif path in {'/', '/app.js', '/motion.js', '/execution.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
+            elif path in {'/', '/app.js', '/motion.js', '/execution.js', '/inspection-ui.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
                 file = 'index.html' if path == '/' else path[1:]
                 self._file(_WEB / file)
             else:

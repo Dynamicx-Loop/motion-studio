@@ -1,6 +1,7 @@
 import {renderRobot} from '/robot.js';
 import {renderExecution} from './execution.js';
 import {renderMotion} from './motion.js';
+import {renderInspection} from './inspection-ui.js';
 const $ = id => document.getElementById(id);
 let state, selectedStage = 'motion';
 async function api(path, data) {
@@ -64,9 +65,11 @@ function render() {
   }));
   const stage = run?.stages.find(item => item.stage === selectedStage && item.status === 'available');
   const inspection = $('inspection'), url = stage?.inspection_url;
+  $('viewport').dataset.stage = selectedStage;
   inspection.hidden = !url; $('empty').hidden = Boolean(url);
   if (url && inspection.getAttribute('src') !== url) inspection.src = url;
   if (!url) inspection.removeAttribute('src');
+  renderInspection({run,selectedStage,api,refresh,failure});
   renderRobot({state,run,api,refresh,failure});
   renderMotion({state, run, api, refresh, failure});
   $('run-details').replaceChildren(); $('logs').replaceChildren();

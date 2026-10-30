@@ -1,0 +1,31 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const load = async name => import('data:text/javascript;base64,' + fs.readFileSync(path.join(__dirname, '../motion_studio/studio/web/stage-inspection/', name)).toString('base64'));
+(async () => {
+  const {humanMotion} = await load('human-motion.js');
+  const {frameRequests} = await load('playback.js');
+  const meta = {chunk_size:2,frame_count:8,vertex_count:1,
+    chunks:Array.from({length:4},(_,i)=>({file:String(i),start:i*2,count:2}))};
+  assert.throws(() => humanMotion({...meta, chunks:[{file:'0',start:1,count:2}]}, async()=>new Int16Array(6)), /timeline/);
+  const waiting = new Map();
+  const replay = humanMotion(meta, file => new Promise((resolve,reject)=>waiting.set(+file,{resolve,reject})));
+  const commits=[]; const controller=frameRequests(replay,frame=>commits.push(frame),()=>{});
+  const a=controller.request(1), b=controller.request(2);
+  waiting.get(1).resolve(new Int16Array([20,21,22,23,24,25])); await b;
+  waiting.get(0).resolve(new Int16Array([0,1,2,3,4,5])); await a;
+  assert.deepEqual(commits,[2], 'late chunk cannot commit stale human/robot frame');
+  assert.deepEqual([...replay.vertices(2)],[20,21,22]);
+  const c=controller.request(7); controller.cancel();
+  waiting.get(3).resolve(new Int16Array(6)); await c;
+  assert.deepEqual(commits,[2], 'reference selection cancels pending frame commits');
+  assert.equal(replay.vertices(0),null, 'bounded cache evicts an unpinned older chunk');
+  assert.ok(replay.vertices(2), 'displayed frame remains pinned during pending seeks');
+  const bad=controller.request(4); waiting.get(2).reject(Error('missing chunk'));
+  await assert.rejects(bad,/missing chunk/); assert.deepEqual(commits,[2]);
+  const retry=controller.request(4); waiting.get(2).resolve(new Int16Array(6)); await retry;
+  assert.deepEqual(commits,[2,4]);
+  await assert.rejects(controller.request(8),/out of range/);
+  await assert.rejects(replay.load(1.5),/out of range/);
+  console.log('Exact frame race, cancel, missing chunk, boundary and retry passed');
+})().catch(error=>{console.error(error);process.exitCode=1;});

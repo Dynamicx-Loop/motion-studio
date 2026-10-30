@@ -371,6 +371,76 @@ Neither smoke establishes full-clip/default quality; ticket 07 retains the requi
 fresh 500-epoch/all-5468-frame G1 acceptance. Ticket 05 adds rich stage/animated
 inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
 
+## Stage inspection and standalone exports
+
+Select an available sampling, training, binding, retargeting or motion tab and use
+**Build inspection + standalone bundle**. Tabs themselves launch no work. This
+explicit CPU-only derivation does not train or solve motion and can run while a
+native job computes. Its output is always a fresh directory under managed
+`exports/`; failed derivations retain their fresh log/failure files and are never
+published as an inspection. Historical viewing still uses the preserved original
+owned viewer. New imports use an additive stage viewer, with local vendor bytes
+independently checked against `web/vendor-manifest.json`.
+
+Sampling shows independent sampled surfaces: matching sample indices do not imply
+learned correspondence, so paired lines are disabled. Training shows learned
+paired slot identity before rigid ownership exists. Binding uses the verified
+pre-solve JSON/geometry/NPZ, including primitive geometry and optional mesh names,
+without requiring motion or licensed weights. Source native19 semantic labels,
+paired slot index, and target body/geom ownership remain distinct. Source points
+use face+bary replay; raw native closest-point discrepancies remain separately
+visible. Reference projection errors are diagnostics, not motion quality scores.
+
+Motion reconstruction uses the exact receipt-validated SMPL-X model **file** and
+SHA-256; selecting a parent directory or changed model is rejected. It retains
+neutral-hand/omitted-face disclosure, all exact frame IDs and FPS, saved source
+scale and ground convention. Robot motion stores rigid geom-local meshes and
+frame transforms; human motion uses 64-frame int16 root-relative vertex chunks
+at 0.1 mm steps. The maximum allowed human axis decoding error is 5.1e-5 m and
+robot binding replay axis tolerance is 5e-7 m. Frame requests commit both tracks
+only after the requested human chunk is ready. Three chunks are cached with the
+displayed chunk pinned; stale requests cannot replace a newer seek, and a missing
+chunk stops playback with an error. No interpolation or nearest-frame fallback
+is used. Filtering, paired-slot selection/lines, mesh visibility, camera presets,
+orbit/zoom, reference pose, exact stepping/scrubbing, speed/loop/end-stop and
+horizontal centering are retained. Centering and placement affect display only.
+
+`Studio.build_inspection(run_id, stage, revision_id=None)` captures one revision
+and returns its bundle path, viewer URL and file manifest URL. `motion` is an
+inspection alias for the retargeting completion. `stage_artifacts(run, revision,
+stage)` batch-resolves registered files after recursively verifying the receipt
+once; a reused receipt retains its authenticated source revision. Export rechecks
+all captured source bytes before and after derivation and rechecks receipts
+before publication. `exported_inspection_file(run, revision, stage, name)` serves
+only registered, hash-checked bundle resources; existing bundles do not require
+source weights, an independent runtime or intact source completions to view.
+HTTP adds `POST /api/runs/<run>/inspections/<stage>` with `{revision_id}` and
+`GET /inspection/<run>/<revision>/<stage>/<resource>`.
+
+**Native outputs, config, logs** opens the standalone file index. Each bundle
+contains copied native artifacts/receipts, export provenance, preservation/hash
+manifests, notices, and all frontend dependencies. It excludes licensed weights.
+To view independently, serve the returned directory over local HTTP, for example
+`python3 -m http.server --bind 127.0.0.1 --directory /absolute/bundle/path`.
+No UMR runtime is needed for viewing; double-click/file-URL support is not promised.
+Original robot, motion and human-model terms remain separate.
+
+Fresh derivative validation against the completed focused native smoke (no new
+training and no writes to that source) is available through:
+
+```sh
+python3 -B scripts/smoke_studio_inspection.py \
+  --source /absolute/completed-native-smoke --output /absolute/fresh-derivative
+STUDIO_INSPECTION_SMOKE=/absolute/fresh-derivative \
+  externals/UMR/.venv/bin/python -B -m unittest discover -s tests \
+  -p test_studio_inspection_runtime.py -v
+node tests/test_studio_frame_requests.cjs
+```
+
+The three-frame smoke establishes bounded representation and offline viewing.
+Native full-clip chunk-boundary comparisons and default-quality/full-clip
+acceptance remain the required ticket 07 run, separate from analytic 64-frame
+quantization and asynchronous chunk-boundary tests.
 
 ## Recovery and immutable revision history
 

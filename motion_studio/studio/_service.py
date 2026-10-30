@@ -5,6 +5,7 @@ from pathlib import Path
 import sqlite3
 import uuid
 
+from ._inspection import _InspectionOperations
 from ._robots import _RobotOperations
 from ._execution import _ExecutionOperations
 from ._revisions import _RevisionOperations
@@ -14,7 +15,7 @@ from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
 from ._motion import _MotionOperations
 
 
-class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _RevisionOperations):
+class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _RevisionOperations, _InspectionOperations):
     def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
                  robot_python: Path | None = None, smplx_model_dir: Path | None = None, native_adapter=None):
         self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
@@ -38,6 +39,7 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Revisio
 
         self._init_motions(smplx_model_dir)
         self._init_execution(native_adapter)
+        self._init_inspections()
         self._init_revisions()
 
     @contextmanager
@@ -146,9 +148,8 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Revisio
             for stage in Stage
         )
         if not historical:
-            stages = tuple(StageState(s.stage, 'available', f"/artifacts/{row['run_id']}/{row['revision_id']}/{s.stage}/validation.json")
-                           if self._receipt(row['run_id'], row['revision_id'], s.stage) else s for s in stages)
-        if not historical:
+            stages = tuple(StageState(s.stage, 'available', self._inspection_url(row['run_id'], row['revision_id'], s.stage))
+                           if self._receipt(row['run_id'], row['revision_id'], 'retargeting' if s.stage == Stage.MOTION else s.stage) else s for s in stages)
             stages = tuple(self._revision_stage(row['run_id'], row['revision_id'], s) for s in stages)
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
                          historical, row['created_at'], stages, row['inspection_path'],
