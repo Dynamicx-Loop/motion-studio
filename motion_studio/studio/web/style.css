@@ -59,3 +59,10 @@ input[type=checkbox]{display:inline;width:auto;margin:0 8px}
 #motion-assets{overflow-wrap:anywhere}
 #motion-assets details{margin:12px 0}
 #motion-assets select{display:block;width:100%;margin-top:7px;padding:9px;background:#101923;color:inherit;border:1px solid #53687c;border-radius:5px}
+
+/* The pose editor may finish asynchronously while a saved inspection is open. */
+#viewport:not([data-stage=preparation]) #robot-preview,
+#viewport:not([data-stage=preparation]) #robot-preview-status{display:none}
+#viewport:not([data-stage=preparation]):has(#inspection[hidden]) #empty{display:block}
+#inspection-tools{padding:0 20px 12px;overflow-wrap:anywhere}
+#inspection-tools:empty{display:none}

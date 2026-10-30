@@ -1,0 +1,23 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="icon" href="data:,"><title>Motion Studio stage inspection</title>
+<style>body{margin:0;background:#14202c;color:#e8eef4;font:14px system-ui}aside{position:absolute;width:280px;height:100vh;overflow:auto;box-sizing:border-box;padding:18px;background:#edf2f6;color:#14202c}h1{font-size:21px}label{display:block;margin:12px 0}select,input[type=number],input[type=range]{width:100%;padding:5px;box-sizing:border-box}button{padding:7px}pre{white-space:pre-wrap;font-size:12px}small{line-height:1.5}#error{color:#b21e27}canvas{display:block}#time{font-size:12px;min-height:32px}</style>
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js","three/addons/controls/OrbitControls.js":"./vendor/OrbitControls.js"}}</script></head><body>
+<aside><h1 id="title">Stage inspection</h1><p id="summary">Loading…</p>
+<p id="comparison"></p><p id="scope"></p><p id="loading" role="status">Loading reference motion…</p>
+<button id="play">Play</button> <button id="back-frame" aria-label="Previous frame">−1 frame</button> <button id="next-frame" aria-label="Next frame">+1 frame</button>
+<label>Timeline<input id="timeline" type="range" min="0" max="0" step="1" value="0"></label>
+<label>Frame<input id="frame" type="number" min="0" max="0" step="1" value="0"></label><p id="time"></p>
+<label>Speed<select id="speed"><option value="0.25">0.25×</option><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
+<label><input id="loop" type="checkbox" checked> Loop playback</label>
+<label><input id="center" type="checkbox" checked> Keep both centered horizontally</label>
+<label><input id="reference" type="checkbox"> Reference pose</label>
+<label>Source segment<select id="segment"><option value="all">All segments</option></select></label>
+<label>Slot ID<input id="slot" type="number" min="0" max="4095" value="0"></label>
+<button id="previous">Previous slot</button> <button id="next">Next slot</button>
+<label><input id="xray" type="checkbox" checked> Points through geometry</label>
+<label><input id="surfaces" type="checkbox" checked> Show meshes</label>
+<label><input id="lines" type="checkbox"> Sparse paired lines</label>
+<button id="front">Front</button> <button id="rear">Rear</button> <button id="side">Side</button>
+<pre id="info"></pre><details><summary>Segment color key</summary><div id="legend"></div></details>
+<p><small>Drag to orbit; scroll to zoom; click a point. Source semantic labels, paired slot identity and target body/geom ownership are separate. Sampling indices do not establish correspondence. Motion uses exact saved frames/FPS and native face+bary source replay with neutral hands and omitted facial channels. Source native closest-point diagnostics remain separate. Horizontal centering and reference floor offsets change display translation only. Y-up metres; human quantization is 0.1 mm. No contact or dynamics claim.</small></p>
+<p><a href="files.html">Native outputs, logs and config</a> · <a href="provenance.json">Provenance</a> · <a href="preservation.json">Preservation</a></p><pre id="error"></pre></aside>
+<script type="module" src="app.js"></script></body></html>

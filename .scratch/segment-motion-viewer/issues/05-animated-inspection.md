@@ -1,6 +1,6 @@
 # 05 — Inspect stages and export synchronized moving bindings
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: ../spec.md
 Blocked by: 04
@@ -24,3 +24,5 @@ Use the implement-spec orchestration and TDD skill. Test public behavior. Work o
 ## Comments
 
 User explicitly approved spec/ticket synthesis and immediate implementation; this breakdown operationalizes that accepted scope.
+
+2026-10-30: Claimed ticket 05 in isolated `codex/studio-05`. Confirmed public seams: owned Studio inspection/export and HTTP operations, saved numeric replay and JavaScript synchronized frame/cache behavior.
