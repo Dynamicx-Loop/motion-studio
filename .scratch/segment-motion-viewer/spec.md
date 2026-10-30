@@ -1,6 +1,6 @@
 # Local Motion Studio with native UMR
 
-Status: ready-for-agent
+Status: resolved
 
 ## Problem Statement
 

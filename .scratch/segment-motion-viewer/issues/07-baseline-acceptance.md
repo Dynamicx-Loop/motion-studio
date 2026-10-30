@@ -1,6 +1,6 @@
 # 07 — Validate full offline G1 baseline and document operation
 
-Status: claimed
+Status: resolved
 Category: enhancement
 Spec: ../spec.md
 Blocked by: 05, 06
@@ -15,7 +15,7 @@ Deliver validate full offline g1 baseline and document operation as a complete u
 - [x] Browser exercise includes imports/pose/stages/playback/bindings, cancel/retry, revision invalidation, reopening, history read-only, offline app and standalone bundle.
 - [x] Record controlled runtime evidence and responsiveness measurements, commands/config/revisions/hashes in experiment template; no byte-identical stochastic expectation.
 - [x] Run applicable checks and preserve original viewer/run/external hashes/status; document start/stop/setup/offline assets/recovery and supported limits.
-- [ ] Integration standards+spec review completed and actionable findings fixed before all tickets/spec marked resolved; no required runtime validation silently waived.
+- [x] Integration standards+spec review completed and actionable findings fixed before all tickets/spec marked resolved; no required runtime validation silently waived.
 
 ## Implementation and validation
 
@@ -62,3 +62,8 @@ Canonical evidence root:
 `/data/workspace/motion_studio/outputs/studio-baseline-acceptance-20261030/`.
 No bulky evidence or external source changes are committed. Neutral-hand/omitted-
 face reconstruction remains disclosed; no contact, collision or dynamics claim.
+
+
+### Root integration closure
+
+Merged as `b8d363c`. Both [Standards](../reviews/standards.md) and [Spec](../reviews/spec.md) reviews are clear, including the namespace correction. Final documentation/test delta reviewed; focused official-pose HTTP regression and whitespace passed. Full stable-code native, browser, numerical and preservation evidence inspected in the acceptance experiment. All acceptance criteria are met; no required runtime workflow was waived.
