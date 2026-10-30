@@ -6,12 +6,13 @@ import sqlite3
 import uuid
 
 from ._history import confined_file, digest, inspect_bundle
-
 from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
+from ._motion import _MotionOperations
 
 
-class Studio:
-    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = ()):
+class Studio(_MotionOperations):
+    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
+                 smplx_model_dir: Path | None = None):
         state = Path(state_root).resolve()
         self.history_roots = tuple(Path(p).resolve() for p in history_roots)
         if any(state.is_relative_to(p) or p.is_relative_to(state) for p in self.history_roots):
@@ -26,6 +27,8 @@ class Studio:
             db.execute('CREATE TABLE IF NOT EXISTS history_files ('
                        'run_id TEXT, name TEXT, sha256 TEXT, PRIMARY KEY(run_id, name))')
             db.execute('CREATE TABLE IF NOT EXISTS preferences (key TEXT PRIMARY KEY, value TEXT)')
+
+        self._init_motions(smplx_model_dir)
 
     @contextmanager
     def _connection(self):
@@ -125,8 +128,7 @@ class Studio:
             raise StudioError('invalid_name', 'Name must contain 1–120 characters')
         return name.strip()
 
-    @staticmethod
-    def _record(row):
+    def _record(self, row):
         historical = row['kind'] == 'historical'
         inspection_url = f"/inspection/{row['run_id']}/index.html"
         stages = tuple(
@@ -134,5 +136,9 @@ class Studio:
             if historical and stage == Stage.MOTION else StageState(stage)
             for stage in Stage
         )
+        with self._connection() as db:
+            motion = db.execute('SELECT asset_id FROM motion_selections WHERE run_id=? AND revision_id<=? '
+                                'ORDER BY revision_id DESC LIMIT 1', (row['run_id'], row['revision_id'])).fetchone()
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
-                         historical, row['created_at'], stages, row['inspection_path'])
+                         historical, row['created_at'], stages, row['inspection_path'],
+                         motion_asset_id=motion['asset_id'] if motion else None)
