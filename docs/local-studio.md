@@ -497,3 +497,26 @@ without repeating native numerical solves. Browser evidence is under
 exercises close/reopen, saved-run browsing during work, Stop/retry, related settings
 reuse, stale stages and old-revision refresh restoration. Native full-clip/default
 quality acceptance remains ticket 07.
+
+## Replay encoding and adapter launch boundary
+
+New native inspection derivatives declare robot `transform_schema: 2` and
+`transform_dtype: "<f8"`: little-endian float64 row-major 3×4 geometry-local to
+world matrices in saved frame/geometry order. Before publication the exporter
+decodes the saved bytes and checks every robot binding against native kinematics
+at the unchanged 5e-7 m per-axis tolerance. `max_binding_axis_error_m` records the
+largest measured error. The viewer accepts original bundles with absent encoding
+metadata as their original float32 representation; unknown encodings fail clearly.
+This representation check makes no claim about motion quality or dynamics.
+
+Owned historical and native viewers use one human chunk-cache source. Fresh
+standalone bundles copy it into their root alongside the transform decoder, so
+all application imports remain local relative paths. The original integration
+viewer and historical output bytes remain preserved.
+
+`NativeStages.launch` owns process environment/command provenance and temporary
+runtime directories; `decode_progress` translates observed native output, and
+`required_artifacts` identifies native stage completion files. Studio owns the
+process group, cancellation, elapsed time, retained logs and atomic receipt
+publication. These lifecycle operations share a leaf UTC timestamp module and
+have no reverse import from the native job runner to execution operations.

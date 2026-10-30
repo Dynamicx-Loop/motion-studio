@@ -110,6 +110,24 @@ name='train/correspondence_slots_final.npz' if r['stage']=='training' else 'data
         with self.assertRaises(StudioError):
             self.studio.stage_artifact(self.run.run_id, complete['revision_id'], 'sampling', 'dataset.npz')
 
+    def test_adapter_owns_progress_environment_and_required_output_names(self):
+        worker = self.root / 'external-fixture.py'
+        worker.write_text(worker.read_text().replace("print('[TrainResidual] epoch=00001 loss=0.25',flush=True)",
+            "assert os.environ['ADAPTER_ENV'] == 'fixture'; print('CUSTOM step=7',flush=True)").replace("else 'dataset.npz'", "else 'custom.data'"))
+        adapter_type = type(self.adapter)
+        original_launch = getattr(adapter_type, 'launch', None)
+        def launch(adapter, request, attempt):
+            result = original_launch(adapter, request, attempt)
+            result['environment']['ADAPTER_ENV'] = 'fixture'
+            return result
+        adapter_type.launch = launch
+        adapter_type.required_artifacts = lambda adapter, stage: ('custom.data',)
+        adapter_type.decode_progress = lambda adapter, line, settings: {'observed_step': 7} if line == 'CUSTOM step=7' else {}
+        done = self.wait(self.studio.start_execution(self.run.run_id, through='sampling'))
+        self.assertEqual(done['status'], 'completed', done)
+        self.assertEqual(done['progress']['observed_step'], 7)
+        self.assertEqual(self.studio.stage_artifact(self.run.run_id, done['revision_id'], 'sampling', 'custom.data').read_bytes(), b'fixture external dataset')
+
     def test_cancel_retains_partial_log_and_retry_allocates_fresh_attempt(self):
         worker = self.root / 'external-fixture.py'
         worker.write_text(worker.read_text().replace('time.sleep(.15)', 'time.sleep(3)'))

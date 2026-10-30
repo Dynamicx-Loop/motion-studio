@@ -1,6 +1,7 @@
 import * as THREE from 'three';
 import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {humanMotion} from './human-motion.js';
+import {transformArrayType} from './robot-motion.js';
 import {frameRequests} from './playback.js';
 const $ = id => document.getElementById(id);
 async function binary(path, Type, count) {
@@ -67,7 +68,7 @@ try {
   const [localVertices, localFaces, transforms] = moving ? await Promise.all([
     binary(motion.vertices, Float32Array, motion.vertex_count * 3),
     binary(motion.faces, Uint32Array, motion.face_count * 3),
-    binary(motion.transforms, Float32Array, motion.frame_count * pieces.length * 12)
+    binary(motion.transforms, transformArrayType(motion), motion.frame_count * pieces.length * 12)
   ]) : [[], [], []];
   const robotGroup = new THREE.Group(); scene.add(robotGroup);
   const movingMeshes = pieces.map(piece => {

@@ -3,7 +3,6 @@ import json
 import os
 from pathlib import Path
 import queue
-import re
 import signal
 import subprocess
 import sys
@@ -13,9 +12,9 @@ import uuid
 
 from ._contracts import StudioError
 from ._history import digest, confined_file
-from ._execution import now
+from ._timestamps import now
 from ._process_guard import process_identity
-from motion_studio.integrations.umr_stages import STAGES, canonical_hash, native_environment
+from motion_studio.integrations.umr_stages import STAGES, canonical_hash
 
 
 def _stop(process):
@@ -38,14 +37,9 @@ def _stop(process):
 
 
 def _run(studio, job_id, stage, attempt, request):
-    command = studio.native_adapter.command(request)
-    env = {**native_environment(), 'PYTHONUNBUFFERED': '1', 'PYTHONDONTWRITEBYTECODE': '1',
-           'HUMANOID_BATCH_PROGRESS': '1', 'XDG_CACHE_HOME': str(attempt / 'cache'),
-           'TMPDIR': str(attempt / 'tmp'), 'OMP_NUM_THREADS': '4', 'MKL_NUM_THREADS': '4'}
-    (attempt / 'tmp').mkdir()
-    (attempt / 'cache').mkdir()
-    (attempt / 'command.json').write_text(json.dumps({'argv': command, 'removed_environment': ['PYTHONPATH', 'PYTHONHOME'], 'overrides': {k: env[k] for k in (
-        'PYTHONUNBUFFERED', 'PYTHONNOUSERSITE', 'PYTHONDONTWRITEBYTECODE', 'HUMANOID_BATCH_PROGRESS', 'XDG_CACHE_HOME', 'TMPDIR', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS')}}))
+    launch = studio.native_adapter.launch(request, attempt)
+    command, env = launch['command'], launch['environment']
+    (attempt / 'command.json').write_text(json.dumps(launch['provenance']))
     lines = queue.Queue()
     with (attempt / 'native.log').open('wb') as log:
         owner = studio.get_job(job_id)
@@ -78,12 +72,7 @@ def _run(studio, job_id, stage, attempt, request):
             except queue.Empty:
                 continue
             progress = dict(job['progress'])
-            epoch = re.search(r'\[TrainResidual\] epoch=(\d+)', line)
-            frames = re.match(r'__HUMANOID_BATCH_PROGRESS__ (\d+) (\d+)', line)
-            if epoch:
-                progress.update(epoch=int(epoch[1]), epochs=job['plan']['settings']['epochs'])
-            if frames:
-                progress.update(frames_done=int(frames[1]), frames_total=int(frames[2]))
+            progress.update(studio.native_adapter.decode_progress(line, job['plan']['settings']))
             progress.update(elapsed_seconds=round(time.monotonic()-started, 2), last_line=line[-2000:])
             studio._update_job(job_id, progress=progress, message=f'{stage}: native work')
         code = process.wait()
@@ -101,10 +90,9 @@ def _accept(studio, job_id, stage, attempt, request, command):
     report = json.loads((attempt / 'validation.json').read_text())
     if report.get('valid') is not True or report.get('stage') != stage or not report.get('artifacts'):
         raise StudioError('invalid_result', 'Worker did not validate required stage outputs', 409)
-    required = {'sampling': 'dataset.npz', 'training': 'train/correspondence_slots_final.npz',
-                'binding': 'bindings.json', 'retargeting': 'motion.npz'}[stage]
-    if required not in report['artifacts']:
-        raise StudioError('invalid_result', f'Missing required stage output: {required}', 409)
+    for required in studio.native_adapter.required_artifacts(stage):
+        if required not in report['artifacts']:
+            raise StudioError('invalid_result', f'Missing required stage output: {required}', 409)
     # Native validators inspect arrays before publishing. The parent independently
     # checks confinement, nonempty output files and every exact published byte.
     artifacts = []

@@ -43,6 +43,13 @@ class StandaloneBindingTests(unittest.TestCase):
             self.assertTrue((result/'vendor/three.module.js').is_file())
             self.assertTrue((result/'native/binding/binding.npz').is_file())
             self.assertTrue((result/'files.json').is_file())
+            # The exported app's relative imports resolve inside its own folder.
+            import re
+            for name in re.findall(r"from ['\"]\./([^'\"]+)['\"]", (result/'app.js').read_text()):
+                self.assertIn(name, json.loads((result/'files.json').read_text()))
+                self.assertTrue((result/name).is_file(), name)
+            self.assertEqual((result/'human-motion.js').read_bytes(),
+                (Path(__file__).parents[1]/'motion_studio/studio/web/human-motion.js').read_bytes())
             self.assertEqual({p:p.read_bytes() for p in paths.values()}, before)
             with self.assertRaises(FileExistsError):
                 export_inspection(inputs, result)

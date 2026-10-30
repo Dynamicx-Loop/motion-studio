@@ -100,14 +100,16 @@ def export_inspection(inputs: InspectionInputs, destination: Path, *,
                                 str(checkout), str(destination/'inspection-request.json'), str(destination)],
                                env=native_environment(), stdout=log, stderr=subprocess.STDOUT,
                                check=True, timeout=7200)
-        for name in ('index.html','app.js','human-motion.js','playback.js','THIRD_PARTY_NOTICES.md',
+        for name in ('index.html','app.js','playback.js','THIRD_PARTY_NOTICES.md',
                      'vendor/three.module.js','vendor/OrbitControls.js'):
             target = destination/name; target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copyfile(_WEB/'stage-inspection'/name, target) if not name.startswith('vendor/') else shutil.copyfile(_WEB/'inspection'/name, target)
+        for name in ('human-motion.js', 'robot-motion.js'):
+            shutil.copyfile(_WEB/name, destination/name)
         shutil.copyfile(_WEB/'vendor-manifest.json', destination/'vendor-manifest.json')
         _verify(inputs)
         implementation = [Path(__file__), *Path(__file__).parent.glob('_umr_studio_*.py'),
-                          *(_WEB/'stage-inspection').glob('*')]
+                          *(_WEB/'stage-inspection').glob('*'), _WEB/'robot-motion.js', _WEB/'human-motion.js']
         record = {'run_id':inputs.run_id, 'revision_id':inputs.revision_id,'stage':inputs.stage,
                   'umr_revision':PIN, 'source_receipts':'receipts.json',
                   'scope':'Fresh read-only derivative; no training or retarget solve; source labels, paired slot identity and target ownership remain separate',

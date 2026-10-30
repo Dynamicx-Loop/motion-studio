@@ -204,7 +204,9 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                         raise StudioError('not_found', 'Stage inspection file does not exist', 404)
                     self._file(studio.exported_inspection_file(run_id, *pieces))
                     return
-                if name in {'index.html', 'app.js', 'human-motion.js', 'vendor/three.module.js',
+                if name in {'robot-motion.js', 'human-motion.js'}:
+                    self._file(_WEB / name)
+                elif name in {'index.html', 'app.js', 'vendor/three.module.js',
                             'vendor/OrbitControls.js', 'THIRD_PARTY_NOTICES.md'}:
                     self._file(_WEB / 'inspection' / name)
                 else:

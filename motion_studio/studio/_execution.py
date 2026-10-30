@@ -2,7 +2,6 @@
 from contextlib import contextmanager
 from dataclasses import asdict
 import fcntl
-from datetime import datetime, timezone
 import json
 import os
 from pathlib import Path
@@ -10,14 +9,11 @@ import threading
 import uuid
 
 from ._contracts import StudioError
+from ._timestamps import now
 from ._recovery import recover_jobs, TERMINAL
 from ._process_guard import process_identity
 from ._history import digest, confined_file
 from motion_studio.integrations.umr_stages import ExecutionSettings, STAGES, NativeStages, canonical_hash
-
-
-def now():
-    return datetime.now(timezone.utc).isoformat()
 
 
 class _ExecutionOperations:

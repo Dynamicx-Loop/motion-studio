@@ -24,7 +24,7 @@ class StudioInspectionReferenceTests(unittest.TestCase):
     def test_robot_frames_mesh_and_binding_match_independent_forward_kinematics(self):
         self.assertTrue(self.report['source_unchanged'])
         meta=self.data['motion']
-        transforms=np.fromfile(self.bundle/meta['transforms'],dtype='<f4').reshape(meta['frame_count'],-1,3,4)
+        transforms=np.fromfile(self.bundle/meta['transforms'],dtype=meta.get('transform_dtype', '<f4')).reshape(meta['frame_count'],-1,3,4)
         with np.load(self.native/'motion.npz',allow_pickle=True) as saved:
             model=mujoco.MjModel.from_xml_path(str(saved['robot_xml'].item()))
             state=mujoco.MjData(model)

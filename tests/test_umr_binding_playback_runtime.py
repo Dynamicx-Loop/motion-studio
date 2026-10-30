@@ -52,7 +52,7 @@ class BindingPlaybackTests(unittest.TestCase):
     def test_translated_and_rotated_root_and_hinge_worked_example(self):
         self.save()
         meta = self.export()
-        matrices = np.fromfile(self.run / meta['transforms'], dtype='<f4').reshape(3, 2, 3, 4)
+        matrices = np.fromfile(self.run / meta['transforms'], dtype=meta.get('transform_dtype', '<f4')).reshape(3, 2, 3, 4)
         points = np.einsum('fgij,gj->fgi', matrices[:, :, :, :3], self.binding['local_pos']) + matrices[:, :, :, 3]
         # Native [x,y,z] -> viewer [y,z,x]. Arm pivot is one metre from root;
         # its slot is another metre along local X. Both rotations affect it.

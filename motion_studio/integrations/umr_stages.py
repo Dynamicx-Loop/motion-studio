@@ -3,6 +3,7 @@ from dataclasses import asdict, dataclass
 import hashlib
 import json
 import os
+import re
 from pathlib import Path
 import subprocess
 
@@ -124,3 +125,32 @@ class NativeStages:
     def command(self, request_file):
         return [str(self.python), '-B', '-u', str(Path(__file__).with_name('_umr_stage_worker.py')),
                 'run', str(self.checkout), str(request_file)]
+
+    def launch(self, request_file, attempt):
+        """Describe native invocation and record its independent-runtime setup."""
+        overrides = {'PYTHONUNBUFFERED': '1', 'PYTHONNOUSERSITE': '1',
+                     'PYTHONDONTWRITEBYTECODE': '1', 'HUMANOID_BATCH_PROGRESS': '1',
+                     'XDG_CACHE_HOME': str(attempt / 'cache'), 'TMPDIR': str(attempt / 'tmp'),
+                     'OMP_NUM_THREADS': '4', 'MKL_NUM_THREADS': '4'}
+        for name in ('tmp', 'cache'):
+            (attempt / name).mkdir()
+        command = self.command(request_file)
+        return {'command': command, 'environment': {**native_environment(), **overrides},
+                'provenance': {'argv': command, 'removed_environment': ['PYTHONPATH', 'PYTHONHOME'],
+                               'overrides': overrides}}
+
+    def decode_progress(self, line, settings):
+        """Translate only observed native counters; never invent a percentage."""
+        progress = {}
+        epoch = re.search(r'\[TrainResidual\] epoch=(\d+)', line)
+        frames = re.match(r'__HUMANOID_BATCH_PROGRESS__ (\d+) (\d+)', line)
+        if epoch:
+            progress.update(epoch=int(epoch[1]), epochs=settings['epochs'])
+        if frames:
+            progress.update(frames_done=int(frames[1]), frames_total=int(frames[2]))
+        return progress
+
+    def required_artifacts(self, stage):
+        """Files whose validated existence is required for native completion."""
+        return ({'sampling': 'dataset.npz', 'training': 'train/correspondence_slots_final.npz',
+                 'binding': 'bindings.json', 'retargeting': 'motion.npz'}[stage],)
