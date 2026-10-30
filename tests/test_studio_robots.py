@@ -1,6 +1,9 @@
 """Robot import and numeric pose behavior through the public Studio seam."""
 from pathlib import Path
+import hashlib
+import json
 import math
+import shutil
 import tempfile
 import unittest
 
@@ -81,6 +84,57 @@ class RobotImportTests(unittest.TestCase):
                                        qpos=qpos, torso_body='missing')
         self.assertEqual(reopened.get_run(draft.run_id).revision_id, 'r0003')
 
+    def test_native_model_handoff_rejects_changed_mesh_dependency(self):
+        (self.source / 'shape.obj').write_text(
+            'v 0 0 0\nv 1 0 0\nv 0 1 0\nv 0 0 1\n'
+            'f 1 3 2\nf 1 2 4\nf 1 4 3\nf 2 3 4\n')
+        self.xml.write_text(self.xml.read_text().replace('<worldbody>',
+            '<asset><mesh name="shape" file="shape.obj"/></asset><worldbody>').replace(
+                '<geom type="box" size=".1 .1 .1"/>', '<geom type="mesh" mesh="shape"/>'))
+        asset = self.studio.import_robot(self.xml)
+        mesh = self.studio.robot_file(asset.asset_id, 'source/shape.obj')
+        mesh.write_text(mesh.read_text().replace('v 1 0 0', 'v 2 0 0'))
+        with self.assertRaisesRegex(StudioError, 'changed'):
+            self.studio.robot_file(asset.asset_id, 'source/__studio_model.xml')
+        mesh.unlink()
+        with self.assertRaisesRegex(StudioError, 'changed'):
+            self.studio.robot_file(asset.asset_id, 'source/__studio_model.xml')
+
+    def test_changed_manifest_cannot_expand_compiled_limits_or_replace_file_hashes(self):
+        asset = self.studio.import_robot(self.xml)
+        draft = self.studio.create_draft('Metadata integrity')
+        manifest = self.studio.roots.assets / 'robots' / asset.asset_id / 'asset.json'
+        original = manifest.read_bytes()
+        value = json.loads(original)
+        value['joints'][0]['maximum_rad'] = 999
+        manifest.write_text(json.dumps(value))
+        qpos = list(asset.default_qpos)
+        qpos[7] = 100
+        with self.assertRaisesRegex(StudioError, 'metadata changed'):
+            self.studio.save_robot_pose(draft.run_id, asset.asset_id, name='Tampered',
+                                       qpos=qpos, torso_body='torso')
+        self.assertEqual(self.studio.get_run(draft.run_id).revision_id, 'r0001')
+        manifest.write_bytes(original)
+        copied = self.studio.robot_file(asset.asset_id, 'source/robot.xml')
+        copied.write_text('changed')
+        value = json.loads(original)
+        value['files']['source/robot.xml'] = hashlib.sha256(b'changed').hexdigest()
+        manifest.write_text(json.dumps(value))
+        reopened = Studio(self.root / 'state', robot_python=PYTHON)
+        with self.assertRaisesRegex(StudioError, 'metadata changed'):
+            reopened.robot_file(asset.asset_id, 'source/__studio_model.xml')
+        with self.assertRaisesRegex(StudioError, 'metadata changed'):
+            reopened.import_robot(self.xml)
+
+    def test_unregistered_legacy_metadata_is_rejected_without_bootstrapping_trust(self):
+        asset = self.studio.import_robot(self.xml)
+        legacy = Studio(self.root / 'legacy', robot_python=PYTHON)
+        shutil.copytree(self.studio.roots.assets / 'robots', legacy.roots.assets / 'robots')
+        with self.assertRaisesRegex(StudioError, 'no trusted metadata registration'):
+            legacy.get_robot(asset.asset_id)
+        with self.assertRaisesRegex(StudioError, 'no trusted metadata registration'):
+            legacy.import_robot(self.xml)
+
     def test_nested_closure_and_recorded_fixed_to_free_derivation(self):
         (self.source / 'parts').mkdir()
         body = self.xml.read_text().split('<worldbody>')[1].split('</worldbody>')[0]
@@ -103,6 +157,22 @@ class RobotImportTests(unittest.TestCase):
         copied.write_text('changed')
         with self.assertRaisesRegex(StudioError, 'changed'):
             self.studio.preview_robot(asset.asset_id)
+
+    def test_fixed_root_with_zero_mass_inertial_gets_one_synthetic_inertial(self):
+        self.xml.write_text(self.xml.read_text().replace('<freejoint/>',
+            '<inertial pos="0 0 0" mass="0" diaginertia="0 0 0"/>'))
+        original = self.xml.read_bytes()
+        asset = self.studio.import_robot(self.xml, derive_free_root=True)
+        self.assertEqual(self.xml.read_bytes(), original)
+        self.assertEqual(len(asset.default_qpos), 8)
+        self.assertTrue(any('Synthetic root inertia' in item for item in asset.derived))
+        model = self.studio.robot_file(asset.asset_id, 'source/__studio_model.xml')
+        import xml.etree.ElementTree as ET
+        inertials = ET.parse(model).getroot().findall('./worldbody/body/inertial')
+        self.assertEqual(len(inertials), 1)
+        self.assertEqual(inertials[0].get('mass'), '0.001')
+        self.assertEqual(inertials[0].get('diaginertia'), '0.000001 0.000001 0.000001')
+        self.assertEqual(len(self.studio.preview_robot(asset.asset_id)['transforms']), 2)
 
     def test_rejects_missing_cyclic_escaping_and_unsupported_inputs(self):
         baseline = self.xml.read_text()

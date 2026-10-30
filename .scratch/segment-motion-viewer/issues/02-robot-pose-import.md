@@ -72,3 +72,35 @@ primitives are triangulated for display. Structural support does not certify
 humanoid morphology, contacts or dynamics. Native stage execution/cache lifecycle
 and full G1 solve acceptance remain later tickets. Existing viewer, runs and pinned
 externals were not modified.
+
+### Import review corrections (2026-10-30)
+
+Review of the completed import slice at integration `3e081b5` reproduced three
+observable defects. Each fix used a red/green regression through the public
+`Studio` import, native-file, metadata or pose operation, with the canonical
+independent interpreter at `externals/UMR/.venv/bin/python`:
+
+- Changing a managed tetrahedron OBJ after import still allowed
+  `robot_file(id, 'source/__studio_model.xml')` to return the native model. That
+  handoff now verifies every recorded file's confinement, presence and SHA-256;
+  changed and missing mesh dependencies both reject it. Preview uses this same
+  closure-checked handoff.
+- Editing `asset.json` to raise the compiled hinge maximum to 999 allowed a
+  saved qpos of 100. The importer now registers a SHA-256 derived from its trusted
+  compiler record independently in SQLite. Metadata is verified against that
+  registration before decoding or use, so changed limits and replacement per-file
+  digests fail on pose save, native handoff, reopening and reimport. Existing JSON
+  schema and asset identities remain unchanged. Legacy/copied directories lacking
+  a trusted registration fail clearly with `unverified_asset`; their original
+  closure can be imported into a fresh managed state directory.
+- A valid fixed root containing an explicit zero-mass/zero-inertia element failed
+  floating-root derivation because the worker appended a duplicate inertial.
+  Derivation now replaces that element on the managed copy. The regression checks
+  the single synthetic 0.001 kg / diagonal 1e-6 kg m² inertial, successful compiled
+  preview and unchanged source bytes.
+
+Validation: all 29 combined Studio tests passed, including four added regressions
+for the three findings and rejection of unregistered legacy metadata. All 23
+selected pure suites passed via `python3 -B scripts/check.py --tier pure`, and
+`git diff --check` passed. The review
+corrections do not exercise native pipeline stages or claim full-run acceptance.

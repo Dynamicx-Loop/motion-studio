@@ -58,6 +58,9 @@ def main(request):
         ET.SubElement(bodies[0], 'freejoint', name='__studio_free_root__')
         derived.append('Added floating root on managed derived XML; source closure preserved')
         if model.body_mass[root] <= 0:
+            inertial = bodies[0].find('inertial')
+            if inertial is not None:
+                bodies[0].remove(inertial)
             ET.SubElement(bodies[0], 'inertial', pos='0 0 0', mass='0.001', diaginertia='0.000001 0.000001 0.000001')
             derived.append('Synthetic root inertia: mass 0.001 kg, diagonal 1e-6 kg m²')
         # Fixed-root keyframes have incompatible nq after adding the floating root.
