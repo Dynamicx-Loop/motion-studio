@@ -63,6 +63,13 @@ export function renderRobot(value) {
     for(const pose of poses){const option=node('option',pose.name);option.value=pose.pose_id;saved.append(option);}
     saved.onchange=()=>{const pose=poses.find(x=>x.pose_id===saved.value);if(pose){qpos=[...pose.qpos];build(pose);updatePreview().catch(failure);}};
     editor.append(saved);
+    const official=node('button','Load official G1 T-pose');official.type='button';
+    official.onclick=async()=>{official.disabled=true;try{
+      const preset=await api(`/api/robots/${asset.asset_id}/official-pose`);
+      qpos=[...preset.qpos];build(preset);await updatePreview();
+    }catch(error){failure(error);official.disabled=false;}};
+    editor.append(official);
+
     const root=node('details');root.open=true;root.append(node('summary','Root translation / orientation'));
     ['X (m)','Y (m)','Z (m)','qw','qx','qy','qz'].forEach((label,i)=>{
       const input=node('input');input.type='number';input.step='.01';input.value=qpos[i];input.setAttribute('aria-label',`Root ${label}`);

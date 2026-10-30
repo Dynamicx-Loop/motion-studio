@@ -1,6 +1,6 @@
 # 07 — Validate full offline G1 baseline and document operation
 
-Status: ready-for-agent
+Status: claimed
 Category: enhancement
 Spec: ../spec.md
 Blocked by: 05, 06
@@ -24,3 +24,5 @@ Use the implement-spec orchestration and TDD skill. Test public behavior. Work o
 ## Comments
 
 User explicitly approved spec/ticket synthesis and immediate implementation; this breakdown operationalizes that accepted scope.
+
+Ticket 07 uses the already confirmed public Studio and HTTP seams for official-pose success/rejection, retaining generic numeric poses. Full acceptance evidence remains pending final integration review.

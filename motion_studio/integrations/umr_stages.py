@@ -79,6 +79,34 @@ class NativeStages:
         except (OSError, ValueError, KeyError, subprocess.SubprocessError) as error:
             return {'ready': False, 'message': str(error)}
 
+    def official_pose(self, studio, asset_id):
+        """Return the pinned G1 reference only for the exact managed official closure."""
+        from motion_studio.studio._contracts import StudioError
+        from motion_studio.studio._robot_assets import RobotPosePreset
+        robot = studio.get_robot(asset_id)
+        files = {name: str(studio.robot_file(asset_id, name)) for name in robot.files}
+        if not self._official_g1(robot, files):
+            raise StudioError('unsupported_preset', 'Official G1 T-pose requires byte-verified pinned G1 assets', 409)
+        preset = json.loads((self.checkout / 'robot_configs/humanoid_retarget_unitree_g1_example.json').read_text())['robot']
+        values = list(robot.default_qpos)
+        for joint in robot.joints:
+            values[joint.qpos_index] = preset['tpose_qpos'].get(joint.name, values[joint.qpos_index])
+        return RobotPosePreset('Official G1 T-pose', preset['point_cloud_center'].removeprefix('body:'), tuple(values))
+
+    def _official_g1(self, robot, files):
+        from motion_studio.studio._history import digest
+        if robot.source_entry != 'g1_29dof.xml':
+            return False
+        try:
+            unchanged = subprocess.run(['git', '-C', str(self.checkout), 'diff', '--quiet', PIN, '--',
+                'assets/g1', 'robot_configs/humanoid_retarget_unitree_g1_example.json'], check=False).returncode == 0
+            return unchanged and all(
+                (self.checkout / 'assets/g1' / name.removeprefix('source/')).is_file()
+                and digest(self.checkout / 'assets/g1' / name.removeprefix('source/')) == digest(Path(path))
+                for name, path in files.items() if name.startswith('source/') and name != 'source/__studio_model.xml')
+        except OSError:
+            return False
+
     def capture(self, studio, run):
         """Verify immutable managed input closures; originals never reach native loaders."""
         from motion_studio.studio._history import digest
@@ -88,13 +116,7 @@ class NativeStages:
         files = {name: str(studio.robot_file(robot.asset_id, name)) for name in robot.files}
         motion_path = studio.motion_file(motion.asset_id)
         # G1-specific limits apply only to byte-verified official G1 source closure.
-        official = self.checkout / 'assets/g1'
-        g1 = robot.source_entry == 'g1_29dof.xml'
-        for name, path in files.items():
-            if not name.startswith('source/') or name == 'source/__studio_model.xml':
-                continue
-            original = official / name.removeprefix('source/')
-            g1 = g1 and original.is_file() and digest(original) == digest(Path(path))
+        g1 = self._official_g1(robot, files)
         return {'robot': asdict(robot), 'pose': asdict(pose), 'motion': asdict(motion),
                 'motion_file': str(motion_path), 'motion_sha256': digest(motion_path),
                 'robot_files': files, 'official_g1': bool(g1)}

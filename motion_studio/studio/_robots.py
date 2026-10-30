@@ -6,7 +6,7 @@ import math
 from pathlib import Path
 
 from ._contracts import RunRecord, StudioError
-from ._robot_assets import RobotAsset, RobotPose, decode_asset, hash_file, import_asset, runtime
+from ._robot_assets import RobotAsset, RobotPose, RobotPosePreset, decode_asset, hash_file, import_asset, runtime
 
 
 class _RobotOperations:
@@ -92,6 +92,16 @@ class _RobotOperations:
             if not joint.minimum_rad <= values[joint.qpos_index] <= joint.maximum_rad:
                 raise StudioError('invalid_pose', f'{joint.name} exceeds compiled limits in radians')
         return tuple(float(x) for x in values)
+
+    def official_robot_pose(self, asset_id: str) -> RobotPosePreset:
+        """Load unsaved pinned G1 pose values, refusing other or changed robots.
+
+        No revision is created until the caller explicitly saves these values.
+        Generic imported robots retain the normal numeric/named-pose workflow.
+        """
+        preset = self.native_adapter.official_pose(self, asset_id)
+        self._robot_qpos(self.get_robot(asset_id), preset.qpos)
+        return preset
 
     def list_robot_poses(self, asset_id: str) -> tuple[RobotPose, ...]:
         self.get_robot(asset_id)
