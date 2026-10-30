@@ -31,7 +31,7 @@ export function renderMotion({state, run, api, refresh, failure}) {
     for (const key of ['fps', 'gender', 'up_axis']) if (fields[key] !== '') metadata[key] = key === 'fps' ? Number(fields[key]) : fields[key];
     try {
       const asset = await api('/api/motions', {source_path: fields.source_path, metadata});
-      if (run && !run.read_only) await api(`/api/runs/${run.run_id}/motion`, {asset_id: asset.asset_id});
+      if (run && !run.read_only && run.is_latest) await api(`/api/runs/${run.run_id}/motion`, {asset_id: asset.asset_id});
       await refresh();
     } catch (error) { failure(error); submit.disabled = false; }
   };
@@ -46,7 +46,7 @@ export function renderMotion({state, run, api, refresh, failure}) {
     provenance.textContent = `Version: ${asset.asset_id}. Source SHA-256: ${asset.source_sha256}. Model: ${asset.model_path}. Model SHA-256: ${asset.model_sha256}. Metadata: ${JSON.stringify(asset.metadata_sources)}.`;
     const select = document.createElement('button');
     select.textContent = run?.motion_asset_id === asset.asset_id ? 'Selected for draft' : 'Use in selected draft';
-    select.disabled = !run || run.read_only || run.motion_asset_id === asset.asset_id;
+    select.disabled = !run || run.read_only || !run.is_latest || run.motion_asset_id === asset.asset_id;
     select.onclick = async () => {
       try { await api(`/api/runs/${run.run_id}/motion`, {asset_id: asset.asset_id}); await refresh(); }
       catch (error) { failure(error); }

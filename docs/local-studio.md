@@ -292,8 +292,10 @@ changed-input attempts never become reusable completions. A completion receipt
 records input/closure/model hashes, exact dependency receipts/artifact hashes,
 settings, native/adapter/runtime identity, command/environment overrides, validation
 findings and completed UTC. Semantic fingerprints exclude transient attempt/output
-paths. Reuse stays within the captured run/revision; changing recorded bytes
-invalidates completion. Sampling is 4096 paired points with valid reference meshes;
+paths. Reuse is limited to authenticated compatible prefix stages of the same run; changing recorded bytes
+invalidates completion. Related settings revisions can reference an original receipt,
+with its revision and receipt hash recorded independently. Every read recursively
+checks the original artifacts and dependency chain. Sampling is 4096 paired points with valid reference meshes;
 training validates final checkpoint epochs, paired slots/order and normalization;
 binding validates barycentric and rigid replay/reference geometry; motion validates
 exact frame IDs/FPS, finite qpos, joint order/limits and unit root quaternions.
@@ -368,3 +370,60 @@ stops at binding with no motion file and covers native tiny-triangle diagnostics
 Neither smoke establishes full-clip/default quality; ticket 07 retains the required
 fresh 500-epoch/all-5468-frame G1 acceptance. Ticket 05 adds rich stage/animated
 inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
+
+
+## Recovery and immutable revision history
+
+The **Saved revision** selector restores a persisted snapshot independently of the
+latest editable revision. Viewing an old snapshot never moves the editable head;
+select the latest revision to change its inputs or settings. Saving a robot pose,
+motion selection or execution settings creates a new revision, preserving the other
+selected inputs and settings. An unchanged save creates no revision and queues no
+work. A viewed latest revision follows its next saved edit; an explicitly selected
+older snapshot stays selected across refresh/restart.
+
+Settings changes retain only an authenticated unchanged prefix: epochs changes can
+reuse sampling; trajectory filter changes can reuse sampling, training and binding.
+Sampling-seed changes invalidate all native stages. Robot, pose or motion-version
+changes invalidate every native stage, including cross-clip correspondence. New
+receipts preserve the exact reused dependency receipts and hashes. Available reused
+stages identify the source revision; affected stages show **stale** and require an
+explicit launch. Corrupt receipts/artifacts make the entire dependent chain stale.
+Old revisions and their original files are never rewritten by reuse or retries.
+The plan returns `reuse_policy='verified-related-revisions'` and a visible policy
+message; environment/fingerprint mismatch also forces fresh computation.
+
+Launch review/insertion is protected across threads and local service processes;
+only one active job can exist in a state root. Other drafts/runs remain browsable.
+The persistent status footer exposes **Stop active job** while viewing any run.
+Closing a browser tab or refreshing leaves the server-owned process running.
+Stopped/failed/interrupted jobs offer **Review explicit retry**: the plan lists the
+verified prerequisites that remain and allocates fresh attempt directories for all
+work that needs restarting. No automatic queue or mid-stage epoch/frame resume is
+provided. Completed prerequisites, partial files and native logs are retained.
+
+On Linux, the service records its PID plus kernel process start identity; a small
+stdlib guard owns each native process group and watches that service identity.
+Service death stops the group (TERM then KILL, including TERM-ignoring descendants).
+Reopening detects a dead owner, kills any still-owned verified group and marks the
+unfinished job and attempt `interrupted`. PID reuse cannot target an unrelated
+process. Legacy jobs without a birth identity are never signalled using an
+unverified PID. Terminal state updates are monotonic, and final publication checks
+refuse cancelled, interrupted or changed-revision callbacks.
+
+Additional owned reads are `get_run(run_id, revision_id=None)`,
+`list_revisions(run_id)`, `execution_settings(run_id, revision_id=None)` and
+`selected_revision_id()`. `select(run_id, revision_id=None)` persists the viewed
+snapshot, defaulting to the current head. `RunRecord.is_latest` indicates whether
+that snapshot is editable; `StageState.reason` explains stale/reused availability.
+HTTP adds `GET /api/runs/<id>/revisions`, `GET …/revisions/<revision>`,
+`GET …/revisions/<revision>/settings`, and
+`GET …/revisions/<revision>/stages/<stage>/receipt`. Selection accepts an optional
+`revision_id`; `/api/state` includes `selected_run` and its `revisions`.
+
+Lifecycle tests use real subprocess fixtures through public Studio/HTTP operations,
+without repeating native numerical solves. Browser evidence is under
+`outputs/studio-lifecycle-ticket06-20261030/`: its clearly labeled subprocess fixture
+exercises close/reopen, saved-run browsing during work, Stop/retry, related settings
+reuse, stale stages and old-revision refresh restoration. Native full-clip/default
+quality acceptance remains ticket 07.

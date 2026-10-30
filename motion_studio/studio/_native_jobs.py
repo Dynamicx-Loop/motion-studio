@@ -6,6 +6,7 @@ import queue
 import re
 import signal
 import subprocess
+import sys
 import threading
 import time
 import uuid
@@ -13,6 +14,7 @@ import uuid
 from ._contracts import StudioError
 from ._history import digest, confined_file
 from ._execution import now
+from ._process_guard import process_identity
 from motion_studio.integrations.umr_stages import STAGES, canonical_hash, native_environment
 
 
@@ -46,9 +48,12 @@ def _run(studio, job_id, stage, attempt, request):
         'PYTHONUNBUFFERED', 'PYTHONNOUSERSITE', 'PYTHONDONTWRITEBYTECODE', 'HUMANOID_BATCH_PROGRESS', 'XDG_CACHE_HOME', 'TMPDIR', 'OMP_NUM_THREADS', 'MKL_NUM_THREADS')}}))
     lines = queue.Queue()
     with (attempt / 'native.log').open('wb') as log:
-        process = subprocess.Popen(command, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
+        owner = studio.get_job(job_id)
+        guarded = [sys.executable, '-B', str(Path(__file__).with_name('_process_guard.py')),
+                   str(owner['owner_pid']), owner['owner_identity'], *command]
+        process = subprocess.Popen(guarded, stdout=subprocess.PIPE, stderr=subprocess.STDOUT,
                                    env=env, start_new_session=True)
-        studio._update_job(job_id, pid=process.pid, status='running', message=f'{stage}: native setup')
+        studio._update_job(job_id, pid=process.pid, process_identity=process_identity(process.pid), status='running', message=f'{stage}: native setup')
         def read():
             for line in iter(process.stdout.readline, b''):
                 log.write(line); log.flush(); lines.put(line)
@@ -57,10 +62,15 @@ def _run(studio, job_id, stage, attempt, request):
         started = time.monotonic()
         while process.poll() is None or reader.is_alive() or not lines.empty():
             job = studio.get_job(job_id)
-            if job['status'] == 'cancelling':
+            if process.poll() is not None and reader.is_alive():
+                # A crashed/exited leader must not leave descendants holding
+                # stdout (and the compute slot) indefinitely.
+                _stop(process)
+                reader.join(timeout=5)
+            if job['status'] != 'running':
                 _stop(process); reader.join(timeout=5)
                 raise StudioError('cancelled', 'Native process group stopped', 409)
-            if studio.get_run(job['run_id']).revision_id != job['revision_id']:
+            if not studio._revision_is_current(job['run_id'], job['revision_id']):
                 _stop(process); reader.join(timeout=5)
                 raise StudioError('stale_revision', 'Inputs changed; this attempt was not published', 409)
             try:
@@ -85,7 +95,7 @@ def _run(studio, job_id, stage, attempt, request):
 def _accept(studio, job_id, stage, attempt, request, command):
     job = studio.get_job(job_id)
     plan = studio.plan_execution(job['run_id'], through=stage)
-    if (job['status'] == 'cancelling' or plan['revision_id'] != job['revision_id']
+    if (job['status'] != 'running' or plan['revision_id'] != job['revision_id']
             or plan['fingerprints'].get(stage) != job['plan']['fingerprints'][stage]):
         raise StudioError('stale_result', 'Cancelled or changed-input result was not published', 409)
     report = json.loads((attempt / 'validation.json').read_text())
@@ -123,7 +133,7 @@ def _accept(studio, job_id, stage, attempt, request, command):
         db.execute('BEGIN IMMEDIATE')
         current = json.loads(db.execute('SELECT data FROM jobs WHERE job_id=?', (job_id,)).fetchone()['data'])
         revision = db.execute('SELECT revision_id FROM runs WHERE run_id=?', (job['run_id'],)).fetchone()['revision_id']
-        if current['status'] == 'cancelling' or revision != job['revision_id']:
+        if current['status'] != 'running' or revision != job['revision_id']:
             receipt_path.unlink()
             raise StudioError('stale_result', 'Late result was not published', 409)
         # Check exact prerequisite receipt identities and every dependency byte
@@ -136,13 +146,15 @@ def _accept(studio, job_id, stage, attempt, request, command):
                 raise StudioError('stale_dependency', f'{dependency} changed during {stage}; result not published', 409)
         db.execute('INSERT OR REPLACE INTO stage_completions VALUES (?, ?, ?, ?)',
                    (job['run_id'], job['revision_id'], stage, json.dumps(info)))
+        current.setdefault('attempt_statuses', {})[stage] = 'completed'
+        db.execute('UPDATE jobs SET data=? WHERE job_id=?', (json.dumps(current), job_id))
 
 
 def execute_job(studio, job_id):
     job = studio.get_job(job_id)
     try:
         for stage in job['plan']['stages']:
-            if studio.get_job(job_id)['status'] == 'cancelling':
+            if studio.get_job(job_id)['status'] not in ('queued', 'running'):
                 raise StudioError('cancelled', 'Job cancelled before native launch', 409)
             run = studio.get_run(job['run_id'])
             if run.revision_id != job['revision_id']:
@@ -157,7 +169,9 @@ def execute_job(studio, job_id):
             attempt = studio.roots.runs / job['run_id'] / job['revision_id'] / stage / ('attempt-' + uuid.uuid4().hex)
             attempt.mkdir(parents=True)
             job['attempts'][stage] = attempt.name
-            studio._update_job(job_id, stage=stage, attempts=job['attempts'], progress={}, message=f'{stage}: starting')
+            states = studio.get_job(job_id).get('attempt_statuses', {})
+            states[stage] = 'running'
+            studio._update_job(job_id, stage=stage, attempts=job['attempts'], attempt_statuses=states, progress={}, message=f'{stage}: starting')
             request = {'run_id': job['run_id'], 'revision_id': job['revision_id'], 'job_id': job_id,
                        'stage': stage, 'attempt_dir': str(attempt), 'inputs': inputs,
                        'settings': job['plan']['settings'], 'dependencies': dependencies}
@@ -171,5 +185,11 @@ def execute_job(studio, job_id):
         studio._update_job(job_id, status='completed', finished_at=now(), message='All requested outputs validated')
     except Exception as error:
         status = 'cancelled' if isinstance(error, StudioError) and error.code == 'cancelled' else 'failed'
-        studio._update_job(job_id, status=status, finished_at=now(), message=str(error),
+        current = studio.get_job(job_id)
+        if current['status'] == 'cancelling':
+            status = 'cancelled'
+        states = current.get('attempt_statuses', {})
+        if current['stage'] and states.get(current['stage']) != 'completed':
+            states[current['stage']] = status
+        studio._update_job(job_id, status=status, attempt_statuses=states, finished_at=now(), message=str(error),
                            error_code=getattr(error, 'code', 'stage_failed'))

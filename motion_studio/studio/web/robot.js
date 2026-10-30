@@ -24,7 +24,7 @@ export function renderRobot(value) {
   library.append(form);
   const editor=$('robot-editor'), viewport=$('robot-preview'); editor.replaceChildren();
   viewport.hidden = true;
-  if (!run || run.read_only) {library.append(node('p','Select a draft to prepare a robot pose.'));return;}
+  if (!run || run.read_only || !run.is_latest) {library.append(node('p','Select a draft to prepare a robot pose.'));return;}
   const select=node('select');select.id='robot-select';
   const placeholder=node('option','Choose imported robot');placeholder.value='';select.append(placeholder);
   for (const item of state.robots || []) {

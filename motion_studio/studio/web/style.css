@@ -59,3 +59,6 @@ input[type=checkbox]{display:inline;width:auto;margin:0 8px}
 #motion-assets{overflow-wrap:anywhere}
 #motion-assets details{margin:12px 0}
 #motion-assets select{display:block;width:100%;margin-top:7px;padding:9px;background:#101923;color:inherit;border:1px solid #53687c;border-radius:5px}
+
+#stages button[data-status=stale]:disabled{opacity:1;background:#46351f;border-color:#a98751;color:#ffe0ad}
+#active-job button{margin-bottom:8px}
