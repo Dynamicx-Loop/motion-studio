@@ -61,9 +61,13 @@ class OfficialPoseHTTPTests(unittest.TestCase):
                 values = {joint.name: pose['qpos'][joint.qpos_index] for joint in robot.joints}
                 self.assertAlmostEqual(values['left_shoulder_roll_joint'], 1.57079632679)
                 self.assertAlmostEqual(values['right_shoulder_roll_joint'], -1.57079632679)
+                self.assertAlmostEqual(values['left_elbow_joint'], 1.57079632679)
+                self.assertAlmostEqual(values['right_elbow_joint'], 1.57079632679)
+                self.assertEqual(values['left_knee_joint'], 0)
                 self.assertEqual(studio.get_run(draft.run_id).revision_id, 'r0001')
                 self.assertEqual(studio.list_robot_poses(robot.asset_id), ())
-                generic = Path(tmp) / 'generic.xml'
+                # A matching official filename alone must never enable the preset.
+                generic = Path(tmp) / 'g1_29dof.xml'
                 generic.write_text('<mujoco><worldbody><body name="pelvis"><freejoint/>'
                     '<geom type="box" size=".1 .1 .1"/><body name="torso"><joint name="arm" range="-90 90"/>'
                     '<geom type="sphere" size=".1"/></body></body></worldbody></mujoco>')
