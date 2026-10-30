@@ -8,12 +8,13 @@ import uuid
 from ._robots import _RobotOperations
 
 from ._history import confined_file, digest, inspect_bundle
-
 from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
+from ._motion import _MotionOperations
 
 
-class Studio(_RobotOperations):
-    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (), robot_python: Path | None = None):
+class Studio(_RobotOperations, _MotionOperations):
+    def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
+                 robot_python: Path | None = None, smplx_model_dir: Path | None = None):
         self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
         state = Path(state_root).resolve()
         self.history_roots = tuple(Path(p).resolve() for p in history_roots)
@@ -32,6 +33,8 @@ class Studio(_RobotOperations):
                        'run_id TEXT, revision_id TEXT, asset_id TEXT, pose_id TEXT, '
                        'PRIMARY KEY(run_id, revision_id))')
             db.execute('CREATE TABLE IF NOT EXISTS preferences (key TEXT PRIMARY KEY, value TEXT)')
+
+        self._init_motions(smplx_model_dir)
 
     @contextmanager
     def _connection(self):
@@ -134,13 +137,19 @@ class Studio(_RobotOperations):
     def _record(self, row):
         historical = row['kind'] == 'historical'
         inspection_url = f"/inspection/{row['run_id']}/index.html"
-        stages = tuple(
-            StageState(stage, 'available', inspection_url)
-            if historical and stage == Stage.MOTION else StageState(stage)
-            for stage in Stage
-        )
         with self._connection() as db:
             robot = self._robot_selection(db, row['run_id'], row['revision_id'])
+            motion = db.execute('SELECT asset_id FROM motion_selections WHERE run_id=? AND revision_id<=? '
+                                'ORDER BY revision_id DESC LIMIT 1', (row['run_id'], row['revision_id'])).fetchone()
+        stages = tuple(
+            StageState(stage, 'available', inspection_url)
+            if historical and stage == Stage.MOTION else
+            StageState(stage, 'available')
+            if not historical and robot and stage == Stage.PREPARATION else StageState(stage)
+            for stage in Stage
+        )
         return RunRecord(row['run_id'], row['revision_id'], row['name'], row['kind'],
                          historical, row['created_at'], stages, row['inspection_path'],
-                         robot['asset_id'] if robot else None, robot['pose_id'] if robot else None)
+                         robot_asset_id=robot['asset_id'] if robot else None,
+                         robot_pose_id=robot['pose_id'] if robot else None,
+                         motion_asset_id=motion['asset_id'] if motion else None)

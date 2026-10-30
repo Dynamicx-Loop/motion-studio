@@ -13,6 +13,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--state', type=Path, default=Path('outputs/studio-state'))
     parser.add_argument('--robot-python', type=Path, help='Pinned independent Python with MuJoCo for robot compilation')
+    parser.add_argument('--smplx-model-dir', type=Path, help='Local licensed SMPL-X weights (hashed, never copied)')
     parser.add_argument('--port', type=int, default=8773)
     parser.add_argument('--history-root', type=Path, action='append', default=[],
                         help='Permit saved inspection registration beneath this root (repeatable)')
@@ -21,7 +22,8 @@ def main():
     args = parser.parse_args()
     logging.basicConfig(level=logging.INFO, format='%(asctime)s %(message)s')
     try:
-        studio = Studio(args.state, history_roots=tuple(args.history_root), robot_python=args.robot_python)
+        studio = Studio(args.state, history_roots=tuple(args.history_root),
+                        robot_python=args.robot_python, smplx_model_dir=args.smplx_model_dir)
         for path in args.history:
             studio.register_history(path.name + ' · historical reference', path)
         with create_server(studio, port=args.port) as server:

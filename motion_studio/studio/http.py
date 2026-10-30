@@ -90,6 +90,17 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 self._fields(data, {'asset_id', 'name', 'qpos', 'torso_body'})
                 self._json(200, asdict(studio.save_robot_pose(self._id(path.split('/')[3]),
                     data['asset_id'], name=data['name'], qpos=data['qpos'], torso_body=data['torso_body'])))
+            # MOTION import and draft selection operations.
+            elif path == '/api/motions':
+                self._fields(data, {'source_path', 'metadata'})
+                if not isinstance(data['source_path'], str):
+                    raise StudioError('invalid_path', 'Motion source path must be a string')
+                self._json(201, asdict(studio.import_motion(Path(data['source_path']), metadata=data['metadata'])))
+            elif path.startswith('/api/runs/') and path.endswith('/motion'):
+                self._fields(data, {'asset_id'})
+                if not isinstance(data['asset_id'], str):
+                    raise StudioError('invalid_id', 'Motion asset ID must be a string')
+                self._json(200, asdict(studio.select_motion(self._id(path.split('/')[3]), data['asset_id'])))
             else:
                 raise StudioError('not_found', 'Operation does not exist', 404)
 
@@ -97,6 +108,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
             if path == '/api/state':
                 self._json(200, {'runs': [asdict(run) for run in studio.list_runs()],
                                  'selected_run_id': studio.selected_run_id(),
+                                 'motions': [asdict(asset) for asset in studio.list_motions()],
                                  'robots': [asdict(asset) for asset in studio.list_robots()],
                                  'history_roots': [str(root) for root in studio.history_roots]})
             # ROBOT reads: managed geometry and immutable named poses only.
@@ -115,6 +127,10 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     raise StudioError('not_found', 'Robot resource does not exist', 404)
             elif path in {'/vendor/three.module.js', '/vendor/OrbitControls.js'}:
                 self._file(_WEB / 'inspection' / path[1:])
+            elif path == '/api/motions':
+                self._json(200, [asdict(asset) for asset in studio.list_motions()])
+            elif path.startswith('/api/motions/'):
+                self._json(200, asdict(studio.get_motion(path.removeprefix('/api/motions/'))))
             elif path.startswith('/api/runs/'):
                 self._json(200, asdict(studio.get_run(self._id(path.removeprefix('/api/runs/')))))
             elif path.startswith('/inspection/'):
@@ -129,7 +145,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._file(_WEB / 'inspection' / name)
                 else:
                     self._file(studio.inspection_file(run_id, name))
-            elif path in {'/', '/app.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
+            elif path in {'/', '/app.js', '/motion.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
                 file = 'index.html' if path == '/' else path[1:]
                 self._file(_WEB / file)
             else:

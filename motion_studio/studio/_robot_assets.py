@@ -30,6 +30,7 @@ class RobotAsset:
     derived: tuple[str, ...]
     runtime: str
     files: dict[str, str]
+    source_entry: str = ''
 
 
 @dataclass(frozen=True)
@@ -142,7 +143,7 @@ def source_closure(source):
 def import_asset(assets_root, python, source, derive_free_root):
     tree, sources = source_closure(source)
     fingerprint = {name: hash_file(path) for name, path in sorted(sources.items())}
-    identity = hashlib.sha256(json.dumps({'files': fingerprint, 'entry': Path(source).name,
+    identity = hashlib.sha256(json.dumps({'schema': 'studio-robot-v1', 'files': fingerprint, 'entry': Path(source).name,
         'derive_free_root': derive_free_root}, sort_keys=True).encode()).hexdigest()
     home = assets_root / 'robots' / identity
     if home.exists():
@@ -165,7 +166,7 @@ def import_asset(assets_root, python, source, derive_free_root):
             'derive_free_root': derive_free_root, 'geometry': str(stage / 'geometry.json')})
         record = RobotAsset(identity, Path(source).stem, result['root_body'], tuple(result['bodies']),
             tuple(RobotJoint(**x) for x in result['joints']), tuple(result['default_qpos']),
-            tuple(result['derived']), result['runtime'], {})
+            tuple(result['derived']), result['runtime'], {}, source_entry=Path(source).name)
         stored = {p.relative_to(stage).as_posix(): hash_file(p)
                   for p in stage.rglob('*') if p.is_file()}
         record = RobotAsset(**{**record.__dict__, 'files': stored})
@@ -173,6 +174,7 @@ def import_asset(assets_root, python, source, derive_free_root):
         # Atomic publish; no mutation of an existing hash-identified version.
         try:
             stage.rename(home)
-        except FileExistsError:
-            pass
+        except OSError:
+            if not (home / 'asset.json').is_file():
+                raise
     return record

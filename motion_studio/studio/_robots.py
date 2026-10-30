@@ -5,12 +5,12 @@ import json
 import math
 from pathlib import Path
 
-from ._contracts import StudioError
-from ._robot_assets import RobotPose, decode_asset, hash_file, import_asset, runtime
+from ._contracts import RunRecord, StudioError
+from ._robot_assets import RobotAsset, RobotPose, decode_asset, hash_file, import_asset, runtime
 
 
 class _RobotOperations:
-    def import_robot(self, source_path: Path, *, derive_free_root: bool = False):
+    def import_robot(self, source_path: Path, *, derive_free_root: bool = False) -> RobotAsset:
         """Copy a complete MJCF closure and compile it in the configured pinned runtime.
 
         Imports never edit originals. Only a single named-body articulated root,
@@ -20,11 +20,11 @@ class _RobotOperations:
             raise StudioError('invalid_robot', 'derive_free_root must be a boolean')
         return import_asset(self.roots.assets, self.robot_python, source_path, derive_free_root)
 
-    def list_robots(self):
+    def list_robots(self) -> tuple[RobotAsset, ...]:
         folder = self.roots.assets / 'robots'
         return tuple(self.get_robot(p.name) for p in sorted(folder.glob('*')) if (p / 'asset.json').is_file())
 
-    def get_robot(self, asset_id):
+    def get_robot(self, asset_id: str) -> RobotAsset:
         home = self._robot_home(asset_id)
         try:
             return decode_asset(json.loads((home / 'asset.json').read_text()))
@@ -36,7 +36,7 @@ class _RobotOperations:
             raise StudioError('invalid_robot_id', 'Robot ID must be a SHA-256 hex string')
         return self.roots.assets / 'robots' / asset_id
 
-    def robot_file(self, asset_id, name):
+    def robot_file(self, asset_id: str, name: str) -> Path:
         """Resolve a recorded immutable robot artifact, checking confinement and bytes."""
         asset = self.get_robot(asset_id)
         home = self._robot_home(asset_id)
@@ -47,7 +47,7 @@ class _RobotOperations:
             raise StudioError('changed_artifact', 'Managed robot bytes changed', 409)
         return path
 
-    def preview_robot(self, asset_id, qpos=None):
+    def preview_robot(self, asset_id: str, qpos: list[float] | tuple[float, ...] | None = None) -> dict:
         asset = self.get_robot(asset_id)
         values = self._robot_qpos(asset, list(asset.default_qpos) if qpos is None else qpos)
         model = self.robot_file(asset_id, 'source/__studio_model.xml')
@@ -68,12 +68,12 @@ class _RobotOperations:
                 raise StudioError('invalid_pose', f'{joint.name} exceeds compiled limits in radians')
         return tuple(float(x) for x in values)
 
-    def list_robot_poses(self, asset_id):
+    def list_robot_poses(self, asset_id: str) -> tuple[RobotPose, ...]:
         self.get_robot(asset_id)
         folder = self._robot_home(asset_id) / 'poses'
         return tuple(self.get_robot_pose(asset_id, p.stem) for p in sorted(folder.glob('*.json')))
 
-    def get_robot_pose(self, asset_id, pose_id):
+    def get_robot_pose(self, asset_id: str, pose_id: str) -> RobotPose:
         self.get_robot(asset_id)
         if not isinstance(pose_id, str) or len(pose_id) != 64 or any(x not in '0123456789abcdef' for x in pose_id):
             raise StudioError('invalid_pose', 'Pose ID must be a SHA-256 hex string')
@@ -86,7 +86,8 @@ class _RobotOperations:
             raise StudioError('changed_artifact', 'Named pose bytes changed', 409)
         return RobotPose(**{**value, 'qpos': tuple(value['qpos'])})
 
-    def save_robot_pose(self, run_id, asset_id, *, name, qpos, torso_body):
+    def save_robot_pose(self, run_id: str, asset_id: str, *, name: str,
+                        qpos: list[float] | tuple[float, ...], torso_body: str) -> RunRecord:
         """Save an immutable named pose and select it in a fresh draft revision.
 
         Root XYZ is metres, root orientation quaternion wxyz; bounded hinges radians.

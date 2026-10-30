@@ -1,8 +1,8 @@
 # Local Studio
 
-The persistent local application currently provides saved drafts and read-only
-historical G1 playback. It uses Python's standard library and independently
-vendored browser dependencies. Viewing needs neither CUDA nor UMR imports.
+The persistent local application provides saved drafts, managed robot/pose and
+SMPL-X motion preparation, and read-only historical G1 playback. Startup uses
+Python's standard library and independently vendored browser dependencies. Viewing needs neither CUDA nor UMR imports.
 Launch from the Motion Studio root:
 
 ```sh
@@ -24,8 +24,8 @@ log links remain accessible. Selecting a tab never starts work. Refresh restores
 the selected persisted run/revision. Playback position and transient camera/filter
 controls start fresh when the inspection reloads. Current historical results expose
 motion inspection, including static reference pose and synchronized human/robot
-bindings. Input preparation and execution arrive in subsequent slices; unavailable
-stages are disabled and drafts launch nothing.
+bindings. Native execution arrives in subsequent slices; unavailable stages are disabled
+and input preparation launches no compute job.
 
 The service binds only `127.0.0.1`, checks Host, refuses cross-origin changes and
 accepts only bounded JSON object mutations. This is a single-user local service,
@@ -52,12 +52,12 @@ NumPy arrays, simulator models or GPU imports cross this service boundary.
   It returns only data/log/provenance artifacts; historical HTML/scripts are never
   executed. The HTTP transport serves owned viewer code and vendor files instead.
 
-`RunRecord` is immutable: `run_id` is a UUID hex string, `revision_id` currently
-`r0001`, `kind` is `draft` or `historical`, `read_only` explicitly identifies
+`RunRecord` is immutable: `run_id` is a UUID hex string, `revision_id` starts at
+`r0001` and advances on saved input changes, `kind` is `draft` or `historical`, `read_only` explicitly identifies
 historical registrations, and `created_at` is an ISO UTC timestamp. `stages`
 contains `StageState(stage, status, inspection_url)` for preparation, sampling,
-training, binding, retargeting and motion. This slice uses `unavailable` and
-`available`; execution will add lifecycle states. Historical availability describes
+training, binding, retargeting and motion. Preparation becomes available after a robot pose is saved. The service uses
+`unavailable` and `available`; execution will add lifecycle states. Historical availability describes
 saved inspection access, not a newly executed native stage or verified new solve.
 
 `studio.roots` exposes `StorageRoots(state, assets, runs, exports)`. State holds
@@ -74,7 +74,7 @@ references bytes relative to its managed stage directory. Construction alone is
 not a completion receipt: the receiving execution operation must validate exact
 identity, path confinement, hashes and stage-specific output requirements before
 publishing completion. Scientific configuration translation and runtime invocation
-stay in the concrete adapter. This initial slice does not invoke adapters or claim
+stay in the concrete adapter. This preparation slice does not invoke native stage adapters or claim
 cache reuse, cancellation or stage execution.
 
 Expected failures use `StudioError(code, message, status)`. HTTP represents these as
@@ -183,3 +183,50 @@ and `GET /api/robots/<asset_id>`; `GET …/geometry`, `GET …/poses`;
 `{asset_id, name, qpos, torso_body}`. `/api/state` includes `robots`. Expected errors
 retain the existing structured HTTP contract. New selection revisions invalidate
 uncomputed downstream stages; execution/cache lifecycle handling is a later slice.
+## SMPL-X motion preparation
+
+The managed-assets panel imports a local `.npz`, inspects its metadata and selects
+it for the current editable draft. Import retains every original byte/channel and
+all frames in `assets/motions/<sha256>/source.npz`; moving the original is safe.
+The immutable version identity combines source bytes, resolved metadata and local
+model provenance. Selecting a different version creates a new draft revision and
+an immutable `runs/<id>/<revision>/motion.json`; it starts no computation.
+
+Supported motion has numeric axis-angle `poses`/`pose_aa` with shape `(N,66)`
+(root plus 21 body joints) or `(N,165)` (full SMPL-X), or `root_orient (N,3)` plus
+`pose_body (N,63)`. Translation `trans`/`trans_orig`/`transl` must be finite `(N,3)`
+metres, shape `betas`/`beta` is ten constant values `(10,)` or `(1,10)`. Gender is
+neutral/male/female. Positive constant FPS and Y/Z-up must be recorded or supplied
+explicitly in the form. Aliases, split/full poses, baseline `smpl_pose_axis_angle`,
+`coordinate_up` and `frame_time` must agree. Custom timestamps/frame IDs,
+per-frame shape, unsupported layouts and non-unit `human_scale` are rejected.
+No resampling, scaling or frame removal occurs.
+
+Every archived array is inspected with pickle disabled. Object/structured/complex
+arrays, duplicate/escaping archive names and unbounded payloads are rejected;
+NPY headers are checked against payload lengths before allocation. Original
+untrusted files never reach the native permissive loader. `normalized.npz` is a
+separately hashed, generated numeric/string-only native input with explicit
+canonical metadata. Native reconstruction uses root/body pose, neutral hands and
+omits facial channels; the UI and version record disclose this limitation.
+
+Motion import lazily needs NumPy in the service interpreter. Startup and persisted
+viewing do not import NumPy or UMR. `--smplx-model-dir` configures licensed local
+weights, defaulting to the existing `/data/motions/human_models/smplx/1.1/…/smplx`
+location. A matching `SMPLX_<GENDER>.pkl` or `.npz` must exist; it is hashed and
+referenced, never copied or unpickled by import. Missing/changed weights prevent
+selecting/reconstructing the asset while saved metadata and viewing remain usable.
+
+Additional owned operations are `import_motion(source_path, metadata=None)`,
+`list_motions()`, `get_motion(asset_id)`, `select_motion(run_id, asset_id)`,
+`motion_source(asset_id)` and `motion_file(asset_id)`. `MotionAsset` contains frame
+count/FPS, pose layout, betas, axes/units, gender, channels, metadata origins, source
+and model hashes, and reconstruction disclosure. `motion_source` verifies retained
+bytes; `motion_file` verifies the generated input and recorded model. Both return
+managed paths. Callers must use `motion_file` for native execution.
+
+HTTP adds `POST /api/motions` with `{source_path, metadata}`,
+`GET /api/motions`, `GET /api/motions/<asset_id>`, and
+`POST /api/runs/<run_id>/motion` with `{asset_id}`. `/api/state` includes `motions`
+and `RunRecord.motion_asset_id`. Expected failures include `missing_metadata`,
+`invalid_motion`, `missing_model`, `changed_model` and `changed_asset`.

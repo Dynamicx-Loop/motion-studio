@@ -1,4 +1,5 @@
 import {renderRobot} from '/robot.js';
+import {renderMotion} from './motion.js';
 const $ = id => document.getElementById(id);
 let state, selectedStage = 'motion';
 async function api(path, data) {
@@ -34,6 +35,8 @@ function render() {
   $('identity').textContent = run ? `Run ${run.run_id} · revision ${run.revision_id}` : '';
   $('kind').textContent = run ? run.read_only ? 'Historical reference · read-only' : 'Draft · ready for input preparation' : 'Select a saved run.';
   $('status').textContent = run?.read_only ? 'Viewing preserved saved output · no computation active' : 'Idle · no computation active';
+  if (!run?.stages.some(stage => stage.stage === selectedStage && stage.status === 'available'))
+    selectedStage = run?.stages.find(stage => stage.status === 'available')?.stage || 'preparation';
   $('stages').replaceChildren(...(run?.stages || []).map(stage => {
     const button = document.createElement('button');
     button.textContent = `${stage.stage[0].toUpperCase()}${stage.stage.slice(1)} · ${stage.status}`;
@@ -48,6 +51,7 @@ function render() {
   if (url && inspection.getAttribute('src') !== url) inspection.src = url;
   if (!url) inspection.removeAttribute('src');
   renderRobot({state,run,api,refresh,failure});
+  renderMotion({state, run, api, refresh, failure});
   $('run-details').replaceChildren(); $('logs').replaceChildren();
   if (run?.read_only) {
     const note = document.createElement('p'); note.textContent = 'Preserved G1 inspection: synchronized source human and saved robot motion, reconstructed bindings. No new native run.';

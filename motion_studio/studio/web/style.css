@@ -55,3 +55,7 @@ input[type=checkbox]{display:inline;width:auto;margin:0 8px}
 @media(max-width:1100px){#details:has(#robot-editor:not(:empty)){display:block;position:absolute;right:0;top:58px;bottom:140px;width:275px;z-index:2}}
 
 #viewport:has(#robot-preview:not([hidden])) #empty{display:none}
+/* Motion metadata and long immutable provenance must fit the asset sidebar. */
+#motion-assets{overflow-wrap:anywhere}
+#motion-assets details{margin:12px 0}
+#motion-assets select{display:block;width:100%;margin-top:7px;padding:9px;background:#101923;color:inherit;border:1px solid #53687c;border-radius:5px}

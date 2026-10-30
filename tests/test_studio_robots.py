@@ -54,6 +54,7 @@ class RobotImportTests(unittest.TestCase):
                                          qpos=qpos, torso_body='torso')
         self.assertEqual(run.revision_id, 'r0002')
         self.assertEqual(run.robot_asset_id, asset.asset_id)
+        self.assertEqual(next(x.status for x in run.stages if x.stage == 'preparation'), 'available')
         pose = self.studio.get_robot_pose(asset.asset_id, run.robot_pose_id)
         self.assertEqual(pose.qpos[7], .5)
         self.assertEqual(pose.torso_body, 'torso')
@@ -129,3 +130,36 @@ class RobotImportTests(unittest.TestCase):
         self.xml.write_text(self.xml.read_text().replace('range="-90 45"', 'range="10 45"'))
         with self.assertRaisesRegex(StudioError, 'default pose'):
             self.studio.import_robot(self.xml)
+
+    def test_robot_and_motion_changes_preserve_other_input_across_revisions(self):
+        try:
+            import numpy as np
+        except ImportError:
+            self.skipTest('NumPy unavailable for combined motion selection')
+        models = self.root / 'models'
+        models.mkdir()
+        (models / 'SMPLX_NEUTRAL.pkl').write_bytes(b'test model provenance only')
+        studio = Studio(self.root / 'state', robot_python=PYTHON, smplx_model_dir=models)
+        motion = self.root / 'motion.npz'
+        np.savez(motion, poses=np.zeros((2, 66)), trans=np.zeros((2, 3)),
+                 betas=np.zeros(10), gender='neutral', mocap_frame_rate=30., samp_output_up='y')
+        human = studio.import_motion(motion)
+        robot = studio.import_robot(self.xml)
+        draft = studio.create_draft('Combined inputs')
+        first = studio.save_robot_pose(draft.run_id, robot.asset_id, name='Reference',
+                                        qpos=list(robot.default_qpos), torso_body='torso')
+        second = studio.select_motion(draft.run_id, human.asset_id)
+        self.assertEqual(second.revision_id, 'r0003')
+        self.assertEqual(second.robot_pose_id, first.robot_pose_id)
+        qpos = list(robot.default_qpos)
+        qpos[7] = .5
+        third = studio.save_robot_pose(draft.run_id, robot.asset_id, name='Changed',
+                                       qpos=qpos, torso_body='pelvis')
+        self.assertEqual(third.revision_id, 'r0004')
+        self.assertEqual(third.motion_asset_id, human.asset_id)
+        self.assertEqual(studio.select_motion(draft.run_id, human.asset_id).revision_id, 'r0004')
+        reopened = Studio(self.root / 'state', robot_python=PYTHON, smplx_model_dir=models)
+        self.assertEqual(reopened.get_run(draft.run_id), third)
+        preview = studio.preview_robot(robot.asset_id, qpos)
+        self.assertAlmostEqual(preview['transforms'][1]['rotation'][0], .8775825618903728, places=12)
+        self.assertAlmostEqual(preview['transforms'][1]['rotation'][1], -.479425538604203, places=12)
