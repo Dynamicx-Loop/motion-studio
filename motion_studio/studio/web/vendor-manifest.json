@@ -1,0 +1,16 @@
+{
+  "library": "Three.js",
+  "version": "r165",
+  "license": "MIT",
+  "initial_source_workspace": "/data/workspace/motion_studio",
+  "resources": {
+    "three.module.js": {
+      "sha256": "5916c8dfb5f4e3eede312de305345868d4a0a8105383b080c6985565d6e79b46",
+      "source": "outputs/umr-binding-report/documentation/vendor/three.module.js"
+    },
+    "OrbitControls.js": {
+      "sha256": "f260591ef315aa04888152e7f121865214e33fb54727145cf4e4445058db1297",
+      "source": "outputs/umr-binding-report/documentation/vendor/controls/OrbitControls.js"
+    }
+  }
+}
