@@ -68,10 +68,11 @@ See the [integration review](docs/umr-integration-review.md) and
 
 ## Local Studio application
 
-Launch persistent drafts and read-only historical G1 playback with
-`python3 -B scripts/studio.py`. See [Local Studio](docs/local-studio.md) for
-historical registration, offline dependencies and owned service contracts.
-Input preparation and native execution are being added as separate slices.
+Launch persistent robot/pose and motion preparation, native UMR stages and
+synchronized inspection with `python3 -B scripts/studio.py`. See
+[Local Studio](docs/local-studio.md) for setup, offline dependencies, recovery
+and owned service contracts. The [full G1 acceptance record](experiments/studio-baseline-acceptance-20261030/README.md)
+keeps fresh application results separate from historical references.
 
 ## Local documentation
 

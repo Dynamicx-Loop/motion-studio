@@ -502,7 +502,7 @@ without repeating native numerical solves. Browser evidence is under
 `outputs/studio-lifecycle-ticket06-20261030/`: its clearly labeled subprocess fixture
 exercises close/reopen, saved-run browsing during work, Stop/retry, related settings
 reuse, stale stages and old-revision refresh restoration. Native full-clip/default
-quality acceptance remains ticket 07.
+quality acceptance is recorded in [the full application experiment](../experiments/studio-baseline-acceptance-20261030/README.md).
 
 ## Replay encoding and adapter launch boundary
 
@@ -535,3 +535,50 @@ execution environment; a browser can connect from another environment without
 starting a second service against the same state. The final acceptance cohort
 uses fresh managed state and host execution, preserving the initial cohort and
 the recorded namespace-mismatch incident.
+
+## Full G1 workflow and local prerequisites
+
+Use the existing pinned UMR environment and licensed local SMPL-X files; the
+application installs or downloads nothing. The service Python needs NumPy for
+motion import. Robot compilation uses `--robot-python` (default: the canonical
+UMR `.venv/bin/python`), and `--smplx-model-dir` selects the existing licensed
+model directory. Native execution requires host CUDA; run the service in the
+host process namespace. Viewing an exported bundle requires only local HTTP and
+a WebGL browser. A sandbox without CUDA is suitable for saved viewing, not native
+acceptance. Keep services sharing state in the same process namespace.
+
+For the demonstrated G1 case:
+
+1. Create a named draft. Import the pinned
+   `externals/UMR/assets/g1/g1_29dof.xml` and enable fixed-to-floating derivation.
+2. Choose the imported robot and **Load official G1 T-pose**. This only loads
+   unsaved controls. The adapter checks the complete managed source against the
+   pinned official closure and configuration; other or changed imports receive
+   `unsupported_preset`. Generic numeric poses and saved named poses remain usable.
+   **Save pose to fresh revision** records the selected waist-yaw centering and
+   official shoulder/elbow values, in radians.
+3. Import the complete bundled HiPHI
+   `sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz`.
+   The library reports 5468 frames, 90.00090026855469 FPS, neutral gender and Y-up.
+4. Keep sampling seed 0, epochs 500 and LQR. Review the prerequisite plan, confirm
+   that CUDA is ready, then **Launch reviewed plan**. Tabs themselves launch no
+   work. Native stage progress and retained log links appear in the footer.
+5. Select an available stage and explicitly build an inspection. Sampling shows
+   independent sampled surfaces; training shows learned pairs; binding adds native
+   semantic labels and target ownership; motion preserves exact source timing.
+   Use the saved revision selector to inspect earlier results after changing inputs.
+6. Open **Native outputs, config, logs** for the standalone file index. Serve the
+   returned fresh bundle directory with local HTTP to view it independently.
+
+`official_robot_pose(asset_id) -> RobotPosePreset` and
+`GET /api/robots/<asset_id>/official-pose` return typed unsaved values, units and
+centering body. They create no named pose, revision or compute job. Official G1
+solve limits remain isolated in the concrete adapter; this preset never applies
+G1 assumptions to other imports.
+
+The [acceptance experiment](../experiments/studio-baseline-acceptance-20261030/README.md)
+records full-clip numerical gates, machine timings, browser actions, source hashes,
+original preservation and limits. Its offline audit establishes that observed
+resources were local; it does not claim that networking was disabled. Input,
+robot asset and model terms remain separate. Neutral hands and omitted facial
+channels are a reconstruction limit, not a change to preserved source bytes.
