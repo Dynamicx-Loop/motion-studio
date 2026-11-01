@@ -15,7 +15,10 @@ MAX_UPLOAD = 128 * 1024 * 1024
 class _AssetOperations:
     def asset_catalog(self):
         from motion_studio.integrations.umr_assets import catalog
+        from motion_studio.integrations.menagerie_assets import astro_catalog
         result = catalog(self.native_adapter.checkout)
+        result['robots'].append(astro_catalog())
+        result['source'] = 'Local pinned UMR examples and bundled Astro P2; separate asset terms apply.'
         self._sample_motion_table()
         with self._connection() as db:
             imported = dict(db.execute('SELECT catalog_id, asset_id FROM sample_motion_assets'))
@@ -32,6 +35,13 @@ class _AssetOperations:
 
     def add_builtin_robot(self, key):
         """Verify pinned source bytes, import closure, return unsaved named T-pose."""
+        if key == 'astro':
+            from motion_studio.integrations.menagerie_assets import portable_astro, astro_pose
+            with portable_astro() as (source, preset, originals):
+                asset = self._import_robot(source, False, provenance_files=originals)
+                pose = astro_pose(asset, preset)
+                self._robot_qpos(asset, pose.qpos)
+            return {'asset':asdict(asset), 'pose':asdict(pose)}
         from motion_studio.integrations.umr_assets import portable_robot, robot_preset
         with portable_robot(self.native_adapter.checkout, key) as (source, config, originals):
             asset = self._import_robot(source, True, provenance_files=originals)

@@ -105,3 +105,13 @@ segment selection, binding details, display/camera settings and synchronized
 point picking through an owned renderer command/state interface. Existing bundle
 bytes/hashes, standalone controls and historical viewer are preserved; this
 layout change starts no native computation.
+
+## Bundled Astro follow-up (2026-11-01)
+
+User requested a root `assets/` directory and the latest local Astro robot as a
+built-in. [Ticket 15](issues/15-bundled-astro.md) snapshots the default 29-joint
+Astro P2 from the clean `menagerie_x` source revision, including exact meshes,
+XML and licenses, with an owned import derivative for shared collision models.
+The existing asset library and immutable robot/pose flow expose it without a live
+source checkout. Earlier experiment definitions, sources and UMR pins retain their
+separate recorded identities.

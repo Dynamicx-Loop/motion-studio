@@ -164,8 +164,11 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._json(200, [asdict(pose) for pose in studio.list_robot_poses(asset_id)])
                 else:
                     raise StudioError('not_found', 'Robot resource does not exist', 404)
-            elif path.startswith('/thumbnails/') and path.removeprefix('/thumbnails/') in {'g1.png','k1.png','piplus.png','t800.png'}:
+            elif path.startswith('/thumbnails/') and path.removeprefix('/thumbnails/') in {'g1.png','k1.png','piplus.png','t800.png','astro.png'}:
                 self._file(_WEB / path[1:])
+            elif path == '/licenses/astro-p2.txt':
+                from motion_studio.integrations.menagerie_assets import ASTRO_ROOT
+                self._file(ASTRO_ROOT / 'LICENSE')
             elif path in {'/vendor/three.module.js', '/vendor/OrbitControls.js'}:
                 self._file(_WEB / 'inspection' / path[1:])
             elif path.startswith('/stage-inspection/'):

@@ -29,3 +29,12 @@ research assets.
 Historical motion, processed human/robot geometry, datasets and model weights
 retain their original separate terms. Registering or viewing an inspection
 neither copies model weights nor grants redistribution rights to those assets.
+
+The built-in default Astro P2 model, Astro meshes and its rendered card thumbnail
+come from `menagerie_x` revision `8e3f382f28831331c448c9d62cd197140da63c65`.
+The source model and Astro-origin meshes are Apache-2.0; the complete license is
+available locally at [/licenses/astro-p2.txt](/licenses/astro-p2.txt).
+`assets/robots/astro_p2/` preserves the original source files, full family licensing
+notes and notices. Motion Studio's import derivative expands the foot and neck
+collision-model attachments; upstream model bytes remain preserved unchanged.
+The articulated Dex3-1 hand alternative and retired scenes are not bundled.

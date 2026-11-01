@@ -8,11 +8,13 @@ from PIL import Image,ImageDraw
 import numpy as np,json
 temporary=tempfile.TemporaryDirectory(prefix='studio-thumbnail-state-')
 s=Studio(Path(temporary.name))
-for key in ['g1','k1','piplus','t800']:
+keys=sys.argv[1:] or ['g1','k1','piplus','t800','astro']
+for key in keys:
  r=s.add_builtin_robot(key);a=r['asset'];q=r['pose']['qpos'];geometry=json.loads(s.robot_file(a['asset_id'],'geometry.json').read_text());pose=s.preview_robot(a['asset_id'],q)
  polys=[];bounds=[]
  # Front-facing perspective: native robot +X points toward the camera.
  for g,t in zip(geometry['geometries'],pose['transforms']):
+  if key=='astro' and g['group']!=1:continue  # Source group 1 is visual; group 3 is collision.
   v=np.asarray(g['vertices'])@np.asarray(t['rotation']).reshape(3,3).T+np.asarray(t['position']);f=np.asarray(g['faces']);bounds.extend(v[:,[1,2]])
   color=np.asarray(g['rgba'][:3]);
   for face in f:

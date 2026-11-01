@@ -53,3 +53,12 @@ bundles without mutating exports, while session-checked commands and renderer
 state keep playback/selection synchronized. Focused bridge/HTTP/export/numerical
 checks and actual saved Binding/Motion browser QA passed; 288 protected files
 remained unchanged. Standalone controls and historical viewer remain preserved.
+
+## Bundled Astro follow-up
+
+[Ticket 15](issues/15-bundled-astro.md) adds the current default Astro P2 under
+root `assets/`, preserving source bytes/notices and an owned collision-attachment
+import derivative. Public import/HTTP/pose, browser preview and representation
+parity in MuJoCo 3.3.7 and 3.11.0 passed; 41 pure/JavaScript and seven native static
+suites passed. [Acceptance](../../experiments/studio-astro-builtin-20261101/README.md)
+records the exact snapshot and limits. No learned stages or historical pins changed.

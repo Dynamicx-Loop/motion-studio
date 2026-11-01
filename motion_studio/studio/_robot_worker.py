@@ -110,7 +110,8 @@ def main(request):
         else:
             vertices, faces = primitive(model.geom_type[i], model.geom_size[i])
         geometry.append(dict(vertices=np.asarray(vertices).tolist(), faces=np.asarray(faces).tolist(),
-                             rgba=model.geom_rgba[i].tolist(), body=model.body(int(model.geom_bodyid[i])).name))
+                             rgba=model.geom_rgba[i].tolist(), group=int(model.geom_group[i]),
+                             body=model.body(int(model.geom_bodyid[i])).name))
     Path(request['geometry']).write_text(json.dumps(dict(geometries=geometry, transforms=transforms)))
     return dict(root_body=model.body(root).name,bodies=bodies,joints=joints,
                 default_qpos=model.qpos0.tolist(),derived=derived,runtime='MuJoCo '+mujoco.__version__)

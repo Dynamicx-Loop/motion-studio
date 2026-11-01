@@ -100,6 +100,7 @@ scripts/         Thin CLI wiring and explicit frozen compatibility entry points
 tests/           Owned behavior tests; root check command discovers pure suites
 schemas/         Experiment plan/result JSON schemas
 robots/          Pinned robot definitions, named poses and source notices
+assets/          Portable built-in robot snapshots, meshes and source notices
 externals/       Independent upstream checkouts and their manifest
 references/      Zotero-derived bibliography and reading index
 docs/            Authored guidance, reader templates and catalog
@@ -115,6 +116,10 @@ The package owns `evidence/`, `documentation/`, `preservation/`, `artifacts/`,
 `motion_studio/robots/_schema.py`. An ignored `.cache/` may hold verified immutable
 source closures; generated models, geometry and learned artifacts belong to fresh
 runs. No shared environment or automatic asset download is introduced.
+
+The [bundled assets](assets/README.md) include the current default Astro P2 from
+`menagerie_x`, available as a built-in robot in Local Studio. Its snapshot is
+independent of the historical Astro definitions under `robots/`.
 
 Use the [check command and runtime tiers](docs/checks.md),
 [Wendy conversion adapter](docs/wendy-conversion-adapter.md),

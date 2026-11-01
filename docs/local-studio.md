@@ -618,7 +618,8 @@ channels are a reconstruction limit, not a change to preserved source bytes.
 ## Asset library and quick source preview
 
 The left library now offers four real, locally bundled pinned UMR robots: Unitree
-G1, Booster K1, HiTorque PiPlus and EngineAI T800. Drag a card into the scene or
+G1, Booster K1, HiTorque PiPlus and EngineAI T800, plus the bundled **Astro P2**
+default 29-joint model from `menagerie_x`. Drag a card into the scene or
 choose **Add robot**. Each imports its verified complete closure and native named
 T-pose; previewing starts no sampling, training or solve. Editing a completed run
 or historical reference this way creates a new asset-study draft. Ordinary draft
@@ -632,6 +633,18 @@ XML/dependency bytes, preset and hash-bound derivation description. G1/K1 retain
 their normal import path. No external source or pin is changed. Robot cards use
 locally rendered thumbnails of these actual compiled T-poses; separate robot
 mesh redistribution terms still apply. Texture reproduction remains unsupported.
+
+Astro uses the self-contained [root asset snapshot](../assets/robots/astro_p2/README.md)
+at `menagerie_x` revision `8e3f382f28831331c448c9d62cd197140da63c65`.
+Its original XML, 37 meshes, shared collision models and notices remain unchanged;
+an owned XML derivative expands the geom-only attachments for the existing Studio
+importer. Per-file hashes are checked before and after import, and managed
+provenance preserves the original XML and notices. This card needs neither a live
+`menagerie_x` nor UMR checkout for importing/previewing; it uses the configured
+independent robot runtime. Native retargeting still requires UMR and its separate
+inputs. The 43-joint articulated-hand variant and historical Astro catalog pins
+remain separate. Astro's card thumbnail renders visual group 1 without collision
+group 3 overlays; saved model geometry and collision settings are preserved.
 
 The preview floor follows the actual transformed mesh lower bound. This is display
 placement only: root XYZ/wxyz, joint values, saved poses and native calibration
