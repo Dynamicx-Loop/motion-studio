@@ -1,9 +1,12 @@
 # Motion Studio UMR experiment branch
 
-The persistent project branch is **`experiments/umr-astro`** in
-**`/data/workspace/motion_studio`**. Open that folder in VS Code and select the
-Motion Studio repository in Source Control. The nested UMR repositories are
-dependencies with separate Git histories.
+The current project integration branch is **`main`** in
+**`/data/workspace/motion_studio`**; follow the
+[branch convention](workflow.md#branches-and-worktrees) for new work.
+**`experiments/umr-astro`** is retained as a historical baseline reference.
+The remaining sections describe that experiment's original branch setup. Open
+the project folder in VS Code and select the Motion Studio repository in Source
+Control. The nested UMR repositories are dependencies with separate Git histories.
 
 The root was initially unborn. A selective initial commit on its existing
 `master` branch captured 14 existing workspace instruction and dependency files.

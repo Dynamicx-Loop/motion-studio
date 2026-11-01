@@ -21,6 +21,8 @@ experiments; keep each upstream project's runtime and dependencies independent.
 
 ## Workspace context
 
+- Before creating, merging, or cleaning up branches or worktrees, read the
+  [branch convention](docs/workflow.md#branches-and-worktrees).
 - Before changing workspace structure or integration scope, read
   [README.md](README.md) and [docs/workflow.md](docs/workflow.md).
 - Before managing external checkouts or advancing a baseline, read

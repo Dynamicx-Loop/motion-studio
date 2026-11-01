@@ -44,6 +44,20 @@ loss, and preserve upstream error causes. Keep environment and file side effects
 explicit. Test observable behavior through the Motion Studio interface, with
 focused integration checks against the pinned external when available.
 
+### Branches and worktrees
+
+`main` is the sole integration branch for Motion Studio. Start new work from
+`main` on a temporary `codex/<short-topic>` branch, review and validate it, then
+merge it into `main`. Remove the merged topic branch and its worktree after
+preserving any local files needed for recovery. Check for unmerged commits,
+uncommitted changes and ignored files before cleanup.
+
+The canonical checkout normally stays on `main`; use linked worktrees for
+isolated work. Historical experiment references such as `experiments/umr-astro`
+remain available for provenance and are not integration targets. Preserve original
+branch names in frozen experiment records. External repositories follow their own
+branch conventions and pinned revisions.
+
 ### Exceptions and dependency updates
 
 Try upstream configuration, extension hooks, and a Motion Studio adapter first.

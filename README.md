@@ -140,6 +140,9 @@ Start with the [workflow and roadmap](docs/workflow.md), the
 
 ## Contributing and attribution
 
+For branch naming, integration and cleanup, follow the
+[branch convention](docs/workflow.md#branches-and-worktrees).
+
 Record source revisions, commands, data provenance, coordinate conventions, and
 results for experiments. Develop features and integrations here; preserve any
 unavoidable minimal upstream patch in its external repository with a reproducible
