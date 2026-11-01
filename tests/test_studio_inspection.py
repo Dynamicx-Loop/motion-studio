@@ -15,6 +15,43 @@ class InspectionTests(unittest.TestCase):
             self.assertEqual(failure.exception.code, 'changed_artifact')
             self.assertEqual(list(studio.roots.exports.iterdir()), [])
 
+class SavedInspectionStreamingTests(unittest.TestCase):
+    def test_streaming_is_independent_of_native_receipts_but_checks_every_resource(self):
+        import json
+        from unittest.mock import patch
+        from motion_studio.studio._history import digest
+        with tempfile.TemporaryDirectory() as tmp:
+            studio = Studio(Path(tmp)); run = studio.create_draft('Saved motion')
+            folder = studio.roots.exports/'stream'; folder.mkdir()
+            chunk = folder/'human-motion-000.bin'; chunk.write_bytes(b'exact saved frames')
+            with studio._connection() as db:
+                db.execute('INSERT INTO inspections VALUES (?, ?, ?, ?, ?)',
+                    (run.run_id, run.revision_id, 'retargeting', str(folder),
+                     json.dumps({chunk.name:digest(chunk)})))
+            # A closed exported viewer must not inspect its original compute
+            # receipts on every streamed chunk, even if originals disappear.
+            with patch.object(studio, '_receipt', side_effect=AssertionError('Native pipeline revalidated during streaming')):
+                self.assertEqual(studio.exported_inspection_file(run.run_id, run.revision_id, 'retargeting', chunk.name), chunk)
+                # Exercise the transport too: its historical/native routing must
+                # not hydrate the run before handing off the chunk request.
+                import threading, urllib.request
+                from motion_studio.studio.http import create_server
+                server = create_server(studio, port=0)
+                thread = threading.Thread(target=server.serve_forever, daemon=True); thread.start()
+                try:
+                    url = f'http://127.0.0.1:{server.server_port}/inspection/{run.run_id}/{run.revision_id}/retargeting/{chunk.name}'
+                    with urllib.request.urlopen(url) as response:
+                        self.assertEqual(response.read(), b'exact saved frames')
+                finally:
+                    server.shutdown(); server.server_close()
+                chunk.write_bytes(b'corrupted chunk')
+                with self.assertRaises(StudioError) as failure:
+                    studio.exported_inspection_file(run.run_id, run.revision_id, 'retargeting', chunk.name)
+                self.assertEqual(failure.exception.code, 'changed_artifact')
+                with self.assertRaises(StudioError) as missing:
+                    studio.exported_inspection_file('missing', run.revision_id, 'retargeting', chunk.name)
+                self.assertEqual(missing.exception.status, 404)
+
 class StandaloneBindingTests(unittest.TestCase):
     def test_binding_bundle_is_closed_and_does_not_need_models_or_motion(self):
         import hashlib
@@ -43,6 +80,9 @@ class StandaloneBindingTests(unittest.TestCase):
             self.assertTrue((result/'vendor/three.module.js').is_file())
             self.assertTrue((result/'native/binding/binding.npz').is_file())
             self.assertTrue((result/'files.json').is_file())
+            self.assertTrue((result/'bridge.js').is_file())
+            self.assertEqual((result/'bridge.js').read_bytes(),
+                (Path(__file__).parents[1]/'motion_studio/studio/web/stage-inspection/bridge.js').read_bytes())
             # The exported app's relative imports resolve inside its own folder.
             import re
             for name in re.findall(r"from ['\"]\./([^'\"]+)['\"]", (result/'app.js').read_text()):

@@ -10,11 +10,19 @@
 <body>
 <header>
 <strong>Motion Studio</strong>
-<span>Local workspace</span>
+<span class="app-subtitle">Retargeting workspace</span>
 <span id="connection" role="status">Connecting…</span>
 </header>
 <aside id="library">
-<h2>Runs &amp; assets</h2>
+<h2>Asset library</h2>
+<div class="library-tabs" role="tablist"><button data-library-tab="robots" role="tab" aria-selected="true">Robots</button><button data-library-tab="motions" role="tab" aria-selected="false">Motions</button></div>
+<p class="library-hint">Browse local assets. Preview motions before retargeting.</p>
+<section data-library-panel="robots"><div id="builtin-robots" class="asset-grid"></div>
+<details class="upload-details"><summary>Add your robot</summary><p>Drop a robot folder, MJCF with meshes, or ZIP onto the scene.</p><label class="file-button">Choose files<input id="robot-upload-files" type="file" multiple accept=".xml,.stl,.obj,.png,.jpg,.jpeg,.msh,.zip"></label><label class="file-button">Choose folder<input id="robot-upload-folder" type="file" webkitdirectory multiple></label><form id="upload-robot" hidden><p id="upload-summary"></p><label>Main MJCF<select id="upload-entry"></select></label><input id="robot-zip-entry" placeholder="Main XML path inside ZIP (blank if only one)" hidden><label><input id="upload-derive" type="checkbox" checked> Allow fixed-to-floating derivation on a copy</label><button>Import &amp; add robot</button></form></details>
+<section id="robot-assets" aria-label="Managed robot assets"></section></section>
+<section data-library-panel="motions" hidden><div id="sample-motions" class="motion-grid" aria-label="Available motions"></div><div id="motion-assets"></div></section>
+<p id="asset-status" role="status">Local examples · no download required</p>
+<details id="saved-work"><summary>Saved runs &amp; history</summary>
 <form id="new-draft">
 <label>Draft name<input name="name" required maxlength="120" placeholder="Walking study">
 </label>
@@ -34,9 +42,7 @@
 <small id="history-roots">
 </small>
 </details>
-<h3>Managed assets</h3>
-<section id="robot-assets" aria-label="Robot assets"></section>
-<div id="motion-assets"></div>
+</details>
 </aside>
 <main>
 <div id="heading">
@@ -48,18 +54,22 @@
 <p id="revision-note" class="muted"></p>
 <nav id="stages" aria-label="Pipeline stages">
 </nav>
-<div id="inspection-tools"></div>
+<section id="viewport-execution" aria-label="Stage execution controls"></section>
+<div id="active-job" role="status"></div>
 <section id="viewport" aria-label="Stage viewport">
+<div id="source-preview" aria-label="Source motion preview" hidden></div><div id="source-preview-tools" hidden></div>
 <div id="robot-preview" aria-label="Compiled robot mesh preview" hidden></div>
 <small id="robot-preview-status"></small>
-<p id="empty">Saved inspections open here. Creating a draft never starts computation.</p>
+<p id="empty">Drop a robot or motion here<br><small>Start with a built-in asset on the left, or drop your robot files.</small></p>
 <iframe id="inspection" title="Synchronized human and robot inspection" hidden>
 </iframe>
 </section>
 </main>
 <aside id="details">
-<h2>Settings &amp; details</h2>
+<h2>Properties</h2>
 <p id="kind">Select a saved run.</p>
+<section id="inspection-properties" aria-label="Stage inspection properties" hidden></section>
+<div id="inspection-tools"></div>
 <section id="robot-editor" aria-label="Robot pose editor"></section>
 <section id="execution" aria-label="Native stage execution"></section>
 <div id="run-details">
@@ -68,9 +78,8 @@
 <a href="/THIRD_PARTY_NOTICES.md">Third-party notices</a>
 </aside>
 <footer>
-<details open>
+<details>
 <summary>Status &amp; logs</summary>
-<div id="active-job" role="status"></div>
 <p id="status">Idle · no computation active</p>
 <pre id="error" role="alert">
 </pre>

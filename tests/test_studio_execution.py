@@ -110,6 +110,83 @@ name='train/correspondence_slots_final.npz' if r['stage']=='training' else 'data
         with self.assertRaises(StudioError):
             self.studio.stage_artifact(self.run.run_id, complete['revision_id'], 'sampling', 'dataset.npz')
 
+    def test_run_listing_during_first_worker_update_does_not_lock_database(self):
+        from concurrent.futures import ThreadPoolExecutor
+        from contextlib import closing, contextmanager
+        import sqlite3
+        import threading
+        import time
+        from unittest.mock import patch
+
+        # Leave more rows on the listing cursor while its first record loads.
+        self.studio.create_draft('Another saved run')
+        self.studio.create_draft('Third saved run')
+        listing_started, listing_finished, committing = threading.Event(), threading.Event(), threading.Event()
+        connection, record = self.studio._connection, self.studio._record
+        update_job = self.studio._update_job
+
+        def coordinated_update(job_id, **changes):
+            if changes.get('message', '').endswith(': starting'):
+                self.assertTrue(listing_started.wait(3), 'listing never started')
+            if changes.get('status') == 'failed':
+                self.assertTrue(listing_finished.wait(3), 'listing never finished')
+            return update_job(job_id, **changes)
+
+        @contextmanager
+        def observed_connection():
+            with connection() as db:
+                db.execute('PRAGMA busy_timeout=500' if threading.current_thread().name.startswith('run-listing')
+                           else 'PRAGMA busy_timeout=100')
+                worker_update = False
+                def trace(sql):
+                    nonlocal worker_update
+                    if sql.startswith('UPDATE jobs SET data=') and ': starting' in sql:
+                        worker_update = True
+                    if sql == 'COMMIT' and worker_update:
+                        committing.set()
+                db.set_trace_callback(trace)
+                yield db
+
+        def coordinated_record(row):
+            if threading.current_thread().name.startswith('run-listing') and not listing_started.is_set():
+                listing_started.set()
+                self.assertTrue(committing.wait(3), 'worker never reached first stage publication')
+                # Wait until COMMIT either acquires its pending lock or succeeds.
+                # The old live listing cursor prevents the former from finishing.
+                deadline = time.monotonic() + 3
+                while time.monotonic() < deadline:
+                    with closing(sqlite3.connect(self.studio.roots.state / 'studio.sqlite3', timeout=0)) as probe:
+                        try:
+                            value = probe.execute('SELECT data FROM jobs').fetchone()[0]
+                        except sqlite3.OperationalError as error:
+                            self.assertIn('locked', str(error))
+                            break
+                    if ': starting' in value:
+                        break
+                    time.sleep(.001)
+                else:
+                    self.fail('worker neither committed nor blocked its first stage update')
+            return record(row)
+
+        with (
+            patch.object(self.studio, '_connection', observed_connection),
+            patch.object(self.studio, '_record', coordinated_record),
+            patch.object(self.studio, '_update_job', coordinated_update),
+        ):
+            job = self.studio.start_execution(self.run.run_id, through='sampling')
+            with ThreadPoolExecutor(max_workers=1, thread_name_prefix='run-listing') as pool:
+                def list_runs():
+                    try:
+                        return self.studio.list_runs()
+                    finally:
+                        listing_finished.set()
+                listing = pool.submit(list_runs)
+                self.assertTrue(listing_started.wait(3))
+                listed = listing.result(timeout=3)
+                done = self.wait(job)
+                self.assertEqual(done['status'], 'completed', done)
+                self.assertEqual(len(listed), 3)
+
     def test_adapter_owns_progress_environment_and_required_output_names(self):
         worker = self.root / 'external-fixture.py'
         worker.write_text(worker.read_text().replace("print('[TrainResidual] epoch=00001 loss=0.25',flush=True)",

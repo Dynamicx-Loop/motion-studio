@@ -61,6 +61,20 @@ class StudioHTTPTests(unittest.TestCase):
                 self.assertEqual(json.loads(body)['error']['code'], 'read_only')
                 self.assertEqual((bundle / 'app.js').read_text(), 'UNTRUSTED HISTORICAL SCRIPT')
 
+    def test_live_stage_renderer_is_owned_and_paths_are_confined(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            studio = Studio(Path(tmp) / 'state')
+            with serving(studio) as server:
+                for name in ('index.html', 'app.js', 'bridge.js', 'playback.js',
+                             'human-motion.js', 'robot-motion.js',
+                             'vendor/three.module.js', 'vendor/OrbitControls.js'):
+                    self.assertEqual(request(server, 'GET', '/stage-inspection/' + name)[0], 200, name)
+                self.assertEqual(request(server, 'GET', '/inspection-properties.js')[0], 200)
+                self.assertEqual(request(server, 'GET', '/stage-inspection/../_service.py')[0], 404)
+                self.assertEqual(request(server, 'GET', '/stage-inspection/vendor/other.js')[0], 404)
+                self.assertEqual(studio.list_jobs(), ())
+                self.assertEqual(studio.list_runs(), ())
+
     def test_storage_failure_returns_actionable_structured_error(self):
         with tempfile.TemporaryDirectory() as tmp:
             studio = Studio(Path(tmp) / 'state')

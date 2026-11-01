@@ -18,8 +18,11 @@ class _RobotOperations:
         """
         if not isinstance(derive_free_root, bool):
             raise StudioError('invalid_robot', 'derive_free_root must be a boolean')
+        return self._import_robot(source_path, derive_free_root)
+
+    def _import_robot(self, source_path, derive_free_root, *, provenance_files=None):
         asset = import_asset(self.roots.assets, self.robot_python, source_path,
-                             derive_free_root, self.get_robot)
+                             derive_free_root, self.get_robot, provenance_files=provenance_files)
         # Hash trusted compiler output, never bootstrap trust from a mutable manifest.
         manifest = json.dumps(asdict(asset), allow_nan=False).encode()
         self._robot_metadata_digest(asset.asset_id, hashlib.sha256(manifest).hexdigest())

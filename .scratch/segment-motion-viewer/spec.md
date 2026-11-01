@@ -76,3 +76,32 @@ hhtools implementation, universal plugin framework, cloud/multiuser deployment, 
 This is an application baseline, not a replacement of historical numerical cohorts. All implementation lands on one integration branch via isolated ticket worktrees. Use the canonical workspace's pinned externals/assets read-only for runtime checks. The original viewer is preserved and may serve as a compatibility/reference implementation; build owned new modules additively where necessary.
 
 Evidence: [confirmed interview](design-interview.md), [handoff](handoff.md), [official Studio research](umr-studio-research.md), [REA setup](rea-setup.md).
+
+## Asset experience follow-up (2026-10-30)
+
+User requested the official Studio asset-library interaction and layout, built-in
+robot drag/drop and custom robot file drops, quick sample motion testing and
+visualization, default named T-poses and display grounding. Implemented within
+the same owned local service and native adapter constraints; see
+[Ticket 08](issues/08-asset-library.md). This extends the previous exclusion of a
+full hosted catalog with four locally available verified official robot examples.
+Ground placement is display-only and never silently changes saved qpos.
+
+## Source mesh preview follow-up (2026-10-30)
+
+The user requested full animated source human meshes and sample motion thumbnails
+before retargeting. [Ticket 09](issues/09-source-mesh-previews.md) adds a separately
+versioned, hash-registered topology and bounded quantized vertex cache, exact
+original frames/FPS/translation, and browse-only card previews with explicit use.
+The earlier skeleton cache and historical native inspection contracts remain
+preserved. Surface reconstruction uses neutral hands and omits facial channels.
+
+## Inspection Properties follow-up (2026-10-30)
+
+The user requested that embedded completed-stage inspection controls move into
+the main Properties panel, freeing the scene from the nested sidebar.
+[Ticket 13](issues/13-inspection-properties.md) retains exact playback, slot and
+segment selection, binding details, display/camera settings and synchronized
+point picking through an owned renderer command/state interface. Existing bundle
+bytes/hashes, standalone controls and historical viewer are preserved; this
+layout change starts no native computation.

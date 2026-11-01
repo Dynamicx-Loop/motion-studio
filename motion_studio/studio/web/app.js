@@ -1,9 +1,11 @@
+import {renderAssets} from './assets.js';
+import {hideSourcePreview} from './source-preview.js';
 import {renderRobot} from '/robot.js';
 import {renderExecution} from './execution.js';
 import {renderMotion} from './motion.js';
 import {renderInspection} from './inspection-ui.js';
 const $ = id => document.getElementById(id);
-let state, selectedStage = 'motion';
+let state, selectedStage = 'motion', renderedIdentity;
 async function api(path, data) {
   const response = await fetch(path, data === undefined ? {} : {
     method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)
@@ -22,6 +24,9 @@ function link(name, url) {
 }
 function render() {
   const run = state.selected_run || state.runs.find(item => item.run_id === state.selected_run_id);
+  const identity=`${run?.run_id}/${run?.revision_id}`;
+  if(renderedIdentity!==identity)hideSourcePreview();
+  renderedIdentity=identity;
   const revisions = $('revisions');
   revisions.replaceChildren(...(state.revisions || []).map(item => {
     const option = document.createElement('option'); option.value = item.revision_id;
@@ -30,7 +35,7 @@ function render() {
   }));
   revisions.value = run?.revision_id || ''; revisions.disabled = !run;
   revisions.onchange = async () => {
-    try { await api('/api/selection', {run_id:run.run_id, revision_id:revisions.value}); await refresh(); }
+    try { hideSourcePreview(); await api('/api/selection', {run_id:run.run_id, revision_id:revisions.value}); await refresh(); }
     catch (error) { failure(error); }
   };
   $('revision-note').textContent = run && !run.is_latest ? 'Viewing an immutable saved revision. Select latest to change inputs or launch work.' : 'Saved edits create a revision; unaffected verified prerequisites may be reused. Robot, pose or motion edits invalidate all stages.';
@@ -40,7 +45,7 @@ function render() {
     const badge = document.createElement('small'); badge.textContent = item.read_only ? 'Historical · read-only' : 'Draft';
     button.append(badge);
     button.onclick = async () => {
-      try { await api('/api/selection', {run_id: item.run_id}); await refresh(); } catch (error) { failure(error); }
+      try { hideSourcePreview(); await api('/api/selection', {run_id: item.run_id}); await refresh(); } catch (error) { failure(error); }
     };
     return button;
   }));
@@ -60,16 +65,12 @@ function render() {
     button.dataset.status = stage.status;
     if (stage.status === 'stale') button.textContent += ' · recompute explicitly';
     button.setAttribute('aria-current', String(stage.stage === selectedStage));
-    button.onclick = () => { selectedStage = stage.stage; render(); };
+    button.onclick = () => { hideSourcePreview(); selectedStage = stage.stage; render(); };
     return button;
   }));
-  const stage = run?.stages.find(item => item.stage === selectedStage && item.status === 'available');
-  const inspection = $('inspection'), url = stage?.inspection_url;
   $('viewport').dataset.stage = selectedStage;
-  inspection.hidden = !url; $('empty').hidden = Boolean(url);
-  if (url && inspection.getAttribute('src') !== url) inspection.src = url;
-  if (!url) inspection.removeAttribute('src');
-  renderInspection({run,selectedStage,api,refresh,failure});
+  renderInspection({run,selectedStage,api});
+  renderAssets({state,run,api,refresh,failure});
   renderRobot({state,run,api,refresh,failure});
   renderMotion({state, run, api, refresh, failure});
   $('run-details').replaceChildren(); $('logs').replaceChildren();
@@ -82,7 +83,8 @@ function render() {
     $('logs').append(link('Saved export log', base + 'export.log'));
   }
 }
-async function refresh() {
+async function refresh(stage) {
+  if(stage)selectedStage=stage;
   state = await api('/api/state'); render();
   $('connection').textContent = 'Local service connected';
 }
@@ -96,4 +98,6 @@ for (const [id, path] of [['new-draft', '/api/runs'], ['history', '/api/history'
   };
 }
 refresh().catch(failure);
-window.addEventListener('pageshow', () => refresh().catch(failure));
+window.addEventListener('pageshow', event => {
+  if (event.persisted) refresh().catch(failure);
+});

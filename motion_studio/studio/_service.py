@@ -5,6 +5,8 @@ from pathlib import Path
 import sqlite3
 import uuid
 
+from ._source_preview import _SourcePreviewOperations
+from ._assets import _AssetOperations
 from ._inspection import _InspectionOperations
 from ._robots import _RobotOperations
 from ._execution import _ExecutionOperations
@@ -15,7 +17,7 @@ from ._contracts import RunRecord, Stage, StageState, StorageRoots, StudioError
 from ._motion import _MotionOperations
 
 
-class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _RevisionOperations, _InspectionOperations):
+class Studio(_SourcePreviewOperations, _AssetOperations, _RobotOperations, _MotionOperations, _ExecutionOperations, _RevisionOperations, _InspectionOperations):
     def __init__(self, state_root: Path, *, history_roots: tuple[Path, ...] = (),
                  robot_python: Path | None = None, smplx_model_dir: Path | None = None, native_adapter=None):
         self.robot_python = Path(robot_python) if robot_python else Path('/data/workspace/motion_studio/externals/UMR/.venv/bin/python')
@@ -113,7 +115,11 @@ class Studio(_RobotOperations, _MotionOperations, _ExecutionOperations, _Revisio
 
     def list_runs(self) -> tuple[RunRecord, ...]:
         with self._connection() as db:
-            return tuple(self._record(row) for row in db.execute('SELECT * FROM runs ORDER BY created_at, run_id'))
+            rows = db.execute('SELECT * FROM runs ORDER BY created_at, run_id').fetchall()
+        # Hydration opens its own connections to verify stages. Release the
+        # listing cursor first: a pending worker commit otherwise waits on this
+        # reader while blocking those nested reads.
+        return tuple(self._record(row) for row in rows)
 
     def get_run(self, run_id: str, revision_id: str | None = None) -> RunRecord:
         with self._connection() as db:

@@ -3,9 +3,11 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 import {humanMotion} from './human-motion.js';
 import {transformArrayType} from './robot-motion.js';
 import {frameRequests} from './playback.js';
+import {inspectionBridge} from './bridge.js';
+const bridge = inspectionBridge();
 const $ = id => document.getElementById(id);
 async function binary(path, Type, count) {
-  const response = await fetch(path);
+  const response = await fetch(bridge.resource(path));
   if (!response.ok) throw Error(`Cannot load ${path}`);
   const array = new Type(await response.arrayBuffer());
   if (array.length !== count) throw Error(`Byte count mismatch: ${path}`);
@@ -18,12 +20,12 @@ function geometry(vertices, faces) {
   return g;
 }
 try {
-  const response = await fetch('bindings.json');
+  const response = await fetch(bridge.resource('bindings.json'));
   if (!response.ok) throw Error('Cannot load bindings.json');
   const data = await response.json(), moving = Boolean(data.motion), human = data.human_motion;
   const motion = data.motion || {frame_count: 1, fps: 1, pieces: []};
-  document.title = `${data.stage || 'Binding'} inspection`;
-  $('title').textContent = `${data.stage || 'Binding'} inspection`;
+  document.title = `${data.stage || (moving ? 'Motion' : 'Binding')} inspection`;
+  $('title').textContent = document.title;
   $('scope').textContent = data.scope;
   if (!moving) {
     $('reference').checked = true;
@@ -100,6 +102,7 @@ try {
       attr.needsUpdate = true; line.geometry.computeBoundingSphere();
     }
     $('info').textContent = `Slot ${selectedSlot}\nSource: ${data.labels[selectedSlot]}\nTarget body: ${data.bodies[selectedSlot] ?? 'not assigned'}\nTarget mesh: ${data.meshes[selectedSlot] ?? 'primitive / not assigned'}\nGeom ID: ${data.geom_ids[selectedSlot] ?? 'not assigned'}\nReference projection: ${data.projection_m[selectedSlot] === null ? 'not bound' : (data.projection_m[selectedSlot] * 1000).toFixed(3) + ' mm'}\nHuman displayed XYZ (m): ${points[0][selectedSlot].map(x => x.toFixed(3)).join(', ')}\nTarget displayed XYZ (m): ${points[1][selectedSlot].map(x => x.toFixed(3)).join(', ')}\nSource bary vs native closest: ${data.source_barycentric_vs_native_closest_axis_error_m ? (data.source_barycentric_vs_native_closest_axis_error_m[selectedSlot] * 1000).toFixed(6) + ' mm' : 'not applicable'}\nShown: ${selected.length} slots`;
+    bridge.publish();
   }
   function pose() {
     const reference = $('reference').checked;
@@ -166,13 +169,15 @@ try {
   function setPlaying(value) {
     playing = value; previousTime = undefined; cursor = frame;
     $('play').textContent = playing ? 'Pause' : 'Play';
+    bridge.publish();
   }
   const requests = moving ? frameRequests(replay, next => {frame = next; pose();}, (waiting, next) => {
     if (loading && !waiting) previousTime = undefined;
     loading = waiting; $('loading').textContent = waiting ? `Loading source frame ${next}…` : '';
+    bridge.publish();
   }) : null;
   function requestFrame(next) {
-    requests.request(next).catch(error => {setPlaying(false); $('error').textContent = error.message;});
+    requests.request(next).catch(error => {setPlaying(false); $('error').textContent = error.message; bridge.publish();});
   }
   function seek(value) {
     setPlaying(false); $('reference').checked = false;
@@ -180,9 +185,10 @@ try {
   }
   $('play').onclick = () => {
     $('reference').checked = false;
-    if (frame === motion.frame_count - 1 && !playing) requestFrame(0);
-    else pose();
+    const restart = frame === motion.frame_count - 1 && !playing;
     setPlaying(!playing);
+    if (restart) {cursor = 0; requestFrame(0);}
+    else pose();
   };
   for (const id of ['frame', 'timeline']) $(id).oninput = () => seek($(id).value);
   $('back-frame').onclick = () => seek(frame - 1); $('next-frame').onclick = () => seek(frame + 1);
@@ -220,11 +226,13 @@ try {
   });
   document.addEventListener('visibilitychange', () => {previousTime = undefined;});
   function resize() {
-    const w = Math.max(300, innerWidth - 280); renderer.setSize(w, innerHeight);
-    renderer.domElement.style.marginLeft = '280px'; camera.aspect = w / innerHeight; view(viewMode);
+    const sidebar = bridge.embedded ? 0 : 280;
+    const w = Math.max(1, innerWidth - sidebar), h = Math.max(1, innerHeight); renderer.setSize(w, h);
+    renderer.domElement.style.marginLeft = `${sidebar}px`; camera.aspect = w / h; view(viewMode);
   }
   addEventListener('resize', resize); update(); resize();
   $('loading').textContent = '';
+  bridge.ready();
   renderer.setAnimationLoop(now => {
     if (playing && previousTime !== undefined && !document.hidden && !loading) {
       cursor += (now - previousTime) / 1000 * motion.fps * +$('speed').value;
@@ -237,4 +245,4 @@ try {
     }
     previousTime = now; controls.update(); renderer.render(scene, camera);
   });
-} catch (error) {$('error').textContent = error.stack || String(error);}
+} catch (error) {$('loading').textContent = ''; $('error').textContent = error.stack || String(error); bridge.publish();}

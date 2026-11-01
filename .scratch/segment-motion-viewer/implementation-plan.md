@@ -25,3 +25,31 @@ All seven tickets resolved on `codex/local-umr-studio`, integrated through `b8d3
 [Acceptance record](../../experiments/studio-baseline-acceptance-20261030/README.md): fresh 500-epoch/5468-frame run on stable final product code, all numerical gates, native cancellation/retry, offline-resource audit, standalone playback, preservation and applicable checks passed. Networking remained enabled during browser resource audits; this is not an air-gap test.
 
 Completed code worktrees are removed after integration; generated evidence remains at original paths. Original viewer, completed historical runs and pinned external states remain unchanged.
+
+
+## Asset-library follow-up
+
+[Ticket 08](issues/08-asset-library.md) resolved after actual four-model runtime
+checks, 29/29 pure suites, independent review, native browser drag/upload/source
+playback and a fresh 5-epoch/180-frame all-stage G1 smoke. The
+[experiment record](../../experiments/studio-asset-library-20261030/README.md)
+keeps this usability smoke separate from the original full-quality acceptance.
+Original preservation passed all 288 files; no external pin/source changes.
+
+## Source mesh preview follow-up
+
+[Ticket 09](issues/09-source-mesh-previews.md) resolved with animated mesh
+thumbnails, full source previews and a simplified motion library. All 30 pure
+suites, native reconstruction reference, frontend checks, independent review
+and browser acceptance passed. Browsing preserved every run/job and the selected
+revision; all 288 original protected files and pinned external states passed
+preservation checks. Hands remain neutral and facial animation is omitted.
+
+## Inspection layout follow-up
+
+[Ticket 13](issues/13-inspection-properties.md) resolves the user-requested
+consolidation into main Properties. A live owned shell reads existing registered
+bundles without mutating exports, while session-checked commands and renderer
+state keep playback/selection synchronized. Focused bridge/HTTP/export/numerical
+checks and actual saved Binding/Motion browser QA passed; 288 protected files
+remained unchanged. Standalone controls and historical viewer remain preserved.

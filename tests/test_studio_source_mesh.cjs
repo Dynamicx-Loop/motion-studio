@@ -1,0 +1,46 @@
+const assert=require('node:assert/strict');
+const fs=require('node:fs');
+const path=require('node:path');
+const root=path.join(__dirname,'../motion_studio/studio/web');
+const url=text=>'data:text/javascript;base64,'+Buffer.from(text).toString('base64');
+(async()=>{
+  const human=url(fs.readFileSync(path.join(root,'human-motion.js'),'utf8'));
+  const mesh=await import(url(fs.readFileSync(path.join(root,'source-mesh-data.js'),'utf8').replace("'./human-motion.js'",JSON.stringify(human))));
+  const library=await import(url(fs.readFileSync(path.join(root,'motion-library.js'),'utf8')));
+  const meta={schema:'motion-studio-source-mesh-v1',fps:47.5,frame_count:3,chunk_size:2,vertex_count:1,face_count:1,faces:'faces.bin',quantization_m:.0001,
+    root_positions:[[10,20,1],[11,22,2],[12,24,3]],chunks:[{file:'vertices-000.bin',start:0,count:2},{file:'vertices-001.bin',start:2,count:1}]};
+  assert.equal(mesh.validateSourceMesh(meta),meta);
+  assert.throws(()=>mesh.validateSourceMesh({...meta,schema:'unknown'}),/metadata/);
+  assert.throws(()=>mesh.validateSourceMesh({...meta,root_positions:[[0,0,0]]}),/metadata/);
+  assert.throws(()=>mesh.validateSourceMesh({...meta,faces:'../escape.bin'}),/file/);
+  const source={meta,replay:{vertices:()=>new Int16Array([100,200,300])}};
+  const centered=mesh.sourcePositions(source,1),raw=mesh.sourcePositions(source,1,false);
+  [10.01,20.02,2.03].forEach((value,i)=>assert.ok(Math.abs(centered[i]-value)<1e-5));
+  [11.01,22.02,2.03].forEach((value,i)=>assert.ok(Math.abs(raw[i]-value)<1e-5));
+  assert.throws(()=>mesh.sourcePositions({...source,replay:{vertices:()=>null}},2),/not loaded/);
+  const calls=[],pending=[];
+  const read=mesh.boundedChunkReader(index=>{calls.push(index);return new Promise(resolve=>pending.push(resolve));});
+  const a=read(0),b=read(1).catch(error=>error),c=read(2);
+  assert.deepEqual(calls,[0],'only one chunk transfer may run');
+  assert.match((await b).message,/superseded/,'only latest pending seek is retained');
+  pending.shift()(new Int16Array([0]));await a;
+  assert.deepEqual(calls,[0,2],'superseded seek must never download data');
+  pending.shift()(new Int16Array([2]));assert.deepEqual([...(await c)],[2]);
+  const state={catalog:{motions:[{id:'hiphi-quick',asset_id:'known',available:true}]},motions:[{asset_id:'known',name:'hiphi_get_up_2s.npz',frame_count:180,fps:90.0009},{asset_id:'new',name:'walking_trial.npz',frame_count:95,fps:47.5}]};
+  const items=library.motionItems(state);
+  assert.equal(items.length,2,'sample imports appear only once');
+  assert.equal(library.motionLabel(items[0]),'Get up · short excerpt');
+  assert.equal(library.motionLabel(items[1]),'walking trial');
+  assert.equal(library.motionSummary(items[0]),'2.0s · 90 FPS');
+  assert.equal(library.motionSummary(items[1]),'2.0s · 48 FPS','cards intentionally use concise rounded FPS');
+  // Manifest loader reads bounded binary data and keeps the exact source timeline.
+  const originalFetch=global.fetch;
+  global.fetch=async file=>({ok:true,arrayBuffer:async()=>file.endsWith('faces.bin')?new Uint32Array([0,0,0]).buffer:new Int16Array([100,200,300,400,500,600]).buffer});
+  const loaded=await mesh.loadSourceMesh({asset_id:'fixture'},async target=>target.endsWith('manifest.json')?meta:{url:'/api/motions/fixture/mesh-preview-data/manifest.json'});
+  assert.equal(loaded.meta.fps,47.5);assert.equal(loaded.meta.frame_count,3);
+  assert.deepEqual([...loaded.replay.vertices(1)],[400,500,600]);
+  global.fetch=async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(1)});
+  await assert.rejects(mesh.loadSourceMesh({asset_id:'fixture'},async target=>target.endsWith('manifest.json')?meta:{url:'/manifest.json'}),/length/);
+  global.fetch=originalFetch;
+  console.log('Source mesh precision, full source timeline, binary validation, bounded seeks and unified library passed');
+})().catch(error=>{console.error(error);process.exitCode=1;});

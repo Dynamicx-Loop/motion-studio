@@ -149,8 +149,12 @@ def source_closure(source):
     return tree, files
 
 
-def import_asset(assets_root, python, source, derive_free_root, existing_asset):
+def import_asset(assets_root, python, source, derive_free_root, existing_asset, *, provenance_files=None):
     tree, sources = source_closure(source)
+    for name, path in (provenance_files or {}).items():
+        if name in sources or Path(name).is_absolute() or ".." in Path(name).parts:
+            raise StudioError("invalid_robot_path", "Invalid adapter provenance path")
+        sources[name] = Path(path)
     fingerprint = {name: hash_file(path) for name, path in sorted(sources.items())}
     identity = hashlib.sha256(json.dumps({'schema': 'studio-robot-v1', 'files': fingerprint, 'entry': Path(source).name,
         'derive_free_root': derive_free_root}, sort_keys=True).encode()).hexdigest()

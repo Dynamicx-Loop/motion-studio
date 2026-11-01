@@ -38,7 +38,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     raise StudioError('invalid_origin', 'Cross-origin changes are refused', 403)
                 path = unquote(urlsplit(self.path).path)
                 if mutate:
-                    self._post(path, self._body())
+                    self._post(path, self._body(upload=path == "/api/robot-upload"))
                 else:
                     self._get(path)
             except StudioError as error:
@@ -47,22 +47,31 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 _LOG.exception('Studio request failed')
                 self._json(500, {'error': {'code': 'service_error', 'message': 'Local service failed; inspect service logs'}})
 
-        def _body(self):
+        def _body(self, *, upload=False):
             if self.headers.get_content_type() != 'application/json':
                 raise StudioError('invalid_json', 'Expected application/json', 415)
             try:
                 length = int(self.headers.get('Content-Length', '-1'))
-                if not 0 <= length <= 65536:
+                if not 0 <= length <= (180 * 1024 * 1024 if upload else 65536):
                     raise ValueError()
                 data = json.loads(self.rfile.read(length))
                 if not isinstance(data, dict):
                     raise ValueError()
                 return data
             except (ValueError, UnicodeError) as error:
-                raise StudioError('invalid_json', 'Expected a JSON object up to 64 KiB') from error
+                raise StudioError('invalid_json', 'Expected a bounded JSON object') from error
 
         def _post(self, path, data):
-            if path == '/api/runs':
+            if path == '/api/catalog/robots':
+                self._fields(data, {'id'})
+                self._json(201, studio.add_builtin_robot(data['id']))
+            elif path == '/api/catalog/motions':
+                self._fields(data, {'id'})
+                self._json(201, asdict(studio.add_sample_motion(data['id'])))
+            elif path == '/api/robot-upload':
+                self._fields(data, {'files', 'entry_path', 'derive_free_root'})
+                self._json(201, asdict(studio.upload_robot(**data)))
+            elif path == '/api/runs':
                 self._fields(data, {'name'})
                 self._json(201, asdict(studio.create_draft(data['name'])))
             elif path == '/api/history':
@@ -109,6 +118,12 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 self._json(200, asdict(studio.save_robot_pose(self._id(path.split('/')[3]),
                     data['asset_id'], name=data['name'], qpos=data['qpos'], torso_body=data['torso_body'])))
             # MOTION import and draft selection operations.
+            elif path.startswith('/api/motions/') and path.endswith('/mesh-preview'):
+                self._fields(data, set())
+                self._json(201, studio.build_source_mesh_preview(path.split('/')[3]))
+            elif path.startswith('/api/motions/') and path.endswith('/preview'):
+                self._fields(data, set())
+                self._json(201, studio.build_source_preview(path.split('/')[3]))
             elif path == '/api/motions':
                 self._fields(data, {'source_path', 'metadata'})
                 if not isinstance(data['source_path'], str):
@@ -129,6 +144,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                                  'selected_run': asdict(studio.get_run(studio.selected_run_id(), studio.selected_revision_id())) if studio.selected_run_id() else None,
                                  'revisions': [asdict(r) for r in studio.list_revisions(studio.selected_run_id())] if studio.selected_run_id() else [],
                                  'jobs': list(studio.list_jobs()),
+                                 'catalog': studio.asset_catalog(),
                                  'motions': [asdict(asset) for asset in studio.list_motions()],
                                  'robots': [asdict(asset) for asset in studio.list_robots()],
                                  'history_roots': [str(root) for root in studio.history_roots]})
@@ -148,10 +164,31 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._json(200, [asdict(pose) for pose in studio.list_robot_poses(asset_id)])
                 else:
                     raise StudioError('not_found', 'Robot resource does not exist', 404)
+            elif path.startswith('/thumbnails/') and path.removeprefix('/thumbnails/') in {'g1.png','k1.png','piplus.png','t800.png'}:
+                self._file(_WEB / path[1:])
             elif path in {'/vendor/three.module.js', '/vendor/OrbitControls.js'}:
                 self._file(_WEB / 'inspection' / path[1:])
+            elif path.startswith('/stage-inspection/'):
+                name = path.removeprefix('/stage-inspection/')
+                if name in {'index.html', 'app.js', 'playback.js', 'bridge.js'}:
+                    self._file(_WEB / 'stage-inspection' / name)
+                elif name in {'human-motion.js', 'robot-motion.js'}:
+                    self._file(_WEB / name)
+                elif name in {'vendor/three.module.js', 'vendor/OrbitControls.js'}:
+                    self._file(_WEB / 'inspection' / name)
+                else:
+                    raise StudioError('not_found', 'Renderer resource does not exist', 404)
             elif path == '/api/motions':
                 self._json(200, [asdict(asset) for asset in studio.list_motions()])
+            elif path.startswith('/api/motions/') and '/mesh-preview-data/' in path:
+                parts = path.split('/', 5)
+                if len(parts) != 6 or parts[4] != 'mesh-preview-data':
+                    raise StudioError('not_found', 'Source mesh resource does not exist', 404)
+                self._file(studio.source_mesh_preview_file(parts[3], parts[5]))
+            elif path.startswith('/api/motions/') and path.endswith('/preview-data'):
+                self._file(studio.source_preview_file(path.split('/')[3]))
+            elif path.startswith('/api/motions/') and path.endswith('/source'):
+                self._file(studio.motion_source(path.split('/')[3]))
             elif path.startswith('/api/motions/'):
                 self._json(200, asdict(studio.get_motion(path.removeprefix('/api/motions/'))))
             elif path.startswith('/api/jobs/'):
@@ -198,7 +235,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                 if len(parts) != 4:
                     raise StudioError('not_found', 'Inspection file does not exist', 404)
                 run_id, name = self._id(parts[2]), parts[3]
-                if not studio.get_run(run_id).read_only:
+                if not studio.inspection_is_historical(run_id):
                     pieces = name.split('/', 2)
                     if len(pieces) != 3:
                         raise StudioError('not_found', 'Stage inspection file does not exist', 404)
@@ -211,7 +248,7 @@ def create_server(studio: Studio, *, port: int = 8773) -> ThreadingHTTPServer:
                     self._file(_WEB / 'inspection' / name)
                 else:
                     self._file(studio.inspection_file(run_id, name))
-            elif path in {'/', '/app.js', '/motion.js', '/execution.js', '/inspection-ui.js', '/robot.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
+            elif path in {'/', '/app.js', '/motion.js', '/execution.js', '/inspection-ui.js', '/inspection-properties.js', '/robot.js', '/assets.js', '/source-preview.js', '/source-mesh-data.js', '/source-mesh-stage.js', '/motion-thumbnails.js', '/motion-library.js', '/human-motion.js', '/stage-inspection/playback.js', '/robot-preview.js', '/style.css', '/THIRD_PARTY_NOTICES.md'}:
                 file = 'index.html' if path == '/' else path[1:]
                 self._file(_WEB / file)
             else:

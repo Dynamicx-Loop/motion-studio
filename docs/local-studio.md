@@ -239,10 +239,17 @@ and `RunRecord.motion_asset_id`. Expected failures include `missing_metadata`,
 
 ## Explicit native stage execution
 
-The editable draft's **Native UMR execution** form exposes sampling seed (default
-0), training epochs (500), and trajectory filter (`LQR` or `none`). Choose Run all
-or Run through sampling/training/binding, review the displayed prerequisite plan,
-then launch it. Merely viewing a tab performs no computation. Saved settings make
+The **Compute stages** strip above the viewport has **Sampling**, **Binding**,
+and **Retargeting** buttons. Each reviews the prerequisite plan without starting
+work; use the displayed **Launch … plan** button to execute it. Binding includes
+correspondence training, and Retargeting includes all missing prerequisites.
+Progress counts, completion, readiness failures, execution errors and Stop remain
+visible beside these controls. Per-stage bars use observed training epochs or
+retargeted frames; unknown progress is indeterminate. A stage reaches 100% only
+after its output is validated. Stage transitions refresh available result tabs
+without switching the viewed stage. Detailed native logs remain in Status & logs.
+The sidebar's **Advanced execution settings** exposes sampling seed (default 0),
+training epochs (500), and trajectory filter (`LQR` or `none`). Merely viewing a tab performs no computation. Saved settings make
 an immutable new revision. Modified epochs/seed/filter are experiments; small-epoch
 smoke runs are not official-default quality acceptance. Training and solver seeds
 stay fixed at zero. The UI `none` value maps to the native solver's `off` value.
@@ -374,14 +381,38 @@ inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
 
 ## Stage inspection and standalone exports
 
-Select an available sampling, training, binding, retargeting or motion tab and use
-**Build inspection + standalone bundle**. Tabs themselves launch no work. This
-explicit CPU-only derivation does not train or solve motion and can run while a
-native job computes. Its output is always a fresh directory under managed
+Select an available sampling, training, binding, retargeting or motion tab to
+load its visualization directly in the viewport. Missing views are prepared
+automatically from saved results; cached views reopen immediately. Loading and
+failures are visible, with explicit retry after a failed preparation. This
+CPU-only derivation does not train or solve motion and can run while a native job
+computes. Standalone export remains a separate optional action. Its output is always a fresh directory under managed
 `exports/`; failed derivations retain their fresh log/failure files and are never
 published as an inspection. Historical viewing still uses the preserved original
 owned viewer. New imports use an additive stage viewer, with local vendor bytes
 independently checked against `web/vendor-manifest.json`.
+
+Native completed stages use the main **Properties** panel for playback, exact
+frame/segment/slot selection, binding readouts, mesh/point visibility and camera
+presets. The embedded renderer fills the viewport without its own sidebar.
+Static stages show a concise reference-pose label and the applicable binding
+controls; motion retains exact stepping, timeline, speed, loop and centering.
+Clicking a rendered point updates the same selected slot in Properties. Renderer
+loading/errors appear there with **Reload stage viewer**; derivation failures
+retain their separate retry action. Standalone viewers retain their own controls,
+and the preserved historical viewer keeps its original layout.
+
+The live shell at `/stage-inspection/index.html?bundle=<registered-viewer-url>`
+reads data through the existing hash-checked inspection resource routes. It does
+not modify cached bundle bytes or their integrity registrations. Its owned
+`motion-studio-inspection-v1` bridge publishes renderer control capabilities,
+values and readouts; Properties sends only control commands, leaving playback,
+frame commits, selection and camera state in the renderer. Both sides check the
+message origin, source window and a navigation-specific session. Run/revision/
+stage switches and explicit reload allocate fresh sessions, rejecting old messages.
+State updates preserve existing input elements so playback does not replace
+focused controls. New standalone exports include the bridge locally; embedded
+mode is opt-in, so independently served bundles retain their sidebar.
 
 Sampling shows independent sampled surfaces: matching sample indices do not imply
 learned correspondence, so paired lines are disabled. Training shows learned
@@ -564,7 +595,7 @@ For the demonstrated G1 case:
 4. Keep sampling seed 0, epochs 500 and LQR. Review the prerequisite plan, confirm
    that CUDA is ready, then **Launch reviewed plan**. Tabs themselves launch no
    work. Native stage progress and retained log links appear in the footer.
-5. Select an available stage and explicitly build an inspection. Sampling shows
+5. Select an available stage to load its visualization automatically. Sampling shows
    independent sampled surfaces; training shows learned pairs; binding adds native
    semantic labels and target ownership; motion preserves exact source timing.
    Use the saved revision selector to inspect earlier results after changing inputs.
@@ -583,3 +614,83 @@ original preservation and limits. Its offline audit establishes that observed
 resources were local; it does not claim that networking was disabled. Input,
 robot asset and model terms remain separate. Neutral hands and omitted facial
 channels are a reconstruction limit, not a change to preserved source bytes.
+
+## Asset library and quick source preview
+
+The left library now offers four real, locally bundled pinned UMR robots: Unitree
+G1, Booster K1, HiTorque PiPlus and EngineAI T800. Drag a card into the scene or
+choose **Add robot**. Each imports its verified complete closure and native named
+T-pose; previewing starts no sampling, training or solve. Editing a completed run
+or historical reference this way creates a new asset-study draft. Ordinary draft
+input changes retain the existing immutable-revision behavior. All prior viewers
+and completed outputs remain available in **Saved runs & history**.
+
+PiPlus and T800 use sibling mesh/texture directories upstream. Their owned
+adapter copies pinned, byte-verified dependencies into a confined portable model,
+rebasing only file references. Managed `source/provenance/` retains the original
+XML/dependency bytes, preset and hash-bound derivation description. G1/K1 retain
+their normal import path. No external source or pin is changed. Robot cards use
+locally rendered thumbnails of these actual compiled T-poses; separate robot
+mesh redistribution terms still apply. Texture reproduction remains unsupported.
+
+The preview floor follows the actual transformed mesh lower bound. This is display
+placement only: root XYZ/wxyz, joint values, saved poses and native calibration
+are unchanged. It does not establish foot contact or dynamic feasibility.
+
+Drop a self-contained MJCF, select its dependent files, choose a folder, or drop a
+ZIP. The chooser opens to select the main XML if the bundle has several XML files;
+for ZIPs supply its exact internal main XML path, or leave blank if there is only
+one. Import is explicit after file selection. Fixed-to-floating derivation is an
+explicit checkbox. Uploads allow at most 2048 files / 128 MiB unpacked and refuse
+escaping, duplicate/noncanonical paths and archive symlinks. Browser bundles use their explicitly uploaded root as the closure boundary;
+sibling paths inside that bundle are rebased with originals/provenance preserved.
+Absolute local-path imports retain their strict main-file-parent boundary.
+Missing or escaping dependencies fail instead of being fetched or guessed.
+
+**Motions** offers the full bundled HiPHI get-up clip, a separate 2-second quick-test
+excerpt, and the full ADAPT Y-up source person motion (its pinned wrapper declares Y-up;
+interaction objects are omitted).
+Sample cards display actual SMPL-X surface thumbnails and offer source preview
+without selecting a run. Explicit **Use** selects the managed clip. Source mesh
+play/pause, exact stepping/scrubbing, looping and orbit/zoom work before any native
+training. This is reconstructed source motion; robot retargeting remains a
+separate explicit operation. The short clip retains exact source frames `[0, 180)`, original
+FPS and translations; its original NPZ records parent path, SHA-256, revision,
+full frame count and trim interval, without resampling/scaling. **Original NPZ /
+provenance** downloads these retained bytes. Native execution uses exactly the
+selected clip; choosing the full source intentionally retains all its frames.
+
+New source previews require the configured independent UMR interpreter, matching
+licensed weights and existing lazy NumPy motion-import dependency. Registered
+previews reopen with checked hashes without scientific dependencies or weights.
+Surface previews preserve every source frame, exact FPS and original source
+translation in metres/Z-up. Hands are neutral and facial channels are omitted.
+The separately versioned `motion-studio-source-mesh-v1` manifest records the native
+triangle topology, source/model SHA-256, pinned native revision, input up-axis,
+whole-clip bounds and minimum native Z for display grounding. No ground shift,
+resampling or scale is applied to the stored mesh. Sixty-four-frame little-endian
+int16 chunks encode root-relative XYZ at 0.1 mm steps, with per-frame native root
+positions and measured maximum per-axis error at most `5.1e-5 m`. Only the small
+manifest uses JSON; the full source vertices remain bounded binary chunks.
+The CPU preview limit is 20000 source frames. It starts no native job and makes
+no run revision. Existing joint-only previews and their registry remain intact.
+
+Additional operations: `asset_catalog()`, `add_builtin_robot(id)` returning an
+imported asset plus unsaved preset, `add_sample_motion(id)`, `upload_robot(files,
+entry_path='', derive_free_root=False)` for bounded `{path,data(base64)}` file
+records, `build_source_preview(asset_id)` and `source_preview_file(asset_id)`.
+The surface operations are `build_source_mesh_preview(asset_id)` and
+`source_mesh_preview_file(asset_id, name='manifest.json')`. The cache registers
+each manifest, face topology and vertex chunk with its own independent SHA-256;
+unregistered files, traversal, symlinks, changed bytes and escaped roots fail.
+Concurrent requests for the same asset/schema share one CPU reconstruction.
+HTTP adds `POST /api/catalog/robots` and `…/motions` with `{id}`,
+`POST /api/robot-upload`, `POST /api/motions/<id>/preview` with `{}`,
+`GET /api/motions/<id>/preview-data` and `…/source`. Asset actions verify actual
+pinned bytes at import; catalog availability alone is not runtime readiness.
+Mesh HTTP uses `POST /api/motions/<id>/mesh-preview` with `{}` and
+`GET /api/motions/<id>/mesh-preview-data/<registered-file>`. The POST returns the
+manifest URL; the manifest names topology and chunk resources for read-only
+loading. A legacy skeleton derivative cannot satisfy a surface request. Sample
+catalog entries expose their managed `asset_id`, frame count and FPS after
+idempotent import, allowing one unified card for catalog and imported versions.

@@ -11,6 +11,7 @@ export function renderRobot(value) {
   if (key === currentKey) return;
   currentKey = key; requestVersion++;
   const library = $('robot-assets'); library.replaceChildren();
+  const importDetails=node('details');importDetails.append(node('summary','Import by local path'));
   const form = node('form');
   const path = node('input'); path.required=true;path.placeholder='/absolute/path/robot.xml';path.name='source_path';
   const derive = node('input');derive.type='checkbox';derive.name='derive_free_root';
@@ -21,7 +22,7 @@ export function renderRobot(value) {
     try {await api('/api/robots',{source_path:path.value,derive_free_root:derive.checked});await refresh();}
     catch(error){failure(error);}finally{submit.disabled=false;}
   };
-  library.append(form);
+  importDetails.append(form);library.append(importDetails);
   const editor=$('robot-editor'), viewport=$('robot-preview'); editor.replaceChildren();
   viewport.hidden = true;
   if (!run || run.read_only || !run.is_latest) {library.append(node('p','Select a draft to prepare a robot pose.'));return;}
@@ -47,10 +48,10 @@ export function renderRobot(value) {
     const geometry=await api(`/api/robots/${id}/geometry`);
     if(version!==requestVersion)return;
     preview.geometry(geometry); build(selected);
-    await updatePreview();
+    await updatePreview(); preview.fit();
   }
   function build(selected) {
-    editor.replaceChildren(node('h3','Numeric T-pose'));
+    editor.replaceChildren(node('h3','Robot pose'));
     editor.append(node('p','Metres · radians · root quaternion wxyz. Preview edits are unsaved until Save pose.'));
     if(asset.derived.length)editor.append(node('p',asset.derived.join('; ')));
     const torso=node('select');torso.id='robot-torso';
@@ -66,11 +67,11 @@ export function renderRobot(value) {
     const official=node('button','Load official G1 T-pose');official.type='button';
     official.onclick=async()=>{official.disabled=true;try{
       const preset=await api(`/api/robots/${asset.asset_id}/official-pose`);
-      qpos=[...preset.qpos];build(preset);await updatePreview();
+      qpos=[...preset.qpos];build(preset);await updatePreview();preview.fit();
     }catch(error){failure(error);official.disabled=false;}};
-    editor.append(official);
+    if(asset.source_entry==='g1_29dof.xml')editor.append(official);
 
-    const root=node('details');root.open=true;root.append(node('summary','Root translation / orientation'));
+    const root=node('details');root.open=false;root.append(node('summary','Root translation / orientation'));
     ['X (m)','Y (m)','Z (m)','qw','qx','qy','qz'].forEach((label,i)=>{
       const input=node('input');input.type='number';input.step='.01';input.value=qpos[i];input.setAttribute('aria-label',`Root ${label}`);
       input.oninput=()=>{qpos[i]=Number(input.value);schedulePreview();};root.append(control(label,input));
@@ -91,7 +92,7 @@ export function renderRobot(value) {
       row.append(numeric,slider);joints.append(row);
     }
     search.oninput=()=>{for(const row of joints.children)row.hidden=!row.dataset.joint.includes(search.value.toLowerCase());};
-    editor.append(joints);
+    const jointDetails=node('details');jointDetails.append(node('summary',`${asset.joints.length} joint controls`),search,joints);editor.append(jointDetails);
     const reset=node('button','Reset compiled reference pose');reset.type='button';
     reset.onclick=()=>{qpos=[...asset.default_qpos];build({name:name.value,torso_body:torso.value});updatePreview().catch(failure);};
     const save=node('button','Save pose to fresh revision');save.id='robot-save-pose';
@@ -106,6 +107,6 @@ async function updatePreview(){
   $('robot-preview-status').textContent='Updating compiled pose…';
   try{
     const result=await context.api(`/api/robots/${id}/preview`,{qpos});
-    if(version===requestVersion){preview.pose(result);$('robot-preview-status').textContent='Compiled pose preview · Z-up · metres';}
+    if(version===requestVersion){preview.pose(result);$('robot-preview-status').textContent='T-pose preview · metres / Z-up · floor follows mesh bounds (display only)';}
   }catch(error){if(version===requestVersion)$('robot-preview-status').textContent='Invalid pose; previous preview retained';throw error;}
 }

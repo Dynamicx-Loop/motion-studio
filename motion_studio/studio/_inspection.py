@@ -61,9 +61,18 @@ class _InspectionOperations:
                              (run_id,revision,stage)).fetchone()
         return f'/inspection/{run_id}/{revision}/{stage}/index.html' if row else None
 
+    def inspection_is_historical(self, run_id):
+        """Route saved viewers without hydrating or revalidating native stages."""
+        with self._connection() as db:
+            row = db.execute('SELECT kind FROM runs WHERE run_id=?', (run_id,)).fetchone()
+        if row is None:
+            raise StudioError('not_found', 'Run does not exist', 404)
+        return row['kind'] == 'historical'
+
     def exported_inspection_file(self, run_id, revision, stage, name):
         """View a previously built closed bundle, independent of source/runtime/model availability."""
-        self.get_run(run_id)
+        # Only the requested bundle resource needs verification during streaming.
+        self.inspection_is_historical(run_id)
         with self._connection() as db:
             row = db.execute('SELECT folder, files FROM inspections WHERE run_id=? AND revision_id=? AND stage=?',
                              (run_id,revision,stage)).fetchone()
