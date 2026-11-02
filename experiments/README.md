@@ -9,7 +9,8 @@ experiment contract; it does not declare that contract settled.
 | Experiment | Scope |
 | --- | --- |
 | [G1 / SMPL-X](umr-baseline-g1-smplx-20261102/README.md) | Official-default UMR reproduction with the full HiPHI get-up clip. |
-| [G1 / SOMA-X](umr-baseline-g1-somax-20261102/README.md) | Direct jump-and-land BVH with generic surface; shared uniform fit subsequently located and verified, fitted rerun pending. |
+| [G1 / SOMA-X](umr-baseline-g1-somax-20261102/README.md) | Preserved direct jump-and-land BVH control with generic surface; shared uniform fit subsequently located and verified. |
+| [G1 / fitted uniform SOMA prototype](umr-baseline-g1-soma-uniform-prototype-20261102/README.md) | Fresh full-clip native fitted route, numerical validation and source/robot inspection; visual acceptance pending. |
 | [G1 comparison](umr-baseline-g1-comparison-20261102/README.md) | Human/robot bindings, source/retarget replay, and robot binding consistency across source models. |
 
 The clips differ, so motion-quality differences cannot be attributed solely to

@@ -1,0 +1,12 @@
+{
+  "torch_version": "2.7.1+cu128",
+  "torch_cuda_runtime": "12.8",
+  "cuda_available": true,
+  "device_count": 1,
+  "nvidia_smi_command": [
+    "nvidia-smi",
+    "--query-gpu=name,driver_version,memory.total",
+    "--format=csv,noheader"
+  ],
+  "nvidia_smi": "NVIDIA GeForce RTX 5070 Laptop GPU, 580.178.04, 8151 MiB"
+}

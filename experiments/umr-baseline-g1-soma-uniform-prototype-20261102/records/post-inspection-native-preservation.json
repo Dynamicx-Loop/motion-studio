@@ -1,0 +1,9 @@
+{
+  "native_run": "outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02",
+  "checked_against": "outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/provenance.json input_hashes",
+  "post_completion_all_180_captured_run_files_unchanged": true,
+  "excluded_operational_directories": [
+    "cache",
+    "tmp"
+  ]
+}

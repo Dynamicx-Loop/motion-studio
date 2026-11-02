@@ -1,0 +1,7 @@
+{
+  "passed": true,
+  "native_source_format_without_fit": "soma_bvh",
+  "rejection": "Required fitted uniform route; resolved 'soma_bvh'; generic fallback rejected",
+  "body_model_loaded": false,
+  "sampling_training_started": false
+}

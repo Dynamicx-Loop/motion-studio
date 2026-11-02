@@ -1,0 +1,13 @@
+{
+  "command": [
+    "externals/UMR/.venv/bin/python",
+    "-B",
+    "experiments/umr-baseline-g1-soma-uniform-prototype-20261102/run.py",
+    "prepare",
+    "--output",
+    "outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02"
+  ],
+  "returncode": 1,
+  "error": "Traceback (most recent call last):\n  File \"/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/run.py\", line 100, in <module>\n    main()\n  File \"/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/run.py\", line 75, in main\n    prepare(out)\n  File \"/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/prepare.py\", line 112, in prepare\n    out.mkdir(parents=True, exist_ok=False)\n  File \"/usr/lib/python3.12/pathlib.py\", line 1313, in mkdir\n    os.mkdir(self, mode)\nFileExistsError: [Errno 17] File exists: '/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02'\n",
+  "passed": true
+}

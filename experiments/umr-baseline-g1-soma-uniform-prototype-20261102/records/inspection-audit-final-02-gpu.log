@@ -1,0 +1,191 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.0
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5070 Laptop GPU" (8 GiB, sm_120, mempool supported)
+   Kernel cache:
+     /data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache/warp/1.18.0
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/soma/geometry/skeleton_transfer.py:248: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at /pytorch/aten/src/ATen/SparseCsrTensorImpl.cpp:53.)
+  self.sparse_rbf_matrix = torch.sparse_csr_tensor(
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/trimesh/visual/texture.py:277: RuntimeWarning: All-NaN slice encountered
+  result.append(np.nanmedian(masks_nan, axis=0).astype(np.int64))
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/trimesh/visual/texture.py:277: RuntimeWarning: invalid value encountered in cast
+  result.append(np.nanmedian(masks_nan, axis=0).astype(np.int64))
+[SOMA] BoneSeed SOMA layer device=cuda:0 lod=mid
+Module soma.geometry.align_vectors_warp 2c131ab load on device 'cuda:0' took 1.30 ms  (cached)
+[Audit] source 64/1165
+[Audit] source 128/1165
+[Audit] source 192/1165
+[Audit] source 256/1165
+[Audit] source 320/1165
+[Audit] source 384/1165
+[Audit] source 448/1165
+[Audit] source 512/1165
+[Audit] source 576/1165
+[Audit] source 640/1165
+[Audit] source 704/1165
+[Audit] source 768/1165
+[Audit] source 832/1165
+[Audit] source 896/1165
+[Audit] source 960/1165
+[Audit] source 1024/1165
+[Audit] source 1088/1165
+[Audit] source 1152/1165
+[Audit] source 1165/1165
+{"source_metrics_before_acceptance": {"offset": 1165, "root_error": 0.0, "source_vertex_error": 5.1350116729742545e-05, "slot_error": 5.068655014039969e-05, "skeleton_error": 1.430511474609375e-06, "bvh_fk_error": 1.6653345369377348e-15}}
+{
+  "all_1165_frames_checked": true,
+  "runtime": {
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+      "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX"
+    },
+    "torch_version": "2.7.1+cu128",
+    "torch_threads": 2,
+    "torch_cuda_runtime": "12.8",
+    "cuda_device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "soma_device": "cuda:0",
+    "numpy_version": "1.26.4"
+  },
+  "precision_budget": {
+    "mesh_half_quantization_step_m": 5e-05,
+    "float32_encoding_rounding_allowance_m": 1e-07,
+    "native_fitted_forward_repeatability_budget_m": 2e-06,
+    "arithmetic_margin_m": 1e-06,
+    "skeleton_native_replay_axis_tolerance_m": 3e-06,
+    "combined_source_mesh_axis_tolerance_m": 5.3e-05,
+    "measured_native_repeatability_max_axis_m": 1.430511474609375e-06,
+    "exporter_unquantized_reference_quantization_max_axis_error_m": 5.0067901611328125e-05,
+    "controlled_diagnostic": {
+      "runtime": {
+        "environment": {
+          "OMP_NUM_THREADS": "4",
+          "OPENBLAS_NUM_THREADS": "4",
+          "CUDA_VISIBLE_DEVICES": "0",
+          "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+          "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX"
+        },
+        "torch_version": "2.7.1+cu128",
+        "torch_threads": 2,
+        "torch_cuda_runtime": "12.8",
+        "cuda_device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+        "soma_device": "cuda:0",
+        "numpy_version": "1.26.4"
+      },
+      "source_frames": [
+        512,
+        513,
+        514,
+        515,
+        516,
+        517,
+        518,
+        519,
+        520,
+        521,
+        522,
+        523,
+        524,
+        525,
+        526,
+        527,
+        528,
+        529,
+        530,
+        531,
+        532,
+        533,
+        534,
+        535,
+        536,
+        537,
+        538,
+        539,
+        540,
+        541,
+        542,
+        543,
+        544,
+        545,
+        546,
+        547,
+        548,
+        549,
+        550,
+        551,
+        552,
+        553,
+        554,
+        555,
+        556,
+        557,
+        558,
+        559,
+        560,
+        561,
+        562,
+        563,
+        564,
+        565,
+        566,
+        567,
+        568,
+        569,
+        570,
+        571,
+        572,
+        573,
+        574,
+        575
+      ],
+      "template_vs_saved_dataset_max_axis_m": 9.5367431640625e-07,
+      "same_model_native_repeat_vertices_max_axis_m": 1.430511474609375e-06,
+      "same_model_native_repeat_joints_max_axis_m": 9.834766387939453e-07,
+      "direct_vs_common_wrapper_vertices_max_axis_m": 1.3113021850585938e-06,
+      "direct_vs_common_wrapper_joints_max_axis_m": 1.3113021850585938e-06,
+      "fresh_quantization_own_reference_max_axis_m": 5.0067901611328125e-05,
+      "exported_decoded_vs_current_native_max_axis_m": 5.0921916961765845e-05,
+      "exported_root_vs_current_native_max_axis_m": 0.0,
+      "cached_model_keys": [],
+      "torch_threads": 2,
+      "fresh_model_native_vertices_max_axis_m": 1.3113021850585938e-06,
+      "fresh_model_native_joints_max_axis_m": 9.5367431640625e-07
+    },
+    "controlled_diagnostic_sha256": "7fe71bd01ab9f112b771cd25048f95f2c6566e4ebb1a3b474ff2a595603e4973",
+    "interpretation": "Quantization is checked against its own unquantized reference separately. Independent fitted forward calls vary at micrometre scale even in one process, as measured by native-native repeats. No source route, frames or topology are changed."
+  },
+  "source_topology_exact_every_chunk": true,
+  "fitted_source_native_replay_max_axis_error_m": 5.1350116729742545e-05,
+  "source_4096_barycentric_slots_all_frames_max_axis_error_m": 5.068655014039969e-05,
+  "source_moving_Hips_anchor_max_axis_error_m": 0.0,
+  "robot_4096_rigid_slots_all_frames_max_axis_error_m": 0.0,
+  "independent_BVH_FK_vs_native_max_transform_element_error": 1.6653345369377348e-15,
+  "skeleton_binary_native_replay_max_axis_error_m": 1.430511474609375e-06,
+  "local_pose_channel_mapping_max_rotvec_error_rad": 0.0,
+  "Hips_translation_channel_mapping_max_axis_error_m": 0.0,
+  "native_public_joint_zero_omitted_from_pose_vector": "Root",
+  "ignored_public_Root_all_channel_max_abs": 0.0,
+  "raw_BVH_vs_fitted_model_joint_distance_m": {
+    "mean": 0.0039444051613331645,
+    "p95": 0.006990949179323802,
+    "max": 0.007893455193571541
+  },
+  "hips_centered_BVH_vs_fitted_model_joint_distance_m": {
+    "mean": 0.003944411507176534,
+    "p95": 0.006990927970036864,
+    "max": 0.007893470115959644
+  },
+  "source_scale": 0.7407795190811157,
+  "fps": 120.00479888916016,
+  "frame_count": 1165,
+  "interpretation": "BVH hierarchy offsets and fitted model rest offsets are different representations; discrepancies are measured diagnostics, not a failed pose-map assertion. Named Hips anchors the fitted mesh, not stationary Root.",
+  "limitations": [
+    "Visual acceptance remains pending user inspection.",
+    "No dynamics, controller rollout, collision evaluation, support-force or contact-truth validation.",
+    "Native fitted forward replay checks export fidelity; it does not independently validate the SOMA model implementation."
+  ]
+}

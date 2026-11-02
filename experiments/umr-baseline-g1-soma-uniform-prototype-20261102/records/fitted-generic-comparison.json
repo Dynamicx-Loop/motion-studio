@@ -1,0 +1,2693 @@
+{
+  "scope": "Same source BVH bytes, all original 1165 frames, same robot and solver cohort settings; generic neutral vs fitted uniform SOMA representation. Descriptive experiment, not causal ranking or dynamic feasibility.",
+  "source_BVH_sha256": "fe819b350aaf0cb269d810d32124a8e24931bd20586e305407aa59144b1cfaff",
+  "resolved_solver_settings_equal": true,
+  "robot_consistency": {
+    "all_checked_equal": true,
+    "checks": {
+      "geom_type": true,
+      "geom_bodyid": true,
+      "geom_dataid": true,
+      "geom_pos": true,
+      "geom_quat": true,
+      "geom_size": true,
+      "mesh_vert": true,
+      "mesh_face": true,
+      "body_parentid": true,
+      "body_pos": true,
+      "body_quat": true,
+      "body_mass": true,
+      "body_inertia": true,
+      "jnt_type": true,
+      "jnt_qposadr": true,
+      "jnt_bodyid": true,
+      "jnt_pos": true,
+      "jnt_axis": true,
+      "jnt_range": true,
+      "jnt_limited": true,
+      "qpos0": true,
+      "body_names_order": true,
+      "joint_names_order": true,
+      "geom_names_order": true,
+      "dataset_robot_vertices": true,
+      "dataset_robot_faces": true,
+      "dataset_robot_sample_points": true,
+      "resolved_robot_settings_except_xml_path": true
+    },
+    "scope": "Exact compiled selected arrays, names/order, static sampled robot surface and official settings; not whole simulator equivalence"
+  },
+  "spatial_segment_consistency": {
+    "probe_count": 4096,
+    "label_agreement_fraction": 0.937744140625,
+    "per_segment_probe_iou": {
+      "head": 0.9767441860465116,
+      "hips": 0.8479809976247031,
+      "leftArm": 0.825,
+      "leftFoot": 0.9683544303797469,
+      "leftForeArm": 0.8953488372093024,
+      "leftHand": 0.9107142857142857,
+      "leftLeg": 0.9348441926345609,
+      "leftShoulder": 0.6888888888888889,
+      "leftUpLeg": 0.9006928406466512,
+      "leftUpperArm": 0.6521739130434783,
+      "rightArm": 0.7674418604651163,
+      "rightFoot": 0.9259259259259259,
+      "rightForeArm": 0.8138297872340425,
+      "rightHand": 0.8608695652173913,
+      "rightLeg": 0.9399477806788512,
+      "rightShoulder": 0.7311827956989247,
+      "rightUpLeg": 0.9032258064516129,
+      "rightUpperArm": 0.7183098591549296,
+      "torso": 0.8904991948470209
+    },
+    "nearest_binding_distance_m": {
+      "generic": {
+        "mean": 0.006991462610631091,
+        "p50": 0.006053162476812882,
+        "p95": 0.013649588695958953,
+        "max": 0.028826814460119553
+      },
+      "fitted": {
+        "mean": 0.006936697761897775,
+        "p50": 0.006002941472380226,
+        "p95": 0.013512621877270332,
+        "max": 0.029814324925487103
+      }
+    },
+    "definition": "Identical 4096 robot reference samples; assign nearest projected binding label independently in each cohort. Learned slot indices are never equated across training runs.",
+    "generic_to_fitted_label_counts": {
+      "head": {
+        "head": 252,
+        "torso": 3
+      },
+      "hips": {
+        "hips": 357,
+        "rightUpLeg": 13,
+        "leftUpLeg": 8,
+        "torso": 8
+      },
+      "leftArm": {
+        "leftArm": 99,
+        "leftForeArm": 6,
+        "leftUpperArm": 1
+      },
+      "leftFoot": {
+        "leftFoot": 153,
+        "leftLeg": 3
+      },
+      "leftForeArm": {
+        "leftForeArm": 154,
+        "leftHand": 8,
+        "leftArm": 2
+      },
+      "leftHand": {
+        "leftHand": 102,
+        "leftForeArm": 2
+      },
+      "leftLeg": {
+        "leftLeg": 330,
+        "leftUpLeg": 12,
+        "leftFoot": 2
+      },
+      "leftShoulder": {
+        "leftUpperArm": 5,
+        "torso": 7,
+        "leftShoulder": 62
+      },
+      "leftUpLeg": {
+        "leftUpLeg": 390,
+        "hips": 14,
+        "leftLeg": 6,
+        "rightUpLeg": 2
+      },
+      "leftUpperArm": {
+        "leftArm": 12,
+        "leftUpperArm": 45,
+        "leftShoulder": 2,
+        "torso": 2
+      },
+      "rightArm": {
+        "rightArm": 99,
+        "rightForeArm": 18,
+        "rightUpperArm": 1
+      },
+      "rightFoot": {
+        "rightFoot": 150,
+        "rightLeg": 6
+      },
+      "rightForeArm": {
+        "rightForeArm": 153,
+        "rightHand": 16,
+        "rightArm": 1
+      },
+      "rightHand": {
+        "rightHand": 99
+      },
+      "rightLeg": {
+        "rightLeg": 360,
+        "rightUpLeg": 6,
+        "rightFoot": 6
+      },
+      "rightShoulder": {
+        "rightShoulder": 68,
+        "torso": 6,
+        "rightUpperArm": 6
+      },
+      "rightUpLeg": {
+        "rightUpLeg": 364,
+        "hips": 12,
+        "rightLeg": 5,
+        "leftUpLeg": 1
+      },
+      "rightUpperArm": {
+        "rightArm": 10,
+        "rightUpperArm": 51,
+        "rightShoulder": 1,
+        "torso": 1
+      },
+      "torso": {
+        "torso": 553,
+        "head": 3,
+        "hips": 9,
+        "rightShoulder": 12,
+        "leftShoulder": 14,
+        "leftUpperArm": 2,
+        "rightUpperArm": 1
+      }
+    }
+  },
+  "generic": {
+    "bindings": {
+      "schema": "smplx_55_to_19_upper_arm_v1",
+      "slot_count": 4096,
+      "segment_counts": {
+        "leftFoot": 142,
+        "rightFoot": 141,
+        "leftLeg": 298,
+        "rightLeg": 310,
+        "leftUpLeg": 388,
+        "rightUpLeg": 374,
+        "hips": 441,
+        "torso": 713,
+        "rightShoulder": 76,
+        "leftShoulder": 68,
+        "rightUpperArm": 58,
+        "leftUpperArm": 54,
+        "leftArm": 108,
+        "rightArm": 120,
+        "rightHand": 78,
+        "leftHand": 81,
+        "leftForeArm": 129,
+        "rightForeArm": 133,
+        "head": 384
+      },
+      "unique_target_bodies": 33,
+      "segment_target_body_counts": {
+        "head": {
+          "torso_link": 384
+        },
+        "hips": {
+          "pelvis_contour_link": 181,
+          "pelvis": 73,
+          "left_hip_pitch_link": 47,
+          "right_hip_pitch_link": 48,
+          "right_hip_roll_link": 6,
+          "left_hip_roll_link": 7,
+          "waist_support_link": 61,
+          "torso_link": 10,
+          "waist_yaw_link": 8
+        },
+        "leftArm": {
+          "left_shoulder_roll_link": 12,
+          "left_shoulder_yaw_link": 88,
+          "left_elbow_link": 8
+        },
+        "leftFoot": {
+          "left_ankle_roll_link": 131,
+          "left_ankle_pitch_link": 4,
+          "left_knee_link": 7
+        },
+        "leftForeArm": {
+          "left_shoulder_yaw_link": 13,
+          "left_elbow_link": 46,
+          "left_wrist_roll_link": 23,
+          "left_wrist_yaw_link": 18,
+          "left_wrist_pitch_link": 28,
+          "left_rubber_hand_link": 1
+        },
+        "leftHand": {
+          "left_rubber_hand_link": 70,
+          "left_wrist_yaw_link": 11
+        },
+        "leftLeg": {
+          "left_ankle_roll_link": 1,
+          "left_knee_link": 229,
+          "left_hip_yaw_link": 68
+        },
+        "leftShoulder": {
+          "torso_link": 33,
+          "left_shoulder_pitch_link": 14,
+          "left_shoulder_roll_link": 21
+        },
+        "leftUpLeg": {
+          "left_hip_yaw_link": 182,
+          "left_knee_link": 3,
+          "left_hip_roll_link": 139,
+          "pelvis_contour_link": 20,
+          "pelvis": 8,
+          "left_hip_pitch_link": 36
+        },
+        "leftUpperArm": {
+          "left_shoulder_pitch_link": 18,
+          "left_shoulder_roll_link": 36
+        },
+        "rightArm": {
+          "right_shoulder_yaw_link": 105,
+          "right_shoulder_roll_link": 7,
+          "right_elbow_link": 8
+        },
+        "rightFoot": {
+          "right_ankle_roll_link": 135,
+          "right_ankle_pitch_link": 4,
+          "right_knee_link": 2
+        },
+        "rightForeArm": {
+          "right_elbow_link": 52,
+          "right_shoulder_yaw_link": 8,
+          "right_wrist_roll_link": 21,
+          "right_wrist_pitch_link": 35,
+          "right_wrist_yaw_link": 16,
+          "right_rubber_hand_link": 1
+        },
+        "rightHand": {
+          "right_rubber_hand_link": 67,
+          "right_wrist_yaw_link": 11
+        },
+        "rightLeg": {
+          "right_knee_link": 231,
+          "right_ankle_roll_link": 1,
+          "right_hip_yaw_link": 78
+        },
+        "rightShoulder": {
+          "right_shoulder_pitch_link": 20,
+          "torso_link": 34,
+          "right_shoulder_roll_link": 22
+        },
+        "rightUpLeg": {
+          "right_hip_yaw_link": 168,
+          "right_knee_link": 1,
+          "right_hip_roll_link": 142,
+          "right_hip_pitch_link": 41,
+          "pelvis": 12,
+          "pelvis_contour_link": 10
+        },
+        "rightUpperArm": {
+          "right_shoulder_pitch_link": 17,
+          "right_shoulder_roll_link": 41
+        },
+        "torso": {
+          "waist_support_link": 20,
+          "waist_yaw_link": 1,
+          "torso_link": 679,
+          "left_shoulder_pitch_link": 9,
+          "right_shoulder_pitch_link": 4
+        }
+      },
+      "segment_target_mesh_counts": {
+        "head": {
+          "torso_link": 13,
+          "head_link": 371
+        },
+        "hips": {
+          "pelvis_contour_link": 181,
+          "pelvis": 73,
+          "left_hip_pitch_link": 47,
+          "right_hip_pitch_link": 48,
+          "right_hip_roll_link": 6,
+          "left_hip_roll_link": 7,
+          "waist_support_link": 67,
+          "waist_yaw_link": 8,
+          "torso_link": 4
+        },
+        "leftArm": {
+          "left_shoulder_roll_link": 12,
+          "left_shoulder_yaw_link": 88,
+          "left_elbow_link": 8
+        },
+        "leftFoot": {
+          "left_ankle_roll_link": 131,
+          "left_ankle_pitch_link": 4,
+          "left_knee_link": 7
+        },
+        "leftForeArm": {
+          "left_shoulder_yaw_link": 13,
+          "left_elbow_link": 46,
+          "left_wrist_roll_link": 23,
+          "left_wrist_yaw_link": 18,
+          "left_wrist_pitch_link": 28,
+          "left_rubber_hand_link": 1
+        },
+        "leftHand": {
+          "left_rubber_hand_link": 70,
+          "left_wrist_yaw_link": 11
+        },
+        "leftLeg": {
+          "left_ankle_roll_link": 1,
+          "left_knee_link": 229,
+          "left_hip_yaw_link": 68
+        },
+        "leftShoulder": {
+          "torso_link": 31,
+          "left_shoulder_pitch_link": 14,
+          "left_shoulder_roll_link": 21,
+          "logo_link": 2
+        },
+        "leftUpLeg": {
+          "left_hip_yaw_link": 182,
+          "left_knee_link": 3,
+          "left_hip_roll_link": 139,
+          "pelvis_contour_link": 20,
+          "pelvis": 8,
+          "left_hip_pitch_link": 36
+        },
+        "leftUpperArm": {
+          "left_shoulder_pitch_link": 18,
+          "left_shoulder_roll_link": 36
+        },
+        "rightArm": {
+          "right_shoulder_yaw_link": 105,
+          "right_shoulder_roll_link": 7,
+          "right_elbow_link": 8
+        },
+        "rightFoot": {
+          "right_ankle_roll_link": 135,
+          "right_ankle_pitch_link": 4,
+          "right_knee_link": 2
+        },
+        "rightForeArm": {
+          "right_elbow_link": 52,
+          "right_shoulder_yaw_link": 8,
+          "right_wrist_roll_link": 21,
+          "right_wrist_pitch_link": 35,
+          "right_wrist_yaw_link": 16,
+          "right_rubber_hand_link": 1
+        },
+        "rightHand": {
+          "right_rubber_hand_link": 67,
+          "right_wrist_yaw_link": 11
+        },
+        "rightLeg": {
+          "right_knee_link": 231,
+          "right_ankle_roll_link": 1,
+          "right_hip_yaw_link": 78
+        },
+        "rightShoulder": {
+          "right_shoulder_pitch_link": 20,
+          "torso_link": 32,
+          "right_shoulder_roll_link": 22,
+          "logo_link": 2
+        },
+        "rightUpLeg": {
+          "right_hip_yaw_link": 168,
+          "right_knee_link": 1,
+          "right_hip_roll_link": 142,
+          "right_hip_pitch_link": 41,
+          "pelvis": 12,
+          "pelvis_contour_link": 10
+        },
+        "rightUpperArm": {
+          "right_shoulder_pitch_link": 17,
+          "right_shoulder_roll_link": 41
+        },
+        "torso": {
+          "waist_support_link": 21,
+          "waist_yaw_link": 1,
+          "torso_link": 640,
+          "left_shoulder_pitch_link": 9,
+          "right_shoulder_pitch_link": 4,
+          "logo_link": 17,
+          "head_link": 21
+        }
+      },
+      "target_projection_distance_m": {
+        "mean": 0.007270470575960308,
+        "p50": 0.005110862897709012,
+        "p95": 0.01968594780191779,
+        "max": 0.03751976415514946
+      },
+      "robot_probe_to_binding_distance_m": {
+        "mean": 0.006991462610631091,
+        "p50": 0.006053162476812882,
+        "p95": 0.013649588695958953,
+        "max": 0.028826814460119553
+      }
+    },
+    "motion": {
+      "frame_count": 1165,
+      "fps": 120.00479888916016,
+      "duration_frames_over_fps_s": 9.707945105395552,
+      "source_scale": 0.7462310194969177,
+      "root_quaternion_norm_max_error": 5.960464477539063e-08,
+      "compiled_joint_limit_max_excess_rad": 0.0,
+      "compiled_and_configured_joint_limit_max_excess_rad": 0.0,
+      "absolute_scalar_joint_step_rad": {
+        "mean": 0.003218431492978255,
+        "p50": 0.0004623187705874443,
+        "p95": 0.014285366050899029,
+        "max": 0.24588415026664734
+      },
+      "hips_centered_segment_centroid_mismatch_m": {
+        "mean": 0.03178340964949955,
+        "p50": 0.02805001292375294,
+        "p95": 0.06350684468870624,
+        "max": 0.09288469676335413
+      },
+      "per_segment_hips_centered_centroid_mismatch_m": {
+        "head": {
+          "mean": 0.025548976394801574,
+          "p50": 0.027499350323432467,
+          "p95": 0.04338848821664811,
+          "max": 0.06063484179711566
+        },
+        "hips": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "leftArm": {
+          "mean": 0.03942584183478324,
+          "p50": 0.04341262940300585,
+          "p95": 0.04773067711334402,
+          "max": 0.04830491918097737
+        },
+        "leftFoot": {
+          "mean": 0.015087876716295075,
+          "p50": 0.01449875024184884,
+          "p95": 0.024251727474264875,
+          "max": 0.03303728800638199
+        },
+        "leftForeArm": {
+          "mean": 0.02777089504541561,
+          "p50": 0.028543078029200655,
+          "p95": 0.03218747288866014,
+          "max": 0.06569564683349557
+        },
+        "leftHand": {
+          "mean": 0.028526037843708316,
+          "p50": 0.029025342022160294,
+          "p95": 0.038904880682442376,
+          "max": 0.07242651233986332
+        },
+        "leftLeg": {
+          "mean": 0.015833036818099916,
+          "p50": 0.016040676525732187,
+          "p95": 0.021769323579036777,
+          "max": 0.034024824170973106
+        },
+        "leftShoulder": {
+          "mean": 0.02643450104262961,
+          "p50": 0.025804888655916985,
+          "p95": 0.03586810903365726,
+          "max": 0.05253025458703324
+        },
+        "leftUpLeg": {
+          "mean": 0.025376706311070946,
+          "p50": 0.026017825439759397,
+          "p95": 0.02670746646019172,
+          "max": 0.027681848155074063
+        },
+        "leftUpperArm": {
+          "mean": 0.04645125142542747,
+          "p50": 0.04968805912248886,
+          "p95": 0.055682577395684774,
+          "max": 0.05627658776782941
+        },
+        "rightArm": {
+          "mean": 0.053564208230535974,
+          "p50": 0.05832294146507628,
+          "p95": 0.06550094683228297,
+          "max": 0.0659209393422456
+        },
+        "rightFoot": {
+          "mean": 0.012444673808736813,
+          "p50": 0.013320007767789504,
+          "p95": 0.02240421795147428,
+          "max": 0.025621035755967282
+        },
+        "rightForeArm": {
+          "mean": 0.04046729923264832,
+          "p50": 0.043753661263599454,
+          "p95": 0.051280374084055134,
+          "max": 0.05794584502492904
+        },
+        "rightHand": {
+          "mean": 0.055303405375876316,
+          "p50": 0.05879036541324061,
+          "p95": 0.06603141610057638,
+          "max": 0.09288469676335413
+        },
+        "rightLeg": {
+          "mean": 0.022970268599980293,
+          "p50": 0.021874153812297934,
+          "p95": 0.03159996170650399,
+          "max": 0.04399316385401873
+        },
+        "rightShoulder": {
+          "mean": 0.038769647499241375,
+          "p50": 0.04002402028737798,
+          "p95": 0.04636494351772609,
+          "max": 0.051387773189085925
+        },
+        "rightUpLeg": {
+          "mean": 0.028135976881549146,
+          "p50": 0.02799318163472726,
+          "p95": 0.030143190626374758,
+          "max": 0.0317033299913398
+        },
+        "rightUpperArm": {
+          "mean": 0.060575677211335124,
+          "p50": 0.06465443178536784,
+          "p95": 0.07178774134157466,
+          "max": 0.0723665357918813
+        },
+        "torso": {
+          "mean": 0.009415093418856785,
+          "p50": 0.008326472432848514,
+          "p95": 0.016441780404085102,
+          "max": 0.0258114037195665
+        }
+      },
+      "segment_centroid_direction_difference_deg": {
+        "hips->torso": {
+          "mean": 1.3609561997040194,
+          "p50": 0.8397415365475844,
+          "p95": 3.852383006541142,
+          "max": 6.4074477996922035
+        },
+        "torso->head": {
+          "mean": 5.823799482123959,
+          "p50": 5.940657566608162,
+          "p95": 10.38722090327205,
+          "max": 11.83773746614822
+        },
+        "leftUpLeg->leftLeg": {
+          "mean": 2.7238694216678927,
+          "p50": 2.7378366521865205,
+          "p95": 4.003697316778912,
+          "max": 4.292855491391348
+        },
+        "leftLeg->leftFoot": {
+          "mean": 5.035867512021988,
+          "p50": 4.853005714549857,
+          "p95": 7.252895406120898,
+          "max": 8.734603452067365
+        },
+        "rightUpLeg->rightLeg": {
+          "mean": 1.5352934157826397,
+          "p50": 1.4963661332722693,
+          "p95": 2.4670849847924474,
+          "max": 2.9259787927127823
+        },
+        "rightLeg->rightFoot": {
+          "mean": 5.342683459420546,
+          "p50": 5.11741928979169,
+          "p95": 7.653333179013648,
+          "max": 8.55571311972781
+        },
+        "leftArm->leftForeArm": {
+          "mean": 3.7837589173446484,
+          "p50": 3.239021214382124,
+          "p95": 6.430060083653811,
+          "max": 12.653982809352447
+        },
+        "leftForeArm->leftHand": {
+          "mean": 1.5525810026177242,
+          "p50": 1.1218204630127764,
+          "p95": 3.96861679276794,
+          "max": 13.878535609105962
+        },
+        "rightArm->rightForeArm": {
+          "mean": 3.2152841929458496,
+          "p50": 2.941089209269049,
+          "p95": 6.933758815881044,
+          "max": 9.080343384925785
+        },
+        "rightForeArm->rightHand": {
+          "mean": 10.452119064963338,
+          "p50": 9.964630999149325,
+          "p95": 14.258486999476121,
+          "max": 20.329733814297132
+        }
+      },
+      "foot_proxies": {
+        "source": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.004056753163292184,
+              "p50": -0.005127583921561474,
+              "p95": -0.002276025313929256,
+              "max": 0.057930100761576384
+            },
+            "near_floor_interval_fraction": 0.979381443298969,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.01113219465897296,
+              "p50": 0.002685393853261173,
+              "p95": 0.025549723706377345,
+              "max": 0.5335423982088889
+            },
+            "below_floor_5mm_frame_fraction": 0.5931330472103005
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.004250469103737908,
+              "p50": -0.005602977364616915,
+              "p95": 5.664629662919058e-05,
+              "max": 0.061898571386905805
+            },
+            "near_floor_interval_fraction": 0.979381443298969,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.010953357767648964,
+              "p50": 0.002599534136256062,
+              "p95": 0.023094140892376425,
+              "max": 0.5526925508303394
+            },
+            "below_floor_5mm_frame_fraction": 0.8291845493562232
+          }
+        },
+        "robot": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0009109778820747707,
+              "p50": -8.66289194890665e-08,
+              "p95": 0.0019560330225493775,
+              "max": 0.05088364013323221
+            },
+            "near_floor_interval_fraction": 0.9819587628865979,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03881443783322799,
+              "p50": 0.00673955411435396,
+              "p95": 0.20371629524129148,
+              "max": 0.7423636776355472
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0014202944992421998,
+              "p50": 0.0005007539520887373,
+              "p95": 0.0025055670082973257,
+              "max": 0.05062276265257476
+            },
+            "near_floor_interval_fraction": 0.9819587628865979,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03717354856045581,
+              "p50": 0.00651480437893392,
+              "p95": 0.1958294162066333,
+              "max": 0.6764586428986301
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          }
+        }
+      },
+      "definitions": {
+        "centroids": "Mean of bound surface slots per native19 label; decoded source is already scaled by saved source_scale. Subtract each own hips surface centroid; retain all rotations. Aggregate excludes the trivially zero anchored hips region, with equal weight per remaining segment and frame. Both retained inspectors use the corrected moving named Hips anchor for mesh encoding; this diagnostic separately uses the hips surface centroid. Different proportions/reference poses and slot locations contribute to mismatch; this is not a correspondence accuracy score.",
+        "foot_proxy": "Y-up floor y=0; per-frame fifth percentile of reconstructed bound foot-slot heights. Near floor means both adjacent heights <= 0.02 m. Speed uses foot segment centroid in horizontal x/z, at recorded FPS. Geometry/sample proxy, not contact labels or measured support forces.",
+        "directions": "World-frame angle between corresponding source and robot vectors joining named segment surface centroids. Retains orientation; ignores vector length. Surface region placement and embodiment proportions affect this descriptive metric.",
+        "joint_step": "Absolute adjacent scalar qpos differences, without wrapping or time normalization; clip-specific smoothness diagnostic."
+      }
+    }
+  },
+  "fitted": {
+    "bindings": {
+      "schema": "smplx_55_to_19_upper_arm_v1",
+      "slot_count": 4096,
+      "segment_counts": {
+        "leftFoot": 137,
+        "rightFoot": 136,
+        "rightLeg": 323,
+        "leftLeg": 308,
+        "rightUpLeg": 374,
+        "leftUpLeg": 390,
+        "hips": 453,
+        "torso": 693,
+        "rightShoulder": 80,
+        "leftUpperArm": 56,
+        "rightUpperArm": 59,
+        "leftShoulder": 69,
+        "leftArm": 118,
+        "rightArm": 106,
+        "rightHand": 80,
+        "leftHand": 87,
+        "rightForeArm": 130,
+        "leftForeArm": 124,
+        "head": 373
+      },
+      "unique_target_bodies": 33,
+      "segment_target_body_counts": {
+        "head": {
+          "torso_link": 373
+        },
+        "hips": {
+          "pelvis": 79,
+          "pelvis_contour_link": 177,
+          "left_hip_pitch_link": 54,
+          "right_hip_pitch_link": 51,
+          "right_hip_roll_link": 9,
+          "left_hip_roll_link": 10,
+          "waist_support_link": 56,
+          "torso_link": 9,
+          "waist_yaw_link": 8
+        },
+        "leftArm": {
+          "left_shoulder_roll_link": 20,
+          "left_shoulder_yaw_link": 92,
+          "left_elbow_link": 6
+        },
+        "leftFoot": {
+          "left_ankle_roll_link": 127,
+          "left_ankle_pitch_link": 5,
+          "left_knee_link": 5
+        },
+        "leftForeArm": {
+          "left_shoulder_yaw_link": 13,
+          "left_elbow_link": 50,
+          "left_wrist_roll_link": 22,
+          "left_wrist_pitch_link": 26,
+          "left_wrist_yaw_link": 13
+        },
+        "leftHand": {
+          "left_wrist_yaw_link": 15,
+          "left_rubber_hand_link": 71,
+          "left_wrist_pitch_link": 1
+        },
+        "leftLeg": {
+          "left_knee_link": 242,
+          "left_ankle_roll_link": 2,
+          "left_hip_yaw_link": 64
+        },
+        "leftShoulder": {
+          "torso_link": 33,
+          "left_shoulder_pitch_link": 19,
+          "left_shoulder_roll_link": 17
+        },
+        "leftUpLeg": {
+          "left_hip_yaw_link": 185,
+          "left_knee_link": 2,
+          "left_hip_roll_link": 135,
+          "left_hip_pitch_link": 41,
+          "pelvis_contour_link": 18,
+          "pelvis": 9
+        },
+        "leftUpperArm": {
+          "left_shoulder_pitch_link": 20,
+          "torso_link": 1,
+          "left_shoulder_roll_link": 35
+        },
+        "rightArm": {
+          "right_shoulder_roll_link": 20,
+          "right_shoulder_yaw_link": 83,
+          "right_elbow_link": 3
+        },
+        "rightFoot": {
+          "right_ankle_roll_link": 127,
+          "right_ankle_pitch_link": 3,
+          "right_knee_link": 6
+        },
+        "rightForeArm": {
+          "right_shoulder_yaw_link": 18,
+          "right_elbow_link": 54,
+          "right_wrist_roll_link": 20,
+          "right_wrist_pitch_link": 27,
+          "right_wrist_yaw_link": 11
+        },
+        "rightHand": {
+          "right_rubber_hand_link": 65,
+          "right_wrist_yaw_link": 15
+        },
+        "rightLeg": {
+          "right_knee_link": 243,
+          "right_ankle_roll_link": 3,
+          "right_hip_yaw_link": 77
+        },
+        "rightShoulder": {
+          "torso_link": 47,
+          "right_shoulder_pitch_link": 15,
+          "right_shoulder_roll_link": 18
+        },
+        "rightUpLeg": {
+          "right_hip_yaw_link": 175,
+          "right_hip_roll_link": 133,
+          "right_hip_pitch_link": 39,
+          "pelvis_contour_link": 17,
+          "pelvis": 10
+        },
+        "rightUpperArm": {
+          "right_shoulder_pitch_link": 23,
+          "right_shoulder_roll_link": 36
+        },
+        "torso": {
+          "waist_support_link": 24,
+          "torso_link": 655,
+          "waist_yaw_link": 3,
+          "left_shoulder_pitch_link": 6,
+          "right_shoulder_pitch_link": 4,
+          "right_shoulder_roll_link": 1
+        }
+      },
+      "segment_target_mesh_counts": {
+        "head": {
+          "torso_link": 10,
+          "head_link": 363
+        },
+        "hips": {
+          "pelvis": 79,
+          "pelvis_contour_link": 177,
+          "left_hip_pitch_link": 54,
+          "right_hip_pitch_link": 51,
+          "right_hip_roll_link": 9,
+          "left_hip_roll_link": 10,
+          "waist_support_link": 59,
+          "waist_yaw_link": 8,
+          "torso_link": 6
+        },
+        "leftArm": {
+          "left_shoulder_roll_link": 20,
+          "left_shoulder_yaw_link": 92,
+          "left_elbow_link": 6
+        },
+        "leftFoot": {
+          "left_ankle_roll_link": 127,
+          "left_ankle_pitch_link": 5,
+          "left_knee_link": 5
+        },
+        "leftForeArm": {
+          "left_shoulder_yaw_link": 13,
+          "left_elbow_link": 50,
+          "left_wrist_roll_link": 22,
+          "left_wrist_pitch_link": 26,
+          "left_wrist_yaw_link": 13
+        },
+        "leftHand": {
+          "left_wrist_yaw_link": 15,
+          "left_rubber_hand_link": 71,
+          "left_wrist_pitch_link": 1
+        },
+        "leftLeg": {
+          "left_knee_link": 242,
+          "left_ankle_roll_link": 2,
+          "left_hip_yaw_link": 64
+        },
+        "leftShoulder": {
+          "torso_link": 31,
+          "left_shoulder_pitch_link": 19,
+          "left_shoulder_roll_link": 17,
+          "logo_link": 2
+        },
+        "leftUpLeg": {
+          "left_hip_yaw_link": 185,
+          "left_knee_link": 2,
+          "left_hip_roll_link": 135,
+          "left_hip_pitch_link": 41,
+          "pelvis_contour_link": 18,
+          "pelvis": 9
+        },
+        "leftUpperArm": {
+          "left_shoulder_pitch_link": 20,
+          "torso_link": 1,
+          "left_shoulder_roll_link": 35
+        },
+        "rightArm": {
+          "right_shoulder_roll_link": 20,
+          "right_shoulder_yaw_link": 83,
+          "right_elbow_link": 3
+        },
+        "rightFoot": {
+          "right_ankle_roll_link": 127,
+          "right_ankle_pitch_link": 3,
+          "right_knee_link": 6
+        },
+        "rightForeArm": {
+          "right_shoulder_yaw_link": 18,
+          "right_elbow_link": 54,
+          "right_wrist_roll_link": 20,
+          "right_wrist_pitch_link": 27,
+          "right_wrist_yaw_link": 11
+        },
+        "rightHand": {
+          "right_rubber_hand_link": 65,
+          "right_wrist_yaw_link": 15
+        },
+        "rightLeg": {
+          "right_knee_link": 243,
+          "right_ankle_roll_link": 3,
+          "right_hip_yaw_link": 77
+        },
+        "rightShoulder": {
+          "torso_link": 46,
+          "right_shoulder_pitch_link": 15,
+          "right_shoulder_roll_link": 18,
+          "logo_link": 1
+        },
+        "rightUpLeg": {
+          "right_hip_yaw_link": 175,
+          "right_hip_roll_link": 133,
+          "right_hip_pitch_link": 39,
+          "pelvis_contour_link": 17,
+          "pelvis": 10
+        },
+        "rightUpperArm": {
+          "right_shoulder_pitch_link": 23,
+          "right_shoulder_roll_link": 36
+        },
+        "torso": {
+          "waist_support_link": 31,
+          "waist_yaw_link": 3,
+          "torso_link": 607,
+          "left_shoulder_pitch_link": 6,
+          "right_shoulder_pitch_link": 4,
+          "right_shoulder_roll_link": 1,
+          "logo_link": 16,
+          "head_link": 25
+        }
+      },
+      "target_projection_distance_m": {
+        "mean": 0.007186472224070817,
+        "p50": 0.005042204400524497,
+        "p95": 0.019690350629389286,
+        "max": 0.03620026633143425
+      },
+      "robot_probe_to_binding_distance_m": {
+        "mean": 0.006936697761897775,
+        "p50": 0.006002941472380226,
+        "p95": 0.013512621877270332,
+        "max": 0.029814324925487103
+      }
+    },
+    "motion": {
+      "frame_count": 1165,
+      "fps": 120.00479888916016,
+      "duration_frames_over_fps_s": 9.707945105395552,
+      "source_scale": 0.7407795190811157,
+      "root_quaternion_norm_max_error": 5.960464477539063e-08,
+      "compiled_joint_limit_max_excess_rad": 0.0,
+      "compiled_and_configured_joint_limit_max_excess_rad": 0.0,
+      "absolute_scalar_joint_step_rad": {
+        "mean": 0.0033907253476244082,
+        "p50": 0.0005310941487550735,
+        "p95": 0.015202939510345459,
+        "max": 0.272510290145874
+      },
+      "hips_centered_segment_centroid_mismatch_m": {
+        "mean": 0.03562427269363067,
+        "p50": 0.031589703112062495,
+        "p95": 0.06780825724916491,
+        "max": 0.07840504634745324
+      },
+      "per_segment_hips_centered_centroid_mismatch_m": {
+        "head": {
+          "mean": 0.023497121838438953,
+          "p50": 0.02671137137961064,
+          "p95": 0.032008261694473406,
+          "max": 0.059100049090749875
+        },
+        "hips": {
+          "mean": 0.0,
+          "p50": 0.0,
+          "p95": 0.0,
+          "max": 0.0
+        },
+        "leftArm": {
+          "mean": 0.04325941089143895,
+          "p50": 0.04713543058067117,
+          "p95": 0.05236707617263975,
+          "max": 0.061192760563677874
+        },
+        "leftFoot": {
+          "mean": 0.017409730902803927,
+          "p50": 0.01686290165249577,
+          "p95": 0.026121444673423252,
+          "max": 0.03520044621686858
+        },
+        "leftForeArm": {
+          "mean": 0.03663432641582962,
+          "p50": 0.04001800789965867,
+          "p95": 0.04585803442657651,
+          "max": 0.06257783115557994
+        },
+        "leftHand": {
+          "mean": 0.042394016678064826,
+          "p50": 0.046027148028111434,
+          "p95": 0.05266270150851718,
+          "max": 0.06169090834891015
+        },
+        "leftLeg": {
+          "mean": 0.01778948500425275,
+          "p50": 0.018841507852000797,
+          "p95": 0.02552743830802971,
+          "max": 0.04031743093004291
+        },
+        "leftShoulder": {
+          "mean": 0.03137190406595059,
+          "p50": 0.03172708556854763,
+          "p95": 0.03749432131155522,
+          "max": 0.04302107562234131
+        },
+        "leftUpLeg": {
+          "mean": 0.028049149813295256,
+          "p50": 0.028099742809639502,
+          "p95": 0.032336209536664315,
+          "max": 0.034078637144484114
+        },
+        "leftUpperArm": {
+          "mean": 0.05071061556108503,
+          "p50": 0.05431832440164055,
+          "p95": 0.06049228534267374,
+          "max": 0.06140740206821147
+        },
+        "rightArm": {
+          "mean": 0.05851757241440095,
+          "p50": 0.0639316590352436,
+          "p95": 0.07005235512291753,
+          "max": 0.07047342308524392
+        },
+        "rightFoot": {
+          "mean": 0.015083730952068303,
+          "p50": 0.01829882167092563,
+          "p95": 0.02257233259170316,
+          "max": 0.025509904008313766
+        },
+        "rightForeArm": {
+          "mean": 0.051315300845820436,
+          "p50": 0.057078524138653844,
+          "p95": 0.06400964564424105,
+          "max": 0.06452855194274205
+        },
+        "rightHand": {
+          "mean": 0.05423424127522916,
+          "p50": 0.06020903080160902,
+          "p95": 0.06784000658231358,
+          "max": 0.07169502218450902
+        },
+        "rightLeg": {
+          "mean": 0.022537811201246642,
+          "p50": 0.023294633839857033,
+          "p95": 0.03275544734463817,
+          "max": 0.03581943628873631
+        },
+        "rightShoulder": {
+          "mean": 0.03833405623972651,
+          "p50": 0.04051636122196973,
+          "p95": 0.044451175406661436,
+          "max": 0.04738271604071893
+        },
+        "rightUpLeg": {
+          "mean": 0.031080909687571993,
+          "p50": 0.0312902947185617,
+          "p95": 0.035080019917767796,
+          "max": 0.036696807755388666
+        },
+        "rightUpperArm": {
+          "mean": 0.06568700441644033,
+          "p50": 0.07149062533814796,
+          "p95": 0.07788418677724294,
+          "max": 0.07840504634745324
+        },
+        "torso": {
+          "mean": 0.013330520281687932,
+          "p50": 0.012866624358263919,
+          "p95": 0.01950610056883557,
+          "max": 0.02462567457304182
+        }
+      },
+      "segment_centroid_direction_difference_deg": {
+        "hips->torso": {
+          "mean": 1.5431311010320015,
+          "p50": 0.9806004618230209,
+          "p95": 4.771518258277855,
+          "max": 6.068895280799031
+        },
+        "torso->head": {
+          "mean": 5.52725985197689,
+          "p50": 5.5265002581654405,
+          "p95": 9.606959789883533,
+          "max": 11.183774118551915
+        },
+        "leftUpLeg->leftLeg": {
+          "mean": 3.066406845689735,
+          "p50": 3.001000471637511,
+          "p95": 4.241441609217658,
+          "max": 5.381760055042693
+        },
+        "leftLeg->leftFoot": {
+          "mean": 5.063633177217019,
+          "p50": 4.828071343725144,
+          "p95": 7.180583156689578,
+          "max": 9.2056159282048
+        },
+        "rightUpLeg->rightLeg": {
+          "mean": 1.764736800045803,
+          "p50": 1.6917201714528103,
+          "p95": 2.274941674350996,
+          "max": 2.879610266129564
+        },
+        "rightLeg->rightFoot": {
+          "mean": 4.275887485957324,
+          "p50": 3.969770619890632,
+          "p95": 6.710983498575735,
+          "max": 7.573586055877879
+        },
+        "leftArm->leftForeArm": {
+          "mean": 4.684147547369785,
+          "p50": 4.164269249641822,
+          "p95": 7.801072246436433,
+          "max": 16.074412666438555
+        },
+        "leftForeArm->leftHand": {
+          "mean": 5.61290124631117,
+          "p50": 5.797866123290034,
+          "p95": 8.807201122710948,
+          "max": 10.453449521423549
+        },
+        "rightArm->rightForeArm": {
+          "mean": 2.752919150769554,
+          "p50": 1.9969136459806143,
+          "p95": 6.129109145928896,
+          "max": 16.096406481145955
+        },
+        "rightForeArm->rightHand": {
+          "mean": 10.174228559598038,
+          "p50": 9.940913532924396,
+          "p95": 15.211718998959546,
+          "max": 24.486712997263638
+        }
+      },
+      "foot_proxies": {
+        "source": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.011205913908116013,
+              "p50": -0.012560990133678241,
+              "p95": -0.007351602626638857,
+              "max": 0.04936004230072697
+            },
+            "near_floor_interval_fraction": 0.9819587628865979,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.011786694426723624,
+              "p50": 0.0027267547811728097,
+              "p95": 0.02587681217614692,
+              "max": 0.5682285177840436
+            },
+            "below_floor_5mm_frame_fraction": 0.9690987124463519
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.012073353283009519,
+              "p50": -0.013702689811846707,
+              "p95": -0.004422858397972285,
+              "max": 0.05551053278885116
+            },
+            "near_floor_interval_fraction": 0.9810996563573883,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.01146902720034954,
+              "p50": 0.0025865128476961472,
+              "p95": 0.02344690090735474,
+              "max": 0.5453566105765321
+            },
+            "below_floor_5mm_frame_fraction": 0.9399141630901288
+          }
+        },
+        "robot": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0007503331661962865,
+              "p50": -2.3461837581756346e-08,
+              "p95": 0.0007789346436479577,
+              "max": 0.04549289987791553
+            },
+            "near_floor_interval_fraction": 0.9836769759450171,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03686930178796122,
+              "p50": 0.006792814321641403,
+              "p95": 0.1858568285892322,
+              "max": 0.6214301306373857
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0008787325531581785,
+              "p50": 3.157392383223816e-05,
+              "p95": 0.0023614360656198613,
+              "max": 0.04643656203066952
+            },
+            "near_floor_interval_fraction": 0.9828178694158075,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03544644734533614,
+              "p50": 0.006603053927062759,
+              "p95": 0.17265964298812253,
+              "max": 0.6564776359925641
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          }
+        }
+      },
+      "definitions": {
+        "centroids": "Mean of bound surface slots per native19 label; decoded source is already scaled by saved source_scale. Subtract each own hips surface centroid; retain all rotations. Aggregate excludes the trivially zero anchored hips region, with equal weight per remaining segment and frame. Both retained inspectors use the corrected moving named Hips anchor for mesh encoding; this diagnostic separately uses the hips surface centroid. Different proportions/reference poses and slot locations contribute to mismatch; this is not a correspondence accuracy score.",
+        "foot_proxy": "Y-up floor y=0; per-frame fifth percentile of reconstructed bound foot-slot heights. Near floor means both adjacent heights <= 0.02 m. Speed uses foot segment centroid in horizontal x/z, at recorded FPS. Geometry/sample proxy, not contact labels or measured support forces.",
+        "directions": "World-frame angle between corresponding source and robot vectors joining named segment surface centroids. Retains orientation; ignores vector length. Surface region placement and embodiment proportions affect this descriptive metric.",
+        "joint_step": "Absolute adjacent scalar qpos differences, without wrapping or time normalization; clip-specific smoothness diagnostic."
+      }
+    }
+  },
+  "fitted_replay_audit": {
+    "all_1165_frames_checked": true,
+    "runtime": {
+      "environment": {
+        "OMP_NUM_THREADS": "4",
+        "OPENBLAS_NUM_THREADS": "4",
+        "CUDA_VISIBLE_DEVICES": "0",
+        "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+        "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX"
+      },
+      "torch_version": "2.7.1+cu128",
+      "torch_threads": 2,
+      "torch_cuda_runtime": "12.8",
+      "cuda_device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+      "soma_device": "cuda:0",
+      "numpy_version": "1.26.4"
+    },
+    "precision_budget": {
+      "mesh_half_quantization_step_m": 5e-05,
+      "float32_encoding_rounding_allowance_m": 1e-07,
+      "native_fitted_forward_repeatability_budget_m": 2e-06,
+      "arithmetic_margin_m": 1e-06,
+      "skeleton_native_replay_axis_tolerance_m": 3e-06,
+      "combined_source_mesh_axis_tolerance_m": 5.3e-05,
+      "measured_native_repeatability_max_axis_m": 1.430511474609375e-06,
+      "exporter_unquantized_reference_quantization_max_axis_error_m": 5.0067901611328125e-05,
+      "controlled_diagnostic": {
+        "runtime": {
+          "environment": {
+            "OMP_NUM_THREADS": "4",
+            "OPENBLAS_NUM_THREADS": "4",
+            "CUDA_VISIBLE_DEVICES": "0",
+            "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+            "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX"
+          },
+          "torch_version": "2.7.1+cu128",
+          "torch_threads": 2,
+          "torch_cuda_runtime": "12.8",
+          "cuda_device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+          "soma_device": "cuda:0",
+          "numpy_version": "1.26.4"
+        },
+        "source_frames": [
+          512,
+          513,
+          514,
+          515,
+          516,
+          517,
+          518,
+          519,
+          520,
+          521,
+          522,
+          523,
+          524,
+          525,
+          526,
+          527,
+          528,
+          529,
+          530,
+          531,
+          532,
+          533,
+          534,
+          535,
+          536,
+          537,
+          538,
+          539,
+          540,
+          541,
+          542,
+          543,
+          544,
+          545,
+          546,
+          547,
+          548,
+          549,
+          550,
+          551,
+          552,
+          553,
+          554,
+          555,
+          556,
+          557,
+          558,
+          559,
+          560,
+          561,
+          562,
+          563,
+          564,
+          565,
+          566,
+          567,
+          568,
+          569,
+          570,
+          571,
+          572,
+          573,
+          574,
+          575
+        ],
+        "template_vs_saved_dataset_max_axis_m": 9.5367431640625e-07,
+        "same_model_native_repeat_vertices_max_axis_m": 1.430511474609375e-06,
+        "same_model_native_repeat_joints_max_axis_m": 9.834766387939453e-07,
+        "direct_vs_common_wrapper_vertices_max_axis_m": 1.3113021850585938e-06,
+        "direct_vs_common_wrapper_joints_max_axis_m": 1.3113021850585938e-06,
+        "fresh_quantization_own_reference_max_axis_m": 5.0067901611328125e-05,
+        "exported_decoded_vs_current_native_max_axis_m": 5.0921916961765845e-05,
+        "exported_root_vs_current_native_max_axis_m": 0.0,
+        "cached_model_keys": [],
+        "torch_threads": 2,
+        "fresh_model_native_vertices_max_axis_m": 1.3113021850585938e-06,
+        "fresh_model_native_joints_max_axis_m": 9.5367431640625e-07
+      },
+      "controlled_diagnostic_sha256": "7fe71bd01ab9f112b771cd25048f95f2c6566e4ebb1a3b474ff2a595603e4973",
+      "interpretation": "Quantization is checked against its own unquantized reference separately. Independent fitted forward calls vary at micrometre scale even in one process, as measured by native-native repeats. No source route, frames or topology are changed."
+    },
+    "source_topology_exact_every_chunk": true,
+    "fitted_source_native_replay_max_axis_error_m": 5.1350116729742545e-05,
+    "source_4096_barycentric_slots_all_frames_max_axis_error_m": 5.068655014039969e-05,
+    "source_moving_Hips_anchor_max_axis_error_m": 0.0,
+    "robot_4096_rigid_slots_all_frames_max_axis_error_m": 0.0,
+    "independent_BVH_FK_vs_native_max_transform_element_error": 1.6653345369377348e-15,
+    "skeleton_binary_native_replay_max_axis_error_m": 1.430511474609375e-06,
+    "named_joint_map": {
+      "matched_names": [
+        "Root",
+        "Hips",
+        "Spine1",
+        "Spine2",
+        "Chest",
+        "Neck1",
+        "Neck2",
+        "Head",
+        "HeadEnd",
+        "Jaw",
+        "LeftEye",
+        "RightEye",
+        "LeftShoulder",
+        "LeftArm",
+        "LeftForeArm",
+        "LeftHand",
+        "LeftHandThumb1",
+        "LeftHandThumb2",
+        "LeftHandThumb3",
+        "LeftHandThumbEnd",
+        "LeftHandIndex1",
+        "LeftHandIndex2",
+        "LeftHandIndex3",
+        "LeftHandIndex4",
+        "LeftHandIndexEnd",
+        "LeftHandMiddle1",
+        "LeftHandMiddle2",
+        "LeftHandMiddle3",
+        "LeftHandMiddle4",
+        "LeftHandMiddleEnd",
+        "LeftHandRing1",
+        "LeftHandRing2",
+        "LeftHandRing3",
+        "LeftHandRing4",
+        "LeftHandRingEnd",
+        "LeftHandPinky1",
+        "LeftHandPinky2",
+        "LeftHandPinky3",
+        "LeftHandPinky4",
+        "LeftHandPinkyEnd",
+        "RightShoulder",
+        "RightArm",
+        "RightForeArm",
+        "RightHand",
+        "RightHandThumb1",
+        "RightHandThumb2",
+        "RightHandThumb3",
+        "RightHandThumbEnd",
+        "RightHandIndex1",
+        "RightHandIndex2",
+        "RightHandIndex3",
+        "RightHandIndex4",
+        "RightHandIndexEnd",
+        "RightHandMiddle1",
+        "RightHandMiddle2",
+        "RightHandMiddle3",
+        "RightHandMiddle4",
+        "RightHandMiddleEnd",
+        "RightHandRing1",
+        "RightHandRing2",
+        "RightHandRing3",
+        "RightHandRing4",
+        "RightHandRingEnd",
+        "RightHandPinky1",
+        "RightHandPinky2",
+        "RightHandPinky3",
+        "RightHandPinky4",
+        "RightHandPinkyEnd",
+        "LeftLeg",
+        "LeftShin",
+        "LeftFoot",
+        "LeftToeBase",
+        "LeftToeEnd",
+        "RightLeg",
+        "RightShin",
+        "RightFoot",
+        "RightToeBase",
+        "RightToeEnd"
+      ],
+      "parents": [
+        -1,
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        7,
+        7,
+        7,
+        4,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        15,
+        20,
+        21,
+        22,
+        23,
+        15,
+        25,
+        26,
+        27,
+        28,
+        15,
+        30,
+        31,
+        32,
+        33,
+        15,
+        35,
+        36,
+        37,
+        38,
+        4,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        43,
+        48,
+        49,
+        50,
+        51,
+        43,
+        53,
+        54,
+        55,
+        56,
+        43,
+        58,
+        59,
+        60,
+        61,
+        43,
+        63,
+        64,
+        65,
+        66,
+        1,
+        68,
+        69,
+        70,
+        71,
+        1,
+        73,
+        74,
+        75,
+        76
+      ],
+      "fitted_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "bvh_indices": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        38,
+        39,
+        40,
+        41,
+        42,
+        43,
+        44,
+        45,
+        46,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+        55,
+        56,
+        57,
+        58,
+        59,
+        60,
+        61,
+        62,
+        63,
+        64,
+        65,
+        66,
+        67,
+        68,
+        69,
+        70,
+        71,
+        72,
+        73,
+        74,
+        75,
+        76,
+        77
+      ],
+      "fitted_names": [
+        "Root",
+        "Hips",
+        "Spine1",
+        "Spine2",
+        "Chest",
+        "Neck1",
+        "Neck2",
+        "Head",
+        "HeadEnd",
+        "Jaw",
+        "LeftEye",
+        "RightEye",
+        "LeftShoulder",
+        "LeftArm",
+        "LeftForeArm",
+        "LeftHand",
+        "LeftHandThumb1",
+        "LeftHandThumb2",
+        "LeftHandThumb3",
+        "LeftHandThumbEnd",
+        "LeftHandIndex1",
+        "LeftHandIndex2",
+        "LeftHandIndex3",
+        "LeftHandIndex4",
+        "LeftHandIndexEnd",
+        "LeftHandMiddle1",
+        "LeftHandMiddle2",
+        "LeftHandMiddle3",
+        "LeftHandMiddle4",
+        "LeftHandMiddleEnd",
+        "LeftHandRing1",
+        "LeftHandRing2",
+        "LeftHandRing3",
+        "LeftHandRing4",
+        "LeftHandRingEnd",
+        "LeftHandPinky1",
+        "LeftHandPinky2",
+        "LeftHandPinky3",
+        "LeftHandPinky4",
+        "LeftHandPinkyEnd",
+        "RightShoulder",
+        "RightArm",
+        "RightForeArm",
+        "RightHand",
+        "RightHandThumb1",
+        "RightHandThumb2",
+        "RightHandThumb3",
+        "RightHandThumbEnd",
+        "RightHandIndex1",
+        "RightHandIndex2",
+        "RightHandIndex3",
+        "RightHandIndex4",
+        "RightHandIndexEnd",
+        "RightHandMiddle1",
+        "RightHandMiddle2",
+        "RightHandMiddle3",
+        "RightHandMiddle4",
+        "RightHandMiddleEnd",
+        "RightHandRing1",
+        "RightHandRing2",
+        "RightHandRing3",
+        "RightHandRing4",
+        "RightHandRingEnd",
+        "RightHandPinky1",
+        "RightHandPinky2",
+        "RightHandPinky3",
+        "RightHandPinky4",
+        "RightHandPinkyEnd",
+        "LeftLeg",
+        "LeftShin",
+        "LeftFoot",
+        "LeftToeBase",
+        "LeftToeEnd",
+        "RightLeg",
+        "RightShin",
+        "RightFoot",
+        "RightToeBase",
+        "RightToeEnd"
+      ],
+      "bvh_names": [
+        "Root",
+        "Hips",
+        "Spine1",
+        "Spine2",
+        "Chest",
+        "Neck1",
+        "Neck2",
+        "Head",
+        "HeadEnd",
+        "Jaw",
+        "LeftEye",
+        "RightEye",
+        "LeftShoulder",
+        "LeftArm",
+        "LeftForeArm",
+        "LeftHand",
+        "LeftHandThumb1",
+        "LeftHandThumb2",
+        "LeftHandThumb3",
+        "LeftHandThumbEnd",
+        "LeftHandIndex1",
+        "LeftHandIndex2",
+        "LeftHandIndex3",
+        "LeftHandIndex4",
+        "LeftHandIndexEnd",
+        "LeftHandMiddle1",
+        "LeftHandMiddle2",
+        "LeftHandMiddle3",
+        "LeftHandMiddle4",
+        "LeftHandMiddleEnd",
+        "LeftHandRing1",
+        "LeftHandRing2",
+        "LeftHandRing3",
+        "LeftHandRing4",
+        "LeftHandRingEnd",
+        "LeftHandPinky1",
+        "LeftHandPinky2",
+        "LeftHandPinky3",
+        "LeftHandPinky4",
+        "LeftHandPinkyEnd",
+        "RightShoulder",
+        "RightArm",
+        "RightForeArm",
+        "RightHand",
+        "RightHandThumb1",
+        "RightHandThumb2",
+        "RightHandThumb3",
+        "RightHandThumbEnd",
+        "RightHandIndex1",
+        "RightHandIndex2",
+        "RightHandIndex3",
+        "RightHandIndex4",
+        "RightHandIndexEnd",
+        "RightHandMiddle1",
+        "RightHandMiddle2",
+        "RightHandMiddle3",
+        "RightHandMiddle4",
+        "RightHandMiddleEnd",
+        "RightHandRing1",
+        "RightHandRing2",
+        "RightHandRing3",
+        "RightHandRing4",
+        "RightHandRingEnd",
+        "RightHandPinky1",
+        "RightHandPinky2",
+        "RightHandPinky3",
+        "RightHandPinky4",
+        "RightHandPinkyEnd",
+        "LeftLeg",
+        "LeftShin",
+        "LeftFoot",
+        "LeftToeBase",
+        "LeftToeEnd",
+        "RightLeg",
+        "RightShin",
+        "RightFoot",
+        "RightToeBase",
+        "RightToeEnd"
+      ],
+      "bvh_unmatched": [],
+      "fitted_unmatched": [],
+      "coordinates": "Y-up metres, saved source scale and source ground shift",
+      "scope": "Raw BVH global skeleton and fitted SOMA model transforms share names and local pose channels; fitted shape rest offsets may differ."
+    },
+    "local_pose_channel_mapping_max_rotvec_error_rad": 0.0,
+    "Hips_translation_channel_mapping_max_axis_error_m": 0.0,
+    "native_public_joint_zero_omitted_from_pose_vector": "Root",
+    "ignored_public_Root_all_channel_max_abs": 0.0,
+    "raw_BVH_vs_fitted_model_joint_distance_m": {
+      "mean": 0.0039444051613331645,
+      "p95": 0.006990949179323802,
+      "max": 0.007893455193571541
+    },
+    "hips_centered_BVH_vs_fitted_model_joint_distance_m": {
+      "mean": 0.003944411507176534,
+      "p95": 0.006990927970036864,
+      "max": 0.007893470115959644
+    },
+    "per_joint_hips_centered_distance_m": {
+      "Root": {
+        "mean": 1.859638075137173e-08,
+        "p95": 6.006850128414953e-08,
+        "max": 6.146728992462158e-08
+      },
+      "Hips": {
+        "mean": 0.0,
+        "p95": 0.0,
+        "max": 0.0
+      },
+      "Spine1": {
+        "mean": 0.0017711822211326704,
+        "p95": 0.0017712313914671541,
+        "max": 0.001771284849382937
+      },
+      "Spine2": {
+        "mean": 0.003393469156513526,
+        "p95": 0.0034840296488255263,
+        "max": 0.0034953111317008734
+      },
+      "Chest": {
+        "mean": 0.005844146560861573,
+        "p95": 0.0060231052339077,
+        "max": 0.006052121054381132
+      },
+      "Neck1": {
+        "mean": 0.0031431063230233387,
+        "p95": 0.0032180331647396086,
+        "max": 0.0033383083064109087
+      },
+      "Neck2": {
+        "mean": 0.0009753230621422692,
+        "p95": 0.001046827738173306,
+        "max": 0.0011505624279379845
+      },
+      "Head": {
+        "mean": 0.0010771229571878687,
+        "p95": 0.001131554343737662,
+        "max": 0.001233819406479597
+      },
+      "HeadEnd": {
+        "mean": 0.0031979956118541853,
+        "p95": 0.003425778727978468,
+        "max": 0.0035955978091806173
+      },
+      "Jaw": {
+        "mean": 0.0011985921564755778,
+        "p95": 0.001269636955112219,
+        "max": 0.0013724500313401222
+      },
+      "LeftEye": {
+        "mean": 0.0016372943580822115,
+        "p95": 0.0017567178467288614,
+        "max": 0.0018443051958456635
+      },
+      "RightEye": {
+        "mean": 0.001989720417626298,
+        "p95": 0.002040916495025158,
+        "max": 0.0021972982212901115
+      },
+      "LeftShoulder": {
+        "mean": 0.0015911725131882747,
+        "p95": 0.0025029797572642563,
+        "max": 0.0030672058928757906
+      },
+      "LeftArm": {
+        "mean": 0.0016177507337230726,
+        "p95": 0.002498162630945444,
+        "max": 0.003084832802414894
+      },
+      "LeftForeArm": {
+        "mean": 0.003936759234593917,
+        "p95": 0.005334195122122764,
+        "max": 0.005807672161608934
+      },
+      "LeftHand": {
+        "mean": 0.0036014965251727677,
+        "p95": 0.005179815739393234,
+        "max": 0.0053894007578492165
+      },
+      "LeftHandThumb1": {
+        "mean": 0.0037678386504430114,
+        "p95": 0.004742337856441736,
+        "max": 0.00574905751273036
+      },
+      "LeftHandThumb2": {
+        "mean": 0.0036944614421544285,
+        "p95": 0.004715551342815161,
+        "max": 0.005662410520017147
+      },
+      "LeftHandThumb3": {
+        "mean": 0.0037418751319862357,
+        "p95": 0.004735815245658159,
+        "max": 0.005718482658267021
+      },
+      "LeftHandThumbEnd": {
+        "mean": 0.0037761178822956114,
+        "p95": 0.004746401403099298,
+        "max": 0.005758861545473337
+      },
+      "LeftHandIndex1": {
+        "mean": 0.00372074096995234,
+        "p95": 0.005307083949446677,
+        "max": 0.0054974607191979885
+      },
+      "LeftHandIndex2": {
+        "mean": 0.0038565049017879457,
+        "p95": 0.005358000379055738,
+        "max": 0.005666770506650209
+      },
+      "LeftHandIndex3": {
+        "mean": 0.003690718643391273,
+        "p95": 0.005288548395037651,
+        "max": 0.005482309963554144
+      },
+      "LeftHandIndex4": {
+        "mean": 0.0037504324363744437,
+        "p95": 0.005319273378700018,
+        "max": 0.005534317810088396
+      },
+      "LeftHandIndexEnd": {
+        "mean": 0.0037541607644632777,
+        "p95": 0.005320245120674371,
+        "max": 0.0055389441549777985
+      },
+      "LeftHandMiddle1": {
+        "mean": 0.0036851438054167408,
+        "p95": 0.005192459840327501,
+        "max": 0.005421859212219715
+      },
+      "LeftHandMiddle2": {
+        "mean": 0.004108373524197437,
+        "p95": 0.005333052948117256,
+        "max": 0.005933692213147879
+      },
+      "LeftHandMiddle3": {
+        "mean": 0.003988014512331637,
+        "p95": 0.005304893851280212,
+        "max": 0.005781489424407482
+      },
+      "LeftHandMiddle4": {
+        "mean": 0.003957637530139971,
+        "p95": 0.005302607361227273,
+        "max": 0.005742623936384916
+      },
+      "LeftHandMiddleEnd": {
+        "mean": 0.003926802637423249,
+        "p95": 0.005288421362638474,
+        "max": 0.005702941212803125
+      },
+      "LeftHandRing1": {
+        "mean": 0.003772749203804864,
+        "p95": 0.005128463264554739,
+        "max": 0.005568861961364746
+      },
+      "LeftHandRing2": {
+        "mean": 0.003965101339714402,
+        "p95": 0.0051701869815588,
+        "max": 0.005813298746943474
+      },
+      "LeftHandRing3": {
+        "mean": 0.004016609009467226,
+        "p95": 0.005174443311989308,
+        "max": 0.005877565126866102
+      },
+      "LeftHandRing4": {
+        "mean": 0.004010160695641529,
+        "p95": 0.005174009874463081,
+        "max": 0.005869526881724596
+      },
+      "LeftHandRingEnd": {
+        "mean": 0.003313461159927523,
+        "p95": 0.004896878637373447,
+        "max": 0.005300834774971008
+      },
+      "LeftHandPinky1": {
+        "mean": 0.003414360961233278,
+        "p95": 0.004777362942695617,
+        "max": 0.005297363270074129
+      },
+      "LeftHandPinky2": {
+        "mean": 0.0034840908237281274,
+        "p95": 0.004794045910239219,
+        "max": 0.005383580923080444
+      },
+      "LeftHandPinky3": {
+        "mean": 0.00344318017091746,
+        "p95": 0.00478516248986125,
+        "max": 0.005333160050213337
+      },
+      "LeftHandPinky4": {
+        "mean": 0.0034234787213572107,
+        "p95": 0.004777714423835277,
+        "max": 0.005308763589709997
+      },
+      "LeftHandPinkyEnd": {
+        "mean": 0.0036641153526920105,
+        "p95": 0.004793597664684057,
+        "max": 0.00560228805989027
+      },
+      "RightShoulder": {
+        "mean": 0.001481625307681111,
+        "p95": 0.002364041050896048,
+        "max": 0.002884526737034321
+      },
+      "RightArm": {
+        "mean": 0.002133738982007547,
+        "p95": 0.0029141273349523543,
+        "max": 0.0032050837762653828
+      },
+      "RightForeArm": {
+        "mean": 0.004796157568261475,
+        "p95": 0.005812821071594953,
+        "max": 0.0060827299021184444
+      },
+      "RightHand": {
+        "mean": 0.0046262098356377925,
+        "p95": 0.00575841274112463,
+        "max": 0.005868156440556049
+      },
+      "RightHandThumb1": {
+        "mean": 0.004582250244563741,
+        "p95": 0.00528362514451146,
+        "max": 0.00605274410918355
+      },
+      "RightHandThumb2": {
+        "mean": 0.004499311474163901,
+        "p95": 0.0052109739743173115,
+        "max": 0.005949258338660002
+      },
+      "RightHandThumb3": {
+        "mean": 0.004559316119187124,
+        "p95": 0.005259869247674942,
+        "max": 0.006024301517754793
+      },
+      "RightHandThumbEnd": {
+        "mean": 0.00461360868226433,
+        "p95": 0.0053029094822704785,
+        "max": 0.006091764662414789
+      },
+      "RightHandIndex1": {
+        "mean": 0.0047554781508548066,
+        "p95": 0.0058827088214457035,
+        "max": 0.006019026506692171
+      },
+      "RightHandIndex2": {
+        "mean": 0.004919033806147493,
+        "p95": 0.005884596239775419,
+        "max": 0.0062271966598927975
+      },
+      "RightHandIndex3": {
+        "mean": 0.004776179695765732,
+        "p95": 0.005881351791322232,
+        "max": 0.006045263260602951
+      },
+      "RightHandIndex4": {
+        "mean": 0.004841407686631822,
+        "p95": 0.005877534672617912,
+        "max": 0.006128683686256409
+      },
+      "RightHandIndexEnd": {
+        "mean": 0.004844650832432534,
+        "p95": 0.0058773250319063665,
+        "max": 0.006132869049906731
+      },
+      "RightHandMiddle1": {
+        "mean": 0.004783119183321496,
+        "p95": 0.005866709258407354,
+        "max": 0.005997152999043465
+      },
+      "RightHandMiddle2": {
+        "mean": 0.005184111907646507,
+        "p95": 0.005972054786980152,
+        "max": 0.00647138524800539
+      },
+      "RightHandMiddle3": {
+        "mean": 0.0050945821773788445,
+        "p95": 0.005935717839747667,
+        "max": 0.006355786230415106
+      },
+      "RightHandMiddle4": {
+        "mean": 0.0050830666695285765,
+        "p95": 0.005929159559309482,
+        "max": 0.0063408431597054005
+      },
+      "RightHandMiddleEnd": {
+        "mean": 0.005055719964573951,
+        "p95": 0.005923008639365434,
+        "max": 0.006305364426225424
+      },
+      "RightHandRing1": {
+        "mean": 0.004724187973503008,
+        "p95": 0.005645900219678879,
+        "max": 0.005990930367261171
+      },
+      "RightHandRing2": {
+        "mean": 0.004914844276727269,
+        "p95": 0.005707288160920143,
+        "max": 0.006237898953258991
+      },
+      "RightHandRing3": {
+        "mean": 0.004967530012178702,
+        "p95": 0.005728386528789996,
+        "max": 0.006305465009063482
+      },
+      "RightHandRing4": {
+        "mean": 0.004974926243508195,
+        "p95": 0.00572911836206913,
+        "max": 0.006315040867775679
+      },
+      "RightHandRingEnd": {
+        "mean": 0.004345847993425609,
+        "p95": 0.005524996854364872,
+        "max": 0.0057737077586352825
+      },
+      "RightHandPinky1": {
+        "mean": 0.004261827659933096,
+        "p95": 0.0052355222404003145,
+        "max": 0.005634819157421589
+      },
+      "RightHandPinky2": {
+        "mean": 0.004375516397822569,
+        "p95": 0.005265762005001307,
+        "max": 0.005777849815785885
+      },
+      "RightHandPinky3": {
+        "mean": 0.004361083119100383,
+        "p95": 0.005258628632873297,
+        "max": 0.00575973279774189
+      },
+      "RightHandPinky4": {
+        "mean": 0.004341058377696145,
+        "p95": 0.0052501258440315725,
+        "max": 0.005734620615839958
+      },
+      "RightHandPinkyEnd": {
+        "mean": 0.004547449319259675,
+        "p95": 0.005341882538050413,
+        "max": 0.005990785080939531
+      },
+      "LeftLeg": {
+        "mean": 0.0026957643302277434,
+        "p95": 0.002695793518796563,
+        "max": 0.0026958321686834097
+      },
+      "LeftShin": {
+        "mean": 0.0041719459356987934,
+        "p95": 0.004405497293919325,
+        "max": 0.00442363228648901
+      },
+      "LeftFoot": {
+        "mean": 0.00684133642333132,
+        "p95": 0.0070713086053729056,
+        "max": 0.007091524079442024
+      },
+      "LeftToeBase": {
+        "mean": 0.006853552583141388,
+        "p95": 0.00709215309470892,
+        "max": 0.007111330982297659
+      },
+      "LeftToeEnd": {
+        "mean": 0.0076436167031270754,
+        "p95": 0.007872708141803741,
+        "max": 0.007893470115959644
+      },
+      "RightLeg": {
+        "mean": 0.0028157667884435265,
+        "p95": 0.0028158350847661494,
+        "max": 0.002815881045535207
+      },
+      "RightShin": {
+        "mean": 0.00389356967101729,
+        "p95": 0.004033688083291053,
+        "max": 0.004041128326207399
+      },
+      "RightFoot": {
+        "mean": 0.006859891393217917,
+        "p95": 0.006993432901799679,
+        "max": 0.007026824168860912
+      },
+      "RightToeBase": {
+        "mean": 0.006913508782602942,
+        "p95": 0.0070502588525414465,
+        "max": 0.007064844481647015
+      },
+      "RightToeEnd": {
+        "mean": 0.007630024588958644,
+        "p95": 0.007775423675775528,
+        "max": 0.007783509325236082
+      }
+    },
+    "source_scale": 0.7407795190811157,
+    "fps": 120.00479888916016,
+    "frame_count": 1165,
+    "preservation": {
+      "all_audit_inputs_unchanged": true,
+      "sha256": {
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/input/bones-seed/motions_uniform/bvh/jump_and_land_light_001__A001.bvh": "fe819b350aaf0cb269d810d32124a8e24931bd20586e305407aa59144b1cfaff",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/motion.npz": "c30cf28cb4cf6447e7cf99d0043c839bb6ecc906cef3538d258c7910c7073798",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/bindings.json": "cdfcff57f62da6edf513aad499f54c79bf0110895aa84dea2e436b16dc88916f",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/binding.npz": "70d8b55a967123c91913842edf03514269c6cb82eae443e37dc6920957f8173c",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-000.bin": "da070997170abd425f2c9bd32f6d9ee0848dde6dcb438cacb64043df3998d677",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-001.bin": "805a352d52b27b6a2a60e0ed164eca45afb289b02622bc77ea2fa4d912cbe952",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-002.bin": "7b3565286a6f772f155b7389f6bdafdf083d7e0ee3440deaf62cc52008d1fa77",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-003.bin": "e7e1009b1341a527619d08b3acbdaf9841f7f47c51c5e1a7a8003bc26304e3cd",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-004.bin": "2b26ae42d0715c50b445fe28a37e06ba8bb06e6500a1dd81fc1a64be49363c61",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-005.bin": "7cbbaa6665c699e7a89aa03e9fde47cfeef2068f17de07f7fb890e2a3d4387f7",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-006.bin": "486392b97fdfcb25d047c6f6e782a1446b9e1ccd555198759b1cec280cfc7eee",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-007.bin": "d1a00a8681676d0374b88e32fe2ba88a84a0bc9c9311e7bfca453cf0bdabbf79",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-008.bin": "03c6723cd1177d064b6348d1335a962d37871541d861d8e8a930715d5f795c0c",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-009.bin": "b3bb8980ac91029db0a688e32344c803adb7c3837b89f3fb75c53b216082a54f",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-010.bin": "75cc558b525617f0092197f4e77c0374efdddd34d75ac577f84b774818e491b1",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-011.bin": "ae840d26e371843a94311a5932840702fc5849609bb31326d4282c2cc0b1ea80",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-012.bin": "418bb43fad91bbed5e0f2fea4581e61a1b4e6036e84f271627dd1958bb1c6758",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-013.bin": "695d8697383ce2ca2dc1e0e197a00848343a7fcb7491b68aaeccb16300d727a4",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-014.bin": "09107608af12a600314b0f3a1ddd51e4a105f8c67594ffdc1df6fe6c0e573e98",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-015.bin": "24fc47d21af3cac5f97171780ff1ce3a9153ca4aec5d69dc7293e5a382aefcf0",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-016.bin": "f57506857158b95a7ae252175fe7e6aff014bc143d8c8478001c3d207114e1c1",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-017.bin": "efa14a02d45b5cac5e965e16138d06ef22cd9622ccc07b6c5ff8d1d6e2fd4db8",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-018.bin": "8335dfc0e51bdd5f41e969fd3c1181cd069e5f129c3a092ef1e2afdb67bf5ba0",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/fitted-joints.bin": "7ee88fe12e3ba47acf78be7819942c0a4e9c49cec1c0522c68f684d8932111fc",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/bvh-joints.bin": "97ae12cd08ef9357aec32d8b5ef9a9bc129741869324b5936cd26d2c4c8e2a33",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/joint-map.json": "756ae104644f008dbee0a32bed8baabb5ac41fb2a12ecb0ce883093ddb29671d",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-faces.bin": "e99397c57b8e2dfd69af95b81f99d8db307a682816220982848d35316689b339",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-vertices.bin": "296b32aba11962b97c6b4ebbf1ae1e400029322e77fff1957cdafb200598e748",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/motion-transforms.bin": "d0487263f6a23dcee32f704d52ef98b20b008c7d90b4ee41b41398735549eb20",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/replay-diagnostic-verified.json": "7fe71bd01ab9f112b771cd25048f95f2c6566e4ebb1a3b474ff2a595603e4973",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/audit-final-02-executed.py": "b635ff8321fb83dfd11099155bc25e550364bbe63fddcb12e5015b1ecaf2eb43",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/runtime-hardware.json": "4f0e8214ebe2cb9cb1fd422035b197aeba7b4e710f96a539a7e0273e267292d0",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/native_source.json": "c000e05c4ce02280a4e140dccab0ffa822ab00687dc68f07e67d2c927a719335",
+        "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/input/bones-seed/shapes/soma_uniform_fit_mhr_params/soma_base_fit_mhr_params.npz": "61f0b96c8386a19d44823faf4399816642b7e20691ed5b398c7402921090096e"
+      }
+    },
+    "interpretation": "BVH hierarchy offsets and fitted model rest offsets are different representations; discrepancies are measured diagnostics, not a failed pose-map assertion. Named Hips anchors the fitted mesh, not stationary Root.",
+    "limitations": [
+      "Visual acceptance remains pending user inspection.",
+      "No dynamics, controller rollout, collision evaluation, support-force or contact-truth validation.",
+      "Native fitted forward replay checks export fidelity; it does not independently validate the SOMA model implementation."
+    ]
+  },
+  "source_artifact_sha256": {
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/dataset.npz": "f7befa12acc150c7e878feccf67ea3ba3e5fbea26ed7fd54281db4da2cb1a4db",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/motion.npz": "d0436722b5e8e0623e244a9225b928195379c60b6108ca64d0dd6baf6684cda9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/resolved.json": "b1bd3e91567a35d50482631d369f29df99bbc2695608350b0c9fb27a551537b5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/motion.floating_mjcf.xml": "c0bad83f985dc64af919749101eb42f545c3d3f5db4c27ac84d2d016d503e5cc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/bindings.json": "5fcf7ec2f67e55b28db54ba250a5ddb5ee7062583e38ba9ee1ab4039842e5536",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/motion-transforms.bin": "f4ef33b85243051054aad276ee0fa58ff1f834306c36763ef8169573bcc542b8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-no-head.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_29dof_w_largebox.xml": "13b0404edf67a87e09054ea878023a737e5bd6a943844d5387f209a44f24fc5c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/reference.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-neutral-no-head.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_27dof_left_racket_adapt.xml": "9138ccdbb4cde1c2de564e03b7c07236837b49d20648976842a84df7bc2629e7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-no-head-samples.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_29dof_spherehand.urdf": "58798588cb27ff59f80c9d6c39d374e6127d740d505e72daa9ae58b8274a61ea",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_29dof.urdf": "1c5a19d8440d246fd6a21645de0b9bc8b92c99ee5cd895607a402db9eb02a32b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-no-head-point.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1_29dof_spherehand.xml": "17549f99cc230aa8e8d29a5bcc30cc3075ad34cbc1f9860dacbbe840ac092313",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-no-head-normal.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/reconverted.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-neutral-baseline.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/g1-baseline.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_wrist_roll_rubber_hand.obj": "c6ada824c78999a26717936e8d1ee4195481fd50934fe52e999c072c8140776b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_wrist_roll_rubber_hand.obj": "94d0856fb64a7e8200c5fadf4ccc19067b13508374d7c20eafba940942d565f4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_wrist_yaw_link.obj": "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/waist_roll_link.obj": "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_wrist_yaw_link.obj": "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_thumb_2_link.obj": "068b9581d17418d7111aa247273300d0776115436e27df6a9468db5f1d23d731",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_ankle_roll_link.obj": "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/tote_no_bar.obj": "80d55c09af067694bde55907b8f71db6bd282a4819f4f41a3e136086ad19e449",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_sphere_hand.obj": "86b1968dd22b994aa5843ba399f2aef67180d7f8c00b17dfe0ca68de1f177af6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_wrist_pitch_link.obj": "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/head_link.obj": "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_thumb_0_link.obj": "7afaed0bf51366a5c431b221d3b69efd4b348f291d89ac93c62dd49bf8c45722",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/waist_constraint_L.obj": "b76cd61fdddedcfcbb7ab79d3c020423541c36bb1988bcf4ccba18b0239f1035",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_sphere_hand.obj": "86b1968dd22b994aa5843ba399f2aef67180d7f8c00b17dfe0ca68de1f177af6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_thumb_1_link.obj": "e276c040a4d6e2129b9c9b317a99cd697fcb47740daccbb322d01194cfeda4fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/logo_link.mtl": "cd787ead96363aa676d9a79626803f9053ecc7a3cef6d4f1640176a8cf2785d3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_knee_link.obj": "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_wrist_roll_link.obj": "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_ankle_roll_link.obj": "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_thumb_1_link.obj": "87ba42742afeeff6f7a8f3b8b76d9d332e1f9775583acb48ed3d68bdb203535c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_thumb_0_link.obj": "d5ec45c92de98acc651f7b5ae2d7f9aa0e44122f017e8246fab0995645796803",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_rubber_hand.obj": "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_index_1_link.obj": "617f6b3bdf7fc5f71de55a10421031e52160979d63c468127205a6ef21ffa806",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_G1_EE_pad.obj": "08ea0ea7e1803a70c53806a01bb04f2f02c1ff3a71eba957b08378703a1676b3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/torso_link.obj": "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_knee_link.obj": "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_wrist_pitch_link.obj": "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_middle_1_link.obj": "5ad9107bac460988b5ebd0bb3e2557536823590fa39880466ab0bdc7454ce497",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/waist_yaw_link.obj": "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_palm_link.obj": "17c12b40713d7f4c112ae7194ad24b1652461606cbeb9f77297f9df73ea7dc66",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_elbow_link.obj": "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_elbow_link.obj": "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_palm_link.obj": "9ec926bbb75931b8a345aa3653f26ec7610093741684f194d6b71cb0ec89a1af",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/torso_constraint_L_rod_link.obj": "7fd9d81ccc9af1dc2c9a3e37179160b40d28611f49f1718214605dfd8fe2b73d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_wrist_roll_link.obj": "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_middle_0_link.obj": "d885f7160cade7044d862a2548e7992273f99df9b2daf4cb1fe1764e836469f7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_index_0_link.obj": "b7778bdd45e6bd6dfff48b5a4d721ab2fca7a3827f54099306e98dc467b80d15",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hip_pitch_link.obj": "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_shoulder_pitch_link.obj": "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hip_pitch_link.obj": "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_shoulder_yaw_link.obj": "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_shoulder_pitch_link.obj": "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_ankle_pitch_link.obj": "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/waist_support_link.obj": "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hip_yaw_link.obj": "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_shoulder_yaw_link.obj": "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/waist_constraint_R.obj": "906aac4a261bf72688efd59e5fbbc070ed5884accf53b955989458266b1a3797",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/pelvis.obj": "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_ankle_pitch_link.obj": "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/torso_constraint_R_rod_link.obj": "f18970d27ec38cdd9412362579964fd81173c3190b1df3beb902e3a46a890960",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hip_roll_link.obj": "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_elbow_link_merge.obj": "91396ef8c697b338c0ef0c8c186bfdaec27690da7f1c953419dab6b8a40d7fea",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_index_1_link.obj": "5ad9107bac460988b5ebd0bb3e2557536823590fa39880466ab0bdc7454ce497",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/logo_link.obj": "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_index_0_link.obj": "d885f7160cade7044d862a2548e7992273f99df9b2daf4cb1fe1764e836469f7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/pelvis_contour_link.obj": "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_middle_0_link.obj": "b7778bdd45e6bd6dfff48b5a4d721ab2fca7a3827f54099306e98dc467b80d15",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_elbow_link_merge.obj": "80115f722ead3626a6eaf5119bc52097b64a096a6af949cbee4f6042db4186e1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/torso_constraint_R_link.obj": "71ff33c8bbc19eef45ae3345265c9f8b9539a966a581fde82d947e8c37ef3575",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_rubber_hand.obj": "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_shoulder_roll_link.obj": "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/half_sphere.obj": "73e153c4164100b8a6c82c9897e489fdf8d6794cab0d1ad809b639a7662add20",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_G1_EE_pad.obj": "4c8a5dc82b28fd1bd4179ad24772d873ea9a0a4964c4b3ec4db99f1413ea4020",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hip_roll_link.obj": "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hip_yaw_link.obj": "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/right_hand_middle_1_link.obj": "617f6b3bdf7fc5f71de55a10421031e52160979d63c468127205a6ef21ffa806",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_shoulder_roll_link.obj": "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/torso_constraint_L_link.obj": "93264201f3c13b30b35c5fb4cd72736f69d52577a8388819718772725d6fea7e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/assets/left_hand_thumb_2_link.obj": "02e2b6bc6049dccacc08cf2cf949d4d8e5f063b9bf49ef91ca0ecd294ecb67bd",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_roll_link.STL": "34f0aa73f41131230be4d25876c944fdf6c24d62553f199ff8b980c15e8913df",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_thumb_2_link.STL": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_wrist_yaw_link.STL": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/logo_link.STL": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/pelvis_contour_link.STL": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_constraint_R_link.STL": "54ded433a3a0c76027365856fdbd55215643de88846f7d436598a4071e682725",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_roll_link_rev_1_0.STL": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_index_1_link.STL": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_knee_link.STL": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_wrist_yaw_link.STL": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hip_roll_link.STL": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_middle_1_link.STL": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hip_yaw_link.STL": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_wrist_roll_rubber_hand.STL": "e81030abd023bd9e4a308ef376d814a2c12d684d8a7670c335bbd5cd7809c909",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hip_roll_link.STL": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_index_1_link.STL": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_shoulder_pitch_link.STL": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_wrist_roll_link.STL": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_wrist_roll_link.STL": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_thumb_2_link.STL": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_wrist_pitch_link.STL": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_index_0_link.STL": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_constraint_R.STL": "791902a291ffbd35ab97383b7b44ea5d975de7c80eef838797c970790b382ca9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_thumb_1_link.STL": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_shoulder_roll_link.STL": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_elbow_link.STL": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_shoulder_yaw_link.STL": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_constraint_R_rod_link.STL": "cb83fd38a9f06c99e3f301c70f12d94ae770a8f0cf9501f83580a27f908990b4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hip_pitch_link.STL": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_ankle_pitch_link.STL": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_ankle_roll_link.STL": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_link_23dof_rev_1_0.STL": "3cd0d56fde14b73c1623304684805029971c4f84b596f9914e823ca70a107fd2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_thumb_1_link.STL": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_index_0_link.STL": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/pelvis.STL": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hip_pitch_link.STL": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_constraint_L.STL": "8ebafdcb4de6871113f0ca2c356618d6e46b1d50f6c0bf9e37f47b9d8e100d99",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_middle_0_link.STL": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_middle_1_link.STL": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_elbow_link.STL": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_constraint_L_rod_link.STL": "c10de1effa7ea797ac268006aa2a739036c7e1f326b2012d711ee2c20c5a6e96",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_wrist_roll_rubber_hand.STL": "0729aff1ac4356f9314de13a46906267642e58bc47f0d8a7f17f6590a6242ccf",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_constraint_L_link.STL": "82be7f93e85b3d303a1d1e1847e2c916939bd61c424ed1ebd28691ec33909dd1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_wrist_pitch_link.STL": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hip_yaw_link.STL": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_shoulder_roll_link.STL": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_palm_link.STL": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_shoulder_pitch_link.STL": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_palm_link.STL": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_support_link.STL": "1fae9e1bb609848a1667d32eed8d6083ae443538a306843056a2a660f1b2926a",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_knee_link.STL": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_yaw_link.STL": "2883f20e03f09b669b5b4ce10677ee6b5191c0934b584d7cbaef2d0662856ffb",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_link.STL": "e96d023f0368a4e3450b86ca5d4f10227d8141156a373e7da8cb3c93266523e0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_ankle_roll_link.STL": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_ankle_pitch_link.STL": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/waist_yaw_link_rev_1_0.STL": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_rubber_hand.STL": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_thumb_0_link.STL": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_hand_thumb_0_link.STL": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/torso_link_rev_1_0.STL": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_hand_middle_0_link.STL": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/23_25deg.stl": "fb91b1874991bb18b7483485d237c0bd988aacef1bd7880ad9aee2fc57c1f3c0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/right_rubber_hand.STL": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/head_link.STL": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/assets/g1/meshes/left_shoulder_yaw_link.STL": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-000.bin": "9934e2eab31bbbb09d9fc08005258a1d3eb5e2cb36d6ee364320c11cf83eb78e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-001.bin": "e3c91a65fc866832d3204dc347af291ddde23f51a9d13964b78962a3c109ce13",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-002.bin": "d71c1cab64d40b07f377e83cc69145256ec927dcd3b295b25fdbf6d098b61a03",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-003.bin": "26072e9674c1a6d19d8d396c1cb625e56f202882742f11f1c3feff504470e782",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-004.bin": "45b394bfab2867ba6b1925704bab21b4d643ede6a05a89f76080150c18e00ad4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-005.bin": "d23c97f95f42208da20c87ad3e194a363bcebec8233e56798b34a221e46f0151",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-006.bin": "d4c8916724eaa924ee07d15a348037d57ebb466b0e69b80838f2a3824432a1e3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-007.bin": "01e2803b622db6540940463aef00c59808a0f29bfbba50b325b22594ff1f5d4b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-008.bin": "aab60e9132e62671ecfa0750dc9f0a3ade1d48621fc4aef3514dd2a739dc253b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-009.bin": "872cb698a319768b3bd2fea2390bb288d8c2fcd44af4abadce2184301b554ef9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-010.bin": "5af5494c7784a44ebd0a1b1d6a0af7263229fbc18e1b823861514a0e09f96cb2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-011.bin": "3ebbe175b829d62101ef7e359b8175b7e725893c510dcbc0898f1ac83f50a7e8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-012.bin": "7ea681c26b7fcdf208f2de7e92eb24d3e9f9f4a6fad6b544c7d2e868257faef8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-013.bin": "9fe2e53273f98f13669d6153f16d9b6f1c4dae9d2e981acf4decfc37f345fb89",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-014.bin": "05f55aa072446d75535076043d8d1a7cc479d5b01662fa6e94e9a8b0c4943173",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-015.bin": "8ed1ecd1da0ec1a4fc6f69782ef6c0e5beb8192d8ec4145acf884e74c1635612",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-016.bin": "3d179cae41e8cb838076f76815d068e0e0191fb63c6e8ff2baad090c8bb799b2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-017.bin": "7e1e1572018b10a85bc4a572723781168c4ddb4ca610a109deb4bacead9b2698",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102-inspection-04/human-motion-018.bin": "ad3ca2ccef681fe0902b3e99ef3a584b12af664940621f174de5b3c6f84bd6be",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/dataset.npz": "dee09a4fd0c061aec9180d9534d8cbc837ac0b9281ff36131d6ff5abb5f96faf",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/motion.npz": "c30cf28cb4cf6447e7cf99d0043c839bb6ecc906cef3538d258c7910c7073798",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/resolved.json": "569c3953b9d6f751c8c31ad996b932eb79275e01f3908a14563fb3c2af12b8d4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/motion.floating_mjcf.xml": "32058fc4781442367ec93af7c2fa395df8e4a884b37595547ad14daab90a7033",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/bindings.json": "cdfcff57f62da6edf513aad499f54c79bf0110895aa84dea2e436b16dc88916f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/motion-transforms.bin": "d0487263f6a23dcee32f704d52ef98b20b008c7d90b4ee41b41398735549eb20",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-no-head.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_29dof_w_largebox.xml": "13b0404edf67a87e09054ea878023a737e5bd6a943844d5387f209a44f24fc5c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_29dof.xml": "8c586e4747da85804180fe44d8692e0fd8231356728b6327e256dca498087a78",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/reference.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-neutral-no-head.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_27dof_left_racket_adapt.xml": "9138ccdbb4cde1c2de564e03b7c07236837b49d20648976842a84df7bc2629e7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-no-head-samples.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_29dof_spherehand.urdf": "58798588cb27ff59f80c9d6c39d374e6127d740d505e72daa9ae58b8274a61ea",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_29dof.urdf": "1c5a19d8440d246fd6a21645de0b9bc8b92c99ee5cd895607a402db9eb02a32b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-no-head-point.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1_29dof_spherehand.xml": "17549f99cc230aa8e8d29a5bcc30cc3075ad34cbc1f9860dacbbe840ac092313",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-no-head-normal.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/reconverted.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-neutral-baseline.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/g1-baseline.floating_mjcf.xml": "a27f481ea062af53efc640f2ba1339df23f600dc03963888eaefcf03000da5fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_wrist_roll_rubber_hand.obj": "c6ada824c78999a26717936e8d1ee4195481fd50934fe52e999c072c8140776b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_wrist_roll_rubber_hand.obj": "94d0856fb64a7e8200c5fadf4ccc19067b13508374d7c20eafba940942d565f4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_wrist_yaw_link.obj": "fecf8ddca63429a8ebbf958b1603362cf07fc944e9ca9af3e211886da0959287",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/waist_roll_link.obj": "be355b255fec17a743531916869713f4ef5ea6fc4d7c81f2b275af4298e0966d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_wrist_yaw_link.obj": "8685565af5f4fc8aa119ffadaf66ad988b9715e49e4498cef80c739448376279",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_thumb_2_link.obj": "068b9581d17418d7111aa247273300d0776115436e27df6a9468db5f1d23d731",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_ankle_roll_link.obj": "1996adeb213deaad6ed660c95192cc08d704411f69ed90ef3d61e625037188bb",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/tote_no_bar.obj": "80d55c09af067694bde55907b8f71db6bd282a4819f4f41a3e136086ad19e449",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_sphere_hand.obj": "86b1968dd22b994aa5843ba399f2aef67180d7f8c00b17dfe0ca68de1f177af6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_wrist_pitch_link.obj": "78c95a4a38918d364cdb2521c61ddd9378fe5387d66d6dc7a81cab7c5d9506a6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/head_link.obj": "61c950b17c36245ba2a719ae0f8b425f8b8eeed4763d050da1840b90a5a70930",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_thumb_0_link.obj": "7afaed0bf51366a5c431b221d3b69efd4b348f291d89ac93c62dd49bf8c45722",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/waist_constraint_L.obj": "b76cd61fdddedcfcbb7ab79d3c020423541c36bb1988bcf4ccba18b0239f1035",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_sphere_hand.obj": "86b1968dd22b994aa5843ba399f2aef67180d7f8c00b17dfe0ca68de1f177af6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_thumb_1_link.obj": "e276c040a4d6e2129b9c9b317a99cd697fcb47740daccbb322d01194cfeda4fc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/logo_link.mtl": "cd787ead96363aa676d9a79626803f9053ecc7a3cef6d4f1640176a8cf2785d3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_knee_link.obj": "958e400cebc40c3e481ad3cd2ea9fd1a88c17728b91de7a33df24c0432969a7c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_wrist_roll_link.obj": "fa16cac0ba54068d6e6e2c6bad6d8eb406cd69e84211ab4ff45f8643e11e36ff",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_ankle_roll_link.obj": "dd8b9445531854d4c72bf1cdb71d59df6b3f5bf060d2811ea0e1401998ccd4b1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_thumb_1_link.obj": "87ba42742afeeff6f7a8f3b8b76d9d332e1f9775583acb48ed3d68bdb203535c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_thumb_0_link.obj": "d5ec45c92de98acc651f7b5ae2d7f9aa0e44122f017e8246fab0995645796803",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_rubber_hand.obj": "2955af3ebc299bb01913c821842817e2d1da8ea883e4b6092df2f308b1a645ab",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_index_1_link.obj": "617f6b3bdf7fc5f71de55a10421031e52160979d63c468127205a6ef21ffa806",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_G1_EE_pad.obj": "08ea0ea7e1803a70c53806a01bb04f2f02c1ff3a71eba957b08378703a1676b3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/torso_link.obj": "28cd5329f3ebec5efe5b0d09afca87b750bd2d5c63e3d893fe15cdf13abac863",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_knee_link.obj": "490a3228be00b1886b116a5b99c83fdc480b9f73ba0f1b7e240956f7ece9b4b7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_wrist_pitch_link.obj": "823d57238b59884a88ceff1aba48d584bcef975e5eb92acad00da9c4e6f76be3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_middle_1_link.obj": "5ad9107bac460988b5ebd0bb3e2557536823590fa39880466ab0bdc7454ce497",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/waist_yaw_link.obj": "747b8dc46c5fae891db4ca54f0c2a898ad32ff7e160fe785bf193dcd5505a69e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_palm_link.obj": "17c12b40713d7f4c112ae7194ad24b1652461606cbeb9f77297f9df73ea7dc66",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_elbow_link.obj": "f39eb615e0adb6409fb0784bef8f8ef3d9bac84a27702da993fe694f406ab2b3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_elbow_link.obj": "a4f981be317bb82bc53b6407c64cbfa4d4f226008fd2f3fb266f34af6a4f86cc",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_palm_link.obj": "9ec926bbb75931b8a345aa3653f26ec7610093741684f194d6b71cb0ec89a1af",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/torso_constraint_L_rod_link.obj": "7fd9d81ccc9af1dc2c9a3e37179160b40d28611f49f1718214605dfd8fe2b73d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_wrist_roll_link.obj": "6142a7c6803a6b5906734ed029076ead6dfea6990363aa122ed6f088088fed48",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_middle_0_link.obj": "d885f7160cade7044d862a2548e7992273f99df9b2daf4cb1fe1764e836469f7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_index_0_link.obj": "b7778bdd45e6bd6dfff48b5a4d721ab2fca7a3827f54099306e98dc467b80d15",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hip_pitch_link.obj": "d6e2ddf3990b662ab5582dd348b396bb3eb1b064827f7f386206b049ca3526ba",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_shoulder_pitch_link.obj": "47e59be304a59f8b7267f09aa214a0b664a51f172648951a91c5c491158d969e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hip_pitch_link.obj": "4ed685646bdee41ddd1e74a715dcaabc59a11bcf97f2c450f0de1c4d33f8ca9e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_shoulder_yaw_link.obj": "43094daafb1b84744d5adea3802ed4e85591103d50e2f249d7cc19e1798b6fd9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_shoulder_pitch_link.obj": "f24f9da5d61fe103a34d75a72af0e29da91f87e489e2dc27a5900c159a5457d6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_ankle_pitch_link.obj": "863c8833a07e09a2aa4fda9693c14c424f99d0804ae1991ca35213cfff9b6e82",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/waist_support_link.obj": "8c7603f23737d1ac0b52d9e50ba1e5582c9fae08381b65ad450dde86fd42134e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hip_yaw_link.obj": "5c8f27b1598c3fc7792bbb5ece6646504ffb8b4db3f9c752fa5b572593746318",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_shoulder_yaw_link.obj": "11fcb7b5777c168fd27990081cf815499df251fd0b351901cb5029e5b97c55c2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/waist_constraint_R.obj": "906aac4a261bf72688efd59e5fbbc070ed5884accf53b955989458266b1a3797",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/pelvis.obj": "450ec17e11c33d6a92b6e97525db0ad7fef39ce4191bcdcf7f02d7e2b71d4bd8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_ankle_pitch_link.obj": "c387584a3e7749f5cfbfd525c13a63fb05258f0cc92f1af195df1ca348bffaf9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/torso_constraint_R_rod_link.obj": "f18970d27ec38cdd9412362579964fd81173c3190b1df3beb902e3a46a890960",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hip_roll_link.obj": "87699e76fee17d30dac37163a441ffe341837b938927af19f2b3cac7f046c781",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_elbow_link_merge.obj": "91396ef8c697b338c0ef0c8c186bfdaec27690da7f1c953419dab6b8a40d7fea",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_index_1_link.obj": "5ad9107bac460988b5ebd0bb3e2557536823590fa39880466ab0bdc7454ce497",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/logo_link.obj": "451f64e733980255a370618a23ab6b4c9c37ea035b3bca04ae965ee55574ae08",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_index_0_link.obj": "d885f7160cade7044d862a2548e7992273f99df9b2daf4cb1fe1764e836469f7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/pelvis_contour_link.obj": "64453d101c1e8fcde8d93b910f54d8be905c88ffc5f4f5e1ffa55e9ed532584f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_middle_0_link.obj": "b7778bdd45e6bd6dfff48b5a4d721ab2fca7a3827f54099306e98dc467b80d15",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_elbow_link_merge.obj": "80115f722ead3626a6eaf5119bc52097b64a096a6af949cbee4f6042db4186e1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/torso_constraint_R_link.obj": "71ff33c8bbc19eef45ae3345265c9f8b9539a966a581fde82d947e8c37ef3575",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_rubber_hand.obj": "0804b574f7bf34be20dd8a101bf22f4bf01fec319071ffb5f113b261ba8d47c8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_shoulder_roll_link.obj": "11dd3bfbf6eec175608aa7d1d6f56617146b52c43defb912687ad781ea297019",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/half_sphere.obj": "73e153c4164100b8a6c82c9897e489fdf8d6794cab0d1ad809b639a7662add20",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_G1_EE_pad.obj": "4c8a5dc82b28fd1bd4179ad24772d873ea9a0a4964c4b3ec4db99f1413ea4020",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hip_roll_link.obj": "f63e568476977acbc993de97407f69fdaaaaa8ff6194a1ed9004a2fdad18c596",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hip_yaw_link.obj": "0c2de1d276eb3179344417c1b1f65308ff7e10451dd89719a11a033ff0f3a142",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/right_hand_middle_1_link.obj": "617f6b3bdf7fc5f71de55a10421031e52160979d63c468127205a6ef21ffa806",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_shoulder_roll_link.obj": "906b966a1eac99d962f3b3c068f99aa425f4eed0c1a49432b18272ebe6fe4fc6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/torso_constraint_L_link.obj": "93264201f3c13b30b35c5fb4cd72736f69d52577a8388819718772725d6fea7e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/assets/left_hand_thumb_2_link.obj": "02e2b6bc6049dccacc08cf2cf949d4d8e5f063b9bf49ef91ca0ecd294ecb67bd",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_roll_link.STL": "34f0aa73f41131230be4d25876c944fdf6c24d62553f199ff8b980c15e8913df",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_thumb_2_link.STL": "3d8dbe5085acfc213d21aa8b0782e89cd79084e9678f3a85fc7b04a86b029db5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_wrist_yaw_link.STL": "bc9dece2d12509707e0057ba2e48df8f3d56db0c79410212963a25e8a50f61a6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/logo_link.STL": "8571a0a19bc4916fa55f91449f51d5fdefd751000054865a842449429d5f155b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/pelvis_contour_link.STL": "5cc5c2c7a312329e3feeb2b03d3fc09fc29705bd01864f6767e51be959662420",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_constraint_R_link.STL": "54ded433a3a0c76027365856fdbd55215643de88846f7d436598a4071e682725",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_roll_link_rev_1_0.STL": "b67c347a05abc3e8ddae600d98a082bee273bb39f8e651647708b0a7140a8a97",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_index_1_link.STL": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_knee_link.STL": "8d92b9e3d3a636761150bb8025e32514c4602b91c7028d523ee42b3e632de477",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_wrist_yaw_link.STL": "83f8fb3a726bf9613d65dd14f0f447cb918c3c95b3938042a0c9c09749267d3b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hip_roll_link.STL": "91f25922ee8a7c3152790051bebad17b4d9cd243569c38fe340285ff93a97acf",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_middle_1_link.STL": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hip_yaw_link.STL": "a16d88aa6ddac8083aa7ad55ed317bea44b1fa003d314fba88965b7ed0f3b55b",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_wrist_roll_rubber_hand.STL": "e81030abd023bd9e4a308ef376d814a2c12d684d8a7670c335bbd5cd7809c909",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hip_roll_link.STL": "4c254ef66a356f492947f360dd931965477b631e3fcc841f91ccc46d945d54f6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_index_1_link.STL": "c9c34efce4563cacdcfd29fc838a982976d40f5442c71219811dcbbf3923a33d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_shoulder_pitch_link.STL": "24cdb387e0128dfe602770a81c56cdce3a0181d34d039a11d1aaf8819b7b8c02",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_wrist_roll_link.STL": "a7ee9212ff5b94d6cb7f52bb1bbf3f352194d5b598acff74f4c77d340c5b344f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_wrist_roll_link.STL": "edc387c9a0ba8c2237e9b296d32531426fabeb6f53e58df45c76106bca74148c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_thumb_2_link.STL": "3f1bfb37668e8f61801c8d25f171fa1949e08666be86c67acad7e0079937cc45",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_wrist_pitch_link.STL": "d22f8f3b3127f15a63e5be1ee273cd5075786c3142f1c3d9f76cbf43d2a26477",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_index_0_link.STL": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_constraint_R.STL": "791902a291ffbd35ab97383b7b44ea5d975de7c80eef838797c970790b382ca9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_thumb_1_link.STL": "0a9a820da8dd10f298778b714f1364216e8a5976f4fd3a05689ea26327d44bf6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_shoulder_roll_link.STL": "962b97c48f9ce9e8399f45dd9522e0865d19aa9fd299406b2d475a8fc4a53e81",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_elbow_link.STL": "1be925d7aa268bb8fddf5362b9173066890c7d32092c05638608126e59d1e2ab",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_shoulder_yaw_link.STL": "a0b76489271da0c72461a344c9ffb0f0c6e64f019ea5014c1624886c442a2fe5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_constraint_R_rod_link.STL": "cb83fd38a9f06c99e3f301c70f12d94ae770a8f0cf9501f83580a27f908990b4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hip_pitch_link.STL": "4725168105ee768ee31638ef22b53f6be2d7641bfd7cfefe803488d884776fa4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_ankle_pitch_link.STL": "15be426539ec1be70246d4d82a168806db64a41301af8b35c197a33348c787a9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_ankle_roll_link.STL": "4b66222ea56653e627711b56d0a8949b4920da5df091da0ceb343f54e884e3a5",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_link_23dof_rev_1_0.STL": "3cd0d56fde14b73c1623304684805029971c4f84b596f9914e823ca70a107fd2",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_thumb_1_link.STL": "445c54a45bc13ce36001556f66bc0f49c83cb40321205ae4d676bb2874325684",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_index_0_link.STL": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/pelvis.STL": "5ba6bbc888e630550140d3c26763f10206da8c8bd30ed886b8ede41c61f57a31",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hip_pitch_link.STL": "e4f3c99d7f4a7d34eadbef9461fc66e3486cb5442db1ec50c86317d459f1a9c6",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_constraint_L.STL": "8ebafdcb4de6871113f0ca2c356618d6e46b1d50f6c0bf9e37f47b9d8e100d99",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_middle_0_link.STL": "6b35f2f77211d5a366f0b9a4e47c4ee35e536731266f1a34e9efa12db579b892",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_middle_1_link.STL": "9e315ebc8a7a0cb98e033985b586b20d81cf8aa761181ae61ce56fcb14077a06",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_elbow_link.STL": "fa752198accd104d5c4c3a01382e45165b944fbbc5acce085059223324e5bed3",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_constraint_L_rod_link.STL": "c10de1effa7ea797ac268006aa2a739036c7e1f326b2012d711ee2c20c5a6e96",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_wrist_roll_rubber_hand.STL": "0729aff1ac4356f9314de13a46906267642e58bc47f0d8a7f17f6590a6242ccf",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_constraint_L_link.STL": "82be7f93e85b3d303a1d1e1847e2c916939bd61c424ed1ebd28691ec33909dd1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_wrist_pitch_link.STL": "b251d8e05047f695d0f536cd78c11973cfa4e78d08cfe82759336cc3471de3a9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hip_yaw_link.STL": "e479c2936ca2057e9eb2f7dff6c189b7419d7b8484dea0b298cbb36a2a6aa668",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_shoulder_roll_link.STL": "fb9df21687773522598dc384f1a2945c7519f11cbc8bd372a49170316d6eee88",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_palm_link.STL": "23a486b75bd78a9bf03cec25d84d87f97f3dae038cf21a743b6d469b337e4004",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_shoulder_pitch_link.STL": "f0d1cfd02fcf0d42f95e678eeca33da3afbcc366ffba5c052847773ec4f31d52",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_palm_link.STL": "86c0b231cc44477d64a6493e5a427ba16617a00738112dd187c652675b086fb9",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_support_link.STL": "1fae9e1bb609848a1667d32eed8d6083ae443538a306843056a2a660f1b2926a",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_knee_link.STL": "63c4008449c9bbe701a6e2b557b7a252e90cf3a5abcf54cee46862b9a69f8ec8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_yaw_link.STL": "2883f20e03f09b669b5b4ce10677ee6b5191c0934b584d7cbaef2d0662856ffb",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_link.STL": "e96d023f0368a4e3450b86ca5d4f10227d8141156a373e7da8cb3c93266523e0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_ankle_roll_link.STL": "c4092af943141d4d9f74232f3cfa345afc6565f46a077793b8ae0e68b39dc33f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_ankle_pitch_link.STL": "d49e3abc6f5b12e532062cd575b87b5ef40cd2a3fc18f54a1ca5bba4f773d51d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/waist_yaw_link_rev_1_0.STL": "ec6db442b11f25eed898b5add07940c85d804f300de24dcbd264ccd8be7d554c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_rubber_hand.STL": "cff2221a690fa69303f61fce68f2d155c1517b52efb6ca9262dd56e0bc6e70fe",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_thumb_0_link.STL": "544298d0ea1088f5b276a10cc6a6a9e533efdd91594955fdc956c46211d07f83",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_hand_thumb_0_link.STL": "a90c721661c0622685488a3c74d1e122c7da89242d3a1daef75edb83422d05e0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/torso_link_rev_1_0.STL": "11ddb46f2098efbbd8816b1d65893632d8e78be936376c7cdcd6771899ccc723",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_hand_middle_0_link.STL": "12ab4300c95e437e834f9aef772b3b431c671bf34338930b52ad11aef73bbd0d",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/23_25deg.stl": "fb91b1874991bb18b7483485d237c0bd988aacef1bd7880ad9aee2fc57c1f3c0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/right_rubber_hand.STL": "99533b778bca6246144fa511bb9d4e555e075c641f2a0251e04372869cd99d67",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/head_link.STL": "005fb67fbd3eff94aa8bf4a6e83238174e9f91b6721f7111594322f223724411",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/assets/g1/meshes/left_shoulder_yaw_link.STL": "1aa97e9748e924336567992181f78c7cd0652fd52a4afcca3df6b2ef6f9e712e",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-000.bin": "da070997170abd425f2c9bd32f6d9ee0848dde6dcb438cacb64043df3998d677",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-001.bin": "805a352d52b27b6a2a60e0ed164eca45afb289b02622bc77ea2fa4d912cbe952",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-002.bin": "7b3565286a6f772f155b7389f6bdafdf083d7e0ee3440deaf62cc52008d1fa77",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-003.bin": "e7e1009b1341a527619d08b3acbdaf9841f7f47c51c5e1a7a8003bc26304e3cd",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-004.bin": "2b26ae42d0715c50b445fe28a37e06ba8bb06e6500a1dd81fc1a64be49363c61",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-005.bin": "7cbbaa6665c699e7a89aa03e9fde47cfeef2068f17de07f7fb890e2a3d4387f7",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-006.bin": "486392b97fdfcb25d047c6f6e782a1446b9e1ccd555198759b1cec280cfc7eee",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-007.bin": "d1a00a8681676d0374b88e32fe2ba88a84a0bc9c9311e7bfca453cf0bdabbf79",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-008.bin": "03c6723cd1177d064b6348d1335a962d37871541d861d8e8a930715d5f795c0c",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-009.bin": "b3bb8980ac91029db0a688e32344c803adb7c3837b89f3fb75c53b216082a54f",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-010.bin": "75cc558b525617f0092197f4e77c0374efdddd34d75ac577f84b774818e491b1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-011.bin": "ae840d26e371843a94311a5932840702fc5849609bb31326d4282c2cc0b1ea80",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-012.bin": "418bb43fad91bbed5e0f2fea4581e61a1b4e6036e84f271627dd1958bb1c6758",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-013.bin": "695d8697383ce2ca2dc1e0e197a00848343a7fcb7491b68aaeccb16300d727a4",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-014.bin": "09107608af12a600314b0f3a1ddd51e4a105f8c67594ffdc1df6fe6c0e573e98",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-015.bin": "24fc47d21af3cac5f97171780ff1ce3a9153ca4aec5d69dc7293e5a382aefcf0",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-016.bin": "f57506857158b95a7ae252175fe7e6aff014bc143d8c8478001c3d207114e1c1",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-017.bin": "efa14a02d45b5cac5e965e16138d06ef22cd9622ccc07b6c5ff8d1d6e2fd4db8",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/human-motion-018.bin": "8335dfc0e51bdd5f41e969fd3c1181cd069e5f129c3a092ef1e2afdb67bf5ba0",
+    "/data/motions/datasets/bones-seed/raw/uniform/210531/jump_and_land_light_001__A001.bvh": "fe819b350aaf0cb269d810d32124a8e24931bd20586e305407aa59144b1cfaff",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/input/bones-seed/motions_uniform/bvh/jump_and_land_light_001__A001.bvh": "fe819b350aaf0cb269d810d32124a8e24931bd20586e305407aa59144b1cfaff",
+    "/data/workspace/motion_studio/experiments/umr-baseline-g1-comparison-20261102/evaluate.py": "276a99981438869d4a06395d771b90cff3070d2a7705298b901ba020fc959b20",
+    "/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/compare.py": "061b95f891da40861a4469950d816c3d578f6e629af253e49b339720ae378ffd",
+    "outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/audit.json": "d66968ce7c5849acb72dd16572287781cf2702c6034231f64f8a6150f794bc94"
+  },
+  "preservation": {
+    "all_comparison_inputs_unchanged": true
+  }
+}

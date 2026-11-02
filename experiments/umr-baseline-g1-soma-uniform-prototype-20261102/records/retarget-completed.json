@@ -1,0 +1,30 @@
+{
+  "command": [
+    "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+    "-B",
+    "/data/workspace/motion_studio/externals/UMR/scripts/humanoid_retarget_pipeline.py",
+    "--config",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/config.json",
+    "--defaults",
+    "/data/workspace/motion_studio/externals/UMR/humanoid_retarget_defaults_bones_seed.json",
+    "--skip-view",
+    "--stage",
+    "retarget"
+  ],
+  "cwd": "/data/workspace/motion_studio/externals/UMR",
+  "environment_overrides": {
+    "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+    "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX",
+    "UMR_WARP_CACHE_DIR": "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache/warp",
+    "PYTHONDONTWRITEBYTECODE": "1",
+    "PYTHONUNBUFFERED": "1",
+    "CUDA_VISIBLE_DEVICES": "0",
+    "OMP_NUM_THREADS": "4",
+    "OPENBLAS_NUM_THREADS": "4",
+    "XDG_CACHE_HOME": "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache",
+    "TMPDIR": "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/tmp"
+  },
+  "started_unix": 1793610932.4958942,
+  "wall_seconds": 36.65434122085571,
+  "returncode": 0
+}

@@ -1,0 +1,111 @@
+Warp UserWarning: Kernel cache artifacts from a previous Warp version were found in '/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache/warp'. These will be ignored. You can safely delete them.
+Warp 1.18.0 initialized:
+   CUDA Toolkit 13.4, Driver 13.0
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA GeForce RTX 5070 Laptop GPU" (8 GiB, sm_120, mempool supported)
+   Kernel cache:
+     /data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02/cache/warp/1.18.0
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/soma/geometry/skeleton_transfer.py:248: UserWarning: Sparse CSR tensor support is in beta state. If you miss a functionality in the sparse tensor support, please submit a feature request to https://github.com/pytorch/pytorch/issues. (Triggered internally at /pytorch/aten/src/ATen/SparseCsrTensorImpl.cpp:53.)
+  self.sparse_rbf_matrix = torch.sparse_csr_tensor(
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/trimesh/visual/texture.py:277: RuntimeWarning: All-NaN slice encountered
+  result.append(np.nanmedian(masks_nan, axis=0).astype(np.int64))
+/data/workspace/motion_studio/externals/UMR/.venv/lib/python3.12/site-packages/trimesh/visual/texture.py:277: RuntimeWarning: invalid value encountered in cast
+  result.append(np.nanmedian(masks_nan, axis=0).astype(np.int64))
+[SOMA] BoneSeed SOMA layer device=cuda:0 lod=mid
+Module soma.geometry.align_vectors_warp 2c131ab load on device 'cuda:0' took 1.25 ms  (cached)
+{
+  "runtime": {
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4",
+      "CUDA_VISIBLE_DEVICES": "0",
+      "UMR_SOMA_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+      "UMR_SOMA_SMPLX_ASSETS_PATH": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr/SMPLX"
+    },
+    "torch_version": "2.7.1+cu128",
+    "torch_threads": 2,
+    "torch_cuda_runtime": "12.8",
+    "cuda_device": "NVIDIA GeForce RTX 5070 Laptop GPU",
+    "soma_device": "cuda:0",
+    "numpy_version": "1.26.4"
+  },
+  "source_frames": [
+    512,
+    513,
+    514,
+    515,
+    516,
+    517,
+    518,
+    519,
+    520,
+    521,
+    522,
+    523,
+    524,
+    525,
+    526,
+    527,
+    528,
+    529,
+    530,
+    531,
+    532,
+    533,
+    534,
+    535,
+    536,
+    537,
+    538,
+    539,
+    540,
+    541,
+    542,
+    543,
+    544,
+    545,
+    546,
+    547,
+    548,
+    549,
+    550,
+    551,
+    552,
+    553,
+    554,
+    555,
+    556,
+    557,
+    558,
+    559,
+    560,
+    561,
+    562,
+    563,
+    564,
+    565,
+    566,
+    567,
+    568,
+    569,
+    570,
+    571,
+    572,
+    573,
+    574,
+    575
+  ],
+  "template_vs_saved_dataset_max_axis_m": 9.5367431640625e-07,
+  "same_model_native_repeat_vertices_max_axis_m": 1.430511474609375e-06,
+  "same_model_native_repeat_joints_max_axis_m": 9.834766387939453e-07,
+  "direct_vs_common_wrapper_vertices_max_axis_m": 1.3113021850585938e-06,
+  "direct_vs_common_wrapper_joints_max_axis_m": 1.3113021850585938e-06,
+  "fresh_quantization_own_reference_max_axis_m": 5.0067901611328125e-05,
+  "exported_decoded_vs_current_native_max_axis_m": 5.0921916961765845e-05,
+  "exported_root_vs_current_native_max_axis_m": 0.0,
+  "cached_model_keys": [],
+  "torch_threads": 2,
+  "fresh_model_native_vertices_max_axis_m": 1.3113021850585938e-06,
+  "fresh_model_native_joints_max_axis_m": 9.5367431640625e-07
+}

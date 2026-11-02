@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/audit-final-executed.py", line 229, in <module>
+    main()
+  File "/data/workspace/motion_studio/outputs/umr-baseline-g1-soma-uniform-prototype-20261102-02-inspection/audit-final-executed.py", line 63, in main
+    assert torch.cuda.is_available() and torch.get_num_threads() == 2
+           ^^^^^
+UnboundLocalError: cannot access local variable 'torch' where it is not associated with a value

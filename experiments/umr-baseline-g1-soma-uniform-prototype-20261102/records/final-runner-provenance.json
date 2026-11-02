@@ -1,0 +1,24 @@
+{
+  "single_command_chain": [
+    "prepare",
+    "build",
+    "train",
+    "retarget",
+    "validate",
+    "export.py",
+    "replay_diagnostic.py -> inspection/replay-diagnostic-verified.json",
+    "audit_replay.py -> inspection/audit.json",
+    "compare.py -> fresh sibling comparison"
+  ],
+  "whole_chain_rerun_after_final_changes": false,
+  "successful_execution": "Staged during development; -02 numerical all --skip-inspection followed by exported inspector and preserved diagnostic/audit/comparison commands",
+  "additional_future_changes": [
+    "Prepare now automatically writes runtime-hardware.json required by precision diagnostic",
+    "Inspection stage records each child command/environment/log and validates fresh derivative destinations first"
+  ],
+  "current_script_sha256": {
+    "/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/run.py": "61e089829b60baf8f303517e8797d98efc17fed5ced159e5a1d156cd9f2642ba",
+    "/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/prepare.py": "5c170bc6539cd8b0c4372e89b6cf04d75a9e542c03a3c7de0c933837e5ddcf38",
+    "/data/workspace/motion_studio/experiments/umr-baseline-g1-soma-uniform-prototype-20261102/validate.py": "d02110b3697c6215bbdea583a1f335dd47b1e75c81e3f082e4edb2a09ff6e112"
+  }
+}
