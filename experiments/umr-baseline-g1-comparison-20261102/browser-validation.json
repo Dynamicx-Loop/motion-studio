@@ -1,0 +1,71 @@
+{
+  "date": "2026-11-02",
+  "scope": "Parent browser verification over loopback HTTP; sampled visual and interaction checks, not complete motion-quality review or physics validation",
+  "base_url": "http://127.0.0.1:8873/",
+  "smplx": {
+    "inspection": "outputs/umr-baseline-g1-smplx-20261102-inspection",
+    "observed_frames": [
+      0,
+      1000,
+      2700,
+      4514,
+      5467
+    ],
+    "checks": [
+      "both human and robot surfaces render with colored bindings",
+      "reference pose toggle and Front camera fit",
+      "frame selection reaches final frame5467",
+      "Play advances timeline; Pause works"
+    ],
+    "observations": [
+      "At frame4514, both bodies show a low seated support pose; limb configurations visibly differ. This is a sampled visual observation, not a fidelity score."
+    ],
+    "resource_errors": [
+      "favicon.ico404 only; no failed viewer/data resource observed"
+    ]
+  },
+  "somax": {
+    "inspection": "outputs/umr-baseline-g1-somax-20261102-inspection-04",
+    "observed_frames": [
+      0,
+      547,
+      1164
+    ],
+    "checks": [
+      "generic/unfitted calibration notice visible",
+      "both human and robot surfaces render with colored bindings",
+      "reference pose toggle and Front camera fit",
+      "Play advances from547 to848; Pause works",
+      "last frame1164 loads",
+      "leftForeArm filter shows129slots with source/target ownership"
+    ],
+    "observations": [
+      "At source pelvis-height maximum frame547, both bodies show raised forearms and elevated feet; exact poses differ."
+    ],
+    "resource_errors": [],
+    "console_errors_or_warnings": []
+  },
+  "comparison": {
+    "path": "outputs/umr-baseline-g1-comparison-20261102-04/index.html",
+    "checks": [
+      "diagram renders",
+      "both viewer links return200",
+      "SVG, measurementJSON and evaluator links return200",
+      "no horizontal overflow at1400x950",
+      "no console errors or warnings"
+    ]
+  },
+  "screenshots_sha256": {
+    "outputs/umr-baseline-g1-smplx-20261102-inspection/browser-reference-fit.png": "758fd843c28ebac0865439d85c8e8ce73c6dda5c54ee1265ce12f20fec0df991",
+    "outputs/umr-baseline-g1-smplx-20261102-inspection/browser-motion-low-root.png": "4da1487f1df1b69457068b87ef90eebc32573126ea9df789034a6c83775f0fa9",
+    "outputs/umr-baseline-g1-somax-20261102-inspection-04/browser-reference.png": "5076acfd6bef3af86a2edebcfcdb120f228e7968d9e4d5499c6cbf80acd36b93",
+    "outputs/umr-baseline-g1-somax-20261102-inspection-04/browser-motion-apex547.png": "dd0a56ff6a460553d8f8574b8f9bc4ad34cffab2fdee65f1ac86e068d6d39093",
+    "outputs/umr-baseline-g1-comparison-20261102-04/browser-report.png": "83b3e633dfe264a65d9fa2e043da532edda2e8df2abe04a4a9a434477e6aa8f8"
+  },
+  "limitations": [
+    "Not a complete visual review of every frame",
+    "Local HTTP verified; file URL access not tested",
+    "No dynamic simulation, controller, collision or contact-ground-truth validation",
+    "Screenshot files are later browser derivatives, not members of the original export manifest"
+  ]
+}

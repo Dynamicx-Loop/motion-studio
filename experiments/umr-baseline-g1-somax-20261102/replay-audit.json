@@ -1,0 +1,38 @@
+{
+  "all_robot_frames_and_4096_bindings_checked": true,
+  "robot_binary_rigid_replay_max_axis_error_m": 0.0,
+  "robot_replay_axis_tolerance_m": 5e-07,
+  "source_face_bary_replay_checked": true,
+  "human_binary_chunks_and_timeline_checked": true,
+  "human_max_vertex_axis_error_m": 5.0067901611328125e-05,
+  "source_scale": 0.7462310194969177,
+  "source_ground_shift_native_z_m": 0.0,
+  "native19_segment_counts": {
+    "head": 384,
+    "hips": 441,
+    "leftArm": 108,
+    "leftFoot": 142,
+    "leftForeArm": 129,
+    "leftHand": 81,
+    "leftLeg": 298,
+    "leftShoulder": 68,
+    "leftUpLeg": 388,
+    "leftUpperArm": 54,
+    "rightArm": 120,
+    "rightFoot": 141,
+    "rightForeArm": 133,
+    "rightHand": 78,
+    "rightLeg": 310,
+    "rightShoulder": 76,
+    "rightUpLeg": 374,
+    "rightUpperArm": 58,
+    "torso": 713
+  },
+  "robot_slot_projection_mean_m": 0.007270470575960308,
+  "robot_slot_projection_p95_m": 0.01968594780191779,
+  "robot_slot_projection_max_m": 0.03751976415514946,
+  "limitations": [
+    "Projection is a reference-pose diagnostic, not anatomical accuracy or motion quality.",
+    "No dynamics or controller evaluation."
+  ]
+}

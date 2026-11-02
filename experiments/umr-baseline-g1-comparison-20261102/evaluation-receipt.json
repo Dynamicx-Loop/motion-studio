@@ -1,0 +1,426 @@
+{
+  "scope": "Official-default SMPL-X G1 reproduction plus SOMA generic control; different-motion descriptive comparison, no causal human-model ranking",
+  "authoritative_output": "outputs/umr-baseline-g1-comparison-20261102-04",
+  "full_measurements_sha256": "99cf36231e86d20a2a438b1ae174f1b0cf377fce289b1a218a8db001205bbf28",
+  "evaluator_sha256": "276a99981438869d4a06395d771b90cff3070d2a7705298b901ba020fc959b20",
+  "consumed_input_file_count": 416,
+  "preservation": {
+    "all_evaluation_inputs_unchanged": true
+  },
+  "robot_consistency": {
+    "all_checked_equal": true,
+    "checks": {
+      "geom_type": true,
+      "geom_bodyid": true,
+      "geom_dataid": true,
+      "geom_pos": true,
+      "geom_quat": true,
+      "geom_size": true,
+      "mesh_vert": true,
+      "mesh_face": true,
+      "body_parentid": true,
+      "body_pos": true,
+      "body_quat": true,
+      "body_mass": true,
+      "body_inertia": true,
+      "jnt_type": true,
+      "jnt_qposadr": true,
+      "jnt_bodyid": true,
+      "jnt_pos": true,
+      "jnt_axis": true,
+      "jnt_range": true,
+      "jnt_limited": true,
+      "qpos0": true,
+      "body_names_order": true,
+      "joint_names_order": true,
+      "geom_names_order": true,
+      "dataset_robot_vertices": true,
+      "dataset_robot_faces": true,
+      "dataset_robot_sample_points": true,
+      "resolved_robot_settings_except_xml_path": true
+    },
+    "scope": "Exact compiled selected arrays, names/order, static sampled robot surface and official settings; not whole simulator equivalence"
+  },
+  "spatial_segment_consistency": {
+    "probe_count": 4096,
+    "label_agreement_fraction": 0.8798828125,
+    "per_segment_probe_iou": {
+      "head": 0.9573643410852714,
+      "hips": 0.6326923076923077,
+      "leftArm": 0.6982758620689655,
+      "leftFoot": 0.9226190476190477,
+      "leftForeArm": 0.7340425531914894,
+      "leftHand": 0.8,
+      "leftLeg": 0.8724637681159421,
+      "leftShoulder": 0.7619047619047619,
+      "leftUpLeg": 0.7662921348314606,
+      "leftUpperArm": 0.6811594202898551,
+      "rightArm": 0.6470588235294118,
+      "rightFoot": 0.9053254437869822,
+      "rightForeArm": 0.7035175879396985,
+      "rightHand": 0.7674418604651163,
+      "rightLeg": 0.8746666666666667,
+      "rightShoulder": 0.6702127659574468,
+      "rightUpLeg": 0.7632850241545893,
+      "rightUpperArm": 0.5694444444444444,
+      "torso": 0.8404726735598228
+    },
+    "smplx_to_somax_label_counts": {
+      "head": {
+        "head": 247,
+        "torso": 3
+      },
+      "hips": {
+        "hips": 329,
+        "rightUpLeg": 64,
+        "leftUpLeg": 70
+      },
+      "leftArm": {
+        "leftArm": 81,
+        "leftUpperArm": 10
+      },
+      "leftFoot": {
+        "leftFoot": 155,
+        "leftLeg": 12
+      },
+      "leftForeArm": {
+        "leftForeArm": 138,
+        "leftArm": 24
+      },
+      "leftHand": {
+        "leftHand": 104,
+        "leftForeArm": 26
+      },
+      "leftLeg": {
+        "leftLeg": 301,
+        "leftFoot": 1
+      },
+      "leftShoulder": {
+        "leftShoulder": 64,
+        "leftUpperArm": 4,
+        "torso": 6
+      },
+      "leftUpLeg": {
+        "leftUpLeg": 341,
+        "leftLeg": 31,
+        "rightUpLeg": 2
+      },
+      "leftUpperArm": {
+        "leftUpperArm": 47,
+        "leftShoulder": 2,
+        "torso": 5,
+        "leftArm": 1
+      },
+      "rightArm": {
+        "rightArm": 88,
+        "rightUpperArm": 18
+      },
+      "rightFoot": {
+        "rightFoot": 153,
+        "rightLeg": 13
+      },
+      "rightForeArm": {
+        "rightForeArm": 140,
+        "rightArm": 29
+      },
+      "rightHand": {
+        "rightHand": 99,
+        "rightForeArm": 30
+      },
+      "rightLeg": {
+        "rightLeg": 328,
+        "rightFoot": 3
+      },
+      "rightShoulder": {
+        "rightShoulder": 63,
+        "torso": 10,
+        "rightUpperArm": 4
+      },
+      "rightUpLeg": {
+        "rightUpLeg": 316,
+        "rightLeg": 31,
+        "leftUpLeg": 1
+      },
+      "rightUpperArm": {
+        "rightShoulder": 7,
+        "rightUpperArm": 41,
+        "torso": 1,
+        "rightArm": 1
+      },
+      "torso": {
+        "torso": 569,
+        "hips": 57,
+        "leftShoulder": 8,
+        "head": 8,
+        "rightShoulder": 10
+      }
+    },
+    "nearest_binding_distance_m": {
+      "smplx": {
+        "mean": 0.0065838130087171355,
+        "p50": 0.0055521159024348975,
+        "p95": 0.013223252906148147,
+        "max": 0.030332236904311922
+      },
+      "somax": {
+        "mean": 0.006991462610631091,
+        "p50": 0.006053162476812882,
+        "p95": 0.013649588695958953,
+        "max": 0.028826814460119553
+      }
+    },
+    "definition": "Same SMPL-X-run uniform robot reference samples; nearest projected learned target binding assigns a source segment separately per run. Learned slot rows are never equated across humans."
+  },
+  "smplx": {
+    "segment_counts": {
+      "rightFoot": 143,
+      "leftFoot": 142,
+      "rightLeg": 290,
+      "leftLeg": 265,
+      "rightUpLeg": 336,
+      "leftUpLeg": 358,
+      "hips": 477,
+      "torso": 761,
+      "rightUpperArm": 48,
+      "rightShoulder": 80,
+      "leftForeArm": 136,
+      "rightHand": 98,
+      "rightForeArm": 131,
+      "leftArm": 93,
+      "leftHand": 100,
+      "rightArm": 100,
+      "leftUpperArm": 57,
+      "leftShoulder": 66,
+      "head": 415
+    },
+    "target_projection_distance_m": {
+      "mean": 0.007029064041112976,
+      "p50": 0.004931214964017272,
+      "p95": 0.01939333276823163,
+      "max": 0.04819653183221817
+    },
+    "robot_probe_to_binding_distance_m": {
+      "mean": 0.0065838130087171355,
+      "p50": 0.0055521159024348975,
+      "p95": 0.013223252906148147,
+      "max": 0.030332236904311922
+    },
+    "unique_target_bodies": 33,
+    "motion": {
+      "frame_count": 5468,
+      "fps": 90.00090026855469,
+      "source_scale": 0.7957031726837158,
+      "duration_frames_over_fps_s": 60.75494782478813,
+      "root_quaternion_norm_max_error": 5.960464477539063e-08,
+      "compiled_and_configured_joint_limit_max_excess_rad": 0.0,
+      "absolute_scalar_joint_step_rad": {
+        "mean": 0.0065998646080962925,
+        "p50": 0.003407716751098633,
+        "p95": 0.024252676963806143,
+        "max": 0.15312659740447998
+      },
+      "hips_centered_segment_centroid_mismatch_m": {
+        "mean": 0.0475284515211976,
+        "p50": 0.0450857196678951,
+        "p95": 0.08469315407248895,
+        "max": 0.13951610742003215
+      },
+      "foot_proxies": {
+        "source": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.01291276360712496,
+              "p50": 0.011597183348086126,
+              "p95": 0.022591442916874947,
+              "max": 0.07352978241451487
+            },
+            "near_floor_interval_fraction": 0.9074446680080482,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.05867099050387672,
+              "p50": 0.027531549645801484,
+              "p95": 0.21274010287961714,
+              "max": 1.1417271794032573
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.017739140306291094,
+              "p50": 0.017925430667101998,
+              "p95": 0.02949704216164915,
+              "max": 0.05804280120253377
+            },
+            "near_floor_interval_fraction": 0.6515456374611304,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.04438033976052504,
+              "p50": 0.014759052574247986,
+              "p95": 0.1803038639536444,
+              "max": 1.2575617793976759
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          }
+        },
+        "robot": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.010965113312461562,
+              "p50": 0.013289482885295748,
+              "p95": 0.026726803891366353,
+              "max": 0.08183513934744104
+            },
+            "near_floor_interval_fraction": 0.8265959392719956,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.11471515015799948,
+              "p50": 0.06898987346603791,
+              "p95": 0.34375702437574424,
+              "max": 1.7318750708934803
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.011350354815937725,
+              "p50": 0.011655847680965125,
+              "p95": 0.035242141476363106,
+              "max": 0.047607470245203946
+            },
+            "near_floor_interval_fraction": 0.8106822754710079,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.12995230973614674,
+              "p50": 0.07860196447686596,
+              "p95": 0.42037581031932875,
+              "max": 2.12906078255732
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          }
+        }
+      }
+    }
+  },
+  "somax": {
+    "segment_counts": {
+      "leftFoot": 142,
+      "rightFoot": 141,
+      "leftLeg": 298,
+      "rightLeg": 310,
+      "leftUpLeg": 388,
+      "rightUpLeg": 374,
+      "hips": 441,
+      "torso": 713,
+      "rightShoulder": 76,
+      "leftShoulder": 68,
+      "rightUpperArm": 58,
+      "leftUpperArm": 54,
+      "leftArm": 108,
+      "rightArm": 120,
+      "rightHand": 78,
+      "leftHand": 81,
+      "leftForeArm": 129,
+      "rightForeArm": 133,
+      "head": 384
+    },
+    "target_projection_distance_m": {
+      "mean": 0.007270470575960308,
+      "p50": 0.005110862897709012,
+      "p95": 0.01968594780191779,
+      "max": 0.03751976415514946
+    },
+    "robot_probe_to_binding_distance_m": {
+      "mean": 0.006991462610631091,
+      "p50": 0.006053162476812882,
+      "p95": 0.013649588695958953,
+      "max": 0.028826814460119553
+    },
+    "unique_target_bodies": 33,
+    "motion": {
+      "frame_count": 1165,
+      "fps": 120.00479888916016,
+      "source_scale": 0.7462310194969177,
+      "duration_frames_over_fps_s": 9.707945105395552,
+      "root_quaternion_norm_max_error": 5.960464477539063e-08,
+      "compiled_and_configured_joint_limit_max_excess_rad": 0.0,
+      "absolute_scalar_joint_step_rad": {
+        "mean": 0.003218431492978255,
+        "p50": 0.0004623187705874443,
+        "p95": 0.014285366050899029,
+        "max": 0.24588415026664734
+      },
+      "hips_centered_segment_centroid_mismatch_m": {
+        "mean": 0.03178340964949955,
+        "p50": 0.02805001292375294,
+        "p95": 0.06350684468870624,
+        "max": 0.09288469676335413
+      },
+      "foot_proxies": {
+        "source": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.004056753163292184,
+              "p50": -0.005127583921561474,
+              "p95": -0.002276025313929256,
+              "max": 0.057930100761576384
+            },
+            "near_floor_interval_fraction": 0.979381443298969,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.01113219465897296,
+              "p50": 0.002685393853261173,
+              "p95": 0.025549723706377345,
+              "max": 0.5335423982088889
+            },
+            "below_floor_5mm_frame_fraction": 0.5931330472103005
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": -0.004250469103737908,
+              "p50": -0.005602977364616915,
+              "p95": 5.664629662919058e-05,
+              "max": 0.061898571386905805
+            },
+            "near_floor_interval_fraction": 0.979381443298969,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.010953357767648964,
+              "p50": 0.002599534136256062,
+              "p95": 0.023094140892376425,
+              "max": 0.5526925508303394
+            },
+            "below_floor_5mm_frame_fraction": 0.8291845493562232
+          }
+        },
+        "robot": {
+          "leftFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0009109778820747707,
+              "p50": -8.66289194890665e-08,
+              "p95": 0.0019560330225493775,
+              "max": 0.05088364013323221
+            },
+            "near_floor_interval_fraction": 0.9819587628865979,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03881443783322799,
+              "p50": 0.00673955411435396,
+              "p95": 0.20371629524129148,
+              "max": 0.7423636776355472
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          },
+          "rightFoot": {
+            "foot_slot_height_p05_m": {
+              "mean": 0.0014202944992421998,
+              "p50": 0.0005007539520887373,
+              "p95": 0.0025055670082973257,
+              "max": 0.05062276265257476
+            },
+            "near_floor_interval_fraction": 0.9819587628865979,
+            "near_floor_centroid_planar_speed_m_s": {
+              "mean": 0.03717354856045581,
+              "p50": 0.00651480437893392,
+              "p95": 0.1958294162066333,
+              "max": 0.6764586428986301
+            },
+            "below_floor_5mm_frame_fraction": 0.0
+          }
+        }
+      }
+    }
+  }
+}

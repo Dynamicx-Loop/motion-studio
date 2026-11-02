@@ -1,6 +1,24 @@
 # Experiment index
 
-All 33 experiment directories listed below are **legacy**, designated on
+## Current experiments
+
+The new G1 study on `experiments/umr-baseline` uses fresh outputs and retains
+the complete requested source clips. It contributes evidence toward the future
+experiment contract; it does not declare that contract settled.
+
+| Experiment | Scope |
+| --- | --- |
+| [G1 / SMPL-X](umr-baseline-g1-smplx-20261102/README.md) | Official-default UMR reproduction with the full HiPHI get-up clip. |
+| [G1 / SOMA-X](umr-baseline-g1-somax-20261102/README.md) | Direct jump-and-land BVH control; the official BONES-SEED fitted-body baseline requires the missing uniform shape fit. |
+| [G1 comparison](umr-baseline-g1-comparison-20261102/README.md) | Human/robot bindings, source/retarget replay, and robot binding consistency across source models. |
+
+The clips differ, so motion-quality differences cannot be attributed solely to
+the human model. Each record states its execution status, actual source route,
+settings, validation and limitations.
+
+## Legacy experiments
+
+All 33 experiment directories in this section are **legacy**, designated on
 2026-11-02. They remain in place for historical evidence and reference. New
 experiments will establish a standard experiment contract; that contract is
 not yet settled. Legacy status does not invalidate recorded results or assert

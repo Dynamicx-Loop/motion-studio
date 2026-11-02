@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+    "/data/workspace/motion_studio/motion_studio/integrations/_umr_worker.py",
+    "/data/workspace/motion_studio/externals/UMR",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-smplx-20261102",
+    "/data/motions/human_models/smplx/1.1/models_smplx_v1_1/models/smplx",
+    "prepare"
+  ],
+  "cwd": "/data/workspace/motion_studio/externals/UMR",
+  "timeout_seconds": 120,
+  "started_at": "2026-11-02T07:33:49.248836+00:00",
+  "returncode": 0,
+  "wall_seconds": 1.7694609800018952,
+  "finished_at": "2026-11-02T07:33:51.018372+00:00"
+}

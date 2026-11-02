@@ -1,0 +1,6 @@
+{
+  "prepared_runner_path": "/data/workspace/motion_studio/experiments/umr-baseline-g1-somax-20261102/run.py",
+  "prepared_runner_sha256": "f299e80246520d869e50535fefc5e5d095bb2205fd70349ca0ae01947a28783d",
+  "preserved_snapshot": "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/runner-prepared.py",
+  "reason": "Parent requested output parameter and preservation audit after prepare; stage receipts preserve executed runner snapshots."
+}

@@ -1,0 +1,9 @@
+{
+  "source_and_upstream_hashes_unchanged": true,
+  "all_experiment_python_compiles": true,
+  "run_artifact_count": 170,
+  "inspection_artifact_count": 42,
+  "upstream_tracked_changes": "",
+  "branch": "experiments/umr-baseline",
+  "official_fitted_bones_seed": false
+}

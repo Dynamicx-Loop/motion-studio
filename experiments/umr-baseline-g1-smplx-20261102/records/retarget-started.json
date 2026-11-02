@@ -1,0 +1,16 @@
+{
+  "command": [
+    "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+    "/data/workspace/motion_studio/externals/UMR/scripts/humanoid_retarget_pipeline.py",
+    "--config",
+    "/data/workspace/motion_studio/outputs/umr-baseline-g1-smplx-20261102/config.json",
+    "--defaults",
+    "/data/workspace/motion_studio/externals/UMR/humanoid_retarget_defaults.json",
+    "--skip-view",
+    "--stage",
+    "retarget"
+  ],
+  "cwd": "/data/workspace/motion_studio/externals/UMR",
+  "timeout_seconds": 7200,
+  "started_at": "2026-11-02T07:34:34.146420+00:00"
+}

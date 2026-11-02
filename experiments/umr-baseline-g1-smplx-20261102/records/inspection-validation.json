@@ -1,0 +1,37 @@
+{
+  "all_frames": 5468,
+  "all_slots": 4096,
+  "all_frame_robot_binding_axis_error_m": 1.2429001672309425e-07,
+  "robot_binding_axis_tolerance_m": 5e-07,
+  "human_vertex_axis_error_m": 5.0067901611328125e-05,
+  "human_vertex_axis_tolerance_m": 5.1e-05,
+  "builtin_native_joint_order_equal": true,
+  "builtin_reference_named_body_max_error": 0.0,
+  "semantic_schema": "smplx_55_to_19_upper_arm_v1",
+  "segment_counts": {
+    "head": 415,
+    "hips": 477,
+    "leftArm": 93,
+    "leftFoot": 142,
+    "leftForeArm": 136,
+    "leftHand": 100,
+    "leftLeg": 265,
+    "leftShoulder": 66,
+    "leftUpLeg": 358,
+    "leftUpperArm": 57,
+    "rightArm": 100,
+    "rightFoot": 143,
+    "rightForeArm": 131,
+    "rightHand": 98,
+    "rightLeg": 290,
+    "rightShoulder": 80,
+    "rightUpLeg": 336,
+    "rightUpperArm": 48,
+    "torso": 761
+  },
+  "human_chunks": 86,
+  "limitations": [
+    "Human vertex error is the exporter measurement, not a second independent reconstruction.",
+    "Reference transforms and surface replay do not establish contact, collision, dynamics or hardware feasibility."
+  ]
+}
