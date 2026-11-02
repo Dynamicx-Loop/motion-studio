@@ -40,17 +40,21 @@ Blue left = shipped SMPL-X with fitted hands. Orange right = fresh BVH body conv
 
 Artifacts: `reconverted.npz`, `report.json`, `conversion.log`, `export.log`, `viewer/`.
 
-## Reproduction
+## Historical reproduction and viewing
 
-Run from `/data/workspace/motion_studio`:
+The original commands used `scripts/validate_hiphi_conversion.py --bvh ...` and
+`scripts/export_hiphi_comparison.py`. **Do not run these historical writers**:
+they use fixed cohort paths and can replace retained reports or archive aliases.
+See [artifact relocation](../../docs/artifact-relocation.md#remaining-sealed-batches-and-complete-ledger).
+There is currently no fresh-output reproduction route for this conversion control;
+[HiPHI robot-control preparation](../../docs/artifact-relocation.md#frozen-writers-and-a-fresh-preparation-route)
+prepares a separate robot comparison, not a conversion rerun.
+
+The existing viewer is read-only when served from the workspace root:
 
 ```bash
-externals/UMR/.venv/bin/python scripts/validate_hiphi_conversion.py --bvh externals/UMR/sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor.bvh
-externals/UMR/.venv/bin/python scripts/export_hiphi_comparison.py
 python3 -m http.server 8768 --bind 127.0.0.1 --directory experiments/hiphi-conversion-control/viewer
 ```
-
-The mesh exporter requires GPU access in this environment. Running the validator without `--bvh` performs only the earlier reference audit and overwrites report.json with that limited audit; use the full command above to reproduce the experiment.
 
 ## Mesh control and viewer verification
 

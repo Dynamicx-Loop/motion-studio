@@ -31,17 +31,25 @@ Within-robot differences are the experiment's outcome. Cross-robot differences a
 
 The viewer uses a shared fixed centering translation within each pair and ±1.3 m display offsets. Height and trajectories are preserved; overlay removes the display offsets. Colors identify the two versions, with original robot mesh detail retained.
 
-## Reproduction
+## Historical reproduction and fresh preparation
 
-From `/data/workspace/motion_studio`:
+The original run used `experiments/hiphi-robot-control/run.py` and
+`scripts/export_hiphi_robot_control.py`. **Do not run these historical writers**:
+they target the frozen cohort; archived log and mesh targets are read-only, and
+other retained evidence can still be replaced. See the
+[fresh preparation route](../../docs/artifact-relocation.md#frozen-writers-and-a-fresh-preparation-route),
+which creates fresh configurations and model inputs without executing a solve.
+Its receipt provides individual execution commands; runtime and model prerequisites
+need separate validation. It does not reproduce the old viewer or establish new
+numerical results. GPU access is required for the recorded retargets. Source
+revisions are UMR `d1cdaedaf67a827198da71c5fa831f48b2e51f91` and hiphi2smplx
+`65e51315ebbc82b2f0ff8e35a94565beb1b345e1`.
+
+To view the existing saved viewer from the workspace root:
 
 ```bash
-externals/UMR/.venv/bin/python experiments/hiphi-robot-control/run.py
-externals/UMR/.venv/bin/python scripts/export_hiphi_robot_control.py
 python3 -m http.server 8769 --bind 127.0.0.1 --directory experiments/hiphi-robot-control/viewer
 ```
-
-GPU access is required for retargeting in this environment. Existing compatible pipeline outputs are reused. Source revisions are UMR `d1cdaedaf67a827198da71c5fa831f48b2e51f91` and hiphi2smplx `65e51315ebbc82b2f0ff8e35a94565beb1b345e1`.
 
 ## Results
 

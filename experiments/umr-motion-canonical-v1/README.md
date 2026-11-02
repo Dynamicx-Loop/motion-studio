@@ -59,6 +59,10 @@ compatible with a future dataset actor shape. SOMA motion remains unrun.
 
 ## Reproduction
 
+The commands below document this historical cohort and may write to its fixed
+paths. Do not run them against retained evidence; adapt every destination to a
+fresh cohort before reuse.
+
 From `/data/workspace/motion_studio`, after canonical raw/candidate preparation:
 
 ```sh

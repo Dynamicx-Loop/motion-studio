@@ -2,11 +2,11 @@
 import hashlib
 import json
 from pathlib import Path
+import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 from motion_data_paths import canonical_motion_path
 import shutil
 import subprocess
-import sys
 import xml.etree.ElementTree as ET
 
 import mujoco

@@ -1,26 +1,26 @@
 # UMR canonical Astro evidence report
 
-Current snapshot:2026-10-23,v4. The report leads with one frozen Astro Dex3-1 asset
-at `d2070956558ffbf9226dcf74017d40740724d8d8`, four fresh static trainings,
-eight candidate calibration branches and eight fresh offline HiPHI motion solves.
-Four G1 static slot controls are verified reuses; their bindings/metrics and all
-G1 motions are recomputed. The current model XML SHA-256 is
+Current snapshot: 2026-10-23, v5. The report uses one frozen Astro Dex3-1
+asset at `d2070956558ffbf9226dcf74017d40740724d8d8`, with XML SHA-256
 `c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66`.
-Historical variants/results and retired holds are grouped in a labeled disclosure.
+Four Astro correspondences were freshly trained on the fixed-fist surface; G1
+static slots retain their historical provenance. Eight offline HiPHI motion
+solves use raw and candidate bindings. All 14 Astro finger coordinates are fixed.
+The preceding open-hand v4 cohort remains separately labeled in the report.
 
-There are36 numerical source/robot/center/variant arms,1332 verified segment rows
-(740historical+592current),20unique English figures shared by EN/中,and current
-raw,candidate and synchronized-motion inspectors. All six anatomical figure rows
-remain present, including shoulders/clavicles and hips/pelvis. The previous v3
-report/source is archived at `outputs/umr-binding-report/history/pre-canonical-v3/`.
+The v5 report contains 52 numerical arms and 1,924 segment rows (1,332 historical
+and 592 current), with 20 English figures shared by both languages. The wrist
+candidate increases static hand membership. In the fixed-fist motion cohort,
+worst visual floor penetration decreases from 26.55 to 25.89 mm for bbox50 and
+from 22.70 to 17.38 mm for spine1. Substantial penetration remains; raw is the
+default. The historical open-hand v4 results instead worsened from 37.05 to
+56.71 mm and 28.14 to 30.76 mm, respectively. Neither cohort establishes dynamic
+feasibility. BONES-SEED motion, actor fit and dataset rig inputs remain absent.
 
-The builder reads completed results only. It never trains,calibrates or solves
-motion. New actual outputs support the current conclusions: raw static/motion
-results reproduce prior visual-surface measurements; the wrist candidate improves
-static hand membership but worsens Astro worst visual floor penetration,
-37.05→56.71mm for bbox50 and28.14→30.76mm for spine1. Raw is the default.
-SOMA-X model auto-detection links work in both UMR checkouts; BONES-SEED motion,
-actor-fit and dataset rig inputs remain absent, so no SOMA motion is claimed.
+The builder reads completed results; it does not train, calibrate or solve motion.
+The commands below document the captured build and write to fixed historical
+paths. Do not run them against retained evidence; a new edition requires fresh,
+explicit output paths as described in [offline documentation](../../docs/offline-documentation.md).
 
 ## Build and view
 
@@ -28,7 +28,7 @@ From `/data/workspace/motion_studio`:
 
 ```sh
 python3 experiments/umr-binding-report/plot_canonical.py  # current saved six-row grids
-python3 experiments/astro-canonical-wrist-v1/plot.py  # current saved closeups
+python3 experiments/astro-fist-wrist-v1/plot.py  # v5 saved closeups
 python3 experiments/umr-binding-report/build_report.py
 python3 experiments/umr-binding-report/verify_report.py
 python3 -m http.server 8770 --bind 127.0.0.1 --directory outputs/umr-binding-report
@@ -77,7 +77,7 @@ original asset terms; this report does not establish redistribution rights.
   including report source files; HTML/output hashes are recorded separately.
 - `localization.py`: authored-text and accessibility translation coverage guard.
 - `verify_report.py`: checks all local links, unique shared image payloads, offline
-  core dependencies and all 1332 segment metric rows (740 historical + 592 current) against the saved experiment record.
+  core dependencies and segment metric rows against the saved experiment records.
 - Generated `build-validation.json`: record of report assembly checks.
 
 To extend, add a completed record to `catalog.json`, update the authored synthesis
@@ -134,11 +134,11 @@ calibration, training or motion. Final checks are in `validation.json`.
 ## Historical open-hand canonical extension (v4)
 
 - `canonical_report.py` adapts the completed canonical raw/calibrated/motion
-  records without replacing historical arrays. Current arms precede clearly
-  prefixed historical arms; the explorer defaults to raw Astro bbox50.
-- `canonical-section.html` and `canonical-zh.json` provide the current bilingual
-  narrative,tables,metric tradeoff,model pin and evidence links. Historical holds
-  are explicitly retired; old text stays available for provenance.
+  records without replacing historical arrays. At v4, current arms preceded
+  historical arms and the explorer defaulted to raw Astro bbox50.
+- `canonical-section.html` and `canonical-zh.json` provided that edition’s bilingual
+  narrative, tables, metric tradeoff, model pin and evidence links.
+  Historical holds were explicitly retired; old text stays available for provenance.
 - `plot_canonical.py` reuses the six-row actual-triangle renderer for fresh saved
   raw bindings,with adjacent source references and matched-centering companions.
   `canonical-figure-provenance.json` hashes all inputs/outputs and source masks.
@@ -148,14 +148,12 @@ calibration, training or motion. Final checks are in `validation.json`.
 - The state-preserving EN/中 toggle retains selections,disclosures,hash and the
   loaded inspector. Both languages use the same numeric data and image payloads.
 - `verify_report.py` checks local links,20unique images,1332exact segment rows,
-  the single current Astro hash and8fresh motion records. Browser checks cover
+  the then-current Astro hash and eight fresh motion records. Browser checks covered
   language equality,state,figure enlargement,inspectors and synchronized playback.
 
-To reproduce computation,follow the three current experiment READMEs. The report
-server on127.0.0.1:8770 remains in place while the bundle updates. Do not run old
-`plot_report.py` merely to update current evidence: it rebuilds the historical
-figure provenance from its own inputs. The archived historical figures remain
-unchanged and keep their own hash guards.
+The original v4 build commands and output paths are retained for provenance. Do
+not run its writers against retained evidence; `plot_report.py` also rebuilds
+historical figure provenance. Archived figures retain their own hash guards.
 
 ## Current fixed-fist extension (v5)
 

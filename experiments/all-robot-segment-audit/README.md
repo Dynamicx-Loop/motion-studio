@@ -244,6 +244,10 @@ performance or motion-quality claim follows.
 
 ## Reproduction and outputs
 
+The commands below document this historical cohort and may write to its fixed
+paths. Do not run them against retained evidence; adapt every destination to a
+fresh cohort before reuse.
+
 Working directory: `/data/workspace/motion_studio`.
 All configs and merged `*-resolved.json` files are beside this record. Twelve
 new dataset/train pairs live under ignored `outputs/all-robot-segment-audit/`.

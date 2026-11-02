@@ -1,8 +1,9 @@
 """Verify exported diagnostics and record local provenance, without motion execution."""
 from pathlib import Path
+import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 from motion_data_paths import canonical_motion_path
-import hashlib,json,subprocess,sys,platform,csv
+import hashlib,json,subprocess,platform,csv
 import numpy as np,mujoco,scipy,torch,trimesh
 ROOT=Path(__file__).resolve().parents[2];HERE=Path(__file__).resolve().parent;OUT=ROOT/'outputs/all-robot-segment-audit';UP=ROOT/'externals/UMR'
 

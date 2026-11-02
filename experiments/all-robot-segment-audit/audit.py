@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Audit all shipped canonical correspondences, export geometry; never solve motion."""
 from pathlib import Path
+import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 from motion_data_paths import canonical_motion_path
 from collections import Counter
-import hashlib,json,pickle,sys,csv,shutil
+import hashlib,json,pickle,csv,shutil
 import numpy as np
 import mujoco
 from scipy.spatial import cKDTree

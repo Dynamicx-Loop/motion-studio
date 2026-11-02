@@ -72,6 +72,10 @@ through actual saved root offsets and configs, as in the historical source audit
 
 ## Reproduction
 
+The commands below document this historical cohort and may write to its fixed
+paths. Do not run them against retained evidence; adapt every destination to a
+fresh cohort before reuse.
+
 From `/data/workspace/motion_studio`:
 
 ```sh

@@ -251,6 +251,10 @@ would still require an additional validated control.
 
 ## Reproduction, inspection and validation
 
+The commands below document this historical cohort and may write to its fixed
+paths. Do not run them against retained evidence; adapt every destination to a
+fresh cohort before reuse.
+
 Working directory: `/data/workspace/motion_studio`; original UMR virtual environment.
 Only experiment-local files are written. `prepare.py` refuses existing derivative
 datasets; `run_correspondence.py` refuses existing checkpoints. Use a fresh output

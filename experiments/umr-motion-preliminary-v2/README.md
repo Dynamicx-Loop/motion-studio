@@ -65,21 +65,21 @@ into each output arm with its base path recorded.
 
 ## Reproduction and artifacts
 
-From `/data/workspace/motion_studio`, using the existing UMR virtual environment:
+The original `run.py`, `export.py`, `source.py`, `tracking.py` and
+`provenance.py` use fixed historical output paths. **Do not run them against this
+frozen cohort**; copying the viewer into its old output directory also writes to
+historical evidence. There is no equivalent fresh-output runner for this cohort.
+[Canonical UMR preparation](../../docs/umr-canonical-preparation.md) creates a new,
+prepared-only cohort, not a rerun of these four solves or their viewer. A future
+reproduction needs separately validated fresh configurations and output paths.
+
+The existing viewer can be served read-only from the workspace root:
 
 ```sh
-externals/UMR/.venv/bin/python experiments/umr-motion-preliminary-v2/run.py
-externals/UMR/.venv/bin/python experiments/umr-motion-preliminary-v2/export.py
-externals/UMR/.venv/bin/python experiments/umr-motion-preliminary-v2/source.py
-externals/UMR/.venv/bin/python experiments/umr-motion-preliminary-v2/tracking.py
-externals/UMR/.venv/bin/python experiments/umr-motion-preliminary-v2/provenance.py
-cp experiments/umr-motion-preliminary-v2/viewer.js outputs/umr-motion-preliminary-v2/viewer/app.js
-cp experiments/umr-motion-preliminary-v2/viewer.html outputs/umr-motion-preliminary-v2/viewer/index.html
 python3 -m http.server 8772 --bind 127.0.0.1 --directory outputs/umr-motion-preliminary-v2/viewer
 ```
 
-For a new solve, use a new version/output directory and copied configs; existing
-results are reused by UMR. `run.py` executes arms serially. GPU was idle of compute
+The recorded `run.py` executed arms serially. GPU was idle of compute
 jobs before starting. Exact subprocess commands, exit codes, elapsed time are in
 [runs.json](runs.json); `/usr/bin/time -v` CPU RSS and complete solver diagnostics
 are in output logs. GPU total memory spot sample was2367MiB; peak GPU memory was

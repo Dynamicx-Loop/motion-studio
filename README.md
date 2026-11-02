@@ -141,6 +141,7 @@ see [local data conventions](data/README.md).
 
 Start with the [workflow and roadmap](docs/workflow.md), the
 [reference library](references/README.md), or the
+[experiment index](experiments/README.md), or the
 [experiment template](experiments/TEMPLATE.md).
 
 ## Contributing and attribution

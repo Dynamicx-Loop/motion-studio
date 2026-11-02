@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Audit three canonical correspondences, export geometry; never solve motion."""
 from pathlib import Path
+import sys
 sys.path.insert(0, str(Path(__file__).resolve().parents[2] / 'scripts'))
 from motion_data_paths import canonical_motion_path
 from collections import Counter
-import hashlib,json,pickle,sys,csv,os
+import hashlib,json,pickle,csv,os
 os.environ['UMR_SOMA_ASSETS_PATH']='/data/motions/human_models/soma-x/f81a01796f65/overlays/umr'
 os.environ['UMR_SOMA_SMPLX_ASSETS_PATH']='/data/motions/human_models/soma-x/f81a01796f65/assets/SMPLX'
 import numpy as np
