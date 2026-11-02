@@ -1,0 +1,693 @@
+{
+  "schema_version": 1,
+  "created_on": "2026-11-02",
+  "description": "Local original samples and a derived fixed-shape Wendy SMPL-X conversion; source bytes retained unchanged.",
+  "sources": {
+    "umr": {
+      "root": "externals/UMR",
+      "revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+      "selection": "All 63 Git-tracked files under sample_data, plus LICENSE. Untracked SOMA-X asset link excluded.",
+      "terms": "See each upstream README and UMR-LICENSE.txt; dataset and model terms remain separate."
+    },
+    "fzmotion": {
+      "root": "/data/motions",
+      "selection": "Wendy victory-146-short clip and session T-pose, plus source dataset metadata. Full victory clip also fitted to fixed neutral SMPL-X; derived payload and provenance retained locally.",
+      "terms": "Proprietary; keep local. No redistribution permission recorded.",
+      "conventions": "Original BVH hierarchy, joint/channel order and Euler rotation channels retained. Units and axes unverified in source dataset metadata; Wendy converter assumes centimeters and Y-up.",
+      "bvh_headers": {
+        "victory-146-short_Skeleton1.bvh": {
+          "frames": 1383,
+          "frame_time_seconds": 0.0142857,
+          "fps": 70.00007000007,
+          "channels": 174
+        },
+        "Wendy-t-pose_Skeleton1.bvh": {
+          "frames": 331,
+          "frame_time_seconds": 0.00833333,
+          "fps": 120.0000480000192,
+          "channels": 174
+        }
+      },
+      "derived_smplx": {
+        "recipe": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1",
+        "converter_revision": "65e51315ebbc82b2f0ff8e35a94565beb1b345e1",
+        "frames": 1383,
+        "units": "meters",
+        "output_up": "y",
+        "pose_convention": "SMPL-X 55 joints, 165 axis-angle radians",
+        "shape": "neutral, ten fixed zero betas",
+        "frame_time_seconds": 0.0142857,
+        "resampling": false,
+        "trimming": false,
+        "mean_joint_residual_m": 0.03516826406121254,
+        "limitations": [
+          "No actor-shape estimation",
+          "Fingers, face and eyes not fitted",
+          "No UMR retargeting or dynamic validation performed"
+        ]
+      }
+    },
+    "bones-seed": {
+      "root": "/data/motions",
+      "selection": "Three original uniform BVHs: walking, jumping/landing, and mirror gesture.",
+      "terms": "Gated BONES-SEED; local owner-provided data only, no redistribution.",
+      "missing_assets": [],
+      "conventions": "Original hierarchy, channels, frames and timing retained. No calibration or fitting performed.",
+      "calibration": {
+        "uniform_fit": "Shared local Kimodo fit; byte-identical to official fit verified in experiments/umr-baseline-g1-somax-20261102/records/uniform-fit-investigation.json. Not a newly downloaded BONES-SEED distribution.",
+        "kimodo_revision": "3b98f78344cb6c1580d7e5cb95aa2ea4320bafe9",
+        "rig_usd_source": "/data/workspace/github/soma-x/soma-retargeter/soma_retargeter/configs/soma/soma_base_skel_minimal.usd",
+        "rig_checkout_revision": "b3ef2708d84bfd1314ddb52d0db6c9c211df1f57",
+        "optional_absent": "soma_base_skel_minimal.bvh is not used by the pinned fitted uniform loader; proportional fits not needed for uniform clips."
+      }
+    }
+  },
+  "files": [
+    {
+      "path": "UMR-LICENSE.txt",
+      "source": "umr",
+      "source_path": "LICENSE",
+      "bytes": 1076,
+      "sha256": "7976e004a50466e0ac0c03dac800ac78dd3d4aa483f0545a04e98deb9150b8ee"
+    },
+    {
+      "path": "adapt/README.md",
+      "source": "umr",
+      "source_path": "sample_data/adapt/README.md",
+      "bytes": 773,
+      "sha256": "9af33e35e66bf4af693892deb7a5b3f54aa4404c98036b600f9fb7e079e582a3"
+    },
+    {
+      "path": "adapt/duanxiran_fq2/source_motion.npz",
+      "source": "umr",
+      "source_path": "sample_data/adapt/duanxiran_fq2/source_motion.npz",
+      "bytes": 2050137,
+      "sha256": "9524d00fede282f68bc33603be407a622f4db08526293f5bdc2d6cfea6adf875"
+    },
+    {
+      "path": "adapt/duanxiran_fq2/source_racket_tpose.npz",
+      "source": "umr",
+      "source_path": "sample_data/adapt/duanxiran_fq2/source_racket_tpose.npz",
+      "bytes": 1195195,
+      "sha256": "751a140cca6868d6a1c566bff3e4ab9c071f9e738c181ddff259a5ff1570142d"
+    },
+    {
+      "path": "adapt/duanxiran_fq2/source_racket_trajectory.npz",
+      "source": "umr",
+      "source_path": "sample_data/adapt/duanxiran_fq2/source_racket_trajectory.npz",
+      "bytes": 351871,
+      "sha256": "b4bc334f2c8f65cd8749ac3f55a99caf2c58f507232c0d4b632a83f6392bc3aa"
+    },
+    {
+      "path": "adapt/duanxiran_fq2/source_smplx_tpose.npz",
+      "source": "umr",
+      "source_path": "sample_data/adapt/duanxiran_fq2/source_smplx_tpose.npz",
+      "bytes": 236451,
+      "sha256": "0799d2d960764b6c905202a0d4dca7b3dc09554555e7119645b11e7308f19c3b"
+    },
+    {
+      "path": "bones-seed/README.md",
+      "source": "umr",
+      "source_path": "sample_data/bones-seed/README.md",
+      "bytes": 5252,
+      "sha256": "80c4d0ddb11fa2d51be2a60d004d4f0edfa920e44197e10fc7def6b197219e47"
+    },
+    {
+      "path": "bones-seed/motions_uniform/bvh/jump_and_land_light_003__A001.bvh",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/raw/uniform/210531/jump_and_land_light_003__A001.bvh",
+      "bytes": 2784680,
+      "sha256": "94e1101f0e2d183de84431f35a6ecc88eaf85c773029fcf633d830c5edbb36ed"
+    },
+    {
+      "path": "bones-seed/motions_uniform/bvh/looking_in_the_mirror_amateur_001__A001_M.bvh",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/raw/uniform/210531/looking_in_the_mirror_amateur_001__A001_M.bvh",
+      "bytes": 4472302,
+      "sha256": "404f882300bc64ecf8a0a5b51b031f75871c954994349182e855f6d98ed6e32b"
+    },
+    {
+      "path": "bones-seed/motions_uniform/bvh/walk_forward_amateur_003__A001.bvh",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/raw/uniform/210531/walk_forward_amateur_003__A001.bvh",
+      "bytes": 8596132,
+      "sha256": "90367c9e9ad561d3bfdf26389f00bbb01ea04984f456a0ab8c4906e15867951c"
+    },
+    {
+      "path": "bones-seed/shapes/notices/KIMODO-LICENSE.txt",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/calibration/notices/KIMODO-LICENSE.txt",
+      "bytes": 11387,
+      "sha256": "d1a7d615ab8eff4de143b1456f46dabf232f54daf0fcf9a70442bb6f637a9e95"
+    },
+    {
+      "path": "bones-seed/shapes/notices/SOMA-RETARGETER-LICENSE.txt",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/calibration/notices/SOMA-RETARGETER-LICENSE.txt",
+      "bytes": 11386,
+      "sha256": "67ac54c4902a61a9e6e4e2a37e4e8dfd37b4243f063fea68c96c2eb48044b6fb"
+    },
+    {
+      "path": "bones-seed/shapes/soma_base_rig/soma_base_skel_minimal.usd",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/calibration/soma_base_rig/soma_base_skel_minimal.usd",
+      "bytes": 3471219,
+      "sha256": "9cb557ebcbd04b54383a3f6f78b7eb97beb1c059405eabdaadca7813af30be27"
+    },
+    {
+      "path": "bones-seed/shapes/soma_uniform_fit_mhr_params/soma_base_fit_mhr_params.npz",
+      "source": "bones-seed",
+      "source_path": "datasets/bones-seed/calibration/soma_uniform_fit_mhr_params/soma_base_fit_mhr_params.npz",
+      "bytes": 1877,
+      "sha256": "61f0b96c8386a19d44823faf4399816642b7e20691ed5b398c7402921090096e"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/conversion-config.json",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/conversion-config.json",
+      "bytes": 569,
+      "sha256": "49012433263d50cbb04df472165d128b9bb103b60b20c761c6093d5d7b9583f3"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/environment.json",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/environment.json",
+      "bytes": 4520,
+      "sha256": "d68ae2d95ed4903f0e194f54e50e8db5a6483c402385d5332dac68dfa5d66cbf"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/motion.conversion.log",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/motion.conversion.log",
+      "bytes": 3585,
+      "sha256": "f1f2886d9a082e8e2e8c46bc766ee63a9339a1060866bd108b74af04530d8d89"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/motion.diagnostics.npz",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/motion.diagnostics.npz",
+      "bytes": 1180234,
+      "sha256": "5f98d44f52651074139553e6f7a1972ec324a5be5189be74fff84814582a9298"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/motion.provenance.json",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/motion.provenance.json",
+      "bytes": 17438,
+      "sha256": "035ff6ad946168c6802e960b68d53c527d488f663825671e7edf5daa51c053c7"
+    },
+    {
+      "path": "fzmotion/smplx/provenance/motion.report.json",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/provenance/motion.report.json",
+      "bytes": 2168,
+      "sha256": "9dde84492fccadd9dd47ba2023cf9bcb0c6429b8b82e7d0ae54baa613bf49e56"
+    },
+    {
+      "path": "fzmotion/smplx/victory-146-short_Skeleton1.npz",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/victory-146-short_Skeleton1.npz",
+      "bytes": 374147,
+      "sha256": "56416a73046566ad62b7c42de57c2fb936e625a355777e6688787e67cad4970e"
+    },
+    {
+      "path": "fzmotion/source-dataset.json",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/dataset.json",
+      "bytes": 1099,
+      "sha256": "6b49bc26bf4a4a2027f91e6bdc2a2d3baa278e28e5584328e797ea4dd4726dbd"
+    },
+    {
+      "path": "fzmotion/wendy/2026-10-19/Wendy-t-pose_Skeleton1.bvh",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/raw/bvh/wendy/2026-10-19/Wendy-t-pose_Skeleton1.bvh",
+      "bytes": 570028,
+      "sha256": "f504d41b2afec7e0abe7561ad8563f905f47e10a8adcbfcbe17da6ddda9171e2"
+    },
+    {
+      "path": "fzmotion/wendy/2026-10-19/victory-146-short_Skeleton1.bvh",
+      "source": "fzmotion",
+      "source_path": "datasets/fzmotion/raw/bvh/wendy/2026-10-19/victory-146-short_Skeleton1.bvh",
+      "bytes": 2375785,
+      "sha256": "713d602dd4037fd87f2972c428dfbef811e5cf4b80daafcb6c859bcaa9ff9a37"
+    },
+    {
+      "path": "grail/README.md",
+      "source": "umr",
+      "source_path": "sample_data/grail/README.md",
+      "bytes": 3182,
+      "sha256": "32bdca2b8a85a0322a71384fa63aec10c0173f2b5b594d948e72f4bb049e3481"
+    },
+    {
+      "path": "grail/g1_smplx_model/g1_smplx_param.npz",
+      "source": "umr",
+      "source_path": "sample_data/grail/g1_smplx_model/g1_smplx_param.npz",
+      "bytes": 550,
+      "sha256": "b02c93ad681cb54bcf3b8ba26e64e6661de28059baf04bbdd78f9d46d6df46eb"
+    },
+    {
+      "path": "grail/g1_smplx_model/g1_smplx_tpose.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/g1_smplx_model/g1_smplx_tpose.obj",
+      "bytes": 668731,
+      "sha256": "e410329e7841b2c82099728a96d52de30c25fd40e0a36bba1c127adb903815af"
+    },
+    {
+      "path": "grail/g1_smplx_model/umr_smplx_overlay.json",
+      "source": "umr",
+      "source_path": "sample_data/grail/g1_smplx_model/umr_smplx_overlay.json",
+      "bytes": 244,
+      "sha256": "71fb299f46051733eecc0c4fde785df18c3e66bc06622821781ed373a02b99b7"
+    },
+    {
+      "path": "grail/slope/meta/terrain_slopes__slope_003__000.pkl",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/meta/terrain_slopes__slope_003__000.pkl",
+      "bytes": 85,
+      "sha256": "7d88be608419afd2be127e4ac4c5a8aa1b4863fdf84e86c5ec93356881ee861d"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.mtl",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.mtl",
+      "bytes": 75,
+      "sha256": "e3752921bc1bc6119753db7d157f2c1f348232b43583ddcac728561dcb611913"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.obj",
+      "bytes": 8179,
+      "sha256": "c1f4dad7736487fbfb8d5ac7d3a8f47dbe428a2ed6b271c42b1557e46cfc82a7"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.xml",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object.xml",
+      "bytes": 1519,
+      "sha256": "9049ce18b72213d28db3ad299fcb388efd368e89bf10ac188ff7a1701f0fe4be"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_0.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_0.obj",
+      "bytes": 9246,
+      "sha256": "53f123f6df962e85db2ddb420b8d75ec04a48586b6bb0456ba3f45bf5614d9da"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_1.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_1.obj",
+      "bytes": 4417,
+      "sha256": "7b289340ff0123712e4c70eec40237e4393656cf6463081d7997e400f8daf279"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_2.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_2.obj",
+      "bytes": 8250,
+      "sha256": "f5824e9bf11fc8340f45c81f5824936ec855e169120af87d93e2045df047e2e6"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_3.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_3.obj",
+      "bytes": 6738,
+      "sha256": "2ad5182f582ed3ba29a493500cd2f2bb93c1b4155c7be520ce25e950a03aef45"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_4.obj",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/grail_object_collision_4.obj",
+      "bytes": 9948,
+      "sha256": "1dea35244521aa36183e5db1493abc03d379e673f079920596ef0e5b5999eda4"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/metadata.json",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/metadata.json",
+      "bytes": 586,
+      "sha256": "ae962628203dd919492c223bb9992707ddcd35d8b3cd5d83fc8bcc299a684c68"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/prop_grail_object.csv",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/prop_grail_object.csv",
+      "bytes": 27978,
+      "sha256": "bf08a3e8f40cb3774ecaa3fc138ff803b39e1b2e565cb19f37f96ba7207a4f62"
+    },
+    {
+      "path": "grail/slope/object_mjcf/terrain_slopes__slope_003__000/texture.jpg",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_mjcf/terrain_slopes__slope_003__000/texture.jpg",
+      "bytes": 3473,
+      "sha256": "67c11bfdf231dfbef02b75645c622e62b9c90078446206cadc5c7cf4ffde0e12"
+    },
+    {
+      "path": "grail/slope/object_usd/terrain_slopes__slope_003__000.usd",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/object_usd/terrain_slopes__slope_003__000.usd",
+      "bytes": 9688,
+      "sha256": "ccaf2fe7b0573bf3ce869916a044a1163d24e08acfd46e51f4880fabdbbfae6a"
+    },
+    {
+      "path": "grail/slope/objects/terrain_slopes__slope_003__000.pkl",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/objects/terrain_slopes__slope_003__000.pkl",
+      "bytes": 21437,
+      "sha256": "4236cb3042d2d44b8b83fdb244636c5f83ae97a5b874ad0b4ae89e32a44cda38"
+    },
+    {
+      "path": "grail/slope/recon/terrain_slopes__slope_003__000.pkl",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/recon/terrain_slopes__slope_003__000.pkl",
+      "bytes": 413216,
+      "sha256": "a2218a8bf5582be3ddebfc26583634f86f8b17c9831258a76924199637fde141"
+    },
+    {
+      "path": "grail/slope/robot/terrain_slopes__slope_003__000.pkl",
+      "source": "umr",
+      "source_path": "sample_data/grail/slope/robot/terrain_slopes__slope_003__000.pkl",
+      "bytes": 198603,
+      "sha256": "7a763e9fe3a24f5c256ac40e7828690f57227d197fe1f792a28acd34255e7cc3"
+    },
+    {
+      "path": "hiphi/README.md",
+      "source": "umr",
+      "source_path": "sample_data/hiphi/README.md",
+      "bytes": 3642,
+      "sha256": "b01e3b9c7ba99906cb730ce0e0651d0f14650e3bdd934b3408c5b99b83036074"
+    },
+    {
+      "path": "hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/metadata.json",
+      "source": "umr",
+      "source_path": "sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/metadata.json",
+      "bytes": 655,
+      "sha256": "48d3c6dc49f6facaa5b5fb494e90e52bdd58e1385486017d929655d9d4f6d93f"
+    },
+    {
+      "path": "hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "source": "umr",
+      "source_path": "sample_data/hiphi/data/Getting_up/get_up/Getting_up-get_up_0004/motion_actor_smplx.npz",
+      "bytes": 7122345,
+      "sha256": "3a3d20c4ebd1727536136888efdde62f7ea685eb6ea0c88f1160116009416808"
+    },
+    {
+      "path": "humanoid_character/README.md",
+      "source": "umr",
+      "source_path": "sample_data/humanoid_character/README.md",
+      "bytes": 1816,
+      "sha256": "23c8fd84678fb0d83f1d991b7f25c40ed030cade358a2d81fb574ac963f412b7"
+    },
+    {
+      "path": "humanoid_character/humanoid_spinkick.pkl",
+      "source": "umr",
+      "source_path": "sample_data/humanoid_character/humanoid_spinkick.pkl",
+      "bytes": 24321,
+      "sha256": "0e2468b1d2812bf625a6847c8aaa53dceb5cb58a0a0ec8e78f0744656dfc77e3"
+    },
+    {
+      "path": "lafan1_smplx/README.md",
+      "source": "umr",
+      "source_path": "sample_data/lafan1_smplx/README.md",
+      "bytes": 2669,
+      "sha256": "7017407c6b73d93fd6263cc792e0e1aed2db2cc6f34395ea8e5b9527e04a47c0"
+    },
+    {
+      "path": "lafan1_smplx/dance1_subject2.npz",
+      "source": "umr",
+      "source_path": "sample_data/lafan1_smplx/dance1_subject2.npz",
+      "bytes": 2652396,
+      "sha256": "5abee53b15bd34723353d67b229fdd736bbea9355eb4d68f0a9647e4dffa35b3"
+    },
+    {
+      "path": "nr/README.md",
+      "source": "umr",
+      "source_path": "sample_data/nr/README.md",
+      "bytes": 2030,
+      "sha256": "fcbafa576b3519a431382194830005495bdf8fef21e0ee697acd16504a12e952"
+    },
+    {
+      "path": "nr/xuzeyan_seat09/Character_xuzeyan_Rig_v03.fbx",
+      "source": "umr",
+      "source_path": "sample_data/nr/xuzeyan_seat09/Character_xuzeyan_Rig_v03.fbx",
+      "bytes": 1629216,
+      "sha256": "8b50c2470834b0a19c856c7fc602100c811235e20b5b0757faa296f7c08ac0c5"
+    },
+    {
+      "path": "nr/xuzeyan_seat09/bone_final_xuzeyan.bvh",
+      "source": "umr",
+      "source_path": "sample_data/nr/xuzeyan_seat09/bone_final_xuzeyan.bvh",
+      "bytes": 14997,
+      "sha256": "5ae12c978b86223f939a3ce2bb9624de8165f68f440a40793d6ae066b4bc9c76"
+    },
+    {
+      "path": "nr/xuzeyan_seat09/motion_actor_retarget_205_with_ids/MWVOPT_20260703000055_1_1783069098_motion_actor_retarget.bvh",
+      "source": "umr",
+      "source_path": "sample_data/nr/xuzeyan_seat09/motion_actor_retarget_205_with_ids/MWVOPT_20260703000055_1_1783069098_motion_actor_retarget.bvh",
+      "bytes": 16432348,
+      "sha256": "c55a4769df8eade27160e271823742cc6795e3537df6d2ea5305f53284ccc49c"
+    },
+    {
+      "path": "omnicontact/README.md",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/README.md",
+      "bytes": 2677,
+      "sha256": "5c781667bc01587e9b2bced836825273399f7f1190f1dc78b0213bf438b8e1f1"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/ScoccerBall_A_1.obj",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/ScoccerBall_A_1.obj",
+      "bytes": 51450,
+      "sha256": "af3f8114236c2db384b7a3f309a549c39192296487a3732ef20dbca5b0c9f268"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/ScoccerBall_A_1.xml",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/ScoccerBall_A_1.xml",
+      "bytes": 760,
+      "sha256": "732cb02a6b70eef077649f01051c0789ff2ea0339a3d83160e816946cad0b73b"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/betas.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/betas.npy",
+      "bytes": 168,
+      "sha256": "6d12c6563e7f7a374760a27bd7e4b8021f5408a51837df5a4b726b076d0db799"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/frame_time.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/frame_time.npy",
+      "bytes": 132,
+      "sha256": "b4a8556ed7ba127d5e5f31c1ae3cb059a43ce567753a6fcdec2e4517a2df3908"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/gender.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/gender.npy",
+      "bytes": 156,
+      "sha256": "41ed3b60e28627c5ffa7dfef5616b767fa5209d88c6bab08c683c193c3fc6764"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/matched_bvh_names.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/matched_bvh_names.npy",
+      "bytes": 3456,
+      "sha256": "b0fd88768014d3d15433023fa2805aae19ae44a5fd9c000fcedfd7e738c9cc87"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/matched_smpl_names.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/matched_smpl_names.npy",
+      "bytes": 3040,
+      "sha256": "1b163db8fd3710b6657fc56be71debbd219ac993dcfda596aa38cbbed23d5815"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/mocap_framerate.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/mocap_framerate.npy",
+      "bytes": 132,
+      "sha256": "f50227b6e18d179a24581f0536f3d21f98823296db370e79841044fada493084"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/model_type.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/model_type.npy",
+      "bytes": 148,
+      "sha256": "006d843b171f7a13de341e29ddd08e2c9f9fb8171e6d81c19051c83b9efd9c8b"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/motion_actor.npz",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/motion_actor.npz",
+      "bytes": 10006086,
+      "sha256": "4562905ad390ef85f83641caa7f2a8c5e40187ddb199cfee1de4da4533b1a8fb"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/motion_actor.npz.ik.json",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/motion_actor.npz.ik.json",
+      "bytes": 2569,
+      "sha256": "983292bece3f70b2fe08b87a8d7add43ca148465af5db011232e042fca767dc7"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/num_frames.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/num_frames.npy",
+      "bytes": 132,
+      "sha256": "f776ae0a60de7009f9ef8961a9fee121e5fdcbc36899f9673566c43fab859202"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/num_joints.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/num_joints.npy",
+      "bytes": 132,
+      "sha256": "ec256bef15fe6b18dd413fddf8f90625a28f24d27b4843532afce93533ba0c76"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/output_up.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/output_up.npy",
+      "bytes": 132,
+      "sha256": "d2bb236ff7b29675418d664a5c4778e81dded8d6a42ce42468772cbc5f4f3bed"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/per_frame_residuals.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/per_frame_residuals.npy",
+      "bytes": 23212,
+      "sha256": "02485b828586b30ffb8c09b3707ca59acce89cc0788e378feafac54adcf63a25"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/per_joint_mean_residuals.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/per_joint_mean_residuals.npy",
+      "bytes": 336,
+      "sha256": "b037bbead7aff8b105f2acd66213b2d44678369009eab0f1a6641a97d076ae7a"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/poses.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/poses.npy",
+      "bytes": 3808988,
+      "sha256": "adc805952e7ca14f97e7b284817faa974fad475fcd5b8d051ad5c9510df68277"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/prop_ScoccerBall_A_1.csv",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/prop_ScoccerBall_A_1.csv",
+      "bytes": 942428,
+      "sha256": "d0219184f092803dafae7a9cd735b6536571cdc053f7b7f25cb905c21e6e9730"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/scale.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/scale.npy",
+      "bytes": 132,
+      "sha256": "8911cbc3a75f98c55d74490c632594ffd99e0f242b800de2b0597e1b227998f2"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/smpl_pose.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/smpl_pose.npy",
+      "bytes": 3808988,
+      "sha256": "adc805952e7ca14f97e7b284817faa974fad475fcd5b8d051ad5c9510df68277"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/smpl_pose_axis_angle.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/smpl_pose_axis_angle.npy",
+      "bytes": 3808988,
+      "sha256": "f6b3f27e67046f80c09e2b632b4864f702ff343bac09540a8a524da7f24d7ad3"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/trans.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/trans.npy",
+      "bytes": 69380,
+      "sha256": "e78c56acb00799b093171c6f1bcaac2213ae4321f60cbbd9e9a7ea9d739ce494"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/transl.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/transl.npy",
+      "bytes": 69380,
+      "sha256": "e78c56acb00799b093171c6f1bcaac2213ae4321f60cbbd9e9a7ea9d739ce494"
+    },
+    {
+      "path": "omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/translation_mode.npy",
+      "source": "umr",
+      "source_path": "sample_data/omnicontact/soccer/case3_kick_right/20260330000586_1_1775269234/translation_mode.npy",
+      "bytes": 168,
+      "sha256": "410097da253a6341cdcca6d640f1c17ffe0a05ef75dee2be7bb7e4b500db65ec"
+    },
+    {
+      "path": "omomo/README.md",
+      "source": "umr",
+      "source_path": "sample_data/omomo/README.md",
+      "bytes": 2976,
+      "sha256": "bd993b19b46b256017f4a7e2cf82bf3539c264575d7da335b154dfbc3cd19d4e"
+    }
+  ],
+  "local_model_links": [
+    {
+      "path": "bones-seed/soma_assets",
+      "source_path": "human_models/soma-x/f81a01796f65/overlays/umr",
+      "revision": "f81a01796f652260ff930d5318d6c6b845a505ed",
+      "files": [
+        {
+          "path": "SOMA_neutral.npz",
+          "bytes": 26925489,
+          "sha256": "0c0cb328094e95259320cb17add5465d6b8d6b51195daa0ca2db1e9788edb2e9"
+        },
+        {
+          "path": "SOMA_template_rig.usda",
+          "bytes": 28306038,
+          "sha256": "a952cb7bdf4ccd801e355d53122d395b985b69d0d9181439edad5081bb171856"
+        },
+        {
+          "path": "SOMA_procedural_transforms.json",
+          "bytes": 20045,
+          "sha256": "9853e19ab51625ffaa7d9e7ccf0e443272c2740837604e6bacd66604e8edf509"
+        },
+        {
+          "path": "MHR/SOMA_wrap_lod1.obj",
+          "bytes": 1816801,
+          "sha256": "9ab7a2328d5b026c17ef1d09ed692ffeb68f96d3fc74970cba72e667dbe0f728"
+        },
+        {
+          "path": "MHR/base_body_lod1.obj",
+          "bytes": 2277452,
+          "sha256": "e8bbb3f3681d76737635c10a9e6f6a058ad3d9be5a75547f84a578cea572e916"
+        },
+        {
+          "path": "MHR/mhr_model_lod1.pt",
+          "bytes": 696110248,
+          "sha256": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc"
+        },
+        {
+          "path": "SMPLX/SOMA_wrap.obj",
+          "bytes": 2630564,
+          "sha256": "7498e3a7873d7b4d8f1d3455a8af945589b1c494fbff99b14bc905a691208b6f"
+        },
+        {
+          "path": "SMPLX/base_body.obj",
+          "bytes": 700964,
+          "sha256": "f03f95e5e303c8dc070afa09387e9dde861eeb1567ccf61a70bf53a5f7fd2b70"
+        },
+        {
+          "path": "LOCAL_MODIFICATIONS.md",
+          "bytes": 482,
+          "sha256": "a907b820dee38cf422e40b812ae0a4db284c3210fd496e0190d70e2c840bbc8f"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 11387,
+          "sha256": "d1a7d615ab8eff4de143b1456f46dabf232f54daf0fcf9a70442bb6f637a9e95"
+        }
+      ]
+    }
+  ]
+}

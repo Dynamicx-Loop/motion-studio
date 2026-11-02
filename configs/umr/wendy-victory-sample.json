@@ -1,0 +1,27 @@
+{
+  "source": "data/sample_data/fzmotion/wendy/2026-10-19/victory-146-short_Skeleton1.bvh",
+  "model": "/data/motions/human_models/smplx/1.1/models_smplx_v1_1/models/smplx/SMPLX_NEUTRAL.npz",
+  "output": "outputs/sample-data/wendy-victory-smplx-20261102/motion.npz",
+  "frames": 1383,
+  "output_up": "y",
+  "unit_scale": 0.01,
+  "betas": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "mapping_overrides": {
+    "spine": "Spine1",
+    "spine2": "Spine2",
+    "chest": "Chest",
+    "left_toe": "LeftToe",
+    "right_toe": "RightToe"
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "umr_revision": "d1cdaedaf67a827198da71c5fa831f48b2e51f91",
+  "device": "cpu",
+  "fit_sha256": "61f0b96c8386a19d44823faf4399816642b7e20691ed5b398c7402921090096e",
+  "model_root": "/data/motions/human_models/soma-x/f81a01796f65/overlays/umr",
+  "clips": [
+    {
+      "clip": "jump_and_land_light_003__A001.bvh",
+      "frames": 1170,
+      "fps": 120.0048,
+      "sampled_frame_ids": [
+        0,
+        585,
+        1169
+      ],
+      "source_format": "soma_bvh_boneseed_uniform",
+      "template": "soma_uniform",
+      "vertices": 18056,
+      "faces": 36108,
+      "joints": 78,
+      "finite": true,
+      "matching_face_order": true
+    },
+    {
+      "clip": "looking_in_the_mirror_amateur_001__A001_M.bvh",
+      "frames": 1888,
+      "fps": 120.0048,
+      "sampled_frame_ids": [
+        0,
+        944,
+        1887
+      ],
+      "source_format": "soma_bvh_boneseed_uniform",
+      "template": "soma_uniform",
+      "vertices": 18056,
+      "faces": 36108,
+      "joints": 78,
+      "finite": true,
+      "matching_face_order": true
+    },
+    {
+      "clip": "walk_forward_amateur_003__A001.bvh",
+      "frames": 3622,
+      "fps": 120.0048,
+      "sampled_frame_ids": [
+        0,
+        1811,
+        3621
+      ],
+      "source_format": "soma_bvh_boneseed_uniform",
+      "template": "soma_uniform",
+      "vertices": 18056,
+      "faces": 36108,
+      "joints": 78,
+      "finite": true,
+      "matching_face_order": true
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "stages": {
+    "train": {
+      "command": [
+        "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+        "-B",
+        "/data/workspace/motion_studio/externals/UMR/scripts/humanoid_retarget_pipeline.py",
+        "--config",
+        "/data/workspace/motion_studio/outputs/sample-data/umr-g1-verification-20261102/bones-seed/config.json",
+        "--defaults",
+        "/data/workspace/motion_studio/externals/UMR/humanoid_retarget_defaults_bones_seed.json",
+        "--skip-view",
+        "--stage",
+        "train"
+      ],
+      "cwd": "/data/workspace/motion_studio/externals/UMR",
+      "returncode": 0,
+      "wall_seconds": 58.89624954000101
+    },
+    "retarget": {
+      "command": [
+        "/data/workspace/motion_studio/externals/UMR/.venv/bin/python",
+        "-B",
+        "/data/workspace/motion_studio/externals/UMR/scripts/humanoid_retarget_pipeline.py",
+        "--config",
+        "/data/workspace/motion_studio/outputs/sample-data/umr-g1-verification-20261102/bones-seed/config.json",
+        "--defaults",
+        "/data/workspace/motion_studio/externals/UMR/humanoid_retarget_defaults_bones_seed.json",
+        "--skip-view",
+        "--stage",
+        "retarget"
+      ],
+      "cwd": "/data/workspace/motion_studio/externals/UMR",
+      "returncode": 0,
+      "wall_seconds": 34.19724199099801
+    }
+  },
+  "preservation": {
+    "unchanged": true,
+    "changed_inputs": []
+  },
+  "provenance_path": "/data/workspace/motion_studio/outputs/sample-data/umr-g1-verification-20261102/bones-seed/provenance.json"
+}

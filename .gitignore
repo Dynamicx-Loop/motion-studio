@@ -4,6 +4,12 @@
 !/externals/manifest.json
 /data/*
 !/data/README.md
+!/data/sample_data/
+/data/sample_data/**
+!/data/sample_data/**/
+!/data/sample_data/**/README.md
+!/data/sample_data/manifest.json
+!/data/sample_data/UMR-LICENSE.txt
 /outputs/*
 !/outputs/README.md
 __pycache__/
