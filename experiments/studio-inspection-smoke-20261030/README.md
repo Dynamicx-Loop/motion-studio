@@ -1,5 +1,10 @@
 # Experiment: derived Studio stage and animated inspection
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 Date / author: 2026-10-30 / Codex ticket 05.
 
 ## Objective and provenance

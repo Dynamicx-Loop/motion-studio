@@ -1,5 +1,10 @@
 # UMR canonical Astro evidence report
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 Current snapshot: 2026-10-23, v5. The report uses one frozen Astro Dex3-1
 asset at `d2070956558ffbf9226dcf74017d40740724d8d8`, with XML SHA-256
 `c688a4177a1ff5ba07764f9e310bb62c33d24a47b193259922a55b6c5fe88c66`.

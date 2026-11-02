@@ -1,5 +1,10 @@
 # Official UMR G1 reproduction through Motion Studio
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 Date / author: 2026-10-29 / Codex, requested by the project owner.
 
 ## Objective

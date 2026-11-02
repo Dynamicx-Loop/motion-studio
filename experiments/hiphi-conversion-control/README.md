@@ -1,5 +1,10 @@
 # HiPHI BVH-to-SMPL-X controlled comparison
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 The full Getting_up-get_up_0004 BVH conversion reproduces the shipped SMPL-X body's motion to floating-point precision. The shipped reference includes external wrist/finger fitting that the body-only rerun does not perform. This is a reproducibility result on one motion, not independent anatomical ground truth or validation of Wendy's different skeleton mapping.
 
 ## Inputs and controls

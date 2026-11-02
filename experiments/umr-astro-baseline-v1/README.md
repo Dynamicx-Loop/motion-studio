@@ -1,5 +1,10 @@
 # First official-default SMPL-X Astro/G1 static baseline
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 **Completed 2026-10-24; baseline candidate for review. No motion or ablation was run.**
 
 Guideline and branch were approved before this bounded run. Both arms used fresh official UMR dataset preparation and 500-epoch, batch-two correspondence training. G1 completed in 39.04 seconds and Astro in 37.65 seconds; both exited zero within the 600-second bound.

@@ -1,5 +1,10 @@
 # HiPHI head-objective controls: historical analysis correction
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 The saved `report.json` and `metrics.npz` are historical evidence and remain
 unchanged. Their neutral-control pitch values use the animated source clip's
 per-frame heading, rather than the neutral input's heading. Consequently the

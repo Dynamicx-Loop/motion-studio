@@ -140,8 +140,8 @@ Shared local datasets and human-model assets are organized under `/data/motions`
 see [local data conventions](data/README.md).
 
 Start with the [workflow and roadmap](docs/workflow.md), the
-[reference library](references/README.md), or the
-[experiment index](experiments/README.md), or the
+[reference library](references/README.md), the
+[experiment index and legacy records](experiments/README.md), or the
 [experiment template](experiments/TEMPLATE.md).
 
 ## Contributing and attribution

@@ -1,5 +1,10 @@
 # Experiment: every-segment human ↔ Astro audit with matched G1 control
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 Date / author: 2026-10-22 / Codex, delegated segment audit.
 
 ## Objective and result

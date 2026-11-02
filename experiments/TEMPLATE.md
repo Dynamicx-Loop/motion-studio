@@ -1,5 +1,8 @@
 # Experiment: <question>
 
+> Provisional recording aid. As of 2026-11-02, new experiments will establish
+> the standard experiment contract; this template is not yet that settled contract.
+
 Date / author:
 
 ## Objective and cohort

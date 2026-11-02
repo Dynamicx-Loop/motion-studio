@@ -1,5 +1,10 @@
 # astro-fist-static-v1
 
+> **Status: legacy** — marked 2026-11-02. Retained as historical evidence.
+> New experiments will establish the standard experiment contract; this record
+> does not define that contract. “Current” and similar wording below refer to
+> the original cohort or documentation snapshot. See the [experiment index](../README.md).
+
 Fresh fist cohort dated 2026-10-23. The previous open-hand experiment remains immutable.
 The exact model and 14 named preset coordinates are pinned in `../astro-fist-static-v1/canonical-asset.json`.
 Body T-pose uses shoulder rolls ±pi/2 and elbows +pi/2. Visual surfaces only; no new collision-primitive experiment or hardware execution.
