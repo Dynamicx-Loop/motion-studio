@@ -2,6 +2,14 @@
 
 Date / author: 2026-11-02 / Codex, requested by the project owner.
 
+Follow-up on 2026-11-02 found the shared uniform surface-fit file locally and
+verified it against official Kimodo bytes. The SOMA BVH already carries a uniform
+skeleton; the original run used a generic neutral surface because UMR's path and
+asset discovery did not select the uniform fitted route. See the
+[SOMA investigation correction](../umr-baseline-g1-somax-20261102/README.md#follow-up-correction-uniform-skeleton-and-available-surface-fit).
+The measurements below and immutable browser report still describe the original
+generic-surface control. A fitted rerun has not been performed by this investigation.
+
 ## Objective and cohort
 
 Inspect the human/robot segment bindings for each human representation, inspect

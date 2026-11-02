@@ -9,7 +9,7 @@ experiment contract; it does not declare that contract settled.
 | Experiment | Scope |
 | --- | --- |
 | [G1 / SMPL-X](umr-baseline-g1-smplx-20261102/README.md) | Official-default UMR reproduction with the full HiPHI get-up clip. |
-| [G1 / SOMA-X](umr-baseline-g1-somax-20261102/README.md) | Direct jump-and-land BVH control; the official BONES-SEED fitted-body baseline requires the missing uniform shape fit. |
+| [G1 / SOMA-X](umr-baseline-g1-somax-20261102/README.md) | Direct jump-and-land BVH with generic surface; shared uniform fit subsequently located and verified, fitted rerun pending. |
 | [G1 comparison](umr-baseline-g1-comparison-20261102/README.md) | Human/robot bindings, source/retarget replay, and robot binding consistency across source models. |
 
 The clips differ, so motion-quality differences cannot be attributed solely to

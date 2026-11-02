@@ -3,6 +3,55 @@
 Date: 2026-11-02. Branch: `experiments/umr-baseline`. No external source edits,
 branch changes, dependency updates, or legacy output writes.
 
+## Follow-up correction: uniform skeleton and available surface fit
+
+Investigation on 2026-11-02 corrected the initial asset-availability conclusion
+below. The input BVH already describes a uniform skeleton. The prior native run
+used those BVH transforms with a generic neutral **surface**; it did not replace
+the input skeleton with an arbitrary neutral skeleton.
+
+The shared fitted surface parameters are available locally at
+`/data/workspace/notAnyrobot/kimodo/kimodo/assets/skeletons/somaskel30/soma_base_fit_mhr_params.npz`.
+Its SHA-256 is
+`61f0b96c8386a19d44823faf4399816642b7e20691ed5b398c7402921090096e`.
+The local bytes match the file in the official `nv-tlabs/kimodo` repository at
+revision `e1c219c99b4b94ba48be1fb6a1cbc64ecee4c954` exactly.
+[NVIDIA's skeleton documentation](https://research.nvidia.com/labs/sil/projects/kimodo/docs/key_concepts/skeleton.html)
+identifies these as the shared BONES-SEED identity parameters. This verifies
+official Kimodo provenance; a separate byte comparison with the gated BONES-SEED
+download was not performed. The asset remains in its existing location.
+
+UMR's pinned loader recognizes the literal ancestor name `motions_uniform`;
+the supplied `raw/uniform` path does not select that family. Its automatic lookup
+also needs a discoverable root containing `shapes` and `soma_assets`. The previous
+lookup therefore did not establish workspace-wide absence of the uniform fit.
+The single-motion loader silently selected generic `soma_bvh` when it found no
+shape. See [family detection](../../externals/UMR/scripts/soma_source.py#L84),
+[shape discovery](../../externals/UMR/scripts/soma_source.py#L133), and
+[motion loading](../../externals/UMR/scripts/soma_source.py#L364).
+
+A read-only CPU check supplying the discovered fit to UMR's fitted template
+loader succeeded: 18,056 finite vertices, 78 joints and 36,108 faces. This was
+static validation, not a new correspondence or motion run. The corrective run
+should use a fresh recognized `motions_uniform/bvh` layout, explicitly record
+the verified fit, require `source_format=soma_bvh_boneseed_uniform` and
+`soma_template_name=soma_uniform`, then retrain correspondence and retarget.
+The old run remains a generic-surface control; its measurements are unchanged.
+Missing standalone dataset USD is not a blocker for this installed fitted path.
+
+The official [UMR Studio](https://hanyang9.github.io/UMR/umr_studio.html) is a
+separate browser pipeline. Its SOMA Flip reference uses a precomputed source
+pack; availability of that example does not demonstrate automatic fitting of
+arbitrary uploaded BVHs. Its published template is geometrically closer to the
+local generic neutral template than to this shared fitted template (vertex RMS
+after an unconstrained affine fit: 0.597 mm versus 5.55 mm). This is a geometric
+diagnostic, not proof of the Studio pack's generating route: its manifest lacks
+fit provenance. The local Motion Studio currently imports SMPL-X NPZ motion
+rather than SOMA BVH. [Investigation evidence](records/uniform-fit-investigation.json)
+records asset/source hashes, the static check and Studio manifest identity.
+The historical availability statements below
+describe the initial run and are superseded by this correction.
+
 ## Objective and cohort
 
 Execute fresh correspondence sampling/training, full native retargeting, segment
