@@ -1,5 +1,9 @@
 # SOMA-X for UMR
 
+For the official Studio's BONES-SEED example, native source integration, and
+the verified local uniform fit, see the
+[SOMA/BONES-SEED integration trace](umr-soma-boneseed-integration.md).
+
 Prepared on 2026-10-22; local auto-detection links verified on 2026-10-23.
 SOMA static correspondence is available; BONES-SEED motion remains a separate input.
 
