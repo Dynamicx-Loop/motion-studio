@@ -72,6 +72,9 @@ def main():
     sources = {'umr': args.source_workspace / 'externals/UMR',
                'fzmotion': args.motions_root,
                'bones-seed': args.motions_root}
+    asset_manifest = json.loads((ROOT / 'assets/local-manifest.json').read_text())
+    if asset_manifest['schema_version'] != 1:
+        raise ValueError('Unsupported local asset manifest schema')
     failures = []
     restored = 0
     for entry in manifest['files']:
@@ -94,18 +97,17 @@ def main():
         except (OSError, ValueError) as error:
             failures.append(f"{entry['path']}: {error}")
     link_failures = []
-    links = manifest.get('local_model_links', [])
+    links = asset_manifest['local_links']
     for entry in links:
         try:
-            local_model_link(samples, args.motions_root, entry, args.command == 'populate')
+            local_model_link(ROOT, args.motions_root, entry, args.command == 'populate')
         except (OSError, ValueError) as error:
             link_failures.append(f"{entry['path']}: {error}")
     for failure in failures + link_failures:
         print(f'FAIL {failure}', file=sys.stderr)
     print(f"{len(manifest['files']) - len(failures)}/{len(manifest['files'])} "
           f'samples verified; {restored} restored; {len(failures)} failed')
-    if links:
-        print(f'{len(links) - len(link_failures)}/{len(links)} local model links verified')
+    print(f'{len(links) - len(link_failures)}/{len(links)} shared asset links verified')
     return bool(failures or link_failures)
 
 

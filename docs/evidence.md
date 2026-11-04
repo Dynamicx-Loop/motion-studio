@@ -55,22 +55,6 @@ rules retain native19/common18 source denominators, the 4,096-slot total and the
 historical 1e-12 precision tolerance. Missing coverage stays null. Invalid static
 counts/precision now raise explicit `ValueError` even with Python optimization.
 
-Historical imports from `experiment_support.*` and `motion_data_paths` under
-`scripts/` remain compatibility wrappers. The unchanged recorded-path behavior
-is owned by `motion_studio.motion_data_paths`; callers may adopt that path without
-changing data conventions. The historical report builder and static evaluation
-caller import the pure owned rules; they retain their reproduction roles and
-original numerical behavior. New runs record the owned rule source hash.
-
-Run `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` for small fixture checks,
-and add `--tier saved-evidence` for the full saved legacy records. The saved suite
-retains its tier metadata and historical standalone command:
-
-```sh
-PYTHONDONTWRITEBYTECODE=1 PYTHONPATH=scripts python3 -m unittest experiment_support.test_legacy -v
-```
-
-See the [ticket 05 validation record](../experiments/layout-and-robot-assets-evidence/validation.json)
-for the canonical before/after comparison. Report building, static evaluation in
-the UMR runtime, numerical execution and GPU work were not exercised by this
-ownership extraction.
+Use the owned `motion_studio.evidence` and
+`motion_studio.motion_data_paths` modules directly. Run
+`python3 -B scripts/check.py` for the active fixture suites.

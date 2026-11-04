@@ -42,7 +42,7 @@ routing prevents overlays/alternate siblings, and changed sampling during/after
 training prevents publication/invalidates the dependent receipt. Primitive source
 binding retains native closest diagnostics separately from exact face+bary replay.
 
-[Experiment and exact smoke evidence](../../../experiments/studio-native-stages-smoke-20261030/README.md)
+[Experiment and exact smoke evidence](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-native-stages-smoke-20261030/README.md)
 records final fresh G1 `outputs/studio-native-smoke-04-06` (all four stages,
 2 epochs/3-frame fixture) and primitive
 `outputs/studio-native-smoke-04-primitive-03` (through binding, no motion).

@@ -75,25 +75,11 @@ Runtime failure retains its log, worker files and failed provenance, then raises
 `RuntimeError`; use a fresh output path to retry. Large numerical runs remain an
 explicit action, outside the root pure checks.
 
-## Retained historical tools
-
-An owned-source import inventory found these retained direct hiphi2smplx callers:
-
-| Tool | Role |
-| --- | --- |
-| `scripts/validate_hiphi_conversion.py` | Historical HiPHI/FK conversion validation; independent runtime required |
-| `scripts/check_wendy_torso.py` | Historical torso diagnostic using skeleton constants |
-| `experiments/hiphi-head-objective/analyze.py` | Frozen head-objective analysis/reproduction |
-
-They are retained rather than bulk-migrated. The active configuration-based
-converter now routes entirely through the owned operation. Robot control
-preparation has its own owned integration and is outside this conversion slice.
-
 ## Validation
 
 `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py` discovers the public boundary
 and CLI-help tests in `tests/test_wendy_conversion.py`. A five-frame synthetic
 BVH at 0.01 seconds checks the exclusive excerpt boundary and rejection cases.
 A fresh three-frame CPU Wendy excerpt was compared with the unmodified prior
-script; see the [experiment record](../experiments/wendy-conversion-adapter/README.md).
+script; see the [experiment record](../outputs/artifact-archives/experiment-reset-20261104/experiments/wendy-conversion-adapter/README.md).
 No full historical conversion, GPU workflow or solver tuning was performed.

@@ -20,11 +20,10 @@ TOC = {
     ],
     "umr-experiments": [
         ("method", "Study guideline"),
-        ("baseline", "Current evidence"),
+        ("baseline", "Baseline status"),
     ],
     "supporting-records": [
         ("registry", "Registry"),
-        ("media", "Legacy media"),
         ("record", "Research record"),
         ("library", "Search records"),
         ("maintain", "Use and update"),

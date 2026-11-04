@@ -20,11 +20,13 @@ unchanged; the conversion preserves timing without trimming or resampling.
 | `omomo/` | Upstream guide only; dataset not supplied |
 | `fzmotion/` | Wendy victory BVH, T-pose, fitted SMPL-X motion and provenance |
 
-This is 81 source and derived files, about 76 MiB. The manifest records each source-relative
-path, byte count and SHA-256. The UMR selection includes every Git-tracked file
-under its `sample_data/`, plus its license. The upstream untracked `soma_assets` symlink
-is excluded from the UMR copy. A separately recorded local link now supplies the
-existing SOMA-X compatibility assets without duplicating model weights. Guides and the manifest are tracked;
+This is 77 source and derived files, about 73 MiB. The manifest records each
+source-relative path, byte count and SHA-256. The UMR selection includes every
+Git-tracked file under its `sample_data/`, plus its license. The upstream untracked
+`soma_assets` symlink is excluded from the UMR copy. Shared model and calibration
+locations now live under `assets/human_models/`
+and `assets/calibrations/`. UMR discovery is provided by run-local preparation in the owned sample runner.
+The old sample-facing asset aliases are retired. Guides and the manifest are tracked;
 motion payloads, conversion sidecars and FZMotion source metadata are ignored by Git.
 
 ## Restore and verify
@@ -45,9 +47,11 @@ python3 scripts/sample_data.py populate --source-workspace /path/to/motion_studi
 
 Matching existing files are retained. Changed files are reported and never
 overwritten; missing or changed sources fail visibly. Successful entries may be
-restored even if other entries fail. `check` needs the samples, manifest and linked local SOMA-X model bundle.
-The model link target and ten runtime/notice file hashes are verified; `populate`
-restores a missing link but never replaces an occupied path.
+restored even if other entries fail. `check` needs the samples, manifests and
+linked local SOMA-X model and calibration bundles.
+`assets/local-manifest.json` owns shared model/calibration hashes and canonical
+link targets. This sample manifest describes motion payloads and upstream guides.
+`populate` restores missing links but never replaces an occupied path.
 Additional local files are outside this manifest's verification scope.
 
 ## Use and terms

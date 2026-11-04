@@ -1,9 +1,0 @@
-{
-  "extends": "/data/workspace/motion_studio/experiments/hiphi-head-objective/configs/g1-baseline.json",
-  "retarget": {
-    "out": "/data/workspace/motion_studio/experiments/hiphi-head-objective/g1-neutral-baseline.npz"
-  },
-  "motion": {
-    "data": "/data/workspace/motion_studio/experiments/hiphi-head-objective/neutral/motion_actor_smplx.npz"
-  }
-}

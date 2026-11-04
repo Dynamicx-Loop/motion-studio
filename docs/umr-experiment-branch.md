@@ -4,6 +4,9 @@ The current project integration branch is **`main`** in
 **`/data/workspace/motion_studio`**; follow the
 [branch convention](workflow.md#branches-and-worktrees) for new work.
 **`experiments/umr-astro`** is retained as a historical baseline reference.
+The old static scripts described below were replaced on 2026-11-02 by
+`scripts/reproduce_umr_static_pair.py`; see the
+[historical reproduction](../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/umr-static-pair-owned-20261102/README.md).
 The remaining sections describe that experiment's original branch setup. Open
 the project folder in VS Code and select the Motion Studio repository in Source
 Control. The nested UMR repositories are dependencies with separate Git histories.
@@ -30,7 +33,7 @@ The [dependency map](../configs/umr/experiment-dependencies.json) records exact
 paths, pins and exclusions. The dependency worktree and its historical scripts
 remain unchanged. Root scripts are copied from that execution version with only
 workspace/path resolution, root-script hashing and a comment correction; see
-[adaptation record](../experiments/umr-root-branch-setup/script-adaptation.json).
+[adaptation record](../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/umr-root-branch-setup/script-adaptation.json).
 The earlier execution manifests retain their original paths and hashes.
 
 Root scripts use the existing UMR interpreter. `MOTION_STUDIO_UMR_ROOT` can select
@@ -40,14 +43,14 @@ No raw assets, licensed body models, environments or checkpoint binaries are
 included in the project commits. A fresh clone alone does not reproduce those
 local dependencies, and no remote or push has been configured by this work.
 
-## Current research state
+## Research state at the time of the original baseline
 
 The [guideline](umr-astro-baseline-proposal.md) was approved after its original
 review draft. This document records that approval and the corrected repository
 scope without changing the frozen proposal bytes. The
 [paper study v1](../references/umr-paper-study-v1.md) remains a literature reference.
 
-The [first static pair](../experiments/umr-astro-baseline-v1/README.md) completed
+The [first static pair](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-astro-baseline-v1/README.md) completed
 two fresh official-default trainings and binding diagnostics. It is a baseline
 candidate for review. Further experiments are paused. Motion optimization,
 controlled ablations and dynamics have not begun; matched SOMA-X motion/actor/rig

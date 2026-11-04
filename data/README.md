@@ -2,7 +2,9 @@
 
 The shared local data root is `/data/motions`. See its
 [directory convention and migration record](/data/motions/README.md).
-Shared human-model assets live in `human_models/<model>/<release-or-revision>/`;
+Motion Studio exposes shared human assets under `assets/human_models/` and
+dataset calibration under `assets/calibrations/`, with local links into this
+canonical storage. Shared human-model assets live in `human_models/<model>/<release-or-revision>/`;
 datasets live in `datasets/<source>/{raw,calibration,derived}/`.
 
 The [sample collection](sample_data/README.md) contains local UMR examples and a
@@ -18,4 +20,4 @@ required layout through local symlinks. Keep upstream environments independent.
 
 The temporary legacy aliases under `/data/motions` have been removed. Historical
 run records keep their original paths and hashes; archive readers resolve moved
-model filenames through `scripts/motion_data_paths.py` and the saved move map.
+model filenames through `motion_studio.motion_data_paths` and the saved move map.

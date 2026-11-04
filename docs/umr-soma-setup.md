@@ -4,67 +4,28 @@ For the official Studio's BONES-SEED example, native source integration, and
 the verified local uniform fit, see the
 [SOMA/BONES-SEED integration trace](umr-soma-boneseed-integration.md).
 
-Prepared on 2026-10-22; local auto-detection links verified on 2026-10-23.
-SOMA static correspondence is available; BONES-SEED motion remains a separate input.
+## Workspace setup
 
-Use the existing UMR environment:
-
-```bash
-cd /data/workspace/motion_studio/externals/UMR
-source /data/motions/human_models/soma-x/f81a01796f65/env.sh
-PYTHONPATH=scripts .venv/bin/python -c 'from soma_source import default_soma_assets_path; print(default_soma_assets_path())'
-```
-
-The source command exports:
+Use Motion Studio's [SOMA-X model assets](../assets/human_models/soma-x/README.md)
+and [BONES-SEED calibration](../assets/calibrations/bones-seed/README.md).
+From the Motion Studio root, restore and verify the existing local links:
 
 ```bash
-export UMR_SOMA_ASSETS_PATH=/data/motions/human_models/soma-x/f81a01796f65/overlays/umr
-export UMR_SOMA_SMPLX_ASSETS_PATH=/data/motions/human_models/soma-x/f81a01796f65/assets/SMPLX
+python3 scripts/sample_data.py populate
+python3 scripts/sample_data.py check
 ```
 
-## Local asset links
+The [sample-data UMR runner](../outputs/artifact-archives/experiment-reset-20261104/experiments/sample-data-umr-g1-20261102/README.md)
+uses the official UMR environment and builds the expected BONES-SEED layout in
+the fresh run directory. It links shared fit and overlay assets from
+`assets/calibrations/bones-seed/` and `assets/human_models/soma-x/overlays/umr/`.
+The historical auto-detection links inside UMR checkouts are retired.
 
-Both `externals/UMR` and `externals/UMR-astro-surface-experiment` now contain:
+## Installed asset provenance
 
-```text
-sample_data/bones-seed/soma_assets -> /data/motions/human_models/soma-x/f81a01796f65/overlays/umr
-```
-
-This uses UMR's existing auto-detected model-asset location, analogous
-to the existing SMPL asset links. No source-loader change or asset copy is needed.
-The link points to the compatibility overlay, which retains access to the original
-MHR weights, rig, SMPL-X correspondence meshes and license. It does not provide
-BONES-SEED motion, fitted shape parameters or the dataset-specific base rig.
-The explicit environment variables above continue to take precedence. The links
-are local untracked entries: upstream's directory-only ignore rule does not
-match a symlink. No upstream tracked files were changed.
-
-To recreate a missing link from the Motion Studio root (do not overwrite an
-existing location):
-
-```bash
-ln -s /data/motions/human_models/soma-x/f81a01796f65/overlays/umr externals/UMR/sample_data/bones-seed/soma_assets
-ln -s /data/motions/human_models/soma-x/f81a01796f65/overlays/umr externals/UMR-astro-surface-experiment/sample_data/bones-seed/soma_assets
-```
-
-To verify auto-detection without the environment variables:
-
-```bash
-cd /data/workspace/motion_studio/externals/UMR
-env -u UMR_SOMA_ASSETS_PATH -u UMR_SOMA_SMPLX_ASSETS_PATH PYTHONPATH=scripts \
-  .venv/bin/python -c 'from soma_source import default_soma_assets_path, load_soma_bind_tpose_template; print(default_soma_assets_path()); t=load_soma_bind_tpose_template(); print(t["points"].shape, t["skinning_weights"].shape)'
-```
-
-Verified output: `(18056, 3)` points and `(18056, 78)` weights, with 78 finite
-bind/T-pose transforms. The same check passes in the isolated experiment checkout.
-
-## Installed assets
-
-- Original official assets: `/data/motions/human_models/soma-x/f81a01796f65/assets`.
-- Local compatibility overlay for UMR: `/data/motions/human_models/soma-x/f81a01796f65/overlays/umr`.
-- Provenance, file sizes, and checksums: `/data/motions/human_models/soma-x/f81a01796f65/asset-manifest.json`.
-- CPU/GPU model validation: `/data/motions/human_models/soma-x/f81a01796f65/validation.json`.
-- Environment: `/data/workspace/motion_studio/externals/UMR/.venv`, Python 3.12, `py-soma-x==0.3.4`, `torch==2.7.1+cu128`.
+The October 2026 setup and validation used Python 3.12, `py-soma-x==0.3.4`,
+and `torch==2.7.1+cu128` in the official UMR environment. The backing store
+retains the original asset manifest and validation report.
 
 Assets are pinned to NVIDIA Hugging Face revision
 [`f81a01796f652260ff930d5318d6c6b845a505ed`](https://huggingface.co/nvidia/SOMA-X/tree/f81a01796f652260ff930d5318d6c6b845a505ed).
@@ -111,7 +72,8 @@ running the asset setup script, because it also writes the UMR environment file.
 ## BONES-SEED motion data
 
 The SOMA-X model setup is separate from BONES-SEED BVHs and fitted actor shapes.
-Those gated files are not downloaded by this setup. Follow the
+Use the [local samples](../data/sample_data/bones-seed/README.md) for the verified
+uniform workflow. For further dataset inputs, follow the
 [UMR BONES-SEED guide](../externals/UMR/sample_data/bones-seed/README.md) after
 obtaining access from the [upstream dataset](https://huggingface.co/datasets/bones-studio/seed).
 Uniform motion needs `soma_base_fit_mhr_params.npz`; proportional motion needs

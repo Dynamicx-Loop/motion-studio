@@ -32,7 +32,7 @@ Completed code worktrees are removed after integration; generated evidence remai
 [Ticket 08](issues/08-asset-library.md) resolved after actual four-model runtime
 checks, 29/29 pure suites, independent review, native browser drag/upload/source
 playback and a fresh 5-epoch/180-frame all-stage G1 smoke. The
-[experiment record](../../experiments/studio-asset-library-20261030/README.md)
+[experiment record](../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-asset-library-20261030/README.md)
 keeps this usability smoke separate from the original full-quality acceptance.
 Original preservation passed all 288 files; no external pin/source changes.
 
@@ -60,5 +60,5 @@ remained unchanged. Standalone controls and historical viewer remain preserved.
 root `assets/`, preserving source bytes/notices and an owned collision-attachment
 import derivative. Public import/HTTP/pose, browser preview and representation
 parity in MuJoCo 3.3.7 and 3.11.0 passed; 41 pure/JavaScript and seven native static
-suites passed. [Acceptance](../../experiments/studio-astro-builtin-20261101/README.md)
+suites passed. [Acceptance](../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-astro-builtin-20261101/README.md)
 records the exact snapshot and limits. No learned stages or historical pins changed.

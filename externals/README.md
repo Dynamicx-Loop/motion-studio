@@ -30,9 +30,10 @@ The manifest includes active hiphi2smplx conversion at the inspected commit
 code; SMPL-X models and beta-fit priors have separate terms and are not bundled.
 Its local README, LICENSE and pyproject.toml were inspected without installation.
 
-The historical UMR baseline worktree and surface experiment clone remain outside
-default bootstrap. menagerie_x remains at its supplied local path, also outside
-bootstrap. See [dependency roles](../docs/dependency-roles.md) and the
+The historical UMR baseline worktree and surface experiment clone are archived
+under `outputs/artifact-archives/umr-historical-checkouts-20261104/`.
+menagerie_x remains at its supplied local path, outside default bootstrap.
+See [dependency roles and checkout retirement](../docs/dependency-roles.md#2026-11-04-checkout-retirement) and the
 [machine-readable record](../configs/dependency-roles.json) for exact revisions,
 recovery hashes, source coverage and validation limits.
 
@@ -59,5 +60,5 @@ exact revisions and required bytes without moving them into bootstrap.
 [Canonical preparation](../docs/umr-canonical-preparation.md) makes fresh run-local
 copies and records prepared-only identity/cache evidence. Official G1 reproduction
 continues to use its own bundled assets. See [check tiers](../docs/checks.md) and
-the [closeout evidence](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+the [closeout evidence](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket13/README.md)
 for measured CPU/structural checks and unavailable workflows.

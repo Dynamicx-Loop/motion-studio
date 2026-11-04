@@ -110,7 +110,7 @@ results or proof that the future runtime is ready.
 | Entire tracked robot bundle | 75 files, individually hashed; no tracked changes in this variant |
 | Official UMR local HEAD | `d1cdaedaf67a827198da71c5fa831f48b2e51f91`; no tracked changes |
 
-The [inspection manifest](../experiments/umr-astro-baseline-proposal/asset-inspection.json)
+The [inspection manifest](../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/umr-astro-baseline-proposal/asset-inspection.json)
 records all hashes, the exact map-digest encoding, local repository status and
 78 tracked UMR source/config/document files. It is a proposal snapshot, not a
 complete frozen execution environment.
@@ -168,7 +168,7 @@ Evidence coverage must stay explicit:
   files. All five saved webpage/manifest/runtime source hashes were reverified
   here; current live manifest retrieval was unavailable. These bundles are
   selectable assets/T-poses, not precomputed comparable results.
-  [Official inventory](../experiments/all-robot-segment-audit/official-inventory.json)
+  [Official inventory](../outputs/artifact-archives/experiment-reset-20261104/experiments/all-robot-segment-audit/official-inventory.json)
   and [preserved manifest](../outputs/all-robot-segment-audit/official/manifest.json).
 - **Pinned repository provision:** no tracked generated `output/`/`outputs/`
   files, `correspondence_slots` files, or `.pt/.pth/.ckpt/.safetensors`
@@ -178,17 +178,17 @@ Evidence coverage must stay explicit:
   trained/reused static results, not official released results. It performed no
   motion runs, and its MimicKit primitive geometry used an experimental patch.
   Preserve its findings as legacy with those caveats, not as an unchanged-official
-  baseline. [Audit record](../experiments/all-robot-segment-audit/README.md).
+  baseline. [Audit record](../outputs/artifact-archives/experiment-reset-20261104/experiments/all-robot-segment-audit/README.md).
 
 Existing local coverage was checked directly against the saved JSON records:
 
 | Legacy record | Verified coverage | What it does not establish |
 | --- | --- | --- |
-| [All-robot results](../experiments/all-robot-segment-audit/results.json) | 10 static SMPL-X arms × 19 segment rows: all six base embodiments, G1 racket/sphere-hand variants, and Astro visual/primitive diagnostics | Not official published outputs, not six new-baseline runs, and not SOMA-X coverage of all six robots |
-| [Native-centering results](../experiments/all-robot-segment-audit/native-center-results.json) | Five additional centering arms × 19 rows; with the preceding record, 15 arms / 285 rows | Sensitivity variants, not five more base embodiments or pooled comparable scores |
-| [SMPL-X/SOMA audit](../experiments/soma-correspondence-audit/results.json) | Eight static arms: two source models × Astro/G1 × spine1/bbox50; 152 native19 and 144 common18 rows | Static templates differ in identity/geometry; not a matched dual-model motion comparison |
-| [Legacy fixed-fist static](../experiments/astro-fist-static-v1/results.json) and [wrist candidates](../experiments/astro-fist-wrist-v1/results.json) | Each has the same eight-cell static layout and 296 segment rows; raw/candidate are separate variants | Historical patched experiments, not the new unchanged-official baseline |
-| [Legacy fixed-fist motion](../experiments/umr-motion-fist-v1/results.json) | Eight SMPL-X-only motion arms: Astro/G1 × two centers × raw/candidate | No SOMA-X motion arm; cannot complete the source-model axis |
+| [All-robot results](../outputs/artifact-archives/experiment-reset-20261104/experiments/all-robot-segment-audit/results.json) | 10 static SMPL-X arms × 19 segment rows: all six base embodiments, G1 racket/sphere-hand variants, and Astro visual/primitive diagnostics | Not official published outputs, not six new-baseline runs, and not SOMA-X coverage of all six robots |
+| [Native-centering results](../outputs/artifact-archives/experiment-reset-20261104/experiments/all-robot-segment-audit/native-center-results.json) | Five additional centering arms × 19 rows; with the preceding record, 15 arms / 285 rows | Sensitivity variants, not five more base embodiments or pooled comparable scores |
+| [SMPL-X/SOMA audit](../outputs/artifact-archives/experiment-reset-20261104/experiments/soma-correspondence-audit/results.json) | Eight static arms: two source models × Astro/G1 × spine1/bbox50; 152 native19 and 144 common18 rows | Static templates differ in identity/geometry; not a matched dual-model motion comparison |
+| [Legacy fixed-fist static](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/results.json) and [wrist candidates](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-wrist-v1/results.json) | Each has the same eight-cell static layout and 296 segment rows; raw/candidate are separate variants | Historical patched experiments, not the new unchanged-official baseline |
+| [Legacy fixed-fist motion](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/results.json) | Eight SMPL-X-only motion arms: Astro/G1 × two centers × raw/candidate | No SOMA-X motion arm; cannot complete the source-model axis |
 
 These are **UMR** records. GMR is a separate method in external comparisons;
 the wording of the request does not relabel these local audits as GMR runs.
@@ -200,7 +200,7 @@ box mesh in the recorded inventory. Standalone preset names AGIBOT A2, Fourier
 N1 and PND Adam Lite do not have complete shipped model paths in that inventory;
 they are not silently added to the six available base embodiments. Source/task
 defaults are not additional robots. See the
-[full inventory](../experiments/all-robot-segment-audit/inventory.json).
+[full inventory](../outputs/artifact-archives/experiment-reset-20261104/experiments/all-robot-segment-audit/inventory.json).
 
 For future reference entries, retain embodiment/variant, original source URL or
 pinned path, paper/code version, source motion/model, evidence type (published

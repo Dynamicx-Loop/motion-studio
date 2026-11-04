@@ -53,35 +53,26 @@ See the [ProtoMotions/PyRoki setup and solver comparison](docs/protomotions-pyro
 and [official UMR implementation investigation](docs/umr-solver-investigation.md).
 ProtoMotions is included as source; large Git LFS assets are fetched on demand.
 
-## UMR G1 reproduction
+## Standard UMR experiment
 
-Run fresh official-default training and the complete bundled HiPHI motion through
-Motion Studio's own interface:
-
-```sh
-python3 scripts/reproduce_umr_g1.py --output outputs/umr-g1-baseline/<fresh-run-id>
-```
-
-Requires the existing UMR environment, local SMPL-X model, and host GPU access.
-See the [integration review](docs/umr-integration-review.md) and
-[experiment record](experiments/umr-g1-baseline-20261029/README.md).
+Use the [standard Studio experiment](experiments/umr-standard/README.md) to run
+matched SMPL-X static bindings with the built-in G1 and Astro P2.
 
 ## Local Studio application
 
 Launch persistent robot/pose and motion preparation, native UMR stages and
 synchronized inspection with `python3 -B scripts/studio.py`. See
 [Local Studio](docs/local-studio.md) for setup, offline dependencies, recovery
-and owned service contracts. The [full G1 acceptance record](experiments/studio-baseline-acceptance-20261030/README.md)
-keeps fresh application results separate from historical references.
+and owned service contracts.
 
 ## Local documentation
 
 Double-click [docs.html](docs.html) in this project root to read the offline
-HTML documentation. Navigation, search and saved figures are prebundled; no
+HTML documentation. Navigation and search are prebundled; no
 server or localhost URL is required for reading. See the
 [documentation guide](docs/offline-documentation.md) for rebuilding, portability,
-the direct-file verification limit and separately optional 3D tools.
-Legacy evidence and the prospective static baseline remain labeled separately.
+and the direct-file verification limit.
+The [experiment index](experiments/README.md) links the standard workflow.
 Generated HTML and evidence bundles stay local. After editing sources, select an
 unused edition ID for each build (an existing destination is refused):
 
@@ -89,9 +80,6 @@ unused edition ID for each build (an existing destination is refused):
 python3 scripts/build_docs.py --edition local-20261029-03
 python3 scripts/verify_docs.py --edition local-20261029-03
 ```
-A fresh clone also needs the preserved local report/evidence artifacts described
-in the guide.
-
 ## Layout
 
 ```text
@@ -100,7 +88,7 @@ scripts/         Thin CLI wiring and explicit frozen compatibility entry points
 tests/           Owned behavior tests; root check command discovers pure suites
 schemas/         Experiment plan/result JSON schemas
 robots/          Pinned robot definitions, named poses and source notices
-assets/          Portable built-in robot snapshots, meshes and source notices
+assets/          Bundled robot assets and local shared human-model/calibration references
 externals/       Independent upstream checkouts and their manifest
 references/      Zotero-derived bibliography and reading index
 docs/            Authored guidance, reader templates and catalog
@@ -131,7 +119,7 @@ robot catalog. Named-frame checks, inertia and geometry claims remain separate.
 
 For storage and recovery, see [preservation receipts](docs/preservation.md),
 [verified relocation and restoration](docs/artifact-relocation.md), and the
-[additive layout closeout](experiments/layout-and-robot-assets-evidence/ticket13/README.md).
+[additive layout closeout](outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket13/README.md).
 Legacy aliases retain original bytes; frozen historical writers must use fresh
 preparation/output routes. Existing bulky outputs and retained exceptions are
 accounted for in the relocation ledger, without a workspace-size reduction claim.

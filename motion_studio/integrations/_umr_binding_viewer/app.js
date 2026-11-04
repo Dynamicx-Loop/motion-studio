@@ -46,7 +46,7 @@ try {
     mesh.position.set(offsets[i], -floor, 0); scene.add(mesh); surfaces.push(mesh);
     points.push((i === 0 ? data.source : data.target).map(p => [p[0] + offsets[i], p[1] - floor, p[2]]));
   }
-  if (!motion) throw Error('This export has no motion. Re-export with the current view_umr_bindings.py.');
+  if (!motion) throw Error('This inspection has no motion data.');
   if (!human || human.frame_count !== motion.frame_count || human.fps !== motion.fps) throw Error('Human and G1 timelines do not agree');
   const replay = humanMotion(human, binary);
   await replay.load(0); replay.prefetch(0);

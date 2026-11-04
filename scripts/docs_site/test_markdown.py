@@ -1,7 +1,7 @@
 """Observable reading contracts for the small local Markdown renderer."""
 
 import unittest
-from .markdown import render
+from motion_studio.documentation.markdown import render
 
 
 class MarkdownReadingTests(unittest.TestCase):

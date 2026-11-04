@@ -1,6 +1,5 @@
 """Documentation publication behavior through the owned build operation."""
 import tempfile
-import base64
 import json
 import re
 import shutil
@@ -34,40 +33,6 @@ def fixture(root):
         target = root / path
         target.parent.mkdir(parents=True, exist_ok=True)
         target.write_text('fixture source')
-    report = root / 'outputs/umr-binding-report'
-    (report / 'inspectors/canonical-motion/vendor').mkdir(parents=True)
-    (report / 'index.html').write_text('<html><head></head><body><div class="top-actions"></div><h1 id="legacy">EN / 中</h1></body></html>')
-    (report / 'inspectors/canonical-motion/index.html').write_text('<html><head></head><body>Optional inspector</body></html>')
-    (report / 'inspectors/canonical-motion/vendor/three.module.js').write_text("const REVISION = '165';")
-    (report / 'inspectors/canonical-motion/vendor/OrbitControls.js').write_text('// saved local module')
-    image = report / 'figures/saved.png'
-    image.parent.mkdir()
-    image.write_bytes(base64.b64decode('iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/x8AAwMCAO+aZ1EAAAAASUVORK5CYII='))
-    def record(path, data):
-        target = root / path
-        target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_text(json.dumps(data))
-    record('experiments/umr-binding-report/catalog.json', {'figures': {
-        'canonical_selected': 'outputs/umr-binding-report/figures/saved.png',
-        'canonical_matched': 'outputs/umr-binding-report/figures/saved.png'}})
-    arms = {}
-    for name, total, common in [('g1', 3562, 187), ('astro', 2327, 122)]:
-        rows = [{'source': f'segment-{i}', 'slots': 200 if i < 18 else 496,
-                 'compatible_zone_slots': common if i < 18 else total - common * 18}
-                for i in range(19)]
-        arms[name] = {'compatible_slots': total, 'per_segment': rows}
-    base = 'outputs/umr-astro-baseline-v1/static-20261024-01/'
-    record(base + 'evaluation/results.json', {'arms': arms})
-    for path in [base + 'provenance.json', base + 'artifact-manifest.json',
-                 'experiments/umr-astro-baseline-v1/execution-status.json',
-                 'experiments/umr-astro-baseline-v1/preservation-after.json',
-                 'configs/umr/experiment-dependencies.json']:
-        record(path, {})
-    legacy = 'outputs/umr-legacy-index-20261024/'
-    record(legacy + 'summary.json', {'normalized_arms': 76, 'static_arms': 76,
-        'motion_arms': 0, 'segment_rows': 1924, 'new_baseline_arms': 0, 'cohorts': []})
-    record(legacy + 'manifest.json', {})
-    (root / (legacy + 'results.jsonl')).write_text(''.join(json.dumps({'cohort_status': 'legacy'}) + '\n' for _ in range(76)))
     return root
 
 
@@ -94,7 +59,7 @@ class DocumentationPublicationTests(unittest.TestCase):
             script = root / 'scripts/verify_docs.py'
             shutil.copyfile(REPOSITORY / 'scripts/verify_docs.py', script)
             evidence = base / 'stable-evidence'
-            shutil.copytree(root / 'outputs', evidence / 'outputs')
+            evidence.mkdir()
             build_edition(root, evidence, edition='first')
             current = base / 'current-workspace'
             root.rename(current)
@@ -122,18 +87,18 @@ class DocumentationPublicationTests(unittest.TestCase):
             self.assertEqual((old / 'docs.html').read_text(), 'Previous edition')
             self.assertFalse((root / 'outputs/docs-site/new').exists())
 
-    def test_build_copies_evidence_and_preserves_complete_old_entries(self):
+    def test_build_excludes_legacy_bundle_and_preserves_complete_old_entries(self):
         with tempfile.TemporaryDirectory() as directory:
             root = fixture(Path(directory))
-            original = (root / 'outputs/umr-binding-report/index.html').read_bytes()
+            old_report = root / 'outputs/umr-binding-report/index.html'
+            old_report.parent.mkdir(parents=True)
+            old_report.write_text('Historical report')
             (root / 'docs.html').write_text('<html><body>Prior complete overview</body></html>')
             result = build_edition(root, root, edition='first')
             manifest = json.loads(result.manifest.read_text())
-            self.assertEqual((root / 'outputs/umr-binding-report/index.html').read_bytes(), original)
-            self.assertNotIn('self.legacy', (result.output / 'index.html').read_text())
-            self.assertIn('LEGACY', (result.output / 'index.html').read_text())
-            self.assertIn('motion-docs-overlay', (result.output / 'index.html').read_text())
-            self.assertEqual((result.output / manifest['preserved_originals']['index.html']['archive']).read_bytes(), original)
+            self.assertFalse((result.output / 'index.html').exists())
+            self.assertFalse((result.output / 'inspectors').exists())
+            self.assertEqual(old_report.read_text(), 'Historical report')
             self.assertEqual((result.output / manifest['preserved_entries']['docs.html']['archive']).read_text(),
                              '<html><body>Prior complete overview</body></html>')
             self.assertIn('outputs/docs-site/first/installation.html', (root / 'docs.html').read_text())

@@ -95,7 +95,7 @@ Motion Studio applies source/output separation without changing frameworks:
 - `docs/site/templates/overview.html`: overview template; `catalog.json`: stable
   source IDs and reading/timeline metadata.
 - `docs/site/style.css` and `search.js`: local presentation and enhancement.
-- `scripts/build_docs.py`: build entry; `scripts/docs_site/`: implementation.
+- `scripts/build_docs.py`: build entry; `motion_studio/documentation/`: implementation.
 - Root `docs.html` and `docs-basic.html`: generated local-file overview entries.
 - Bundle-level `installation.html`, `quick-start.html`, `umr-experiments.html`
   and `supporting-records.html`: separate pages with shared navigation.

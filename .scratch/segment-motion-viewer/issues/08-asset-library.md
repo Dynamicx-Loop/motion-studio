@@ -95,7 +95,7 @@ rendering, interaction objects, dynamic feasibility or a new full-quality cohort
 ## Answer
 
 Resolved after implementation, independent correctness review and parent browser/
-native acceptance. The [experiment record](../../../experiments/studio-asset-library-20261030/README.md)
+native acceptance. The [experiment record](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-asset-library-20261030/README.md)
 records source/runtime boundaries, exact short-clip semantics and checks. Browser
 evidence and native receipt are retained in
 [`outputs/studio-asset-library-research`](../../../outputs/studio-asset-library-research/README.md).

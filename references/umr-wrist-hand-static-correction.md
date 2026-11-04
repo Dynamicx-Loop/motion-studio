@@ -141,7 +141,7 @@ actual-hand point. If a global exact-triangle check preserves the bad ownership,
 the fast projector is unlikely to explain that ownership result; the point
 already favors the wrist surface under the same projection rule.
 [Local production binding](/data/workspace/motion_studio/externals/UMR-astro-surface-experiment/scripts/retarget_smpl_to_humanoid_surface_vector.py:657),
-[minimal observed-failure reproduction](/data/workspace/motion_studio/experiments/astro-hand-wrist-correction/reproduce.py).
+[minimal observed-failure reproduction](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-hand-wrist-correction/reproduce.py).
 
 ## Controlled static alternatives
 

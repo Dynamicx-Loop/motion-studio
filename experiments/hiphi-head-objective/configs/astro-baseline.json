@@ -1,9 +1,0 @@
-{
-  "extends": "/data/workspace/motion_studio/experiments/hiphi-robot-control/configs/astro-reference.json",
-  "motion": {
-    "max_frames": 240
-  },
-  "retarget": {
-    "out": "/data/workspace/motion_studio/experiments/hiphi-head-objective/astro-baseline.npz"
-  }
-}

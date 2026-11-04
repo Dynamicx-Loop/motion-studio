@@ -131,13 +131,11 @@ separate validation. Existing artifacts without verified metadata are rejected.
 
 The official `reproduce_g1_baseline(output, workspace=...)` operation retains its
 signature, pinned bundled G1 assets, run-local full bundle copy and complete
-training/retarget behavior. Historical
-`motion_studio.integrations.umr_hiphi_control.prepare_legacy_run` and frozen pair
-scripts remain separate inventory-sealed preparation/reproduction tools.
+training and retargeting behavior.
 
 Validation: `PYTHONDONTWRITEBYTECODE=1 python3 scripts/check.py`. The pure suite
 covers closed copies, pose/native order, relocation, mesh/shape/order/settings
 invalidation, exact-claim guards, malformed evidence, source drift, source-link
 protection, destination collisions and retained failure receipts. Real CPU smoke
 evidence is described in
-[the ticket 12 record](../experiments/layout-and-robot-assets-evidence/ticket12/README.md).
+[the ticket 12 record](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket12/README.md).

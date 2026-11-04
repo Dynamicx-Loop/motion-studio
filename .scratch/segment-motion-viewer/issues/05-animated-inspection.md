@@ -60,7 +60,7 @@ routes returned 200; explicit UI build returned a fresh path. Standalone HTTP
 viewing loaded only local dependencies; browser stepping/filtering/reference/
 centering, exact end-stop and old-revision/inherited binding navigation passed.
 
-Evidence and contracts: [experiment](../../../experiments/studio-inspection-smoke-20261030/README.md)
+Evidence and contracts: [experiment](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-inspection-smoke-20261030/README.md)
 and [Local Studio](../../../docs/local-studio.md#stage-inspection-and-standalone-exports).
 The actual native cohort has three frames; the analytic 64-frame quantization and
 JS chunk-boundary/race gates do not replace native full-clip chunk comparisons.

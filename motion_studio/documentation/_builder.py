@@ -34,8 +34,6 @@ class Bundle:
     def __init__(self, root, evidence, output, saved=None):
         self.root, self.evidence, self.out = root, evidence, output
         self.site = root / "docs/site"
-        self.base = root / "outputs/umr-astro-baseline-v1/static-20261024-01"
-        self.legacy = root / "outputs/umr-legacy-index-20261024"
         self.saved = saved
         saved_sources = saved is not None
         self.inputs, self.outputs, self.unbundled, self.preserved = {}, {}, [], {}
@@ -183,7 +181,7 @@ class Bundle:
 <a class="brand" href="{prefix}docs.html">MOTION STUDIO <small>/ Documentation</small></a>
 <span class="header-note">Local documentation</span></header>
 <div class="layout"><aside class="sidebar"><p class="eyebrow">Contents</p><nav class="nav-links" aria-label="Documentation">{nav}</nav>
-<p class="nav-note">Local evidence · 24 Oct 2026<br>Independent tools, shared records.<br>No experiment is run by this site.</p><p><a href="{prefix}supporting-records.html"{' aria-current="page"' if current == "supporting-records" else ""}>Supporting records</a></p></aside>
+<p class="nav-note">Local documentation<br>Independent tools, shared records.<br>No experiment is run by this site.</p><p><a href="{prefix}supporting-records.html"{' aria-current="page"' if current == "supporting-records" else ""}>Supporting records</a></p></aside>
 <main id="content">{self.source_notice()}{body}<footer>Motion Studio · Local documentation snapshot · Original sources remain authoritative.</footer></main>{outline}</div>{script}</body></html>'''
 
     def readers(self) -> list:
@@ -220,207 +218,22 @@ class Bundle:
             )
         return search
 
-    def baseline(self) -> tuple[str, str, str]:
-        data = json.loads(self.read(self.base / "evaluation/results.json"))
-        arms = data["arms"]
-        cards = []
-        for key, title in [("g1", "G1"), ("astro", "Astro")]:
-            arm = arms[key]
-            rows = arm["per_segment"]
-            total = sum(r["slots"] for r in rows)
-            compatible = sum(r["compatible_zone_slots"] for r in rows)
-            if (
-                total != 4096
-                or compatible != arm["compatible_slots"]
-                or len(rows) != 19
-            ):
-                raise ValueError(f"Invalid baseline diagnostic: {key}")
-            rate = compatible / total * 100
-            cards.append(
-                f'<div class="card"><span class="badge">SMPL-X → {title}</span><span class="stat">{rate:.2f}%</span><p>{compatible:,} / {total:,} compatible slots</p><div class="metricbar"><span style="width:{rate}%"></span></div></div>'
-            )
-        g1 = {r["source"]: r for r in arms["g1"]["per_segment"]}
-        astro = {r["source"]: r for r in arms["astro"]["per_segment"]}
-        rows = [
-            [
-                name,
-                f"{g1[name]['compatible_zone_slots']} / {g1[name]['slots']}",
-                f"{astro[name]['compatible_zone_slots']} / {astro[name]['slots']}",
-            ]
-            for name in sorted(g1)
-        ]
-        links = []
-        for path, title in [
-            (self.base / "evaluation/results.json", "Evaluation JSON"),
-            (self.base / "provenance.json", "Run provenance"),
-            (self.base / "artifact-manifest.json", "Artifact manifest"),
-            (
-                self.root / "experiments/umr-astro-baseline-v1/execution-status.json",
-                "Execution status",
-            ),
-            (
-                self.root / "experiments/umr-astro-baseline-v1/preservation-after.json",
-                "Preservation record",
-            ),
-            (self.root / "configs/umr/experiment-dependencies.json", "Dependency pins"),
-        ]:
-            links.append(f'<a href="{self.snapshot(path)}">{title}</a>')
-        return (
-            '<div class="cards">' + "".join(cards) + "</div>",
-            table(
-                [
-                    "Native19 segment",
-                    "G1 compatible / slots",
-                    "Astro compatible / slots",
-                ],
-                rows,
-            ),
-            " · ".join(links),
-        )
-
     def home(self, search: list):
-        baseline, segments, links = self.baseline()
-        summary = json.loads(self.read(self.legacy / "summary.json"))
-        legacy_rows = [
-            json.loads(line)
-            for line in self.read(self.legacy / "results.jsonl").decode().splitlines()
-        ]
-        if len(legacy_rows) != summary["normalized_arms"] or any(
-            r["cohort_status"] != "legacy" for r in legacy_rows
-        ):
-            raise ValueError("Legacy index boundary or totals changed")
-        registry = [
-            [
-                "static-20261024-01",
-                "Baseline candidate",
-                "2 static arms",
-                "Single actor/seed; review before motion",
-            ]
-        ]
-        for cohort in summary["cohorts"]:
-            registry.append(
-                [
-                    cohort["cohort_id"],
-                    "Legacy / retrospective",
-                    f"{cohort['arms']} {cohort['task']} arms",
-                    "Saved evidence; not rerun",
-                ]
-            )
-        self.snapshot(self.legacy / "summary.json")
-        self.snapshot(self.legacy / "results.jsonl")
-        self.snapshot(self.legacy / "manifest.json")
         timeline = "".join(
             f'<li><time>{x["date"]}</time><h3>{html.escape(x["title"])}</h3><p>{html.escape(x["description"])}</p><a href="{self.url(x["source"])}">Read source record →</a></li>'
             for x in self.catalog["timeline"]
         )
-        catalog = json.loads(
-            self.read(self.root / "experiments/umr-binding-report/catalog.json")
-        )
-        selected = [
-            (k, p)
-            for k, p in catalog["figures"].items()
-            if k in ("canonical_selected", "canonical_matched")
-        ]
-        if not selected:
-            selected = [
-                (k, p) for k, p in catalog["figures"].items() if "canonical" in k
-            ][:2]
-        media = []
-        for key, path in selected:
-            target = "documentation/media/" + Path(path).name
-            image_data = self.read(self.root / path)
-            self.write(target, image_data)
-            image_url = embed_image(Path(path), image_data)
-            media.append(
-                f'<figure><a href="{target}"><img loading="lazy" src="{image_url}" alt="Legacy saved comparison: {html.escape(key.replace("_", " "))}"></a><figcaption>Legacy saved figure · {html.escape(key)}. Source: <code>{html.escape(path)}</code>. Open full size to inspect the original labels; this is not the new baseline.</figcaption></figure>'
-            )
         listing = "".join(
             f'<li><span class="badge {d["state"]}">{STATES[d["state"]]}</span> <a href="{d["url"]}">{html.escape(d["title"])}</a><p class="small">{html.escape(d["description"])}</p></li>'
             for d in search
         )
         values = {
-            "BASELINE": baseline,
-            "SEGMENTS": segments,
-            "BASELINE_LINKS": links,
-            "REGISTRY": table(
-                ["Record / cohort", "State", "Scope", "Interpretation"], registry
-            ),
-            "LEGACY_COUNTS": f"{summary['normalized_arms']} arms ({summary['static_arms']} static + {summary['motion_arms']} motion) and {summary['segment_rows']:,} segment rows",
-            "MEDIA": "".join(media),
             "TIMELINE": timeline,
             "DOCUMENT_LIST": listing,
         }
         write_pages(self, self.site, values, search)
 
-    def decorate_viewer(self):
-        """Preserve old generated HTML; add navigation and remove CDN runtime needs."""
-        paths = [self.out / "index.html", *sorted((self.out / "inspectors").glob("*/index.html"))]
-        orbit = self.out / "inspectors/canonical-motion/vendor/OrbitControls.js"
-        # Reuse only matching already-local modules. No package download.
-        three = self.out / "inspectors/canonical-motion/vendor/three.module.js"
-        if "const REVISION = '165'" not in three.read_bytes().decode():
-            raise ValueError("Expected the saved Three.js r165 module")
-        self.write("documentation/vendor/three.module.js", three.read_bytes())
-        self.write("documentation/vendor/controls/OrbitControls.js", orbit.read_bytes())
-        for path in paths:
-            relative = str(path.relative_to(self.out))
-            current = path.read_bytes().decode()
-            marker = "<!-- motion-docs-overlay -->"
-            if marker in current:
-                current = (
-                    (self.out / self.preserved[relative]["archive"]).read_bytes().decode()
-                )
-            original_hash = digest(current.encode())
-            archive = "history/documentation-scaffold/" + original_hash + "/" + relative
-            self.write(archive, current)
-            self.preserved[relative] = {
-                "original_sha256": original_hash,
-                "archive": archive,
-            }
-            is_main = path == self.out / "index.html"
-            href = "docs.html" if is_main else "../../docs.html"
-            banner = f'''{marker}<div style="background:#fff2da;color:#563d1a;padding:12px 20px;font:14px/1.5 system-ui;border-bottom:1px solid #ba965f"><strong>LEGACY / 历史记录</strong> · Retrospective evidence, not the new baseline. <a style="color:#075c56" href="{href}">Motion Studio documentation / 文档 →</a></div>'''
-            if not is_main:
-                banner = banner.replace(
-                    "background:#fff2da;",
-                    "position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#fff2da;",
-                )
-            if is_main:
-                # Persistent context inside the existing sticky header, including deep links.
-                current = current.replace(
-                    '<div class="top-actions">',
-                    '<a style="color:#ffe2a8;font-size:13px" href="docs.html">LEGACY · Documentation / 文档 →</a><div class="top-actions">',
-                    1,
-                )
-            policy = "default-src 'self' data: blob:; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; connect-src 'self'; object-src 'none'"
-            current = current.replace(
-                "<head>",
-                '<head><meta http-equiv="Content-Security-Policy" content="'
-                + policy
-                + '">',
-                1,
-            )
-            current = current.replace("<body>", "<body>" + banner, 1)
-            current = current.replace(
-                "https://cdn.jsdelivr.net/npm/three@0.165.0/build/three.module.js",
-                "../../documentation/vendor/three.module.js",
-            ).replace(
-                "https://cdn.jsdelivr.net/npm/three@0.165.0/examples/jsm/",
-                "../../documentation/vendor/",
-            )
-            self.write(relative, current)
-        for relative, info in self.preserved.items():
-            archive = self.out / info["archive"]
-            if digest(archive.read_bytes()) != info["original_sha256"]:
-                raise ValueError("Preserved original changed: " + relative)
-            self.outputs[relative] = {
-                "sha256": digest((self.out / relative).read_bytes()),
-                "bytes": (self.out / relative).stat().st_size,
-            }
-
     def build(self):
-        if not (self.out / "index.html").is_file():
-            raise FileNotFoundError("Existing research viewer required at " + str(self.out))
         # Validate registered sources before writing any page.
         for doc in self.docs:
             self.read(self.root / doc["path"])
@@ -435,7 +248,6 @@ class Bundle:
         )
         search = self.readers()
         self.home(search)
-        self.decorate_viewer()
         self.write("docs-basic.html", plain_entry((self.out / "docs.html").read_text()))
         manifest = {
             "schema_version": 1,
@@ -452,27 +264,10 @@ class Bundle:
             "unbundled_links": self.unbundled,
             "limitations": [
                 "Original external citations require internet.",
-                "3D inspectors require local HTTP.",
                 "TeX remains readable source notation.",
-                "Fresh clone requires the existing local report/evidence artifacts.",
             ],
         }
         (self.out / "documentation/manifest.json").write_text(
             json.dumps(manifest, indent=2, ensure_ascii=False) + "\n"
         )
         return manifest
-
-
-def table(headers: list, rows: list) -> str:
-    return (
-        '<div class="table-scroll" tabindex="0"><table><thead><tr>'
-        + "".join('<th scope="col">' + html.escape(x) + "</th>" for x in headers)
-        + "</tr></thead><tbody>"
-        + "".join(
-            "<tr>"
-            + "".join("<td>" + html.escape(str(x)) + "</td>" for x in row)
-            + "</tr>"
-            for row in rows
-        )
-        + "</tbody></table></div>"
-    )

@@ -57,6 +57,6 @@ passed at 1e-12 absolute tolerance in MuJoCo 3.3.7 and 3.11.0 separately. All 41
 pure/JavaScript and seven robot-static suites passed; focused Astro checks also
 cover local licenses and unchanged-source/escaping-file failures.
 
-[Acceptance and provenance](../../../experiments/studio-astro-builtin-20261101/README.md)
+[Acceptance and provenance](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-astro-builtin-20261101/README.md)
 record commands, runtimes, hashes and limits. No native pipeline stages ran;
 source checkout, old definitions and external pins remain unchanged.

@@ -1,0 +1,175 @@
+{
+  "schema_version": 1,
+  "description": "Local shared human models and dataset calibration; links only, canonical payloads stay under /data/motions.",
+  "sources": {
+    "soma-x": {
+      "revision": "f81a01796f652260ff930d5318d6c6b845a505ed",
+      "compatibility": "Existing UMR overlay; see LOCAL_MODIFICATIONS.md",
+      "canonical_asset_manifest": "human_models/soma-x/f81a01796f65/asset-manifest.json"
+    },
+    "bones-seed": {
+      "uniform_fit": "Shared local Kimodo fit; byte-identical to official fit verified in experiments/umr-baseline-g1-somax-20261102/records/uniform-fit-investigation.json. Not a newly downloaded BONES-SEED distribution.",
+      "kimodo_revision": "3b98f78344cb6c1580d7e5cb95aa2ea4320bafe9",
+      "rig_usd_source": "/data/workspace/github/soma-x/soma-retargeter/soma_retargeter/configs/soma/soma_base_skel_minimal.usd",
+      "rig_checkout_revision": "b3ef2708d84bfd1314ddb52d0db6c9c211df1f57",
+      "optional_absent": "soma_base_skel_minimal.bvh is not used by the pinned fitted uniform loader; proportional fits not needed for uniform clips."
+    }
+  },
+  "local_links": [
+    {
+      "path": "assets/human_models/soma-x/assets",
+      "source_path": "human_models/soma-x/f81a01796f65/assets",
+      "files": [
+        {
+          "path": "SOMA_neutral.npz",
+          "bytes": 26608121,
+          "sha256": "5829af4a5333abdba5ad449360b868faacee99d395971e62f35c0e7169432b63"
+        },
+        {
+          "path": "SOMA_template_rig.usda",
+          "bytes": 28306038,
+          "sha256": "a952cb7bdf4ccd801e355d53122d395b985b69d0d9181439edad5081bb171856"
+        },
+        {
+          "path": "SOMA_procedural_transforms.json",
+          "bytes": 20045,
+          "sha256": "9853e19ab51625ffaa7d9e7ccf0e443272c2740837604e6bacd66604e8edf509"
+        },
+        {
+          "path": "MHR/SOMA_wrap_lod1.obj",
+          "bytes": 1816801,
+          "sha256": "9ab7a2328d5b026c17ef1d09ed692ffeb68f96d3fc74970cba72e667dbe0f728"
+        },
+        {
+          "path": "MHR/base_body_lod1.obj",
+          "bytes": 2277452,
+          "sha256": "e8bbb3f3681d76737635c10a9e6f6a058ad3d9be5a75547f84a578cea572e916"
+        },
+        {
+          "path": "MHR/mhr_model_lod1.pt",
+          "bytes": 696110248,
+          "sha256": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc"
+        },
+        {
+          "path": "SMPLX/base_body.obj",
+          "bytes": 700964,
+          "sha256": "f03f95e5e303c8dc070afa09387e9dde861eeb1567ccf61a70bf53a5f7fd2b70"
+        },
+        {
+          "path": "SMPLX/SOMA_wrap.obj",
+          "bytes": 2630564,
+          "sha256": "7498e3a7873d7b4d8f1d3455a8af945589b1c494fbff99b14bc905a691208b6f"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 11387,
+          "sha256": "d1a7d615ab8eff4de143b1456f46dabf232f54daf0fcf9a70442bb6f637a9e95"
+        },
+        {
+          "path": "README.md",
+          "bytes": 11019,
+          "sha256": "a799719b05779f38b79f4ab87856c1ef5eff53ea99036a855b54defcc1134407"
+        },
+        {
+          "path": "SOMA-X-HF-MANIFEST.json",
+          "bytes": 6472,
+          "sha256": "286fad0be5719b5a74144d01d767f0283ac9089d953f4b4032daa11ffc6d1eb7"
+        }
+      ]
+    },
+    {
+      "path": "assets/human_models/soma-x/overlays/umr",
+      "source_path": "human_models/soma-x/f81a01796f65/overlays/umr",
+      "files": [
+        {
+          "path": "SOMA_neutral.npz",
+          "bytes": 26925489,
+          "sha256": "0c0cb328094e95259320cb17add5465d6b8d6b51195daa0ca2db1e9788edb2e9"
+        },
+        {
+          "path": "SOMA_template_rig.usda",
+          "bytes": 28306038,
+          "sha256": "a952cb7bdf4ccd801e355d53122d395b985b69d0d9181439edad5081bb171856"
+        },
+        {
+          "path": "SOMA_procedural_transforms.json",
+          "bytes": 20045,
+          "sha256": "9853e19ab51625ffaa7d9e7ccf0e443272c2740837604e6bacd66604e8edf509"
+        },
+        {
+          "path": "MHR/SOMA_wrap_lod1.obj",
+          "bytes": 1816801,
+          "sha256": "9ab7a2328d5b026c17ef1d09ed692ffeb68f96d3fc74970cba72e667dbe0f728"
+        },
+        {
+          "path": "MHR/base_body_lod1.obj",
+          "bytes": 2277452,
+          "sha256": "e8bbb3f3681d76737635c10a9e6f6a058ad3d9be5a75547f84a578cea572e916"
+        },
+        {
+          "path": "MHR/mhr_model_lod1.pt",
+          "bytes": 696110248,
+          "sha256": "352e271a6c42729c68554ceaea0c955e866970160c31e35506d782dc0f7377bc"
+        },
+        {
+          "path": "SMPLX/SOMA_wrap.obj",
+          "bytes": 2630564,
+          "sha256": "7498e3a7873d7b4d8f1d3455a8af945589b1c494fbff99b14bc905a691208b6f"
+        },
+        {
+          "path": "SMPLX/base_body.obj",
+          "bytes": 700964,
+          "sha256": "f03f95e5e303c8dc070afa09387e9dde861eeb1567ccf61a70bf53a5f7fd2b70"
+        },
+        {
+          "path": "LOCAL_MODIFICATIONS.md",
+          "bytes": 482,
+          "sha256": "a907b820dee38cf422e40b812ae0a4db284c3210fd496e0190d70e2c840bbc8f"
+        },
+        {
+          "path": "LICENSE",
+          "bytes": 11387,
+          "sha256": "d1a7d615ab8eff4de143b1456f46dabf232f54daf0fcf9a70442bb6f637a9e95"
+        }
+      ]
+    },
+    {
+      "path": "assets/calibrations/bones-seed/soma_uniform_fit_mhr_params",
+      "source_path": "datasets/bones-seed/calibration/soma_uniform_fit_mhr_params",
+      "files": [
+        {
+          "path": "soma_base_fit_mhr_params.npz",
+          "bytes": 1877,
+          "sha256": "61f0b96c8386a19d44823faf4399816642b7e20691ed5b398c7402921090096e"
+        }
+      ]
+    },
+    {
+      "path": "assets/calibrations/bones-seed/soma_base_rig",
+      "source_path": "datasets/bones-seed/calibration/soma_base_rig",
+      "files": [
+        {
+          "path": "soma_base_skel_minimal.usd",
+          "bytes": 3471219,
+          "sha256": "9cb557ebcbd04b54383a3f6f78b7eb97beb1c059405eabdaadca7813af30be27"
+        }
+      ]
+    },
+    {
+      "path": "assets/calibrations/bones-seed/notices",
+      "source_path": "datasets/bones-seed/calibration/notices",
+      "files": [
+        {
+          "path": "KIMODO-LICENSE.txt",
+          "bytes": 11387,
+          "sha256": "d1a7d615ab8eff4de143b1456f46dabf232f54daf0fcf9a70442bb6f637a9e95"
+        },
+        {
+          "path": "SOMA-RETARGETER-LICENSE.txt",
+          "bytes": 11386,
+          "sha256": "67ac54c4902a61a9e6e4e2a37e4e8dfd37b4243f063fea68c96c2eb48044b6fb"
+        }
+      ]
+    }
+  ]
+}

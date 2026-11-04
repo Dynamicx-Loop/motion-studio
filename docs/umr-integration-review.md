@@ -38,5 +38,10 @@ has no dependency on the pair worktree, patched clone, old diagnostic report, or
 Astro model. Its full-clip result is a new cohort; it does not advance or overwrite
 the October 24 static pair.
 
-See the [new experiment record](../experiments/umr-g1-baseline-20261029/README.md)
+See the [new experiment record](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-g1-baseline-20261029/README.md)
 for commands, validation, and measured results.
+
+## Current UMR experiment
+
+Use the [standard Studio experiment](../experiments/umr-standard/README.md) for
+the matched G1 and Astro P2 static binding run.

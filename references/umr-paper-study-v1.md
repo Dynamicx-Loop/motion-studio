@@ -119,8 +119,8 @@ sampling seed 9000, 500 epochs, training seed 0, fixed-template mode and batch s
 normalization, source centering and actor identity are part of the correspondence
 contract. They affect geometric alignment without independently establishing
 anatomical correctness. Reuse across SMPL-X betas is disabled.
-[Protocol](../experiments/astro-fist-static-v1/README.md),
-[resolved configuration](../experiments/astro-fist-static-v1/smplx_astro_bbox50-resolved.json)
+[Protocol](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/README.md),
+[resolved configuration](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/smplx_astro_bbox50-resolved.json)
 
 Inference: changing actor shape, target visual geometry, canonical hand pose,
 normalization or slot order requires a compatibility review and usually new
@@ -220,8 +220,8 @@ It has 29 body joints plus 14 finger coordinates held to a named fist preset.
 Four Astro trainings and eight HiPHI motion solves are recorded, with G1 static
 slots reused as documented controls. Each solve contains 1,823 frames from
 `0:5468:3`, approximately 30 Hz.
-[Asset manifest](../experiments/astro-fist-static-v1/canonical-asset.json),
-[motion record](../experiments/umr-motion-fist-v1/README.md)
+[Asset manifest](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/canonical-asset.json),
+[motion record](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/README.md)
 
 | Astro centering | Raw worst visual floor penetration | Wrist candidate |
 | --- | ---: | ---: |
@@ -233,9 +233,9 @@ Saved checks report finite outputs, zero configured joint-limit violations, and
 fixed-finger errors below `1e-7` rad before and after filtering. They were inspected,
 not rerun. The wrist candidate remains optional; it is a geometric remap, not
 retraining or validated finger correspondence.
-[Results](../experiments/umr-motion-fist-v1/results.json),
-[validation](../experiments/umr-motion-fist-v1/validation.json),
-[finger checks](../experiments/umr-motion-fist-v1/fixed-fist-validation.json)
+[Results](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/results.json),
+[validation](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/validation.json),
+[finger checks](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/fixed-fist-validation.json)
 
 Do not substitute older open-hand penetration numbers for this cohort. Open-to-fist
 changes geometry and finger freedom together, preventing an isolated pose-effect
@@ -243,7 +243,7 @@ claim. Nor does old 29-DOF head-on/off evidence establish the same result for th
 43-DOF cohort: the earlier controlled prefix found head-off slightly increased
 backward lean, while source upper chest already leaned backward.
 [Historical ablation](../docs/umr-head-objective-investigation.md),
-[cohort disclosures](../experiments/umr-binding-report/README.md)
+[cohort disclosures](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-binding-report/README.md)
 
 Current configurations disable robot self-penetration cost and its hard constraint.
 Surface-slot floor constraints do not ensure complete visual clearance after LQR
@@ -253,8 +253,8 @@ from ankle height is a proxy, not measured contact/slip. Root-relative landmark
 errors include morphology and center differences; all-hinge smoothness includes
 constant fingers. One iteration per frame, one clip and one training seed do not
 establish convergence or generalization.
-[Configuration](../experiments/umr-motion-fist-v1/smplx_astro_bbox50_raw.json),
-[metric definitions](../experiments/umr-motion-canonical-v1/README.md#evaluation-and-limitations)
+[Configuration](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-fist-v1/smplx_astro_bbox50_raw.json),
+[metric definitions](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-canonical-v1/README.md#evaluation-and-limitations)
 
 ## Reuse contract and next questions
 
@@ -269,10 +269,10 @@ metric definitions, tolerances and failed runs. Canonical UMR had no tracked edi
 at inspection, while the separate experiment checkout had local modifications;
 the baseline commit alone does not reproduce that checkout.
 
-The fixed-fist [preparation record](../experiments/astro-fist-static-v1/preparation.json)
+The fixed-fist [preparation record](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/preparation.json)
 pins the experimental tracked diff SHA-256 to
 `5d9feed17c5c70f4bc42df85093540d6147148212880b48cae5d125ce8b02b8c`;
-its [preserved patch](../experiments/astro-fist-static-v1/UMR-astro-surface-experiment.patch)
+its [preserved patch](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-fist-static-v1/UMR-astro-surface-experiment.patch)
 must accompany the experiment's other source hashes. The experimental checkout
 currently has six modified tracked scripts. Its results must not be described as
 unmodified upstream results. Conversely, the inspected upstream revision is a
@@ -285,7 +285,7 @@ checks, FPS sensitivity, additional clips/seeds, independent hand correspondence
 evaluation, and controlled current-model objective ablations. BONES-SEED remains
 blocked by missing actual motion BVH, matched actor-fit NPZ and dataset rig BVH/USD;
 installed SOMA runtime assets and static neutral bindings are not substitutes.
-[Exact missing inputs](../experiments/umr-motion-canonical-v1/BONES-SEED.md)
+[Exact missing inputs](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-motion-canonical-v1/BONES-SEED.md)
 
 A separate downstream-control gate must assess tracking, balance, forces, actuator
 and torque limits, friction, collision clearance and robustness before any physical

@@ -23,11 +23,7 @@ imports and existing standalone test commands remain supported.
 Select one or more tiers by repeating `--tier`:
 
 ```sh
-python3 scripts/check.py --tier saved-evidence
 python3 scripts/check.py --tier javascript
-python3 scripts/check.py --tier umr-static \
-  --umr-python externals/UMR/.venv/bin/python \
-  --umr-run outputs/umr-astro-baseline-v1/static-20261024-01
 python3 scripts/check.py --tier robot-static \
   --robot-python /data/workspace/notAnyrobot/menagerie_x/.venv/bin/python
 ```
@@ -35,9 +31,7 @@ python3 scripts/check.py --tier robot-static \
 | Tier | Checks and prerequisites |
 | --- | --- |
 | `pure` | G1 interface safety, recorded motion paths, evidence/preparation fixtures, Markdown reading and check-command fixtures; subsequent owned pure tests are discovered automatically. |
-| `saved-evidence` | Retrospective legacy reconstruction, declared saved experiment records and schema-validation package in the calling Python. No numerical rerun. |
 | `javascript` | Node.js search check against the selected generated reading edition (historical research bundle by default). Its six cases do not establish browser direct-file rendering. |
-| `umr-static` | Original static-pair suite, explicit external interpreter with NumPy/MuJoCo, preserved run/config/assets and pinned historical checkout. Import can require the existing upstream runtime. No training, retargeting or simulation. |
 | `robot-static` | Analytic URDF/MJCF fixture models in an explicit existing MuJoCo/NumPy interpreter; no external robot assets, training or simulation stepping. Real-source reports are separate observations. |
 
 An unavailable selected prerequisite produces `unavailable` and a nonzero exit;
@@ -88,8 +82,7 @@ node scripts/docs_site/test_search.cjs --output /absolute/path/to/edition
 The root command checks the selected edition's `supporting-records.html` before
 starting Node and reports a missing edition as `unavailable` with a nonzero exit.
 Its `--docs-edition` directory is relative to the selected source root unless
-absolute. It changes only the documentation search suite. Without selection, the
-historical report prerequisite and standalone Node command remain supported.
+absolute. It changes only the documentation search suite. Without selection, the search check follows the current root `docs.html` entry.
 Direct Node invocation also accepts `MOTION_STUDIO_DOCS_EDITION` as a directory;
 the root check command uses its explicit flag so preflight and execution agree.
 The owned `check(..., docs_edition=Path(...))` API accepts the same selection.
@@ -97,10 +90,9 @@ New pure documentation fixture tests are discovered automatically.
 
 The evidence fixture suite declares `jsonschema` as a tooling prerequisite; a missing
 module is reported as unavailable. Its small saved-input examples need no external
-checkout or historical report builder. Full legacy reconstruction stays in the
-`saved-evidence` tier; see [the owned evidence operations](evidence.md).
+checkout or historical report builder. See [the owned evidence operations](evidence.md).
 
 For the final available-tier commands, interpreter/run paths and explicit limits,
-see the [layout closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md).
+see the [layout closeout](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket13/README.md).
 A successful representation-report CLI means findings were produced; inspect
 exact claim statuses rather than treating its exit code as certification.

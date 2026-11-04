@@ -1,9 +1,0 @@
-{
-  "extends": "/data/workspace/motion_studio/configs/umr/astro-wendy-6s-9s.json",
-  "solver": {
-    "iters": 5
-  },
-  "retarget": {
-    "out": "/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/wendy_6s_9s/iters_5.npz"
-  }
-}

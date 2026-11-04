@@ -6,9 +6,7 @@ Python's standard library and independently vendored browser dependencies. Viewi
 Launch from the Motion Studio root:
 
 ```sh
-python3 -B scripts/studio.py --state outputs/studio-state \
-  --history-root /data/workspace/motion_studio/outputs/umr-g1-inspection \
-  --history /data/workspace/motion_studio/outputs/umr-g1-inspection/manual-01-synchronized
+python3 -B scripts/studio.py --state outputs/studio-state
 ```
 
 Open the printed loopback URL (default `http://127.0.0.1:8773/`). `--history-root`
@@ -375,7 +373,7 @@ all frames of its selected managed motion without trimming/resampling. The smoke
 script records fixture conversion and original-source hash. The primitive cohort
 stops at binding with no motion file and covers native tiny-triangle diagnostics.
 Neither smoke establishes full-clip/default quality; the separate
-[full G1 acceptance](../experiments/studio-baseline-acceptance-20261030/README.md)
+[full G1 acceptance](../outputs/artifact-archives/experiment-reset-20261104/experiments/studio-baseline-acceptance-20261030/README.md)
 records fresh 500-epoch/all-5468-frame application execution. Ticket 05 adds rich stage/animated
 inspection and standalone exports; ticket 06 deepens lifecycle/recovery UX.
 
@@ -471,7 +469,7 @@ node tests/test_studio_frame_requests.cjs
 
 The three-frame smoke establishes bounded representation and offline viewing.
 Native full-clip chunk-boundary comparisons and default/full-clip execution
-are recorded in [the full acceptance experiment](../experiments/studio-baseline-acceptance-20261030/README.md),
+are recorded in [the full acceptance experiment](../outputs/artifact-archives/experiment-reset-20261104/experiments/studio-baseline-acceptance-20261030/README.md),
 separate from analytic 64-frame quantization and asynchronous boundary tests.
 
 ## Recovery and immutable revision history
@@ -534,7 +532,7 @@ without repeating native numerical solves. Browser evidence is under
 `outputs/studio-lifecycle-ticket06-20261030/`: its clearly labeled subprocess fixture
 exercises close/reopen, saved-run browsing during work, Stop/retry, related settings
 reuse, stale stages and old-revision refresh restoration. Native full-clip/default
-quality acceptance is recorded in [the full application experiment](../experiments/studio-baseline-acceptance-20261030/README.md).
+quality acceptance is recorded in [the full application experiment](../outputs/artifact-archives/experiment-reset-20261104/experiments/studio-baseline-acceptance-20261030/README.md).
 
 ## Replay encoding and adapter launch boundary
 
@@ -608,7 +606,7 @@ centering body. They create no named pose, revision or compute job. Official G1
 solve limits remain isolated in the concrete adapter; this preset never applies
 G1 assumptions to other imports.
 
-The [acceptance experiment](../experiments/studio-baseline-acceptance-20261030/README.md)
+The [acceptance experiment](../outputs/artifact-archives/experiment-reset-20261104/experiments/studio-baseline-acceptance-20261030/README.md)
 records full-clip numerical gates, machine timings, browser actions, source hashes,
 original preservation and limits. Its offline audit establishes that observed
 resources were local; it does not claim that networking was disabled. Input,

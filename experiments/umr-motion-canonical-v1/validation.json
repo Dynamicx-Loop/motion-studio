@@ -1,8 +1,0 @@
-{
-  "all_eight_fresh_runs_successful": true,
-  "all_frames_joint_orders_and_binary_sizes_verified": true,
-  "all_astro_stages_share_exact_canonical_xml": true,
-  "all_model_and_input_hashes_verified": true,
-  "finite_and_zero_configured_limit_violations": true,
-  "browser_playback": "Recorded separately with report validation"
-}

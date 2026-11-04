@@ -70,4 +70,4 @@ No correspondence training or robot retargeting was run for this sample.
 runtime environment, conversion config and log. Canonical derived copies live at
 `/data/motions/datasets/fzmotion/derived/smplx/wendy-victory-20261102-v1/` and are
 used by the sample population script. See the
-[experiment record](../../../experiments/wendy-victory-sample-20261102/README.md).
+[experiment record](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/wendy-victory-sample-20261102/README.md).

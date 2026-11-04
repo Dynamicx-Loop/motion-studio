@@ -51,7 +51,7 @@ Regenerate the card's visual-only T-pose thumbnail with
 `python3 -B scripts/build_studio_thumbnails.py astro`. It uses the existing
 independent robot compiler and Pillow/NumPy; no native job is started.
 
-The [acceptance record](../../../experiments/studio-astro-builtin-20261101/README.md)
+The [acceptance record](../../../outputs/artifact-archives/experiment-reset-20261104/experiments/archive/studio-astro-builtin-20261101/README.md)
 records public import, HTTP, named-pose and native representation checks. These
 checks establish the stated representation parity, not motion quality,
 controller stability, contact performance or dynamic feasibility.

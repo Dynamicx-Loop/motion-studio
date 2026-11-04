@@ -1,9 +1,0 @@
-{
-  "frames": [
-    0,
-    547,
-    1164
-  ],
-  "CPU_vs_GPU_Hips_max_axis_error_m": 0.0,
-  "CPU_vs_GPU_quantized_mesh_max_axis_error_m": 7.627377575263375e-05
-}

@@ -167,4 +167,4 @@ The explicit `robot-static` tier runs analytic fixture models and reports an
 unavailable interpreter/dependency as unavailable. Default pure checks never
 import MuJoCo/NumPy. The report CLI emits findings even when incompatible; its
 exit code means successful reporting, not certification. Inspect exact claims.
-See the committed [measured reports](../experiments/layout-and-robot-assets-evidence/ticket11/README.md).
+See the committed [measured reports](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket11/README.md).

@@ -6,7 +6,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-import motion_data_paths as paths
+from motion_studio import motion_data_paths as paths
 
 
 class RecordedMotionPathTests(unittest.TestCase):

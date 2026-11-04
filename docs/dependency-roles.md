@@ -43,7 +43,7 @@ It records independently checked payload hashes and every recovered source hash.
 This is an additive receipt; the initial failed scratch validation attempt at the
 sibling `layout-and-robot-assets-20261029-03` directory is incomplete and unused.
 
-The [historical surface patch](../experiments/astro-surface-geometry/umr-surface-geometry.patch)
+The [historical surface patch](../outputs/artifact-archives/experiment-reset-20261104/experiments/astro-surface-geometry/umr-surface-geometry.patch)
 SHA-256 `e2cc109b3aa8125034391fde0ae2f66a02ea660a6900ce727351ea1579ca000a`
 was applied to the official HEAD blobs in disposable scratch space. It reproduced
 all six modified tracked scripts plus `scripts/primitive_surface.py` and
@@ -110,6 +110,20 @@ workflow. [Canonical preparation](umr-canonical-preparation.md) later copied and
 CPU-compiled explicitly selected G1/Astro MJCF cohorts; all remain prepared-only.
 Use [robot definitions](../robots/README.md) for source-key locators and separate
 representation findings, [checks](checks.md) for exact runtime prerequisites, and
-the [closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+the [closeout](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket13/README.md)
 for bounded cross-workflow validation. Original recovery claims above retain their
 dated scope; no upstream pin, environment or historical baseline was advanced.
+
+## 2026-11-04 checkout retirement
+
+The surface experiment clone is archived intact under
+`outputs/artifact-archives/umr-historical-checkouts-20261104/UMR-astro-surface-experiment`.
+The adjacent `surface-relocation.json` records the verified move and the
+original path. To reproduce a frozen command that uses the old path, restore
+the checkout there first.
+
+The baseline linked worktree is archived under the same parent as
+`UMR-baseline-v1`. The sibling `UMR-baseline-v1-recovery/README.md` gives
+the Git worktree restore command. Its verified bundle preserves both
+historical baseline commits using the pinned official revision as a
+prerequisite. The official UMR checkout remains at its manifest pin.

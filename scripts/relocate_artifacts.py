@@ -7,21 +7,17 @@ import sys
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from motion_studio.artifacts import plan_relocation, relocate, restore, verify_relocation
-from motion_studio.integrations.umr_hiphi_control import prepare_legacy_run
 
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='command', required=True)
     plan = sub.add_parser('plan', help='Dry run: JSON plan on stdout; writes nothing')
-    prepare = sub.add_parser('prepare-legacy', help='Prepare fresh configs/models; execute nothing')
-    for command in (plan, prepare):
-        command.add_argument('--workspace', type=Path, required=True)
-        command.add_argument('--inventory', type=Path, required=True)
-        command.add_argument('--inventory-sha256', required=True)
-        command.add_argument('--destination', required=True, help='Workspace-relative fresh outputs path')
+    plan.add_argument('--workspace', type=Path, required=True)
+    plan.add_argument('--inventory', type=Path, required=True)
+    plan.add_argument('--inventory-sha256', required=True)
+    plan.add_argument('--destination', required=True, help='Workspace-relative fresh outputs path')
     plan.add_argument('--selection', type=Path, required=True, help='JSON files list with explicit path and reviewed role')
-    prepare.add_argument('--python', type=Path, required=True)
     apply = sub.add_parser('apply')
     apply.add_argument('plan', type=Path)
     apply.add_argument('--resume', action='store_true')
@@ -38,12 +34,9 @@ def main():
             result = str(relocate(json.loads(args.plan.read_text()), resume=args.resume, step_limit=args.step_limit))
         elif args.command == 'verify':
             result = verify_relocation(args.receipt)
-        elif args.command == 'restore':
+        else:
             restore(args.receipt)
             result = {'state': 'restored', 'receipt': str(args.receipt)}
-        else:
-            result = prepare_legacy_run(args.workspace, args.inventory, args.inventory_sha256,
-                                        args.destination, args.python)
         print(json.dumps(result, indent=2, sort_keys=True))
         return 1 if isinstance(result, dict) and result.get('passed') is False else 0
     except (OSError, ValueError) as error:

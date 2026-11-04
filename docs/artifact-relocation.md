@@ -7,6 +7,13 @@ by reviewed role; a JSON extension does not distinguish a reviewed result from a
 large generated viewer payload. Existing licenses and notices still apply. This
 local operation establishes no permission to redistribute assets.
 
+The HiPHI conversion-control, head-objective and robot-control outputs are
+archived. Their compatibility aliases under `experiments/` are Git-ignored and
+serve the historical reports, viewers and verification commands. The original
+HiPHI export and conversion scripts are retained for those studies. Some write
+to the original paths, so use a separate restored workspace to reproduce the
+historical runs.
+
 The public operations in `motion_studio.artifacts` are `plan_relocation`,
 `relocate`, `verify_relocation` and `restore`. They take an explicit data workspace,
 separate from the checkout running the code. They require the independent original
@@ -47,8 +54,8 @@ alias resume, relative links, nested paths and write refusal under the normal us
 
 ## HiPHI robot-control pilot
 
-The tracked [plan](../experiments/layout-and-robot-assets-evidence/artifact-pilot-plan.json)
-and additive [context](../experiments/layout-and-robot-assets-evidence/artifact-pilot-context.json)
+The tracked [plan](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-pilot-plan.json)
+and additive [context](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-pilot-context.json)
 are the explicit migration map and retained input/model closure. On 2026-10-29,
 173 selected generated files (258,336,820 logical bytes) were copied, independently
 verified against the original seal, then replaced by recorded relative aliases.
@@ -89,51 +96,12 @@ repository-state diagnostics**. Additional dependency-role/documentation outputs
 created by the concurrent integration are listed separately in the full local
 receipt. The original inventory and seal were not rewritten to hide these changes.
 
-## Frozen writers and a fresh preparation route
+## Retired HiPHI tools
 
-The old `experiments/hiphi-robot-control/run.py` truncates `astro-reference.log`
-before launching its first pipeline. The old `scripts/export_hiphi_robot_control.py`
-writes its first mesh binary before rewriting the small report. Those archived
-log/mesh targets have no write bits, so an ordinary user's accidental first write
-fails. This protection was tested on a disposable fixture; neither historical tool
-was executed. File modes do not prevent an owner from deliberately changing them.
-`summarize.py` can rewrite README independently; preserve it as historical source
-and do not execute it against this frozen cohort.
-
-`motion_studio.integrations.umr_hiphi_control.prepare_legacy_run` is the concrete
-adapter for fresh preparation. The CLI prepares four configs and 74 verified
-model/mesh files from the sealed original source inputs, records every source hash,
-configuration hash, new identity, exact argv/cwd and fresh log paths, and executes
-nothing:
-
-```sh
-python3 scripts/relocate_artifacts.py prepare-legacy \
-  --workspace /data/workspace/motion_studio \
-  --inventory /data/workspace/motion_studio/outputs/preservation/layout-and-robot-assets-20261029-01/inventory.json \
-  --inventory-sha256 32c9f10f145814668c2b19caf0555e3aa2c7f6ad416252c542be68f357eb30d7 \
-  --destination outputs/artifact-runs/FRESH-RUN \
-  --python /data/workspace/motion_studio/externals/UMR/.venv/bin/python
-```
-
-The concrete prepared-only example is
-`outputs/artifact-runs/hiphi-robot-control-prepared-20261029-01/preparation.json`;
-its additive `preparation-source-context.json` anchors the original pipeline and
-historical tool/template source hashes. `fresh-viewer-context.json` records the
-copied viewer source templates and reserved fresh geometry destination; no
-geometry or viewer manifest was generated. Each robot's reference/reconverted pair
-shares new run-local correspondence/training paths; robots have separate paths.
-Retargets, logs and model XMLs are fresh and run-local. Source motions remain read
-inputs. Generated XML therefore cannot be written beside the external source XML.
-Old correspondence/checkpoints are not reused. Missing or changed source/model
-closure fails before fresh run creation. The copied model identity is the sealed
-input closure; this preparation does not claim a historical numerical rerun.
-
-For execution, use the four receipt argv/cwd entries individually, redirecting each
-stdout/stderr to its recorded fresh log; runtime and human-model prerequisites need
-separate validation. Do not invoke the old hard-coded runner, exporter or
-summarizer. A future viewer export must accept the fresh destination explicitly;
-the preserved viewer source templates are copied into the fresh run. No training, conversion,
-export, GPU job, installation or upstream source write occurred in this pilot.
+The frozen HiPHI writers and the dedicated preparation command were retired
+when their experiment sources moved to the local recovery archive. Use the
+[standard UMR experiment](../experiments/umr-standard/README.md) for new
+Studio runs.
 
 ## Remaining sealed batches and complete ledger
 
@@ -145,7 +113,7 @@ copying and independently checking each before installing that batch's aliases:
 | `hiphi-conversion-control-20261029-01` | 133 | 1,379,156,370 |
 | `hiphi-head-objective-20261029-01` | 187 | 19,180,874 |
 
-The additive [directory/member ledger](../experiments/layout-and-robot-assets-evidence/artifact-batches-ledger.json)
+The additive [directory/member ledger](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-batches-ledger.json)
 covers **all 1,019 experiment members in the independent original inventory**,
 all 24 experiment directories, the experiment template, and all 21 existing
 output cohorts. The earlier planning filesystem measurement included entries
@@ -156,8 +124,8 @@ are source, configuration, exact patches, provenance and small reviewed results;
 all remain version-control eligible. Existing output cohorts already hold their
 bulk in ignored storage and remain in place. No ignore rules were broadened.
 
-The [conversion plan](../experiments/layout-and-robot-assets-evidence/artifact-batch-hiphi-conversion-control-plan.json)
-and [head-objective plan](../experiments/layout-and-robot-assets-evidence/artifact-batch-hiphi-head-objective-plan.json)
+The [conversion plan](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-batch-hiphi-conversion-control-plan.json)
+and [head-objective plan](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-batch-hiphi-head-objective-plan.json)
 record every selected old/new path, original hash, role, inbound references,
 mode and relative alias. Selection includes generated runtime manifests, copied
 viewer/vendor resources and review figures; the original inventory's coarse
@@ -172,7 +140,7 @@ and preservation receipts live at:
 /data/workspace/motion_studio/outputs/implementation/layout-and-robot-assets/ticket08/
 ```
 
-[Validation anchors](../experiments/layout-and-robot-assets-evidence/artifact-batches-validation.json)
+[Validation anchors](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/artifact-batches-validation.json)
 record their hashes and limits. `relocation.json` remains in each archive.
 Archive files and the archive's `files/` directory tree have no write bits; the
 original file modes and prior archive-directory modes remain in receipts. The

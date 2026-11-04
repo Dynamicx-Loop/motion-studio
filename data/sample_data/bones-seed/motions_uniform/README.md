@@ -15,8 +15,9 @@ units and axes have not been independently verified.
 These gated dataset files stay local and Git-ignored; the upstream dataset terms
 prohibit redistribution. No download or new license acceptance was performed.
 
-The shared uniform fit, rig USD and local SOMA-X compatibility model link are
-now installed. See [local calibration setup](../shapes/README.md) for exact
-provenance, required configuration and validation. Axxx names are retained, but
+Shared calibration and SOMA-X assets are now installed under `assets/`. See
+[local calibration setup](../../../../assets/calibrations/bones-seed/README.md)
+for provenance and run-local UMR preparation. The old `shapes` and `soma_assets`
+aliases in this sample directory have been retired. Axxx names are retained, but
 these clips come from the **uniform** source directory and must not be treated
 as actor-proportional motion on the basis of their filenames.

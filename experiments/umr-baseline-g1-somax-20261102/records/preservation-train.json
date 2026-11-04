@@ -1,9 +1,0 @@
-{
-  "source_assets_and_upstream_hashes_unchanged": true,
-  "changed_inputs": [],
-  "prepared_runner_preserved": true,
-  "executed_runner_snapshot": "/data/workspace/motion_studio/outputs/umr-baseline-g1-somax-20261102/runner-train.py",
-  "executed_runner_sha256": "6e0e4da0b6286a160be4eb38609f572694d19c85cac1c31553befd742a4c5eba",
-  "external_revision_unchanged": true,
-  "external_status_unchanged": true
-}

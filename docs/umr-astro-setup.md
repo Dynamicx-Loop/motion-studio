@@ -62,34 +62,8 @@ left shoulder roll +π/2, right shoulder roll −π/2, and both elbows +π/2.
 All other joint values remain zero. The values passed MJCF joint-limit
 validation and forward kinematics.
 
-Run the configured launcher:
-
-```bash
-python3 /data/workspace/motion_studio/scripts/umr-astro.py
-```
-
-The default clip is the included HiPHI `Getting_up-get_up_0004` sequence.
-Arguments are passed to the upstream HiPHI pipeline; for example,
-`--max-frames 30` runs a short initial check and `--force-retarget` rebuilds
-an existing result. Use a different `--out` when experimenting with subsets.
-
-Expected output:
-
-```text
-/data/workspace/motion_studio/outputs/umr/astro_p2_29dof/getting_up.npz
-```
-
-View it after a successful run:
-
-```bash
-cd /data/workspace/motion_studio/externals/UMR
-.venv/bin/python scripts/visualize_robot_retarget_result.py \
-  --result /data/workspace/motion_studio/outputs/umr/astro_p2_29dof/getting_up.npz \
-  --viewer-backend viser --viser-host 127.0.0.1 --viser-port 8080 --play
-```
-
-Open http://localhost:8080 after generating a result. Setup and T-pose
-validation alone do not generate a retargeted result.
+For current Astro runs, use the built-in Studio robot through the
+[standard UMR experiment](../experiments/umr-standard/README.md).
 
 ## Setup verification
 

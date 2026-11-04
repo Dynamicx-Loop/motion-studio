@@ -10,6 +10,29 @@
 !/data/sample_data/**/README.md
 !/data/sample_data/manifest.json
 !/data/sample_data/UMR-LICENSE.txt
+
+# Local shared human assets: manifests and guides are tracked, payload links are not.
+/assets/human_models/soma-x/assets
+/assets/human_models/soma-x/overlays/umr
+/assets/calibrations/bones-seed/soma_uniform_fit_mhr_params
+/assets/calibrations/bones-seed/soma_base_rig
+/assets/calibrations/bones-seed/notices
+# Local compatibility aliases for archived HiPHI generated outputs.
+/experiments/hiphi-conversion-control/*.log
+/experiments/hiphi-conversion-control/reconverted.npz
+/experiments/hiphi-conversion-control/viewer/
+/experiments/hiphi-head-objective/*.log
+/experiments/hiphi-head-objective/*.npz
+/experiments/hiphi-head-objective/head-ablation.png
+/experiments/hiphi-head-objective/viewer-*.png
+/experiments/hiphi-head-objective/neutral/
+/experiments/hiphi-head-objective/viewer/
+/experiments/hiphi-robot-control/*.log
+/experiments/hiphi-robot-control/reconverted_yup.npz
+/experiments/hiphi-robot-control/astro/
+/experiments/hiphi-robot-control/g1/
+/experiments/hiphi-robot-control/viewer/
+
 /outputs/*
 !/outputs/README.md
 __pycache__/

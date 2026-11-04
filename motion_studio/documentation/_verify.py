@@ -5,7 +5,6 @@ from pathlib import Path
 from urllib.parse import unquote, urlsplit
 import hashlib
 import json
-import base64
 import re
 
 
@@ -57,12 +56,6 @@ def verify_edition(output, *, source_root=None, evidence_root=None):
     manifest = json.loads((OUT / "documentation/manifest.json").read_text())
     ROOT = Path(source_root or manifest["source_root"]).resolve()
     EVIDENCE = Path(evidence_root or manifest["evidence_root"]).resolve()
-
-    def source_path(name):
-        saved = manifest.get("reused_source_snapshots", {}).get(name)
-        if saved:
-            return OUT / saved['snapshot']
-        return (EVIDENCE if name.startswith('outputs/') else ROOT) / name
 
     for name, info in manifest["inputs"].items():
         assert sha((EVIDENCE if info.get("root") == "evidence" else ROOT) / name) == info["sha256"], ("changed source", name)
@@ -183,49 +176,12 @@ def verify_edition(output, *, source_root=None, evidence_root=None):
     assert (
         "<style>" in alias.path.read_text() and "<script" not in alias.path.read_text()
     )
-    figure_hashes = {
-        hashlib.sha256(base64.b64decode(url.split(",", 1)[1])).hexdigest()
-        for url in parsed[(OUT / "supporting-records.html").resolve()].runtime
-    }
-    catalog = json.loads(
-        source_path("experiments/umr-binding-report/catalog.json").read_text()
-    )
-    assert figure_hashes == {
-        sha(source_path(catalog["figures"][key]))
-        for key in ("canonical_selected", "canonical_matched")
-    }
-    # Inspector modules are now local and their prior HTML is archived.
-    for path in (OUT / "inspectors").glob("*/index.html"):
-        text = path.read_text()
-        assert "cdn.jsdelivr.net" not in text, path
-        assert "motion-docs-overlay" in text, path
-    summary = json.loads(
-        source_path("outputs/umr-legacy-index-20261024/summary.json").read_text()
-    )
-    assert (
-        summary["normalized_arms"],
-        summary["segment_rows"],
-        summary["new_baseline_arms"],
-    ) == (76, 1924, 0)
-    data = json.loads(
-        source_path("outputs/umr-astro-baseline-v1/static-20261024-01/evaluation/results.json").read_text()
-    )
-    assert [data["arms"][a]["compatible_slots"] for a in ["g1", "astro"]] == [
-        3562,
-        2327,
-    ]
-    home = (OUT / "umr-experiments.html").read_text() + support_text
-    assert all(
-        x in home
-        for x in [
-            "86.96%",
-            "56.81%",
-            "1,924",
-            "not a motion score",
-            "SOMA-X",
-            "Blocked: matched actor/motion/rig",
-        ]
-    )
+    primary = (OUT / "umr-experiments.html").read_text()
+    assert "Standard setup" in primary
+    assert "static-20261024-01" not in primary
+    assert all(doc["state"] != "legacy" for doc in index)
+    assert "static-20261024-01" not in support_text.split('<script id="search-data"', 1)[0]
+    assert not (OUT / "inspectors").exists()
     result = {
         "documents": len(index),
         "source_mode": manifest.get("source_mode"),
@@ -239,7 +195,6 @@ def verify_edition(output, *, source_root=None, evidence_root=None):
         "supporting_record_search_destinations": len(index),
         "separate_primary_pages": 3,
         "root_landing_has_no_script": True,
-        "embedded_figures_match_saved_sources": len(figure_hashes),
         "runtime_resource_reads_required": 0,
         "browser_file_open_verified": False,
         "source_hashes_verified": len(manifest["inputs"]),
@@ -248,9 +203,6 @@ def verify_edition(output, *, source_root=None, evidence_root=None):
         "missing_fragments": missing_fragments,
         "remote_core_runtime_dependencies": remote_runtime,
         "preserved_html_originals": len(manifest["preserved_originals"]),
-        "baseline_compatible_slots": {"g1": 3562, "astro": 2327},
-        "legacy_arms": 76,
-        "legacy_segment_rows": 1924,
         "new_experiments_run": 0,
     }
     for name, info in manifest.get("preserved_entries", {}).items():

@@ -114,7 +114,7 @@ Owned operations now cover [Wendy conversion](wendy-conversion-adapter.md),
 resolves [robot definitions and named poses](../robots/README.md), copies a closed
 run-local input bundle and records stage fingerprints; it always remains
 prepared-only. Metadata compatibility does not establish numerical cache validity.
-Official [G1 reproduction](../experiments/umr-g1-baseline-20261029/README.md) retains
+Official [G1 reproduction](../outputs/artifact-archives/experiment-reset-20261104/experiments/umr-g1-baseline-20261029/README.md) retains
 its pinned bundled assets and full training/retarget route independently of this
 catalog. Representation findings guard exact requested claims: accepted collision
 policy is separate from collision equality, and passing named frames does not
@@ -128,15 +128,14 @@ Keep new runs and documentation IDs fresh; never redirect a writer through an ol
 archive alias. [Preservation](preservation.md) and
 [relocation/restoration](artifact-relocation.md) describe immutable receipts,
 legacy readers and retained paths. The
-[layout closeout](../experiments/layout-and-robot-assets-evidence/ticket13/README.md)
+[layout closeout](../outputs/artifact-archives/experiment-reset-20261104/experiments/layout-and-robot-assets-evidence/ticket13/README.md)
 records the bounded acceptance and limits; historical experiment records remain
 authoritative for their own cohorts.
 
 ## Next practical milestones
 
-- Official G1 full-clip reproduction and the earlier Astro/G1 static pair are
-  recorded separate cohorts; follow up with a matched hhtools example rather than
-  treating preparation or structural parity as a new numerical baseline.
+- Run the [standard UMR experiment](../experiments/umr-standard/README.md)
+  through binding before planning the matched motion stage.
 - Read and annotate the Zotero references, linking methods to experiments.
 - Compare a locomotion clip and an interaction clip with explicit quality criteria.
 - Extend proven conversion/preparation interfaces only when another real workflow
